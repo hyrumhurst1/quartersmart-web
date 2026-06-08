@@ -3,31 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Radar — AI Ed | AI News, Tools & Insights</title>
-<meta name="description" content="AI Ed Radar: the latest AI news, tools, tutorials, and insights curated for professionals.">
+<title>Signals: AI news & insight — QuarterSmart</title>
+<meta name="description" content="Signals is QuarterSmart's AI insight hub — clear, operator-focused reads on the models, tools, and shifts that change how teams actually adopt and run AI.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://aied.dev/radar.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Radar — AI Ed | AI News, Tools & Insights">
-<meta property="og:description" content="AI Ed Radar: the latest AI news, tools, tutorials, and insights curated for professionals.">
+<meta property="og:title" content="Signals: AI news & insight — QuarterSmart">
+<meta property="og:description" content="Signals is QuarterSmart's AI insight hub — clear, operator-focused reads on the models, tools, and shifts that change how teams actually adopt and run AI.">
 <meta property="og:url" content="https://aied.dev/radar.html">
-<meta property="og:site_name" content="AI Ed">
+<meta property="og:site_name" content="QuarterSmart">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Radar — AI Ed | AI News, Tools & Insights">
-<meta name="twitter:description" content="AI Ed Radar: the latest AI news, tools, tutorials, and insights curated for professionals.">
+<meta name="twitter:title" content="Signals: AI news & insight — QuarterSmart">
+<meta name="twitter:description" content="Signals is QuarterSmart's AI insight hub — clear, operator-focused reads on the models, tools, and shifts that change how teams actually adopt and run AI.">
 <meta name="theme-color" content="#060608">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "AI Ed Radar",
-  "description": "The latest AI news, tools, tutorials, and insights curated for professionals.",
-  "url": "https://aied.dev/radar.html",
-  "publisher": { "@id": "https://aied.dev/#organization" },
-  "dateModified": "2026-04-12"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://aied.dev/#organization",
+      "name": "QuarterSmart",
+      "url": "https://aied.dev/",
+      "description": "AI implementation and workforce enablement partner. QuarterSmart helps organizations assess, train, pilot, automate, scale, and measure AI adoption.",
+      "founder": { "@type": "Person", "name": "Hyrum Hurst" },
+      "sameAs": ["https://quartersmart.com", "https://n8n.io/creators/hyrum/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://aied.dev/#website",
+      "name": "QuarterSmart",
+      "url": "https://aied.dev/",
+      "publisher": { "@id": "https://aied.dev/#organization" }
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "Signals — QuarterSmart AI insight hub",
+      "description": "Signals is QuarterSmart's AI insight hub: operator-focused reads on the models, tools, and shifts that change how teams adopt and run AI.",
+      "url": "https://aied.dev/radar.html",
+      "isPartOf": { "@id": "https://aied.dev/#website" },
+      "publisher": { "@id": "https://aied.dev/#organization" },
+      "dateModified": "2026-06-08"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://aied.dev/" },
+        { "@type": "ListItem", "position": 2, "name": "Signals", "item": "https://aied.dev/radar.html" }
+      ]
+    }
+  ]
 }
 </script>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -484,7 +512,7 @@ a { color: inherit; text-decoration: none; }
   <canvas id="splash-canvas" aria-hidden="true"></canvas>
   <div id="splash-center">
     <img id="radar-image" src="Untitled design (3).png" alt="Radar" draggable="false">
-    <img id="aied-logo" src="logos/transparent/wordmark/aied-wordmark-white-transparent.png" alt="AI ED" draggable="false">
+    <img id="aied-logo" src="logos/quartersmart-mark.svg" alt="QuarterSmart" draggable="false">
     <div id="radar-title"></div>
   </div>
 </div>
@@ -508,8 +536,8 @@ a { color: inherit; text-decoration: none; }
 <div id="nav-outer">
   <nav aria-label="Main navigation">
     <a class="nav-logo" href="./">
-      <img class="logo-default" src="logos/transparent/wordmark-boxed/aied-wordmark-boxed-white-transparent-trimmed.png" alt="AI Ed" width="77" height="21">
-      <img class="logo-hover" src="logos/transparent/wordmark-boxed/aied-wordmark-boxed-mint-transparent-trimmed.png" alt="AI Ed" width="77" height="21">
+      <img src="logos/quartersmart-mark.svg" alt="QuarterSmart" width="26" height="26">
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em;color:var(--text,#f0f4f8);font-size:18px;margin-left:8px;">QuarterSmart</span>
     </a>
     <ul class="nav-links">
       <li><a href="./" class="live">Home</a></li>
@@ -517,7 +545,7 @@ a { color: inherit; text-decoration: none; }
       <li><a href="government/">Government</a></li>
       <li><a href='coming-soon?page=login'>Login</a></li>
     </ul>
-    <a href="teams/" class="nav-cta"><img src="logos/transparent/icon/aied-icon-white-transparent-trimmed.png" alt="" width="16" height="14">Talk to Us</a>
+    <a href="teams/" class="nav-cta">Talk to Us</a>
     <button type="button" class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -527,6 +555,9 @@ a { color: inherit; text-decoration: none; }
 <!-- HERO -->
 <section id="radar-hero">
   <div class="hero-content" id="hero-content">
+    <span class="hero-tag">◆ QuarterSmart Signals</span>
+    <h1 class="hero-headline">AI moves fast. <em>Signal</em> is what your team can act on.</h1>
+    <p class="hero-sub">Signals is QuarterSmart's AI insight hub. We track the models, tools, and policy shifts that change how organizations adopt AI, then explain what each one means for the people doing the work — not just the headline.</p>
     <span class="hero-tag">◆ Pinned Signal</span>
     <a class='featured-card' href='signals/mythos' style='text-decoration:none;color:inherit;'>
       <div class="featured-img"><img src="assets/images/signals/claude-mythos-sandbox-escape-cover.png" alt="Claude Mythos AI breaking out of a shattered digital sandbox" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></div>
@@ -559,6 +590,10 @@ a { color: inherit; text-decoration: none; }
 
 <!-- POSTS GRID -->
 <section id="posts-section">
+  <div style="max-width:1200px;margin:0 auto 28px;">
+    <h2 style="font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-bottom:12px;">What is QuarterSmart Signals?</h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:680px;">QuarterSmart Signals is a curated AI insight hub published by QuarterSmart, an AI implementation and workforce enablement partner. Each post covers a recent development in AI — a new model, a tool change, a pricing shift, or a policy move — and translates it into plain language for operators and team leaders. The goal is not to chase every headline, but to flag the signals that affect how organizations actually assess, train, pilot, automate, and scale AI. QuarterSmart is founded by Hyrum Hurst, a verified n8n creator with 25 public workflow templates.</p>
+  </div>
   <div class="posts-grid">
     <a class='post-card' data-tags='news' href='signals/weekly-advancements-apr-22-2026' style='text-decoration:none;color:inherit;'>
       <div class="post-img"><div style="width:100%;height:100%;background:linear-gradient(135deg,rgba(0,229,160,0.18),rgba(0,184,255,0.08) 45%,rgba(6,6,8,0.9));display:flex;align-items:center;justify-content:center;"><div style="text-align:center"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#00e5a0;opacity:0.8;margin-bottom:6px">Apr 21 · 2026</div><div style="font-size:28px;font-weight:700;letter-spacing:-0.02em;color:#fff;line-height:1.05">This Week<br>in <span style="color:#00e5a0">AI</span></div></div></div></div>
@@ -610,7 +645,7 @@ a { color: inherit; text-decoration: none; }
 
 <!-- FOOTER -->
 <footer id="radar-footer">
-  Powered by <a href="https://quartersmart.com" target="_blank" rel="noopener">QuarterSmart</a> &middot; <a href="./">Back to AI Ed</a>
+  <a href="https://quartersmart.com" target="_blank" rel="noopener">QuarterSmart</a> — AI implementation &amp; workforce enablement &middot; <a href="./">Back to home</a>
 </footer>
 
 <script>

@@ -3,24 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Ed for Teams — Custom AI Build &amp; Secure Rollout | aied.dev/teams</title>
-<meta name="description" content="Custom AI workflows built around your team's roles, deployed securely through QuarterSmart Secured LMS. Discovery sprints, custom build, on-prem and air-gapped delivery options.">
+<title>AI Rollout for Teams &amp; Operations — QuarterSmart</title>
+<meta name="description" content="QuarterSmart runs AI rollouts for operational teams: enablement, internal champions, piloted workflows, and adoption you can measure across the org.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://aied.dev/teams/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AI Ed for Teams — Custom AI Build &amp; Secure Rollout">
-<meta property="og:description" content="Custom AI workflows built around your team's roles, deployed securely via QuarterSmart Secured LMS.">
+<meta property="og:title" content="AI Rollout for Teams &amp; Operations — QuarterSmart">
+<meta property="og:description" content="AI implementation and workforce enablement for operational teams: enablement, internal champions, piloted workflows, and measured adoption.">
 <meta property="og:url" content="https://aied.dev/teams/">
-<meta property="og:site_name" content="AI Ed by QuarterSmart">
+<meta property="og:site_name" content="QuarterSmart">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Ed for Teams — Custom AI Build &amp; Secure Rollout">
-<meta name="twitter:description" content="Custom AI workflows + secure delivery via QuarterSmart Secured LMS.">
+<meta name="twitter:title" content="AI Rollout for Teams &amp; Operations — QuarterSmart">
+<meta name="twitter:description" content="AI implementation and workforce enablement for operational teams: enablement, champions, pilots, and measured adoption.">
 <meta property="og:image" content="https://aied.dev/assets/images/og/og-teams.png">
-<meta property="og:image:alt" content="AI Ed for Teams — Custom AI build and secure rollout via QuarterSmart Secured LMS.">
+<meta property="og:image:alt" content="QuarterSmart — AI rollout and workforce enablement for operational teams.">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://aied.dev/assets/images/og/og-teams.png">
 <meta name="theme-color" content="#060608">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="../icon-48.png">
@@ -38,18 +39,13 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": "https://aied.dev/teams/#organization",
-  "name": "AI Ed for Teams",
-  "url": "https://aied.dev/teams/",
-  "logo": "https://aied.dev/logos/transparent/wordmark-boxed/aied-wordmark-boxed-white-transparent-trimmed.png",
-  "description": "Custom AI workflow build and secure rollout for teams. Discovery sprints, custom AI implementation, and secure delivery via QuarterSmart Secured LMS.",
+  "name": "QuarterSmart",
+  "url": "https://aied.dev/",
+  "logo": "https://aied.dev/logos/quartersmart-mark.svg",
+  "description": "AI implementation and workforce enablement partner. QuarterSmart helps organizations assess, train, pilot, automate, scale, and measure AI adoption.",
   "email": "learn@aied.dev",
-  "parentOrganization": {
-    "@type": "Organization",
-    "name": "QuarterSmart",
-    "url": "https://quartersmart.com"
-  },
-  "sameAs": ["https://quartersmart.com"],
-  "dateModified": "2026-05-03"
+  "founder": { "@type": "Person", "name": "Hyrum Hurst" },
+  "sameAs": ["https://quartersmart.com", "https://n8n.io/creators/hyrum/"]
 }
 </script>
 <script type="application/ld+json">
@@ -57,10 +53,27 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebPage",
+      "@id": "https://aied.dev/teams/#webpage",
+      "url": "https://aied.dev/teams/",
+      "name": "AI Rollout for Teams & Operations — QuarterSmart",
+      "description": "QuarterSmart runs AI rollouts for operational teams: enablement, internal champions, piloted workflows, and measured adoption.",
+      "isPartOf": { "@id": "https://aied.dev/teams/#organization" },
+      "about": { "@id": "https://aied.dev/teams/#organization" },
+      "dateModified": "2026-06-08"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "QuarterSmart", "item": "https://aied.dev/" },
+        { "@type": "ListItem", "position": 2, "name": "Teams", "item": "https://aied.dev/teams/" }
+      ]
+    },
+    {
       "@type": "Service",
-      "name": "Discovery Sprint",
+      "name": "AI Rollout Assessment",
       "url": "https://aied.dev/teams/#services",
-      "description": "Two-week fixed-fee assessment of your team, data perimeter, and AI workflow opportunities. You leave with a prioritized roadmap and build estimate.",
+      "description": "A focused assessment of your team, workflows, and constraints that identifies the highest-value AI opportunities and returns a prioritized rollout plan and timeline.",
       "provider": { "@id": "https://aied.dev/teams/#organization" },
       "serviceType": "AI Implementation Consulting",
       "areaServed": { "@type": "Country", "name": "United States" },
@@ -68,29 +81,29 @@
     },
     {
       "@type": "Service",
-      "name": "Custom AI Build",
+      "name": "Leadership & Team Enablement",
       "url": "https://aied.dev/teams/#services",
-      "description": "End-to-end design and delivery of custom AI workflows for your team's roles, including prompt and agent libraries, tool integrations, evaluations, and observability.",
+      "description": "Role-specific enablement that builds working AI fluency and develops internal champions, so adoption is owned inside your team rather than imposed from outside.",
       "provider": { "@id": "https://aied.dev/teams/#organization" },
-      "serviceType": "Enterprise AI Implementation",
+      "serviceType": "Workforce Enablement",
       "areaServed": { "@type": "Country", "name": "United States" }
     },
     {
       "@type": "Service",
-      "name": "Embedded Rollout",
+      "name": "Pilot & Workflow Automation",
       "url": "https://aied.dev/teams/#services",
-      "description": "Onsite or remote rollout sprints with role-specific training delivered through QuarterSmart Secured LMS. Adoption tracking, SOPs, and governance documentation included.",
+      "description": "We pilot high-friction workflows, ship working automations built on n8n and your approved models, then integrate them into the tools your team already uses.",
       "provider": { "@id": "https://aied.dev/teams/#organization" },
-      "serviceType": "AI Rollout and Adoption",
+      "serviceType": "Workflow Automation and Integration",
       "areaServed": { "@type": "Country", "name": "United States" }
     },
     {
       "@type": "Service",
-      "name": "QuarterSmart Secured LMS",
+      "name": "Measurement & Secure Deployment",
       "url": "https://aied.dev/teams/#services",
-      "description": "Secure delivery infrastructure for AI training and workflows. Three deployment tiers (private cloud, on-premises, air-gapped). Section 508 / WCAG 2.1 AA compliant. FedRAMP roadmap.",
+      "description": "We measure adoption and impact against the baseline, scale what proves out, and deploy securely inside your perimeter when your data or compliance requirements call for it.",
       "provider": { "@id": "https://aied.dev/teams/#organization" },
-      "serviceType": "Secure LMS Platform",
+      "serviceType": "Measurement and Secure Deployment",
       "areaServed": { "@type": "Country", "name": "United States" }
     }
   ]
@@ -1243,8 +1256,8 @@ body::after {
 
 <nav id="main-nav" aria-label="Main navigation">
   <a href="https://aied.dev" class="nav-logo">
-    <img class="logo-default" src="../logos/transparent/wordmark-boxed/aied-wordmark-boxed-white-transparent-trimmed.png" alt="AI Ed - Home" width="77" height="21">
-    <img class="logo-hover" src="../logos/transparent/wordmark-boxed/aied-wordmark-boxed-mint-transparent-trimmed.png" alt="AI Ed - Home" width="77" height="21">
+    <img src="../logos/quartersmart-mark.svg" alt="QuarterSmart" width="26" height="26">
+    <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em;color:var(--text,#f0f4f8);font-size:18px;">QuarterSmart</span>
   </a>
   <ul class="nav-links" id="nav-menu">
     <li><a href="https://aied.dev">Home</a></li>
@@ -1268,13 +1281,13 @@ body::after {
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-badge"><span class="dot"></span> Now Booking Q3 2026</div>
-      <h1>Custom AI Build<br>for <em>Your Team.</em></h1>
-      <p class="hero-sub">We map your team's roles, design the AI workflows they actually need, and ship them with role-specific training built into QuarterSmart Secured LMS — your data, your perimeter.</p>
+      <h1>AI rollout for teams that need <em>results, not hype.</em></h1>
+      <p class="hero-sub">QuarterSmart helps operational teams move from scattered AI experiments to org-wide adoption — enablement that builds real fluency, internal champions, piloted workflows, and adoption you can measure.</p>
       <div class="hero-actions">
-        <button type="button" class="btn-primary" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Book a Discovery Call</button>
+        <button type="button" class="btn-primary" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Book an AI Rollout Assessment</button>
         <a href="../government/" class="btn-secondary">For Public Sector →</a>
       </div>
-      <p class="hero-note">Most engagements start with a fixed-fee Discovery Sprint — two weeks to a prioritized roadmap and a build estimate.</p>
+      <p class="hero-note">Most engagements start with a fixed-fee AI Rollout Assessment — a focused look at your workflows, then a prioritized rollout plan you keep.</p>
     </div>
   </div>
 </section>
@@ -1308,22 +1321,22 @@ body::after {
     <div class="rocket-overlay"></div>
 
     <div class="rocket-line" id="trl-1">
-      <p class="rocket-heading">Generic AI tools <em>don't fit your work.</em></p>
-      <p>Off-the-shelf assistants assume your data can leave and your roles look like everyone else's. Neither is true for regulated teams.</p>
+      <p class="rocket-heading">Pilots stall <em>without a rollout.</em></p>
+      <p>A few people try a tool, the rest of the team never changes how they work, and the gains never reach your operation.</p>
     </div>
 
     <div class="rocket-line" id="trl-2">
-      <p class="rocket-heading">We build <span class="glow">custom workflows</span><br>around your roles.</p>
-      <p>Mapped to the tasks your team actually owns, with the prompts, agents, and tooling versioned and reviewable.</p>
+      <p class="rocket-heading">We build <span class="glow">fluency and champions</span><br>inside your team.</p>
+      <p>Role-specific enablement and internal champions, so adoption is owned by the people doing the work — not imposed from outside.</p>
     </div>
 
     <div class="rocket-line" id="trl-3">
-      <p class="rocket-heading"><span class="big">Deploy</span>where your data lives.</p>
+      <p class="rocket-heading"><span class="big">Pilot</span>your highest-friction work.</p>
     </div>
 
     <div class="rocket-line" id="trl-4">
-      <p class="rocket-heading">Built. Trained. Secure.<br><em>From day one.</em></p>
-      <p>Custom AI workflows, role-specific training, and secure delivery — all through QuarterSmart Secured LMS.</p>
+      <p class="rocket-heading">Automate. Measure. Scale.<br><em>From day one.</em></p>
+      <p>Working automations on the tools you already use, adoption measured against your baseline, and what proves out scaled across the team.</p>
     </div>
   </div>
 </section>
@@ -1334,21 +1347,21 @@ body::after {
 <section id="services" aria-labelledby="services-heading">
   <div class="section-header">
     <div class="section-label text-reveal">What We Offer</div>
-    <h2 id="services-heading" class="text-reveal text-reveal-delay-1">AI implementation that actually <em class="glow-text">ships.</em></h2>
-    <p class="text-reveal text-reveal-delay-2">Not generic webinars. Not curriculum off a shelf. Custom AI workflows mapped to your roles, deployed where your data already lives, with the training built into the rollout.</p>
+    <h2 id="services-heading" class="text-reveal text-reveal-delay-1">AI rollout that actually <em class="glow-text">lands.</em></h2>
+    <p class="text-reveal text-reveal-delay-2">Not generic webinars. Not a tool you hope people adopt. QuarterSmart assesses your workflows, builds fluency and internal champions, pilots high-friction work, automates it on the tools you already use, and measures what changes.</p>
   </div>
   <div class="services-grid">
     <div class="service-card">
       <div class="service-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       </div>
-      <h3>Discovery Sprint</h3>
-      <p>Two-week fixed-fee assessment. We map your team, audit your data perimeter, and identify the highest-impact AI workflow opportunities. You leave with a prioritized roadmap and a build estimate.</p>
+      <h3>AI Rollout Assessment</h3>
+      <p>A focused, fixed-fee assessment. We map how your team actually works, surface the highest-value AI opportunities, and weigh them against your real constraints. You leave with a prioritized rollout plan and timeline.</p>
       <ul>
         <li>Role and workflow mapping</li>
-        <li>Data perimeter and compliance audit</li>
+        <li>Opportunity and constraint audit</li>
         <li>AI use case prioritization</li>
-        <li>Build estimate + rollout timeline</li>
+        <li>Rollout plan + timeline</li>
         <li>No commitment to continue after</li>
       </ul>
     </div>
@@ -1356,42 +1369,42 @@ body::after {
       <div class="service-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </div>
-      <h3>Custom AI Build</h3>
-      <p>We design and ship the AI workflows your highest-impact roles need — prompts, agents, tools, evaluations — versioned and reviewable. Your engineering team owns it after delivery.</p>
+      <h3>Leadership &amp; Team Enablement</h3>
+      <p>Role-specific enablement that builds working AI fluency across the team — and develops internal champions who carry adoption forward after we step back. Confidence in real tasks, not abstract theory.</p>
       <ul>
-        <li>Role-specific prompt and agent libraries</li>
-        <li>Custom tool integrations</li>
-        <li>Evaluation harnesses + observability</li>
-        <li>Runs against the model you've approved</li>
-        <li>6–12 weeks typical</li>
+        <li>Role-specific, hands-on enablement</li>
+        <li>Internal champions program</li>
+        <li>Working sessions on real tasks</li>
+        <li>Practical guardrails and norms</li>
+        <li>Adoption owned inside the team</li>
       </ul>
     </div>
     <div class="service-card">
       <div class="service-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
       </div>
-      <h3>Embedded Rollout</h3>
-      <p>Onsite or remote sprints to get the new workflows into your team's daily habits. Role-specific training delivered through the LMS so your team is ready before the workflow goes live.</p>
+      <h3>Pilot &amp; Workflow Automation</h3>
+      <p>We pilot a high-friction workflow with the people who own it, then ship a working automation built on n8n and your approved models — integrated into the tools your team already uses, not a science project.</p>
       <ul>
-        <li>Role-specific training content in your LMS</li>
-        <li>Onsite or virtual rollout sprints</li>
-        <li>Adoption tracking and iteration</li>
-        <li>SOP + governance documentation</li>
-        <li>Stay engaged until it sticks</li>
+        <li>Pilot a high-friction workflow first</li>
+        <li>Working automations on n8n</li>
+        <li>Integrated with your existing tools</li>
+        <li>Runs against the model you've approved</li>
+        <li>SOPs so the team can run it</li>
       </ul>
     </div>
     <div class="service-card">
       <div class="service-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
       </div>
-      <h3>QuarterSmart Secured LMS</h3>
-      <p>The secure delivery infrastructure underneath every engagement. Private cloud, on-premises, or fully air-gapped. Your data, your prompts, your usage logs — all stay inside your perimeter.</p>
+      <h3>Measurement &amp; Secure Deployment</h3>
+      <p>We measure adoption and impact against the baseline we set during assessment, scale what proves out, and — when your data or compliance requirements call for it — deploy securely inside your own perimeter.</p>
       <ul>
-        <li>Three deployment tiers (cloud / on-prem / air-gapped)</li>
-        <li>Section 508 / WCAG 2.1 AA</li>
-        <li>FedRAMP roadmap, FERPA / COPPA / CIPA aware</li>
-        <li>Versioned prompt + content management</li>
-        <li>Available standalone for orgs with their own content</li>
+        <li>Adoption and impact measured vs. baseline</li>
+        <li>Scale the workflows that prove out</li>
+        <li>Knowledge systems grounded in your SOPs</li>
+        <li>Secure, in-perimeter deployment when needed</li>
+        <li>Private cloud, on-prem, or air-gapped options</li>
       </ul>
     </div>
   </div>
@@ -1403,36 +1416,36 @@ body::after {
 <section id="process">
   <div class="section-header">
     <div class="section-label text-reveal">How It Works</div>
-    <h2 class="text-reveal text-reveal-delay-1">From zero to <em class="glow-text">AI-fluent.</em></h2>
-    <p class="text-reveal text-reveal-delay-2">A simple process to get your team up to speed.</p>
+    <h2 class="text-reveal text-reveal-delay-1">What does an AI rollout <em class="glow-text">actually involve?</em></h2>
+    <p class="text-reveal text-reveal-delay-2">An AI rollout is the work of turning a few AI experiments into org-wide, measurable adoption. QuarterSmart follows a six-stage method — assess, train, pilot, automate, scale, and measure. We start by mapping your real workflows, build fluency and internal champions, pilot the highest-friction work, automate it on the tools you already use, scale what proves out, and measure adoption against a baseline so leaders can see what changed.</p>
   </div>
   <div class="process-steps">
     <div class="process-step">
       <div class="step-num">1</div>
       <div class="step-content">
-        <h3>Discovery Call</h3>
-        <p>We learn about your team, your industry, and where AI can make the biggest impact. 30 minutes, no commitment.</p>
+        <h3>Assess</h3>
+        <p>We map how your team actually works, where the friction is, and which AI opportunities are worth the effort. You leave with a prioritized rollout plan and timeline.</p>
       </div>
     </div>
     <div class="process-step">
       <div class="step-num">2</div>
       <div class="step-content">
-        <h3>Custom Plan</h3>
-        <p>We design a training program around your specific workflows, tools, and skill levels. Every program is different because every team is different.</p>
+        <h3>Train &amp; Pilot</h3>
+        <p>We build role-specific fluency and internal champions, then pilot a high-friction workflow with the people who own it — proving value before anything scales.</p>
       </div>
     </div>
     <div class="process-step">
       <div class="step-num">3</div>
       <div class="step-content">
-        <h3>Build &amp; Deploy</h3>
-        <p>We build the workflows, ship them through QuarterSmart Secured LMS, and run an embedded rollout sprint to get your team using them in real work.</p>
+        <h3>Automate</h3>
+        <p>We ship working automations built on n8n and your approved models, integrated into the tools your team already uses, with SOPs so the team can run them.</p>
       </div>
     </div>
     <div class="process-step">
       <div class="step-num">4</div>
       <div class="step-content">
-        <h3>Measure & Iterate</h3>
-        <p>AI analytics track comprehension and adoption. We review progress, adjust the program, and make sure the training sticks.</p>
+        <h3>Scale &amp; Measure</h3>
+        <p>We measure adoption and impact against the baseline, scale the workflows that prove out, and keep iterating so the gains hold across the team.</p>
       </div>
     </div>
   </div>
@@ -1445,34 +1458,34 @@ body::after {
   <div class="section-header">
     <div class="section-label text-reveal">Pricing</div>
     <h2 class="text-reveal text-reveal-delay-1">Built for teams of <em class="glow-text">any size.</em></h2>
-    <p class="text-reveal text-reveal-delay-2">Two-part pricing — fixed-fee Discovery Sprint up front, scoped Build + LMS subscription if we move forward.</p>
+    <p class="text-reveal text-reveal-delay-2">Two-part pricing — a fixed-fee AI Rollout Assessment up front, then a scoped rollout engagement if we move forward together.</p>
   </div>
   <div class="pricing-grid">
     <div class="pricing-card">
       <div class="pricing-label">Start Here</div>
-      <h3>Discovery Sprint</h3>
-      <div class="pricing-price">Fixed fee from $7,500<br>2 weeks, no commitment after</div>
+      <h3>AI Rollout Assessment</h3>
+      <div class="pricing-price">Fixed fee from $7,500<br>no commitment after</div>
       <ul>
         <li>Role + workflow mapping</li>
-        <li>Data perimeter audit</li>
+        <li>Opportunity + constraint audit</li>
         <li>Use case prioritization</li>
-        <li>Build estimate + rollout plan</li>
+        <li>Prioritized rollout plan + timeline</li>
         <li>Yours to keep, even if we don't continue</li>
       </ul>
-      <button type="button" class="btn-secondary" style="width:100%;justify-content:center;" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Start a Discovery Sprint</button>
+      <button type="button" class="btn-secondary" style="width:100%;justify-content:center;" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Book an Assessment</button>
     </div>
     <div class="pricing-card featured">
       <div class="pricing-label">Full Engagement</div>
-      <h3>Custom Build + Secure LMS</h3>
-      <div class="pricing-price">Build fee scoped to roadmap<br>+ annual LMS subscription</div>
+      <h3>Rollout Engagement</h3>
+      <div class="pricing-price">Scoped to your rollout plan<br>+ ongoing measurement</div>
       <ul>
-        <li>Custom AI workflow build (6–12 weeks)</li>
-        <li>QuarterSmart Secured LMS (cloud / on-prem / air-gapped)</li>
-        <li>Role-specific training content built into LMS</li>
-        <li>Embedded rollout sprint</li>
-        <li>SOPs, governance docs, ongoing iteration</li>
+        <li>Team enablement + internal champions</li>
+        <li>Piloted, then automated workflows on n8n</li>
+        <li>Integrated with the tools you already use</li>
+        <li>Secure, in-perimeter deployment when needed</li>
+        <li>Adoption measured and scaled vs. baseline</li>
       </ul>
-      <button type="button" class="btn-primary" style="width:100%;justify-content:center;" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Talk to Us</button>
+      <button type="button" class="btn-primary" style="width:100%;justify-content:center;" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Talk to us</button>
     </div>
   </div>
 </section>
@@ -1480,8 +1493,8 @@ body::after {
 <!-- BOOKING FORM -->
 <section id="book">
   <div class="book-inner">
-    <h2>Book a <em>discovery call.</em></h2>
-    <p>Tell us about your team and we'll put together a training plan. No pressure, no hard sell.</p>
+    <h2>Book an <em>AI Rollout Assessment.</em></h2>
+    <p>Tell us about your team and we'll come back with a prioritized rollout plan. No pressure, no hard sell.</p>
 
     <form class="book-form" id="book-form">
       <div class="form-row">
@@ -1516,10 +1529,10 @@ body::after {
           <label for="book-interest">Interested In *</label>
           <select id="book-interest" name="interest" required>
             <option value="" disabled selected>What are you looking for?</option>
-            <option value="discovery-sprint">Discovery Sprint</option>
-            <option value="custom-build">Custom AI Build + Rollout</option>
-            <option value="secure-lms">QuarterSmart Secured LMS only</option>
-            <option value="all">Full engagement (build + LMS)</option>
+            <option value="assessment">AI Rollout Assessment</option>
+            <option value="enablement">Team enablement + champions</option>
+            <option value="automation">Workflow pilot + automation</option>
+            <option value="all">Full rollout engagement</option>
             <option value="not-sure">Not sure yet</option>
           </select>
         </div>
@@ -1536,14 +1549,14 @@ body::after {
       </div>
       <div class="form-group full">
         <label for="book-notes">Tell us about your team</label>
-        <textarea id="book-notes" name="notes" placeholder="What does your team do? What AI challenges are you facing? Any specific tools or topics you want to cover?"></textarea>
+        <textarea id="book-notes" name="notes" placeholder="What does your team do? Where is the friction? Which workflows or tools are you hoping AI can help with?"></textarea>
       </div>
       <button type="submit" class="btn-primary book-submit">Submit Request</button>
     </form>
 
     <div id="book-success">
       <h3>We got your request!</h3>
-      <p>We'll review your details and get back to you within 24 hours to scope a Discovery Sprint or follow-up call.</p>
+      <p>We'll review your details and get back to you within 24 hours to scope an AI Rollout Assessment or a follow-up call.</p>
     </div>
   </div>
 </section>
@@ -1553,8 +1566,8 @@ body::after {
 <!-- FOOTER -->
 <footer>
   <div class="footer-left">
-    <img src="../logos/transparent/wordmark-boxed/aied-wordmark-boxed-white-transparent-trimmed.png" alt="AI Ed" width="80" height="22">
-    <span class="footer-copy">© 2026 AI Ed by <a href="https://quartersmart.com" target="_blank" rel="noopener">QuarterSmart</a>.</span>
+    <img src="../logos/quartersmart-mark.svg" alt="QuarterSmart" width="22" height="22">
+    <span class="footer-copy">© 2026 <a href="https://quartersmart.com" target="_blank" rel="noopener">QuarterSmart</a> — AI implementation &amp; workforce enablement.</span>
   </div>
   <div class="footer-links">
     <a href="../government/">Government</a>

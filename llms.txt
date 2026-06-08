@@ -1,86 +1,44 @@
-# AI Ed — aied.dev
+# QuarterSmart — aied.dev
 
-> Free, vendor-neutral AI literacy education for working professionals.
+> AI implementation and workforce enablement partner. QuarterSmart helps organizations move from AI curiosity to operational adoption.
 
-AI Ed is an online education platform built by QuarterSmart that teaches practical AI skills to professionals across every industry. The platform was founded on a simple premise: AI literacy is too important to put behind a paywall. Most AI training costs thousands of dollars, and the free alternatives are outdated, tool-biased, or built exclusively for developers. AI Ed fills that gap with structured, vendor-neutral courses that teach concepts applicable across all AI tools and platforms — not just one product.
+QuarterSmart is an AI implementation and workforce enablement company founded by Hyrum Hurst. It helps organizations assess where AI pays off, train leaders and teams, pilot high-friction workflows, automate real work, and scale what proves out — with measurement at every step. QuarterSmart is developer-forward: it ships working automations and secure systems, not slide decks. QuarterSmart is not a course platform, training catalog, or LMS.
 
-All courses are free forever. No trial period, no credit card, no hidden upsell, no vendor lock-in.
+## Method
 
-## Courses
+QuarterSmart follows a six-step rollout: Assess → Train → Pilot → Automate → Scale → Measure.
 
-### Gen AI Fundamentals
-- URL: https://aied.dev/coming-soon.html?page=courses
-- Level: Beginner
-- Duration: ~5 hours
-- Prerequisites: None — no technical or coding background required
-- Topics Covered:
-  - How large language models, image generators, and other AI systems work under the hood
-  - What AI can and cannot do reliably — setting realistic expectations
-  - Evaluating AI-generated outputs for accuracy and bias
-  - Using AI tools safely and ethically in professional settings
-  - Practical frameworks for identifying AI use cases at work
+## Services
 
-### Prompt Engineering
-- URL: https://aied.dev/coming-soon.html?page=courses
-- Level: Beginner
-- Duration: ~5 hours
-- Prerequisites: None — basic familiarity with any AI chatbot is helpful but not required
-- Topics Covered:
-  - Structured prompting techniques: role framing, chain-of-thought, few-shot examples
-  - Output formatting and controlling AI response structure
-  - Producing consistent, professional-grade results from any AI tool
-  - Prompt patterns for common business tasks (writing, analysis, summarization)
-  - Debugging and iterating on prompts for better results
+- AI Rollout Assessment — readiness audit, use-case map, governance baseline, 90-day roadmap
+- Leadership & Team Enablement — role-based workshops and internal champions
+- Pilot & Workflow Prototyping — prove value on one or two high-friction workflows
+- Workflow Automation & Integration — n8n-based automations, task routing, systems integration
+- Knowledge Systems & AI Assistants — answers grounded in your own SOPs and data
+- Measurement & Optimization — usage, time saved, quality, and ROI tracking
+- Custom Systems & Secure Deployment — private cloud, on-premises, or air-gapped when required
 
-### AI Agents
-- URL: https://aied.dev/coming-soon.html?page=courses
-- Level: Intermediate
-- Duration: ~7 hours
-- Prerequisites: Completion of Gen AI Fundamentals or equivalent AI knowledge
-- Topics Covered:
-  - What autonomous AI agents are and how they differ from chatbots
-  - Agent architectures, tool use, and multi-step reasoning workflows
-  - Real-world agent applications in customer support, software engineering, and operations
-  - Building simple agents and understanding orchestration patterns
-  - Safety, oversight, and governance for agentic AI systems
+## Key pages
 
-### Claude Code
-- URL: https://aied.dev/coming-soon.html?page=courses
-- Level: Intermediate
-- Duration: ~7 hours
-- Prerequisites: None — starts from zero coding experience
-- Topics Covered:
-  - Introduction to programming concepts for absolute beginners
-  - Using Claude Code for AI-assisted software development (pair programming)
-  - Project setup, version control with Git, and deployment fundamentals
-  - Writing, debugging, and shipping real applications with AI assistance
-  - Professional developer workflows and best practices
+- [Home](https://aied.dev/): positioning, method, and services
+- [About Hyrum Hurst](https://aied.dev/about.html): founder background and credentials
+- [Teams](https://aied.dev/teams/): AI rollout for operational teams
+- [Government](https://aied.dev/government/): secure AI implementation for the public sector
+- [Schools](https://aied.dev/schools/): AI enablement and automation for education organizations
+- [Signals](https://aied.dev/radar.html): QuarterSmart AI news and insight
 
-## Target Audience
+## Key facts
 
-AI Ed is designed for:
-- Working professionals in any industry who want to understand and use AI effectively
-- Non-technical team members looking to build AI literacy without learning to code
-- Managers and leaders who need to make informed decisions about AI adoption
-- Career changers exploring AI-adjacent roles
-- Organizations seeking vendor-neutral AI training for their teams
-- Educators and trainers who want to incorporate AI literacy into their curricula
-
-## Licensing
-
-All AI Ed course content is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). You are free to share and adapt the material for any purpose, including commercial use, as long as appropriate credit is given.
+- Founder: Hyrum Hurst — verified n8n creator with 25 public workflow templates
+- Category: AI implementation and workforce enablement partner (not an LMS or course studio)
+- Buyers: operational teams, mid-market organizations, and government/regulated environments
+- Differentiators: developer-forward execution, n8n-backed workflow automation, secure deployment, and measured rollout
 
 ## Contact
 
 - Website: https://aied.dev
 - Email: learn@aied.dev
-- Publisher: QuarterSmart
-- Custom team training and cohort programs available — contact learn@aied.dev
-
-## Additional Resources
-
-- llms.txt (this file): https://aied.dev/llms.txt
-- Main site: https://aied.dev
+- Founder: Hyrum Hurst, QuarterSmart
 
 ---
-Last updated: 2026-04-11
+Last updated: 2026-06-08

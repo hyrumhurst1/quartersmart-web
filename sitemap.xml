@@ -2,27 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aied.dev/</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-06-08</lastmod>
+  </url>
+  <url>
+    <loc>https://aied.dev/about.html</loc>
+    <lastmod>2026-06-08</lastmod>
   </url>
   <url>
     <loc>https://aied.dev/teams/</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-06-08</lastmod>
   </url>
   <url>
     <loc>https://aied.dev/government/</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-06-08</lastmod>
+  </url>
+  <url>
+    <loc>https://aied.dev/schools/</loc>
+    <lastmod>2026-06-08</lastmod>
   </url>
   <url>
     <loc>https://aied.dev/radar.html</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-06-08</lastmod>
   </url>
   <url>
     <loc>https://aied.dev/privacy.html</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-06-08</lastmod>
   </url>
   <url>
     <loc>https://aied.dev/terms.html</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-06-08</lastmod>
   </url>
   <url>
     <loc>https://aied.dev/signals/weekly-advancements-apr-22-2026.html</loc>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="QuarterSmart">
+  <!-- Q ring: mint covers 3 o'clock -> 6 -> 9 -> 12 (270deg); top-right quarter is white -->
+  <path d="M100 60 A40 40 0 1 1 60 20" fill="none" stroke="#00e5a0" stroke-width="16" stroke-linecap="butt"/>
+  <path d="M60 20 A40 40 0 0 1 100 60" fill="none" stroke="#f0f4f8" stroke-width="16" stroke-linecap="butt"/>
+  <!-- Q tail (square leg, bottom-right) -->
+  <line x1="78" y1="78" x2="102" y2="102" stroke="#00e5a0" stroke-width="16" stroke-linecap="square"/>
+</svg>
