@@ -1,4 +1,7 @@
 import type { MetadataRoute } from "next";
+
+export const dynamic = "force-static";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -10,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "CCBot", disallow: "/" },
       { userAgent: "cohere-ai", disallow: "/" },
     ],
-    sitemap: "https://aied.dev/sitemap.xml",
+    sitemap: "https://hyrumhurst1.github.io/quartersmart-web/sitemap.xml",
   };
 }
