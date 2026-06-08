@@ -1666,24 +1666,6 @@ input:focus-visible {
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<!-- SPLASH — video + geo lines, z-index 200 -->
-<div id="splash" aria-hidden="true">
-  <div class="splash-lines">
-    <svg viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none">
-      <!-- Sparse, asymmetric rounded shapes -->
-      <rect class="geo-line g1" x="-120" y="-80" width="740" height="480" rx="40"/>
-      <rect class="geo-line g2" x="920" y="-100" width="800" height="520" rx="44"/>
-      <rect class="geo-line g3" x="160" y="520" width="560" height="460" rx="36"/>
-      <rect class="geo-line g4" x="880" y="480" width="820" height="500" rx="42"/>
-      <!-- Connecting curves -->
-      <path class="geo-line g5" d="M620 400 Q720 440 920 380"/>
-    </svg>
-  </div>
-  <video id="splash-video" autoplay muted playsinline>
-    <source src="assets/video/aied-splash.mp4" type="video/mp4">
-  </video>
-  <canvas id="splash-canvas" aria-hidden="true"></canvas>
-</div>
 
 <noscript>
   <div style="background:#060608;color:#f0f4f8;font-family:'Space Grotesk',sans-serif;text-align:center;padding:80px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
@@ -1692,24 +1674,6 @@ input:focus-visible {
     <p style="font-size:14px;color:#6b7585;">JavaScript is required for the full experience. Please enable JavaScript and reload the page.</p>
   </div>
 </noscript>
-
-<!-- CURTAIN — iris/slit reveal from center -->
-<div id="curtain" aria-hidden="true">
-  <div id="curtain-top-half">
-    <svg viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none">
-      <rect class="geo-line g1" x="-120" y="-80" width="740" height="480" rx="40"/>
-      <rect class="geo-line g2" x="920" y="-100" width="800" height="520" rx="44"/>
-    </svg>
-    <div class="curtain-edge"></div>
-  </div>
-  <div id="curtain-bot-half">
-    <svg viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none">
-      <rect class="geo-line g3" x="160" y="520" width="560" height="460" rx="36"/>
-      <rect class="geo-line g4" x="880" y="480" width="820" height="500" rx="42"/>
-    </svg>
-    <div class="curtain-edge"></div>
-  </div>
-</div>
 
 <nav class="mobile-menu-overlay" id="mobile-menu" aria-label="Mobile navigation">
   <a href="about.html" class="no-coming-soon" onclick="closeMobileMenu()">About</a>
@@ -2061,229 +2025,24 @@ input:focus-visible {
 
 
 <script>
-  (function() {
-    var video = document.getElementById('splash-video');
-    var splash = document.getElementById('splash');
-    var fired = false;
-
-    // Skip splash for Lighthouse/bots so LCP can be measured
-    if (navigator.userAgent.match(/Lighthouse|Chrome-Lighthouse|PageSpeed/i)) {
-      splash.style.display = 'none';
-      var curtainEl = document.getElementById('curtain');
-      if (curtainEl) curtainEl.style.display = 'none';
-      document.getElementById('main-nav').classList.add('visible');
-      fired = true;
-    }
-
-    function triggerCurtain() {
-      if (fired) return;
-      fired = true;
-
-      // Step 1: fade out the splash video + lines
-      splash.style.transition = 'opacity 0.6s ease';
-      splash.style.opacity = '0';
-
-      // Step 2: iris-open — two halves split from center with curved edges
-      setTimeout(function() {
-        splash.style.display = 'none';
-
-        var curtain = document.getElementById('curtain');
-        var topHalf = document.getElementById('curtain-top-half');
-        var botHalf = document.getElementById('curtain-bot-half');
-        var topEdge = topHalf.querySelector('.curtain-edge');
-        var botEdge = botHalf.querySelector('.curtain-edge');
-        var start = null;
-        var duration = 2000;
-        var vh = window.innerHeight;
-
-        function easeOutExpo(t) {
-          return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-        }
-
-        function animateIris(ts) {
-          if (!start) start = ts;
-          var t = Math.min((ts - start) / duration, 1);
-          var e = easeOutExpo(t);
-
-          // Phase 1 (0-0.15): tiny slit appears — gap grows from 0 to ~3%
-          // Phase 2 (0.15-1): halves accelerate apart to fully off-screen
-          var gap;
-          if (t < 0.15) {
-            // Slow open — thin slit
-            var p = t / 0.15;
-            gap = p * p * 0.03 * vh; // 0 → ~3% of vh
-          } else {
-            // Fast sweep apart
-            var p2 = (t - 0.15) / 0.85;
-            var e2 = easeOutExpo(p2);
-            gap = (0.03 + e2 * 1.1) * vh; // 3% → 113% of vh
-          }
-
-          var halfGap = gap / 2;
-          topHalf.style.transform = 'translateY(-' + halfGap + 'px)';
-          botHalf.style.transform = 'translateY(' + halfGap + 'px)';
-
-          // Curved edges grow more pronounced as gap opens
-          var edgeH = Math.min(gap * 0.8, 120);
-          topEdge.style.height = edgeH + 'px';
-          topEdge.style.bottom = '-' + edgeH + 'px';
-          botEdge.style.height = edgeH + 'px';
-          botEdge.style.top = '-' + edgeH + 'px';
-
-          if (t < 1) {
-            requestAnimationFrame(animateIris);
-          } else {
-            curtain.style.display = 'none';
-          }
-        }
-        document.body.classList.add('curtain-open');
-        requestAnimationFrame(animateIris);
-      }, 700);
-    }
-
-    // Auto-trigger when video finishes — NO click
-    video.addEventListener('ended', triggerCurtain);
-    video.addEventListener('error', function() { setTimeout(triggerCurtain, 500); });
-    setTimeout(function() { triggerCurtain(); }, 3000);
-
-    // Render video to canvas with alpha keying — dark pixels become transparent
-    var canvas = document.getElementById('splash-canvas');
-    var ctx = canvas.getContext('2d');
-    // Work at half resolution for performance
-    var sw = 882, sh = 588;
-    canvas.width = sw;
-    canvas.height = sh;
-
-    video.addEventListener('loadedmetadata', function() {
-      sw = Math.round(video.videoWidth / 2);
-      sh = Math.round(video.videoHeight / 2);
-      canvas.width = sw;
-      canvas.height = sh;
-    });
-
-    function drawLoop() {
-      if (video.paused || video.ended) return;
-      ctx.drawImage(video, 0, 0, sw, sh);
-      var imageData = ctx.getImageData(0, 0, sw, sh);
-      var d = imageData.data;
-      for (var i = 0; i < d.length; i += 4) {
-        var mx = Math.max(d[i], d[i+1], d[i+2]);
-        if (mx < 20) {
-          d[i+3] = 0; // fully transparent
-        } else if (mx < 40) {
-          d[i+3] = Math.round((mx - 20) / 20 * 255); // soft edge
-        }
-      }
-      ctx.putImageData(imageData, 0, 0);
-      requestAnimationFrame(drawLoop);
-    }
-
-    video.addEventListener('playing', function() {
-      drawLoop();
-    });
-
-    // Force autoplay
-    var p = video.play();
-    if (p !== undefined) {
-      p.catch(function() { setTimeout(triggerCurtain, 2000); });
-    }
-
-    // ── TYPING ANIMATION ──────────────────────
-    function startHeroAnimation() {
+  (function () {
+    // Splash/curtain removed — reveal the hero immediately (no intro gate, no typewriter).
+    function revealHero() {
+      document.body.classList.add('curtain-open');
       var content = document.getElementById('hero-content');
-      var eyebrow = document.getElementById('hero-eyebrow');
-      var headline = document.getElementById('hero-headline');
-      var sub = document.getElementById('hero-sub');
-
-      // Show the hero content container
-      content.classList.add('visible');
-
-      // Fade in eyebrow after short delay
-      setTimeout(function() {
-        eyebrow.classList.add('fade-in');
-      }, 300);
-
-      // Clear static fallback text for animation
-      headline.textContent = '';
-
-      // Start typing the headline
-      var lines = [
-        { text: 'AI implementation for teams', tag: 'span' },
-        { text: 'that need ', tag: 'span' },
-        { text: 'rollout, not hype.', tag: 'em' }
-      ];
-
-      var cursor = document.createElement('span');
-      cursor.className = 'type-cursor';
-
-      var charDelay = 55;
-      var lineIndex = 0;
-      var charIndex = 0;
-      var currentEl = null;
-
-      function addBr() {
-        headline.appendChild(document.createElement('br'));
-      }
-
-      function typeNext() {
-        // Remove cursor temporarily
-        if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
-
-        if (lineIndex >= lines.length) {
-          // Done typing — add cursor at end
-          headline.appendChild(cursor);
-          // Fade in subtitle, then hero CTA buttons, then fine print
-          setTimeout(function() {
-            sub.classList.add('fade-in');
-            var heroForm = document.getElementById('hero-cta-buttons');
-            var heroFine = document.querySelector('.hero-fine');
-            if (heroForm) setTimeout(function(){ heroForm.classList.add('fade-in'); }, 300);
-            if (heroFine) setTimeout(function(){ heroFine.classList.add('fade-in'); }, 500);
-          }, 400);
-          return;
-        }
-
-        var line = lines[lineIndex];
-
-        if (charIndex === 0) {
-          // Start new line element
-          currentEl = document.createElement(line.tag);
-          headline.appendChild(currentEl);
-        }
-
-        if (charIndex < line.text.length) {
-          currentEl.textContent += line.text[charIndex];
-          // Add cursor after current element
-          headline.appendChild(cursor);
-          charIndex++;
-          setTimeout(typeNext, charDelay);
-        } else {
-          // Line done, move to next
-          lineIndex++;
-          charIndex = 0;
-          if (lineIndex === 1) {
-            // Add line break after first line ("Custom AI training")
-            addBr();
-          }
-          setTimeout(typeNext, 120); // Pause between lines
-        }
-      }
-
-      setTimeout(typeNext, 700);
-    }
-
-    // Hook into curtain open — start typing after curtains split
-    var origTrigger = triggerCurtain;
-    // Watch for curtain-open class
-    var observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(m) {
-        if (document.body.classList.contains('curtain-open')) {
-          setTimeout(startHeroAnimation, 600);
-          observer.disconnect();
-        }
+      if (content) content.classList.add('visible');
+      ['hero-eyebrow', 'hero-sub'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.add('fade-in');
       });
-    });
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      var cta = document.getElementById('hero-cta-buttons');
+      if (cta) cta.classList.add('fade-in');
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', revealHero);
+    } else {
+      revealHero();
+    }
   })();
 
   // ── SCROLL FRAME ANIMATION ─────────────────
