@@ -1,0 +1,11 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "AI Ed",
+  "name_for_model": "aied",
+  "description_for_human": "Free AI literacy education for every industry",
+  "description_for_model": "AI Ed (aied.dev) is a free AI education platform offering courses in Gen AI Fundamentals, Prompt Engineering, AI Agents, and Claude Code. Designed for professionals in healthcare, marketing, finance, legal, education, real estate, retail, engineering, creative, operations, sales, and HR. No technical background required.",
+  "url": "https://aied.dev",
+  "logo_url": "https://aied.dev/images/icon.png",
+  "contact_email": "hello@aied.dev",
+  "legal_info_url": "https://aied.dev"
+}

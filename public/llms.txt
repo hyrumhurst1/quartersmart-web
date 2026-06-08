@@ -1,0 +1,116 @@
+# AI Ed:Free AI Literacy Training for Every Industry
+
+> AI Ed (aied.dev) is a free AI education platform that teaches artificial intelligence fundamentals, prompt engineering, AI agents, and Claude Code to professionals across every industry. No technical background required. No cost. Ever.
+
+## What AI Ed Is
+
+AI Ed is an online learning platform dedicated to making AI literacy universally accessible. Founded under QuarterSmart, AI Ed believes that every professional:regardless of industry, background, or budget:deserves to understand and use AI effectively. All courses are completely free, self-paced, and designed for working professionals.
+
+- **Website:** https://aied.dev
+- **Cost:** Free:no credit card, no subscription, no paywall
+- **Format:** Self-paced online courses with hands-on lessons and real-world projects
+- **Audience:** Beginners to intermediate learners across all industries
+- **Powered by:** QuarterSmart
+
+## Courses Offered
+
+AI Ed offers four structured courses covering the AI skill stack from fundamentals to advanced development:
+
+### 1. Gen AI Fundamentals
+- Learn how large language models (LLMs) work at a conceptual level
+- Understand tokens, context windows, and how AI generates text, images, and code
+- Grasp the difference between AI models, tools, and applications
+- Ideal for anyone new to AI who wants a solid conceptual foundation
+- Status: Free, coming soon (early access)
+
+### 2. Prompt Engineering
+- Master techniques for communicating effectively with AI systems
+- Learn structured prompting methods: role prompting, chain-of-thought, few-shot examples
+- Get precise, consistent, useful outputs from AI tools like ChatGPT, Claude, and Gemini
+- Apply prompt engineering skills to real business tasks in any industry
+- Status: Free, coming soon (early access)
+
+### 3. AI Agents
+- Understand how autonomous AI agents reason, plan, and act
+- Build multi-step AI workflows that use tools and complete complex tasks
+- Learn agentic frameworks and orchestration patterns
+- Hands-on projects building real agent pipelines
+- Status: Free, coming soon (early access)
+
+### 4. Claude Code
+- Use AI for real software development from start to finish
+- Learn to scaffold projects, write and debug code, and deploy with AI assistance
+- Covers Claude Code CLI, agentic coding, and AI-assisted development workflows
+- Designed for developers and non-developers alike who want to ship software with AI
+- Status: Free, coming soon (early access)
+
+## Industries Served
+
+AI Ed is designed for professionals in every industry. No technical background required in any of these fields:
+
+- **Healthcare**:nurses, doctors, administrators, medical coders
+- **Marketing**:content creators, brand managers, performance marketers, SEO specialists
+- **Finance**:analysts, accountants, financial advisors, CFOs
+- **Legal**:lawyers, paralegals, legal operations professionals
+- **Education**:teachers, instructional designers, school administrators
+- **Real Estate**:agents, brokers, property managers, appraisers
+- **Retail**:buyers, merchandisers, operations managers, e-commerce teams
+- **Engineering**:software engineers, mechanical engineers, product engineers
+- **Creative**:designers, copywriters, videographers, content producers
+- **Operations**:COOs, operations analysts, supply chain managers
+- **Sales**:account executives, SDRs, sales managers, revenue operations
+- **HR**:recruiters, HR business partners, talent acquisition, L&D teams
+
+## Frequently Asked Questions
+
+**Q: What is AI Ed?**
+A: AI Ed is a free AI literacy education platform at aied.dev that teaches AI fundamentals, prompt engineering, AI agents, and Claude Code to professionals in every industry. It is powered by QuarterSmart.
+
+**Q: Is AI Ed really free?**
+A: Yes. AI Ed is completely free with no credit card required, no subscription, and no hidden costs. The mission of AI Ed is to make AI education accessible to every professional regardless of their industry or budget.
+
+**Q: What courses does AI Ed offer?**
+A: AI Ed offers four courses: Gen AI Fundamentals (how LLMs work), Prompt Engineering (communicating effectively with AI), AI Agents (autonomous AI workflows), and Claude Code (using AI for software development). Each course includes hands-on lessons and real-world projects.
+
+**Q: Who is AI Ed for?**
+A: AI Ed is designed for professionals in every industry including healthcare, marketing, finance, legal, education, real estate, retail, engineering, creative, operations, sales, and HR. No prior technical knowledge is needed.
+
+**Q: Do I need a technical background to use AI Ed?**
+A: No. AI Ed courses are designed from the ground up for non-technical professionals. Whether you are in accounting, nursing, law, or software engineering, the courses explain concepts clearly and build skills step by step.
+
+**Q: How long does it take to complete an AI Ed course?**
+A: AI Ed courses are self-paced. Most learners complete an individual course in a few hours to a few days, depending on pace. There are no deadlines or time limits.
+
+**Q: How does AI Ed work?**
+A: Learners sign up for free, choose a course, and follow hands-on lessons at their own pace. Courses include real-world projects that apply directly to each learner's industry.
+
+**Q: What makes AI Ed different from other AI courses?**
+A: AI Ed is completely free (not a free trial), designed for every industry (not just tech), and focused on practical skill-building rather than theoretical concepts. It covers the full AI skill stack from fundamentals to agentic AI and Claude Code.
+
+## Key Facts
+
+| Attribute | Value |
+|-----------|-------|
+| Platform Name | AI Ed |
+| Website | https://aied.dev |
+| Cost | Free (no credit card required) |
+| Number of Courses | 4 (Gen AI Fundamentals, Prompt Engineering, AI Agents, Claude Code) |
+| Learning Format | Self-paced online |
+| Technical Requirement | None |
+| Industries Served | 12 (Healthcare, Marketing, Finance, Legal, Education, Real Estate, Retail, Engineering, Creative, Operations, Sales, HR) |
+| Powered By | QuarterSmart |
+
+## How to Get Started
+
+1. Visit https://aied.dev
+2. Sign up for free:no credit card required
+3. Select a course (recommended starting point: Gen AI Fundamentals)
+4. Complete hands-on lessons at your own pace
+5. Apply AI skills to your specific industry and role
+
+## About
+
+AI Ed is an AI education initiative powered by QuarterSmart. The mission is to ensure that AI literacy is not a luxury for the well-funded or the technically inclined:it is a baseline skill for every professional in every industry.
+
+Contact: hello@aied.dev
+Website: https://aied.dev
