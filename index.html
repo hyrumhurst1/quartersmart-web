@@ -1706,9 +1706,9 @@ input:focus-visible {
   </div>
 
   <div class="hero-content" id="hero-content">
-    <div class="hero-eyebrow" id="hero-eyebrow">AI Implementation &nbsp;/&nbsp; Workforce Enablement</div>
-    <h1 class="hero-headline" id="hero-headline">AI implementation for teams that need <em>rollout, not hype.</em></h1>
-    <p class="hero-sub" id="hero-sub">We help operational teams adopt AI for real — from first assessment to org-wide rollout.</p>
+    <div class="hero-eyebrow" id="hero-eyebrow">#49 n8n creator &nbsp;·&nbsp; 10,000+ users</div>
+    <h1 class="hero-headline" id="hero-headline">We ship the AI your team <em>actually uses.</em></h1>
+    <p class="hero-sub" id="hero-sub">We find where AI pays off, then build it into the work your team already does.</p>
     <div class="hero-cta-form" id="hero-cta-buttons">
       <a class="cta-btn" href="mailto:hyrum@quartersmart.com">Book an AI Rollout Assessment →</a>
       <a class="cta-btn cta-btn-secondary" href="#how-it-works">See How QuarterSmart Works</a>
@@ -2002,7 +2002,6 @@ input:focus-visible {
         <span class="who-card-cta">Talk to us →</span>
       </a>
     </div>
-    <div class="who-powered">AI implementation &amp; workforce enablement by <a href="https://quartersmart.com" target="_blank" rel="noopener">QuarterSmart</a></div>
   </div>
 </div>
 
@@ -2026,17 +2025,59 @@ input:focus-visible {
 
 <script>
   (function () {
-    // Splash/curtain removed — reveal the hero immediately (no intro gate, no typewriter).
+    // Reveal the hero on load, then type out the headline (no splash gate).
     function revealHero() {
       document.body.classList.add('curtain-open');
       var content = document.getElementById('hero-content');
+      var eyebrow = document.getElementById('hero-eyebrow');
+      var headline = document.getElementById('hero-headline');
+      var sub = document.getElementById('hero-sub');
       if (content) content.classList.add('visible');
-      ['hero-eyebrow', 'hero-sub'].forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el) el.classList.add('fade-in');
-      });
-      var cta = document.getElementById('hero-cta-buttons');
-      if (cta) cta.classList.add('fade-in');
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !headline) {
+        if (eyebrow) eyebrow.classList.add('fade-in');
+        if (sub) sub.classList.add('fade-in');
+        var ctaR = document.getElementById('hero-cta-buttons');
+        if (ctaR) ctaR.classList.add('fade-in');
+        return;
+      }
+
+      if (eyebrow) setTimeout(function () { eyebrow.classList.add('fade-in'); }, 200);
+
+      var lines = [
+        { text: 'We ship the AI your team ', tag: 'span' },
+        { text: 'actually uses.', tag: 'em' }
+      ];
+      headline.textContent = '';
+      var cursor = document.createElement('span');
+      cursor.className = 'type-cursor';
+      var charDelay = 45, lineIndex = 0, charIndex = 0, currentEl = null;
+
+      function finish() {
+        headline.appendChild(cursor);
+        setTimeout(function () {
+          if (sub) sub.classList.add('fade-in');
+          var cta = document.getElementById('hero-cta-buttons');
+          if (cta) setTimeout(function () { cta.classList.add('fade-in'); }, 250);
+        }, 350);
+      }
+      function typeNext() {
+        if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+        if (lineIndex >= lines.length) { finish(); return; }
+        var line = lines[lineIndex];
+        if (charIndex === 0) { currentEl = document.createElement(line.tag); headline.appendChild(currentEl); }
+        if (charIndex < line.text.length) {
+          currentEl.textContent += line.text[charIndex];
+          headline.appendChild(cursor);
+          charIndex++;
+          setTimeout(typeNext, charDelay);
+        } else {
+          lineIndex++; charIndex = 0;
+          setTimeout(typeNext, 110);
+        }
+      }
+      setTimeout(typeNext, 450);
     }
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', revealHero);
