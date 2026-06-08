@@ -1,0 +1,30 @@
+# QuarterSmart — Netlify continuous deployment from GitHub.
+# On every push to main, Netlify runs the build (which copies only the
+# publishable site into dist/) and publishes dist/.
+
+[build]
+  command = "node netlify-build.mjs"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Long-cache the immutable media (frame sequences, video, images, logos)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/logos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Baseline security headers (no CSP, to avoid breaking fonts/embeds)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
