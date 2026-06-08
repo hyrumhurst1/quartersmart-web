@@ -1542,7 +1542,7 @@ input:focus-visible {
   "name": "QuarterSmart",
   "url": "https://aied.dev/",
   "description": "AI implementation and workforce enablement partner. QuarterSmart helps organizations assess, train, pilot, automate, scale, and measure AI adoption.",
-  "logo": "https://aied.dev/logos/quartersmart-mark.svg",
+  "logo": "https://aied.dev/logos/quartersmart-q.png",
   "email": "learn@aied.dev",
   "contactPoint": { "@type": "ContactPoint", "email": "learn@aied.dev", "contactType": "sales" },
   "founder": { "@type": "Person", "name": "Hyrum Hurst" },
@@ -1724,8 +1724,7 @@ input:focus-visible {
   <div id="nav-outer">
     <nav aria-label="Main navigation">
       <a class="nav-logo" href="./">
-        <img src="logos/quartersmart-mark.svg" alt="QuarterSmart" width="26" height="26">
-        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em;color:var(--text,#f0f4f8);font-size:18px;margin-left:8px;">QuarterSmart</span>
+        <img src="logos/quartersmart-wordmark.png" alt="QuarterSmart" height="24" style="display:block;width:auto;">
       </a>
       <ul class="nav-links">
         <li><a href="about.html" class="no-coming-soon">About</a></li>
@@ -2050,7 +2049,7 @@ input:focus-visible {
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">
-      <img src="logos/quartersmart-mark.svg" alt="QuarterSmart" width="28" height="28" loading="lazy">
+      <img src="logos/quartersmart-q.png" alt="QuarterSmart" width="28" height="28" loading="lazy">
     </div>
     <div class="footer-copy">© 2026 <a href="https://quartersmart.com" target="_blank" rel="noopener" style="color:#9ba5b4;text-decoration:underline">QuarterSmart</a> — AI implementation &amp; workforce enablement.</div>
     <div class="footer-links">
@@ -2292,7 +2291,7 @@ input:focus-visible {
 
   // ── SCROLL FRAME ANIMATION ─────────────────
   (function() {
-    var FRAME_COUNT = 97;
+    var FRAME_COUNT = 96;
     var canvas = document.getElementById('scroll-canvas');
     var ctx = canvas.getContext('2d');
     var section = document.getElementById('scroll-anim');
@@ -2301,8 +2300,8 @@ input:focus-visible {
     var loaded = 0;
 
     function getFrameSrc(i) {
-      var num = String(i).padStart(4, '0');
-      return 'assets/images/scroll-frames/frame_' + num + '.jpg';
+      var num = String(i).padStart(3, '0');
+      return 'assets/video/ignite-frames/frame-' + num + '.jpg';
     }
 
     function resizeCanvas() {
