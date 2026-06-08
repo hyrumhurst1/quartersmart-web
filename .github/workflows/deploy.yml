@@ -23,6 +23,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Strip non-site files from the published artifact
+        # These stay in git (viewable on GitHub / by agents) but must NOT be on the live site.
+        run: rm -rf brand research docs AGENTS.md CLAUDE.md README.md .gitignore
       - uses: actions/upload-pages-artifact@v3
         with:
           path: "."
