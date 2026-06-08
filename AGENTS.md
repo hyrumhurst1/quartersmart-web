@@ -140,6 +140,15 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-08 (rebrand)** — Executed the full QuarterSmart rebrand across all 15 pages (copywriting +
+  seo-geo/AEO + seo-content methodologies, via a multi-agent workflow + adversarial QA). All pages now
+  QuarterSmart, no-LMS, positioned as AI implementation & workforce enablement partner; JSON-LD added
+  (Organization/WebSite/Service/Person/ProfilePage/FAQ/Breadcrumb); QuarterSmart SVG logo + favicon in;
+  llms.txt rewritten; sitemap refreshed (+About +Schools). Animations/CSS/JS/paths untouched. Brand &
+  Messaging System spec lives at `docs/BRAND_MESSAGING_SYSTEM.md`. **Known follow-ups (raster, need design
+  tooling):** OG social images (`assets/images/og/og-*.png`) and PNG favicons (`favicon-32.png`, `icon-*.png`)
+  still show AI Ed visually — regenerate with QuarterSmart branding. Logo is a clean SVG *recreation* of the
+  brand-kit Q; replace with official exports from `brand/` if available. About-page portrait is a labeled placeholder.
 - **2026-06-08 (later)** — Owner directive: **NO LMS at all** (see §5 hard rule). Added canonical
   `research/quartersmart-positioning-playbook.md` (Assess→Train→Pilot→Automate→Scale→Measure; 6 service
   offers; pricing; 90-day plan; entity consolidation Hyrum→QuarterSmart, AI Ed 301s/nests under it).
