@@ -140,6 +140,13 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-08 (collab)** — Added **Cullen Brown (`cullenbrown07`)** as a write collaborator. New
+  [`HANDOFF.md`](HANDOFF.md) onboards Cullen + his agents (points here as canonical). Also: removed the
+  splash/curtain intro (hero reveals instantly), restored the headline typewriter, rewrote hero copy to
+  be less AI-sounding (headline "We ship the AI your team actually uses."; eyebrow → real credential
+  "#49 n8n creator · 10,000+ users"), and surfaced real proof numbers (#49 / 10,000+ users / 25 templates)
+  + contact hyrum@quartersmart.com sitewide. HANDOFF.md added to the deploy strip list (not published).
+
 - **2026-06-08 (structure)** — Owner: positioning is **teams-only**, so removed the separate audience
   pages — **deleted `teams/`, `government/`, `schools/`**. Repointed all their CTAs to the assessment
   contact (`mailto:learn@aied.dev`) and the home `#how-it-works` anchor; stripped Teams/Government from
