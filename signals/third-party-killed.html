@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anthropic Killed Third-Party Claude Access — Why Developers Are Furious | QuarterSmart</title>
+<title>Anthropic Killed Third-Party Claude Access, Why Developers Are Furious | QuarterSmart</title>
 <meta name="description" content="Anthropic cut off third-party API access to Claude, blocking services like OpenClaw and forcing users to face 50x cost increases. What happened, why, and what it means.">
 <meta name="theme-color" content="#060608">
 <meta property="og:title" content="Anthropic Just Killed Third-Party Access to Claude">
@@ -11,7 +11,7 @@
 <meta property="og:image" content="../assets/images/signals/anthropic-killed-third-party-access-cover.png">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://aied.dev/signals/third-party-killed.html">
+<link rel="canonical" href="https://quartersmart.com/signals/third-party-killed.html">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +49,7 @@ a:hover { opacity: 0.8; }
 .article-body p { font-size: 16px; line-height: 1.8; color: rgba(240,244,248,0.88); margin-bottom: 20px; }
 .article-body strong { color: var(--text); font-weight: 600; }
 .article-body em { color: var(--accent); font-style: normal; }
-.article-body ul, .article-body ol { padding-left: 24px; margin-bottom: 20px; }
+.article-body ul.article-body ol { padding-left: 24px; margin-bottom: 20px; }
 .article-body li { font-size: 16px; line-height: 1.8; color: rgba(240,244,248,0.88); margin-bottom: 8px; }
 .pull-quote { margin: 40px -20px; padding: 28px 32px; border-left: 3px solid var(--accent); background: rgba(0,229,160,0.03); border-radius: 0 12px 12px 0; font-size: 18px; font-weight: 500; line-height: 1.6; color: var(--text); }
 .pull-quote cite { display: block; margin-top: 12px; font-size: 12px; font-style: normal; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
@@ -114,9 +114,9 @@ a:hover { opacity: 0.8; }
 .contribute-card-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(0,229,160,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--accent); font-size: 16px; }
 .contribute-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
 .contribute-card .card-sub { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
-.contribute-card input, .contribute-card textarea { width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 13px; outline: none; transition: border-color 0.2s; margin-bottom: 10px; }
-.contribute-card input:focus, .contribute-card textarea:focus { border-color: rgba(0,229,160,0.3); }
-.contribute-card input::placeholder, .contribute-card textarea::placeholder { color: rgba(255,255,255,0.2); }
+.contribute-card input.contribute-card textarea { width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 13px; outline: none; transition: border-color 0.2s; margin-bottom: 10px; }
+.contribute-card input:focus.contribute-card textarea:focus { border-color: rgba(0,229,160,0.3); }
+.contribute-card input::placeholder.contribute-card textarea::placeholder { color: rgba(255,255,255,0.2); }
 .contribute-card textarea { resize: vertical; min-height: 80px; }
 .contribute-btn { width: 100%; padding: 10px; background: var(--accent); color: #000; border: none; border-radius: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, box-shadow 0.2s, transform 0.15s; }
 .contribute-btn:hover { background: #1ffdb3; box-shadow: 0 0 20px rgba(0,229,160,0.25); transform: translateY(-1px); }
@@ -144,7 +144,7 @@ a:hover { opacity: 0.8; }
 
 <header class="article-header fade-in">
   <span class="article-tag">News</span>
-  <h1 class="article-title">Anthropic Just Killed Third-Party Access to Claude — Here's Why Developers Are Furious</h1>
+  <h1 class="article-title">Anthropic Just Killed Third-Party Access to Claude, Here's Why Developers Are Furious</h1>
   <div class="article-meta">
     <div class="meta-author"><div class="author-avatar">HH</div><span>Hyrum Hurst</span></div>
     <span class="meta-dot">·</span><span>Apr 3, 2026</span>
@@ -179,8 +179,8 @@ a:hover { opacity: 0.8; }
   </div>
 
   <blockquote class="pull-quote fade-in">
-    "We cannot sustain a model where intermediaries charge $200 for $5,000 worth of compute. This isn't about restricting access — it's about survival."
-    <cite>— Anthropic spokesperson, April 4, 2026</cite>
+    "We cannot sustain a model where intermediaries charge $200 for $5,000 worth of compute. This isn't about restricting access, it's about survival."
+    <cite>, Anthropic spokesperson, April 4, 2026</cite>
   </blockquote>
 
   <h2 class="fade-in">Who Got Hit</h2>
@@ -188,15 +188,15 @@ a:hover { opacity: 0.8; }
   <p class="fade-in">The crackdown affected every major third-party Claude reseller:</p>
 
   <ul class="fade-in">
-    <li><strong>OpenClaw</strong> — The largest reseller, with ~15,000 active users. Shut down entirely within 24 hours of the API cutoff.</li>
-    <li><strong>ClaudeProxy</strong> — Offered "unlimited Opus" for $150/month. API keys revoked on April 4.</li>
-    <li><strong>Various Discord bots</strong> — Hundreds of bots offering Claude access in Discord servers were killed simultaneously.</li>
-    <li><strong>Small SaaS products</strong> — Startups that built their entire product on resold Claude API access found themselves without a core feature.</li>
+    <li><strong>OpenClaw</strong>, The largest reseller, with ~15,000 active users. Shut down entirely within 24 hours of the API cutoff.</li>
+    <li><strong>ClaudeProxy</strong>, Offered "unlimited Opus" for $150/month. API keys revoked on April 4.</li>
+    <li><strong>Various Discord bots</strong>, Hundreds of bots offering Claude access in Discord servers were killed simultaneously.</li>
+    <li><strong>Small SaaS products</strong>, Startups that built their entire product on resold Claude API access found themselves without a core feature.</li>
   </ul>
 
   <h2 class="fade-in">The Developer Backlash</h2>
 
-  <p class="fade-in">The response on X, Reddit, and Hacker News was immediate and furious. The top post on r/artificial — "Anthropic just pulled the rug on 50,000 users" — hit 8,000 upvotes in 12 hours. Developers who had built workflows around these third-party services were left scrambling.</p>
+  <p class="fade-in">The response on X, Reddit, and Hacker News was immediate and furious. The top post on r/artificial, "Anthropic just pulled the rug on 50,000 users", hit 8,000 upvotes in 12 hours. Developers who had built workflows around these third-party services were left scrambling.</p>
 
   <p class="fade-in">The most common complaints:</p>
 
@@ -212,22 +212,22 @@ a:hover { opacity: 0.8; }
       <span class="arrow">▶</span>
     </button>
     <div class="deep-dive-content">
-      <p>Short answer: probably not. Anthropic's Terms of Service explicitly prohibit API reselling. The third-party services were always operating in a gray area — most knew it, and their terms of service disclaimed liability for exactly this scenario. Some users have explored class-action options against the resellers (not Anthropic) for failing to disclose the risk. As of this writing, no legal action has been filed.</p>
+      <p>Short answer: probably not. Anthropic's Terms of Service explicitly prohibit API reselling. The third-party services were always operating in a gray area, most knew it, and their terms of service disclaimed liability for exactly this scenario. Some users have explored class-action options against the resellers (not Anthropic) for failing to disclose the risk. As of this writing, no legal action has been filed.</p>
     </div>
   </div>
 
   <h2 class="fade-in">Meanwhile, at OpenAI...</h2>
 
-  <p class="fade-in">While Anthropic was locking down, OpenAI was rolling out the red carpet. Within hours of the crackdown, OpenAI's developer relations team began aggressively courting displaced Claude users — offering <strong>migration credits</strong>, onboarding support, and a very pointed message: <em>we don't do this to our developers.</em></p>
+  <p class="fade-in">While Anthropic was locking down, OpenAI was rolling out the red carpet. Within hours of the crackdown, OpenAI's developer relations team began aggressively courting displaced Claude users, offering <strong>migration credits</strong>, onboarding support, and a very pointed message: <em>we don't do this to our developers.</em></p>
 
   <p class="fade-in">OpenAI still allows full third-party API access. Any developer can build on GPT-4o, GPT-5.4, or any model in their lineup. No vetting. No restrictions beyond standard rate limits. Their Terms of Service are permissive by design.</p>
 
-  <p class="fade-in">Anthropic essentially handed OpenAI a marketing campaign. The narrative writes itself: <strong>Anthropic restricts. OpenAI empowers.</strong> Whether or not that framing is fair — Anthropic would argue they're protecting the sustainability of their platform — it's the story that's sticking.</p>
+  <p class="fade-in">Anthropic essentially handed OpenAI a marketing campaign. The narrative writes itself: <strong>Anthropic restricts. OpenAI empowers.</strong> Whether or not that framing is fair, Anthropic would argue they're protecting the sustainability of their platform, it's the story that's sticking.</p>
 
   <div class="info-card fade-in">
     <div class="info-card-label">The Real Question</div>
     <h4>Is Anthropic's approach sustainable?</h4>
-    <p>Anthropic is making a bet: that controlling access to their most powerful models will let them build a sustainable business. OpenAI is making the opposite bet — that open access drives adoption, and adoption wins. Both can't be right. The market will decide within the next 12 months.</p>
+    <p>Anthropic is making a bet: that controlling access to their most powerful models will let them build a sustainable business. OpenAI is making the opposite bet, that open access drives adoption, and adoption wins. Both can't be right. The market will decide within the next 12 months.</p>
   </div>
 
   <h2 class="fade-in">What Are Your Options Now?</h2>
@@ -249,9 +249,9 @@ a:hover { opacity: 0.8; }
 
   <h2 class="fade-in">What This Means Going Forward</h2>
 
-  <p class="fade-in">This isn't just about pricing. It's about control. Anthropic is building an ecosystem where they — and only they — decide who gets access to Claude and at what price. In contrast, OpenAI and Google are building open marketplaces.</p>
+  <p class="fade-in">This isn't just about pricing. It's about control. Anthropic is building an ecosystem where they, and only they, decide who gets access to Claude and at what price. In contrast, OpenAI and Google are building open marketplaces.</p>
 
-  <p class="fade-in">The Mythos restriction to 40 organizations via Project Glasswing now looks like part of a pattern, not an exception. Anthropic is betting that <strong>controlled scarcity</strong> is the right model for frontier AI. Whether developers — and the market — agree is another story entirely.</p>
+  <p class="fade-in">The Mythos restriction to 40 organizations via Project Glasswing now looks like part of a pattern, not an exception. Anthropic is betting that <strong>controlled scarcity</strong> is the right model for frontier AI. Whether developers, and the market, agree is another story entirely.</p>
 
 </article>
 
@@ -283,13 +283,13 @@ a:hover { opacity: 0.8; }
     </div>
     <div class="contribute-card fade-in">
       <div class="contribute-card-icon">✦</div><h4>Write for Us</h4><p class="card-sub">Want to contribute a signal? Pitch us your idea and we'll get back to you.</p>
-      <form id="write-form" onsubmit="submitForm(event, 'write')"><input type="email" placeholder="your@email.com" required><textarea placeholder="Your pitch — what's the signal, and why does it matter?" required></textarea><button type="submit" class="contribute-btn">Send Pitch</button></form>
+      <form id="write-form" onsubmit="submitForm(event, 'write')"><input type="email" placeholder="your@email.com" required><textarea placeholder="Your pitch, what's the signal, and why does it matter?" required></textarea><button type="submit" class="contribute-btn">Send Pitch</button></form>
       <div class="form-success" id="write-success">Pitch received! We'll be in touch ◆</div>
     </div>
   </div>
 </section>
 
-<footer id="signal-footer"><a href='../radar.html'>← Signals</a> &nbsp;·&nbsp; QuarterSmart — AI implementation &amp; workforce enablement &nbsp;·&nbsp; <a href="https://quartersmart.com" target="_blank" rel="noopener">quartersmart.com</a> &nbsp;·&nbsp; <a href="../">Home →</a></footer>
+<footer id="signal-footer"><a href='../radar.html'>← Signals</a> &nbsp;·&nbsp; QuarterSmart, AI implementation &amp; workforce enablement &nbsp;·&nbsp; <a href="https://quartersmart.com" target="_blank" rel="noopener">quartersmart.com</a> &nbsp;·&nbsp; <a href="../">Home →</a></footer>
 
 <script>
 (function() {
@@ -309,21 +309,21 @@ a:hover { opacity: 0.8; }
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article",
- "headline":"Anthropic Just Killed Third-Party Access to Claude — Here's Why Developers Are Furious",
+ "headline":"Anthropic Just Killed Third-Party Access to Claude, Here's Why Developers Are Furious",
  "description":"Anthropic cut off third-party API access to Claude, blocking services like OpenClaw and forcing users to face 50x cost increases. What happened, why, and what it means.",
- "image":"https://aied.dev/assets/images/signals/anthropic-killed-third-party-access-cover.png",
+ "image":"https://quartersmart.com/assets/images/signals/anthropic-killed-third-party-access-cover.png",
  "datePublished":"2026-04-03","dateModified":"2026-04-03",
  "author":{"@type":"Person","name":"Hyrum Hurst"},
- "publisher":{"@type":"Organization","name":"QuarterSmart","url":"https://aied.dev/",
+ "publisher":{"@type":"Organization","name":"QuarterSmart","url":"https://quartersmart.com/",
    "founder":{"@type":"Person","name":"Hyrum Hurst"},
-   "sameAs":["https://quartersmart.com","https://n8n.io/creators/hyrum/"]},
- "mainEntityOfPage":{"@type":"WebPage","@id":"https://aied.dev/signals/third-party-killed.html"}}
+   "sameAs":["https://quartersmart.com","https://n8n.io/creators/hyrum-hurst"]},
+ "mainEntityOfPage":{"@type":"WebPage","@id":"https://quartersmart.com/signals/third-party-killed.html"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"QuarterSmart",
- "url":"https://aied.dev/","description":"AI implementation and workforce enablement partner. QuarterSmart helps organizations assess, train, pilot, automate, scale, and measure AI adoption.",
+ "url":"https://quartersmart.com/","description":"AI implementation and workforce enablement partner. QuarterSmart helps organizations assess, train, pilot, automate, scale, and measure AI adoption.",
  "founder":{"@type":"Person","name":"Hyrum Hurst"},
- "sameAs":["https://quartersmart.com","https://n8n.io/creators/hyrum/"]}
+ "sameAs":["https://quartersmart.com","https://n8n.io/creators/hyrum-hurst"]}
 </script>
 </body>
 </html>

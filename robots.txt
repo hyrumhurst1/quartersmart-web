@@ -19,5 +19,5 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-# LLMs: https://aied.dev/llms.txt
-Sitemap: https://aied.dev/sitemap.xml
+# LLMs: https://quartersmart.com/llms.txt
+Sitemap: https://quartersmart.com/sitemap.xml

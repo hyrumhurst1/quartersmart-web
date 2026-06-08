@@ -1,8 +1,8 @@
-# QuarterSmart — aied.dev
+# QuarterSmart, quartersmart.com
 
 > AI implementation and workforce enablement partner. QuarterSmart helps organizations move from AI curiosity to operational adoption.
 
-QuarterSmart is an AI implementation and workforce enablement company founded by Hyrum Hurst. It helps organizations assess where AI pays off, train leaders and teams, pilot high-friction workflows, automate real work, and scale what proves out — with measurement at every step. QuarterSmart is developer-forward: it ships working automations and secure systems, not slide decks. QuarterSmart is not a course platform, training catalog, or LMS.
+QuarterSmart is an AI implementation and workforce enablement company founded by Hyrum Hurst. It helps organizations assess where AI pays off, train leaders and teams, pilot high-friction workflows, automate real work, and scale what proves out, with measurement at every step. QuarterSmart is developer-forward: it ships working automations and secure systems, not slide decks. QuarterSmart is not a course platform, training catalog, or LMS.
 
 ## Method
 
@@ -10,32 +10,34 @@ QuarterSmart follows a six-step rollout: Assess → Train → Pilot → Automate
 
 ## Services
 
-- AI Rollout Assessment — readiness audit, use-case map, governance baseline, 90-day roadmap
-- Leadership & Team Enablement — role-based workshops and internal champions
-- Pilot & Workflow Prototyping — prove value on one or two high-friction workflows
-- Workflow Automation & Integration — n8n-based automations, task routing, systems integration
-- Knowledge Systems & AI Assistants — answers grounded in your own SOPs and data
-- Measurement & Optimization — usage, time saved, quality, and ROI tracking
-- Custom Systems & Secure Deployment — private cloud, on-premises, or air-gapped when required
+- AI Rollout Assessment, readiness audit, use-case map, governance baseline, 90-day roadmap
+- Leadership & Team Enablement, role-based workshops and internal champions
+- Pilot & Workflow Prototyping, prove value on one or two high-friction workflows
+- Workflow Automation & Integration, n8n-based automations, task routing, systems integration
+- Knowledge Systems & AI Assistants, answers grounded in your own SOPs and data
+- Measurement & Optimization, usage, time saved, quality, and ROI tracking
+- Custom Systems & Secure Deployment, private cloud, on-premises, or air-gapped when required
 
 ## Key pages
 
-- [Home](https://aied.dev/): positioning, method, and services
-- [About Hyrum Hurst](https://aied.dev/about.html): founder background and credentials
-- [Signals](https://aied.dev/radar.html): QuarterSmart AI news and insight
+- [Home](https://quartersmart.com/): positioning, method, and services
+- [About the QuarterSmart team](https://quartersmart.com/about.html): founder and team background, clients, and credentials
+- [Signals](https://quartersmart.com/radar.html): QuarterSmart AI news and insight
 
 ## Key facts
 
-- Founder: Hyrum Hurst — verified n8n creator with 25 public workflow templates
+- Team: Hyrum Hurst (Founder) and Cullen Brown (Operator and Outreach Manager)
+- Founder Hyrum Hurst is a verified n8n creator, top 50 worldwide (profile: https://n8n.io/creators/hyrum-hurst), with 25 published templates and 10,000+ uses
+- Over 10,000 people already run QuarterSmart workflows in production
+- Clients include Dual Logic, Learning Journey AI, Structure Properties, and Ability Builders
 - Category: AI implementation and workforce enablement partner (not an LMS or course studio)
-- Buyers: operational teams, mid-market organizations, and government/regulated environments
 - Differentiators: developer-forward execution, n8n-backed workflow automation, secure deployment, and measured rollout
 
 ## Contact
 
-- Website: https://aied.dev
+- Website: https://quartersmart.com
 - Email: hyrum@quartersmart.com
-- Founder: Hyrum Hurst, QuarterSmart
+- Team: Hyrum Hurst (Founder), Cullen Brown (Operator and Outreach Manager)
 
 ---
 Last updated: 2026-06-08

@@ -140,6 +140,20 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-08 (full rewrite)** — Ran a 6-lens audit (funnel, credibility, SEO/AEO, animation, perf, copy),
+  then rewrote. Key changes: (1) **NO em dashes** anywhere (purged 215, verified 0). (2) Hyrum's PERSONAL
+  stats (#49 / 25 templates / top-50) **removed from the homepage**; homepage keeps only company framing
+  ("10,000+ using QuarterSmart workflows"); personal creds live on **About** with the real linkable profile
+  **n8n.io/creators/hyrum-hurst**. (3) Added a **client proof strip** (Dual Logic, Learning Journey AI,
+  Structure Properties, Ability Builders) + a real About bio from the resume (`research/hyrum-hurst-resume.md`)
+  + certs + CyberNews/Qwoted links. (4) Added **Cullen Brown (Operator & Outreach Manager)** to the About
+  team section + Person schema + homepage Partners + FAQ. (5) Funnel: prefilled-mailto CTAs with a free/20-min
+  no-obligation reassurance line. (6) Switched canonical domain **aied.dev → quartersmart.com** sitewide
+  (aied.dev pointed at the old live site). (7) Regenerated **og-home.png** (QuarterSmart branded, no LMS).
+  **Still open (need owner input / tooling):** real headshots (About uses initials avatars), a Cal.com/form
+  booking link (mailto is the current path), per-page section reorder so home ends on a CTA, frame-sequence
+  perf (lazy-load/WebP), regenerate og-weekly/og-teams images, and confirm quartersmart.com will serve this.
+
 - **2026-06-08 (collab)** — Added **Cullen Brown (`cullenbrown07`)** as a write collaborator. New
   [`HANDOFF.md`](HANDOFF.md) onboards Cullen + his agents (points here as canonical). Also: removed the
   splash/curtain intro (hero reveals instantly), restored the headline typewriter, rewrote hero copy to
