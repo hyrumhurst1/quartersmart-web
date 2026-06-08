@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenAI Changed Their Pricing — What It Actually Means for You | AI Ed Radar</title>
+<meta name="description" content="OpenAI restructured its pricing tiers in 2026. New Pro tier, API rate changes, and a revamped free tier. We break down who wins and who pays more.">
+<meta name="theme-color" content="#060608">
+<meta property="og:title" content="OpenAI Changed Their Pricing — What It Actually Means for You">
+<meta property="og:description" content="New tiers, adjusted API rates, and a free tier shakeup. Here's what changed and what it means.">
+<meta property="og:image" content="../assets/images/signals/openai-pricing-changes-2026-cover.png">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aied.dev/signals/openai-pricing.html">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --accent: #00e5a0; --text: #f0f4f8; --muted: #9ba5b4; --bg: #060608; --border: rgba(255,255,255,0.06); --card-bg: rgba(10,10,16,0.88); --reading-width: 720px; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.7; }
+a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+a:hover { opacity: 0.8; }
+::selection { background: rgba(0,229,160,0.2); color: var(--text); }
+#signal-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 40px; height: 52px; display: flex; align-items: center; justify-content: space-between; background: rgba(6,6,8,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-side { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); transition: color 0.2s; }
+.nav-side:hover { color: var(--accent); }
+.nav-side svg { width: 14px; height: 14px; flex-shrink: 0; }
+.nav-side img { height: 18px; width: auto; opacity: 0.8; }
+.nav-center { position: absolute; left: 50%; transform: translateX(-50%); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); opacity: 0.5; }
+#progress-bar { position: fixed; top: 52px; left: 0; right: 0; height: 2px; z-index: 101; }
+#progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #00b8ff); transition: width 0.1s linear; box-shadow: 0 0 8px rgba(0,229,160,0.4); }
+#signal-cover { width: 100%; height: 50vh; min-height: 360px; max-height: 520px; margin-top: 52px; overflow: hidden; position: relative; }
+#signal-cover img { width: 100%; height: 100%; object-fit: cover; }
+#signal-cover::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, var(--bg)); }
+.article-header { max-width: var(--reading-width); margin: -40px auto 0; padding: 0 24px; position: relative; z-index: 2; }
+.article-tag { display: inline-block; background: rgba(0,229,160,0.1); border: 1px solid rgba(0,229,160,0.15); color: var(--accent); padding: 4px 12px; border-radius: 100px; font-size: 10px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; }
+.article-title { font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+.article-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+.meta-author { display: flex; align-items: center; gap: 8px; }
+.author-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(0,229,160,0.15); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--accent); font-weight: 600; }
+.meta-dot { color: rgba(255,255,255,0.15); }
+.article-body { max-width: var(--reading-width); margin: 0 auto; padding: 40px 24px 0; }
+.article-body h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin: 48px 0 16px; line-height: 1.3; position: relative; padding-left: 16px; }
+.article-body h2::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; background: var(--accent); border-radius: 2px; }
+.article-body h3 { font-size: 18px; font-weight: 600; margin: 36px 0 12px; }
+.article-body p { font-size: 16px; line-height: 1.8; color: rgba(240,244,248,0.88); margin-bottom: 20px; }
+.article-body strong { color: var(--text); font-weight: 600; }
+.article-body em { color: var(--accent); font-style: normal; }
+.article-body ul, .article-body ol { padding-left: 24px; margin-bottom: 20px; }
+.article-body li { font-size: 16px; line-height: 1.8; color: rgba(240,244,248,0.88); margin-bottom: 8px; }
+.pull-quote { margin: 40px -20px; padding: 28px 32px; border-left: 3px solid var(--accent); background: rgba(0,229,160,0.03); border-radius: 0 12px 12px 0; font-size: 18px; font-weight: 500; line-height: 1.6; color: var(--text); }
+.pull-quote cite { display: block; margin-top: 12px; font-size: 12px; font-style: normal; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+.compare-table { width: 100%; margin: 28px 0; border-collapse: collapse; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.compare-table th { background: rgba(0,229,160,0.06); padding: 12px 16px; text-align: left; font-size: 11px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--border); }
+.compare-table td { padding: 12px 16px; font-size: 14px; border-bottom: 1px solid var(--border); color: rgba(240,244,248,0.8); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+.deep-dive { margin: 24px 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.deep-dive-toggle { width: 100%; padding: 16px 20px; background: rgba(255,255,255,0.02); border: none; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; text-align: left; display: flex; align-items: center; justify-content: space-between; transition: background 0.2s; }
+.deep-dive-toggle:hover { background: rgba(255,255,255,0.04); }
+.deep-dive-toggle .arrow { color: var(--accent); font-size: 12px; transition: transform 0.3s ease; }
+.deep-dive.open .deep-dive-toggle .arrow { transform: rotate(90deg); }
+.deep-dive-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 20px; }
+.deep-dive.open .deep-dive-content { max-height: 800px; padding: 0 20px 20px; }
+.deep-dive-content p { font-size: 14px; line-height: 1.7; color: rgba(240,244,248,0.75); margin-top: 0; }
+.info-card { margin: 28px 0; padding: 24px; background: rgba(0,229,160,0.03); border: 1px solid rgba(0,229,160,0.1); border-radius: 14px; }
+.info-card-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); opacity: 0.7; margin-bottom: 10px; }
+.info-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.info-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 0; }
+
+/* ── PRICING TIER CARDS ───────────────── */
+.tier-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 28px 0;
+}
+.tier-card {
+  padding: 20px; border-radius: 12px;
+  border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+  text-align: center; transition: all 0.3s;
+}
+.tier-card:hover { border-color: rgba(0,229,160,0.15); }
+.tier-card.featured { border-color: rgba(0,229,160,0.3); background: rgba(0,229,160,0.04); }
+.tier-name {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.tier-card:nth-child(1) .tier-name { color: #9ba5b4; }
+.tier-card:nth-child(2) .tier-name { color: var(--accent); }
+.tier-card:nth-child(3) .tier-name { color: #ffcc00; }
+.tier-card:nth-child(4) .tier-name { color: #c084fc; }
+.tier-price { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+.tier-sub { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+.tier-features { margin-top: 12px; font-size: 12px; color: var(--muted); line-height: 1.6; text-align: left; }
+.tier-features li { margin-bottom: 4px; list-style: none; padding-left: 14px; position: relative; }
+.tier-features li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 10px; }
+
+.article-tags { max-width: var(--reading-width); margin: 0 auto; padding: 32px 24px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.article-tags span { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; margin-right: 8px; }
+.article-tags a { padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted); font-size: 11px; transition: all 0.2s; }
+.article-tags a:hover { border-color: rgba(0,229,160,0.2); color: var(--accent); }
+.sources-section { max-width: var(--reading-width); margin: 0 auto; padding: 0 24px 40px; }
+.sources-section h3 { font-size: 14px; font-weight: 600; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); opacity: 0.6; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--border); }
+.source-item { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.source-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); opacity: 0.5; flex-shrink: 0; }
+#contribute { max-width: 900px; margin: 60px auto 0; padding: 0 24px 80px; }
+.contribute-header { text-align: center; margin-bottom: 36px; }
+.contribute-header h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+.contribute-header p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.contribute-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.contribute-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: border-color 0.3s; }
+.contribute-card:hover { border-color: rgba(0,229,160,0.15); }
+.contribute-card-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(0,229,160,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--accent); font-size: 16px; }
+.contribute-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+.contribute-card .card-sub { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
+.contribute-card input, .contribute-card textarea { width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 13px; outline: none; transition: border-color 0.2s; margin-bottom: 10px; }
+.contribute-card input:focus, .contribute-card textarea:focus { border-color: rgba(0,229,160,0.3); }
+.contribute-card input::placeholder, .contribute-card textarea::placeholder { color: rgba(255,255,255,0.2); }
+.contribute-card textarea { resize: vertical; min-height: 80px; }
+.contribute-btn { width: 100%; padding: 10px; background: var(--accent); color: #000; border: none; border-radius: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, box-shadow 0.2s, transform 0.15s; }
+.contribute-btn:hover { background: #1ffdb3; box-shadow: 0 0 20px rgba(0,229,160,0.25); transform: translateY(-1px); }
+.form-success { color: var(--accent); font-size: 13px; font-family: 'JetBrains Mono', monospace; text-align: center; padding: 16px; display: none; }
+#signal-footer { padding: 32px 40px; border-top: 1px solid var(--border); text-align: center; font-size: 12px; color: var(--muted); background: var(--bg); }
+#signal-footer a { color: var(--accent); }
+@media (max-width: 768px) { #signal-nav { padding: 0 20px; } .article-header { padding: 0 16px; } .article-body { padding: 32px 16px 0; } .contribute-grid { grid-template-columns: 1fr; } #contribute { padding: 0 16px 60px; } .pull-quote { margin: 32px 0; padding: 20px 24px; } #signal-cover { height: 40vh; min-height: 260px; } .tier-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .article-title { font-size: 24px; } .article-meta { flex-direction: column; align-items: flex-start; gap: 8px; } .tier-grid { grid-template-columns: 1fr; } }
+.fade-in { opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav id="signal-nav">
+  <a class='nav-side' href='/radar'><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to Radar</a>
+  <span class="nav-center">SIGNAL</span>
+  <a href="../" class="nav-side"><img src="../logos/transparent/wordmark-boxed/aied-wordmark-boxed-white-transparent-trimmed.png" alt="AI ED"> Back to Home</a>
+</nav>
+<div id="progress-bar"><div id="progress-fill"></div></div>
+
+<div id="signal-cover">
+  <img src="../assets/images/signals/openai-pricing-changes-2026-cover.png" alt="OpenAI logo with pricing tiers fanning out as light beams - Free, Plus, Pro, and Enterprise tiers visualized with dollar signs dissolving into particles">
+</div>
+
+<header class="article-header fade-in">
+  <span class="article-tag">News</span>
+  <h1 class="article-title">OpenAI Changed Their Pricing — What It Actually Means for You</h1>
+  <div class="article-meta">
+    <div class="meta-author"><div class="author-avatar">HH</div><span>Hyrum Hurst</span></div>
+    <span class="meta-dot">·</span><span>Apr 2, 2026</span>
+    <span class="meta-dot">·</span><span>4 min read</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p class="fade-in">OpenAI quietly updated their pricing page last week, and if you blinked you missed it. But the changes are significant — especially if you're on the free tier, a Plus subscriber considering Pro, or a developer using the API.</p>
+
+  <p class="fade-in">Here's what actually changed, who benefits, and who's going to pay more.</p>
+
+  <h2 class="fade-in">The New Tier Structure</h2>
+
+  <div class="tier-grid fade-in">
+    <div class="tier-card">
+      <div class="tier-name">Free</div>
+      <div class="tier-price">$0</div>
+      <div class="tier-sub">/month</div>
+      <ul class="tier-features">
+        <li>GPT-4o mini</li>
+        <li>Limited messages</li>
+        <li>Basic web browsing</li>
+        <li>No image gen</li>
+      </ul>
+    </div>
+    <div class="tier-card featured">
+      <div class="tier-name">Plus</div>
+      <div class="tier-price">$20</div>
+      <div class="tier-sub">/month</div>
+      <ul class="tier-features">
+        <li>GPT-4o full access</li>
+        <li>DALL-E image gen</li>
+        <li>Advanced analysis</li>
+        <li>Custom GPTs</li>
+      </ul>
+    </div>
+    <div class="tier-card">
+      <div class="tier-name">Pro</div>
+      <div class="tier-price">$200</div>
+      <div class="tier-sub">/month</div>
+      <ul class="tier-features">
+        <li>Unlimited GPT-4o</li>
+        <li>GPT-5.4 access</li>
+        <li>o3-pro reasoning</li>
+        <li>Extended context</li>
+      </ul>
+    </div>
+    <div class="tier-card">
+      <div class="tier-name">Enterprise</div>
+      <div class="tier-price">Custom</div>
+      <div class="tier-sub">/month</div>
+      <ul class="tier-features">
+        <li>All models</li>
+        <li>SSO & admin</li>
+        <li>Dedicated capacity</li>
+        <li>SLA guarantee</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="fade-in">What Changed</h2>
+
+  <h3 class="fade-in">Free Tier: More Restrictive</h3>
+
+  <p class="fade-in">The biggest change for casual users: the free tier is now limited to <strong>GPT-4o mini only</strong>. Previously, free users could access GPT-4o with message limits. That's gone. If you want GPT-4o, you need Plus.</p>
+
+  <p class="fade-in">OpenAI says this is about "ensuring quality of service for paying users." Translation: free users were overwhelming GPT-4o's capacity during peak hours.</p>
+
+  <h3 class="fade-in">Plus Tier: Unchanged (For Now)</h3>
+
+  <p class="fade-in">The $20/month Plus tier stays the same — GPT-4o access, DALL-E, Advanced Data Analysis, and Custom GPTs. But there's a notable absence: <strong>GPT-5.4 is not included in Plus.</strong> You need Pro for that.</p>
+
+  <h3 class="fade-in">Pro Tier: The Real Story</h3>
+
+  <p class="fade-in">The $200/month Pro tier is where things get interesting. Launched in late 2025, it was initially seen as a niche product for power users. But with GPT-5.4 exclusive to Pro and Enterprise, it's now the only way individuals can access OpenAI's most powerful model.</p>
+
+  <blockquote class="pull-quote fade-in">
+    "We believe the best models should be accessible, but running frontier AI at scale requires sustainable pricing. Pro gives power users the capacity they need while keeping Plus affordable for everyone."
+    <cite>— OpenAI Blog, March 2026</cite>
+  </blockquote>
+
+  <h3 class="fade-in">API Pricing: The Numbers</h3>
+
+  <table class="compare-table fade-in">
+    <thead>
+      <tr><th>Model</th><th>Input (per 1M tokens)</th><th>Output (per 1M tokens)</th><th>Change</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>GPT-4o</td><td>$2.50</td><td>$10.00</td><td style="color:var(--accent)">↓ 17% cheaper</td></tr>
+      <tr><td>GPT-4o mini</td><td>$0.15</td><td>$0.60</td><td style="color:var(--accent)">↓ 25% cheaper</td></tr>
+      <tr><td>GPT-5.4</td><td>$15.00</td><td>$60.00</td><td style="color:#ffcc00">New model</td></tr>
+      <tr><td>o3-pro</td><td>$20.00</td><td>$80.00</td><td style="color:#ffcc00">New model</td></tr>
+      <tr><td>GPT-4 (legacy)</td><td>$30.00</td><td>$60.00</td><td style="color:#ff6b6b">Deprecated June 2026</td></tr>
+    </tbody>
+  </table>
+
+  <p class="fade-in">The pattern is clear: <strong>older models get cheaper, frontier models carry a premium.</strong> GPT-4o and 4o mini are now the cheapest they've ever been. But if you want the cutting edge, you're paying frontier prices.</p>
+
+  <h2 class="fade-in">How It Compares to Anthropic & Google</h2>
+
+  <table class="compare-table fade-in">
+    <thead>
+      <tr><th>Provider</th><th>Consumer Plan</th><th>Frontier Model</th><th>API (input/1M)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="color:var(--accent)">OpenAI</td><td>$20 Plus / $200 Pro</td><td>GPT-5.4 (Pro only)</td><td>$15.00</td></tr>
+      <tr><td>Anthropic</td><td>$20 Pro</td><td>Claude Opus 4.6</td><td>$15.00</td></tr>
+      <tr><td>Google</td><td>$20 Gemini Advanced</td><td>Gemini 2.0 Ultra</td><td>$12.50</td></tr>
+    </tbody>
+  </table>
+
+  <div class="deep-dive fade-in">
+    <button class="deep-dive-toggle" onclick="toggleDive(this)">
+      Should you switch from Plus to Pro?
+      <span class="arrow">▶</span>
+    </button>
+    <div class="deep-dive-content">
+      <p>It depends on what you do. If you primarily use ChatGPT for writing, research, and general tasks, Plus is still plenty — GPT-4o handles those extremely well. Pro makes sense if you: (1) need GPT-5.4 for complex coding or reasoning tasks, (2) hit Plus rate limits regularly, (3) use o3-pro for math, science, or complex logic problems, or (4) need extended context windows for processing long documents. For most users, Plus remains the sweet spot. Pro is for power users who've already maxed out what Plus can do.</p>
+    </div>
+  </div>
+
+  <h2 class="fade-in">The Bigger Picture</h2>
+
+  <p class="fade-in">OpenAI's pricing evolution tells a story about where the AI industry is headed: <strong>the base is getting cheaper, the frontier is getting more expensive.</strong></p>
+
+  <p class="fade-in">This makes sense economically. Running GPT-4o has gotten cheaper as inference costs drop and hardware improves. But training and running GPT-5.4 — which is estimated to have cost over $500M to train — requires premium pricing to recoup investment.</p>
+
+  <p class="fade-in">For consumers, the practical impact is:</p>
+
+  <ul class="fade-in">
+    <li><strong>Students and casual users:</strong> The free tier is weaker, but Plus at $20/month is still competitive. Get your <a href='../signals/free-ai-students'>free student access</a> if eligible.</li>
+    <li><strong>Power users:</strong> You're going to need to decide between Pro ($200/mo) and exploring alternatives like Claude or Gemini for frontier performance at lower cost.</li>
+    <li><strong>Developers:</strong> API costs for standard models are dropping. Frontier API access is expensive but powerful. Multi-provider strategies make more sense than ever.</li>
+  </ul>
+
+  <div class="info-card fade-in">
+    <div class="info-card-label">The Takeaway</div>
+    <h4>AI is splitting into two markets</h4>
+    <p>Commodity AI (GPT-4o, Claude Sonnet, Gemini Flash) is getting cheaper by the quarter. Frontier AI (GPT-5.4, Mythos, Gemini Ultra) is getting more expensive and more restricted. Where you sit on that spectrum determines your costs — and your options.</p>
+  </div>
+
+</article>
+
+<div class="article-tags fade-in">
+  <span>Tags</span>
+  <a href='/radar'>OpenAI</a>
+  <a href='/radar'>Pricing</a>
+  <a href='/radar'>GPT-5</a>
+  <a href='/radar'>API</a>
+  <a href='/radar'>ChatGPT</a>
+</div>
+
+<div class="sources-section fade-in">
+  <h3>Sources</h3>
+  <div class="source-item"><span class="source-num">[1]</span><span>OpenAI. "Pricing." <a href="https://openai.com/pricing" target="_blank" rel="noopener">openai.com/pricing</a>. Updated March 2026.</span></div>
+  <div class="source-item"><span class="source-num">[2]</span><span>OpenAI. "Introducing ChatGPT Pro." <a href="https://openai.com/index/introducing-chatgpt-pro/" target="_blank" rel="noopener">openai.com</a>, December 2025.</span></div>
+  <div class="source-item"><span class="source-num">[3]</span><span>OpenAI. "API Platform Pricing." <a href="https://platform.openai.com/docs/pricing" target="_blank" rel="noopener">platform.openai.com</a>. Updated March 2026.</span></div>
+  <div class="source-item"><span class="source-num">[4]</span><span>Anthropic. "Claude API Pricing." <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">anthropic.com/pricing</a>. Accessed April 2026.</span></div>
+  <div class="source-item"><span class="source-num">[5]</span><span>Google. "Gemini API Pricing." <a href="https://ai.google.dev/pricing" target="_blank" rel="noopener">ai.google.dev/pricing</a>. Accessed April 2026.</span></div>
+</div>
+
+<section id="contribute">
+  <div class="contribute-header fade-in"><h3>We're open to contributors</h3><p>Have a signal we should cover? Want to write for AI Ed Radar? We'd love to hear from you.</p></div>
+  <div class="contribute-grid">
+    <div class="contribute-card fade-in">
+      <div class="contribute-card-icon">◇</div><h4>Suggest a Topic</h4><p class="card-sub">Have a tip, news story, or tool we should cover? Drop it here.</p>
+      <form id="suggest-form" onsubmit="submitForm(event, 'suggest')"><input type="email" placeholder="your@email.com" required><textarea placeholder="What should we write about?" required></textarea><button type="submit" class="contribute-btn">Send Suggestion</button></form>
+      <div class="form-success" id="suggest-success">Thanks! We'll look into it ◆</div>
+    </div>
+    <div class="contribute-card fade-in">
+      <div class="contribute-card-icon">✦</div><h4>Write for Us</h4><p class="card-sub">Want to contribute a signal? Pitch us your idea and we'll get back to you.</p>
+      <form id="write-form" onsubmit="submitForm(event, 'write')"><input type="email" placeholder="your@email.com" required><textarea placeholder="Your pitch — what's the signal, and why does it matter?" required></textarea><button type="submit" class="contribute-btn">Send Pitch</button></form>
+      <div class="form-success" id="write-success">Pitch received! We'll be in touch ◆</div>
+    </div>
+  </div>
+</section>
+
+<footer id="signal-footer"><a href='/radar'>← Radar</a> &nbsp;·&nbsp; Powered by <a href="https://quartersmart.com" target="_blank" rel="noopener">QuarterSmart</a> &nbsp;·&nbsp; <a href="../">AI Ed Home →</a></footer>
+
+<script>
+(function() {
+  var fill = document.getElementById('progress-fill');
+  window.addEventListener('scroll', function() { var h = document.documentElement.scrollHeight - window.innerHeight; fill.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%'; });
+  var fadeEls = document.querySelectorAll('.fade-in');
+  var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(function(el) { obs.observe(el); });
+  window.toggleDive = function(btn) { btn.closest('.deep-dive').classList.toggle('open'); };
+  window.submitForm = function(e, type) {
+    e.preventDefault(); var form = e.target;
+    fetch('https://YOUR-WEBHOOK-URL.com', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: type, email: form.querySelector('input[type="email"]').value, message: form.querySelector('textarea').value, page: document.title, timestamp: new Date().toISOString() }) })
+    .then(function() { form.style.display = 'none'; document.getElementById(type + '-success').style.display = 'block'; })
+    .catch(function() { form.style.display = 'none'; document.getElementById(type + '-success').style.display = 'block'; });
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon — AI Ed</title>
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#060608">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --accent: #00e5a0;
+  --text: #f0f4f8;
+  --muted: #8b95a5;
+}
+html, body { height: 100%; overflow: hidden; }
+body {
+  background: #060608;
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+canvas#bg {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+
+.content {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 40px;
+}
+
+.back-link {
+  position: absolute; top: 32px; left: 40px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(240,244,248,0.78);
+  text-decoration: none;
+  transition: color 0.25s;
+  z-index: 2;
+}
+.back-link:hover { color: var(--accent); }
+.back-link svg { width: 16px; height: 16px; }
+
+.logo {
+  height: 28px; margin-bottom: 48px;
+  opacity: 0.4;
+}
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.page-name {
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 32px;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: clamp(48px, 8vw, 100px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #fff 0%, var(--accent) 50%, #fff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.sub {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 420px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.notify-form {
+  display: flex; gap: 12px;
+  max-width: 420px; width: 100%;
+}
+.notify-input {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px; color: var(--text);
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.notify-input::placeholder { color: var(--muted); }
+.notify-input:focus {
+  border-color: rgba(0,229,160,0.35);
+  box-shadow: 0 0 0 3px rgba(0,229,160,0.06);
+}
+.notify-btn {
+  background: var(--accent); color: #000;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 14px 24px; border-radius: 10px;
+  border: none; cursor: pointer; white-space: nowrap;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+.notify-btn:hover {
+  background: #1ffdb3;
+  box-shadow: 0 0 36px rgba(0,229,160,0.28);
+  transform: translateY(-1px);
+}
+
+.fine {
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 0.16em;
+  color: var(--muted); opacity: 0.7;
+  text-transform: uppercase;
+}
+
+/* Noise overlay */
+body::after {
+  content: ''; position: fixed; inset: 0;
+  z-index: 9999; pointer-events: none;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px;
+}
+
+@media (max-width: 600px) {
+  .notify-form { flex-direction: column; }
+  .back-link { top: 20px; left: 20px; }
+}
+
+/* ── SKIP TO CONTENT ──────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--accent);
+  color: #000;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 0 0 10px 10px;
+  z-index: 10000;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 0; }
+
+/* ── FOCUS STYLES ─────────────────────── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── REDUCED MOTION ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<a class="back-link" href="./">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+  Back to AI Ed
+</a>
+
+<main id="main-content">
+<div class="content">
+  <img class="logo" src="logos/transparent/wordmark-boxed/aied-wordmark-boxed-white-transparent-trimmed.png" alt="AI Ed">
+  <div class="tag">Coming Soon</div>
+  <div class="page-name" id="page-name"></div>
+  <h1>Something great<br>is brewing.</h1>
+  <p class="sub">We're building something worth waiting for. Drop your email and be the first to know when it's ready.</p>
+  <form class="notify-form" id="notify-form">
+    <label for="notify-email" class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Email address</label>
+    <input class="notify-input" id="notify-email" type="email" placeholder="your@email.com" required>
+    <button class="notify-btn" type="submit">Notify Me</button>
+  </form>
+  <div class="fine" id="notify-fine">We'll only email you once. No spam.</div>
+  <div id="notify-success" style="display:none;color:var(--accent);font-size:16px;font-weight:600;margin-top:8px;" role="status">You're in! We'll notify you when it's ready.</div>
+</div>
+</main>
+
+<script>
+var WEBHOOK_URL = 'https://structureproperties.app.n8n.cloud/webhook/b43bcf80-ce08-48f7-a877-d292a20f394a';
+
+// Email form submission
+(function() {
+  var form = document.getElementById('notify-form');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('notify-email').value.trim();
+    if (!email) return;
+    var params = new URLSearchParams(window.location.search);
+    var page = params.get('page') || 'general';
+    var btn = form.querySelector('.notify-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'coming-soon-' + page })
+    }).then(function(r) {
+      if (!r.ok) throw new Error('Network error');
+      form.style.display = 'none';
+      document.getElementById('notify-fine').style.display = 'none';
+      document.getElementById('notify-success').style.display = 'block';
+    }).catch(function() {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    });
+  });
+})();
+
+// Page name from URL param
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var page = params.get('page') || '';
+  var names = {
+    'courses': 'Courses',
+    'radar': 'AI Radar',
+    'partners': 'Partners & Volunteers',
+    'login': 'Student Portal'
+  };
+  var el = document.getElementById('page-name');
+  if (names[page]) {
+    el.textContent = names[page];
+    document.title = names[page] + ' — Coming Soon — AI Ed';
+  }
+})();
+
+// Canvas animation — interconnected constellation with mouse magnet
+(function() {
+  var canvas = document.getElementById('bg');
+  var ctx = canvas.getContext('2d');
+  var W, H;
+  var mouse = { x: -9999, y: -9999 };
+  var nodes = [];
+  var swirls = [];
+  var NODE_COUNT = window.innerWidth < 768 ? 30 : 60;
+  var SWIRL_COUNT = 6;
+  var time = 0;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', function() {
+    resize();
+    // Redistribute nodes
+    nodes.forEach(function(n) {
+      if (n.x > W) n.x = Math.random() * W;
+      if (n.y > H) n.y = Math.random() * H;
+    });
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  // Node class
+  function Node() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.radius = 1.5 + Math.random() * 2;
+    this.baseAlpha = 0.15 + Math.random() * 0.25;
+    this.pulseSpeed = 0.02 + Math.random() * 0.03;
+    this.pulseOffset = Math.random() * Math.PI * 2;
+  }
+  Node.prototype.update = function() {
+    // Gentle autonomous drift
+    this.x += this.vx;
+    this.y += this.vy;
+
+    // Wrap
+    if (this.x < -20) this.x = W + 20;
+    if (this.x > W + 20) this.x = -20;
+    if (this.y < -20) this.y = H + 20;
+    if (this.y > H + 20) this.y = -20;
+
+    // Mouse magnet — strong pull
+    var dx = mouse.x - this.x;
+    var dy = mouse.y - this.y;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < 300 && dist > 1) {
+      var force = 0.8 / dist;
+      this.vx += dx * force;
+      this.vy += dy * force;
+    }
+
+    // Damping
+    this.vx *= 0.97;
+    this.vy *= 0.97;
+  };
+  Node.prototype.draw = function() {
+    var dx = mouse.x - this.x;
+    var dy = mouse.y - this.y;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    var glow = dist < 250 ? (250 - dist) / 250 : 0;
+    var pulse = Math.sin(time * this.pulseSpeed + this.pulseOffset) * 0.5 + 0.5;
+    var alpha = this.baseAlpha + glow * 0.5 + pulse * 0.1;
+    var r = this.radius + glow * 3;
+
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0,229,160,' + alpha + ')';
+    if (glow > 0.2) {
+      ctx.shadowColor = 'rgba(0,229,160,' + (glow * 0.5) + ')';
+      ctx.shadowBlur = 20;
+    }
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  };
+
+  // Swirl class
+  function Swirl() { this.reset(); }
+  Swirl.prototype.reset = function() {
+    this.life = 0;
+    this.maxLife = 250 + Math.random() * 350;
+    this.fromLeft = Math.random() > 0.5;
+    this.startY = Math.random() * H;
+    this.amplitude = 100 + Math.random() * 250;
+    this.frequency = 0.003 + Math.random() * 0.007;
+    this.speed = 2 + Math.random() * 3;
+    this.width = 0.8 + Math.random() * 1.5;
+    this.yDrift = (Math.random() - 0.5) * 0.4;
+    this.phase = Math.random() * Math.PI * 2;
+    this.points = [];
+  };
+  Swirl.prototype.update = function() {
+    this.life++;
+    if (this.life > this.maxLife) { this.reset(); return; }
+    var progress = this.life * this.speed;
+    var x = this.fromLeft ? progress : W - progress;
+    var y = this.startY + Math.sin(progress * this.frequency + this.phase) * this.amplitude + this.life * this.yDrift;
+
+    // Mouse push
+    var dx = mouse.x - x;
+    var dy = mouse.y - y;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < 200 && dist > 1) {
+      var force = (200 - dist) / 200 * 40;
+      y -= (dy / dist) * force;
+      x -= (dx / dist) * force;
+    }
+
+    this.points.push({ x: x, y: y });
+    if (this.points.length > 100) this.points.shift();
+  };
+  Swirl.prototype.draw = function() {
+    if (this.points.length < 3) return;
+    var fadeIn = Math.min(1, this.life / 50);
+    var fadeOut = Math.min(1, (this.maxLife - this.life) / 50);
+    var alpha = fadeIn * fadeOut * 0.4;
+    ctx.beginPath();
+    ctx.moveTo(this.points[0].x, this.points[0].y);
+    for (var i = 1; i < this.points.length - 1; i++) {
+      var xc = (this.points[i].x + this.points[i + 1].x) / 2;
+      var yc = (this.points[i].y + this.points[i + 1].y) / 2;
+      ctx.quadraticCurveTo(this.points[i].x, this.points[i].y, xc, yc);
+    }
+    ctx.strokeStyle = 'rgba(0,229,160,' + alpha + ')';
+    ctx.lineWidth = this.width;
+    ctx.shadowColor = 'rgba(0,229,160,' + (alpha * 0.7) + ')';
+    ctx.shadowBlur = 18;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  };
+
+  // Init
+  for (var i = 0; i < NODE_COUNT; i++) nodes.push(new Node());
+  for (var j = 0; j < SWIRL_COUNT; j++) {
+    var s = new Swirl();
+    s.life = Math.random() * s.maxLife;
+    swirls.push(s);
+  }
+
+  // Draw connections
+  function drawConnections() {
+    for (var i = 0; i < nodes.length; i++) {
+      for (var j = i + 1; j < nodes.length; j++) {
+        var dx = nodes[i].x - nodes[j].x;
+        var dy = nodes[i].y - nodes[j].y;
+        var d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 140) {
+          var alpha = 0.08 * (1 - d / 140);
+          // Brighter near mouse
+          var mx = (nodes[i].x + nodes[j].x) / 2;
+          var my = (nodes[i].y + nodes[j].y) / 2;
+          var md = Math.sqrt((mouse.x - mx) ** 2 + (mouse.y - my) ** 2);
+          if (md < 200) alpha += 0.12 * (1 - md / 200);
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = 'rgba(0,229,160,' + alpha + ')';
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  // Mouse glow
+  function drawMouseGlow() {
+    if (mouse.x < -999) return;
+    var grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 200);
+    grad.addColorStop(0, 'rgba(0,229,160,0.07)');
+    grad.addColorStop(1, 'rgba(0,229,160,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(mouse.x - 200, mouse.y - 200, 400, 400);
+  }
+
+  function animate() {
+    time++;
+    ctx.clearRect(0, 0, W, H);
+
+    for (var i = 0; i < swirls.length; i++) {
+      swirls[i].update();
+      swirls[i].draw();
+    }
+    for (var j = 0; j < nodes.length; j++) {
+      nodes[j].update();
+    }
+    drawConnections();
+    for (var k = 0; k < nodes.length; k++) {
+      nodes[k].draw();
+    }
+    drawMouseGlow();
+
+    requestAnimationFrame(animate);
+  }
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    animate();
+  }
+})();
+</script>
+
+</body>
+</html>
