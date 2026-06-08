@@ -525,9 +525,14 @@ nav {
 }
 .problem-text strong { color: #fff; font-weight: 700; }
 .problem-text span { color: var(--accent); }
+.problem-credibility-lead {
+  margin-top: 56px; font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); text-align: center;
+}
 .problem-stats {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-  margin-top: 56px; text-align: center;
+  margin-top: 24px; text-align: center;
 }
 .problem-stat {
   background: rgba(255,255,255,0.03);
@@ -1543,8 +1548,8 @@ input:focus-visible {
   "url": "https://aied.dev/",
   "description": "AI implementation and workforce enablement partner. QuarterSmart helps organizations assess, train, pilot, automate, scale, and measure AI adoption.",
   "logo": "https://aied.dev/logos/quartersmart-q.png",
-  "email": "learn@aied.dev",
-  "contactPoint": { "@type": "ContactPoint", "email": "learn@aied.dev", "contactType": "sales" },
+  "email": "hyrum@quartersmart.com",
+  "contactPoint": { "@type": "ContactPoint", "email": "hyrum@quartersmart.com", "contactType": "sales" },
   "founder": { "@type": "Person", "name": "Hyrum Hurst" },
   "sameAs": ["https://quartersmart.com", "https://n8n.io/creators/hyrum/"],
   "dateModified": "2026-06-08"
@@ -1636,7 +1641,7 @@ input:focus-visible {
     {
       "@type": "Question",
       "name": "How is QuarterSmart different from a typical AI consultant?",
-      "acceptedAnswer": { "@type": "Answer", "text": "QuarterSmart is developer-forward: we ship working automations, not slide decks. Our execution is backed by n8n, we leverage the tools your team already uses, and we focus on measured adoption rather than one-off experiments. We are led by a verified n8n creator with 25 public workflow templates." }
+      "acceptedAnswer": { "@type": "Answer", "text": "QuarterSmart is developer-forward: we ship working automations, not slide decks. Our execution is backed by n8n, we leverage the tools your team already uses, and we focus on measured adoption rather than one-off experiments. We are led by a top-50 n8n creator (#49) with 10,000+ users across 25 public workflow templates." }
     },
     {
       "@type": "Question",
@@ -1651,7 +1656,7 @@ input:focus-visible {
     {
       "@type": "Question",
       "name": "How do we get started?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Book an AI Rollout Assessment. We review your workflows, team readiness, and the highest-impact opportunities, then come back with a prioritized roadmap and a clear next step. Email learn@aied.dev to set it up." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Book an AI Rollout Assessment. We review your workflows, team readiness, and the highest-impact opportunities, then come back with a prioritized roadmap and a clear next step. Email hyrum@quartersmart.com to set it up." }
     }
   ]
 }
@@ -1709,8 +1714,7 @@ input:focus-visible {
 <nav class="mobile-menu-overlay" id="mobile-menu" aria-label="Mobile navigation">
   <a href="about.html" class="no-coming-soon" onclick="closeMobileMenu()">About</a>
   <a href='radar.html' onclick='closeMobileMenu()'>Signals</a>
-  <a href='coming-soon?page=login' onclick='closeMobileMenu()'>Login</a>
-  <a href="mailto:learn@aied.dev" class="mobile-cta" onclick="closeMobileMenu()">Book an Assessment</a>
+  <a href="mailto:hyrum@quartersmart.com" class="mobile-cta" onclick="closeMobileMenu()">Book an Assessment</a>
 </nav>
 
 <main id="main-content">
@@ -1729,9 +1733,8 @@ input:focus-visible {
       <ul class="nav-links">
         <li><a href="about.html" class="no-coming-soon">About</a></li>
         <li><a class='no-coming-soon' href='radar.html'>Signals</a></li>
-        <li><a href='coming-soon?page=login'>Login</a></li>
       </ul>
-      <a href="mailto:learn@aied.dev" class="nav-cta">Book an Assessment</a>
+      <a href="mailto:hyrum@quartersmart.com" class="nav-cta">Book an Assessment</a>
       <button type="button" class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -1743,7 +1746,7 @@ input:focus-visible {
     <h1 class="hero-headline" id="hero-headline">AI implementation for teams that need <em>rollout, not hype.</em></h1>
     <p class="hero-sub" id="hero-sub">We help operational teams adopt AI for real — from first assessment to org-wide rollout.</p>
     <div class="hero-cta-form" id="hero-cta-buttons">
-      <a class="cta-btn" href="mailto:learn@aied.dev">Book an AI Rollout Assessment →</a>
+      <a class="cta-btn" href="mailto:hyrum@quartersmart.com">Book an AI Rollout Assessment →</a>
       <a class="cta-btn cta-btn-secondary" href="#how-it-works">See How QuarterSmart Works</a>
     </div>
   </div>
@@ -1806,21 +1809,22 @@ input:focus-visible {
     <p class="problem-text">
       <strong>The AI productivity gains are real — but most organizations are stuck between a few scattered experiments and actual, org-wide adoption.</strong> A pilot impresses one team. A tool gets bought. Then momentum stalls. <span>The work of turning AI into measured, everyday operations never happens.</span>
     </p>
+    <p class="problem-credibility-lead">QuarterSmart is led by a founder who builds this for a living:</p>
     <div class="problem-stats">
       <div class="problem-stat">
-        <span class="stat-num">Assess</span>
-        <span class="stat-label">find the right opportunities before buying tools or running pilots</span>
+        <span class="stat-num">#49</span>
+        <span class="stat-label">n8n creator worldwide — top 50 of tens of thousands</span>
       </div>
       <div class="problem-stat">
-        <span class="stat-num">Automate</span>
-        <span class="stat-label">ship working systems against real workflows, not slide decks</span>
+        <span class="stat-num">10,000+</span>
+        <span class="stat-label">people running QuarterSmart's published workflows</span>
       </div>
       <div class="problem-stat">
-        <span class="stat-num">Measure</span>
-        <span class="stat-label">track adoption and outcomes, then scale only what proves out</span>
+        <span class="stat-num">25</span>
+        <span class="stat-label">public automation templates across ops, lead routing &amp; compliance</span>
       </div>
     </div>
-    <p class="problem-bottom">The fix isn't another tool or another prompt trick. It's a measured rollout — assess, train, pilot, automate, scale, and measure — that moves your whole team from curiosity to operational adoption. That's what QuarterSmart builds.</p>
+    <p class="problem-bottom">The fix isn't another tool or another prompt trick. It's a measured rollout — assess, train, pilot, automate, scale, and measure — built and run by someone who ships real automation, not slides. That's QuarterSmart.</p>
   </div>
 </div>
 
@@ -1862,7 +1866,7 @@ input:focus-visible {
 <div id="courses">
   <div class="courses-header">
     <h2>What QuarterSmart does</h2>
-    <p>Strategy-led · Developer-forward · Built for real operations · Secure when needed · Verified n8n creator with 25 public workflow templates.</p>
+    <p>Top-50 n8n creator (#49) · 25 published workflow templates · 10,000+ users · secure deployment when you need it.</p>
   </div>
   <div class="courses-grid">
 
@@ -1922,7 +1926,7 @@ input:focus-visible {
   <div class="partners-inner">
     <div class="partners-text">
       <h2>Built by an <em>operator who ships.</em></h2>
-      <p>QuarterSmart is led by founder Hyrum Hurst — a verified n8n creator with 25 public workflow templates. The work is developer-forward: we hand you working automations, not slide decks, and we measure whether they actually move the needle.</p>
+      <p>QuarterSmart is led by founder Hyrum Hurst — a top-50 n8n creator worldwide (#49) with 25 published templates used by 10,000+ people. The work is developer-forward: we hand you working automations, not slide decks, and we measure whether they actually move the needle.</p>
       <a href="about.html" class="partner-cta">Meet the Founder →</a>
     </div>
     <div class="partners-cards">
@@ -1948,7 +1952,7 @@ input:focus-visible {
     <h2>Let's plan your<br><em>AI rollout.</em></h2>
     <p>Tell us about your team and the workflows you want AI to carry. We come back with a prioritized rollout roadmap, an honest read on what to do first, and a clear next step — assess, train, pilot, automate, scale, and measure.</p>
     <div class="cta-form">
-      <a class="cta-btn" href="mailto:learn@aied.dev">Book an AI Rollout Assessment →</a>
+      <a class="cta-btn" href="mailto:hyrum@quartersmart.com">Book an AI Rollout Assessment →</a>
       <a class="cta-btn cta-btn-secondary" href="#how-it-works">See How QuarterSmart Works →</a>
     </div>
     <div class="cta-fine">Strategy-led &nbsp;·&nbsp; Developer-forward &nbsp;·&nbsp; Built for real operations &nbsp;·&nbsp; Secure when needed</div>
@@ -1987,7 +1991,7 @@ input:focus-visible {
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-2">How is QuarterSmart different from a typical AI consultant?<span class="faq-icon" aria-hidden="true">+</span></button>
-      <div class="faq-a" id="faq-a-2" role="region"><p>QuarterSmart is developer-forward: we ship working automations, not slide decks. Our execution is backed by n8n, we leverage the tools your team already uses, and we focus on measured adoption rather than one-off experiments. We're led by a verified n8n creator with 25 public workflow templates.</p></div>
+      <div class="faq-a" id="faq-a-2" role="region"><p>QuarterSmart is developer-forward: we ship working automations, not slide decks. Our execution is backed by n8n, we leverage the tools your team already uses, and we focus on measured adoption rather than one-off experiments. We're led by a top-50 n8n creator (#49) with 10,000+ users across 25 public workflow templates.</p></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-3">Who is QuarterSmart for?<span class="faq-icon" aria-hidden="true">+</span></button>
@@ -1999,11 +2003,11 @@ input:focus-visible {
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-5">Who is Hyrum Hurst?<span class="faq-icon" aria-hidden="true">+</span></button>
-      <div class="faq-a" id="faq-a-5" role="region"><p>Hyrum Hurst is the founder of QuarterSmart, an AI implementation and workforce enablement company. He is a verified n8n creator with 25 public workflow templates. <a href="about.html" class="faq-link">Read more on the About page</a>.</p></div>
+      <div class="faq-a" id="faq-a-5" role="region"><p>Hyrum Hurst is the founder of QuarterSmart, an AI implementation and workforce enablement company. He is a top-50 n8n creator worldwide (#49) with 25 published workflow templates used by 10,000+ people, and his AI commentary has been featured in Cybernews. <a href="about.html" class="faq-link">Read more on the About page</a>.</p></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-6">How do we get started?<span class="faq-icon" aria-hidden="true">+</span></button>
-      <div class="faq-a" id="faq-a-6" role="region"><p>Book an AI Rollout Assessment. We review your workflows, team readiness, and the highest-impact opportunities, then come back with a prioritized roadmap and a clear next step. <a href="mailto:learn@aied.dev" class="faq-link">Talk to us</a> to set it up.</p></div>
+      <div class="faq-a" id="faq-a-6" role="region"><p>Book an AI Rollout Assessment. We review your workflows, team readiness, and the highest-impact opportunities, then come back with a prioritized roadmap and a clear next step. <a href="mailto:hyrum@quartersmart.com" class="faq-link">Talk to us</a> to set it up.</p></div>
     </div>
   </div>
 </div>
@@ -2017,7 +2021,7 @@ input:focus-visible {
       <p>If you're an operator or leader with real workflows, real teams, and real constraints, QuarterSmart helps you move from scattered AI experiments to org-wide, measurable adoption. Regulated and secure environments are welcome — secure deployment is available when you need it.</p>
     </div>
     <div class="who-grid who-grid-2">
-      <a href="mailto:learn@aied.dev" class="who-card fade-up">
+      <a href="mailto:hyrum@quartersmart.com" class="who-card fade-up">
         <div class="who-card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
@@ -2025,7 +2029,7 @@ input:focus-visible {
         <p>AI implementation and workforce enablement for the teams doing the work. We assess where AI fits, build fluency and internal champions, automate real workflows, and measure adoption across the org.</p>
         <span class="who-card-cta">Book an assessment →</span>
       </a>
-      <a href="mailto:learn@aied.dev" class="who-card fade-up">
+      <a href="mailto:hyrum@quartersmart.com" class="who-card fade-up">
         <div class="who-card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
@@ -2050,7 +2054,7 @@ input:focus-visible {
     <div class="footer-links">
       <a href='privacy.html'>Privacy</a>
       <a href='terms.html'>Terms</a>
-      <a href="mailto:learn@aied.dev">Contact</a>
+      <a href="mailto:hyrum@quartersmart.com">Contact</a>
     </div>
   </div>
 </footer>

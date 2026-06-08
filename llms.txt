@@ -34,7 +34,7 @@ QuarterSmart follows a six-step rollout: Assess → Train → Pilot → Automate
 ## Contact
 
 - Website: https://aied.dev
-- Email: learn@aied.dev
+- Email: hyrum@quartersmart.com
 - Founder: Hyrum Hurst, QuarterSmart
 
 ---
