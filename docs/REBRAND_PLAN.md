@@ -1,17 +1,30 @@
 # QuarterSmart Rebrand Plan
 
 Actionable roadmap for converting this AI Ed mirror into the QuarterSmart site.
-Context: `../AGENTS.md`. Brand: `../brand/BRAND.md`. Strategy: `../research/quartersmart-positioning-blueprint.md`.
+Context: `../AGENTS.md`. Brand: `../brand/BRAND.md`.
+Strategy (canonical): `../research/quartersmart-positioning-playbook.md` (the blueprint is superseded).
 
 > Status: **not started / planning.** Brand assets and research are in-repo but the brand is **not public yet**.
 > Coordinate via `AGENTS.md` Status log before doing large edits, so cross-device agents don't collide.
+
+## 🚫 HARD RULE — NO LMS (owner directive, 2026-06-08)
+
+QuarterSmart is **not about an LMS, course studio, instructional design, or training-content product — at
+all.** Do not lead, name, headline, or describe the company around LMS / courses / "training platform"
+anywhere (copy, nav, meta, schema, OG). The current mirror is "AI Ed ... powered by QuarterSmart Secured
+LMS" — **all of that LMS language gets removed**, not relabeled. Secure knowledge systems / AI assistants /
+secure deployment may remain as *capabilities*, but never branded as an LMS.
 
 ## Guiding decisions (from the owner + research)
 
 - **Keep** the design language, layout, and animations (scroll/radar/flying/**rocket**/ignite frame
   sequences — especially the rocket-launch visuals).
-- **Reposition** from "AI-powered LMS / course studio" → **"AI implementation & adoption partner for
-  operational teams."** Ladder: Readiness Sprint → Pilot + Enablement → Rollout Partner. (See research.)
+- **Reposition** from "AI-powered LMS / course studio" → **"AI implementation & workforce enablement
+  partner."** Method: **Assess → Train → Pilot → Automate → Scale → Measure.**
+- **Proof anchor:** *verified n8n creator with 25 public workflow templates* (don't publish unverified
+  "Top 50" / "10K+ uses" without a proof page).
+- **Entity consolidation:** Hyrum → QuarterSmart as the single brand; AI Ed should 301-redirect into or
+  nest clearly under QuarterSmart (no separate co-equal brand).
 - **Palette is already on-brand** (`#00e5a0` mint on `#060608`); the change is logo + wordmark + copy,
   not a recolor.
 
@@ -32,14 +45,17 @@ Context: `../AGENTS.md`. Brand: `../brand/BRAND.md`. Strategy: `../research/quar
 7. Update `sitemap.xml`, `robots.txt`, `llms.txt`, and `<link rel="canonical">` to the QuarterSmart domain
    (decide domain first — see open questions).
 
-## Phase 3 — Positioning & messaging (per research)
+## Phase 3 — Positioning & messaging (per playbook)
 
-8. Home: lead with **"AI implementation that your team actually adopts"** (or owner-approved variant);
-   subordinate any LMS language.
-9. Reframe service sections to the ladder: **Readiness Sprint → Pilot + Enablement → Rollout Partner**.
-10. Add/adjust the About (Hyrum Hurst) entity copy and any case-study/“signals” framing per the research
-    template. Add Organization + Person structured data (JSON-LD) for entity SEO.
-11. Treat LMS/training as an optional delivery artifact on a secondary page, not the lead offer.
+8. Home: lead with **"AI implementation and workforce enablement for teams that need rollout, not hype"**
+   (or owner-approved hero variant). **Remove all LMS / course / training-platform language.**
+9. Reframe service sections to the playbook's offer map (no LMS service): AI Rollout Assessment ·
+   Leadership & Team Enablement · Pilot & Workflow Prototyping · Workflow Automation & Integration ·
+   Knowledge Systems & AI Assistants · Measurement & Optimization · (Custom Systems & Secure Deployment).
+10. Add a rollout-method section: **Assess → Train → Pilot → Automate → Scale → Measure.**
+11. Add/adjust About (Hyrum Hurst) entity copy + n8n proof; add Organization + Person JSON-LD for entity
+    SEO. Repeat the playbook's canonical phrases; avoid the "wrong bucket" phrases (LMS, course studio,
+    chatbot builder, automation freelancer).
 
 ## Phase 4 — Launch
 

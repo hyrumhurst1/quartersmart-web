@@ -1,3 +1,9 @@
+> ⚠️ **SUPERSEDED** by `quartersmart-positioning-playbook.md` (more detailed, current).
+> ⚠️ **OWNER OVERRIDE (2026-06-08): NO LMS AT ALL.** This blueprint's advice to "keep the current
+> training-system/LMS pages live as a secondary solution page" is **rejected** — QuarterSmart is not to
+> be positioned, named, or described around an LMS, course studio, or training-content product anywhere.
+> Kept here for reference/provenance only.
+
 # Dual Logic Audit and QuarterSmart Positioning Blueprint
 
 ## Executive summary

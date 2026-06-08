@@ -105,13 +105,27 @@ is mostly **logo swap + copy/positioning changes**, not a palette overhaul.
 
 ---
 
-## 5. Strategy / positioning — see `research/quartersmart-positioning-blueprint.md`
+## 5. Strategy / positioning
 
-Core thesis from the research: reposition QuarterSmart from "AI-powered LMS / course studio" to an
-**"AI implementation and adoption partner for operational teams."** Package ladder:
-**Readiness Sprint → Pilot + Enablement → Rollout Partner**. LMS becomes an optional delivery artifact,
-not the lead offer. Full detail (pricing, messaging, SEO/entity model, case-study template) is in the
-research file. This informs the rebrand copy.
+**Canonical:** `research/quartersmart-positioning-playbook.md` (detailed: copy, pricing, 90-day plan,
+entity consolidation, case-study scaffold). `research/quartersmart-positioning-blueprint.md` is an
+earlier, superseded version kept for provenance.
+
+Core thesis: reposition QuarterSmart from "AI-powered LMS / course studio" to an
+**"AI implementation and workforce enablement partner."** Method:
+**Assess → Train → Pilot → Automate → Scale → Measure.** Proof anchor: *verified n8n creator with 25
+public workflow templates.*
+
+> ### 🚫 HARD RULE — NO LMS (owner directive, 2026-06-08)
+> QuarterSmart is **NOT about an LMS, course studio, instructional design, or training-content product —
+> at all.** Do not position, name, headline, or describe the company around LMS / courses / "training
+> platform" / "rollout hub LMS" in any public-facing copy, meta, or schema. The research docs that suggest
+> keeping LMS "as a supporting asset / secondary page" are **overridden** — drop it entirely.
+> The underlying *capability* (secure knowledge systems, AI assistants grounded in client SOPs/docs,
+> secure deployment) may still be offered, but **never branded or led as an LMS / training platform**.
+> Lead with: AI implementation, workforce enablement, AI rollout, workflow automation, knowledge systems,
+> secure deployment. Avoid: "AI LMS," "course development," "instructional design," "chatbot builder,"
+> "automation freelancer."
 
 ---
 
@@ -126,6 +140,10 @@ research file. This informs the rebrand copy.
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-08 (later)** — Owner directive: **NO LMS at all** (see §5 hard rule). Added canonical
+  `research/quartersmart-positioning-playbook.md` (Assess→Train→Pilot→Automate→Scale→Measure; 6 service
+  offers; pricing; 90-day plan; entity consolidation Hyrum→QuarterSmart, AI Ed 301s/nests under it).
+  Marked the earlier blueprint superseded. Updated `docs/REBRAND_PLAN.md` to the no-LMS, 6-stage model.
 - **2026-06-08** — Mirrored live aied.dev into this repo, rewrote paths for the `/quartersmart-web/`
   subpath, deployed to GitHub Pages (all 14 pages + all 5 frame sequences verified 200). Added brand kit
   (`brand/`), positioning research (`research/`), and this agent-handoff setup. Next: begin QuarterSmart
