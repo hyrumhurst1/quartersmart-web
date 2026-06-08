@@ -140,6 +140,13 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-08 (structure)** — Owner: positioning is **teams-only**, so removed the separate audience
+  pages — **deleted `teams/`, `government/`, `schools/`**. Repointed all their CTAs to the assessment
+  contact (`mailto:learn@aied.dev`) and the home `#how-it-works` anchor; stripped Teams/Government from
+  nav (home + radar); reframed the home "Who it's for" cards to *Operational teams* + *Regulated & secure
+  environments*; removed the entries from sitemap.xml and llms.txt; unlinked two editorial refs in the
+  weekly-advancements signals post. Site is now: home, about, radar (Signals), 6 signals posts, privacy,
+  terms, coming-soon. Do not re-add audience pages without owner direction.
 - **2026-06-08 (rebrand)** — Executed the full QuarterSmart rebrand across all 15 pages (copywriting +
   seo-geo/AEO + seo-content methodologies, via a multi-agent workflow + adversarial QA). All pages now
   QuarterSmart, no-LMS, positioned as AI implementation & workforce enablement partner; JSON-LD added

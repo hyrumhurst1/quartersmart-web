@@ -22,9 +22,6 @@ QuarterSmart follows a six-step rollout: Assess → Train → Pilot → Automate
 
 - [Home](https://aied.dev/): positioning, method, and services
 - [About Hyrum Hurst](https://aied.dev/about.html): founder background and credentials
-- [Teams](https://aied.dev/teams/): AI rollout for operational teams
-- [Government](https://aied.dev/government/): secure AI implementation for the public sector
-- [Schools](https://aied.dev/schools/): AI enablement and automation for education organizations
 - [Signals](https://aied.dev/radar.html): QuarterSmart AI news and insight
 
 ## Key facts
