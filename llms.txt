@@ -40,4 +40,4 @@ QuarterSmart follows a six-step rollout: Assess → Train → Pilot → Automate
 - Team: Hyrum Hurst (Founder), Cullen Brown (Operator and Outreach Manager)
 
 ---
-Last updated: 2026-06-08
+Last updated: 2026-06-09

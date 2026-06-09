@@ -259,10 +259,10 @@ var WEBHOOK_URL = 'https://structureproperties.app.n8n.cloud/webhook/b43bcf80-ce
   var params = new URLSearchParams(window.location.search);
   var page = params.get('page') || '';
   var names = {
-    'courses': 'Courses',
+    'courses': 'Services',
     'radar': 'AI Radar',
-    'partners': 'Partners & Volunteers',
-    'login': 'Student Portal'
+    'partners': 'Partners',
+    'login': 'Client Portal'
   };
   var el = document.getElementById('page-name');
   if (names[page]) {

@@ -140,6 +140,24 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-09 (full revamp)** — Structural + perf + AEO overhaul. (1) **Section order** now ends on the
+  CTA: hero → ignite scroll → problem → how-it-works (+inline CTA) → services → who-its-for → partners →
+  FAQ → rocket → CTA → footer. The **loop-vid section was deleted entirely** (HTML+CSS+JS+9MB video).
+  (2) **Perf:** hero video re-encoded 10.7MB→0.44MB + poster (assets/images/hero-poster.webp, preloaded);
+  ignite/flying/radar frames recompressed (58MB radar→8.6MB); flying frames + ignite batch-2 now lazy-load
+  via IntersectionObserver; home-rocket canvas rewritten (DPR-capped once-sizing, cover-fit, reduced-motion,
+  rAF-throttled); nav blur 48→20px; grain 0.18→0.07; ~470 lines dead CSS purged (splash/curtain/orbs/
+  grid/waves/scroll-cue/loop). **Deleted assets:** scroll-frames (apple), rocket-frames, loop-bg.mp4,
+  aied-splash.mp4, og-teams/og-government. ⚠️ §2's animation table is now: ignite (home scroll, 96),
+  flying (home rocket, 96), radar (radar.html, 120). Site weight 117MB→30MB. (3) **Funnel:** prefilled-
+  subject mailtos everywhere, hero fine-print risk-reversal, inline CTA after how-it-works, nav anchors
+  (How it works / Services), single-button final CTA, card footers now link to #cta. (4) **AEO:** new
+  citable "What is QuarterSmart?" FAQ (first position, mirrored in FAQPage schema, 7/7 parity), enriched
+  Organization schema (foundingDate, slogan, member incl. Cullen, knowsAbout, founder sameAs), about.html
+  retitled "Hyrum Hurst | Founder of QuarterSmart", 5 signals pages got absolute og:image URLs, og-weekly
+  regenerated QuarterSmart-branded. (5) Copy de-clichéd (one "X not Y" max, no list repetition, concrete
+  example in Automate card). Logos now .webp in HTML (PNGs kept for OG generation).
+
 - **2026-06-08 (full rewrite)** — Ran a 6-lens audit (funnel, credibility, SEO/AEO, animation, perf, copy),
   then rewrote. Key changes: (1) **NO em dashes** anywhere (purged 215, verified 0). (2) Hyrum's PERSONAL
   stats (#49 / 25 templates / top-50) **removed from the homepage**; homepage keeps only company framing
