@@ -81,85 +81,6 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 
-/* ── CURTAIN (matches home site exactly) ── */
-#curtain {
-  position: fixed; inset: 0; z-index: 199; pointer-events: none;
-}
-#curtain-top-half, #curtain-bot-half {
-  position: absolute; left: 0; right: 0;
-  background: var(--bg); overflow: hidden;
-}
-#curtain-top-half { top: 0; height: 50%; }
-#curtain-bot-half { bottom: 0; height: 50%; }
-#curtain-top-half::after, #curtain-bot-half::after {
-  content: ''; position: absolute; inset: 0; opacity: 0.25;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  background-repeat: repeat; background-size: 180px; pointer-events: none;
-}
-#curtain-top-half .curtain-edge {
-  position: absolute; bottom: -60px; left: -5%; width: 110%; height: 60px;
-  background: var(--bg); border-radius: 0 0 50% 50%;
-}
-#curtain-bot-half .curtain-edge {
-  position: absolute; top: -60px; left: -5%; width: 110%; height: 60px;
-  background: var(--bg); border-radius: 50% 50% 0 0;
-}
-/* Particle canvas on curtain halves */
-.curtain-particles {
-  position: absolute; inset: 0; pointer-events: none;
-}
-
-/* ── SPLASH ────────────────────────────── */
-#radar-splash {
-  position: fixed; inset: 0; z-index: 1001;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  background: var(--bg);
-  transition: opacity 0.7s ease;
-}
-#radar-splash.fading { opacity: 0; }
-#splash-canvas {
-  position: fixed; top: 0; left: 0;
-  width: 100%; height: 100%; z-index: 0; pointer-events: none;
-}
-#splash-center {
-  position: relative; z-index: 1;
-  display: flex; flex-direction: column; align-items: center;
-}
-#radar-image {
-  width: 160px; height: 160px;
-  object-fit: contain;
-  object-position: center top;
-  opacity: 0;
-  margin-bottom: -40px;
-  transition: opacity 1.4s cubic-bezier(0.4,0,0.2,1);
-}
-#radar-image.visible { opacity: 1; }
-#aied-logo {
-  width: 70px; height: auto;
-  opacity: 0; margin-top: 0;
-  transition: opacity 0.8s ease;
-}
-#aied-logo.visible { opacity: 0.45; }
-#radar-title {
-  margin-top: 2px; font-family: 'JetBrains Mono', monospace;
-  font-size: 16px; font-weight: 500; letter-spacing: 0.4em;
-  color: var(--accent); opacity: 0; transition: opacity 0.4s ease;
-  position: relative; z-index: 1;
-}
-#radar-title.visible { opacity: 1; }
-.type-cursor {
-  display: inline-block; width: 2px; height: 18px;
-  background: var(--accent); margin-left: 3px; vertical-align: middle;
-  animation: blink 0.5s step-end infinite;
-}
-@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
-#radar-splash::after {
-  content: ''; position: absolute; inset: 0;
-  background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,229,160,0.006) 2px,rgba(0,229,160,0.006) 4px);
-  pointer-events: none; z-index: 0;
-}
-
 /* ── FIXED FRAME BACKGROUND ───────────── */
 #radar-bg {
   position: fixed; top: 0; left: 0;
@@ -495,28 +416,6 @@ a { color: inherit; text-decoration: none; }
 </head>
 <body>
 
-<!-- CURTAIN -->
-<div id="curtain" aria-hidden="true">
-  <div id="curtain-top-half">
-    <canvas class="curtain-particles" id="curtain-particles-top"></canvas>
-    <div class="curtain-edge"></div>
-  </div>
-  <div id="curtain-bot-half">
-    <canvas class="curtain-particles" id="curtain-particles-bot"></canvas>
-    <div class="curtain-edge"></div>
-  </div>
-</div>
-
-<!-- SPLASH LOADING -->
-<div id="radar-splash">
-  <canvas id="splash-canvas" aria-hidden="true"></canvas>
-  <div id="splash-center">
-    <img id="radar-image" src="Untitled design (3).png" alt="Radar" draggable="false">
-    <img id="aied-logo" src="logos/quartersmart-q.png" alt="QuarterSmart" draggable="false">
-    <div id="radar-title"></div>
-  </div>
-</div>
-
 <!-- FIXED FRAME BACKGROUND (cursor-controlled) -->
 <div id="radar-bg">
   <canvas id="radar-canvas"></canvas>
@@ -655,174 +554,16 @@ a { color: inherit; text-decoration: none; }
 <script>
 (function() {
 
-  // ── PARTICLE SYSTEM (shared for splash + curtain) ──
-  var colors = [[0,229,160],[180,220,240],[0,200,180],[100,255,200],[220,240,255]];
-
-  function createParticles(count, w, h) {
-    var arr = [];
-    for (var i = 0; i < count; i++) {
-      var c = colors[Math.floor(Math.random() * colors.length)];
-      arr.push({
-        x: Math.random() * w, y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 2.2 + 0.2,
-        baseO: Math.random() * 0.35 + 0.05,
-        phase: Math.random() * Math.PI * 2,
-        speed: Math.random() * 0.012 + 0.004,
-        c: c
-      });
+  // ── INSTANT REVEAL (splash removed) ─────
+  (function() {
+    var hc = document.getElementById('hero-content');
+    if (hc) hc.classList.add('visible');
+    var hint = document.getElementById('scrub-hint');
+    if (hint) {
+      hint.classList.add('visible');
+      setTimeout(function() { hint.classList.remove('visible'); }, 4000);
     }
-    return arr;
-  }
-
-  function drawParticleField(ctx, particles, w, h, mx, my) {
-    ctx.clearRect(0, 0, w, h);
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
-      p.phase += p.speed;
-      p.x += p.vx; p.y += p.vy;
-      if (mx > 0) {
-        var dx = p.x - mx, dy = p.y - my, dist = Math.sqrt(dx*dx+dy*dy);
-        if (dist < 180 && dist > 0) { var push = (1-dist/180)*0.25; p.vx += (dx/dist)*push; p.vy += (dy/dist)*push; }
-      }
-      p.vx *= 0.997; p.vy *= 0.997;
-      if (p.x < -10) p.x = w+10; if (p.x > w+10) p.x = -10;
-      if (p.y < -10) p.y = h+10; if (p.y > h+10) p.y = -10;
-      var alpha = p.baseO * (0.45 + 0.55 * Math.sin(p.phase));
-      if (p.r > 1.2) {
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r*4, 0, Math.PI*2);
-        ctx.fillStyle = 'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+(alpha*0.06)+')'; ctx.fill();
-      }
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+alpha+')'; ctx.fill();
-    }
-    for (var i = 0; i < particles.length; i++) {
-      for (var j = i+1; j < particles.length; j++) {
-        var dx = particles[i].x-particles[j].x, dy = particles[i].y-particles[j].y, d = dx*dx+dy*dy;
-        if (d < 14400) {
-          ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = 'rgba(0,229,160,'+(0.07*(1-Math.sqrt(d)/120))+')'; ctx.lineWidth = 0.5; ctx.stroke();
-        }
-      }
-    }
-  }
-
-  // ── SPLASH PARTICLES ────────────────────
-  var sCanvas = document.getElementById('splash-canvas');
-  var sCtx = sCanvas.getContext('2d');
-  var splashRunning = true;
-  var mx = -1, my = -1;
-  function resizeSplash() { sCanvas.width = window.innerWidth; sCanvas.height = window.innerHeight; }
-  resizeSplash();
-  window.addEventListener('resize', resizeSplash);
-  var splashParticles = createParticles(100, sCanvas.width, sCanvas.height);
-  document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
-
-  function splashLoop() {
-    if (!splashRunning) return;
-    drawParticleField(sCtx, splashParticles, sCanvas.width, sCanvas.height, mx, my);
-    requestAnimationFrame(splashLoop);
-  }
-  splashLoop();
-
-  // ── CURTAIN PARTICLES ───────────────────
-  var cpTop = document.getElementById('curtain-particles-top');
-  var cpBot = document.getElementById('curtain-particles-bot');
-  var cpTopCtx = cpTop.getContext('2d');
-  var cpBotCtx = cpBot.getContext('2d');
-  var curtainRunning = true;
-
-  function resizeCurtainCanvases() {
-    var w = window.innerWidth, h = window.innerHeight / 2;
-    cpTop.width = w; cpTop.height = h;
-    cpBot.width = w; cpBot.height = h;
-  }
-  resizeCurtainCanvases();
-  window.addEventListener('resize', resizeCurtainCanvases);
-
-  var curtainParticlesTop = createParticles(50, cpTop.width, cpTop.height);
-  var curtainParticlesBot = createParticles(50, cpBot.width, cpBot.height);
-
-  function curtainParticleLoop() {
-    if (!curtainRunning) return;
-    drawParticleField(cpTopCtx, curtainParticlesTop, cpTop.width, cpTop.height, -1, -1);
-    drawParticleField(cpBotCtx, curtainParticlesBot, cpBot.width, cpBot.height, -1, -1);
-    requestAnimationFrame(curtainParticleLoop);
-  }
-  curtainParticleLoop();
-
-  // ── SPLASH SEQUENCE ─────────────────────
-  setTimeout(function() { document.getElementById('radar-image').classList.add('visible'); }, 400);
-  setTimeout(function() { document.getElementById('aied-logo').classList.add('visible'); }, 1200);
-  setTimeout(function() {
-    var el = document.getElementById('radar-title');
-    el.classList.add('visible');
-    typeIt('RADAR', 0, el);
-  }, 2200);
-
-  function typeIt(t, i, el) {
-    if (i <= t.length) {
-      el.innerHTML = t.substring(0, i) + '<span class="type-cursor"></span>';
-      setTimeout(function() { typeIt(t, i+1, el); }, 130);
-    } else {
-      setTimeout(function() { el.innerHTML = t; openCurtain(); }, 900);
-    }
-  }
-
-  // ── CURTAIN OPEN (same timing as home site) ──
-  function openCurtain() {
-    var splash = document.getElementById('radar-splash');
-    splash.classList.add('fading');
-    setTimeout(function() {
-      splash.style.display = 'none';
-      splashRunning = false;
-
-      var curtain = document.getElementById('curtain');
-      var topHalf = document.getElementById('curtain-top-half');
-      var botHalf = document.getElementById('curtain-bot-half');
-      var topEdge = topHalf.querySelector('.curtain-edge');
-      var botEdge = botHalf.querySelector('.curtain-edge');
-      var start = null;
-      var duration = 2000;
-      var vh = window.innerHeight;
-
-      function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
-
-      function animateIris(ts) {
-        if (!start) start = ts;
-        var t = Math.min((ts - start) / duration, 1);
-        var gap;
-        if (t < 0.15) {
-          var p = t / 0.15;
-          gap = p * p * 0.03 * vh;
-        } else {
-          var p2 = (t - 0.15) / 0.85;
-          gap = (0.03 + easeOutExpo(p2) * 1.1) * vh;
-        }
-        var halfGap = gap / 2;
-        topHalf.style.transform = 'translateY(-' + halfGap + 'px)';
-        botHalf.style.transform = 'translateY(' + halfGap + 'px)';
-        var edgeH = Math.min(gap * 0.8, 120);
-        topEdge.style.height = edgeH + 'px'; topEdge.style.bottom = '-' + edgeH + 'px';
-        botEdge.style.height = edgeH + 'px'; botEdge.style.top = '-' + edgeH + 'px';
-        if (t < 1) {
-          requestAnimationFrame(animateIris);
-        } else {
-          curtain.style.display = 'none';
-          curtainRunning = false;
-          // Fade in hero content
-          setTimeout(function() {
-            var hc = document.getElementById('hero-content');
-            if (hc) hc.classList.add('visible');
-          }, 200);
-          var hint = document.getElementById('scrub-hint');
-          hint.classList.add('visible');
-          setTimeout(function() { hint.classList.remove('visible'); }, 4000);
-        }
-      }
-      requestAnimationFrame(animateIris);
-    }, 700);
-  }
+  })();
 
   // ── CURSOR-CONTROLLED FRAME SCRUBBING ───
   var FRAME_COUNT = 120;
