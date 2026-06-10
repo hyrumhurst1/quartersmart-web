@@ -148,8 +148,7 @@ public workflow templates.*
   via IntersectionObserver; home-rocket canvas rewritten (DPR-capped once-sizing, cover-fit, reduced-motion,
   rAF-throttled); nav blur 48→20px; grain 0.18→0.07; ~470 lines dead CSS purged (splash/curtain/orbs/
   grid/waves/scroll-cue/loop). **Deleted assets:** scroll-frames (apple), rocket-frames, loop-bg.mp4,
-  aied-splash.mp4, og-teams/og-government. ⚠️ §2's animation table is now: ignite (home scroll, 96),
-  flying (home rocket, 96), radar (radar.html, 120). Site weight 117MB→30MB. (3) **Funnel:** prefilled-
+  aied-splash.mp4, og-teams/og-government. ⚠️ §2's animation table is now: ignite (home scroll launch, 96), flying (home rocket cruise, 96), rocket (about.html flight-over-earth, 96, restored from git 2026-06-09), radar (radar.html cursor scrub, 120). Radar's splash/curtain intro was removed 2026-06-09 (instant reveal). Site weight 117MB→30MB. (3) **Funnel:** prefilled-
   subject mailtos everywhere, hero fine-print risk-reversal, inline CTA after how-it-works, nav anchors
   (How it works / Services), single-button final CTA, card footers now link to #cta. (4) **AEO:** new
   citable "What is QuarterSmart?" FAQ (first position, mirrored in FAQPage schema, 7/7 parity), enriched
