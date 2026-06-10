@@ -1257,6 +1257,18 @@ input:focus-visible {
   position: relative;
   height: 400vh;
 }
+.home-rocket-sticky::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 180px;
+  background: linear-gradient(to bottom, #060608, transparent);
+  z-index: 2; pointer-events: none;
+}
+.home-rocket-sticky::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 180px;
+  background: linear-gradient(to top, #060608, transparent);
+  z-index: 2; pointer-events: none;
+}
 .home-rocket-sticky {
   position: sticky;
   top: 0;
@@ -1318,6 +1330,18 @@ input:focus-visible {
 }
 .mid-rocket-sticky {
   position: sticky; top: 0; height: 100vh; overflow: hidden;
+}
+.mid-rocket-sticky::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 180px;
+  background: linear-gradient(to bottom, #060608, transparent);
+  z-index: 2; pointer-events: none;
+}
+.mid-rocket-sticky::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 180px;
+  background: linear-gradient(to top, #060608, transparent);
+  z-index: 2; pointer-events: none;
 }
 #mid-rocket-canvas { width: 100%; height: 100%; display: block; }
 .mid-rocket-overlay {
@@ -1694,32 +1718,17 @@ input:focus-visible {
   </div>
 </div>
 
-<!-- LOOP VIDEO, ambient bg with scroll-driven text -->
-<div id="loop-vid">
-  <div class="loop-sticky">
-    <video class="loop-video" muted loop playsinline preload="none" aria-hidden="true">
-      <source src="assets/video/loop-bg.mp4" type="video/mp4">
-    </video>
-    <div class="loop-scrim"></div>
-    <div class="loop-text">
-      <div class="loop-line" id="ll-1">
-        <span class="mono-tag">Week one</span>
-        <h2>We map where<br><em>AI pays off.</em></h2>
-        <p>Workflow by workflow. Where time is lost, where errors creep in, and which fixes are worth building first.</p>
-      </div>
-      <div class="loop-line" id="ll-2">
-        <span class="mono-tag">Week four</span>
-        <h2>Your pilot<br>is <em>live.</em></h2>
-        <p>A real automation running against a real workflow, with your team trained on it and success criteria everyone agreed to.</p>
-      </div>
-      <div class="loop-line" id="ll-3">
-        <span class="mono-tag">Week twelve</span>
-        <h2>Your team runs it<br><em>without us.</em></h2>
-        <p>Champions inside the team, adoption you can measure, and a clear list of what to automate next.</p>
-      </div>
+<!-- MID ROCKET, flight over earth -->
+<section id="mid-rocket" aria-label="Rocket in flight over Earth">
+  <div class="mid-rocket-sticky">
+    <canvas id="mid-rocket-canvas" aria-hidden="true"></canvas>
+    <div class="mid-rocket-overlay"></div>
+    <div class="mid-rocket-text" id="mrt-1">
+      <p class="rocket-heading">What proves out,<br><em>scales.</em></p>
+      <p>Across more roles, more teams, and more locations, with secure deployment when the work requires it.</p>
     </div>
   </div>
-</div>
+</section>
 
 <!-- WHO'S IT FOR -->
 <div id="who-its-for">
@@ -1775,17 +1784,32 @@ input:focus-visible {
   </div>
 </div>
 
-<!-- MID ROCKET, flight over earth -->
-<section id="mid-rocket" aria-label="Rocket in flight over Earth">
-  <div class="mid-rocket-sticky">
-    <canvas id="mid-rocket-canvas" aria-hidden="true"></canvas>
-    <div class="mid-rocket-overlay"></div>
-    <div class="mid-rocket-text" id="mrt-1">
-      <p class="rocket-heading">What proves out,<br><em>scales.</em></p>
-      <p>Across more roles, more teams, and more locations, with secure deployment when the work requires it.</p>
+<!-- LOOP VIDEO, ambient bg with scroll-driven text -->
+<div id="loop-vid">
+  <div class="loop-sticky">
+    <video class="loop-video" muted loop playsinline preload="none" aria-hidden="true">
+      <source src="assets/video/loop-bg.mp4" type="video/mp4">
+    </video>
+    <div class="loop-scrim"></div>
+    <div class="loop-text">
+      <div class="loop-line" id="ll-1">
+        <span class="mono-tag">Week one</span>
+        <h2>We map where<br><em>AI pays off.</em></h2>
+        <p>Workflow by workflow. Where time is lost, where errors creep in, and which fixes are worth building first.</p>
+      </div>
+      <div class="loop-line" id="ll-2">
+        <span class="mono-tag">Week four</span>
+        <h2>Your pilot<br>is <em>live.</em></h2>
+        <p>A real automation running against a real workflow, with your team trained on it and success criteria everyone agreed to.</p>
+      </div>
+      <div class="loop-line" id="ll-3">
+        <span class="mono-tag">Week twelve</span>
+        <h2>Your team runs it<br><em>without us.</em></h2>
+        <p>Champions inside the team, adoption you can measure, and a clear list of what to automate next.</p>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- FAQ -->
 <div id="faq">
