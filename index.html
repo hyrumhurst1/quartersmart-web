@@ -80,7 +80,7 @@ body::after {
   background-size: 180px;
 }
 
-#hero, #scroll-anim, #problem, #how-it-works, #courses,
+#hero, #scroll-anim, #loop-vid, #problem, #how-it-works, #courses,
 #partners, #cta, #faq, footer {
   position: relative; z-index: 1;
 }
@@ -618,6 +618,105 @@ footer {
   opacity: 0.6;
   margin-bottom: 14px;
   display: block;
+}
+
+/* ── LOOP VIDEO SECTION ──────────────── */
+#loop-vid {
+  position: relative;
+  height: 260vh;
+  background: #060608;
+}
+.loop-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.loop-sticky::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 160px;
+  background: linear-gradient(to bottom, #060608, transparent);
+  z-index: 2; pointer-events: none;
+}
+.loop-sticky::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 160px;
+  background: linear-gradient(to top, #060608, transparent);
+  z-index: 2; pointer-events: none;
+}
+.loop-video {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto;
+  object-fit: cover;
+}
+.loop-scrim {
+  position: absolute; inset: 0;
+  background: rgba(6,6,8,0.55);
+  z-index: 1;
+}
+.loop-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  text-align: center;
+}
+.loop-line {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%) translateY(24px);
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  pointer-events: none;
+  max-width: 560px;
+  width: 90%;
+}
+.loop-line.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+  pointer-events: auto;
+}
+.loop-line h2 {
+  font-size: clamp(28px, 3.6vw, 48px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.6);
+}
+.loop-line h2 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.loop-line p {
+  font-size: 16px;
+  color: rgba(240,244,248,0.78);
+  line-height: 1.7;
+  text-shadow: 0 1px 20px rgba(0,0,0,0.5);
+}
+.loop-line .mono-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-bottom: 14px;
+  display: block;
+}
+@media (max-width: 768px) {
+  #loop-vid { height: 230vh; }
+  .loop-line h2 { font-size: clamp(22px, 5.5vw, 32px); }
+  .loop-line p { font-size: 14px; }
+}
+@media (max-width: 480px) {
+  #loop-vid { height: 210vh; }
 }
 
 /* ── HOW IT WORKS ─────────────────────── */
@@ -1560,6 +1659,33 @@ input:focus-visible {
   </div>
 </div>
 
+<!-- LOOP VIDEO, ambient bg with scroll-driven text -->
+<div id="loop-vid">
+  <div class="loop-sticky">
+    <video class="loop-video" muted loop playsinline preload="none" aria-hidden="true">
+      <source src="assets/video/loop-bg.mp4" type="video/mp4">
+    </video>
+    <div class="loop-scrim"></div>
+    <div class="loop-text">
+      <div class="loop-line" id="ll-1">
+        <span class="mono-tag">Week one</span>
+        <h2>We map where<br><em>AI pays off.</em></h2>
+        <p>Workflow by workflow. Where time is lost, where errors creep in, and which fixes are worth building first.</p>
+      </div>
+      <div class="loop-line" id="ll-2">
+        <span class="mono-tag">Week four</span>
+        <h2>Your pilot<br>is <em>live.</em></h2>
+        <p>A real automation running against a real workflow, with your team trained on it and success criteria everyone agreed to.</p>
+      </div>
+      <div class="loop-line" id="ll-3">
+        <span class="mono-tag">Week twelve</span>
+        <h2>Your team runs it<br><em>without us.</em></h2>
+        <p>Champions inside the team, adoption you can measure, and a clear list of what to automate next.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- WHO'S IT FOR -->
 <div id="who-its-for">
   <div class="who-inner">
@@ -1891,6 +2017,63 @@ input:focus-visible {
         sl3.classList.add('visible');
       });
     }
+  })();
+
+  // ── LOOP VIDEO, SCROLL TEXT ──────────────────
+  (function() {
+    var section = document.getElementById('loop-vid');
+    if (!section) return;
+    var video = section.querySelector('.loop-video');
+    var ll1 = document.getElementById('ll-1');
+    var ll2 = document.getElementById('ll-2');
+    var ll3 = document.getElementById('ll-3');
+    var current = null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Video only loads/plays when the section approaches; pauses when far away.
+    if ('IntersectionObserver' in window && video) {
+      var vio = new IntersectionObserver(function(es) {
+        es.forEach(function(e) {
+          if (e.isIntersecting) { if (!reduce) video.play().catch(function(){}); }
+          else { video.pause(); }
+        });
+      }, { rootMargin: '50% 0px' });
+      vio.observe(section);
+    } else if (video && !reduce) {
+      video.play().catch(function(){});
+    }
+
+    if (reduce) {
+      if (ll2) ll2.classList.add('visible');
+      return;
+    }
+
+    function onScroll() {
+      var rect = section.getBoundingClientRect();
+      var sectionH = section.offsetHeight;
+      var viewH = window.innerHeight;
+      var scrolled = -rect.top;
+      var total = sectionH - viewH;
+      var progress = Math.max(0, Math.min(1, scrolled / total));
+
+      var next = null;
+      if (progress > 0.05 && progress < 0.30) next = ll1;
+      else if (progress >= 0.30 && progress < 0.62) next = ll2;
+      else if (progress >= 0.62 && progress < 0.95) next = ll3;
+
+      if (next !== current) {
+        if (current) current.classList.remove('visible');
+        if (next) next.classList.add('visible');
+        current = next;
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function() { ticking = false; onScroll(); });
+    }, { passive: true });
   })();
 
   // ── FAQ ACCORDION ─────────────────────────
