@@ -140,6 +140,15 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-09 (entity build-out)** - Executed the 10-task GEO brief. about.html is now the canonical
+  entity page (Mesa AZ location, team intro, anchors #hyrum-hurst/#cullen-brown/#public-proof/
+  #n8n-workflows/#credentials/#entity-summary, proof grid, entity summary, merged schema graph with
+  stable @ids: AboutPage/Organization+address/Person Hyrum rich sameAs/Person Cullen/Service). THREE NEW
+  PAGES: /ai-implementation/, /workforce-enablement/, /n8n-automation/ (full meta, FAQ schema,
+  cross-linked, in sitemap, in home footer). llms.txt rewritten per brief (Mesa, six stages, people,
+  evidence with real URLs). Schema @id convention: about.html#hyrum-hurst and about.html#cullen-brown
+  are now THE stable Person ids; do not change them. NEW FACT: QuarterSmart is based in Mesa, Arizona.
+
 - **2026-06-09 (full revamp)** — Structural + perf + AEO overhaul. (1) **Section order** now ends on the
   CTA: hero → ignite scroll → problem → how-it-works (+inline CTA) → services → who-its-for → partners →
   FAQ → rocket → CTA → footer. The **loop-vid section was deleted entirely** (HTML+CSS+JS+9MB video).
