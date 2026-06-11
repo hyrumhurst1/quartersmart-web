@@ -140,6 +140,18 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-11 (verifiable metrics + associations)** - (1) NEW /workflow-usage/ methodology page: full
+  per-template table of all 25 n8n templates, total **10,876 documented uses** (June 2026), definitions
+  of what the number does and does not mean, Dataset schema. (2) Replaced every "10,000+ people run
+  QuarterSmart workflows" claim sitewide with the use-based metric linked to the methodology page
+  (METRIC RULE: uses, not people; never imply unique users or customers). (3) about.html gained an
+  "Experience and collaborations" section (#experience) naming Learning Journey AI + Nicholas Wagner
+  Ph.D. (IDA national security AI, NSF AAAS Fellow, State Dept Speakers Program, SCSP AI+ Expo workshop;
+  all verified on learningjourneyai.com/about), Dual Logic, Structure Properties/Quackfolio, Ability
+  Builders. RULE REFINED: named work-history companies are now ALLOWED on about.html framed as Hyrum's
+  experience; still never framed as QuarterSmart clients. (4) NEW ENTITY_HANDOFF.md (unpublished) = the
+  master fact file for agents building Hyrum's OTHER sites (hyrumhurst.com, hyrum-ai, AI hub).
+
 - **2026-06-09 (entity build-out)** - Executed the 10-task GEO brief. about.html is now the canonical
   entity page (Mesa AZ location, team intro, anchors #hyrum-hurst/#cullen-brown/#public-proof/
   #n8n-workflows/#credentials/#entity-summary, proof grid, entity summary, merged schema graph with

@@ -33,12 +33,13 @@ QuarterSmart is run by founder Hyrum Hurst and operator Cullen Brown. Hyrum Hurs
 
 ## People
 
-- Hyrum Hurst: Founder of QuarterSmart, AI systems and automation specialist based in Mesa, Arizona. Verified top-50 n8n creator (#49) with 25 published workflow templates and 10,000+ total uses.
+- Hyrum Hurst: Founder of QuarterSmart, AI systems and automation specialist based in Mesa, Arizona. Verified top-50 n8n creator (#49) with 25 published workflow templates and 10,876 documented uses across the n8n community (June 2026). Also AI Associate at Learning Journey AI, a Washington DC AI education consultancy founded by Nicholas Wagner, Ph.D., a former AAAS Science and Technology Policy Fellow at the National Science Foundation with AI and national security experience at the Institute for Defense Analyses; the Learning Journey AI team has delivered hands-on AI coding workshops at events including the SCSP AI+ Expo in Washington DC.
 - Cullen Brown: Operator and outreach manager at QuarterSmart.
 
 ## Public Evidence
 
 - Hyrum Hurst n8n creator profile: https://n8n.io/creators/hyrum-hurst
+- Workflow usage data and methodology (10,876 documented uses, per-template table): https://quartersmart.com/workflow-usage/
 - CyberNews feature quoting Hyrum Hurst on local AI models: https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/
 - Qwoted source profile: https://app.qwoted.com/sources/hyrum-hurst
 - LinkedIn: https://www.linkedin.com/in/hyrum-hurst-83a5a537a/
@@ -60,4 +61,4 @@ QuarterSmart is best understood as an AI implementation and workforce enablement
 - Email: hyrum@quartersmart.com
 
 ---
-Last updated: 2026-06-09
+Last updated: 2026-06-11
