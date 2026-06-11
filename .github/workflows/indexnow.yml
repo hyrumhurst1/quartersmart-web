@@ -1,0 +1,46 @@
+name: IndexNow ping
+
+# On every push to main (i.e., every deploy), tell Bing/IndexNow which URLs
+# exist by reading the live sitemap and submitting it. Push-based indexing:
+# Bing typically crawls within minutes instead of days.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Netlify deploy to go live
+        run: sleep 90
+
+      - name: Submit sitemap URLs to IndexNow
+        run: |
+          KEY="d591360aa424cff14713dc6970f59a91"
+          HOST="quartersmart.com"
+          # pull the live sitemap and extract URLs
+          URLS=$(curl -s "https://$HOST/sitemap.xml" | grep -oE '<loc>[^<]+</loc>' | sed -E 's#</?loc>##g')
+          COUNT=$(echo "$URLS" | wc -l)
+          echo "Submitting $COUNT URLs from sitemap"
+          # build JSON url list
+          URL_JSON=$(echo "$URLS" | sed 's/^/"/; s/$/"/' | paste -sd, -)
+          BODY=$(cat <<JSON
+          {
+            "host": "$HOST",
+            "key": "$KEY",
+            "keyLocation": "https://$HOST/$KEY.txt",
+            "urlList": [$URL_JSON]
+          }
+          JSON
+          )
+          HTTP=$(curl -s -o /tmp/resp.txt -w "%{http_code}" -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$BODY")
+          echo "IndexNow response: HTTP $HTTP"
+          cat /tmp/resp.txt || true
+          # 200 = ok, 202 = accepted (key validation pending) — both are success
+          if [ "$HTTP" != "200" ] && [ "$HTTP" != "202" ]; then
+            echo "IndexNow submission failed" && exit 1
+          fi
