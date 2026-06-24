@@ -1,8 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="QuarterSmart">
   <rect width="64" height="64" rx="14" fill="#0c1016"/>
-  <g transform="translate(32 32) scale(0.42) translate(-60 -60)">
-    <path d="M100 60 A40 40 0 1 1 60 20" fill="none" stroke="#00e5a0" stroke-width="16" stroke-linecap="butt"/>
-    <path d="M60 20 A40 40 0 0 1 100 60" fill="none" stroke="#f0f4f8" stroke-width="16" stroke-linecap="butt"/>
-    <line x1="78" y1="78" x2="102" y2="102" stroke="#00e5a0" stroke-width="16" stroke-linecap="square"/>
+  <g transform="translate(32 32) scale(0.5) translate(-50 -50)">
+    <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+    <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+    <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+    <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="#00e5a0"/>
+    <rect x="48.4" y="6" width="3.2" height="88" fill="#0c1016"/>
+    <rect x="6" y="48.4" width="88" height="3.2" fill="#0c1016"/>
   </g>
 </svg>

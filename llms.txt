@@ -1,64 +1,38 @@
 # QuarterSmart
 
-QuarterSmart is an AI implementation and workforce enablement company based in Mesa, Arizona. QuarterSmart helps organizations move from scattered AI experiments to measurable operational adoption. It is a services partner, not a course platform, training catalog, or LMS.
+> QuarterSmart builds AI onboarding, training, and automation systems for growing teams. We turn each SOP into two things at once: a training course your team learns from (AI-generated video, quizzes, certification) and an automation that runs the task itself (n8n, Zapier, Power Automate). Same source, two outputs. Tagline: Train your team. Automate the rest.
 
-QuarterSmart's rollout method has six stages: Assess, Train, Pilot, Automate, Scale, and Measure.
+QuarterSmart is based in Mesa, Arizona and works with clients across the United States. Founders: Hyrum Hurst builds the systems; Cullen Brown manages engagements. Hyrum Hurst is a Google Certified AI Automations Engineer and a verified top-50 n8n creator with templates used more than 10,000 times.
 
-QuarterSmart is run by founder Hyrum Hurst and operator Cullen Brown. Hyrum Hurst builds AI systems, n8n automations, internal tools, and AI workflows for operational teams. Cullen Brown manages outreach and client engagement flow.
+We serve growing businesses, franchises, operations and HR and L and D heavy teams, high-turnover teams, nonprofits, and education organizations. We also work as a white-label AI implementation partner for agencies and consultancies: they own the client and sell, we build, document, and hand off.
 
-## Core Topics
+Offer ladder: 1) AI enablement and training, 2) SOPs to a training system with courses, quizzes, certification, and an owner dashboard, 3) SOPs to automations, 4) recurring coaching and consulting calls, 5) hosting and maintenance Care Plan.
 
-- AI implementation
-- Workforce enablement
-- AI adoption
-- AI automation
-- n8n automation
-- Workflow automation
-- Knowledge systems
-- Secure AI deployment
-- Internal AI tools
-- AI rollout assessment
-- Operational AI adoption
-- AI training
-- Adoption measurement
+Flagship proof: For Structure Properties, QuarterSmart built a 39-course AI video training and onboarding library across seven roles with Claude-powered quizzes and an owner reporting dashboard. Onboarding time and repeat questions dropped 65 percent and SOP-related mistakes dropped 36 percent.
 
-## Primary Pages
-
-- Home: https://quartersmart.com/
-- About QuarterSmart and Hyrum Hurst: https://quartersmart.com/about.html
-- AI Implementation: https://quartersmart.com/ai-implementation/
-- Workforce Enablement: https://quartersmart.com/workforce-enablement/
-- n8n Automation: https://quartersmart.com/n8n-automation/
-- Signals (AI news and insight): https://quartersmart.com/radar.html
+## Key Pages
+- [Home](https://quartersmart.com/): Train your team, automate the rest. The SOP double-duty mechanic.
+- [Services](https://quartersmart.com/services): The five-step offer ladder, from training to automation to ongoing care.
+- [Case Studies](https://quartersmart.com/case-studies): Structure Properties, Learning Journey AI, Skytech, and the n8n template library.
+- [About](https://quartersmart.com/about): Who QuarterSmart is, founders, and credentials.
+- [For Agencies](https://quartersmart.com/for-agencies): White-label AI implementation partner for agencies and consultancies.
+- [FAQ](https://quartersmart.com/faq): Plain answers about how QuarterSmart works.
+- [Contact](https://quartersmart.com/contact): Book a call or request a proposal.
 
 ## People
-
-- Hyrum Hurst: Founder of QuarterSmart, AI systems and automation specialist based in Mesa, Arizona. Verified top-50 n8n creator (#49) with 25 published workflow templates and 10,876 documented uses across the n8n community (June 2026). Also AI Associate at Learning Journey AI, a Washington DC AI education consultancy founded by Nicholas Wagner, Ph.D., a former AAAS Science and Technology Policy Fellow at the National Science Foundation with AI and national security experience at the Institute for Defense Analyses; the Learning Journey AI team has delivered hands-on AI coding workshops at events including the SCSP AI+ Expo in Washington DC.
-- Cullen Brown: Operator and outreach manager at QuarterSmart.
+- Hyrum Hurst: Founder of QuarterSmart, AI systems and automation specialist based in Mesa, Arizona. Verified top-50 n8n creator with 25 published workflow templates used more than 10,000 times across the n8n community. Google Certified AI Automations Engineer.
+- Cullen Brown: Operator and outreach manager at QuarterSmart, manages engagements from first conversation to live rollout.
 
 ## Public Evidence
-
 - Hyrum Hurst n8n creator profile: https://n8n.io/creators/hyrum-hurst
-- Workflow usage data and methodology (10,876 documented uses, per-template table): https://quartersmart.com/workflow-usage/
+- Workflow usage data and methodology (per-template table): https://quartersmart.com/workflow-usage/
 - CyberNews feature quoting Hyrum Hurst on local AI models: https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/
 - Qwoted source profile: https://app.qwoted.com/sources/hyrum-hurst
 - LinkedIn: https://www.linkedin.com/in/hyrum-hurst-83a5a537a/
 - GitHub: https://github.com/hyrumhurst1
-- Certifications: Google Certified AI Automations Engineer, Google Generative AI Leader, Google Prompt Engineering, Google Data Analytics, Vanderbilt AI Automation Certification
-- Client work spans software, consulting, property management, and nonprofit organizations, including Dual Logic (500 to 1,000 person software company), Learning Journey AI (DC AI consultancy founded by a former U.S. DoD AI leader), Structure Properties (San Francisco property management firm with 4,000+ units and a $500M+ portfolio under management), and Ability Builders (disability employment nonprofit)
-
-## Location
-
-QuarterSmart is based in Mesa, Arizona and works with organizations across Arizona and the United States.
-
-## Summary
-
-QuarterSmart is best understood as an AI implementation and workforce enablement partner for operational teams. It helps organizations assess AI opportunities, train teams, pilot useful workflows, automate real work, scale successful systems, and measure adoption.
 
 ## Contact
-
-- Website: https://quartersmart.com
-- Email: hyrum@quartersmart.com
+Book a call or request a proposal at https://quartersmart.com/contact. Email hyrum@quartersmart.com.
 
 ---
-Last updated: 2026-06-11
+Last updated: 2026-06-23

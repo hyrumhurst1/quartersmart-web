@@ -1,0 +1,14 @@
+{
+  "name": "QuarterSmart",
+  "short_name": "QuarterSmart",
+  "description": "AI onboarding, training, and automation systems for growing teams. Train your team. Automate the rest.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060608",
+  "theme_color": "#060608",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/assets/icon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "/assets/apple-touch-icon.png", "type": "image/png", "sizes": "512x512", "purpose": "any maskable" }
+  ]
+}

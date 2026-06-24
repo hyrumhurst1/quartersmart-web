@@ -143,6 +143,21 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-24 (ROOT CUTOVER to production + self-hosted fonts)** - Promoted the designed
+  rebrand site from `rebrand-preview/` to the SITE ROOT. Pages now live at /, /services/,
+  /case-studies/ (+ /case-studies/structure-properties/), /about/, /for-agencies/, /faq/,
+  /contact/, /privacy/, /terms/. Rewrote every /rebrand-preview/ path to /. Removed the
+  superseded old pages (about.html, privacy.html, terms.html, ai-implementation/,
+  n8n-automation/, workforce-enablement/, coming-soon) and deleted rebrand-preview/. Added
+  301 redirects in `netlify.toml` from all old URLs to the new pages. SELF-HOSTED the two
+  webfonts (latin woff2 in `assets/fonts/`, @font-face in `assets/site.css`, Google Fonts
+  links removed sitewide, privacy page updated to say fonts are self-hosted). DISABLED the
+  GitHub Pages auto-deploy workflow (production is Netlify at quartersmart.com; the Pages
+  `/quartersmart-web/` subpath breaks root-relative paths). KEPT as legacy (still old design
+  system, NOT yet restyled): `workflow-usage/` (linked from the new footer), `signals/`,
+  `radar.html`, `logos/`. Lighthouse mobile before cutover: Perf 99 / A11y 100 / BP 100 /
+  SEO ~100. Merged to `main` to go live (or pending merge of PR #1).
+
 - **2026-06-24 (rebrand DESIGNED build implemented)** - Imported the QuarterSmart Design
   System from Claude Design (project bb569288) through the authenticated browser (Omelette
   ListFiles/GetFile RPC), saved the full 65-file export to `design-system/` (reference only,
