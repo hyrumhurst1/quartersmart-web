@@ -143,6 +143,15 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-24 (search-engine registration + workflow-usage re-skin + 404)** - Confirmed Google
+  Search Console and Bing Webmaster Tools are both VERIFIED for quartersmart.com (owner was already
+  logged in) and re-submitted `/sitemap.xml` in both (GSC already showing ~16 search clicks; Bing
+  re-processing). IndexNow auto-pings on production deploys. Re-skinned `workflow-usage/index.html`
+  into the new design (qs-nav/footer, qs-prose, self-hosted fonts) preserving the full 25-row n8n
+  template table (total 10,876 documented uses, exact) and the Dataset JSON-LD (the citation target
+  for the metric per ENTITY_HANDOFF) plus BreadcrumbList. Added a branded `404.html`. Minor leftover:
+  an old `sitemap.website.xml` still listed (error/404) in GSC + Bing, harmless, can be removed.
+
 - **2026-06-24 (Signals section + auto-sitemap/IndexNow)** - Rebuilt the Signals blog on the new
   design system. NEW `signals/index.html` hub with the radar cursor-scrub canvas animation (120
   frames at `assets/images/radar-frames/`, scrubbed by cursor X), pinned signal, search + tag
