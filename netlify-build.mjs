@@ -5,7 +5,7 @@ import { cpSync, rmSync, mkdirSync, readdirSync } from "node:fs";
 
 const EXCLUDE = new Set([
   ".git", ".github", "node_modules", "dist",
-  "brand", "research", "docs",
+  "brand", "research", "docs", "design-system", "tmp",
   "AGENTS.md", "CLAUDE.md", "README.md", "HANDOFF.md", "ENTITY_HANDOFF.md",
   "netlify.toml", "netlify-build.mjs", ".gitignore", ".nojekyll",
 ]);

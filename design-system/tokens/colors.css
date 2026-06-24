@@ -1,0 +1,49 @@
+/* QuarterSmart color tokens.
+   Dark, near-black canvas with a single mint accent. No second hue.
+   Base palette first, then semantic aliases. */
+:root {
+  /* --- Base palette --- */
+  --qs-mint: #00e5a0;          /* primary brand mint: mark, CTAs, accents */
+  --qs-mint-bright: #1ffdb3;   /* brighter mint: hover, glow, emphasis */
+  --qs-mint-ink: #04130d;      /* near-black green, for text ON mint fills */
+
+  --qs-black: #060608;         /* near-black page background */
+  --qs-surface-1: #0c1016;     /* raised surface / card */
+  --qs-surface-2: #11161e;     /* higher surface / hover card */
+  --qs-surface-3: #161c26;     /* input / inset wells */
+
+  --qs-white: #f0f4f8;         /* primary off-white text */
+  --qs-muted: #8b95a5;         /* secondary / muted text */
+  --qs-faint: #5b6675;         /* tertiary, captions, disabled text */
+
+  /* --- Tints (mint at low alpha, the only colored fills) --- */
+  --qs-mint-08: rgba(0, 229, 160, 0.08);
+  --qs-mint-12: rgba(0, 229, 160, 0.12);
+  --qs-mint-20: rgba(0, 229, 160, 0.20);
+  --qs-mint-40: rgba(0, 229, 160, 0.40);
+
+  /* --- Borders / hairlines --- */
+  --qs-border: rgba(255, 255, 255, 0.08);
+  --qs-border-strong: rgba(255, 255, 255, 0.16);
+  --qs-border-mint: rgba(0, 229, 160, 0.32);
+
+  /* --- Semantic aliases --- */
+  --bg-page: var(--qs-black);
+  --surface-card: var(--qs-surface-1);
+  --surface-raised: var(--qs-surface-2);
+  --surface-inset: var(--qs-surface-3);
+
+  --text-strong: var(--qs-white);
+  --text-body: var(--qs-white);
+  --text-muted: var(--qs-muted);
+  --text-faint: var(--qs-faint);
+  --text-accent: var(--qs-mint);
+
+  --accent: var(--qs-mint);
+  --accent-bright: var(--qs-mint-bright);
+  --accent-ink: var(--qs-mint-ink);
+
+  --border-hairline: var(--qs-border);
+  --border-card: var(--qs-border);
+  --border-focus: var(--qs-mint);
+}

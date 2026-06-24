@@ -143,6 +143,23 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-24 (rebrand DESIGNED build implemented)** - Imported the QuarterSmart Design
+  System from Claude Design (project bb569288) through the authenticated browser (Omelette
+  ListFiles/GetFile RPC), saved the full 65-file export to `design-system/` (reference only,
+  excluded from publish). Translated the React/JSX design into a STATIC, accessible site under
+  `rebrand-preview/`: one production stylesheet `assets/site.css` (all design tokens plus every
+  component as CSS classes, focus rings, reduced-motion, mobile breakpoints), the 8 pages (Home,
+  Services, Case Studies + Structure Properties detail, About, For Agencies, FAQ, Contact) plus
+  NEW Privacy + Terms, native `<details>` FAQ, four-quarters `favicon.svg` + `assets/qs-mark.svg`.
+  Built the 7 content pages via a 7-agent workflow off a hand-built Home template; legal pages
+  hand-written. Preserved the SEO/schema/entity layer (stable @ids, verified sameAs, FAQPage
+  visible==schema parity), uses-not-people metric linked to /workflow-usage/. `netlify-build.mjs`
+  now also excludes `design-system` and `tmp`. QA passed: zero em/en dashes, all JSON-LD valid,
+  all internal links resolve, one h1 per page, dist builds. On `rebrand` (PR #1), NOT merged.
+  Open items: Cal.com booking link (mailto for now), legal review by counsel, optionally
+  self-host the two Google fonts, and the root cutover (promote `rebrand-preview/*` to site root,
+  GEO files to root, reconcile clean-URL `@id`s).
+
 - **2026-06-24 (final QuarterSmart brand kit)** - Produced the final selected four-quarter
   QuarterSmart raster kit in `brand/`: `qs-logo-primary-dark.png`, `qs-logo-primary-light.png`,
   `qs-mark-dark.png`, `qs-mark-transparent.png`, `qs-mark-white.png`, `qs-mark-black.png`, and

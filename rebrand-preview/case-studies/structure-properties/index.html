@@ -19,14 +19,13 @@
 <meta name="twitter:description" content="A 39-course AI training and onboarding system across seven roles. Onboarding time and repeat questions down 65%, SOP mistakes down 36%.">
 <meta name="twitter:image" content="https://quartersmart.com/rebrand-preview/assets/qs-og.png">
 <meta name="theme-color" content="#060608">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/svg+xml" href="/rebrand-preview/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/rebrand-preview/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/rebrand-preview/assets/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -35,14 +34,35 @@
       "@type": "ProfessionalService",
       "@id": "https://quartersmart.com/#organization",
       "name": "QuarterSmart",
+      "alternateName": "QuarterSmart AI",
       "url": "https://quartersmart.com/",
       "logo": "https://quartersmart.com/rebrand-preview/assets/qs-mark.png",
+      "image": "https://quartersmart.com/rebrand-preview/assets/qs-og.png",
+      "description": "QuarterSmart builds AI onboarding, training, and automation systems for growing teams. We turn your SOPs into both a training course your team learns from and an automation that runs the task itself.",
       "slogan": "Train your team. Automate the rest.",
+      "foundingDate": "2025",
+      "email": "hyrum@quartersmart.com",
       "founder": [
         { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
         { "@id": "https://quartersmart.com/about.html#cullen-brown" }
       ],
-      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" }
+      "employee": [
+        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
+      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Arizona" },
+        { "@type": "Country", "name": "United States" }
+      ],
+      "knowsAbout": ["AI onboarding and training systems", "SOP automation", "SOP to training", "n8n automation", "Zapier automation", "Power Automate", "AI enablement", "white-label AI implementation", "employee onboarding automation", "AI training for teams"],
+      "sameAs": [
+        "https://n8n.io/creators/hyrum-hurst",
+        "https://www.linkedin.com/in/hyrum-hurst-83a5a537a/",
+        "https://app.qwoted.com/sources/hyrum-hurst",
+        "https://github.com/hyrumhurst1"
+      ],
+      "contactPoint": { "@type": "ContactPoint", "contactType": "sales", "email": "hyrum@quartersmart.com", "url": "https://quartersmart.com/contact" }
     },
     {
       "@type": "WebSite",
@@ -54,7 +74,7 @@
     {
       "@type": "Article",
       "@id": "https://quartersmart.com/case-studies/structure-properties#article",
-      "headline": "Structure Properties: from handing out SOPs to a full AI training system",
+      "headline": "Structure Properties: from rewriting SOPs by hand to a training system that runs itself",
       "about": "AI training and onboarding system for Structure Properties",
       "author": { "@id": "https://quartersmart.com/#organization" },
       "publisher": { "@id": "https://quartersmart.com/#organization" },
@@ -73,68 +93,148 @@
 </script>
 </head>
 <body>
-<div class="review-banner"><b>Content review build</b> &middot; barebones layout for copy + SEO review. Final design and branding come from Claude Design.</div>
-<header class="site-nav">
-  <a class="wordmark" href="/rebrand-preview/"><img class="wordmark-mark" src="/rebrand-preview/assets/qs-mark.png" alt="QuarterSmart logo" width="24" height="24">QuarterSmart</a>
-  <nav aria-label="Primary">
-    <a href="/rebrand-preview/">Home</a>
+<a class="qs-skip" href="#main">Skip to content</a>
+<header class="qs-nav" data-open="false">
+  <div class="qs-nav__bar">
+    <a class="qs-logo" href="/rebrand-preview/" aria-label="QuarterSmart home">
+      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
+      <span class="qs-logo__word">QuarterSmart</span>
+    </a>
+    <nav class="qs-nav__links" aria-label="Primary">
+      <a href="/rebrand-preview/services/">Services</a>
+      <a href="/rebrand-preview/case-studies/" aria-current="page">Case Studies</a>
+      <a href="/rebrand-preview/about/">About</a>
+      <a href="/rebrand-preview/for-agencies/">For Agencies</a>
+      <a href="/rebrand-preview/faq/">FAQ</a>
+      <a href="/rebrand-preview/contact/">Contact</a>
+    </nav>
+    <div class="qs-nav__cta">
+      <a class="qs-btn qs-btn--primary qs-btn--sm" href="/rebrand-preview/contact/#book-a-call">Book a call</a>
+    </div>
+    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
+  </div>
+  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
     <a href="/rebrand-preview/services/">Services</a>
     <a href="/rebrand-preview/case-studies/" aria-current="page">Case Studies</a>
     <a href="/rebrand-preview/about/">About</a>
     <a href="/rebrand-preview/for-agencies/">For Agencies</a>
     <a href="/rebrand-preview/faq/">FAQ</a>
     <a href="/rebrand-preview/contact/">Contact</a>
+    <a class="qs-btn qs-btn--primary qs-btn--full" href="/rebrand-preview/contact/#book-a-call">Book a call</a>
   </nav>
 </header>
-<main>
-  <p><a href="/rebrand-preview/case-studies/">&larr; All case studies</a></p>
-  <span class="eyebrow">Case Study &middot; Structure Properties</span>
-  <h1>Structure Properties: from handing out SOPs to a full AI training system</h1>
 
-  <h2>The problem</h2>
-  <p>At Structure Properties, training used to run on memory and paperwork. When an employee made a mistake, they were handed the SOP and told to rewrite it by hand. Like a middle-school punishment. The thinking was that copying the document out longhand would make the lesson stick.</p>
-  <p>It did not scale. New hires slogged through dense documents. The same questions came back week after week. Owners had no real way to see who knew what, or where people kept getting stuck. The knowledge lived in binders and in a few people's heads.</p>
-  <blockquote>"Our SOPs were something you got punished with, not something you learned from. Now the whole company runs on them."</blockquote>
+<main id="main">
+  <!-- Case header -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap qs-wrap--prose">
+      <nav class="qs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/rebrand-preview/case-studies/">Case Studies</a> / Structure Properties
+      </nav>
+      <span class="qs-eyebrow">Case study &middot; Property management</span>
+      <h1 class="qs-h1">From rewriting SOPs by hand to a training system that runs itself</h1>
+    </div>
+  </section>
 
-  <h2>What we built</h2>
-  <p>QuarterSmart built the AI training and onboarding layer that Structure Properties runs on today.</p>
-  <ul>
-    <li>A 39-course video library spanning seven operational roles, with AI-automated course and video creation so the library can grow without a production team.</li>
-    <li>Claude-powered quizzes that check real understanding, not just attendance.</li>
-    <li>Automated certification and compliance reporting baked in.</li>
-    <li>An owner dashboard that shows who has completed what, and exactly where people struggle on quizzes.</li>
-  </ul>
-  <p>The same SOPs that used to be a punishment now do double duty. Each one became a training course the team learns from and the backbone of how the work gets verified. Employees can review any process in a click instead of hunting through a document. The system is deployed on Vercel.</p>
+  <!-- Case body -->
+  <section class="qs-section">
+    <div class="qs-wrap qs-wrap--prose">
+      <div class="qs-prose">
+        <h2>The problem</h2>
+        <p>Before QuarterSmart, when an employee at Structure Properties made a mistake, they were handed the SOP and told to rewrite it by hand. Like a middle-school punishment, so the lesson would stick. It was memorable, but it did not scale, and it did not stop the next person from making the same mistake.</p>
+        <h2>What we built</h2>
+        <p>We replaced that with a full AI-powered training and onboarding system. A 39-course video library across seven operational roles, with AI-automated course and video creation and Claude-powered quizzes. Owners get a dashboard showing who has completed what and where people struggle. Employees review any process in a click instead of reading a document.</p>
+      </div>
 
-  <h2>The result</h2>
-  <ul>
-    <li>Onboarding time and repeat questions cut by <span class="stat">65 percent</span>.</li>
-    <li>SOP-related mistakes cut by <span class="stat">36 percent</span>.</li>
-    <li>Coverage across seven operational roles, with automated certification and compliance reporting.</li>
-  </ul>
-  <p>The lesson still sticks. Nobody has to copy a document by hand to make it happen.</p>
+      <div class="qs-proof qs-mt-5">
+        <div class="qs-stat"><span class="qs-stat__value">65%</span><span class="qs-stat__label">onboarding time and repeat questions cut</span></div>
+        <div class="qs-stat"><span class="qs-stat__value">36%</span><span class="qs-stat__label">SOP-related mistakes cut</span></div>
+        <div class="qs-stat"><span class="qs-stat__value">7 roles</span><span class="qs-stat__label">with certification and compliance reporting</span></div>
+      </div>
 
-  <h2>How we measured it</h2>
-  <p>We baseline before we build. For Structure Properties that meant tracking onboarding time, repeat questions, and SOP-related mistakes across seven roles, then comparing against the same measures after the system went live. We agree on the metrics that matter to you up front so the result is something you can verify, not a claim you have to take on faith.</p>
+      <div class="qs-prose qs-mt-5">
+        <h2>How we measured it</h2>
+        <p>We baseline before we build. For Structure Properties that meant tracking onboarding time, repeat questions, and SOP-related mistakes across seven roles, then comparing against the same measures after the system went live. We agree on the metrics that matter to you up front, so the result is something you can verify, not a claim you have to take on faith.</p>
+        <div class="qs-cta-row qs-mt-5">
+          <a class="qs-btn qs-btn--primary" href="/rebrand-preview/contact/#book-a-call">Book a call</a>
+          <a class="qs-btn qs-btn--secondary" href="/rebrand-preview/contact/#request-a-proposal">Request a proposal</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="cta-row">
-    <a class="btn btn-primary" href="/rebrand-preview/contact/#book-a-call">Book a call</a>
-    <a class="btn btn-secondary" href="/rebrand-preview/contact/#request-a-proposal">Request a proposal</a>
-  </div>
-  <p>See <a href="/rebrand-preview/services/">the offer ladder behind these results</a> or read <a href="/rebrand-preview/case-studies/">the rest of our case studies</a>.</p>
+  <!-- CTA -->
+  <section class="qs-section qs-section--lg qs-bordered">
+    <div class="qs-wrap">
+      <div class="qs-cta-band">
+        <svg width="64" height="64" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+          <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
+          <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+          <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
+          <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+          <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+        </svg>
+        <h2 class="qs-h1">Ready to put your SOPs to work?</h2>
+        <p>Tell us what your team does by hand today. We will show you how the same SOPs can teach it and run it.</p>
+        <div class="qs-cta-row">
+          <a class="qs-btn qs-btn--primary qs-btn--lg" href="/rebrand-preview/contact/#book-a-call">Book a call</a>
+          <a class="qs-btn qs-btn--secondary qs-btn--lg" href="/rebrand-preview/contact/#request-a-proposal">Request a proposal</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
-<footer class="site-footer">
-  <p class="tag">Train your team. Automate the rest.</p>
-  <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
-  <p>
-    <a href="/rebrand-preview/services/">Services</a> &middot;
-    <a href="/rebrand-preview/case-studies/">Case Studies</a> &middot;
-    <a href="/rebrand-preview/about/">About</a> &middot;
-    <a href="/rebrand-preview/faq/">FAQ</a> &middot;
-    <a href="/rebrand-preview/contact/">Contact</a> &middot;
-    <a href="/rebrand-preview/for-agencies/">AI implementation partner for agencies</a>
-  </p>
-  <p>Email <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a> &middot; <a href="/workflow-usage/">Workflow usage and methodology</a></p>
+
+<footer class="qs-footer">
+  <div class="qs-footer__inner">
+    <div class="qs-footer__grid">
+      <div class="qs-footer__brand">
+        <a class="qs-logo" href="/rebrand-preview/" aria-label="QuarterSmart home">
+          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+          </svg>
+          <span class="qs-logo__word">QuarterSmart</span>
+        </a>
+        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
+        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Company</h2>
+        <a href="/rebrand-preview/services/">Services</a>
+        <a href="/rebrand-preview/case-studies/">Case Studies</a>
+        <a href="/rebrand-preview/about/">About</a>
+        <a href="/rebrand-preview/for-agencies/">For Agencies</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Get in touch</h2>
+        <a href="/rebrand-preview/faq/">FAQ</a>
+        <a href="/rebrand-preview/contact/">Contact</a>
+        <a href="/rebrand-preview/contact/#book-a-call">Book a call</a>
+        <a href="/workflow-usage/">Workflow usage</a>
+      </div>
+    </div>
+    <div class="qs-footer__meta">
+      <span class="qs-tag-line">Train your team. Automate the rest.</span>
+      <span class="qs-copy"><a href="/rebrand-preview/privacy/">Privacy</a> &middot; <a href="/rebrand-preview/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
+    </div>
+  </div>
 </footer>
+
+<script>
+(function(){var n=document.querySelector('.qs-nav');var t=n&&n.querySelector('.qs-nav__toggle');if(!t)return;t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});})();
+</script>
 </body>
 </html>

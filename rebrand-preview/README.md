@@ -1,16 +1,15 @@
-# rebrand-preview/ : QuarterSmart rebrand CONTENT REVIEW BUILD
+# rebrand-preview/ : QuarterSmart rebrand (designed build)
 
-> Staging directory. All files here are NEW and do not touch the live site
-> (`index.html`, `about.html`, the service folders, `signals/`, root GEO files
-> are all untouched). Created on the `rebrand` branch, 2026-06-23.
+> Staging directory on the `rebrand` branch. All files here are NEW and do not
+> touch the live site (root `index.html`, `about.html`, the legacy service
+> folders, `signals/`, and the root GEO files are untouched).
 
 ## What this is
 
-A barebones, content-first layout of the finished 2026-06-23 rebrand copy for the
-7 site pages, plus a Structure Properties case-study detail page. The point is to
-review the **words + SEO/GEO/schema**, not the design. Final branding, wireframe,
-and visual polish come from Claude Design; this content is built to drop into that
-wireframe later with minimal rework.
+The rebranded QuarterSmart marketing site, built from the **QuarterSmart Design
+System** produced in Claude Design (project bb569288). The React/JSX design was
+translated into clean, static, accessible HTML + one stylesheet. No client-side
+React, no Babel, minimal JS (only a mobile-nav toggle).
 
 Tagline: **Train your team. Automate the rest.**
 
@@ -26,34 +25,44 @@ Tagline: **Train your team. Automate the rest.**
 | For Agencies | `/rebrand-preview/for-agencies/` |
 | FAQ | `/rebrand-preview/faq/` |
 | Contact | `/rebrand-preview/contact/` |
+| Privacy | `/rebrand-preview/privacy/` |
+| Terms | `/rebrand-preview/terms/` |
 
-## What is included
+## How it is built
 
-- All page copy from `work1/hyrum/quartersmart_website_content_2026-06-23.md`, used close to verbatim.
-- Per-page `<title>`, meta description, canonical, Open Graph/Twitter tags.
-- JSON-LD: `ProfessionalService` (Organization) + `WebSite` on every page; full `Person`
-  (Hyrum + Cullen) + `AboutPage` on About; `Service` + `OfferCatalog` on Services and For Agencies;
-  `FAQPage` on Home, Services, Case Studies, About, For Agencies, FAQ, and Contact (visible FAQ text
-  mirrors schema text); `Article` + `BreadcrumbList` on the Structure Properties detail page.
-- Stable entity `@id`s preserved verbatim from `ENTITY_HANDOFF.md`:
-  `…/#organization`, `…/about.html#hyrum-hurst`, `…/about.html#cullen-brown`.
-- Verified `sameAs` set only (n8n, LinkedIn, Qwoted, GitHub) + CyberNews as `subjectOf`. No placeholders.
-- Staged GEO files (`llms.txt`, `sitemap.xml`, `robots.txt`) reflecting the new page set. These are
-  STAGED here, not promoted to the site root. Promoting them to root is a launch/cutover step.
+- `assets/site.css` : the single production stylesheet. Design tokens (colors,
+  type, spacing, effects) plus every component translated to CSS classes
+  (`qs-btn`, `qs-card`, `qs-feature`, `qs-case`, `qs-stat`, `qs-accordion`,
+  `qs-nav`, `qs-footer`, `qs-doubleduty`, etc.). Includes focus-visible rings,
+  reduced-motion handling, and mobile breakpoints.
+- `favicon.svg`, `assets/qs-mark.svg` : the four-quarters mark (top-right quarter
+  lit mint). `assets/qs-og.png` : social share image.
+- FAQ uses native `<details>`/`<summary>` (accessible, no JS). The accordion,
+  cards, buttons, and nav match the design's hover/press/focus behavior in CSS.
+- Per page: title/meta/canonical/OG, Organization + WebSite JSON-LD sitewide,
+  Service + OfferCatalog on Services and For Agencies, full Person (Hyrum +
+  Cullen) + AboutPage on About, Article + BreadcrumbList on the case-study
+  detail, ContactPage on Contact, WebPage on the legal pages, and FAQPage
+  wherever a visible FAQ exists (visible text mirrors the schema).
+- Stable entity `@id`s preserved from `ENTITY_HANDOFF.md`; verified `sameAs` only.
+- Staged `llms.txt`, `sitemap.xml`, `robots.txt` (not promoted to root).
 
-## Conventions used
+## Provenance
 
-- Paths are root-relative (e.g. `/rebrand-preview/services/`, `/favicon.svg`), correct for the
-  Netlify deploy (root domain). Not intended for the GitHub Pages subpath mirror.
-- Hard rules honored: no em dashes; no public pricing; CTAs are only "Book a call" and "Request a
-  proposal"; no LMS framing; metric is uses-not-people and links to `/workflow-usage/`.
-- Booking CTAs currently use `mailto:hyrum@quartersmart.com`. Swap for a Cal.com/booking link when chosen.
+`../design-system/` holds the full Claude Design export (tokens, components,
+ui_kits) that this build was translated from. It is reference only.
+
+## Hard rules honored
+
+No em dashes; no public pricing; CTAs limited to "Book a call" / "Request a
+proposal"; uses-not-people metric linked to `/workflow-usage/`; training framed
+as a system we build, not an LMS product.
 
 ## Known open items (for Hyrum)
 
-- Final logo + design system (Claude Design). Logo concepts exist in `brand/concepts/`.
-- Whether to show a soft "care plans starting at $X/mo" anchor (currently OUT; internal floor is ~$300/mo).
-- Keep or drop the `signals/` blog section.
-- Whether Services stays one page or keeps the 3 legacy service-page folders.
-- `@id` reconciliation: stable ids use `about.html#…`; the new About page is at the clean URL `/about`.
-  Kept the `.html` ids per the binding ENTITY_HANDOFF "do not change" rule. Decide at cutover.
+- Booking CTAs use `mailto:hyrum@quartersmart.com`. Swap for a Cal.com link when chosen.
+- Legal pages are a reasonable starting point, not a substitute for review by
+  counsel (GDPR / CCPA specifics, and the Google Fonts IP-logging angle: consider
+  self-hosting the two fonts to avoid sending visitor IPs to Google).
+- Root-relative paths target the Netlify deploy. Promotion to the site root
+  (clean URLs, GEO files to root, `@id` reconciliation) is the launch cutover step.

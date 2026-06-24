@@ -1,0 +1,46 @@
+/* QuarterSmart typography tokens.
+   Two families only. Space Grotesk carries display + body; JetBrains Mono
+   carries eyebrows, labels, numbers, and any "system" voice. */
+:root {
+  --font-display: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-body: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Type scale (fluid-ready px values, mobile-first base 17px) */
+  --fs-eyebrow: 0.75rem;   /* 12px mono uppercase */
+  --fs-caption: 0.8125rem; /* 13px */
+  --fs-small: 0.875rem;    /* 14px */
+  --fs-body: 1.0625rem;    /* 17px */
+  --fs-body-lg: 1.1875rem; /* 19px lede */
+  --fs-h4: 1.25rem;        /* 20px */
+  --fs-h3: 1.5rem;         /* 24px */
+  --fs-h2: 2rem;           /* 32px */
+  --fs-h1: 2.75rem;        /* 44px */
+  --fs-display: 3.5rem;    /* 56px hero */
+
+  /* Weights */
+  --fw-light: 300;     /* @kind other */
+  --fw-regular: 400;   /* @kind other */
+  --fw-medium: 500;    /* @kind other */
+  --fw-semibold: 600;  /* @kind other */
+  --fw-bold: 700;      /* @kind other */
+
+  /* Line heights */
+  --lh-tight: 1.1;   /* @kind other */
+  --lh-snug: 1.22;   /* @kind other */
+  --lh-body: 1.65;   /* @kind other */
+
+  /* Letter spacing */
+  --ls-eyebrow: 0.14em;  /* wide mono eyebrows @kind other */
+  --ls-label: 0.04em;    /* @kind other */
+  --ls-display: -0.02em; /* tighten large display @kind other */
+  --ls-heading: -0.01em; /* @kind other */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --fs-body: 1.125rem;   /* 18px */
+    --fs-h1: 3.25rem;      /* 52px */
+    --fs-display: 4.5rem;  /* 72px */
+  }
+}

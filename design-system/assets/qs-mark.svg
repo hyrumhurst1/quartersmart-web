@@ -1,0 +1,14 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QuarterSmart mark">
+  
+  
+  <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"></path>
+  
+  <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"></path>
+  
+  <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"></path>
+  
+  <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="#00e5a0"></path>
+  
+  <rect x="48.4" y="6" width="3.2" height="88" fill="#060608"></rect>
+  <rect x="6" y="48.4" width="88" height="3.2" fill="#060608"></rect>
+</svg>

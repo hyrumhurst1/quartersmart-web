@@ -1,0 +1,20 @@
+/* QuarterSmart effects: shadows, glows, transitions, motion. */
+:root {
+  /* Shadows are quiet on dark; depth comes from surface + hairline, not heavy drop shadows */
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-raised: 0 12px 40px rgba(0, 0, 0, 0.55);
+
+  /* Mint glow — the one "lit" effect, used sparingly on key CTAs / the mark */
+  --glow-mint: 0 0 0 1px var(--qs-border-mint), 0 8px 32px rgba(0, 229, 160, 0.18);
+  --glow-mint-strong: 0 0 28px rgba(0, 229, 160, 0.35);
+
+  /* Focus ring */
+  --ring-focus: 0 0 0 2px var(--qs-black), 0 0 0 4px var(--qs-mint);
+
+  /* Motion: short, confident, ease-out. No bounce, no springy overshoot. */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);   /* @kind other */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);  /* @kind other */
+  --dur-fast: 120ms;  /* @kind other */
+  --dur: 200ms;       /* @kind other */
+  --dur-slow: 360ms;  /* @kind other */
+}
