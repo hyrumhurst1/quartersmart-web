@@ -143,6 +143,18 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-24 (Signals section + auto-sitemap/IndexNow)** - Rebuilt the Signals blog on the new
+  design system. NEW `signals/index.html` hub with the radar cursor-scrub canvas animation (120
+  frames at `assets/images/radar-frames/`, scrubbed by cursor X), pinned signal, search + tag
+  filter, and a post grid; the old splash intro is gone. Re-skinned all 7 posts (`signals/*.html`)
+  into the new design (qs-nav/footer, qs-prose article body, self-hosted fonts, Article +
+  BreadcrumbList schema); all article content preserved verbatim. Added "Signals" to the nav and
+  footer sitewide. Retired `radar.html` (301 to /signals via netlify.toml). `netlify-build.mjs` now
+  AUTO-GENERATES `dist/sitemap.xml` from the built pages on every deploy and pings IndexNow on the
+  production deploy only (gated on `CONTEXT=production`), so the sitemap self-updates and Bing /
+  Yandex / AI engines re-crawl automatically. Updated `llms.txt` and the committed `sitemap.xml`.
+  QA: zero em/en dashes, valid JSON-LD on every post, consistent chrome, build emits a 19-url sitemap.
+
 - **2026-06-24 (ROOT CUTOVER to production + self-hosted fonts)** - Promoted the designed
   rebrand site from `rebrand-preview/` to the SITE ROOT. Pages now live at /, /services/,
   /case-studies/ (+ /case-studies/structure-properties/), /about/, /for-agencies/, /faq/,

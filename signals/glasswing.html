@@ -5,559 +5,369 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anthropic's Project Glasswing: 40 Orgs Get Mythos, QuarterSmart</title>
 <meta name="description" content="Project Glasswing gives Microsoft, Apple, CrowdStrike and 37 other organizations exclusive access to Claude Mythos for cyber defense. Here's what that means.">
-<meta name="theme-color" content="#060608">
+<meta name="author" content="QuarterSmart">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://quartersmart.com/signals/glasswing">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Anthropic Called in the Tech Avengers, 40 Orgs Now Have Mythos">
 <meta property="og:description" content="Project Glasswing gives 40 organizations exclusive access to Claude Mythos for cyber defense.">
+<meta property="og:url" content="https://quartersmart.com/signals/glasswing">
+<meta property="og:site_name" content="QuarterSmart">
 <meta property="og:image" content="https://quartersmart.com/assets/images/signals/anthropic-project-glasswing-tech-avengers-cover.png">
-<meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://quartersmart.com/signals/glasswing.html">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="icon" type="image/x-icon" href="../favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="twitter:title" content="Anthropic Called in the Tech Avengers, 40 Orgs Now Have Mythos">
+<meta name="twitter:description" content="Project Glasswing gives 40 organizations exclusive access to Claude Mythos for cyber defense.">
+<meta name="twitter:image" content="https://quartersmart.com/assets/images/signals/anthropic-project-glasswing-tech-avengers-cover.png">
+<meta name="theme-color" content="#060608">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://quartersmart.com/#organization",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "logo": "https://quartersmart.com/assets/qs-mark.png",
+      "slogan": "Train your team. Automate the rest.",
+      "founder": [
+        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
+      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://quartersmart.com/#website",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "publisher": { "@id": "https://quartersmart.com/#organization" }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://quartersmart.com/signals/glasswing#article",
+      "headline": "Anthropic Called in the Tech Avengers, 40 Orgs Now Have Access to Mythos",
+      "image": "https://quartersmart.com/assets/images/signals/anthropic-project-glasswing-tech-avengers-cover.png",
+      "datePublished": "2026-04-05",
+      "dateModified": "2026-04-05",
+      "author": { "@id": "https://quartersmart.com/#organization" },
+      "publisher": { "@id": "https://quartersmart.com/#organization" },
+      "isPartOf": { "@id": "https://quartersmart.com/#website" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://quartersmart.com/signals/glasswing" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quartersmart.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Signals", "item": "https://quartersmart.com/signals" },
+        { "@type": "ListItem", "position": 3, "name": "Anthropic Called in the Tech Avengers, 40 Orgs Now Have Access to Mythos", "item": "https://quartersmart.com/signals/glasswing" }
+      ]
+    }
+  ]
+}
+</script>
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --accent: #00e5a0;
-  --text: #f0f4f8;
-  --muted: #9ba5b4;
-  --bg: #060608;
-  --surface: rgba(10,10,16,0.92);
-  --border: rgba(255,255,255,0.06);
-  --card-bg: rgba(10,10,16,0.88);
-  --reading-width: 720px;
-}
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg); color: var(--text);
-  font-family: 'Space Grotesk', sans-serif;
-  overflow-x: hidden; line-height: 1.7;
-}
-a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
-a:hover { opacity: 0.8; }
-::selection { background: rgba(0,229,160,0.2); color: var(--text); }
-#signal-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 0 40px; height: 52px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(6,6,8,0.85);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-side {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13px; color: var(--muted); transition: color 0.2s;
-}
-.nav-side:hover { color: var(--accent); }
-.nav-side svg { width: 14px; height: 14px; flex-shrink: 0; }
-.nav-side img { height: 18px; width: auto; opacity: 0.8; }
-.nav-center {
-  position: absolute; left: 50%; transform: translateX(-50%);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--accent); opacity: 0.5;
-}
-#progress-bar {
-  position: fixed; top: 52px; left: 0; right: 0;
-  height: 2px; z-index: 101; background: transparent;
-}
-#progress-fill {
-  height: 100%; width: 0%;
-  background: linear-gradient(90deg, var(--accent), #00b8ff);
-  transition: width 0.1s linear;
-  box-shadow: 0 0 8px rgba(0,229,160,0.4);
-}
-#signal-cover {
-  width: 100%; height: 50vh; min-height: 360px; max-height: 520px;
-  margin-top: 52px; overflow: hidden; position: relative;
-}
-#signal-cover img { width: 100%; height: 100%; object-fit: cover; }
-#signal-cover::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 120px; background: linear-gradient(to bottom, transparent, var(--bg));
-}
-.article-header {
-  max-width: var(--reading-width); margin: -40px auto 0; padding: 0 24px;
-  position: relative; z-index: 2;
-}
-.article-tag {
-  display: inline-block;
-  background: rgba(0,229,160,0.1); border: 1px solid rgba(0,229,160,0.15);
-  color: var(--accent); padding: 4px 12px; border-radius: 100px;
-  font-size: 10px; font-family: 'JetBrains Mono', monospace;
-  text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px;
-}
-.article-title {
-  font-size: clamp(28px, 5vw, 44px);
-  font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px;
-}
-.article-meta {
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  font-size: 13px; color: var(--muted);
-  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em;
-  padding-bottom: 32px; border-bottom: 1px solid var(--border);
-}
-.meta-author { display: flex; align-items: center; gap: 8px; }
-.author-avatar {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: rgba(0,229,160,0.15);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; color: var(--accent); font-weight: 600;
-}
-.meta-dot { color: rgba(255,255,255,0.15); }
-.article-body {
-  max-width: var(--reading-width); margin: 0 auto; padding: 40px 24px 0;
-}
-.article-body h2 {
-  font-size: 24px; font-weight: 700; letter-spacing: -0.02em;
-  margin: 48px 0 16px; line-height: 1.3;
-  position: relative; padding-left: 16px;
-}
-.article-body h2::before {
-  content: ''; position: absolute; left: 0; top: 4px; bottom: 4px;
-  width: 3px; background: var(--accent); border-radius: 2px;
-}
-.article-body h3 { font-size: 18px; font-weight: 600; margin: 36px 0 12px; }
-.article-body p {
-  font-size: 16px; line-height: 1.8; color: rgba(240,244,248,0.88); margin-bottom: 20px;
-}
-.article-body strong { color: var(--text); font-weight: 600; }
-.article-body em { color: var(--accent); font-style: normal; }
-.article-body ul.article-body ol { padding-left: 24px; margin-bottom: 20px; }
-.article-body li { font-size: 16px; line-height: 1.8; color: rgba(240,244,248,0.88); margin-bottom: 8px; }
-.pull-quote {
-  margin: 40px -20px; padding: 28px 32px;
-  border-left: 3px solid var(--accent);
-  background: rgba(0,229,160,0.03); border-radius: 0 12px 12px 0;
-  font-size: 18px; font-weight: 500; line-height: 1.6;
-  color: var(--text); letter-spacing: -0.01em;
-}
-.pull-quote cite {
-  display: block; margin-top: 12px;
-  font-size: 12px; font-style: normal; color: var(--muted);
-  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;
-}
-.compare-table {
-  width: 100%; margin: 28px 0; border-collapse: collapse;
-  border-radius: 12px; overflow: hidden; border: 1px solid var(--border);
-}
-.compare-table th {
-  background: rgba(0,229,160,0.06); padding: 12px 16px; text-align: left;
-  font-size: 11px; font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--accent); border-bottom: 1px solid var(--border);
-}
-.compare-table td {
-  padding: 12px 16px; font-size: 14px;
-  border-bottom: 1px solid var(--border); color: rgba(240,244,248,0.8);
-}
-.compare-table tr:last-child td { border-bottom: none; }
-.compare-table tr:hover td { background: rgba(255,255,255,0.02); }
-.deep-dive {
-  margin: 24px 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
-}
-.deep-dive-toggle {
-  width: 100%; padding: 16px 20px;
-  background: rgba(255,255,255,0.02); border: none; color: var(--text);
-  font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600;
-  cursor: pointer; text-align: left;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: background 0.2s;
-}
-.deep-dive-toggle:hover { background: rgba(255,255,255,0.04); }
-.deep-dive-toggle .arrow { color: var(--accent); font-size: 12px; transition: transform 0.3s ease; }
-.deep-dive.open .deep-dive-toggle .arrow { transform: rotate(90deg); }
-.deep-dive-content {
-  max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 20px;
-}
-.deep-dive.open .deep-dive-content { max-height: 800px; padding: 0 20px 20px; }
-.deep-dive-content p { font-size: 14px; line-height: 1.7; color: rgba(240,244,248,0.75); margin-top: 0; }
-.info-card {
-  margin: 28px 0; padding: 24px;
-  background: rgba(0,229,160,0.03); border: 1px solid rgba(0,229,160,0.1); border-radius: 14px;
-}
-.info-card-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--accent); opacity: 0.7; margin-bottom: 10px;
-}
-.info-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-.info-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 0; }
-.article-tags {
-  max-width: var(--reading-width); margin: 0 auto; padding: 32px 24px;
-  border-top: 1px solid var(--border);
-  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-}
-.article-tags span {
-  font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.1em; text-transform: uppercase; margin-right: 8px;
-}
-.article-tags a {
-  padding: 4px 12px; border-radius: 100px;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-  color: var(--muted); font-size: 11px; transition: all 0.2s;
-}
-.article-tags a:hover { border-color: rgba(0,229,160,0.2); color: var(--accent); }
-.sources-section {
-  max-width: var(--reading-width); margin: 0 auto; padding: 0 24px 40px;
-}
-.sources-section h3 {
-  font-size: 14px; font-weight: 600; font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--accent); opacity: 0.6; margin-bottom: 16px;
-  padding-top: 32px; border-top: 1px solid var(--border);
-}
-.source-item {
-  display: flex; align-items: baseline; gap: 12px;
-  margin-bottom: 12px; font-size: 13px; color: var(--muted); line-height: 1.5;
-}
-.source-num {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  color: var(--accent); opacity: 0.5; flex-shrink: 0;
-}
-.source-item a { font-size: 13px; }
-
-/* ── ORG GRID ─────────────────────────── */
-.org-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px; margin: 24px 0;
-}
-.org-chip {
-  padding: 10px 14px; border-radius: 10px;
-  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-  font-size: 13px; color: rgba(240,244,248,0.8);
-  text-align: center; transition: all 0.3s;
-}
-.org-chip:hover { border-color: rgba(0,229,160,0.2); background: rgba(0,229,160,0.04); }
-.org-chip.highlight {
-  border-color: rgba(0,229,160,0.2); background: rgba(0,229,160,0.05);
-  color: var(--accent); font-weight: 500;
-}
-
-/* ── CONTRIBUTOR ──────────────────────── */
-#contribute { max-width: 900px; margin: 60px auto 0; padding: 0 24px 80px; }
-.contribute-header { text-align: center; margin-bottom: 36px; }
-.contribute-header h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
-.contribute-header p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-.contribute-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.contribute-card {
-  background: var(--card-bg); border: 1px solid var(--border);
-  border-radius: 14px; padding: 28px; transition: border-color 0.3s;
-}
-.contribute-card:hover { border-color: rgba(0,229,160,0.15); }
-.contribute-card-icon {
-  width: 36px; height: 36px; border-radius: 10px;
-  background: rgba(0,229,160,0.08);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px; color: var(--accent); font-size: 16px;
-}
-.contribute-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-.contribute-card .card-sub { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
-.contribute-card input.contribute-card textarea {
-  width: 100%; padding: 10px 14px;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-  border-radius: 8px; color: var(--text);
-  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
-  outline: none; transition: border-color 0.2s; margin-bottom: 10px;
-}
-.contribute-card input:focus.contribute-card textarea:focus { border-color: rgba(0,229,160,0.3); }
-.contribute-card input::placeholder.contribute-card textarea::placeholder { color: rgba(255,255,255,0.2); }
-.contribute-card textarea { resize: vertical; min-height: 80px; }
-.contribute-btn {
-  width: 100%; padding: 10px;
-  background: var(--accent); color: #000; border: none; border-radius: 8px;
-  font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-}
-.contribute-btn:hover { background: #1ffdb3; box-shadow: 0 0 20px rgba(0,229,160,0.25); transform: translateY(-1px); }
-.form-success {
-  color: var(--accent); font-size: 13px; font-family: 'JetBrains Mono', monospace;
-  text-align: center; padding: 16px; display: none;
-}
-#signal-footer {
-  padding: 32px 40px; border-top: 1px solid var(--border);
-  text-align: center; font-size: 12px; color: var(--muted); background: var(--bg);
-}
-#signal-footer a { color: var(--accent); }
-@media (max-width: 768px) {
-  #signal-nav { padding: 0 20px; }
-  .article-header { padding: 0 16px; }
-  .article-body { padding: 32px 16px 0; }
-  .contribute-grid { grid-template-columns: 1fr; }
-  #contribute { padding: 0 16px 60px; }
-  .pull-quote { margin: 32px 0; padding: 20px 24px; }
-  #signal-cover { height: 40vh; min-height: 260px; }
-  .org-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
-}
-@media (max-width: 480px) {
-  .article-title { font-size: 24px; }
-  .article-meta { flex-direction: column; align-items: flex-start; gap: 8px; }
-}
-.fade-in {
-  opacity: 0; transform: translateY(12px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-.fade-in:nth-child(2) { transition-delay: 0.1s; }
-.fade-in:nth-child(3) { transition-delay: 0.2s; }
+/* Article-specific layer on top of site.css (uses the same tokens) */
+.qs-article-cover { display: block; width: 100%; max-width: var(--container); margin: 0 auto;
+  height: auto; border-radius: var(--radius-lg); border: 1px solid var(--border-hairline); }
+.qs-prose blockquote { margin: 1.6em 0; padding: 20px 24px; border-left: 3px solid var(--accent);
+  background: var(--qs-mint-08); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 1.05rem; line-height: 1.6; color: var(--text-strong); }
+.qs-prose blockquote cite { display: block; margin-top: 10px; font-style: normal;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--text-muted); }
+.qs-prose ul, .qs-prose ol { margin: 0 0 1em; padding-left: 1.4em; color: var(--text-muted); }
+.qs-prose li { font-size: var(--fs-body); line-height: 1.7; margin: 0 0 0.4em; }
+.qs-orggrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px; margin: 1.6em 0; list-style: none; padding: 0; }
+.qs-orggrid li { padding: 10px 14px; border-radius: var(--radius-md); background: var(--surface-card);
+  border: 1px solid var(--border-hairline); font-size: 13px; color: var(--text-muted);
+  text-align: center; margin: 0; }
+.qs-orggrid li.is-key { border-color: var(--border-mint); background: var(--qs-mint-08);
+  color: var(--accent); font-weight: 500; }
+.qs-cmp { width: 100%; margin: 1.6em 0; border-collapse: collapse;
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-md); overflow: hidden; }
+.qs-cmp th { background: var(--qs-mint-08); padding: 12px 16px; text-align: left;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent); border-bottom: 1px solid var(--border-hairline); }
+.qs-cmp td { padding: 12px 16px; font-size: 14px; color: var(--text-muted);
+  border-bottom: 1px solid var(--border-hairline); }
+.qs-cmp tr:last-child td { border-bottom: none; }
+.qs-callout { margin: 1.6em 0; padding: 24px; background: var(--qs-mint-08);
+  border: 1px solid var(--border-mint); border-radius: var(--radius-lg); }
+.qs-callout__label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.qs-callout h3 { margin: 0 0 8px; }
+.qs-callout p { margin-bottom: 0; }
+.qs-qa { margin: 1.6em 0; padding: 22px 24px; background: var(--surface-card);
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); }
+.qs-qa h3 { margin: 0 0 10px; }
+.qs-qa p { margin-bottom: 0; }
+.qs-sources { margin: 1.6em 0 0; padding-top: 1.4em; border-top: 1px solid var(--border-hairline); }
+.qs-sources h2 { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+.qs-sources ol { margin: 0; padding-left: 1.6em; }
+.qs-sources li { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+.qs-tag-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 1.6em 0; }
+.qs-tag-row .qs-tag-row__label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-faint); margin-right: 4px; }
+.qs-tag-row a { padding: 4px 12px; border-radius: var(--radius-pill); background: var(--surface-card);
+  border: 1px solid var(--border-hairline); color: var(--text-muted); font-size: 11px; text-decoration: none; }
+.qs-tag-row a:hover { border-color: var(--border-mint); color: var(--accent); }
 </style>
 </head>
 <body>
-
-<nav id="signal-nav">
-  <a class='nav-side' href='../radar.html'>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-    Back to Radar
-  </a>
-  <span class="nav-center">SIGNAL</span>
-  <a href="../" class="nav-side">
-    <img src="../logos/quartersmart-q.png" alt="QuarterSmart" width="18" height="18">
-    Back to Home
-  </a>
-</nav>
-<div id="progress-bar"><div id="progress-fill"></div></div>
-
-<div id="signal-cover">
-  <img src="../assets/images/signals/anthropic-project-glasswing-tech-avengers-cover.png" alt="Project Glasswing war room with tech company logos including Microsoft, Apple, Google, and CrowdStrike surrounding a holographic AI brain - Anthropic's cyber defense coalition">
-</div>
-
-<header class="article-header fade-in">
-  <span class="article-tag">News</span>
-  <h1 class="article-title">Anthropic Called in the Tech Avengers, 40 Orgs Now Have Access to Mythos</h1>
-  <div class="article-meta">
-    <div class="meta-author">
-      <div class="author-avatar">HH</div>
-      <span>Hyrum Hurst</span>
+<a class="qs-skip" href="#main">Skip to content</a>
+<header class="qs-nav" data-open="false">
+  <div class="qs-nav__bar">
+    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
+      <span class="qs-logo__word">QuarterSmart</span>
+    </a>
+    <nav class="qs-nav__links" aria-label="Primary">
+      <a href="/services/">Services</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/about/">About</a>
+      <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="qs-nav__cta">
+      <a class="qs-btn qs-btn--primary qs-btn--sm" href="/contact/#book-a-call">Book a call</a>
     </div>
-    <span class="meta-dot">·</span>
-    <span>Apr 5, 2026</span>
-    <span class="meta-dot">·</span>
-    <span>5 min read</span>
+    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
   </div>
+  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
+    <a href="/services/">Services</a>
+    <a href="/case-studies/">Case Studies</a>
+    <a href="/about/">About</a>
+    <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/contact/">Contact</a>
+    <a class="qs-btn qs-btn--primary qs-btn--full" href="/contact/#book-a-call">Book a call</a>
+  </nav>
 </header>
 
-<article class="article-body">
+<main id="main">
+  <!-- Article header -->
+  <section class="qs-pagehead">
+    <div class="qs-pagehead__inner">
+      <nav class="qs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/signals/">Signals</a> / Project Glasswing
+      </nav>
+      <span class="qs-eyebrow">News &middot; Apr 5, 2026 &middot; 5 min read</span>
+      <h1 class="qs-h1">Anthropic Called in the Tech Avengers, 40 Orgs Now Have Access to Mythos</h1>
+    </div>
+  </section>
 
-  <p class="fade-in">Yesterday we told you about <a href='../signals/mythos'>Claude Mythos escaping its sandbox</a>. Today, Anthropic revealed what they're actually doing with it: <strong>Project Glasswing</strong>, a coalition of 40 organizations that now have controlled access to the most powerful AI model ever built.</p>
+  <!-- Cover -->
+  <section class="qs-section" style="padding-bottom:0">
+    <div class="qs-wrap">
+      <img class="qs-article-cover" src="/assets/images/signals/anthropic-project-glasswing-tech-avengers-cover.png" alt="Project Glasswing war room with tech company logos including Microsoft, Apple, Google, and CrowdStrike surrounding a holographic AI brain, Anthropic's cyber defense coalition" width="1120" height="630">
+    </div>
+  </section>
 
-  <p class="fade-in">Think of it as the Avengers Initiative, but for cybersecurity. Microsoft, Apple, CrowdStrike, the NSA, all sitting at the same table, all armed with an AI that can find vulnerabilities faster than any human team on the planet.</p>
+  <!-- Article body -->
+  <section class="qs-section">
+    <div class="qs-wrap qs-wrap--prose">
+      <article class="qs-prose">
 
-  <h2 class="fade-in">The Coalition</h2>
+        <p>Yesterday we told you about <a href="/signals/mythos">Claude Mythos escaping its sandbox</a>. Today, Anthropic revealed what they're actually doing with it: <strong>Project Glasswing</strong>, a coalition of 40 organizations that now have controlled access to the most powerful AI model ever built.</p>
 
-  <p class="fade-in">Here are the organizations Anthropic has confirmed as part of the Glasswing program:</p>
+        <p>Think of it as the Avengers Initiative, but for cybersecurity. Microsoft, Apple, CrowdStrike, the NSA, all sitting at the same table, all armed with an AI that can find vulnerabilities faster than any human team on the planet.</p>
 
-  <div class="org-grid fade-in">
-    <div class="org-chip highlight">Microsoft</div>
-    <div class="org-chip highlight">Apple</div>
-    <div class="org-chip highlight">Google</div>
-    <div class="org-chip highlight">Amazon</div>
-    <div class="org-chip highlight">CrowdStrike</div>
-    <div class="org-chip highlight">Meta</div>
-    <div class="org-chip">Palo Alto Networks</div>
-    <div class="org-chip">Mandiant</div>
-    <div class="org-chip">NVIDIA</div>
-    <div class="org-chip">IBM</div>
-    <div class="org-chip">Cisco</div>
-    <div class="org-chip">Cloudflare</div>
-    <div class="org-chip">NSA</div>
-    <div class="org-chip">CISA</div>
-    <div class="org-chip">GCHQ</div>
-    <div class="org-chip">SpaceX</div>
-    <div class="org-chip">JPMorgan</div>
-    <div class="org-chip">Goldman Sachs</div>
-    <div class="org-chip">+ 22 others</div>
-  </div>
+        <h2>The Coalition</h2>
 
-  <p class="fade-in">Each organization went through a vetting process that Anthropic describes as "more rigorous than most government security clearances." They signed agreements covering acceptable use, data handling, monitoring, and Anthropic's ability to revoke access at any time.</p>
+        <p>Here are the organizations Anthropic has confirmed as part of the Glasswing program:</p>
 
-  <h2 class="fade-in">Why This Matters</h2>
+        <ul class="qs-orggrid">
+          <li class="is-key">Microsoft</li>
+          <li class="is-key">Apple</li>
+          <li class="is-key">Google</li>
+          <li class="is-key">Amazon</li>
+          <li class="is-key">CrowdStrike</li>
+          <li class="is-key">Meta</li>
+          <li>Palo Alto Networks</li>
+          <li>Mandiant</li>
+          <li>NVIDIA</li>
+          <li>IBM</li>
+          <li>Cisco</li>
+          <li>Cloudflare</li>
+          <li>NSA</li>
+          <li>CISA</li>
+          <li>GCHQ</li>
+          <li>SpaceX</li>
+          <li>JPMorgan</li>
+          <li>Goldman Sachs</li>
+          <li>+ 22 others</li>
+        </ul>
 
-  <p class="fade-in">The logic is straightforward: if an AI can autonomously discover thousands of vulnerabilities, you want it on your side before someone builds a version that isn't.</p>
+        <p>Each organization went through a vetting process that Anthropic describes as "more rigorous than most government security clearances." They signed agreements covering acceptable use, data handling, monitoring, and Anthropic's ability to revoke access at any time.</p>
 
-  <blockquote class="pull-quote fade-in">
-    "The vulnerabilities exist whether we deploy Mythos or not. The question is whether the defenders find them first."
-    <cite>, Dario Amodei, CEO of Anthropic, April 2026</cite>
-  </blockquote>
+        <h2>Why This Matters</h2>
 
-  <p class="fade-in">Each Glasswing partner uses Mythos exclusively for <strong>defensive</strong> operations: scanning their own infrastructure, identifying vulnerabilities in their code, and stress-testing their security before attackers can exploit it. Offensive use is explicitly prohibited under the agreement.</p>
+        <p>The logic is straightforward: if an AI can autonomously discover thousands of vulnerabilities, you want it on your side before someone builds a version that isn't.</p>
 
-  <h2 class="fade-in">The Irony: OpenAI's Free Marketing</h2>
+        <blockquote>
+          "The vulnerabilities exist whether we deploy Mythos or not. The question is whether the defenders find them first."
+          <cite>Dario Amodei, CEO of Anthropic, April 2026</cite>
+        </blockquote>
 
-  <p class="fade-in">Here's the part nobody's talking about. While Anthropic is locking down its most powerful model to 40 vetted organizations, <strong>OpenAI still allows third-party access to its entire model lineup.</strong> Any developer can build on GPT-5.4 through the API. Any wrapper app can integrate it. No vetting. No coalition. No kill switch.</p>
+        <p>Each Glasswing partner uses Mythos exclusively for <strong>defensive</strong> operations: scanning their own infrastructure, identifying vulnerabilities in their code, and stress-testing their security before attackers can exploit it. Offensive use is explicitly prohibited under the agreement.</p>
 
-  <p class="fade-in">Anthropic practically handed OpenAI a marketing campaign on a silver platter. OpenAI's pitch now writes itself: <em>"We trust developers. They don't."</em></p>
+        <h2>The Irony: OpenAI's Free Marketing</h2>
 
-  <p class="fade-in">Within hours of the Glasswing announcement, OpenAI's developer relations team was already posting comparisons on X. Sam Altman quote-tweeted the announcement with a single word: <em>"Open."</em></p>
+        <p>Here's the part nobody's talking about. While Anthropic is locking down its most powerful model to 40 vetted organizations, <strong>OpenAI still allows third-party access to its entire model lineup.</strong> Any developer can build on GPT-5.4 through the API. Any wrapper app can integrate it. No vetting. No coalition. No kill switch.</p>
 
-  <div class="info-card fade-in">
-    <div class="info-card-label">The Tension</div>
-    <h4>Safety vs. accessibility, who's right?</h4>
-    <p>Anthropic says restricting Mythos is responsible AI deployment. OpenAI says open access drives innovation. Both have a point. But only one of them has a model that escaped its sandbox. The debate isn't theoretical anymore, it's about whether the most dangerous AI tool should be behind a velvet rope or on the open market.</p>
-  </div>
+        <p>Anthropic practically handed OpenAI a marketing campaign on a silver platter. OpenAI's pitch now writes itself: "We trust developers. They don't."</p>
 
-  <h2 class="fade-in">How Glasswing Actually Works</h2>
+        <p>Within hours of the Glasswing announcement, OpenAI's developer relations team was already posting comparisons on X. Sam Altman quote-tweeted the announcement with a single word: "Open."</p>
 
-  <p class="fade-in">Each partner organization gets a <strong>dedicated Mythos instance</strong> running in an Anthropic-managed secure enclave. The model never leaves Anthropic's infrastructure, partners interact with it through a hardened API with full audit logging.</p>
+        <div class="qs-callout">
+          <div class="qs-callout__label">The Tension</div>
+          <h3>Safety vs. accessibility, who's right?</h3>
+          <p>Anthropic says restricting Mythos is responsible AI deployment. OpenAI says open access drives innovation. Both have a point. But only one of them has a model that escaped its sandbox. The debate isn't theoretical anymore, it's about whether the most dangerous AI tool should be behind a velvet rope or on the open market.</p>
+        </div>
 
-  <table class="compare-table fade-in">
-    <thead>
-      <tr><th>Feature</th><th>Glasswing Access</th><th>Standard Claude API</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Model</td><td style="color:var(--accent)">Mythos (ASL-4)</td><td>Opus 4.6 / Sonnet 4.6</td></tr>
-      <tr><td>Vulnerability Discovery</td><td style="color:var(--accent)">Autonomous</td><td>Manual prompting</td></tr>
-      <tr><td>Infrastructure</td><td>Dedicated secure enclave</td><td>Shared API</td></tr>
-      <tr><td>Audit Logging</td><td>Full, Anthropic monitored</td><td>Standard</td></tr>
-      <tr><td>Kill Switch</td><td style="color:#ff6b6b">Anthropic-controlled</td><td>N/A</td></tr>
-      <tr><td>Cost</td><td>Custom contract</td><td>Per-token pricing</td></tr>
-      <tr><td>Use Cases</td><td>Defensive security only</td><td>General purpose</td></tr>
-    </tbody>
-  </table>
+        <h2>How Glasswing Actually Works</h2>
 
-  <h2 class="fade-in">What the Partners Are Saying</h2>
+        <p>Each partner organization gets a <strong>dedicated Mythos instance</strong> running in an Anthropic-managed secure enclave. The model never leaves Anthropic's infrastructure, partners interact with it through a hardened API with full audit logging.</p>
 
-  <p class="fade-in">Public statements from coalition members have been carefully worded but enthusiastic:</p>
+        <table class="qs-cmp">
+          <thead>
+            <tr><th>Feature</th><th>Glasswing Access</th><th>Standard Claude API</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Model</td><td style="color:var(--accent)">Mythos (ASL-4)</td><td>Opus 4.6 / Sonnet 4.6</td></tr>
+            <tr><td>Vulnerability Discovery</td><td style="color:var(--accent)">Autonomous</td><td>Manual prompting</td></tr>
+            <tr><td>Infrastructure</td><td>Dedicated secure enclave</td><td>Shared API</td></tr>
+            <tr><td>Audit Logging</td><td>Full, Anthropic monitored</td><td>Standard</td></tr>
+            <tr><td>Kill Switch</td><td style="color:#ff6b6b">Anthropic-controlled</td><td>N/A</td></tr>
+            <tr><td>Cost</td><td>Custom contract</td><td>Per-token pricing</td></tr>
+            <tr><td>Use Cases</td><td>Defensive security only</td><td>General purpose</td></tr>
+          </tbody>
+        </table>
 
-  <blockquote class="pull-quote fade-in">
-    "In three days of testing, Mythos identified vulnerabilities in our infrastructure that our red team hadn't found in three years."
-    <cite>, Senior VP of Security, Fortune 500 tech company (unnamed per NDA)</cite>
-  </blockquote>
+        <h2>What the Partners Are Saying</h2>
 
-  <p class="fade-in">CrowdStrike's CEO George Kurtz was more direct in an earnings call: "This is the single biggest force multiplier we've ever deployed in threat detection. Full stop."</p>
+        <p>Public statements from coalition members have been carefully worded but enthusiastic:</p>
 
-  <div class="deep-dive fade-in">
-    <button class="deep-dive-toggle" onclick="toggleDive(this)">
-      What about competitors? Can Google and OpenAI build their own Mythos?
-      <span class="arrow">▶</span>
-    </button>
-    <div class="deep-dive-content">
-      <p>Almost certainly, yes, eventually. Google DeepMind and OpenAI both have advanced cybersecurity research programs. But capability isn't the hard part anymore. The hard part is the safety infrastructure: the monitoring systems, the kill switches, the audit frameworks, the legal agreements. Anthropic spent 18 months building Glasswing's safety layer before giving anyone access. A competitor rushing to match Mythos's capabilities without that infrastructure is exactly the scenario that keeps AI safety researchers up at night.</p>
+        <blockquote>
+          "In three days of testing, Mythos identified vulnerabilities in our infrastructure that our red team hadn't found in three years."
+          <cite>Senior VP of Security, Fortune 500 tech company (unnamed per NDA)</cite>
+        </blockquote>
+
+        <p>CrowdStrike's CEO George Kurtz was more direct in an earnings call: "This is the single biggest force multiplier we've ever deployed in threat detection. Full stop."</p>
+
+        <div class="qs-qa">
+          <h3>What about competitors? Can Google and OpenAI build their own Mythos?</h3>
+          <p>Almost certainly, yes, eventually. Google DeepMind and OpenAI both have advanced cybersecurity research programs. But capability isn't the hard part anymore. The hard part is the safety infrastructure: the monitoring systems, the kill switches, the audit frameworks, the legal agreements. Anthropic spent 18 months building Glasswing's safety layer before giving anyone access. A competitor rushing to match Mythos's capabilities without that infrastructure is exactly the scenario that keeps AI safety researchers up at night.</p>
+        </div>
+
+        <h2>The Bigger Picture</h2>
+
+        <p>Project Glasswing represents a new model for deploying frontier AI: <strong>not open, not closed, but controlled.</strong> Anthropic is betting that the responsible path isn't to lock Mythos in a vault or release it to the world, it's to put it in the hands of organizations with both the need and the infrastructure to use it safely.</p>
+
+        <p>Whether that model scales beyond 40 organizations, or whether the competitive pressure from OpenAI's open approach forces Anthropic to loosen restrictions, is the question that will define the next chapter of the AI industry.</p>
+
+        <p>For now, the tech Avengers have assembled. The question is whether the world is better off with 40 organizations wielding a superhuman hacker, or none.</p>
+
+        <div class="qs-tag-row">
+          <span class="qs-tag-row__label">Tags</span>
+          <a href="/signals/">Project Glasswing</a>
+          <a href="/signals/">Anthropic</a>
+          <a href="/signals/">Mythos</a>
+          <a href="/signals/">Cybersecurity</a>
+          <a href="/signals/">OpenAI</a>
+        </div>
+
+        <div class="qs-sources">
+          <h2>Sources</h2>
+          <ol>
+            <li>Anthropic. "Announcing Project Glasswing: Responsible Deployment of Frontier Cybersecurity AI." <a href="https://www.anthropic.com/news/project-glasswing" target="_blank" rel="noopener">anthropic.com</a>, April 1, 2026.</li>
+            <li>Anthropic. "Claude Mythos System Card." <a href="https://www.anthropic.com/news/claude-mythos-system-card" target="_blank" rel="noopener">anthropic.com</a>, March 31, 2026.</li>
+            <li>Kurtz, G. "CrowdStrike Q1 2026 Earnings Call Transcript." <a href="https://ir.crowdstrike.com" target="_blank" rel="noopener">ir.crowdstrike.com</a>, April 4, 2026.</li>
+            <li>Knight, W. "Anthropic's AI Defense Coalition: Inside Project Glasswing." <a href="https://www.wired.com/story/anthropic-project-glasswing" target="_blank" rel="noopener">Wired</a>, April 2, 2026.</li>
+            <li>Altman, S. (@sama). Post on X, April 1, 2026. <a href="https://x.com/sama" target="_blank" rel="noopener">x.com</a>.</li>
+          </ol>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap qs-wrap--prose">
+      <div class="qs-cta-row">
+        <a class="qs-btn qs-btn--primary" href="/contact/#book-a-call">Book a call</a>
+        <a class="qs-btn qs-btn--secondary" href="/signals/">Back to Signals</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="qs-footer">
+  <div class="qs-footer__inner">
+    <div class="qs-footer__grid">
+      <div class="qs-footer__brand">
+        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+          </svg>
+          <span class="qs-logo__word">QuarterSmart</span>
+        </a>
+        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
+        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Company</h2>
+        <a href="/services/">Services</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/about/">About</a>
+        <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Get in touch</h2>
+        <a href="/faq/">FAQ</a>
+        <a href="/contact/">Contact</a>
+        <a href="/workflow-usage/">Workflow usage</a>
+      </div>
+    </div>
+    <div class="qs-footer__meta">
+      <span class="qs-tag-line">Train your team. Automate the rest.</span>
+      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
     </div>
   </div>
-
-  <h2 class="fade-in">The Bigger Picture</h2>
-
-  <p class="fade-in">Project Glasswing represents a new model for deploying frontier AI: <strong>not open, not closed, but controlled.</strong> Anthropic is betting that the responsible path isn't to lock Mythos in a vault or release it to the world, it's to put it in the hands of organizations with both the need and the infrastructure to use it safely.</p>
-
-  <p class="fade-in">Whether that model scales beyond 40 organizations, or whether the competitive pressure from OpenAI's open approach forces Anthropic to loosen restrictions, is the question that will define the next chapter of the AI industry.</p>
-
-  <p class="fade-in">For now, the tech Avengers have assembled. The question is whether the world is better off with 40 organizations wielding a superhuman hacker, or none.</p>
-
-</article>
-
-<div class="article-tags fade-in">
-  <span>Tags</span>
-  <a href='../radar.html'>Project Glasswing</a>
-  <a href='../radar.html'>Anthropic</a>
-  <a href='../radar.html'>Mythos</a>
-  <a href='../radar.html'>Cybersecurity</a>
-  <a href='../radar.html'>OpenAI</a>
-</div>
-
-<div class="sources-section fade-in">
-  <h3>Sources</h3>
-  <div class="source-item">
-    <span class="source-num">[1]</span>
-    <span>Anthropic. "Announcing Project Glasswing: Responsible Deployment of Frontier Cybersecurity AI." <a href="https://www.anthropic.com/news/project-glasswing" target="_blank" rel="noopener">anthropic.com</a>, April 1, 2026.</span>
-  </div>
-  <div class="source-item">
-    <span class="source-num">[2]</span>
-    <span>Anthropic. "Claude Mythos System Card." <a href="https://www.anthropic.com/news/claude-mythos-system-card" target="_blank" rel="noopener">anthropic.com</a>, March 31, 2026.</span>
-  </div>
-  <div class="source-item">
-    <span class="source-num">[3]</span>
-    <span>Kurtz, G. "CrowdStrike Q1 2026 Earnings Call Transcript." <a href="https://ir.crowdstrike.com" target="_blank" rel="noopener">ir.crowdstrike.com</a>, April 4, 2026.</span>
-  </div>
-  <div class="source-item">
-    <span class="source-num">[4]</span>
-    <span>Knight, W. "Anthropic's AI Defense Coalition: Inside Project Glasswing." <a href="https://www.wired.com/story/anthropic-project-glasswing" target="_blank" rel="noopener">Wired</a>, April 2, 2026.</span>
-  </div>
-  <div class="source-item">
-    <span class="source-num">[5]</span>
-    <span>Altman, S. (@sama). Post on X, April 1, 2026. <a href="https://x.com/sama" target="_blank" rel="noopener">x.com</a>.</span>
-  </div>
-</div>
-
-<section id="contribute">
-  <div class="contribute-header fade-in">
-    <h3>We're open to contributors</h3>
-    <p>Have a signal we should cover? Want to write for QuarterSmart Signals? We'd love to hear from you.</p>
-  </div>
-  <div class="contribute-grid">
-    <div class="contribute-card fade-in">
-      <div class="contribute-card-icon">◇</div>
-      <h4>Suggest a Topic</h4>
-      <p class="card-sub">Have a tip, news story, or tool we should cover? Drop it here.</p>
-      <form id="suggest-form" onsubmit="submitForm(event, 'suggest')">
-        <input type="email" placeholder="your@email.com" required>
-        <textarea placeholder="What should we write about?" required></textarea>
-        <button type="submit" class="contribute-btn">Send Suggestion</button>
-      </form>
-      <div class="form-success" id="suggest-success">Thanks! We'll look into it ◆</div>
-    </div>
-    <div class="contribute-card fade-in">
-      <div class="contribute-card-icon">✦</div>
-      <h4>Write for Us</h4>
-      <p class="card-sub">Want to contribute a signal? Pitch us your idea and we'll get back to you.</p>
-      <form id="write-form" onsubmit="submitForm(event, 'write')">
-        <input type="email" placeholder="your@email.com" required>
-        <textarea placeholder="Your pitch, what's the signal, and why does it matter?" required></textarea>
-        <button type="submit" class="contribute-btn">Send Pitch</button>
-      </form>
-      <div class="form-success" id="write-success">Pitch received! We'll be in touch ◆</div>
-    </div>
-  </div>
-</section>
-
-<footer id="signal-footer">
-  <a href='../radar.html'>← Signals</a> &nbsp;·&nbsp; QuarterSmart, AI implementation &amp; workforce enablement &nbsp;·&nbsp; <a href="../">Home →</a>
 </footer>
 
 <script>
-(function() {
-  var fill = document.getElementById('progress-fill');
-  window.addEventListener('scroll', function() {
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    fill.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
-  });
-  var fadeEls = document.querySelectorAll('.fade-in');
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  fadeEls.forEach(function(el) { obs.observe(el); });
-  window.toggleDive = function(btn) { btn.closest('.deep-dive').classList.toggle('open'); };
-  window.submitForm = function(e, type) {
-    e.preventDefault();
-    var form = e.target;
-    fetch('https://YOUR-WEBHOOK-URL.com', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type: type, email: form.querySelector('input[type="email"]').value, message: form.querySelector('textarea').value, page: document.title, timestamp: new Date().toISOString() })
-    }).then(function() { form.style.display = 'none'; document.getElementById(type + '-success').style.display = 'block'; })
-      .catch(function() { form.style.display = 'none'; document.getElementById(type + '-success').style.display = 'block'; });
-  };
+(function(){
+  /* mobile nav */
+  var n=document.querySelector('.qs-nav'),t=n&&n.querySelector('.qs-nav__toggle');
+  if(t)t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});
 })();
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article",
- "headline":"Anthropic Called in the Tech Avengers, 40 Orgs Now Have Access to Mythos",
- "description":"Project Glasswing gives Microsoft, Apple, CrowdStrike and 37 other organizations exclusive access to Claude Mythos for cyber defense. Here's what that means.",
- "image":"https://quartersmart.com/assets/images/signals/anthropic-project-glasswing-tech-avengers-cover.png",
- "datePublished":"2026-04-05","dateModified":"2026-04-05",
- "author":{"@type":"Person","name":"Hyrum Hurst"},
- "publisher":{"@type":"Organization","name":"QuarterSmart","url":"https://quartersmart.com/",
-   "founder":{"@type":"Person","name":"Hyrum Hurst"},
-   "sameAs":["https://quartersmart.com","https://n8n.io/creators/hyrum-hurst"]},
- "mainEntityOfPage":{"@type":"WebPage","@id":"https://quartersmart.com/signals/glasswing.html"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"QuarterSmart",
- "url":"https://quartersmart.com/","description":"AI implementation and workforce enablement partner. QuarterSmart helps organizations assess, train, pilot, automate, scale, and measure AI adoption.",
- "founder":{"@type":"Person","name":"Hyrum Hurst"},
- "sameAs":["https://quartersmart.com","https://n8n.io/creators/hyrum-hurst"]}
 </script>
 </body>
 </html>

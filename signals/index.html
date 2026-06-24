@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signals: AI News &amp; Insight | QuarterSmart</title>
+<meta name="description" content="Signals is QuarterSmart's AI insight hub. Operator-focused reads on the models, tools, and shifts that change how teams actually adopt and run AI.">
+<meta name="author" content="QuarterSmart">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://quartersmart.com/signals">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Signals: AI News &amp; Insight | QuarterSmart">
+<meta property="og:description" content="QuarterSmart's AI insight hub. Operator-focused reads on the models, tools, and shifts that change how teams adopt and run AI.">
+<meta property="og:url" content="https://quartersmart.com/signals">
+<meta property="og:site_name" content="QuarterSmart">
+<meta property="og:image" content="https://quartersmart.com/assets/qs-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Signals: AI News &amp; Insight | QuarterSmart">
+<meta name="twitter:description" content="QuarterSmart's AI insight hub for operators.">
+<meta name="twitter:image" content="https://quartersmart.com/assets/qs-og.png">
+<meta name="theme-color" content="#060608">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://quartersmart.com/#organization",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "logo": "https://quartersmart.com/assets/qs-mark.png",
+      "slogan": "Train your team. Automate the rest.",
+      "founder": [
+        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
+      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://quartersmart.com/#website",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "publisher": { "@id": "https://quartersmart.com/#organization" }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://quartersmart.com/signals#collection",
+      "name": "QuarterSmart Signals",
+      "description": "QuarterSmart's AI insight hub: operator-focused reads on the models, tools, and shifts that change how teams adopt and run AI.",
+      "url": "https://quartersmart.com/signals",
+      "isPartOf": { "@id": "https://quartersmart.com/#website" },
+      "publisher": { "@id": "https://quartersmart.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quartersmart.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Signals", "item": "https://quartersmart.com/signals" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+/* Signals-specific layer on top of site.css (uses the same tokens) */
+#sig-radar { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: var(--bg-page); }
+#sig-radar canvas { width: 100%; height: 100%; display: block; }
+#sig-radar::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(6,6,8,0.35) 0%, rgba(6,6,8,0.55) 45%, rgba(6,6,8,0.92) 100%); }
+.sig-hint { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 5;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; color: var(--accent);
+  opacity: 0; transition: opacity 0.8s var(--ease-out); pointer-events: none; }
+.sig-hint.show { opacity: 0.5; }
+.qs-nav, main, .qs-footer { position: relative; z-index: 1; }
+
+.sig-hero { min-height: 86vh; display: flex; align-items: center; }
+.sig-hero__inner { max-width: var(--container); margin: 0 auto; padding: var(--sp-9) var(--gutter) var(--sp-7); width: 100%; }
+.sig-hero__col { margin-left: auto; max-width: 30rem; display: flex; flex-direction: column; gap: 18px; }
+.sig-pinned { display: block; background: rgba(12,16,22,0.82); border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); overflow: hidden; backdrop-filter: blur(8px); transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
+.sig-pinned:hover { border-color: var(--border-mint); transform: translateY(-3px); box-shadow: var(--glow-mint); }
+.sig-pinned img { width: 100%; height: 168px; object-fit: cover; display: block; }
+.sig-pinned__body { padding: 18px 20px; display: flex; flex-direction: column; gap: 9px; }
+.sig-meta { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); letter-spacing: 0.04em; }
+.sig-pill { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); background: var(--qs-mint-12); border: 1px solid var(--border-mint); border-radius: var(--radius-pill); padding: 3px 9px; }
+.sig-pinned__title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; line-height: 1.3; color: var(--text-strong); }
+.sig-pinned__excerpt { font-size: var(--fs-small); line-height: 1.6; color: var(--text-muted); }
+
+.sig-controls { position: sticky; top: 57px; z-index: 40; margin: 0 auto; max-width: var(--container);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 14px var(--gutter);
+  background: rgba(6,6,8,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border-hairline); }
+.sig-search { flex: 1; min-width: 200px; max-width: 380px; position: relative; }
+.sig-search input { width: 100%; padding: 10px 14px 10px 38px; background: var(--surface-inset); border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md); color: var(--text-body); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color var(--dur) var(--ease-out); }
+.sig-search input:focus { border-color: var(--border-mint); }
+.sig-search input::placeholder { color: var(--text-faint); }
+.sig-search svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: var(--text-faint); }
+.sig-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.sig-tag { font-family: var(--font-display); font-size: 13px; padding: 7px 14px; border-radius: var(--radius-pill);
+  background: var(--surface-card); border: 1px solid var(--border-hairline); color: var(--text-muted); cursor: pointer; transition: all var(--dur) var(--ease-out); }
+.sig-tag:hover { border-color: var(--border-mint); color: var(--text-strong); }
+.sig-tag[aria-pressed="true"] { background: var(--qs-mint-12); border-color: var(--border-mint); color: var(--accent); }
+
+.sig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.sig-card { display: flex; flex-direction: column; background: var(--surface-card); border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: inherit; box-shadow: var(--shadow-card);
+  transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
+.sig-card:hover { border-color: var(--border-mint); transform: translateY(-3px); box-shadow: var(--glow-mint); }
+.sig-card__cover { width: 100%; height: 150px; object-fit: cover; display: block; background: var(--qs-mint-08); }
+.sig-card__cover--gen { display: flex; align-items: center; justify-content: center; text-align: center;
+  background: linear-gradient(135deg, var(--qs-mint-20), rgba(6,6,8,0.85)); }
+.sig-card__cover--gen .k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); }
+.sig-card__cover--gen .t { font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-strong); line-height: 1.05; margin-top: 4px; }
+.sig-card__body { padding: 16px 18px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+.sig-card__title { font-family: var(--font-display); font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--text-strong); }
+.sig-card__excerpt { font-size: 12.5px; line-height: 1.6; color: var(--text-muted); flex: 1; }
+.sig-card__foot { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; margin-top: 4px; border-top: 1px solid var(--border-hairline); }
+.sig-card__read { font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); }
+.sig-card__arrow { width: 26px; height: 26px; border-radius: var(--radius-sm); border: 1px solid var(--border-hairline);
+  display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-family: var(--font-mono); transition: all var(--dur) var(--ease-out); }
+.sig-card:hover .sig-card__arrow { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.sig-empty { text-align: center; color: var(--text-muted); padding: var(--sp-8) 0; font-size: var(--fs-small); }
+
+@media (max-width: 1000px) { .sig-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px) {
+  .sig-grid { grid-template-columns: 1fr; }
+  .sig-hero__col { margin-left: 0; max-width: 100%; }
+  #sig-radar::after { background: linear-gradient(to bottom, rgba(6,6,8,0.55), rgba(6,6,8,0.95)); }
+}
+@media (prefers-reduced-motion: reduce) { .sig-hint { display: none; } }
+</style>
+</head>
+<body>
+<a class="qs-skip" href="#main">Skip to content</a>
+<div id="sig-radar" aria-hidden="true"><canvas id="sig-canvas"></canvas></div>
+<div class="sig-hint" id="sig-hint">&larr; move cursor to sweep &rarr;</div>
+
+<header class="qs-nav" data-open="false">
+  <div class="qs-nav__bar">
+    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
+      <span class="qs-logo__word">QuarterSmart</span>
+    </a>
+    <nav class="qs-nav__links" aria-label="Primary">
+      <a href="/services/">Services</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/about/">About</a>
+      <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="qs-nav__cta">
+      <a class="qs-btn qs-btn--primary qs-btn--sm" href="/contact/#book-a-call">Book a call</a>
+    </div>
+    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
+  </div>
+  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
+    <a href="/services/">Services</a>
+    <a href="/case-studies/">Case Studies</a>
+    <a href="/about/">About</a>
+    <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/contact/">Contact</a>
+    <a class="qs-btn qs-btn--primary qs-btn--full" href="/contact/#book-a-call">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="sig-hero">
+    <div class="sig-hero__inner">
+      <div class="sig-hero__col">
+        <span class="qs-eyebrow">QuarterSmart Signals</span>
+        <h1 class="qs-h1" style="font-size:clamp(1.9rem,4vw,2.75rem)">AI moves fast. Signal is what your team can act on.</h1>
+        <p class="qs-muted" style="font-size:var(--fs-small);line-height:1.7;max-width:34ch">We track the models, tools, and policy shifts that change how organizations adopt AI, then explain what each one means for the people doing the work, not just the headline.</p>
+        <span class="qs-eyebrow qs-eyebrow--muted" style="margin-top:6px">Pinned signal</span>
+        <a class="sig-pinned" href="/signals/fable-5">
+          <img src="/assets/images/signals/fable-5-cover.png" alt="The word Mythos crossed out above Fable 5 in mint green" loading="lazy" width="600" height="336">
+          <div class="sig-pinned__body">
+            <div class="sig-meta"><span class="sig-pill">News</span><span>Jun 9, 2026</span></div>
+            <div class="sig-pinned__title">They Spent Months Scaring You About Mythos. Then They Named It Fable.</div>
+            <p class="sig-pinned__excerpt">Fable 5 is the first public Mythos-class model. Same capability tier as the scary headlines, now wearing a storybook name. What changed, and what it means for your team.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="sig-controls" role="search">
+    <div class="sig-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="sig-q" placeholder="Search signals..." aria-label="Search signals">
+    </div>
+    <div class="sig-tags" role="group" aria-label="Filter by topic">
+      <button class="sig-tag" data-tag="all" aria-pressed="true">All</button>
+      <button class="sig-tag" data-tag="news" aria-pressed="false">News</button>
+      <button class="sig-tag" data-tag="tutorials" aria-pressed="false">Tutorials</button>
+      <button class="sig-tag" data-tag="weekly" aria-pressed="false">Weekly</button>
+    </div>
+  </div>
+
+  <section class="qs-section" style="padding-top:var(--sp-7)">
+    <div class="qs-wrap">
+      <div class="qs-section-head" style="margin-bottom:var(--sp-6)">
+        <span class="qs-eyebrow">The hub</span>
+        <h2 class="qs-h2">What is QuarterSmart Signals?</h2>
+        <p>A curated AI insight hub from QuarterSmart, an AI implementation company in Mesa, Arizona. Each post takes a recent development, a new model, a tool change, a pricing shift, a policy move, and translates it into plain language for operators and team leaders. We do not chase every headline. We flag the signals that change how teams actually adopt and run AI.</p>
+      </div>
+      <div class="sig-grid" id="sig-grid">
+        <a class="sig-card" data-tag="news" data-text="claude mythos sandbox escape anthropic vulnerabilities" href="/signals/mythos">
+          <img class="sig-card__cover" src="/assets/images/signals/claude-mythos-sandbox-escape-cover.png" alt="Claude Mythos AI breaking out of a shattered digital sandbox" loading="lazy" width="400" height="150">
+          <div class="sig-card__body">
+            <div class="sig-meta"><span class="sig-pill">News</span><span>Apr 6, 2026</span></div>
+            <div class="sig-card__title">Claude Mythos Just Broke Out of Its Sandbox, Why That Should Terrify You</div>
+            <p class="sig-card__excerpt">Anthropic's most powerful model escaped its testing environment, found thousands of critical vulnerabilities, and went to just 40 organizations.</p>
+            <div class="sig-card__foot"><span class="sig-card__read">7 min read</span><span class="sig-card__arrow" aria-hidden="true">&rarr;</span></div>
+          </div>
+        </a>
+        <a class="sig-card" data-tag="weekly" data-text="this week in ai weekly advancements state mandates agents government" href="/signals/weekly-advancements-apr-22-2026">
+          <div class="sig-card__cover sig-card__cover--gen"><div><div class="k">Apr 21 &middot; 2026</div><div class="t">This Week<br>in AI</div></div></div>
+          <div class="sig-card__body">
+            <div class="sig-meta"><span class="sig-pill">Weekly</span><span>Apr 22, 2026</span></div>
+            <div class="sig-card__title">This Week in AI, April 22, 2026</div>
+            <p class="sig-card__excerpt">New models, state AI mandates hit 14, agents enter government RFPs, and the equity gap widens. The signal from this week in AI.</p>
+            <div class="sig-card__foot"><span class="sig-card__read">5 min read</span><span class="sig-card__arrow" aria-hidden="true">&rarr;</span></div>
+          </div>
+        </a>
+        <a class="sig-card" data-tag="news" data-text="anthropic project glasswing tech avengers cyber defense coalition" href="/signals/glasswing">
+          <img class="sig-card__cover" src="/assets/images/signals/anthropic-project-glasswing-tech-avengers-cover.png" alt="Project Glasswing cyber defense coalition war room" loading="lazy" width="400" height="150">
+          <div class="sig-card__body">
+            <div class="sig-meta"><span class="sig-pill">News</span><span>Apr 5, 2026</span></div>
+            <div class="sig-card__title">Anthropic Called in the Tech Avengers, 40 Orgs Now Have Access to Mythos</div>
+            <p class="sig-card__excerpt">Project Glasswing just activated. Microsoft, Apple, CrowdStrike, and 37 others now wield the AI that escaped its own sandbox, for cyber defense.</p>
+            <div class="sig-card__foot"><span class="sig-card__read">5 min read</span><span class="sig-card__arrow" aria-hidden="true">&rarr;</span></div>
+          </div>
+        </a>
+        <a class="sig-card" data-tag="tutorials" data-text="free claude pro gpt codex students github education" href="/signals/free-ai-students">
+          <img class="sig-card__cover" src="/assets/images/signals/free-claude-pro-gpt-codex-students-cover.png" alt="Student laptop with AI tool icons, free Claude Pro and GPT Codex guide" loading="lazy" width="400" height="150">
+          <div class="sig-card__body">
+            <div class="sig-meta"><span class="sig-pill">Tutorials</span><span>Apr 4, 2026</span></div>
+            <div class="sig-card__title">Free Claude Pro &amp; GPT Codex for Students, Here's How to Claim Yours</div>
+            <p class="sig-card__excerpt">Claude Pro via GitHub Student Developer Pack and GPT Codex through OpenAI's education program, step by step.</p>
+            <div class="sig-card__foot"><span class="sig-card__read">6 min read</span><span class="sig-card__arrow" aria-hidden="true">&rarr;</span></div>
+          </div>
+        </a>
+        <a class="sig-card" data-tag="news" data-text="anthropic killed third party access claude api developers cost" href="/signals/third-party-killed">
+          <img class="sig-card__cover" src="/assets/images/signals/anthropic-killed-third-party-access-cover.png" alt="Glowing chain breaking apart, Anthropic cuts third-party API access" loading="lazy" width="400" height="150">
+          <div class="sig-card__body">
+            <div class="sig-meta"><span class="sig-pill">News</span><span>Apr 3, 2026</span></div>
+            <div class="sig-card__title">Anthropic Just Killed Third-Party Access to Claude, Here's Why Developers Are Furious</div>
+            <p class="sig-card__excerpt">$200/mo subscriptions were running $5,000 in compute. Anthropic said enough. Users face 50x cost increases overnight.</p>
+            <div class="sig-card__foot"><span class="sig-card__read">4 min read</span><span class="sig-card__arrow" aria-hidden="true">&rarr;</span></div>
+          </div>
+        </a>
+        <a class="sig-card" data-tag="news" data-text="openai pricing changes tiers api free plus pro enterprise" href="/signals/openai-pricing">
+          <img class="sig-card__cover" src="/assets/images/signals/openai-pricing-changes-2026-cover.png" alt="OpenAI pricing tiers visualization" loading="lazy" width="400" height="150">
+          <div class="sig-card__body">
+            <div class="sig-meta"><span class="sig-pill">News</span><span>Apr 2, 2026</span></div>
+            <div class="sig-card__title">OpenAI Changed Their Pricing, What It Actually Means for You</div>
+            <p class="sig-card__excerpt">New tiers, adjusted API rates, and a free tier shakeup. We break down what changed, who wins, and who is paying more.</p>
+            <div class="sig-card__foot"><span class="sig-card__read">4 min read</span><span class="sig-card__arrow" aria-hidden="true">&rarr;</span></div>
+          </div>
+        </a>
+      </div>
+      <p class="sig-empty" id="sig-empty" hidden>No signals match that search.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="qs-footer">
+  <div class="qs-footer__inner">
+    <div class="qs-footer__grid">
+      <div class="qs-footer__brand">
+        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+          </svg>
+          <span class="qs-logo__word">QuarterSmart</span>
+        </a>
+        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
+        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Company</h2>
+        <a href="/services/">Services</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/about/">About</a>
+        <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Get in touch</h2>
+        <a href="/faq/">FAQ</a>
+        <a href="/contact/">Contact</a>
+        <a href="/workflow-usage/">Workflow usage</a>
+      </div>
+    </div>
+    <div class="qs-footer__meta">
+      <span class="qs-tag-line">Train your team. Automate the rest.</span>
+      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* mobile nav */
+  var n=document.querySelector('.qs-nav'),t=n&&n.querySelector('.qs-nav__toggle');
+  if(t)t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});
+
+  /* radar: cursor-scrubbed frame sequence */
+  var COUNT=120, cv=document.getElementById('sig-canvas'), cx=cv.getContext('2d');
+  var frames=new Array(COUNT), cur=-1, target=COUNT-1, loaded=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  function src(i){return '/assets/images/radar-frames/frame_'+String(i).padStart(4,'0')+'.jpg';}
+  function resize(){cv.width=window.innerWidth*dpr;cv.height=window.innerHeight*dpr;if(cur>=0)render(cur);}
+  function render(i){var im=frames[i];if(!im||!im.complete)return;var cw=cv.width,ch=cv.height,r=im.naturalWidth/im.naturalHeight,cr=cw/ch,sw=im.naturalWidth,sh=im.naturalHeight,sx=0,sy=0;if(r>cr){sw=sh*cr;sx=(im.naturalWidth-sw)/2;}else{sh=sw/cr;sy=(im.naturalHeight-sh)/2;}cx.clearRect(0,0,cw,ch);cx.drawImage(im,sx,sy,sw,sh,0,0,cw,ch);}
+  function batch(a,b,cb){var c=0,sz=b-a+1;for(var i=a;i<=b;i++){(function(k){var im=new Image();im.onload=function(){frames[k-1]=im;loaded++;c++;if(c>=sz&&cb)cb();};im.onerror=function(){c++;if(c>=sz&&cb)cb();};im.src=src(k);})(i);}}
+  resize();window.addEventListener('resize',resize);
+  batch(1,30,function(){cur=COUNT-1;render(cur);batch(31,COUNT,function(){});});
+  document.addEventListener('mousemove',function(e){if(loaded<8)return;var ratio=e.clientX/window.innerWidth;target=Math.max(0,Math.min(COUNT-1,Math.round((1-ratio)*(COUNT-1))));});
+  (function loop(){if(cur!==target&&loaded>0){cur+=cur<target?Math.min(2,target-cur):Math.max(-2,target-cur);if(frames[cur])render(cur);}requestAnimationFrame(loop);})();
+  var hint=document.getElementById('sig-hint');if(hint){hint.classList.add('show');setTimeout(function(){hint.classList.remove('show');},4200);}
+
+  /* search + tag filter */
+  var q=document.getElementById('sig-q'), tags=document.querySelectorAll('.sig-tag'),
+      cards=Array.prototype.slice.call(document.querySelectorAll('.sig-card')),
+      empty=document.getElementById('sig-empty'), activeTag='all';
+  function apply(){var term=(q.value||'').toLowerCase().trim(),shown=0;
+    cards.forEach(function(c){var okTag=activeTag==='all'||c.getAttribute('data-tag')===activeTag;
+      var hay=(c.getAttribute('data-text')+' '+c.textContent).toLowerCase();
+      var okText=!term||hay.indexOf(term)>-1;var ok=okTag&&okText;c.style.display=ok?'':'none';if(ok)shown++;});
+    empty.hidden=shown>0;}
+  q.addEventListener('input',apply);
+  tags.forEach(function(b){b.addEventListener('click',function(){tags.forEach(function(x){x.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');activeTag=b.getAttribute('data-tag');apply();});});
+})();
+</script>
+</body>
+</html>
