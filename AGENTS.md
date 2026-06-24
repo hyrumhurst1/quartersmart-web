@@ -143,6 +143,21 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-24 (final QuarterSmart brand kit)** - Produced the final selected four-quarter
+  QuarterSmart raster kit in `brand/`: `qs-logo-primary-dark.png`, `qs-logo-primary-light.png`,
+  `qs-mark-dark.png`, `qs-mark-transparent.png`, `qs-mark-white.png`, `qs-mark-black.png`, and
+  `qs-og-image.png`. The selected mark is a circle split into four equal quarters with the top-right
+  quarter in brighter mint `#1ffdb3`, the other quarters in mint `#00e5a0`, and wordmark text
+  spelled exactly `QuarterSmart`. Do not return to the earlier connected-node or alternate Q concepts.
+
+- **2026-06-24 (QuarterSmart quarter-circle logo concepts)** - Generated six new high-resolution
+  raster logo concepts with the built-in imagegen tool and saved them in `brand/concepts/`:
+  `quarter-v1-wedge-dark.png`, `quarter-v1-wedge-light.png`, `quarter-v2-ring-dark.png`,
+  `quarter-v2-ring-light.png`, `quarter-v3-q-cutout-dark.png`, and
+  `quarter-v4-detached-quarter-dark.png`. Direction is the "quarter" visual pun only: circle/ring
+  with a missing, cut-out, or detached 90-degree quarter. Hard avoid remains no connected dots,
+  node graphs, circuits, or branching motifs because the prior connected-node Q read too close to n8n.
+
 - **2026-06-24 (QuarterSmart logo concepts)** - Generated six raster logo concept boards with the built-in
   imagegen tool and saved them in `brand/concepts/`: direction 1 split-output dark/light, direction 2 Q
   monogram dark/light, direction 3 wordmark-spark dark, and direction 4 stacked-blocks dark. All saved
