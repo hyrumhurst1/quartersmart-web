@@ -116,16 +116,19 @@ Core thesis: reposition QuarterSmart from "AI-powered LMS / course studio" to an
 **Assess → Train → Pilot → Automate → Scale → Measure.** Proof anchor: *verified n8n creator with 25
 public workflow templates.*
 
-> ### 🚫 HARD RULE — NO LMS (owner directive, 2026-06-08)
-> QuarterSmart is **NOT about an LMS, course studio, instructional design, or training-content product —
-> at all.** Do not position, name, headline, or describe the company around LMS / courses / "training
-> platform" / "rollout hub LMS" in any public-facing copy, meta, or schema. The research docs that suggest
-> keeping LMS "as a supporting asset / secondary page" are **overridden** — drop it entirely.
-> The underlying *capability* (secure knowledge systems, AI assistants grounded in client SOPs/docs,
-> secure deployment) may still be offered, but **never branded or led as an LMS / training platform**.
-> Lead with: AI implementation, workforce enablement, AI rollout, workflow automation, knowledge systems,
-> secure deployment. Avoid: "AI LMS," "course development," "instructional design," "chatbot builder,"
-> "automation freelancer."
+> ### POSITIONING RULE — training as a system, not an LMS product (owner directive, updated 2026-06-23)
+> This SUPERSEDES the 2026-06-08 "NO LMS at all" rule. Owner (Hyrum) reversed it on 2026-06-23.
+> QuarterSmart now leads with **"Train your team. Automate the rest."** Training and onboarding ARE part
+> of the offer, but framed as **systems we build, host, and maintain**, not as a commodity LMS or
+> course-studio product.
+> - Lead with: AI implementation, workforce enablement, AI onboarding and training SYSTEMS,
+>   SOPs-to-training-and-automation, workflow automation, knowledge systems, hosting and maintenance.
+> - Signature mechanic: each important SOP becomes both a training course AND an automation
+>   ("your SOPs do double duty").
+> - Still do NOT brand QuarterSmart as an "LMS," "course platform," "course studio," or "instructional
+>   design" vendor. Training is an OUTPUT of implementation, not the product.
+> - Canonical model now lives in `work1/hyrum/`: `quartersmart_business_model_2026-06-23.md`,
+>   `quartersmart_rebrand_2026-06-23.md`, and `quartersmart_website_content_2026-06-23.md`.
 
 ---
 
@@ -139,6 +142,11 @@ public workflow templates.*
 ---
 
 ## 7. Status log (append newest at top — keep the next agent informed)
+
+- **2026-06-24 (QuarterSmart logo concepts)** - Generated six raster logo concept boards with the built-in
+  imagegen tool and saved them in `brand/concepts/`: direction 1 split-output dark/light, direction 2 Q
+  monogram dark/light, direction 3 wordmark-spark dark, and direction 4 stacked-blocks dark. All saved
+  deliverables are at least 1024px tall/wide; light variants were padded on white to 1774x1024.
 
 - **2026-06-11 (verifiable metrics + associations)** - (1) NEW /workflow-usage/ methodology page: full
   per-template table of all 25 n8n templates, total **10,876 documented uses** (June 2026), definitions
