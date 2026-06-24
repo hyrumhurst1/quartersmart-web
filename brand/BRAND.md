@@ -1,50 +1,67 @@
 # QuarterSmart Brand Kit
 
-> Brand assets and spec for the QuarterSmart rebrand of this site.
-> **Not published to the live site yet** — these live in git for reference/agent access only.
-
-## Assets in this folder
-
-| File | What it is |
-|---|---|
-| `quartersmart-wordmark-kit.png` | Full wordmark (`Q UARTERSMART`) + Q-icon variations on dark/app-tile/framed treatments |
-| `quartersmart-favicon-kit.png` | Favicon master + size renders (512, 256, 128, 64, 32) |
-
-> These are reference/preview kit sheets (one PNG each, multiple variants laid out). When implementing,
-> export the individual logo/favicon files at the needed sizes/formats (SVG preferred for the logo,
-> `.ico` + PNG sizes for favicons) from the source design before wiring them into the site.
+> Brand assets and spec for QuarterSmart. Not published to the live site (the deploy strips `brand/`).
+> Final logo selected 2026-06-23: the four-quarter mark (direction Q4).
 
 ## Logo
 
-- A mint-green **"Q"** with a **white quarter-circle** removed from the upper-right — a visual pun on
-  "quarter." The Q's tail is a squared stroke.
-- Wordmark: the Q followed by **`UARTERSMART`** in white, uppercase, wide letter-spacing.
-- Works on near-black background; also shown as a rounded app-tile and a thin-framed "tech" treatment.
+The mark is a **circle split into four equal quarters** in mint, with the **top-right quarter a brighter
+mint**, a thin gap separating the quarters. It is a visual pun on "quarter" and reads as a clean,
+premium systems mark. Paired with the wordmark **QuarterSmart** (one word, capital Q and capital S).
+
+### Final kit files (this folder)
+
+| File | What it is | Size |
+|---|---|---|
+| `qs-logo-primary-dark.png` | Full lockup (mark + wordmark) on near-black | 2400x1600 |
+| `qs-logo-primary-light.png` | Full lockup for light backgrounds | 2400x1600 |
+| `qs-mark-dark.png` | Mark only on near-black (app-icon style) | 2048x2048 |
+| `qs-mark-transparent.png` | Mark only on transparent background | 2048x2048 |
+| `qs-mark-white.png` | Monochrome all-white mark, transparent | 2048x2048 |
+| `qs-mark-black.png` | Monochrome all-black mark, transparent | 2048x2048 |
+| `qs-og-image.png` | Social share card (mark + wordmark + tagline) | 1200x630 |
+| `favicons/` | favicon.ico + favicon-32 + icon-48/96/192/512 + apple-touch-icon (180) | various |
+
+> Superseded reference sheets (older "Q with quarter-circle cut" concept): `quartersmart-wordmark-kit.png`,
+> `quartersmart-favicon-kit.png`. Kept for history; do not use.
+
+### Usage rules
+
+- Primary lockup on dark is the default. Use the light lockup only on white or very light surfaces.
+- Mark alone for favicons, the nav, social avatars, and any space too small for the wordmark.
+- Keep clear space around the lockup of at least the height of one quarter of the mark.
+- Do not recolor the mark outside the brand mint, do not add drop shadows or gradients beyond the single
+  brighter-quarter accent, do not stretch or rotate, do not place the dark lockup on a busy or light photo.
 
 ## Palette
 
 | Token | Hex | Use |
 |---|---|---|
-| Accent (mint) | `#00e5a0` | Primary brand green — Q mark, accents, CTAs, highlights |
-| Accent bright | `#1ffdb3` | Brighter mint for glow/hover/emphasis |
+| Accent (mint) | `#00e5a0` | Primary brand green: mark, accents, CTAs, highlights |
+| Accent bright | `#1ffdb3` | Brighter mint: the top-right quarter, hover, emphasis |
 | Background | `#060608` | Near-black page background |
 | Text | `#f0f4f8` | Primary off-white text |
-| Muted | `#8b95a5` | Secondary/muted text |
+| Muted | `#8b95a5` | Secondary / muted text |
 
-**Note:** these are the SAME tokens the current site already uses (`--accent`, `--text`, `--muted` in the
-page CSS, background `#060608`). So the rebrand needs minimal recoloring — it's primarily a **logo + wordmark
-+ copy** swap, not a palette change.
+Mint is the single accent on a dark canvas. These match the site's existing CSS tokens, so the rebrand is a
+logo plus copy swap, not a palette change.
 
-## Typography (current site, likely to keep)
+## Typography
 
-- Display/headings: **Space Grotesk** (Google Fonts)
-- Mono/labels: **JetBrains Mono** (Google Fonts)
+- Recommended for the rebuild: **Geist** or **Inter** (clean geometric sans, free, matches the wordmark and
+  the modern dark SaaS aesthetic).
+- The prior site used **Space Grotesk** (display) and **JetBrains Mono** (labels). Both are acceptable; the
+  design phase settles the final choice.
 
-## Rebrand checklist (when we go live with QuarterSmart branding)
+## Voice
 
-- [ ] Replace `logos/` AI Ed marks with QuarterSmart Q logo (SVG)
-- [ ] Replace `favicon.ico`, `icon-*.png`, `apple-touch-icon.png` with QuarterSmart favicon exports
-- [ ] Swap "AI Ed" wordmark/text → "QuarterSmart" across pages
-- [ ] Update `<title>`, meta description, OG/Twitter tags, `assets/images/og/*` images
-- [ ] Update copy/positioning per `research/quartersmart-positioning-blueprint.md`
-- [ ] Update `sitemap.xml`, `robots.txt`, `llms.txt`, canonical URLs to the QuarterSmart domain
+Pragmatic, confident, anti-hype. Builder energy, not guru. No em dashes anywhere. No public pricing on the
+site (CTAs are "Book a call" and "Request a proposal"). Tagline: **Train your team. Automate the rest.**
+
+## Go-live checklist
+
+- [ ] Place `favicons/` files at the repo root (favicon.ico, favicon-32.png, icon-48/96/192/512.png, apple-touch-icon.png)
+- [ ] Wire `qs-mark-transparent.png` / `qs-logo-primary-dark.png` into the nav and footer
+- [ ] Set `qs-og-image.png` as the OG/Twitter image sitewide
+- [ ] Swap any remaining "AI Ed" marks/text for QuarterSmart
+- [ ] Update `sitemap.xml`, `robots.txt`, `llms.txt`, canonical URLs

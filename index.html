@@ -3,2414 +3,324 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Implementation & Workforce Enablement | QuarterSmart</title>
-<meta name="description" content="QuarterSmart helps organizations move from AI curiosity to operational adoption: assess, train, pilot, automate, scale, and measure real AI rollout across your workforce.">
+<title>QuarterSmart | Train Your Team. Automate the Rest.</title>
+<meta name="description" content="QuarterSmart turns your SOPs into AI training your team learns from and automations that run the work. Built, hosted, and maintained. Book a call.">
 <meta name="author" content="QuarterSmart">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://quartersmart.com/">
-<!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="AI Implementation & Workforce Enablement, QuarterSmart">
-<meta property="og:description" content="QuarterSmart helps organizations identify the right AI opportunities, build workforce fluency, pilot high-friction workflows, automate real work, and scale what proves out.">
+<meta property="og:title" content="QuarterSmart | Train Your Team. Automate the Rest.">
+<meta property="og:description" content="QuarterSmart turns your SOPs into AI training your team learns from and automations that run the work. Built, hosted, and maintained.">
 <meta property="og:url" content="https://quartersmart.com/">
 <meta property="og:site_name" content="QuarterSmart">
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Implementation & Workforce Enablement, QuarterSmart">
-<meta name="twitter:description" content="QuarterSmart ships the AI your team actually uses. We find where AI pays off, build it into the work your team already does, and measure the adoption.">
-<meta property="og:image" content="https://quartersmart.com/assets/images/og/og-home.png">
-<meta property="og:image:alt" content="QuarterSmart, we ship the AI your team actually uses.">
+<meta property="og:image" content="https://quartersmart.com/assets/qs-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:image" content="https://quartersmart.com/assets/images/og/og-home.png">
+<meta property="og:image:alt" content="QuarterSmart. Train your team. Automate the rest.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QuarterSmart | Train Your Team. Automate the Rest.">
+<meta name="twitter:description" content="QuarterSmart turns your SOPs into AI training your team learns from and automations that run the work.">
+<meta name="twitter:image" content="https://quartersmart.com/assets/qs-og.png">
 <meta name="theme-color" content="#060608">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="icon-48.png">
-<link rel="icon" type="image/png" sizes="96x96" href="icon-96.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-<link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" as="image" href="assets/images/hero-poster.webp" fetchpriority="high">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap"></noscript>
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --accent:  #00e5a0;
-  --text:    #f0f4f8;
-  --muted:   #8b95a5;
-  --surface: rgba(8,10,14,0.7);
-  --border:  rgba(255,255,255,0.06);
-}
-
-html {
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0,229,160,0.2) #060608;
-}
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #060608; }
-::-webkit-scrollbar-thumb {
-  background: rgba(0,229,160,0.2);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,229,160,0.35);
-}
-body {
-  background: #060608;
-  color: var(--text);
-  font-family: 'Space Grotesk', sans-serif;
-  overflow-x: hidden;
-}
-/* Global subtle noise grain */
-body::after {
-  content: ''; position: fixed; inset: 0;
-  z-index: 9999; pointer-events: none;
-  opacity: 0.07;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 180px;
-}
-
-#hero, #scroll-anim, #loop-vid, #problem, #how-it-works, #courses,
-#partners, #cta, #faq, footer {
-  position: relative; z-index: 1;
-}
-/* ── HERO ───────────────────────────────── */
-#hero {
-  position: relative; width: 100%; height: 100vh;
-  display: flex; flex-direction: column;
-}
-.hero-bg-video {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-/* Gradient overlay for text legibility */
-#hero::before {
-  content: ''; position: absolute; inset: 0; z-index: 1;
-  background:
-    linear-gradient(to bottom,
-      rgba(0,0,0,0.6) 0%,
-      rgba(0,0,0,0.0) 35%,
-      rgba(0,0,0,0.0) 50%,
-      rgba(6,6,8,0.8) 80%,
-      rgba(6,6,8,1) 100%
-    );
-}
-/* Subtle teal colour-grade to match brand */
-.hero-tint {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 50% at 50% 30%,
-    rgba(0,229,160,0.04) 0%, transparent 70%);
-}
-
-/* NAV */
-/* NAV */
-#nav-outer {
-  position: relative; z-index: 10;
-  padding: 14px 48px 0;
-}
-nav {
-  max-width: 960px; margin: 0 auto;
-  background: rgba(30,32,38,0.42);
-  backdrop-filter: blur(20px) saturate(120%);
-  -webkit-backdrop-filter: blur(20px) saturate(120%);
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: 14px;
-  padding: 9px 24px;
-  display: flex; align-items: center;
-  justify-content: space-between; gap: 20px;
-  box-shadow:
-    0 4px 32px rgba(0,0,0,0.25),
-    inset 0 1px 0 rgba(255,255,255,0.06),
-    inset 0 -1px 0 rgba(0,0,0,0.1);
-}
-.nav-logo {
-  display: flex; align-items: center;
-  position: relative;
-}
-.nav-logo img {
-  height: 21px; width: auto;
-}
-.nav-logo .logo-hover {
-  position: absolute; top: 0; left: 0;
-  opacity: 0; transition: opacity 0.25s ease;
-}
-.nav-logo:hover .logo-default { opacity: 0; }
-.nav-logo:hover .logo-hover { opacity: 1; }
-.nav-links { display: flex; gap: 24px; list-style: none; }
-.nav-links a {
-  font-size: 13.5px; font-weight: 400;
-  color: rgba(240,244,248,0.75);
-  text-decoration: none;
-  transition: color 0.25s;
-  position: relative; padding-bottom: 2px;
-  letter-spacing: 0.01em;
-}
-.nav-links a:hover { color: var(--accent); }
-.nav-links a::after {
-  content: ''; position: absolute;
-  bottom: -2px; left: 0; width: 100%; height: 1px;
-  background: var(--accent);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.25s ease;
-}
-.nav-links a:hover::after { transform: scaleX(1); }
-.nav-links a::before {
-  content: 'Coming Soon';
-  position: absolute;
-  top: calc(100% + 8px); left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  font-size: 10px; font-weight: 500;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--accent);
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  pointer-events: none;
-}
-.nav-links a:hover::before {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-.nav-links a.no-coming-soon::before { display: none; }
-.nav-cta {
-  background: var(--accent); color: #000;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 8px 18px; border-radius: 9px; border: none;
-  cursor: pointer;
-  display: flex; align-items: center; gap: 8px;
-  transition: background 0.2s, box-shadow 0.25s, transform 0.15s;
-  white-space: nowrap;
-}
-.nav-cta img {
-  height: 14px; width: auto;
-  filter: brightness(0);
-}
-.nav-cta:hover {
-  background: #1ffdb3;
-  box-shadow: 0 0 24px rgba(0,229,160,0.3), 0 0 60px rgba(0,229,160,0.08);
-  transform: translateY(-1px);
-}
-
-/* HERO TEXT, bottom-center */
-.hero-content {
-  position: relative; z-index: 5;
-  flex: 1; display: flex;
-  flex-direction: column; align-items: center;
-  justify-content: flex-end;
-  padding: 0 32px 100px;
-  text-align: center; gap: 20px;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-.hero-content.visible { opacity: 1; }
-.hero-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px; letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.hero-eyebrow.fade-in { opacity: 0.8; transform: translateY(0); }
-.hero-headline {
-  font-size: clamp(52px, 8vw, 110px);
-  font-weight: 700; line-height: 0.93;
-  letter-spacing: -0.035em; color: #fff;
-  text-shadow: 0 4px 80px rgba(0,0,0,0.7);
-  display: inline;
-}
-.hero-headline em { font-style: normal; color: var(--accent); }
-
-/* Typing cursor */
-.type-cursor {
-  display: inline-block;
-  width: 3px;
-  height: 0.85em;
-  background: var(--accent);
-  margin-left: 4px;
-  vertical-align: baseline;
-  position: relative;
-  top: 0.05em;
-  animation: blink 0.9s step-end infinite;
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.hero-sub {
-  font-size: 15.5px; color: rgba(240,244,248,0.78);
-  max-width: 480px; line-height: 1.75;
-  letter-spacing: 0.01em;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
-}
-.hero-sub.fade-in { opacity: 1; transform: translateY(0); }
-
-/* Hero inline CTA form */
-.hero-cta-form {
-  display: flex; gap: 12px; max-width: 440px; width: 100%;
-  opacity: 0; transform: translateY(8px);
-  transition: opacity 0.6s ease 0.35s, transform 0.6s ease 0.35s;
-}
-.hero-cta-form.fade-in { opacity: 1; transform: translateY(0); }
-.hero-fine {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px; letter-spacing: 0.12em;
-  color: var(--muted); opacity: 0.6;
-  text-transform: uppercase;
-  margin-top: -4px;
-  opacity: 0; transform: translateY(8px);
-  transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s;
-}
-.hero-fine.fade-in { opacity: 0.6; transform: translateY(0); }
-
-/* ── PROBLEM SECTION ────────────────────── */
-#problem {
-  background: transparent;
-  padding: 160px 40px;
-  display: flex; align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.problem-inner {
-  max-width: 820px; text-align: center;
-  position: relative; z-index: 1;
-}
-.problem-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px; letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent); opacity: 0.6;
-  margin-bottom: 36px;
-  display: block;
-}
-.problem-text {
-  font-size: clamp(28px, 3.5vw, 46px);
-  font-weight: 500; line-height: 1.3;
-  letter-spacing: -0.02em; color: rgba(240,244,248,0.85);
-}
-.problem-text strong { color: #fff; font-weight: 700; }
-.problem-text span { color: var(--accent); }
-.problem-credibility-lead {
-  margin-top: 56px; font-family: 'JetBrains Mono', monospace;
-  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--muted); text-align: center;
-}
-.problem-stats {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-  margin-top: 24px; text-align: center;
-}
-.problem-stat {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px; padding: 32px 24px;
-  display: flex; flex-direction: column; gap: 10px;
-}
-.stat-num {
-  font-size: clamp(36px, 4vw, 52px);
-  font-weight: 700; color: var(--accent);
-  letter-spacing: -0.03em; line-height: 1;
-}
-.stat-label {
-  font-size: 14px; color: var(--muted);
-  line-height: 1.6;
-}
-.stat-source {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px; color: rgba(240,244,248,0.3);
-  letter-spacing: 0.1em; text-transform: uppercase;
-}
-.problem-bottom {
-  margin-top: 40px;
-  font-size: clamp(16px, 2vw, 20px);
-  color: rgba(240,244,248,0.6);
-  line-height: 1.6;
-}
-
-/* ── COURSES ────────────────────────────── */
-#courses {
-  padding: 80px 40px 160px;
-  background: transparent;
-  position: relative;
-}
-.courses-header {
-  text-align: center; margin-bottom: 64px;
-  position: relative; z-index: 1;
-}
-.courses-header h2 {
-  font-size: clamp(34px, 4vw, 54px);
-  font-weight: 700; letter-spacing: -0.025em;
-  color: #fff;
-}
-.courses-header p {
-  font-size: 15px; color: var(--muted);
-  margin-top: 14px; letter-spacing: 0.01em;
-}
-.courses-grid {
-  max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4,1fr); gap: 18px;
-  position: relative; z-index: 1;
-}
-.course-card {
-  background: rgba(10,10,16,0.9);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 16px; padding: 32px 26px 26px;
-  display: flex; flex-direction: column; gap: 16px;
-  transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s;
-  cursor: pointer; position: relative; overflow: hidden;
-}
-.course-card::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,229,160,0.2), transparent);
-  opacity: 0; transition: opacity 0.25s;
-}
-.course-card:hover {
-  border-color: rgba(0,229,160,0.2);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,229,160,0.08);
-}
-.course-card:hover::before { opacity: 1; }
-.card-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px; letter-spacing: 0.2em;
-  color: var(--accent); opacity: 0.5;
-}
-.card-badge {
-  position: absolute; top: 20px; right: 20px;
-  background: rgba(0,229,160,0.1);
-  border: 1px solid rgba(0,229,160,0.2);
-  color: var(--accent); font-family: 'JetBrains Mono', monospace;
-  font-size: 8px; letter-spacing: 0.14em;
-  text-transform: uppercase; padding: 4px 10px;
-  border-radius: 100px;
-}
-.card-title {
-  font-size: 17px; font-weight: 600;
-  color: #fff; line-height: 1.3; letter-spacing: -0.01em;
-}
-.card-desc {
-  font-size: 13px; color: var(--muted);
-  line-height: 1.7; flex: 1;
-  max-height: 100px; overflow: hidden;
-  position: relative;
-  transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1);
-}
-.card-desc.expanded { max-height: 600px; }
-.card-desc:not(.expanded)::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 40px;
-  background: linear-gradient(transparent, rgba(10,10,16,0.95));
-  pointer-events: none;
-}
-.card-toggle {
-  background: none; border: none; cursor: pointer;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--accent); opacity: 0.7;
-  padding: 6px 0 0; transition: opacity 0.2s;
-}
-.card-toggle:hover { opacity: 1; }
-.card-footer {
-  display: flex; align-items: center;
-  justify-content: space-between;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-}
-.card-footer-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px; color: var(--muted);
-  letter-spacing: 0.12em; text-transform: uppercase;
-}
-.card-arrow {
-  width: 28px; height: 28px; border-radius: 7px;
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--muted); font-size: 13px;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
-}
-.course-card:hover .card-arrow {
-  background: var(--accent); color: #000;
-  border-color: var(--accent);
-}
-
-/* ── CTA ────────────────────────────────── */
-#cta {
-  padding: 140px 40px;
-  display: flex; align-items: center;
-  justify-content: center;
-  background: transparent;
-  position: relative; overflow: hidden;
-}
-.cta-inner { position: relative; z-index: 1; text-align: center; max-width: 580px; }
-.cta-inner h2 {
-  font-size: clamp(36px, 4.5vw, 60px);
-  font-weight: 700; letter-spacing: -0.03em;
-  color: #fff; line-height: 1.05; margin-bottom: 18px;
-}
-.cta-inner h2 em { font-style: normal; color: var(--accent); }
-.cta-inner p {
-  font-size: 15px; color: var(--muted);
-  line-height: 1.75; margin-bottom: 40px;
-  letter-spacing: 0.01em;
-}
-.cta-form { display: flex; gap: 12px; max-width: 460px; margin: 0 auto; }
-.cta-input {
-  flex: 1; background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
-  padding: 15px 20px; font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px; color: var(--text);
-  outline: none; transition: border-color 0.25s, box-shadow 0.25s;
-}
-.cta-input::placeholder { color: var(--muted); }
-.cta-input:focus {
-  border-color: rgba(0,229,160,0.35);
-  box-shadow: 0 0 0 3px rgba(0,229,160,0.06);
-}
-.cta-btn {
-  background: var(--accent); color: #000;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px; font-weight: 600;
-  letter-spacing: 0.07em; text-transform: uppercase;
-  padding: 15px 28px; border-radius: 10px;
-  border: none; cursor: pointer; white-space: nowrap;
-  transition: background 0.2s, box-shadow 0.2s, transform 0.15s, color 0.2s, border-color 0.2s;
-  display: inline-flex; align-items: center; justify-content: center;
-  text-decoration: none;
-}
-.cta-btn:hover {
-  background: #1ffdb3;
-  box-shadow: 0 0 36px rgba(0,229,160,0.28);
-  transform: translateY(-1px);
-}
-.cta-btn-secondary {
-  background: transparent; color: var(--accent);
-  border: 1px solid rgba(0,229,160,0.4);
-}
-.cta-btn-secondary:hover {
-  background: rgba(0,229,160,0.08);
-  color: var(--accent);
-  box-shadow: 0 0 22px rgba(0,229,160,0.16);
-}
-.cta-fine {
-  margin-top: 16px; font-family: 'JetBrains Mono', monospace;
-  font-size: 10px; letter-spacing: 0.14em;
-  color: var(--muted); opacity: 0.65; text-transform: uppercase;
-}
-
-/* ── FOOTER ─────────────────────────────── */
-footer {
-  padding: 56px 40px 36px;
-  background: transparent;
-}
-.footer-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: flex; align-items: center;
-  justify-content: space-between;
-}
-.footer-logo img { height: 28px; opacity: 0.7; }
-.footer-copy {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px; letter-spacing: 0.14em;
-  color: #9ba5b4;
-  text-transform: uppercase;
-}
-.footer-copy a { color: #9ba5b4; }
-.footer-links { display: flex; gap: 28px; }
-.footer-links a {
-  font-size: 13px; color: #9ba5b4;
-  text-decoration: none;
-  transition: color 0.25s;
-}
-.footer-links a:hover { color: var(--text); }
-
-/* ── SCROLL FRAME ANIMATION ───────────── */
-#scroll-anim {
-  position: relative;
-  height: 400vh;
-  background: #060608;
-}
-.scroll-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.scroll-sticky::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 180px;
-  background: linear-gradient(to bottom, #060608, transparent);
-  z-index: 1; pointer-events: none;
-}
-.scroll-sticky::after {
-  content: ''; position: absolute;
-  bottom: 0; left: 0; right: 0; height: 180px;
-  background: linear-gradient(to top, #060608, transparent);
-  z-index: 1; pointer-events: none;
-}
-.scroll-canvas {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-}
-.scroll-text {
-  position: absolute;
-  left: 6%;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 400px;
-  z-index: 2;
-}
-.scroll-line {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  margin-bottom: 20px;
-}
-.scroll-line.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.scroll-line h2 {
-  font-size: clamp(24px, 3vw, 38px);
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 10px;
-}
-.scroll-line h2 em {
-  font-style: normal;
-  color: var(--accent);
-}
-.scroll-line p {
-  font-size: 15px;
-  color: rgba(240,244,248,0.75);
-  line-height: 1.7;
-  letter-spacing: 0.01em;
-}
-.scroll-line .mono-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--accent);
-  opacity: 0.6;
-  margin-bottom: 14px;
-  display: block;
-}
-
-/* ── LOOP VIDEO SECTION ──────────────── */
-#loop-vid {
-  position: relative;
-  height: 260vh;
-  background: #060608;
-}
-.loop-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-.loop-sticky::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 160px;
-  background: linear-gradient(to bottom, #060608, transparent);
-  z-index: 2; pointer-events: none;
-}
-.loop-sticky::after {
-  content: ''; position: absolute;
-  bottom: 0; left: 0; right: 0; height: 160px;
-  background: linear-gradient(to top, #060608, transparent);
-  z-index: 2; pointer-events: none;
-}
-.loop-video {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%; min-height: 100%;
-  width: auto; height: auto;
-  object-fit: cover;
-}
-.loop-scrim {
-  position: absolute; inset: 0;
-  background: rgba(6,6,8,0.55);
-  z-index: 1;
-}
-.loop-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-  text-align: center;
-}
-.loop-line {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%) translateY(24px);
-  opacity: 0;
-  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
-  pointer-events: none;
-  max-width: 560px;
-  width: 90%;
-}
-.loop-line.visible {
-  opacity: 1;
-  transform: translate(-50%, -50%) translateY(0);
-  pointer-events: auto;
-}
-.loop-line h2 {
-  font-size: clamp(28px, 3.6vw, 48px);
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 14px;
-  text-shadow: 0 2px 40px rgba(0,0,0,0.6);
-}
-.loop-line h2 em {
-  font-style: normal;
-  color: var(--accent);
-}
-.loop-line p {
-  font-size: 16px;
-  color: rgba(240,244,248,0.78);
-  line-height: 1.7;
-  text-shadow: 0 1px 20px rgba(0,0,0,0.5);
-}
-.loop-line .mono-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--accent);
-  opacity: 0.7;
-  margin-bottom: 14px;
-  display: block;
-}
-@media (max-width: 768px) {
-  #loop-vid { height: 230vh; }
-  .loop-line h2 { font-size: clamp(22px, 5.5vw, 32px); }
-  .loop-line p { font-size: 14px; }
-}
-@media (max-width: 480px) {
-  #loop-vid { height: 210vh; }
-}
-
-/* ── HOW IT WORKS ─────────────────────── */
-#how-it-works {
-  padding: 140px 40px;
-  background: transparent;
-  position: relative;
-}
-.hiw-header {
-  text-align: center; margin-bottom: 72px;
-  position: relative; z-index: 1;
-}
-.hiw-header h2 {
-  font-size: clamp(34px, 4vw, 54px);
-  font-weight: 700; letter-spacing: -0.025em; color: #fff;
-}
-.hiw-header p {
-  font-size: 15px; color: var(--muted);
-  margin-top: 14px;
-}
-.hiw-steps {
-  max-width: 900px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
-  position: relative; z-index: 1;
-  counter-reset: step;
-}
-.hiw-step {
-  text-align: center;
-  counter-increment: step;
-  background: rgba(10,10,16,0.6);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 16px;
-  padding: 36px 24px 32px;
-  transition: border-color 0.3s, transform 0.25s;
-}
-.hiw-step:hover {
-  border-color: rgba(0,229,160,0.15);
-  transform: translateY(-3px);
-}
-.hiw-step::before {
-  content: counter(step, decimal-leading-zero);
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 44px; font-weight: 700;
-  color: rgba(0,229,160,0.12);
-  margin-bottom: 20px;
-  letter-spacing: -0.04em;
-}
-.hiw-step h3 {
-  font-size: 17px; font-weight: 600;
-  color: #fff; margin-bottom: 10px;
-  letter-spacing: -0.01em;
-}
-.hiw-step p {
-  font-size: 13.5px; color: var(--muted);
-  line-height: 1.7;
-}
-
-/* ── PARTNERS / B2B ─────────────────── */
-#partners {
-  padding: 140px 40px;
-  background: transparent;
-  position: relative;
-}
-.partners-inner {
-  max-width: 900px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-  align-items: center;
-  position: relative; z-index: 1;
-}
-.partners-text h2 {
-  font-size: clamp(30px, 3.5vw, 48px);
-  font-weight: 700; letter-spacing: -0.025em;
-  color: #fff; line-height: 1.1; margin-bottom: 20px;
-}
-.partners-text h2 em { font-style: normal; color: var(--accent); }
-.partners-text p {
-  font-size: 15px; color: var(--muted);
-  line-height: 1.75; margin-bottom: 32px;
-}
-.partners-cards { display: flex; flex-direction: column; gap: 16px; }
-.partner-card {
-  background: rgba(10,10,16,0.8);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 14px; padding: 24px 28px;
-  transition: border-color 0.3s;
-}
-.partner-card:hover { border-color: rgba(0,229,160,0.2); }
-.partner-card h3 {
-  font-size: 15px; font-weight: 600;
-  color: #fff; margin-bottom: 6px;
-}
-.partner-card p {
-  font-size: 13px; color: var(--muted);
-  line-height: 1.65;
-}
-.partner-cta {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: transparent;
-  border: 1px solid rgba(0,229,160,0.3);
-  color: var(--accent);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 14px 28px; border-radius: 10px;
-  cursor: pointer; text-decoration: none;
-  transition: background 0.25s, box-shadow 0.25s, transform 0.15s;
-}
-.partner-cta:hover {
-  background: rgba(0,229,160,0.08);
-  box-shadow: 0 0 30px rgba(0,229,160,0.12);
-  transform: translateY(-1px);
-}
-
-/* WHO'S IT FOR */
-#who-its-for {
-  padding: 140px 40px;
-  background: transparent;
-  position: relative;
-}
-.who-inner {
-  max-width: 1200px; margin: 0 auto;
-  position: relative; z-index: 1;
-}
-.who-header {
-  text-align: center; margin-bottom: 64px;
-  max-width: 720px; margin-left: auto; margin-right: auto;
-}
-.who-header .mono-tag {
-  display: inline-block; font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 16px;
-}
-.who-header h2 {
-  font-size: clamp(34px, 4vw, 54px);
-  font-weight: 700; letter-spacing: -0.025em;
-  color: #fff; line-height: 1.1; margin-bottom: 20px;
-}
-.who-header h2 em { font-style: normal; color: var(--accent); }
-.who-header p {
-  font-size: 16px; color: var(--muted); line-height: 1.7;
-}
-.who-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-}
-.who-grid.who-grid-2 {
-  grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 980px; margin: 0 auto;
-}
-.who-card {
-  background: rgba(10,10,16,0.8);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 16px; padding: 32px 28px;
-  display: flex; flex-direction: column;
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  text-decoration: none; color: inherit;
-}
-.who-card:hover {
-  border-color: rgba(0,229,160,0.25);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0,229,160,0.08);
-}
-.who-card-icon {
-  width: 44px; height: 44px;
-  border-radius: 10px;
-  background: rgba(0,229,160,0.08);
-  border: 1px solid rgba(0,229,160,0.2);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 18px;
-  color: var(--accent);
-}
-.who-card-icon svg { width: 22px; height: 22px; }
-.who-card h3 {
-  font-size: 18px; font-weight: 700;
-  color: #fff; margin-bottom: 10px;
-  letter-spacing: -0.01em;
-}
-.who-card p {
-  font-size: 14px; color: var(--muted);
-  line-height: 1.65; margin-bottom: 20px;
-  flex-grow: 1;
-}
-.who-card-cta {
-  font-size: 13px; font-weight: 600;
-  color: var(--accent);
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.02em;
-  transition: transform 0.2s;
-}
-.who-card:hover .who-card-cta { transform: translateX(4px); }
-.who-powered {
-  font-size: 12px; color: var(--muted);
-  text-align: center; margin-top: 48px;
-}
-.who-powered a {
-  color: var(--accent); text-decoration: underline;
-}
-@media (max-width: 980px) {
-  .who-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 560px) {
-  .who-grid { grid-template-columns: 1fr; }
-}
-
-
-/* ── FAQ ──────────────────────────────── */
-#faq {
-  padding: 140px 40px;
-  background: transparent;
-  position: relative;
-}
-.faq-header {
-  text-align: center; margin-bottom: 64px;
-}
-.faq-header h2 {
-  font-size: clamp(34px, 4vw, 54px);
-  font-weight: 700; letter-spacing: -0.025em; color: #fff;
-}
-.faq-list {
-  max-width: 720px; margin: 0 auto;
-}
-.faq-item {
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.faq-q {
-  width: 100%; background: none; border: none;
-  padding: 24px 0; cursor: pointer;
-  display: flex; align-items: center;
-  justify-content: space-between;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 16px; font-weight: 500;
-  color: #fff; text-align: left;
-  transition: color 0.2s;
-}
-.faq-q:hover { color: var(--accent); }
-.faq-q .faq-icon {
-  font-size: 20px; color: var(--accent);
-  opacity: 0.5; transition: transform 0.3s;
-  flex-shrink: 0; margin-left: 16px;
-}
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-.faq-a {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.35s ease, padding 0.35s ease;
-}
-.faq-item.open .faq-a {
-  max-height: 600px;
-  padding-bottom: 24px;
-}
-.faq-a p {
-  font-size: 14px; color: var(--muted);
-  line-height: 1.75;
-}
-.faq-link { color: var(--accent); text-decoration: none; }
-.faq-link:hover { text-decoration: underline; }
-
-/* Screen-reader only */
-.sr-only {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-}
-
-/* ── SKIP TO CONTENT ──────────────────── */
-.skip-link {
-  position: absolute;
-  top: -100%;
-  left: 16px;
-  background: var(--accent);
-  color: #000;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 12px 24px;
-  border-radius: 0 0 10px 10px;
-  z-index: 10000;
-  text-decoration: none;
-  transition: top 0.2s ease;
-}
-.skip-link:focus {
-  top: 0;
-}
-
-/* ── FOCUS STYLES ─────────────────────── */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-.course-card:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-color: rgba(0,229,160,0.2);
-}
-
-/* ── REDUCED MOTION ───────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .fade-up {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
-/* ── RESPONSIVE ────────────────────────── */
-/* ── SCROLL FADE-IN ANIMATIONS ─────────── */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.hiw-step.fade-up:nth-child(2) { transition-delay: 0.1s; }
-.hiw-step.fade-up:nth-child(3) { transition-delay: 0.2s; }
-.course-card.fade-up:nth-child(2) { transition-delay: 0.1s; }
-.course-card.fade-up:nth-child(3) { transition-delay: 0.2s; }
-.course-card.fade-up:nth-child(4) { transition-delay: 0.3s; }
-.partner-card.fade-up:nth-child(2) { transition-delay: 0.1s; }
-.partner-card.fade-up:nth-child(3) { transition-delay: 0.2s; }
-.faq-item.fade-up:nth-child(2) { transition-delay: 0.08s; }
-.faq-item.fade-up:nth-child(3) { transition-delay: 0.16s; }
-.faq-item.fade-up:nth-child(4) { transition-delay: 0.24s; }
-.faq-item.fade-up:nth-child(5) { transition-delay: 0.32s; }
-.faq-item.fade-up:nth-child(6) { transition-delay: 0.4s; }
-
-/* ── HAMBURGER MENU ──────────────────── */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 28px;
-  height: 28px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-}
-.hamburger span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-.hamburger.active span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-.mobile-menu-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(6,6,8,0.97);
-  z-index: 999;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.mobile-menu-overlay.open {
-  opacity: 1;
-}
-.mobile-menu-overlay a {
-  font-size: 24px;
-  font-weight: 500;
-  color: rgba(240,244,248,0.7);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.mobile-menu-overlay a:hover {
-  color: var(--accent);
-}
-.mobile-menu-overlay .mobile-cta {
-  background: var(--accent);
-  color: #000;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 14px 32px;
-  border-radius: 10px;
-  text-decoration: none;
-  margin-top: 16px;
-  transition: background 0.2s, box-shadow 0.2s;
-}
-.mobile-menu-overlay .mobile-cta:hover {
-  background: #1ffdb3;
-  color: #000;
-  box-shadow: 0 0 36px rgba(0,229,160,0.28);
-}
-
-/* ── FORM SUCCESS ────────────────────── */
-.form-success {
-  color: var(--accent);
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-}
-
-/* ── TABLET (768px, 1024px) ─────────────── */
-@media (max-width: 1024px) {
-  .courses-grid { grid-template-columns: repeat(2, 1fr); }
-  .hiw-steps { gap: 32px; }
-  .partners-inner { gap: 48px; }
-  #scroll-anim { height: 350vh; }
-}
-
-@media (max-width: 900px) {
-  .nav-links { display: none; }
-  .nav-cta { display: none; }
-  nav { justify-content: space-between; }
-  .hamburger { display: flex; }
-  .courses-grid { grid-template-columns: repeat(2, 1fr); }
-  .hiw-steps { grid-template-columns: 1fr; gap: 40px; }
-  .partners-inner { grid-template-columns: 1fr; gap: 48px; }
-  .teams-inner { grid-template-columns: 1fr; gap: 48px; }
-}
-
-/* ── MOBILE (768px and below) ─────────── */
-@media (max-width: 768px) {
-  /* Hero */
-  #nav-outer { padding: 10px 16px 0; }
-  nav { padding: 8px 16px; }
-  .hero-content { padding: 0 20px 60px; gap: 16px; }
-  .hero-headline { font-size: clamp(36px, 10vw, 52px); }
-  .hero-sub { font-size: 14px; max-width: 320px; line-height: 1.65; }
-  .hero-eyebrow { font-size: 9px; }
-
-  /* Scroll animation */
-  #scroll-anim { height: 300vh; }
-  .scroll-text { left: 5%; right: 5%; max-width: none; }
-  .scroll-line h2 { font-size: clamp(20px, 5vw, 28px); }
-  .scroll-line p { font-size: 13.5px; }
-
-  /* Loop video */
-
-  /* Problem */
-  #problem { padding: 80px 20px; }
-  .problem-text { font-size: clamp(22px, 5vw, 30px); }
-  .problem-stats { grid-template-columns: 1fr; gap: 16px; }
-
-  /* How It Works */
-  #how-it-works { padding: 80px 20px; }
-  .hiw-header { margin-bottom: 48px; }
-  .hiw-steps { grid-template-columns: 1fr; gap: 24px; }
-  .hiw-step { padding: 28px 20px 24px; }
-  .hiw-step::before { font-size: 36px; margin-bottom: 14px; }
-
-  /* Courses */
-  #courses { padding: 60px 20px 80px; }
-  .courses-header { margin-bottom: 40px; }
-  .courses-grid { grid-template-columns: 1fr; gap: 16px; }
-  .course-card { padding: 24px 20px 20px; }
-
-  /* Partners */
-  #partners { padding: 80px 20px; }
-  .partners-inner { grid-template-columns: 1fr; gap: 36px; }
-
-  /* Who's it for */
-  #who-its-for { padding: 80px 20px; }
-  .teams-inner { grid-template-columns: 1fr; gap: 36px; }
-  .partners-text h2 { font-size: clamp(26px, 6vw, 36px); }
-  .partners-text p { font-size: 14px; margin-bottom: 24px; }
-
-  /* Hero form */
-  .hero-cta-form { flex-direction: column; max-width: 100%; }
-  .hero-fine { font-size: 8.5px; text-align: center; }
-
-  /* CTA */
-  #cta { padding: 80px 20px; }
-  .cta-form { flex-direction: column; }
-  .cta-inner h2 { font-size: clamp(28px, 7vw, 40px); }
-  .cta-inner p { font-size: 14px; margin-bottom: 28px; }
-
-  /* FAQ */
-  #faq { padding: 80px 20px; }
-  .faq-q { font-size: 14.5px; padding: 20px 0; }
-  .faq-a p { font-size: 13px; }
-
-  /* Footer */
-  footer { padding: 40px 20px 28px; }
-  .footer-inner {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-  .footer-links { gap: 20px; }
-}
-
-/* ── SMALL MOBILE (480px and below) ───── */
-@media (max-width: 480px) {
-  .hero-headline { font-size: clamp(30px, 9vw, 40px); }
-  .hero-content { padding: 0 16px 48px; }
-  .hero-sub { font-size: 13px; max-width: 280px; }
-
-  #scroll-anim { height: 280vh; }
-  .scroll-line h2 { font-size: clamp(18px, 5vw, 24px); }
-  .scroll-line p { font-size: 13px; }
-
-
-  #problem { padding: 60px 16px; }
-  .problem-text { font-size: clamp(20px, 5vw, 26px); line-height: 1.4; }
-  .problem-tag { font-size: 8.5px; margin-bottom: 24px; }
-
-  #how-it-works { padding: 60px 16px; }
-  #courses { padding: 48px 16px 60px; }
-  #partners { padding: 60px 16px; }
-  #cta { padding: 60px 16px; }
-  #faq { padding: 60px 16px; }
-  footer { padding: 32px 16px 24px; }
-
-  .cta-inner h2 { font-size: clamp(24px, 7vw, 32px); }
-  .partners-text h2 { font-size: clamp(22px, 6vw, 30px); }
-}
-
-/* ── ROCKET SCROLL (Home) ────────────── */
-#home-rocket {
-  position: relative;
-  height: 400vh;
-}
-.home-rocket-sticky::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 180px;
-  background: linear-gradient(to bottom, #060608, transparent);
-  z-index: 2; pointer-events: none;
-}
-.home-rocket-sticky::after {
-  content: ''; position: absolute;
-  bottom: 0; left: 0; right: 0; height: 180px;
-  background: linear-gradient(to top, #060608, transparent);
-  z-index: 2; pointer-events: none;
-}
-.home-rocket-sticky {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#home-rocket-canvas {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.home-rocket-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(6,6,8,1) 0%, rgba(6,6,8,0.85) 8%, rgba(6,6,8,0.3) 25%, rgba(6,6,8,0.25) 55%, rgba(6,6,8,0.7) 75%, rgba(6,6,8,1) 90%);
-  z-index: 2;
-}
-.home-rocket-text {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  max-width: 700px;
-  padding: 0 24px;
-  opacity: 0;
-  transform: scale(0.92);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.home-rocket-text.active {
-  opacity: 1;
-  transform: scale(1);
-}
-.home-rocket-text .rocket-heading {
-  font-size: clamp(28px, 4vw, 52px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 12px;
-}
-.home-rocket-text .rocket-heading em {
-  font-style: normal;
-  color: var(--accent);
-}
-.home-rocket-text p {
-  font-size: clamp(14px, 1.2vw, 17px);
-  color: rgba(255,255,255,0.65);
-  line-height: 1.6;
-}
-/* ── MID ROCKET (flight over earth) ───── */
-#mid-rocket {
-  position: relative;
-  height: 220vh;
-  background: #060608;
-}
-.mid-rocket-sticky {
-  position: sticky; top: 0; height: 100vh; overflow: hidden;
-}
-.mid-rocket-sticky::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 180px;
-  background: linear-gradient(to bottom, #060608, transparent);
-  z-index: 2; pointer-events: none;
-}
-.mid-rocket-sticky::after {
-  content: ''; position: absolute;
-  bottom: 0; left: 0; right: 0; height: 180px;
-  background: linear-gradient(to top, #060608, transparent);
-  z-index: 2; pointer-events: none;
-}
-#mid-rocket-canvas { width: 100%; height: 100%; display: block; }
-.mid-rocket-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(6,6,8,0.6), rgba(6,6,8,0.2) 45%, rgba(6,6,8,0.85));
-  pointer-events: none;
-}
-.mid-rocket-text {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; opacity: 0; transition: opacity 0.6s ease; pointer-events: none;
-  padding: 0 24px;
-}
-.mid-rocket-text.active { opacity: 1; }
-.mid-rocket-text .rocket-heading {
-  font-size: clamp(28px, 4.5vw, 56px); font-weight: 700;
-  letter-spacing: -0.03em; line-height: 1.1; color: #fff;
-  text-shadow: 0 4px 60px rgba(0,0,0,0.8); margin-bottom: 14px;
-}
-.mid-rocket-text .rocket-heading em { font-style: normal; color: var(--accent); }
-.mid-rocket-text p {
-  font-size: clamp(14px, 1.2vw, 17px); color: rgba(255,255,255,0.7);
-  line-height: 1.6; max-width: 540px;
-  text-shadow: 0 1px 20px rgba(0,0,0,0.5);
-}
-@media (max-width: 768px) { #mid-rocket { height: 200vh; } }
-
-@media (max-width: 768px) {
-  #home-rocket { height: 300vh; }
-  .home-rocket-text .rocket-heading { font-size: clamp(22px, 6vw, 36px); }
-}
-@media (max-width: 480px) {
-  #home-rocket { height: 260vh; }
-}
-</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://quartersmart.com/#organization",
-  "name": "QuarterSmart",
-  "url": "https://quartersmart.com/",
-  "description": "AI implementation and workforce enablement partner. QuarterSmart helps organizations assess, train, pilot, automate, scale, and measure AI adoption.",
-  "slogan": "We ship the AI your team actually uses.",
-  "foundingDate": "2025",
-  "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" },
-  "areaServed": [
-    { "@type": "State", "name": "Arizona" },
-    { "@type": "Country", "name": "United States" }
-  ],
-  "logo": "https://quartersmart.com/logos/quartersmart-q.png",
-  "email": "hyrum@quartersmart.com",
-  "contactPoint": { "@type": "ContactPoint", "email": "hyrum@quartersmart.com", "contactType": "sales" },
-  "founder": {
-    "@type": "Person",
-    "name": "Hyrum Hurst",
-    "url": "https://quartersmart.com/about.html",
-    "sameAs": ["https://n8n.io/creators/hyrum-hurst", "https://www.linkedin.com/in/hyrum-hurst-83a5a537a/", "https://app.qwoted.com/sources/hyrum-hurst"]
-  },
-  "member": [
-    { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
-    { "@id": "https://quartersmart.com/about.html#cullen-brown" }
-  ],
-  "knowsAbout": ["AI implementation", "workforce enablement", "workflow automation", "AI adoption", "n8n", "AI agents", "knowledge systems", "secure AI deployment"],
-  "areaServed": "United States",
-  "sameAs": ["https://n8n.io/creators/hyrum-hurst"]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "QuarterSmart",
-  "url": "https://quartersmart.com/",
-  "publisher": { "@id": "https://quartersmart.com/#organization" }
-}
-</script>
-<script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "AI Rollout Assessment",
-    "url": "https://quartersmart.com/",
-    "description": "A focused assessment of your workflows, team readiness, and the highest-impact AI opportunities. You leave with a prioritized rollout roadmap and a clear next step.",
-    "provider": { "@id": "https://quartersmart.com/#organization" },
-    "serviceType": "AI Implementation Consulting",
-    "areaServed": "United States"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Leadership & Team Enablement",
-    "url": "https://quartersmart.com/",
-    "description": "Hands-on workforce enablement that builds practical AI fluency for leaders and teams, with internal champions who carry adoption forward.",
-    "provider": { "@id": "https://quartersmart.com/#organization" },
-    "serviceType": "Workforce Enablement",
-    "areaServed": "United States"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Pilot & Workflow Prototyping",
-    "url": "https://quartersmart.com/",
-    "description": "We prototype AI against your highest-friction workflows so you can prove value on real work before committing to a wider rollout.",
-    "provider": { "@id": "https://quartersmart.com/#organization" },
-    "serviceType": "AI Pilot Development",
-    "areaServed": "United States"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Workflow Automation & Integration",
-    "url": "https://quartersmart.com/",
-    "description": "Developer-forward automation built on n8n and your existing tools, shipping working systems that automate real day-to-day work.",
-    "provider": { "@id": "https://quartersmart.com/#organization" },
-    "serviceType": "Workflow Automation",
-    "areaServed": "United States"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Knowledge Systems & AI Assistants",
-    "url": "https://quartersmart.com/",
-    "description": "Secure knowledge systems and AI assistants grounded in your own SOPs and documents, deployed where your data needs to stay.",
-    "provider": { "@id": "https://quartersmart.com/#organization" },
-    "serviceType": "AI Knowledge Systems",
-    "areaServed": "United States"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Measurement & Optimization",
-    "url": "https://quartersmart.com/",
-    "description": "We measure adoption and outcomes after rollout, then optimize what proves out and scale it across the organization.",
-    "provider": { "@id": "https://quartersmart.com/#organization" },
-    "serviceType": "AI Adoption Measurement",
-    "areaServed": "United States"
-  }
-]
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "What is QuarterSmart?",
-      "acceptedAnswer": { "@type": "Answer", "text": "QuarterSmart is an AI implementation and workforce enablement partner for operational teams. It helps organizations find the workflows where AI pays off, train the people who will use it, pilot against real work, automate what proves out, and measure adoption across the company. The method runs in six stages: Assess, Train, Pilot, Automate, Scale, and Measure. QuarterSmart is developer-forward and n8n-backed, which means engagements end with working automations running on the tools a team already uses rather than a slide deck of recommendations. QuarterSmart-built workflow templates have recorded more than 10,000 documented uses across the n8n community. Secure deployment, including private cloud, on-premises, and air-gapped environments, is available for regulated teams. QuarterSmart was founded by Hyrum Hurst and is run with operator Cullen Brown. It is a services partner, and engagements typically start with an AI Rollout Assessment." }
+      "@type": "ProfessionalService",
+      "@id": "https://quartersmart.com/#organization",
+      "name": "QuarterSmart",
+      "alternateName": "QuarterSmart AI",
+      "url": "https://quartersmart.com/",
+      "logo": "https://quartersmart.com/assets/qs-mark.png",
+      "image": "https://quartersmart.com/assets/qs-og.png",
+      "description": "QuarterSmart builds AI onboarding, training, and automation systems for growing teams. We turn your SOPs into both a training course your team learns from and an automation that runs the task itself.",
+      "slogan": "Train your team. Automate the rest.",
+      "foundingDate": "2025",
+      "email": "hyrum@quartersmart.com",
+      "founder": [
+        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
+      ],
+      "employee": [
+        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
+      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Arizona" },
+        { "@type": "Country", "name": "United States" }
+      ],
+      "knowsAbout": ["AI onboarding and training systems", "SOP automation", "SOP to training", "n8n automation", "Zapier automation", "Power Automate", "AI enablement", "white-label AI implementation", "employee onboarding automation", "AI training for teams"],
+      "contactPoint": { "@type": "ContactPoint", "contactType": "sales", "email": "hyrum@quartersmart.com", "url": "https://quartersmart.com/contact" }
     },
     {
-      "@type": "Question",
-      "name": "What does an AI rollout actually involve?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A QuarterSmart rollout follows six stages: Assess, Train, Pilot, Automate, Scale, and Measure. We start by assessing your workflows and team readiness, build practical AI fluency, pilot against a high-friction workflow, automate the work that proves out, scale what works across the organization, and measure adoption and outcomes. Most engagements start with an AI Rollout Assessment and a prioritized roadmap." }
+      "@type": "WebSite",
+      "@id": "https://quartersmart.com/#website",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "publisher": { "@id": "https://quartersmart.com/#organization" }
     },
     {
-      "@type": "Question",
-      "name": "How is QuarterSmart different from a typical AI consultant?",
-      "acceptedAnswer": { "@type": "Answer", "text": "QuarterSmart is developer-forward. We ship working automations on the tools your team already uses, and we focus on measured adoption rather than one off experiments. QuarterSmart-built workflow templates have recorded more than 10,000 documented uses across the n8n community." }
-    },
-    {
-      "@type": "Question",
-      "name": "Who is QuarterSmart for?",
-      "acceptedAnswer": { "@type": "Answer", "text": "QuarterSmart works with operators and leaders, CEOs, COOs, GMs, and department leads, at small to mid sized organizations with established workflows and real constraints. Regulated and secure environments are welcome, with secure deployment available when you need it." }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you work with the AI tools we already use?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We build on your existing stack and the AI models you have already approved, leveraging tools your team already knows. Where you need secure deployment, we can stand up knowledge systems and AI assistants grounded in your own SOPs and documents inside your perimeter." }
-    },
-    {
-      "@type": "Question",
-      "name": "Who is Hyrum Hurst?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Hyrum Hurst is QuarterSmart's founder and builds the AI systems himself. Cullen Brown runs operations and outreach. Full background, clients, and credentials are on the About page at quartersmart.com/about.html." }
-    },
-    {
-      "@type": "Question",
-      "name": "How do we get started?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Book an AI Rollout Assessment. We review your workflows, team readiness, and the highest-impact opportunities, then come back with a prioritized roadmap and a clear next step. Email hyrum@quartersmart.com to set it up." }
+      "@type": "FAQPage",
+      "@id": "https://quartersmart.com/#faqpage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What does QuarterSmart actually do?", "acceptedAnswer": { "@type": "Answer", "text": "We turn your SOPs and tribal knowledge into AI-powered systems. Each SOP becomes a training course your team learns from (AI-generated video, quizzes, certification) and an automation that runs the task itself (n8n, Zapier, Power Automate). We build it, host it, maintain it, and coach your team around it." } },
+        { "@type": "Question", "name": "How is this different from a regular AI training workshop?", "acceptedAnswer": { "@type": "Answer", "text": "A workshop teaches people and then ends. QuarterSmart connects the training to real workflows. The same SOP that teaches the job also powers an automation that does the job. You get capability your team uses every day, not a slideshow they forget by Friday." } },
+        { "@type": "Question", "name": "What kind of results can we expect?", "acceptedAnswer": { "@type": "Answer", "text": "At Structure Properties we cut onboarding time and repeat questions by 65% and SOP-related mistakes by 36% across seven operational roles, with automated certification and compliance reporting built in. Results vary by team and process, which is why we start with training to learn your operation before we build." } },
+        { "@type": "Question", "name": "Do you stay involved after the build, or hand it off and leave?", "acceptedAnswer": { "@type": "Answer", "text": "We stay. Every engagement ends at a recurring baseline. We host and maintain the training system and automations, and run regular coaching calls where anyone on your team can get help or request new builds." } },
+        { "@type": "Question", "name": "How do we get started?", "acceptedAnswer": { "@type": "Answer", "text": "Book a call. Tell us what your team does by hand today, and we will show you how your existing SOPs can both teach it and run it. From there we scope a proposal." } }
+      ]
     }
   ]
 }
 </script>
 </head>
 <body>
-
-<a class="skip-link" href="#main-content">Skip to main content</a>
-
-
-<noscript>
-  <div style="background:#060608;color:#f0f4f8;font-family:'Space Grotesk',sans-serif;text-align:center;padding:80px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-    <h2 style="font-size:clamp(32px,6vw,56px);font-weight:700;margin-bottom:16px;">AI implementation &amp; workforce enablement.</h2>
-    <p style="font-size:clamp(16px,2.5vw,20px);color:#6b7585;max-width:600px;margin-bottom:24px;">QuarterSmart helps organizations move from AI curiosity to operational adoption, assess, train, pilot, automate, scale, and measure.</p>
-    <p style="font-size:14px;color:#6b7585;">JavaScript is required for the full experience. Please enable JavaScript and reload the page.</p>
-  </div>
-</noscript>
-
-<nav class="mobile-menu-overlay" id="mobile-menu" aria-label="Mobile navigation">
-  <a href="#how-it-works" onclick="closeMobileMenu()">How it works</a>
-  <a href="#courses" onclick="closeMobileMenu()">Services</a>
-  <a href="about.html" class="no-coming-soon" onclick="closeMobileMenu()">About</a>
-  <a href='radar.html' onclick='closeMobileMenu()'>Signals</a>
-  <a href="mailto:hyrum@quartersmart.com?subject=AI%20Rollout%20Assessment" class="mobile-cta" onclick="closeMobileMenu()">Book an Assessment</a>
-</nav>
-
-<main id="main-content">
-<!-- HERO -->
-<div id="hero">
-  <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/hero-poster.webp" aria-hidden="true">
-    <source src="assets/video/aied-hero-loop.mp4" type="video/mp4">
-  </video>
-  <div class="hero-tint"></div>
-
-  <div id="nav-outer">
-    <nav aria-label="Main navigation">
-      <a class="nav-logo" href="./">
-        <img src="logos/quartersmart-wordmark.webp" alt="QuarterSmart" width="1190" height="200" style="display:block;width:auto;height:24px;">
-      </a>
-      <ul class="nav-links">
-        <li><a href="#how-it-works" class="no-coming-soon">How it works</a></li>
-        <li><a href="#courses" class="no-coming-soon">Services</a></li>
-        <li><a href="about.html" class="no-coming-soon">About</a></li>
-        <li><a class='no-coming-soon' href='radar.html'>Signals</a></li>
-      </ul>
-      <a href="mailto:hyrum@quartersmart.com?subject=AI%20Rollout%20Assessment&amp;body=Company%3A%0ATeam%20size%3A%0AThe%20workflow%20that%20wastes%20the%20most%20time%3A" class="nav-cta">Book an Assessment</a>
-      <button type="button" class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+<a class="qs-skip" href="#main">Skip to content</a>
+<header class="qs-nav" data-open="false">
+  <div class="qs-nav__bar">
+    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
+      <span class="qs-logo__word">QuarterSmart</span>
+    </a>
+    <nav class="qs-nav__links" aria-label="Primary">
+      <a href="/services/">Services</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/about/">About</a>
+      <a href="/for-agencies/">For Agencies</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
     </nav>
-  </div>
-
-  <div class="hero-content" id="hero-content">
-    <div class="hero-eyebrow" id="hero-eyebrow">10,000+ documented workflow uses</div>
-    <h1 class="hero-headline" id="hero-headline">We ship the AI your team <em>actually uses.</em></h1>
-    <p class="hero-sub" id="hero-sub">We find where AI pays off, then build it into the work your team already does.</p>
-    <div class="hero-cta-form" id="hero-cta-buttons">
-      <a class="cta-btn" href="mailto:hyrum@quartersmart.com?subject=AI%20Rollout%20Assessment&amp;body=Company%3A%0ATeam%20size%3A%0AThe%20workflow%20that%20wastes%20the%20most%20time%3A">Book an AI Rollout Assessment →</a>
-      <a class="cta-btn cta-btn-secondary" href="#how-it-works">See How QuarterSmart Works</a>
+    <div class="qs-nav__cta">
+      <a class="qs-btn qs-btn--primary qs-btn--sm" href="/contact/#book-a-call">Book a call</a>
     </div>
-    <div class="hero-fine">Free 20 minute call. You leave with a prioritized roadmap. No obligation.</div>
+    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
   </div>
+  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
+    <a href="/services/">Services</a>
+    <a href="/case-studies/">Case Studies</a>
+    <a href="/about/">About</a>
+    <a href="/for-agencies/">For Agencies</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/contact/">Contact</a>
+    <a class="qs-btn qs-btn--primary qs-btn--full" href="/contact/#book-a-call">Book a call</a>
+  </nav>
+</header>
 
-</div>
-
-<!-- SCROLL ANIMATION, rocket launch frame scrub -->
-<div id="scroll-anim">
-  <div class="scroll-sticky">
-    <canvas class="scroll-canvas" id="scroll-canvas" aria-hidden="true"></canvas>
-    <div class="scroll-text">
-      <div class="scroll-line" id="sl-1">
-        <span class="mono-tag">The gap</span>
-        <h2>Scattered experiments<br><em>aren't adoption.</em></h2>
-        <p>Pilots stall, tools go unused, and the productivity gains never reach the whole team.</p>
-      </div>
-      <div class="scroll-line" id="sl-2">
-        <h2>A method you<br><em>can repeat.</em></h2>
-        <p>Six stages that take AI from a first assessment to org-wide adoption.</p>
-      </div>
-      <div class="scroll-line" id="sl-3">
-        <h2>Systems your team<br><em>opens on Monday.</em></h2>
-        <p>Developer-forward and n8n-backed. QuarterSmart ships automations your team runs every day.</p>
-      </div>
+<main id="main">
+  <!-- Hero -->
+  <section class="qs-hero">
+    <div class="qs-motif" aria-hidden="true">
+      <svg width="560" height="560" viewBox="0 0 100 100" fill="none">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
     </div>
-  </div>
-</div>
-
-<!-- PROBLEM -->
-<div id="problem">
-  <div class="problem-inner">
-    <p class="problem-tag">The Problem</p>
-    <p class="problem-text">
-      <strong>The AI productivity gains are real, but most organizations are stuck between a few scattered experiments and actual, org-wide adoption.</strong> A pilot impresses one team. A tool gets bought. Then momentum stalls. <span>The work of turning AI into measured, everyday operations never happens.</span>
-    </p>
-    <p class="problem-credibility-lead">QuarterSmart is led by founder <a href="about.html#hyrum-hurst" style="color:var(--accent)">Hyrum Hurst</a>, who builds AI automation for a living.</p>
-    <div class="problem-stats" style="grid-template-columns:1fr;">
-      <div class="problem-stat">
-        <span class="stat-num">10,876</span>
-        <span class="stat-label">documented uses of QuarterSmart-built workflow templates across the n8n community, June 2026. <a href="workflow-usage/" style="color:var(--accent)">See the full per-template data and methodology</a></span>
+    <div class="qs-hero__inner">
+      <span class="qs-eyebrow qs-hero__eyebrow">AI onboarding, training, and automation systems</span>
+      <h1 class="qs-display">Train your team. Automate the rest.</h1>
+      <p class="qs-lede qs-hero__lede">Your SOPs already hold everything your team needs to know. QuarterSmart turns each one into two working assets: a training course your people learn from, and an automation that runs the task itself.</p>
+      <p class="qs-hero__sub">Same source, two outputs. We build it, host it, and maintain it. Then we stay on call so your team keeps getting more out of it.</p>
+      <div class="qs-cta-row">
+        <a class="qs-btn qs-btn--primary qs-btn--lg" href="/contact/#book-a-call">Book a call</a>
+        <a class="qs-btn qs-btn--secondary qs-btn--lg" href="/contact/#request-a-proposal">Request a proposal <span class="qs-ico" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="qs-trust">
+        <span class="qs-badge qs-badge--outline"><span class="qs-dot" aria-hidden="true"></span>Verified top-50 n8n creator</span>
+        <span class="qs-badge qs-badge--outline">Google Certified AI Automations Engineer</span>
+        <span class="qs-badge qs-badge--outline">25 published automation templates</span>
+        <span class="qs-badge qs-badge--outline">Mesa, Arizona</span>
       </div>
     </div>
-    <p class="problem-bottom">The fix is not another tool or another prompt trick. It is a measured rollout, run stage by stage and built by people who ship real automation. That is QuarterSmart.</p>
-  </div>
-</div>
+  </section>
 
-<!-- HOW IT WORKS -->
-<div id="how-it-works">
-  <div class="hiw-header">
-    <h2>How an AI rollout actually works</h2>
-    <p>Six stages, one repeatable spine. Built around your workflows, your team, and the results you can measure.</p>
-  </div>
-  <div class="hiw-steps">
-    <div class="hiw-step">
-      <h3>Assess</h3>
-      <p>We map your workflows, team readiness, and the highest-impact AI opportunities. You invest where the payoff is real.</p>
+  <!-- The gap -->
+  <section class="qs-section qs-section--lg">
+    <div class="qs-wrap qs-wrap--prose">
+      <div class="qs-prose">
+        <span class="qs-eyebrow">The gap</span>
+        <h2>Most teams train on AI. Then nothing changes.</h2>
+        <p>Companies send people to AI workshops. Leaders read about productivity gains. Employees poke at ChatGPT for an afternoon. Then the excitement fades and the work looks exactly like it did before.</p>
+        <p>The problem is not interest. The problem is the gap between learning AI and actually using it. Training that never reaches a real workflow is just a slideshow. Your SOPs sit in a folder, read once during onboarding and never again.</p>
+        <p>QuarterSmart closes that gap. We take the knowledge you already have and turn it into systems your team uses every day.</p>
+      </div>
     </div>
-    <div class="hiw-step">
-      <h3>Train</h3>
-      <p>We build practical AI fluency across leaders and teams and develop internal champions who keep adoption moving after we step back.</p>
-    </div>
-    <div class="hiw-step">
-      <h3>Pilot</h3>
-      <p>We prototype AI against a high-friction workflow so you can prove value on real work before committing to a wider rollout.</p>
-    </div>
-    <div class="hiw-step">
-      <h3>Automate</h3>
-      <p>We ship working automations on n8n and the tools you already use, developer-forward systems that take real work off your team's plate.</p>
-    </div>
-    <div class="hiw-step">
-      <h3>Scale</h3>
-      <p>What proves out gets rolled out. We extend the workflows that work across more roles and teams, with secure deployment when you need it.</p>
-    </div>
-    <div class="hiw-step">
-      <h3>Measure</h3>
-      <p>We track adoption and outcomes, then optimize and report on what is working. The rollout stays accountable to results.</p>
-    </div>
-  </div>
-  <div style="text-align:center;margin-top:48px;">
-    <a class="cta-btn" href="mailto:hyrum@quartersmart.com?subject=AI%20Rollout%20Assessment&amp;body=Company%3A%0ATeam%20size%3A%0AThe%20workflow%20that%20wastes%20the%20most%20time%3A">Start with an AI Rollout Assessment →</a>
-  </div>
-</div>
+  </section>
 
-<!-- SERVICES -->
-<div id="courses">
-  <div class="courses-header">
-    <h2>What QuarterSmart does</h2>
-    <p>Working automations on the tools your team already uses, with adoption you can measure. Secure deployment when you need it.</p>
-  </div>
-  <div class="courses-grid">
-
-    <div class="course-card">
-      <span class="card-num">01</span>
-      <div class="card-badge">Assess</div>
-      <div class="card-title">AI Rollout Assessment</div>
-      <div class="card-desc">A prioritized rollout roadmap in one to two weeks. We look at how work actually moves through your organization, where time is lost, where errors creep in, and where AI can carry real weight. You leave with an honest read on what is worth doing first and a clear next step. No tool buying, no hype, just a plan grounded in your real operations.</div>
-      <button class="card-toggle" onclick="toggleCard(this)" aria-label="Read more">Read more ↓</button>
-      <a class="card-footer" href="#cta" style="text-decoration:none;color:inherit;">
-        <span class="card-footer-label">Start here</span>
-        <div class="card-arrow">→</div>
-      </a>
-    </div>
-
-    <div class="course-card">
-      <span class="card-num">02</span>
-      <div class="card-badge">Train</div>
-      <div class="card-title">Leadership &amp; Team Enablement</div>
-      <div class="card-desc">Hands-on workforce enablement that builds practical AI fluency where it matters, with the leaders setting direction and the teams doing the work. We frame AI against the tasks your people actually own, so the concepts land on real day-to-day work instead of staying abstract. We also develop internal champions who keep adoption moving after we step back. The goal is confident, everyday use.</div>
-      <button class="card-toggle" onclick="toggleCard(this)" aria-label="Read more">Read more ↓</button>
-      <a class="card-footer" href="#cta" style="text-decoration:none;color:inherit;">
-        <span class="card-footer-label">Leaders &amp; teams</span>
-        <div class="card-arrow">→</div>
-      </a>
-    </div>
-
-    <div class="course-card">
-      <span class="card-num">03</span>
-      <div class="card-badge">Pilot &amp; Automate</div>
-      <div class="card-title">Workflow Automation &amp; Integration</div>
-      <div class="card-desc">For the work where a person should not be the bottleneck. We prototype AI against a high-friction workflow, prove it on real work, then build the automation for keeps. For example: a four hour weekly reporting pull becomes a 15 minute reviewed draft. Our execution is developer-forward and <a href="n8n-automation/" style="color:var(--accent)">n8n-backed</a>, and we integrate with the tools your team already uses instead of forcing a rip-and-replace. Human-in-the-loop where it matters, built to run reliably in your day-to-day operations.</div>
-      <button class="card-toggle" onclick="toggleCard(this)" aria-label="Read more">Read more ↓</button>
-      <a class="card-footer" href="#cta" style="text-decoration:none;color:inherit;">
-        <span class="card-footer-label">Operations</span>
-        <div class="card-arrow">→</div>
-      </a>
-    </div>
-
-    <div class="course-card">
-      <span class="card-num">04</span>
-      <div class="card-badge">Scale &amp; Measure</div>
-      <div class="card-title">Knowledge Systems &amp; Secure Deployment</div>
-      <div class="card-desc">For teams that need AI grounded in their own knowledge, and, when required, kept inside their own perimeter. We build knowledge systems and AI assistants grounded in your SOPs and documents, so answers come from your own material. Secure deployment is available when your data needs to stay put. And because every engagement is built to be measured, we track adoption and outcomes after rollout, then optimize and scale what proves out across more roles and teams.</div>
-      <button class="card-toggle" onclick="toggleCard(this)" aria-label="Read more">Read more ↓</button>
-      <a class="card-footer" href="#cta" style="text-decoration:none;color:inherit;">
-        <span class="card-footer-label">Secure when needed</span>
-        <div class="card-arrow">→</div>
-      </a>
-    </div>
-
-  </div>
-</div>
-
-<!-- MID ROCKET, flight over earth -->
-<section id="mid-rocket" aria-label="Rocket in flight over Earth">
-  <div class="mid-rocket-sticky">
-    <canvas id="mid-rocket-canvas" aria-hidden="true"></canvas>
-    <div class="mid-rocket-overlay"></div>
-    <div class="mid-rocket-text" id="mrt-1">
-      <p class="rocket-heading">What proves out,<br><em>scales.</em></p>
-      <p>Across more roles, more teams, and more locations, with secure deployment when the work requires it.</p>
-    </div>
-  </div>
-</section>
-
-<!-- WHO'S IT FOR -->
-<div id="who-its-for">
-  <div class="who-inner">
-    <div class="who-header">
-      <span class="mono-tag">Who it's for</span>
-      <h2>Built for teams that<br>need <em>adoption that sticks.</em></h2>
-      <p>If you're an operator or leader with real workflows, real teams, and real constraints, QuarterSmart helps you move from scattered AI experiments to org-wide, measurable adoption. Regulated and secure environments are welcome, secure deployment is available when you need it.</p>
-    </div>
-    <div class="who-grid who-grid-2">
-      <a href="mailto:hyrum@quartersmart.com" class="who-card fade-up">
-        <div class="who-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+  <!-- Signature move -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap">
+      <div class="qs-section-head">
+        <span class="qs-eyebrow">The signature move</span>
+        <h2 class="qs-h2">Your SOPs do double duty</h2>
+        <p>Write the SOP once. We turn it into two things that share the same source.</p>
+      </div>
+      <div class="qs-doubleduty">
+        <div class="qs-dd-source">
+          <div class="qs-dd-kicker">One SOP</div>
+          <div class="qs-dd-title">The source</div>
+          <p>Write it once. We turn it into two things that share the same source.</p>
         </div>
-        <h3>Operational teams</h3>
-        <p><a href="ai-implementation/" style="color:var(--accent)">AI implementation</a> and <a href="workforce-enablement/" style="color:var(--accent)">workforce enablement</a> for the teams doing the work. We assess where AI fits, build fluency and internal champions, automate real workflows, and measure adoption across the org.</p>
-        <span class="who-card-cta">Book an assessment →</span>
-      </a>
-      <a href="mailto:hyrum@quartersmart.com" class="who-card fade-up">
-        <div class="who-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div class="qs-dd-arrow" aria-hidden="true"><span class="qs-dd-stem"></span><span class="qs-dd-v1"></span><span class="qs-dd-v2"></span></div>
+        <div class="qs-dd-outs">
+          <div class="qs-dd-out">
+            <span class="qs-dd-pip" aria-hidden="true"></span>
+            <div><div class="qs-dd-out-title">A training course</div><div class="qs-dd-out-sub">video / quizzes / certification</div></div>
+          </div>
+          <div class="qs-dd-out qs-dd-out--muted">
+            <span class="qs-dd-pip" aria-hidden="true"></span>
+            <div><div class="qs-dd-out-title">An automation</div><div class="qs-dd-out-sub">n8n / Zapier / Power Automate</div></div>
+          </div>
         </div>
-        <h3>Regulated &amp; secure environments</h3>
-        <p>When the work demands it, we deploy inside your perimeter, private cloud, on-premises, or air-gapped, with governance and knowledge systems grounded in your own SOPs and data.</p>
-        <span class="who-card-cta">Talk to us →</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- PARTNERS / B2B -->
-<div id="partners">
-  <div class="partners-inner">
-    <div class="partners-text">
-      <h2>Built by <em>operators who ship.</em></h2>
-      <p>QuarterSmart is run by founder Hyrum Hurst, who builds and ships the systems, and operator Cullen Brown, who keeps engagements moving from first call to live rollout. We hand you working automations and the numbers that show they worked.</p>
-      <a href="about.html" class="partner-cta">Meet the team →</a>
-    </div>
-    <div class="partners-cards">
-      <div class="partner-card">
-        <h3>Strategy-led</h3>
-        <p>We assess before we build, so AI investment lands where the payoff is real, not wherever the hype points this quarter.</p>
       </div>
-      <div class="partner-card">
-        <h3>Developer-forward</h3>
-        <p>Real automations on n8n and your existing tools. We ship working systems your team can use the day they go live.</p>
-      </div>
-      <div class="partner-card">
-        <h3>Outcome-focused</h3>
-        <p>Every engagement is built to be measured. We track adoption and outcomes, then scale only what proves out.</p>
+      <div class="qs-twocol qs-mt-7">
+        <div>
+          <h3 class="qs-h4">A training course your team learns from</h3>
+          <p class="qs-muted" style="font-size:var(--fs-small);line-height:1.65;margin-top:8px">AI-generated video walkthroughs, quizzes, and certification. New hires watch the real process instead of slogging through a document. Owners get a dashboard showing who has completed what and where people get stuck.</p>
+        </div>
+        <div>
+          <h3 class="qs-h4">An automation that runs the work</h3>
+          <p class="qs-muted" style="font-size:var(--fs-small);line-height:1.65;margin-top:8px">The long, repetitive, manual tasks buried in that SOP get built into a working automation in n8n, Zapier, or Power Automate. The job still gets done, just without a person doing it by hand.</p>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- LOOP VIDEO, ambient bg with scroll-driven text -->
-<div id="loop-vid">
-  <div class="loop-sticky">
-    <video class="loop-video" muted loop playsinline preload="none" aria-hidden="true">
-      <source src="assets/video/loop-bg.mp4" type="video/mp4">
-    </video>
-    <div class="loop-scrim"></div>
-    <div class="loop-text">
-      <div class="loop-line" id="ll-1">
-        <span class="mono-tag">Week one</span>
-        <h2>We map where<br><em>AI pays off.</em></h2>
-        <p>Workflow by workflow. Where time is lost, where errors creep in, and which fixes are worth building first.</p>
+  <!-- Engagement -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap">
+      <div class="qs-section-head">
+        <span class="qs-eyebrow">Land &middot; build &middot; automate &middot; coach &middot; retain</span>
+        <h2 class="qs-h2">How an engagement works</h2>
+        <p>Every step builds on the last, and every engagement ends at a recurring baseline instead of dropping back to zero.</p>
       </div>
-      <div class="loop-line" id="ll-2">
-        <span class="mono-tag">Week four</span>
-        <h2>Your pilot<br>is <em>live.</em></h2>
-        <p>A real automation running against a real workflow, with your team trained on it and success criteria everyone agreed to.</p>
-      </div>
-      <div class="loop-line" id="ll-3">
-        <span class="mono-tag">Week twelve</span>
-        <h2>Your team runs it<br><em>without us.</em></h2>
-        <p>Champions inside the team, adoption you can measure, and a clear list of what to automate next.</p>
+      <div class="qs-grid-3">
+        <article class="qs-card"><div class="qs-feature"><div class="qs-feature__top"><span class="qs-numbox">1</span></div><h3 class="qs-h4">AI enablement and training</h3><p>We start by training your team on AI. Low risk, fast value, and the easiest way to see what your operation actually needs. This is the door we walk in through.</p></div></article>
+        <article class="qs-card"><div class="qs-feature"><div class="qs-feature__top"><span class="qs-numbox">2</span></div><h3 class="qs-h4">SOPs to a training system</h3><p>We turn your SOPs into AI-generated courses, quizzes, and certification, plus an owner dashboard that shows completion and trouble spots across every role.</p></div></article>
+        <article class="qs-card"><div class="qs-feature"><div class="qs-feature__top"><span class="qs-numbox">3</span></div><h3 class="qs-h4">SOPs to automations</h3><p>The painful manual tasks get built into automations and bundled into the same system. The work that used to eat your team's day starts running on its own.</p></div></article>
+        <article class="qs-card"><div class="qs-feature"><div class="qs-feature__top"><span class="qs-numbox">4</span></div><h3 class="qs-h4">Coaching and consulting</h3><p>Recurring bi-weekly or monthly calls where anyone on your team hops on for questions, help, and coaching. When something new needs building, we build it.</p></div></article>
+        <article class="qs-card"><div class="qs-feature"><div class="qs-feature__top"><span class="qs-numbox">5</span></div><h3 class="qs-h4">Hosting and maintenance</h3><p>We host and maintain the training system and the automations so they keep working. You own a system that gets looked after, not a handoff you have to babysit.</p></div></article>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- FAQ -->
-<div id="faq">
-  <div class="faq-header">
-    <h2>Questions & Answers</h2>
-  </div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-7">What is QuarterSmart?<span class="faq-icon" aria-hidden="true">+</span></button>
-      <div class="faq-a" id="faq-a-7" role="region"><p>QuarterSmart is an AI implementation and workforce enablement partner for operational teams. It helps organizations find the workflows where AI pays off, train the people who will use it, pilot against real work, automate what proves out, and measure adoption across the company. The method runs in six stages: Assess, Train, Pilot, Automate, Scale, and Measure. QuarterSmart is developer-forward and n8n-backed, which means engagements end with working automations running on the tools a team already uses rather than a slide deck of recommendations. QuarterSmart-built workflow templates have recorded more than 10,000 documented uses across the n8n community. Secure deployment, including private cloud, on-premises, and air-gapped environments, is available for regulated teams. QuarterSmart was founded by Hyrum Hurst and is run with operator Cullen Brown. It is a services partner, and engagements typically start with an AI Rollout Assessment.</p></div>
+  <!-- Proof -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap">
+      <div class="qs-section-head">
+        <span class="qs-eyebrow">Proof</span>
+        <h2 class="qs-h2">Structure Properties</h2>
+        <p>We replaced rewriting SOPs by hand with a full AI-powered training and onboarding system: a 39-course video library across seven roles, AI-automated course creation, and Claude-powered quizzes.</p>
+      </div>
+      <div class="qs-proof">
+        <div class="qs-stat qs-stat--lg"><span class="qs-stat__value">65%</span><span class="qs-stat__label">less onboarding time and fewer repeat questions</span></div>
+        <div class="qs-stat qs-stat--lg"><span class="qs-stat__value">36%</span><span class="qs-stat__label">fewer SOP-related mistakes</span></div>
+        <div class="qs-stat qs-stat--lg"><span class="qs-stat__value">7 roles</span><span class="qs-stat__label">with automated certification and compliance reporting</span></div>
+      </div>
+      <div class="qs-mt-5">
+        <a class="qs-btn qs-btn--secondary" href="/case-studies/structure-properties/">See how we did it <span class="qs-ico" aria-hidden="true">&rarr;</span></a>
+      </div>
     </div>
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-1">What does an AI rollout actually involve?<span class="faq-icon" aria-hidden="true">+</span></button>
-      <div class="faq-a" id="faq-a-1" role="region"><p>A QuarterSmart rollout follows six stages: Assess, Train, Pilot, Automate, Scale, and Measure. We start by assessing your workflows and team readiness, build practical AI fluency, pilot against a high-friction workflow, automate the work that proves out, scale what works across the organization, and measure adoption and outcomes. Most engagements start with an AI Rollout Assessment and a prioritized roadmap.</p></div>
-    </div>
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-2">How is QuarterSmart different from a typical AI consultant?<span class="faq-icon" aria-hidden="true">+</span></button>
-      <div class="faq-a" id="faq-a-2" role="region"><p>QuarterSmart is developer-forward. We ship working automations on the tools your team already uses, and we focus on measured adoption rather than one off experiments. QuarterSmart-built workflow templates have recorded more than 10,000 documented uses across the n8n community.</p></div>
-    </div>
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-3">Who is QuarterSmart for?<span class="faq-icon" aria-hidden="true">+</span></button>
-      <div class="faq-a" id="faq-a-3" role="region"><p>QuarterSmart works with operators and leaders, CEOs, COOs, GMs, and department leads, at small to mid sized organizations with established workflows and real constraints. Regulated and secure environments are welcome, with secure deployment available when you need it.</p></div>
-    </div>
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-4">Do you work with the AI tools we already use?<span class="faq-icon" aria-hidden="true">+</span></button>
-      <div class="faq-a" id="faq-a-4" role="region"><p>Yes. We build on your existing stack and the AI models you've already approved, leveraging tools your team already knows. Where you need secure deployment, we can stand up knowledge systems and AI assistants grounded in your own SOPs and documents inside your perimeter.</p></div>
-    </div>
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-5">Who is Hyrum Hurst?<span class="faq-icon" aria-hidden="true">+</span></button>
-      <div class="faq-a" id="faq-a-5" role="region"><p>Hyrum Hurst is QuarterSmart's founder and builds the AI systems himself. Cullen Brown runs operations and outreach. Full background, clients, and credentials are on the <a href="about.html" class="faq-link">About page</a>.</p></div>
-    </div>
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-6">How do we get started?<span class="faq-icon" aria-hidden="true">+</span></button>
-      <div class="faq-a" id="faq-a-6" role="region"><p>Book an AI Rollout Assessment. We review your workflows, team readiness, and the highest-impact opportunities, then come back with a prioritized roadmap and a clear next step. <a href="mailto:hyrum@quartersmart.com" class="faq-link">Talk to us</a> to set it up.</p></div>
-    </div>
-  </div>
-</div>
+  </section>
 
-<!-- ROCKET SCROLL -->
-<section id="home-rocket">
-  <div class="home-rocket-sticky">
-    <canvas id="home-rocket-canvas" aria-hidden="true"></canvas>
-    <div class="home-rocket-overlay"></div>
-    <div class="home-rocket-text" id="hrt-1">
-      <p class="rocket-heading">AI is moving fast.<br><em>Your rollout can keep up.</em></p>
-      <p>Your team needs the productivity gains, but a pile of disconnected experiments won't get you there. A measured rollout will.</p>
+  <!-- FAQ -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap qs-wrap--prose">
+      <div class="qs-section-head"><h2 class="qs-h2">Frequently asked questions</h2></div>
+      <div class="qs-accordion">
+        <details open><summary>What does QuarterSmart actually do?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">We turn your SOPs and tribal knowledge into AI-powered systems. Each SOP becomes a training course your team learns from (AI-generated video, quizzes, certification) and an automation that runs the task itself (n8n, Zapier, Power Automate). We build it, host it, maintain it, and coach your team around it.</p></details>
+        <details><summary>How is this different from a regular AI training workshop?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">A workshop teaches people and then ends. QuarterSmart connects the training to real workflows. The same SOP that teaches the job also powers an automation that does the job. You get capability your team uses every day, not a slideshow they forget by Friday.</p></details>
+        <details><summary>What kind of results can we expect?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">At Structure Properties we cut onboarding time and repeat questions by 65% and SOP-related mistakes by 36% across seven operational roles, with automated certification and compliance reporting built in. Results vary by team and process, which is why we start with training to learn your operation before we build.</p></details>
+        <details><summary>Do you stay involved after the build, or hand it off and leave?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">We stay. Every engagement ends at a recurring baseline. We host and maintain the training system and automations, and run regular coaching calls where anyone on your team can get help or request new builds.</p></details>
+        <details><summary>How do we get started?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">Book a call. Tell us what your team does by hand today, and we will show you how your existing SOPs can both teach it and run it. From there we scope a proposal.</p></details>
+      </div>
     </div>
-    <div class="home-rocket-text" id="hrt-2">
-      <p class="rocket-heading">Built for your workflows.<br><em>Run by your team.</em></p>
-      <p>Assess, train, pilot, automate, scale, measure. Working systems on the tools you already use, with secure deployment when you need it.</p>
-    </div>
-    <div class="home-rocket-text" id="hrt-3">
-      <p class="rocket-heading"><em>Launch</em> with your team ready.</p>
-      <p>We build fluency and internal champions alongside the automations, so adoption sticks instead of stalling.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA -->
-<div id="cta">
-  <div class="cta-inner">
-    <h2>Let's plan your<br><em>AI rollout.</em></h2>
-    <p>Tell us about your team and the workflows you want AI to carry. We come back with a prioritized rollout roadmap, an honest read on what to do first, and a clear next step.</p>
-    <div class="cta-form">
-      <a class="cta-btn" href="mailto:hyrum@quartersmart.com?subject=AI%20Rollout%20Assessment&amp;body=Company%3A%0ATeam%20size%3A%0AThe%20workflow%20that%20wastes%20the%20most%20time%3A">Book an AI Rollout Assessment →</a>
+  <!-- CTA -->
+  <section class="qs-section qs-section--lg qs-bordered">
+    <div class="qs-wrap">
+      <div class="qs-cta-band">
+        <svg width="64" height="64" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+          <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
+          <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+          <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
+          <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+          <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+        </svg>
+        <h2 class="qs-h1">Ready to put your SOPs to work?</h2>
+        <p>Tell us what your team does by hand today. We will show you how the same SOPs can teach it and run it.</p>
+        <div class="qs-cta-row">
+          <a class="qs-btn qs-btn--primary qs-btn--lg" href="/contact/#book-a-call">Book a call</a>
+          <a class="qs-btn qs-btn--secondary qs-btn--lg" href="/contact/#request-a-proposal">Request a proposal</a>
+        </div>
+      </div>
     </div>
-    <div class="cta-fine">Free 20 minute call. You leave with a prioritized roadmap. No obligation.</div>
-  </div>
-</div>
-
+  </section>
 </main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <img src="logos/quartersmart-q.webp" alt="QuarterSmart" width="28" height="28" loading="lazy">
+<footer class="qs-footer">
+  <div class="qs-footer__inner">
+    <div class="qs-footer__grid">
+      <div class="qs-footer__brand">
+        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+          </svg>
+          <span class="qs-logo__word">QuarterSmart</span>
+        </a>
+        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
+        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Company</h2>
+        <a href="/services/">Services</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/about/">About</a>
+        <a href="/for-agencies/">For Agencies</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Get in touch</h2>
+        <a href="/faq/">FAQ</a>
+        <a href="/contact/">Contact</a>
+        <a href="/contact/#book-a-call">Book a call</a>
+        <a href="/workflow-usage/">Workflow usage</a>
+      </div>
     </div>
-    <div class="footer-copy">© 2026 <a href="https://quartersmart.com" target="_blank" rel="noopener" style="color:#9ba5b4;text-decoration:underline">QuarterSmart</a>, AI implementation &amp; workforce enablement.</div>
-    <div class="footer-links">
-      <a href='ai-implementation/'>AI Implementation</a>
-      <a href='workforce-enablement/'>Enablement</a>
-      <a href='n8n-automation/'>n8n Automation</a>
-      <a href='privacy.html'>Privacy</a>
-      <a href='terms.html'>Terms</a>
-      <a href="mailto:hyrum@quartersmart.com">Contact</a>
+    <div class="qs-footer__meta">
+      <span class="qs-tag-line">Train your team. Automate the rest.</span>
+      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
     </div>
   </div>
 </footer>
 
-
 <script>
-  (function () {
-    // Reveal the hero on load, then type out the headline (no splash gate).
-    function revealHero() {
-      var content = document.getElementById('hero-content');
-      var eyebrow = document.getElementById('hero-eyebrow');
-      var headline = document.getElementById('hero-headline');
-      var sub = document.getElementById('hero-sub');
-      if (content) content.classList.add('visible');
-
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var fine = document.querySelector('.hero-fine');
-      if (reduce || !headline) {
-        if (eyebrow) eyebrow.classList.add('fade-in');
-        if (sub) sub.classList.add('fade-in');
-        var ctaR = document.getElementById('hero-cta-buttons');
-        if (ctaR) ctaR.classList.add('fade-in');
-        if (fine) fine.classList.add('fade-in');
-        return;
-      }
-
-      if (eyebrow) setTimeout(function () { eyebrow.classList.add('fade-in'); }, 200);
-      // Reveal sub + CTA in parallel with the typing so the primary action is never gated.
-      setTimeout(function () {
-        if (sub) sub.classList.add('fade-in');
-        var cta = document.getElementById('hero-cta-buttons');
-        if (cta) cta.classList.add('fade-in');
-        if (fine) fine.classList.add('fade-in');
-      }, 650);
-
-      var lines = [
-        { text: 'We ship the AI your team ', tag: 'span' },
-        { text: 'actually uses.', tag: 'em' }
-      ];
-      headline.textContent = '';
-      var cursor = document.createElement('span');
-      cursor.className = 'type-cursor';
-      var charDelay = 45, lineIndex = 0, charIndex = 0, currentEl = null;
-
-      function finish() {
-        headline.appendChild(cursor);
-      }
-      function typeNext() {
-        if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
-        if (lineIndex >= lines.length) { finish(); return; }
-        var line = lines[lineIndex];
-        if (charIndex === 0) { currentEl = document.createElement(line.tag); headline.appendChild(currentEl); }
-        if (charIndex < line.text.length) {
-          currentEl.textContent += line.text[charIndex];
-          headline.appendChild(cursor);
-          charIndex++;
-          setTimeout(typeNext, charDelay);
-        } else {
-          lineIndex++; charIndex = 0;
-          setTimeout(typeNext, 110);
-        }
-      }
-      setTimeout(typeNext, 450);
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', revealHero);
-    } else {
-      revealHero();
-    }
-  })();
-
-  // ── SCROLL FRAME ANIMATION ─────────────────
-  (function() {
-    var FRAME_COUNT = 96;
-    var canvas = document.getElementById('scroll-canvas');
-    var ctx = canvas.getContext('2d');
-    var section = document.getElementById('scroll-anim');
-    var images = new Array(FRAME_COUNT);
-    var currentFrame = 0;
-    var loaded = 0;
-
-    function getFrameSrc(i) {
-      var num = String(i).padStart(3, '0');
-      return 'assets/video/ignite-frames/frame-' + num + '.jpg';
-    }
-
-    function resizeCanvas() {
-      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      render(currentFrame);
-    }
-
-    function render(frameIndex) {
-      var img = images[frameIndex];
-      if (!img || !img.complete || !ctx) return;
-      var cw = canvas.width, ch = canvas.height;
-      ctx.clearRect(0, 0, cw, ch);
-      var imgR = img.naturalWidth / img.naturalHeight;
-      var canR = cw / ch;
-      var sw = img.naturalWidth, sh = img.naturalHeight, sx = 0, sy = 0;
-      if (imgR > canR) {
-        sw = img.naturalHeight * canR;
-        sx = (img.naturalWidth - sw) / 2;
-      } else {
-        sh = img.naturalWidth / canR;
-        sy = (img.naturalHeight - sh) / 2;
-      }
-      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, cw, ch);
-    }
-
-    function loadBatch(start, end, onReady) {
-      var batchLoaded = 0;
-      var size = end - start + 1;
-      for (var i = start; i <= end; i++) {
-        (function(idx) {
-          var img = new Image();
-          img.src = getFrameSrc(idx);
-          img.onload = function() {
-            loaded++;
-            batchLoaded++;
-            if (onReady && batchLoaded === size) onReady();
-          };
-          images[idx - 1] = img;
-        })(i);
-      }
-    }
-
-    // First 20 frames load eagerly so the scrub starts instantly; the remaining
-    // 76 are deferred until the section approaches the viewport.
-    var restLoaded = false;
-    function loadRest() {
-      if (restLoaded) return;
-      restLoaded = true;
-      loadBatch(21, FRAME_COUNT);
-    }
-    loadBatch(1, 20, function() {
-      resizeCanvas();
-      render(0);
-    });
-    if ('IntersectionObserver' in window) {
-      var igniteIO = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) { loadRest(); igniteIO.disconnect(); }
-        });
-      }, { rootMargin: '100% 0px' });
-      igniteIO.observe(section);
-    } else {
-      loadRest();
-    }
-
-    window.addEventListener('resize', resizeCanvas);
-
-    var sl1 = document.getElementById('sl-1');
-    var sl2 = document.getElementById('sl-2');
-    var sl3 = document.getElementById('sl-3');
-
-    function onScroll() {
-      var rect = section.getBoundingClientRect();
-      var sectionH = section.offsetHeight;
-      var viewH = window.innerHeight;
-      var scrolled = -rect.top;
-      var total = sectionH - viewH;
-      var progress = Math.max(0, Math.min(1, scrolled / total));
-
-      var frameProgress = Math.min(progress / 0.7, 1);
-      var frame = Math.round(frameProgress * (FRAME_COUNT - 1));
-      if (frame !== currentFrame) {
-        currentFrame = frame;
-        render(currentFrame);
-      }
-
-      if (progress > 0.15) sl1.classList.add('visible'); else sl1.classList.remove('visible');
-      if (progress > 0.4) sl2.classList.add('visible'); else sl2.classList.remove('visible');
-      if (progress > 0.65) sl3.classList.add('visible'); else sl3.classList.remove('visible');
-    }
-
-    var reduceIgnite = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduceIgnite) {
-      var igniteTicking = false;
-      window.addEventListener('scroll', function() {
-        if (igniteTicking) return;
-        igniteTicking = true;
-        requestAnimationFrame(function() { igniteTicking = false; onScroll(); });
-      }, { passive: true });
-    }
-
-    if (reduceIgnite) {
-      loadBatch(FRAME_COUNT, FRAME_COUNT, function() {
-        render(FRAME_COUNT - 1);
-        sl1.classList.add('visible');
-        sl2.classList.add('visible');
-        sl3.classList.add('visible');
-      });
-    }
-  })();
-
-  // ── LOOP VIDEO, SCROLL TEXT ──────────────────
-  (function() {
-    var section = document.getElementById('loop-vid');
-    if (!section) return;
-    var video = section.querySelector('.loop-video');
-    var ll1 = document.getElementById('ll-1');
-    var ll2 = document.getElementById('ll-2');
-    var ll3 = document.getElementById('ll-3');
-    var current = null;
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // Video only loads/plays when the section approaches; pauses when far away.
-    if ('IntersectionObserver' in window && video) {
-      var vio = new IntersectionObserver(function(es) {
-        es.forEach(function(e) {
-          if (e.isIntersecting) { if (!reduce) video.play().catch(function(){}); }
-          else { video.pause(); }
-        });
-      }, { rootMargin: '50% 0px' });
-      vio.observe(section);
-    } else if (video && !reduce) {
-      video.play().catch(function(){});
-    }
-
-    if (reduce) {
-      if (ll2) ll2.classList.add('visible');
-      return;
-    }
-
-    function onScroll() {
-      var rect = section.getBoundingClientRect();
-      var sectionH = section.offsetHeight;
-      var viewH = window.innerHeight;
-      var scrolled = -rect.top;
-      var total = sectionH - viewH;
-      var progress = Math.max(0, Math.min(1, scrolled / total));
-
-      var next = null;
-      if (progress > 0.05 && progress < 0.30) next = ll1;
-      else if (progress >= 0.30 && progress < 0.62) next = ll2;
-      else if (progress >= 0.62 && progress < 0.95) next = ll3;
-
-      if (next !== current) {
-        if (current) current.classList.remove('visible');
-        if (next) next.classList.add('visible');
-        current = next;
-      }
-    }
-
-    var ticking = false;
-    window.addEventListener('scroll', function() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function() { ticking = false; onScroll(); });
-    }, { passive: true });
-  })();
-
-  // ── FAQ ACCORDION ─────────────────────────
-  (function() {
-    var items = document.querySelectorAll('.faq-item');
-    items.forEach(function(item) {
-      var btn = item.querySelector('.faq-q');
-      btn.addEventListener('click', function() {
-        var wasOpen = item.classList.contains('open');
-        // Close all
-        items.forEach(function(i) {
-          i.classList.remove('open');
-          i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-        });
-        // Toggle clicked
-        if (!wasOpen) {
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-  })();
-
-  // ── COURSE CARD TOGGLE ──────────────────────
-  function toggleCard(btn) {
-    var desc = btn.previousElementSibling;
-    if (desc.classList.contains('expanded')) {
-      desc.classList.remove('expanded');
-      btn.textContent = 'Read more ↓';
-    } else {
-      desc.classList.add('expanded');
-      btn.textContent = 'Show less ↑';
-    }
-  }
-  window.toggleCard = toggleCard;
-
-  // ── HAMBURGER MENU ───────────────────────────
-  function closeMobileMenu() {
-    var menu = document.getElementById('mobile-menu');
-    var hamburger = document.getElementById('hamburger');
-    menu.classList.remove('open');
-    hamburger.classList.remove('active');
-    setTimeout(function() { menu.style.display = 'none'; }, 350);
-    document.body.style.overflow = '';
-  }
-  (function() {
-    var hamburger = document.getElementById('hamburger');
-    var menu = document.getElementById('mobile-menu');
-    hamburger.addEventListener('click', function() {
-      if (menu.classList.contains('open')) {
-        closeMobileMenu();
-      } else {
-        menu.style.display = 'flex';
-        requestAnimationFrame(function() {
-          menu.classList.add('open');
-        });
-        hamburger.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    });
-  })();
-
-  // ── SCROLL FADE-IN (IntersectionObserver) ────
-  (function() {
-    var selectors = [
-      '.problem-inner',
-      '.hiw-header', '.hiw-step',
-      '.courses-header', '.course-card',
-      '.partners-text', '.partner-card',
-      '.cta-inner',
-      '.faq-header', '.faq-item'
-    ];
-    var els = document.querySelectorAll(selectors.join(','));
-    els.forEach(function(el) { el.classList.add('fade-up'); });
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    els.forEach(function(el) { observer.observe(el); });
-  })();
-</script>
-
-
-
-<!-- Mid Rocket Scroll (flight over earth) -->
-<script>
-(function(){
-  const canvas = document.getElementById('mid-rocket-canvas');
-  if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const TOTAL = 96;
-  const frames = [];
-  const section = document.getElementById('mid-rocket');
-  const text = document.getElementById('mrt-1');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let started = false, lastIdx = -1, curIdx = 0, ticking = false;
-
-  function sizeCanvas(){
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    canvas.width = canvas.clientWidth * dpr;
-    canvas.height = canvas.clientHeight * dpr;
-    lastIdx = -1;
-  }
-  function draw(idx){
-    const img = frames[idx];
-    if(!img||!img.complete||!img.naturalWidth) return;
-    if(idx === lastIdx) return;
-    lastIdx = idx;
-    const cw = canvas.width, ch = canvas.height;
-    ctx.clearRect(0,0,cw,ch);
-    const imgR = img.naturalWidth/img.naturalHeight, canR = cw/ch;
-    let sw = img.naturalWidth, sh = img.naturalHeight, sx = 0, sy = 0;
-    if(imgR > canR){ sw = img.naturalHeight*canR; sx = (img.naturalWidth-sw)/2; }
-    else { sh = img.naturalWidth/canR; sy = (img.naturalHeight-sh)/2; }
-    ctx.drawImage(img,sx,sy,sw,sh,0,0,cw,ch);
-  }
-  function start(){
-    if(started) return;
-    started = true;
-    sizeCanvas();
-    const last = reduce ? 1 : TOTAL;
-    for(let i=1;i<=last;i++){
-      const img = new Image();
-      img.src = 'assets/video/rocket-frames/frame-'+String(i).padStart(3,'0')+'.jpg';
-      img.onload = ()=>{ if(i===1) draw(0); };
-      frames.push(img);
-    }
-  }
-  if('IntersectionObserver' in window){
-    const io = new IntersectionObserver((es)=>{
-      es.forEach((e)=>{ if(e.isIntersecting){ start(); io.disconnect(); } });
-    },{ rootMargin: '100% 0px' });
-    io.observe(section);
-  } else { start(); }
-  window.addEventListener('resize', ()=>{ if(started){ sizeCanvas(); draw(curIdx); } }, {passive:true});
-  if(reduce){ if(text) text.classList.add('active'); return; }
-  window.addEventListener('scroll', ()=>{
-    if(ticking) return;
-    ticking = true;
-    requestAnimationFrame(()=>{
-      ticking = false;
-      if(!started) return;
-      const rect = section.getBoundingClientRect();
-      const scrollH = section.offsetHeight - window.innerHeight;
-      const progress = Math.max(0,Math.min(1,-rect.top/scrollH));
-      const idx = Math.min(TOTAL-1,Math.floor(progress*TOTAL));
-      curIdx = idx;
-      draw(idx);
-      if(text){
-        if(progress > 0.15 && progress < 0.9) text.classList.add('active');
-        else text.classList.remove('active');
-      }
-    });
-  },{passive:true});
-})();
-</script>
-
-<!-- Home Rocket Scroll -->
-<script>
-(function(){
-  const canvas = document.getElementById('home-rocket-canvas');
-  if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const TOTAL = 96;
-  const frames = [];
-  const section = document.getElementById('home-rocket');
-  const texts = [document.getElementById('hrt-1'),document.getElementById('hrt-2'),document.getElementById('hrt-3')];
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let framesStarted = false;
-  let lastIdx = -1;
-
-  function sizeCanvas(){
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    canvas.width = canvas.clientWidth * dpr;
-    canvas.height = canvas.clientHeight * dpr;
-    lastIdx = -1;
-  }
-
-  function draw(idx){
-    const img = frames[idx];
-    if(!img||!img.complete||!img.naturalWidth) return;
-    if(idx === lastIdx) return;
-    lastIdx = idx;
-    const cw = canvas.width, ch = canvas.height;
-    ctx.clearRect(0,0,cw,ch);
-    const imgR = img.naturalWidth/img.naturalHeight, canR = cw/ch;
-    let sw = img.naturalWidth, sh = img.naturalHeight, sx = 0, sy = 0;
-    if(imgR > canR){ sw = img.naturalHeight*canR; sx = (img.naturalWidth-sw)/2; }
-    else { sh = img.naturalWidth/canR; sy = (img.naturalHeight-sh)/2; }
-    ctx.drawImage(img,sx,sy,sw,sh,0,0,cw,ch);
-  }
-
-  function startFrames(){
-    if(framesStarted) return;
-    framesStarted = true;
-    sizeCanvas();
-    const last = reduce ? 1 : TOTAL;
-    for(let i=1;i<=last;i++){
-      const img = new Image();
-      img.src = 'assets/video/flying-frames/frame-'+String(i).padStart(3,'0')+'.jpg';
-      img.onload = ()=>{ if(i===1) draw(0); };
-      frames.push(img);
-    }
-  }
-
-  // Frames load only when the section approaches (saves ~4MB for readers who never get here)
-  if('IntersectionObserver' in window){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach((e)=>{ if(e.isIntersecting){ startFrames(); io.disconnect(); } });
-    },{ rootMargin: '100% 0px' });
-    io.observe(section);
-  } else {
-    startFrames();
-  }
-
-  let curIdx = 0;
-  window.addEventListener('resize', ()=>{ if(framesStarted){ sizeCanvas(); draw(curIdx); } }, {passive:true});
-
-  if(reduce){
-    // Reduced motion: show the first frame and all text overlays statically
-    texts.forEach(function(t){ if(t) t.classList.add('active'); });
-    return;
-  }
-
-  let ticking = false;
-  window.addEventListener('scroll',()=>{
-    if(ticking) return;
-    ticking = true;
-    requestAnimationFrame(()=>{
-      ticking = false;
-      if(!framesStarted) return;
-      const rect = section.getBoundingClientRect();
-      const scrollH = section.offsetHeight - window.innerHeight;
-      const progress = Math.max(0,Math.min(1,-rect.top/scrollH));
-      const frameIdx = Math.min(TOTAL-1,Math.floor(progress*TOTAL));
-      curIdx = frameIdx;
-      draw(frameIdx);
-
-      const seg = 1/3;
-      texts.forEach((t,i)=>{
-        const start = i*seg, end = (i+1)*seg;
-        const mid = start+seg*0.15;
-        const fadeOut = end-seg*0.15;
-        if(progress>=mid && progress<=fadeOut){
-          t.classList.add('active');
-        } else {
-          t.classList.remove('active');
-        }
-      });
-    });
-  },{passive:true});
-})();
+(function(){var n=document.querySelector('.qs-nav');var t=n&&n.querySelector('.qs-nav__toggle');if(!t)return;t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});})();
 </script>
 </body>
 </html>

@@ -116,16 +116,19 @@ Core thesis: reposition QuarterSmart from "AI-powered LMS / course studio" to an
 **Assess → Train → Pilot → Automate → Scale → Measure.** Proof anchor: *verified n8n creator with 25
 public workflow templates.*
 
-> ### 🚫 HARD RULE — NO LMS (owner directive, 2026-06-08)
-> QuarterSmart is **NOT about an LMS, course studio, instructional design, or training-content product —
-> at all.** Do not position, name, headline, or describe the company around LMS / courses / "training
-> platform" / "rollout hub LMS" in any public-facing copy, meta, or schema. The research docs that suggest
-> keeping LMS "as a supporting asset / secondary page" are **overridden** — drop it entirely.
-> The underlying *capability* (secure knowledge systems, AI assistants grounded in client SOPs/docs,
-> secure deployment) may still be offered, but **never branded or led as an LMS / training platform**.
-> Lead with: AI implementation, workforce enablement, AI rollout, workflow automation, knowledge systems,
-> secure deployment. Avoid: "AI LMS," "course development," "instructional design," "chatbot builder,"
-> "automation freelancer."
+> ### POSITIONING RULE — training as a system, not an LMS product (owner directive, updated 2026-06-23)
+> This SUPERSEDES the 2026-06-08 "NO LMS at all" rule. Owner (Hyrum) reversed it on 2026-06-23.
+> QuarterSmart now leads with **"Train your team. Automate the rest."** Training and onboarding ARE part
+> of the offer, but framed as **systems we build, host, and maintain**, not as a commodity LMS or
+> course-studio product.
+> - Lead with: AI implementation, workforce enablement, AI onboarding and training SYSTEMS,
+>   SOPs-to-training-and-automation, workflow automation, knowledge systems, hosting and maintenance.
+> - Signature mechanic: each important SOP becomes both a training course AND an automation
+>   ("your SOPs do double duty").
+> - Still do NOT brand QuarterSmart as an "LMS," "course platform," "course studio," or "instructional
+>   design" vendor. Training is an OUTPUT of implementation, not the product.
+> - Canonical model now lives in `work1/hyrum/`: `quartersmart_business_model_2026-06-23.md`,
+>   `quartersmart_rebrand_2026-06-23.md`, and `quartersmart_website_content_2026-06-23.md`.
 
 ---
 
@@ -139,6 +142,58 @@ public workflow templates.*
 ---
 
 ## 7. Status log (append newest at top — keep the next agent informed)
+
+- **2026-06-24 (ROOT CUTOVER to production + self-hosted fonts)** - Promoted the designed
+  rebrand site from `rebrand-preview/` to the SITE ROOT. Pages now live at /, /services/,
+  /case-studies/ (+ /case-studies/structure-properties/), /about/, /for-agencies/, /faq/,
+  /contact/, /privacy/, /terms/. Rewrote every /rebrand-preview/ path to /. Removed the
+  superseded old pages (about.html, privacy.html, terms.html, ai-implementation/,
+  n8n-automation/, workforce-enablement/, coming-soon) and deleted rebrand-preview/. Added
+  301 redirects in `netlify.toml` from all old URLs to the new pages. SELF-HOSTED the two
+  webfonts (latin woff2 in `assets/fonts/`, @font-face in `assets/site.css`, Google Fonts
+  links removed sitewide, privacy page updated to say fonts are self-hosted). DISABLED the
+  GitHub Pages auto-deploy workflow (production is Netlify at quartersmart.com; the Pages
+  `/quartersmart-web/` subpath breaks root-relative paths). KEPT as legacy (still old design
+  system, NOT yet restyled): `workflow-usage/` (linked from the new footer), `signals/`,
+  `radar.html`, `logos/`. Lighthouse mobile before cutover: Perf 99 / A11y 100 / BP 100 /
+  SEO ~100. Merged to `main` to go live (or pending merge of PR #1).
+
+- **2026-06-24 (rebrand DESIGNED build implemented)** - Imported the QuarterSmart Design
+  System from Claude Design (project bb569288) through the authenticated browser (Omelette
+  ListFiles/GetFile RPC), saved the full 65-file export to `design-system/` (reference only,
+  excluded from publish). Translated the React/JSX design into a STATIC, accessible site under
+  `rebrand-preview/`: one production stylesheet `assets/site.css` (all design tokens plus every
+  component as CSS classes, focus rings, reduced-motion, mobile breakpoints), the 8 pages (Home,
+  Services, Case Studies + Structure Properties detail, About, For Agencies, FAQ, Contact) plus
+  NEW Privacy + Terms, native `<details>` FAQ, four-quarters `favicon.svg` + `assets/qs-mark.svg`.
+  Built the 7 content pages via a 7-agent workflow off a hand-built Home template; legal pages
+  hand-written. Preserved the SEO/schema/entity layer (stable @ids, verified sameAs, FAQPage
+  visible==schema parity), uses-not-people metric linked to /workflow-usage/. `netlify-build.mjs`
+  now also excludes `design-system` and `tmp`. QA passed: zero em/en dashes, all JSON-LD valid,
+  all internal links resolve, one h1 per page, dist builds. On `rebrand` (PR #1), NOT merged.
+  Open items: Cal.com booking link (mailto for now), legal review by counsel, optionally
+  self-host the two Google fonts, and the root cutover (promote `rebrand-preview/*` to site root,
+  GEO files to root, reconcile clean-URL `@id`s).
+
+- **2026-06-24 (final QuarterSmart brand kit)** - Produced the final selected four-quarter
+  QuarterSmart raster kit in `brand/`: `qs-logo-primary-dark.png`, `qs-logo-primary-light.png`,
+  `qs-mark-dark.png`, `qs-mark-transparent.png`, `qs-mark-white.png`, `qs-mark-black.png`, and
+  `qs-og-image.png`. The selected mark is a circle split into four equal quarters with the top-right
+  quarter in brighter mint `#1ffdb3`, the other quarters in mint `#00e5a0`, and wordmark text
+  spelled exactly `QuarterSmart`. Do not return to the earlier connected-node or alternate Q concepts.
+
+- **2026-06-24 (QuarterSmart quarter-circle logo concepts)** - Generated six new high-resolution
+  raster logo concepts with the built-in imagegen tool and saved them in `brand/concepts/`:
+  `quarter-v1-wedge-dark.png`, `quarter-v1-wedge-light.png`, `quarter-v2-ring-dark.png`,
+  `quarter-v2-ring-light.png`, `quarter-v3-q-cutout-dark.png`, and
+  `quarter-v4-detached-quarter-dark.png`. Direction is the "quarter" visual pun only: circle/ring
+  with a missing, cut-out, or detached 90-degree quarter. Hard avoid remains no connected dots,
+  node graphs, circuits, or branching motifs because the prior connected-node Q read too close to n8n.
+
+- **2026-06-24 (QuarterSmart logo concepts)** - Generated six raster logo concept boards with the built-in
+  imagegen tool and saved them in `brand/concepts/`: direction 1 split-output dark/light, direction 2 Q
+  monogram dark/light, direction 3 wordmark-spark dark, and direction 4 stacked-blocks dark. All saved
+  deliverables are at least 1024px tall/wide; light variants were padded on white to 1774x1024.
 
 - **2026-06-11 (verifiable metrics + associations)** - (1) NEW /workflow-usage/ methodology page: full
   per-template table of all 25 n8n templates, total **10,876 documented uses** (June 2026), definitions

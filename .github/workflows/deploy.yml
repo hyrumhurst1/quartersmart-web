@@ -1,8 +1,9 @@
 name: Deploy to GitHub Pages
 
+# GitHub Pages auto-deploy is disabled: production is Netlify at quartersmart.com,
+# and the rebrand site uses root-relative paths that do not work under the
+# /quartersmart-web/ Pages subpath. Run manually only if the mirror is ever needed.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
