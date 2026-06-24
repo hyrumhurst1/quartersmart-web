@@ -53,13 +53,16 @@ body {
   border-bottom: 1px solid var(--border);
 }
 .site-nav .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-weight: 700;
   letter-spacing: 0.04em;
   font-size: 18px;
   color: var(--text);
   text-decoration: none;
 }
-.site-nav .wordmark b { color: var(--accent); }
+.wordmark-mark { display: block; height: 24px; width: 24px; }
 .site-nav nav { display: flex; flex-wrap: wrap; gap: 6px 16px; }
 .site-nav nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
 .site-nav nav a:hover,
