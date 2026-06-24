@@ -16,7 +16,7 @@
   --qs-surface-3: #161c26;
   --qs-white: #f0f4f8;
   --qs-muted: #8b95a5;
-  --qs-faint: #5b6675;
+  --qs-faint: #79828f;
 
   /* Mint tints */
   --qs-mint-08: rgba(0, 229, 160, 0.08);
@@ -410,4 +410,17 @@ a.qs-card { text-decoration: none; }
 /* ----- Motion preferences ----------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* ----- Accessibility: links inside running text get a visible underline ---- */
+/* (not distinguished by color alone, WCAG 1.4.1). Standalone links, buttons,
+   nav, footer columns, and card affordances stay clean. */
+.qs-prose a, p a, .qs-breadcrumb a, .qs-footer__meta .qs-copy a {
+  text-decoration: underline;
+  text-decoration-color: var(--qs-border-mint);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.qs-prose a:hover, p a:hover, .qs-breadcrumb a:hover, .qs-footer__meta .qs-copy a:hover {
+  text-decoration-color: var(--accent-bright);
 }
