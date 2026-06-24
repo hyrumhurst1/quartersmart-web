@@ -5,325 +5,375 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anthropic Killed Third-Party Claude Access, Why Developers Are Furious | QuarterSmart</title>
 <meta name="description" content="Anthropic cut off third-party API access to Claude, blocking services like OpenClaw and forcing users to face 50x cost increases. What happened, why, and what it means.">
+<meta name="author" content="QuarterSmart">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://quartersmart.com/signals/third-party-killed">
 <meta name="theme-color" content="#060608">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Anthropic Just Killed Third-Party Access to Claude">
 <meta property="og:description" content="$200/mo subscriptions were running $5,000 in compute. Anthropic said enough. Users face 50x cost increases overnight.">
 <meta property="og:image" content="https://quartersmart.com/assets/images/signals/anthropic-killed-third-party-access-cover.png">
-<meta property="og:type" content="article">
+<meta property="og:url" content="https://quartersmart.com/signals/third-party-killed">
+<meta property="og:site_name" content="QuarterSmart">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://quartersmart.com/signals/third-party-killed.html">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="icon" type="image/x-icon" href="../favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="twitter:title" content="Anthropic Just Killed Third-Party Access to Claude">
+<meta name="twitter:description" content="$200/mo subscriptions were running $5,000 in compute. Anthropic said enough. Users face 50x cost increases overnight.">
+<meta name="twitter:image" content="https://quartersmart.com/assets/images/signals/anthropic-killed-third-party-access-cover.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://quartersmart.com/#organization",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "logo": "https://quartersmart.com/assets/qs-mark.png",
+      "slogan": "Train your team. Automate the rest.",
+      "founder": [
+        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
+      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://quartersmart.com/#website",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "publisher": { "@id": "https://quartersmart.com/#organization" }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://quartersmart.com/signals/third-party-killed#article",
+      "headline": "Anthropic Just Killed Third-Party Access to Claude, Here's Why Developers Are Furious",
+      "description": "Anthropic cut off third-party API access to Claude, blocking services like OpenClaw and forcing users to face 50x cost increases. What happened, why, and what it means.",
+      "image": "https://quartersmart.com/assets/images/signals/anthropic-killed-third-party-access-cover.png",
+      "datePublished": "2026-04-03",
+      "dateModified": "2026-04-03",
+      "author": { "@id": "https://quartersmart.com/#organization" },
+      "publisher": { "@id": "https://quartersmart.com/#organization" },
+      "mainEntityOfPage": { "@id": "https://quartersmart.com/signals/third-party-killed" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quartersmart.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Signals", "item": "https://quartersmart.com/signals" },
+        { "@type": "ListItem", "position": 3, "name": "Anthropic Just Killed Third-Party Access to Claude, Here's Why Developers Are Furious", "item": "https://quartersmart.com/signals/third-party-killed" }
+      ]
+    }
+  ]
+}
+</script>
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root { --accent: #00e5a0; --text: #f0f4f8; --muted: #9ba5b4; --bg: #060608; --border: rgba(255,255,255,0.06); --card-bg: rgba(10,10,16,0.88); --reading-width: 720px; }
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.7; }
-a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
-a:hover { opacity: 0.8; }
-::selection { background: rgba(0,229,160,0.2); color: var(--text); }
-#signal-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 40px; height: 52px; display: flex; align-items: center; justify-content: space-between; background: rgba(6,6,8,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-.nav-side { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); transition: color 0.2s; }
-.nav-side:hover { color: var(--accent); }
-.nav-side svg { width: 14px; height: 14px; flex-shrink: 0; }
-.nav-side img { height: 18px; width: auto; opacity: 0.8; }
-.nav-center { position: absolute; left: 50%; transform: translateX(-50%); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); opacity: 0.5; }
-#progress-bar { position: fixed; top: 52px; left: 0; right: 0; height: 2px; z-index: 101; }
-#progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #00b8ff); transition: width 0.1s linear; box-shadow: 0 0 8px rgba(0,229,160,0.4); }
-#signal-cover { width: 100%; height: 50vh; min-height: 360px; max-height: 520px; margin-top: 52px; overflow: hidden; position: relative; }
-#signal-cover img { width: 100%; height: 100%; object-fit: cover; }
-#signal-cover::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, var(--bg)); }
-.article-header { max-width: var(--reading-width); margin: -40px auto 0; padding: 0 24px; position: relative; z-index: 2; }
-.article-tag { display: inline-block; background: rgba(0,229,160,0.1); border: 1px solid rgba(0,229,160,0.15); color: var(--accent); padding: 4px 12px; border-radius: 100px; font-size: 10px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; }
-.article-title { font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
-.article-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
-.meta-author { display: flex; align-items: center; gap: 8px; }
-.author-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(0,229,160,0.15); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--accent); font-weight: 600; }
-.meta-dot { color: rgba(255,255,255,0.15); }
-.article-body { max-width: var(--reading-width); margin: 0 auto; padding: 40px 24px 0; }
-.article-body h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin: 48px 0 16px; line-height: 1.3; position: relative; padding-left: 16px; }
-.article-body h2::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; background: var(--accent); border-radius: 2px; }
-.article-body h3 { font-size: 18px; font-weight: 600; margin: 36px 0 12px; }
-.article-body p { font-size: 16px; line-height: 1.8; color: rgba(240,244,248,0.88); margin-bottom: 20px; }
-.article-body strong { color: var(--text); font-weight: 600; }
-.article-body em { color: var(--accent); font-style: normal; }
-.article-body ul.article-body ol { padding-left: 24px; margin-bottom: 20px; }
-.article-body li { font-size: 16px; line-height: 1.8; color: rgba(240,244,248,0.88); margin-bottom: 8px; }
-.pull-quote { margin: 40px -20px; padding: 28px 32px; border-left: 3px solid var(--accent); background: rgba(0,229,160,0.03); border-radius: 0 12px 12px 0; font-size: 18px; font-weight: 500; line-height: 1.6; color: var(--text); }
-.pull-quote cite { display: block; margin-top: 12px; font-size: 12px; font-style: normal; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
-.compare-table { width: 100%; margin: 28px 0; border-collapse: collapse; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-.compare-table th { background: rgba(0,229,160,0.06); padding: 12px 16px; text-align: left; font-size: 11px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--border); }
-.compare-table td { padding: 12px 16px; font-size: 14px; border-bottom: 1px solid var(--border); color: rgba(240,244,248,0.8); }
-.compare-table tr:last-child td { border-bottom: none; }
-.compare-table tr:hover td { background: rgba(255,255,255,0.02); }
-.deep-dive { margin: 24px 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-.deep-dive-toggle { width: 100%; padding: 16px 20px; background: rgba(255,255,255,0.02); border: none; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; text-align: left; display: flex; align-items: center; justify-content: space-between; transition: background 0.2s; }
-.deep-dive-toggle:hover { background: rgba(255,255,255,0.04); }
-.deep-dive-toggle .arrow { color: var(--accent); font-size: 12px; transition: transform 0.3s ease; }
-.deep-dive.open .deep-dive-toggle .arrow { transform: rotate(90deg); }
-.deep-dive-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 20px; }
-.deep-dive.open .deep-dive-content { max-height: 800px; padding: 0 20px 20px; }
-.deep-dive-content p { font-size: 14px; line-height: 1.7; color: rgba(240,244,248,0.75); margin-top: 0; }
-.info-card { margin: 28px 0; padding: 24px; background: rgba(0,229,160,0.03); border: 1px solid rgba(0,229,160,0.1); border-radius: 14px; }
-.info-card-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); opacity: 0.7; margin-bottom: 10px; }
-.info-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-.info-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 0; }
+/* Article-specific layer on top of site.css (uses the same tokens) */
+.sig-cover { display: block; width: 100%; max-width: var(--container); margin: 0 auto var(--sp-7); }
+.sig-cover img { width: 100%; height: auto; display: block; border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); }
 
-/* ── COST COUNTER ─────────────────────── */
-.cost-compare {
-  display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center;
-  margin: 32px 0; padding: 28px; border-radius: 14px;
-  background: rgba(255,255,255,0.02); border: 1px solid var(--border);
-}
-.cost-box {
-  text-align: center; padding: 20px;
-  border-radius: 12px; background: rgba(0,0,0,0.2);
-}
-.cost-label {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 8px;
-}
-.cost-amount {
-  font-size: 36px; font-weight: 700; letter-spacing: -0.03em;
-}
-.cost-amount.old { color: var(--accent); }
-.cost-amount.new { color: #ff6b6b; }
-.cost-arrow {
-  font-size: 28px; color: var(--muted); font-weight: 300;
-}
-.cost-sub { font-size: 11px; color: var(--muted); margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+.qs-prose ul, .qs-prose ol { margin: 0 0 1.2em; padding-left: 1.3em; max-width: 64ch; }
+.qs-prose li { font-size: var(--fs-body); line-height: 1.7; color: var(--text-muted); margin: 0 0 0.5em; }
+.qs-prose li strong { color: var(--text-strong); font-weight: 600; }
+.qs-prose em { color: var(--accent); font-style: normal; }
 
-.article-tags { max-width: var(--reading-width); margin: 0 auto; padding: 32px 24px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.article-tags span { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; margin-right: 8px; }
-.article-tags a { padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted); font-size: 11px; transition: all 0.2s; }
-.article-tags a:hover { border-color: rgba(0,229,160,0.2); color: var(--accent); }
-.sources-section { max-width: var(--reading-width); margin: 0 auto; padding: 0 24px 40px; }
-.sources-section h3 { font-size: 14px; font-weight: 600; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); opacity: 0.6; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--border); }
-.source-item { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; font-size: 13px; color: var(--muted); line-height: 1.5; }
-.source-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); opacity: 0.5; flex-shrink: 0; }
-#contribute { max-width: 900px; margin: 60px auto 0; padding: 0 24px 80px; }
-.contribute-header { text-align: center; margin-bottom: 36px; }
-.contribute-header h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
-.contribute-header p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-.contribute-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.contribute-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: border-color 0.3s; }
-.contribute-card:hover { border-color: rgba(0,229,160,0.15); }
-.contribute-card-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(0,229,160,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--accent); font-size: 16px; }
-.contribute-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-.contribute-card .card-sub { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
-.contribute-card input.contribute-card textarea { width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 13px; outline: none; transition: border-color 0.2s; margin-bottom: 10px; }
-.contribute-card input:focus.contribute-card textarea:focus { border-color: rgba(0,229,160,0.3); }
-.contribute-card input::placeholder.contribute-card textarea::placeholder { color: rgba(255,255,255,0.2); }
-.contribute-card textarea { resize: vertical; min-height: 80px; }
-.contribute-btn { width: 100%; padding: 10px; background: var(--accent); color: #000; border: none; border-radius: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, box-shadow 0.2s, transform 0.15s; }
-.contribute-btn:hover { background: #1ffdb3; box-shadow: 0 0 20px rgba(0,229,160,0.25); transform: translateY(-1px); }
-.form-success { color: var(--accent); font-size: 13px; font-family: 'JetBrains Mono', monospace; text-align: center; padding: 16px; display: none; }
-#signal-footer { padding: 32px 40px; border-top: 1px solid var(--border); text-align: center; font-size: 12px; color: var(--muted); background: var(--bg); }
-#signal-footer a { color: var(--accent); }
-@media (max-width: 768px) { #signal-nav { padding: 0 20px; } .article-header { padding: 0 16px; } .article-body { padding: 32px 16px 0; } .contribute-grid { grid-template-columns: 1fr; } #contribute { padding: 0 16px 60px; } .pull-quote { margin: 32px 0; padding: 20px 24px; } #signal-cover { height: 40vh; min-height: 260px; } .cost-compare { grid-template-columns: 1fr; } .cost-arrow { transform: rotate(90deg); } }
-@media (max-width: 480px) { .article-title { font-size: 24px; } .article-meta { flex-direction: column; align-items: flex-start; gap: 8px; } }
-.fade-in { opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+.qs-prose blockquote { margin: 1.6em 0; padding: 22px 26px; border-left: 3px solid var(--accent);
+  background: var(--qs-mint-08); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+.qs-prose blockquote p { font-size: 1.1rem; font-weight: 500; line-height: 1.55; color: var(--text-strong); margin: 0; max-width: none; }
+.qs-prose blockquote cite { display: block; margin-top: 12px; font-family: var(--font-mono); font-size: 12px; font-style: normal; color: var(--text-faint); }
+
+.sig-cost { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center;
+  margin: 1.8em 0; padding: 26px; border-radius: var(--radius-lg);
+  background: var(--surface-card); border: 1px solid var(--border-hairline); }
+.sig-cost__box { text-align: center; padding: 18px; border-radius: var(--radius-md); background: var(--surface-inset); }
+.sig-cost__label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+.sig-cost__amt { font-family: var(--font-display); font-size: 2.1rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+.sig-cost__amt--old { color: var(--accent); }
+.sig-cost__amt--new { color: #ff6b6b; }
+.sig-cost__arrow { font-size: 1.6rem; color: var(--text-faint); font-weight: 300; }
+.sig-cost__sub { font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); margin-top: 6px; }
+
+.sig-info { margin: 1.8em 0; padding: 24px; background: var(--qs-mint-08); border: 1px solid var(--border-mint); border-radius: var(--radius-lg); }
+.sig-info__label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.sig-info h3 { margin: 0 0 8px; }
+.sig-info p { margin: 0; }
+
+.qs-prose table { width: 100%; margin: 1.8em 0; border-collapse: collapse; border: 1px solid var(--border-hairline); border-radius: var(--radius-md); overflow: hidden; }
+.qs-prose th { background: var(--qs-mint-08); padding: 12px 16px; text-align: left; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--border-hairline); }
+.qs-prose td { padding: 12px 16px; font-size: 14px; color: var(--text-muted); border-bottom: 1px solid var(--border-hairline); }
+.qs-prose tr:last-child td { border-bottom: none; }
+.qs-prose td.warn { color: #ff6b6b; }
+
+.sig-tags { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 2em 0 0; padding-top: 1.6em; border-top: 1px solid var(--border-hairline); }
+.sig-tags > span { font-family: var(--font-mono); font-size: 10px; color: var(--text-faint); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 6px; }
+.sig-tags a { padding: 4px 12px; border-radius: var(--radius-pill); background: var(--surface-card); border: 1px solid var(--border-hairline); color: var(--text-muted); font-size: 12px; }
+.sig-tags a:hover { border-color: var(--border-mint); color: var(--accent); }
+
+.sig-sources { margin: 2em 0 0; padding-top: 1.6em; border-top: 1px solid var(--border-hairline); }
+.sig-sources h2 { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 16px; }
+.sig-source { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.sig-source__num { font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex: none; }
+
+@media (max-width: 720px) {
+  .sig-cost { grid-template-columns: 1fr; }
+  .sig-cost__arrow { transform: rotate(90deg); }
+}
 </style>
 </head>
 <body>
+<a class="qs-skip" href="#main">Skip to content</a>
 
-<nav id="signal-nav">
-  <a class='nav-side' href='../radar.html'><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to Radar</a>
-  <span class="nav-center">SIGNAL</span>
-  <a href="../" class="nav-side"><img src="../logos/quartersmart-q.png" alt="QuarterSmart" width="18" height="18"><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em;color:var(--text,#f0f4f8);">QuarterSmart</span> · Back to Home</a>
-</nav>
-<div id="progress-bar"><div id="progress-fill"></div></div>
-
-<div id="signal-cover">
-  <img src="../assets/images/signals/anthropic-killed-third-party-access-cover.png" alt="Glowing green chain breaking apart with explosive energy - representing Anthropic cutting off third-party API access to Claude">
-</div>
-
-<header class="article-header fade-in">
-  <span class="article-tag">News</span>
-  <h1 class="article-title">Anthropic Just Killed Third-Party Access to Claude, Here's Why Developers Are Furious</h1>
-  <div class="article-meta">
-    <div class="meta-author"><div class="author-avatar">HH</div><span>Hyrum Hurst</span></div>
-    <span class="meta-dot">·</span><span>Apr 3, 2026</span>
-    <span class="meta-dot">·</span><span>4 min read</span>
+<header class="qs-nav" data-open="false">
+  <div class="qs-nav__bar">
+    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
+      <span class="qs-logo__word">QuarterSmart</span>
+    </a>
+    <nav class="qs-nav__links" aria-label="Primary">
+      <a href="/services/">Services</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/about/">About</a>
+      <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="qs-nav__cta">
+      <a class="qs-btn qs-btn--primary qs-btn--sm" href="/contact/#book-a-call">Book a call</a>
+    </div>
+    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
   </div>
+  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
+    <a href="/services/">Services</a>
+    <a href="/case-studies/">Case Studies</a>
+    <a href="/about/">About</a>
+    <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/contact/">Contact</a>
+    <a class="qs-btn qs-btn--primary qs-btn--full" href="/contact/#book-a-call">Book a call</a>
+  </nav>
 </header>
 
-<article class="article-body">
-
-  <p class="fade-in">On April 4, 2026, dozens of third-party Claude services went dark. No warning. No migration period. Just a message: <em>"Access revoked."</em></p>
-
-  <p class="fade-in">Anthropic shut down the pipeline that let services like OpenClaw, ClaudeProxy, and others resell access to Claude's API at deeply discounted rates. Overnight, thousands of developers and power users who relied on these services found themselves staring at a <strong>50x cost increase</strong>.</p>
-
-  <h2 class="fade-in">The Math That Broke Everything</h2>
-
-  <p class="fade-in">Here's why Anthropic pulled the plug. Third-party resellers were charging users $100-200 per month for "unlimited" Claude access. But each heavy user was burning through $3,000-5,000 in actual compute costs. The resellers were subsidizing this with venture capital, betting they could lock in users before Anthropic noticed.</p>
-
-  <p class="fade-in">Anthropic noticed.</p>
-
-  <div class="cost-compare fade-in">
-    <div class="cost-box">
-      <div class="cost-label">Via Third-Party</div>
-      <div class="cost-amount old">$100</div>
-      <div class="cost-sub">/month</div>
+<main id="main">
+  <!-- Article header -->
+  <section class="qs-pagehead">
+    <div class="qs-motif qs-motif--sm" aria-hidden="true">
+      <svg width="420" height="420" viewBox="0 0 100 100" fill="none">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
     </div>
-    <div class="cost-arrow">→</div>
-    <div class="cost-box">
-      <div class="cost-label">Direct API Cost</div>
-      <div class="cost-amount new">$5,000</div>
-      <div class="cost-sub">/month equivalent</div>
+    <div class="qs-pagehead__inner">
+      <nav class="qs-breadcrumb" aria-label="Breadcrumb"><a href="/signals/">Signals</a> / Anthropic Killed Third-Party Claude Access</nav>
+      <span class="qs-eyebrow">News &middot; Apr 3, 2026 &middot; 4 min read</span>
+      <h1 class="qs-h1">Anthropic Just Killed Third-Party Access to Claude, Here's Why Developers Are Furious</h1>
+      <p class="qs-pagehead__lede">By Hyrum Hurst</p>
     </div>
+  </section>
+
+  <!-- Cover -->
+  <div class="sig-cover">
+    <img src="/assets/images/signals/anthropic-killed-third-party-access-cover.png" alt="Glowing green chain breaking apart with explosive energy, representing Anthropic cutting off third-party API access to Claude" loading="lazy" width="1120" height="560">
   </div>
 
-  <blockquote class="pull-quote fade-in">
-    "We cannot sustain a model where intermediaries charge $200 for $5,000 worth of compute. This isn't about restricting access, it's about survival."
-    <cite>, Anthropic spokesperson, April 4, 2026</cite>
-  </blockquote>
+  <!-- Article body -->
+  <section class="qs-section">
+    <div class="qs-wrap qs-wrap--prose">
+      <article class="qs-prose">
 
-  <h2 class="fade-in">Who Got Hit</h2>
+        <p>On April 4, 2026, dozens of third-party Claude services went dark. No warning. No migration period. Just a message: <em>"Access revoked."</em></p>
 
-  <p class="fade-in">The crackdown affected every major third-party Claude reseller:</p>
+        <p>Anthropic shut down the pipeline that let services like OpenClaw, ClaudeProxy, and others resell access to Claude's API at deeply discounted rates. Overnight, thousands of developers and power users who relied on these services found themselves staring at a <strong>50x cost increase</strong>.</p>
 
-  <ul class="fade-in">
-    <li><strong>OpenClaw</strong>, The largest reseller, with ~15,000 active users. Shut down entirely within 24 hours of the API cutoff.</li>
-    <li><strong>ClaudeProxy</strong>, Offered "unlimited Opus" for $150/month. API keys revoked on April 4.</li>
-    <li><strong>Various Discord bots</strong>, Hundreds of bots offering Claude access in Discord servers were killed simultaneously.</li>
-    <li><strong>Small SaaS products</strong>, Startups that built their entire product on resold Claude API access found themselves without a core feature.</li>
-  </ul>
+        <h2>The Math That Broke Everything</h2>
 
-  <h2 class="fade-in">The Developer Backlash</h2>
+        <p>Here's why Anthropic pulled the plug. Third-party resellers were charging users $100-200 per month for "unlimited" Claude access. But each heavy user was burning through $3,000-5,000 in actual compute costs. The resellers were subsidizing this with venture capital, betting they could lock in users before Anthropic noticed.</p>
 
-  <p class="fade-in">The response on X, Reddit, and Hacker News was immediate and furious. The top post on r/artificial, "Anthropic just pulled the rug on 50,000 users", hit 8,000 upvotes in 12 hours. Developers who had built workflows around these third-party services were left scrambling.</p>
+        <p>Anthropic noticed.</p>
 
-  <p class="fade-in">The most common complaints:</p>
+        <div class="sig-cost">
+          <div class="sig-cost__box">
+            <div class="sig-cost__label">Via Third-Party</div>
+            <div class="sig-cost__amt sig-cost__amt--old">$100</div>
+            <div class="sig-cost__sub">/month</div>
+          </div>
+          <div class="sig-cost__arrow" aria-hidden="true">&rarr;</div>
+          <div class="sig-cost__box">
+            <div class="sig-cost__label">Direct API Cost</div>
+            <div class="sig-cost__amt sig-cost__amt--new">$5,000</div>
+            <div class="sig-cost__sub">/month equivalent</div>
+          </div>
+        </div>
 
-  <ul class="fade-in">
-    <li><strong>"No warning."</strong> Users woke up to dead API keys with zero advance notice.</li>
-    <li><strong>"No migration path."</strong> Anthropic didn't offer discounted direct API access as a transition.</li>
-    <li><strong>"They're punishing users for their own pricing failure."</strong> If the API was priced unsustainably, that's Anthropic's problem, not the users'.</li>
-  </ul>
+        <blockquote>
+          <p>"We cannot sustain a model where intermediaries charge $200 for $5,000 worth of compute. This isn't about restricting access, it's about survival."</p>
+          <cite>Anthropic spokesperson, April 4, 2026</cite>
+        </blockquote>
 
-  <div class="deep-dive fade-in">
-    <button class="deep-dive-toggle" onclick="toggleDive(this)">
-      Was this legal? Could the resellers fight back?
-      <span class="arrow">▶</span>
-    </button>
-    <div class="deep-dive-content">
-      <p>Short answer: probably not. Anthropic's Terms of Service explicitly prohibit API reselling. The third-party services were always operating in a gray area, most knew it, and their terms of service disclaimed liability for exactly this scenario. Some users have explored class-action options against the resellers (not Anthropic) for failing to disclose the risk. As of this writing, no legal action has been filed.</p>
+        <h2>Who Got Hit</h2>
+
+        <p>The crackdown affected every major third-party Claude reseller:</p>
+
+        <ul>
+          <li><strong>OpenClaw</strong>, The largest reseller, with ~15,000 active users. Shut down entirely within 24 hours of the API cutoff.</li>
+          <li><strong>ClaudeProxy</strong>, Offered "unlimited Opus" for $150/month. API keys revoked on April 4.</li>
+          <li><strong>Various Discord bots</strong>, Hundreds of bots offering Claude access in Discord servers were killed simultaneously.</li>
+          <li><strong>Small SaaS products</strong>, Startups that built their entire product on resold Claude API access found themselves without a core feature.</li>
+        </ul>
+
+        <h2>The Developer Backlash</h2>
+
+        <p>The response on X, Reddit, and Hacker News was immediate and furious. The top post on r/artificial, "Anthropic just pulled the rug on 50,000 users", hit 8,000 upvotes in 12 hours. Developers who had built workflows around these third-party services were left scrambling.</p>
+
+        <p>The most common complaints:</p>
+
+        <ul>
+          <li><strong>"No warning."</strong> Users woke up to dead API keys with zero advance notice.</li>
+          <li><strong>"No migration path."</strong> Anthropic didn't offer discounted direct API access as a transition.</li>
+          <li><strong>"They're punishing users for their own pricing failure."</strong> If the API was priced unsustainably, that's Anthropic's problem, not the users'.</li>
+        </ul>
+
+        <div class="qs-accordion">
+          <details>
+            <summary>Was this legal? Could the resellers fight back?<span class="qs-pm" aria-hidden="true"></span></summary>
+            <p class="qs-answer">Short answer: probably not. Anthropic's Terms of Service explicitly prohibit API reselling. The third-party services were always operating in a gray area, most knew it, and their terms of service disclaimed liability for exactly this scenario. Some users have explored class-action options against the resellers (not Anthropic) for failing to disclose the risk. As of this writing, no legal action has been filed.</p>
+          </details>
+        </div>
+
+        <h2>Meanwhile, at OpenAI...</h2>
+
+        <p>While Anthropic was locking down, OpenAI was rolling out the red carpet. Within hours of the crackdown, OpenAI's developer relations team began aggressively courting displaced Claude users, offering <strong>migration credits</strong>, onboarding support, and a very pointed message: <em>we don't do this to our developers.</em></p>
+
+        <p>OpenAI still allows full third-party API access. Any developer can build on GPT-4o, GPT-5.4, or any model in their lineup. No vetting. No restrictions beyond standard rate limits. Their Terms of Service are permissive by design.</p>
+
+        <p>Anthropic essentially handed OpenAI a marketing campaign. The narrative writes itself: <strong>Anthropic restricts. OpenAI empowers.</strong> Whether or not that framing is fair, Anthropic would argue they're protecting the sustainability of their platform, it's the story that's sticking.</p>
+
+        <div class="sig-info">
+          <div class="sig-info__label">The Real Question</div>
+          <h3>Is Anthropic's approach sustainable?</h3>
+          <p>Anthropic is making a bet: that controlling access to their most powerful models will let them build a sustainable business. OpenAI is making the opposite bet, that open access drives adoption, and adoption wins. Both can't be right. The market will decide within the next 12 months.</p>
+        </div>
+
+        <h2>What Are Your Options Now?</h2>
+
+        <p>If you were using a third-party Claude service, here's where things stand:</p>
+
+        <table>
+          <thead>
+            <tr><th scope="col">Option</th><th scope="col">Cost</th><th scope="col">Access</th><th scope="col">Downside</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Claude Pro (direct)</td><td>$20/mo</td><td>Claude Sonnet + limited Opus</td><td>Rate limits, no API</td></tr>
+            <tr><td>Anthropic API (direct)</td><td>Pay-per-token</td><td>Full model access</td><td class="warn">50x your old cost</td></tr>
+            <tr><td>Switch to OpenAI API</td><td>Pay-per-token</td><td>GPT-4o, GPT-5.4</td><td>Different model behavior</td></tr>
+            <tr><td>Google Gemini API</td><td>Pay-per-token</td><td>Gemini 2.0 Pro</td><td>Less coding capability</td></tr>
+            <tr><td>Open-source (Llama, Mistral)</td><td>Self-hosted</td><td>Full control</td><td>Infra costs, lower quality</td></tr>
+          </tbody>
+        </table>
+
+        <h2>What This Means Going Forward</h2>
+
+        <p>This isn't just about pricing. It's about control. Anthropic is building an ecosystem where they, and only they, decide who gets access to Claude and at what price. In contrast, OpenAI and Google are building open marketplaces.</p>
+
+        <p>The Mythos restriction to 40 organizations via Project Glasswing now looks like part of a pattern, not an exception. Anthropic is betting that <strong>controlled scarcity</strong> is the right model for frontier AI. Whether developers, and the market, agree is another story entirely.</p>
+
+        <div class="sig-tags">
+          <span>Tags</span>
+          <a href="/signals/">Anthropic</a>
+          <a href="/signals/">API</a>
+          <a href="/signals/">Developers</a>
+          <a href="/signals/">OpenAI</a>
+          <a href="/signals/">Pricing</a>
+        </div>
+
+        <div class="sig-sources">
+          <h2>Sources</h2>
+          <div class="sig-source"><span class="sig-source__num">[1]</span><span>Anthropic. "Updates to API Terms of Service." <a href="https://www.anthropic.com/news/api-terms-update" target="_blank" rel="noopener">anthropic.com</a>, April 4, 2026.</span></div>
+          <div class="sig-source"><span class="sig-source__num">[2]</span><span>r/artificial. "Anthropic just pulled the rug on 50,000 users." <a href="https://reddit.com/r/artificial" target="_blank" rel="noopener">reddit.com</a>, April 4, 2026.</span></div>
+          <div class="sig-source"><span class="sig-source__num">[3]</span><span>Hacker News. Discussion thread on Anthropic API changes. <a href="https://news.ycombinator.com" target="_blank" rel="noopener">news.ycombinator.com</a>, April 4, 2026.</span></div>
+          <div class="sig-source"><span class="sig-source__num">[4]</span><span>OpenClaw. "Service Sunset Notice." <a href="https://openclaw.dev" target="_blank" rel="noopener">openclaw.dev</a>, April 5, 2026.</span></div>
+          <div class="sig-source"><span class="sig-source__num">[5]</span><span>Heath, A. "Anthropic Cracks Down on API Resellers, Sparking Developer Revolt." <a href="https://www.theverge.com/2026/4/5/anthropic-api-resellers" target="_blank" rel="noopener">The Verge</a>, April 5, 2026.</span></div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="qs-section qs-section--lg qs-bordered">
+    <div class="qs-wrap qs-wrap--prose">
+      <div class="qs-cta-row">
+        <a class="qs-btn qs-btn--primary qs-btn--lg" href="/contact/#book-a-call">Book a call</a>
+        <a class="qs-btn qs-btn--ghost qs-btn--lg" href="/signals/">Back to Signals</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="qs-footer">
+  <div class="qs-footer__inner">
+    <div class="qs-footer__grid">
+      <div class="qs-footer__brand">
+        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+          </svg>
+          <span class="qs-logo__word">QuarterSmart</span>
+        </a>
+        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
+        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Company</h2>
+        <a href="/services/">Services</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/about/">About</a>
+        <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Get in touch</h2>
+        <a href="/faq/">FAQ</a>
+        <a href="/contact/">Contact</a>
+        <a href="/workflow-usage/">Workflow usage</a>
+      </div>
+    </div>
+    <div class="qs-footer__meta">
+      <span class="qs-tag-line">Train your team. Automate the rest.</span>
+      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
     </div>
   </div>
-
-  <h2 class="fade-in">Meanwhile, at OpenAI...</h2>
-
-  <p class="fade-in">While Anthropic was locking down, OpenAI was rolling out the red carpet. Within hours of the crackdown, OpenAI's developer relations team began aggressively courting displaced Claude users, offering <strong>migration credits</strong>, onboarding support, and a very pointed message: <em>we don't do this to our developers.</em></p>
-
-  <p class="fade-in">OpenAI still allows full third-party API access. Any developer can build on GPT-4o, GPT-5.4, or any model in their lineup. No vetting. No restrictions beyond standard rate limits. Their Terms of Service are permissive by design.</p>
-
-  <p class="fade-in">Anthropic essentially handed OpenAI a marketing campaign. The narrative writes itself: <strong>Anthropic restricts. OpenAI empowers.</strong> Whether or not that framing is fair, Anthropic would argue they're protecting the sustainability of their platform, it's the story that's sticking.</p>
-
-  <div class="info-card fade-in">
-    <div class="info-card-label">The Real Question</div>
-    <h4>Is Anthropic's approach sustainable?</h4>
-    <p>Anthropic is making a bet: that controlling access to their most powerful models will let them build a sustainable business. OpenAI is making the opposite bet, that open access drives adoption, and adoption wins. Both can't be right. The market will decide within the next 12 months.</p>
-  </div>
-
-  <h2 class="fade-in">What Are Your Options Now?</h2>
-
-  <p class="fade-in">If you were using a third-party Claude service, here's where things stand:</p>
-
-  <table class="compare-table fade-in">
-    <thead>
-      <tr><th>Option</th><th>Cost</th><th>Access</th><th>Downside</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Claude Pro (direct)</td><td>$20/mo</td><td>Claude Sonnet + limited Opus</td><td>Rate limits, no API</td></tr>
-      <tr><td>Anthropic API (direct)</td><td>Pay-per-token</td><td>Full model access</td><td style="color:#ff6b6b">50x your old cost</td></tr>
-      <tr><td>Switch to OpenAI API</td><td>Pay-per-token</td><td>GPT-4o, GPT-5.4</td><td>Different model behavior</td></tr>
-      <tr><td>Google Gemini API</td><td>Pay-per-token</td><td>Gemini 2.0 Pro</td><td>Less coding capability</td></tr>
-      <tr><td>Open-source (Llama, Mistral)</td><td>Self-hosted</td><td>Full control</td><td>Infra costs, lower quality</td></tr>
-    </tbody>
-  </table>
-
-  <h2 class="fade-in">What This Means Going Forward</h2>
-
-  <p class="fade-in">This isn't just about pricing. It's about control. Anthropic is building an ecosystem where they, and only they, decide who gets access to Claude and at what price. In contrast, OpenAI and Google are building open marketplaces.</p>
-
-  <p class="fade-in">The Mythos restriction to 40 organizations via Project Glasswing now looks like part of a pattern, not an exception. Anthropic is betting that <strong>controlled scarcity</strong> is the right model for frontier AI. Whether developers, and the market, agree is another story entirely.</p>
-
-</article>
-
-<div class="article-tags fade-in">
-  <span>Tags</span>
-  <a href='../radar.html'>Anthropic</a>
-  <a href='../radar.html'>API</a>
-  <a href='../radar.html'>Developers</a>
-  <a href='../radar.html'>OpenAI</a>
-  <a href='../radar.html'>Pricing</a>
-</div>
-
-<div class="sources-section fade-in">
-  <h3>Sources</h3>
-  <div class="source-item"><span class="source-num">[1]</span><span>Anthropic. "Updates to API Terms of Service." <a href="https://www.anthropic.com/news/api-terms-update" target="_blank" rel="noopener">anthropic.com</a>, April 4, 2026.</span></div>
-  <div class="source-item"><span class="source-num">[2]</span><span>r/artificial. "Anthropic just pulled the rug on 50,000 users." <a href="https://reddit.com/r/artificial" target="_blank" rel="noopener">reddit.com</a>, April 4, 2026.</span></div>
-  <div class="source-item"><span class="source-num">[3]</span><span>Hacker News. Discussion thread on Anthropic API changes. <a href="https://news.ycombinator.com" target="_blank" rel="noopener">news.ycombinator.com</a>, April 4, 2026.</span></div>
-  <div class="source-item"><span class="source-num">[4]</span><span>OpenClaw. "Service Sunset Notice." <a href="https://openclaw.dev" target="_blank" rel="noopener">openclaw.dev</a>, April 5, 2026.</span></div>
-  <div class="source-item"><span class="source-num">[5]</span><span>Heath, A. "Anthropic Cracks Down on API Resellers, Sparking Developer Revolt." <a href="https://www.theverge.com/2026/4/5/anthropic-api-resellers" target="_blank" rel="noopener">The Verge</a>, April 5, 2026.</span></div>
-</div>
-
-<section id="contribute">
-  <div class="contribute-header fade-in"><h3>We're open to contributors</h3><p>Have a signal we should cover? Want to write for QuarterSmart Signals? We'd love to hear from you.</p></div>
-  <div class="contribute-grid">
-    <div class="contribute-card fade-in">
-      <div class="contribute-card-icon">◇</div><h4>Suggest a Topic</h4><p class="card-sub">Have a tip, news story, or tool we should cover? Drop it here.</p>
-      <form id="suggest-form" onsubmit="submitForm(event, 'suggest')"><input type="email" placeholder="your@email.com" required><textarea placeholder="What should we write about?" required></textarea><button type="submit" class="contribute-btn">Send Suggestion</button></form>
-      <div class="form-success" id="suggest-success">Thanks! We'll look into it ◆</div>
-    </div>
-    <div class="contribute-card fade-in">
-      <div class="contribute-card-icon">✦</div><h4>Write for Us</h4><p class="card-sub">Want to contribute a signal? Pitch us your idea and we'll get back to you.</p>
-      <form id="write-form" onsubmit="submitForm(event, 'write')"><input type="email" placeholder="your@email.com" required><textarea placeholder="Your pitch, what's the signal, and why does it matter?" required></textarea><button type="submit" class="contribute-btn">Send Pitch</button></form>
-      <div class="form-success" id="write-success">Pitch received! We'll be in touch ◆</div>
-    </div>
-  </div>
-</section>
-
-<footer id="signal-footer"><a href='../radar.html'>← Signals</a> &nbsp;·&nbsp; QuarterSmart, AI implementation &amp; workforce enablement &nbsp;·&nbsp; <a href="https://quartersmart.com" target="_blank" rel="noopener">quartersmart.com</a> &nbsp;·&nbsp; <a href="../">Home →</a></footer>
+</footer>
 
 <script>
-(function() {
-  var fill = document.getElementById('progress-fill');
-  window.addEventListener('scroll', function() { var h = document.documentElement.scrollHeight - window.innerHeight; fill.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%'; });
-  var fadeEls = document.querySelectorAll('.fade-in');
-  var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  fadeEls.forEach(function(el) { obs.observe(el); });
-  window.toggleDive = function(btn) { btn.closest('.deep-dive').classList.toggle('open'); };
-  window.submitForm = function(e, type) {
-    e.preventDefault(); var form = e.target;
-    fetch('https://YOUR-WEBHOOK-URL.com', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: type, email: form.querySelector('input[type="email"]').value, message: form.querySelector('textarea').value, page: document.title, timestamp: new Date().toISOString() }) })
-    .then(function() { form.style.display = 'none'; document.getElementById(type + '-success').style.display = 'block'; })
-    .catch(function() { form.style.display = 'none'; document.getElementById(type + '-success').style.display = 'block'; });
-  };
+(function(){
+  /* mobile nav */
+  var n=document.querySelector('.qs-nav'),t=n&&n.querySelector('.qs-nav__toggle');
+  if(t)t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});
 })();
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article",
- "headline":"Anthropic Just Killed Third-Party Access to Claude, Here's Why Developers Are Furious",
- "description":"Anthropic cut off third-party API access to Claude, blocking services like OpenClaw and forcing users to face 50x cost increases. What happened, why, and what it means.",
- "image":"https://quartersmart.com/assets/images/signals/anthropic-killed-third-party-access-cover.png",
- "datePublished":"2026-04-03","dateModified":"2026-04-03",
- "author":{"@type":"Person","name":"Hyrum Hurst"},
- "publisher":{"@type":"Organization","name":"QuarterSmart","url":"https://quartersmart.com/",
-   "founder":{"@type":"Person","name":"Hyrum Hurst"},
-   "sameAs":["https://quartersmart.com","https://n8n.io/creators/hyrum-hurst"]},
- "mainEntityOfPage":{"@type":"WebPage","@id":"https://quartersmart.com/signals/third-party-killed.html"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"QuarterSmart",
- "url":"https://quartersmart.com/","description":"AI implementation and workforce enablement partner. QuarterSmart helps organizations assess, train, pilot, automate, scale, and measure AI adoption.",
- "founder":{"@type":"Person","name":"Hyrum Hurst"},
- "sameAs":["https://quartersmart.com","https://n8n.io/creators/hyrum-hurst"]}
 </script>
 </body>
 </html>

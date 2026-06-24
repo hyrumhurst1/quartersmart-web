@@ -61,6 +61,10 @@
   to = "/services"
   status = 301
 [[redirects]]
+  from = "/radar.html"
+  to = "/signals"
+  status = 301
+[[redirects]]
   from = "/rebrand-preview/*"
   to = "/:splat"
   status = 301

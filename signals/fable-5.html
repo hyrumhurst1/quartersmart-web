@@ -5,818 +5,361 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mythos Is Out. They Named It Fable. | QuarterSmart</title>
 <meta name="description" content="Anthropic just released Fable 5, the first public Mythos-class model. After months of scary headlines, the most capable AI ever shipped arrived with a bedtime-story name. Here is what actually changed.">
+<meta name="author" content="QuarterSmart">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://quartersmart.com/signals/fable-5">
 <meta name="theme-color" content="#060608">
+<meta property="og:type" content="article">
 <meta property="og:title" content="They Spent Months Scaring You About Mythos. Then They Named It Fable.">
 <meta property="og:description" content="Fable 5 is the first public Mythos-class model. Same capability tier that triggered the scary headlines, now wearing a storybook name. What operators should know.">
+<meta property="og:url" content="https://quartersmart.com/signals/fable-5">
+<meta property="og:site_name" content="QuarterSmart">
 <meta property="og:image" content="https://quartersmart.com/assets/images/signals/fable-5-cover.png">
-<meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://quartersmart.com/signals/fable-5.html">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="icon" type="image/x-icon" href="../favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="twitter:title" content="They Spent Months Scaring You About Mythos. Then They Named It Fable.">
+<meta name="twitter:description" content="Fable 5 is the first public Mythos-class model. Same capability tier that triggered the scary headlines, now wearing a storybook name. What operators should know.">
+<meta name="twitter:image" content="https://quartersmart.com/assets/images/signals/fable-5-cover.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://quartersmart.com/#organization",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "logo": "https://quartersmart.com/assets/qs-mark.png",
+      "slogan": "Train your team. Automate the rest.",
+      "founder": [
+        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
+      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://quartersmart.com/#website",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "publisher": { "@id": "https://quartersmart.com/#organization" }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://quartersmart.com/signals/fable-5#article",
+      "headline": "They Spent Months Scaring You About Mythos. Then They Named It Fable.",
+      "image": "https://quartersmart.com/assets/images/signals/fable-5-cover.png",
+      "datePublished": "2026-06-09",
+      "dateModified": "2026-06-09",
+      "author": { "@id": "https://quartersmart.com/#organization" },
+      "publisher": { "@id": "https://quartersmart.com/#organization" },
+      "isPartOf": { "@id": "https://quartersmart.com/#website" },
+      "mainEntityOfPage": "https://quartersmart.com/signals/fable-5"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quartersmart.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Signals", "item": "https://quartersmart.com/signals" },
+        { "@type": "ListItem", "position": 3, "name": "They Spent Months Scaring You About Mythos. Then They Named It Fable.", "item": "https://quartersmart.com/signals/fable-5" }
+      ]
+    }
+  ]
+}
+</script>
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --accent: #00e5a0;
-  --text: #f0f4f8;
-  --muted: #9ba5b4;
-  --bg: #060608;
-  --surface: rgba(10,10,16,0.92);
-  --border: rgba(255,255,255,0.06);
-  --card-bg: rgba(10,10,16,0.88);
-  --reading-width: 720px;
-}
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Space Grotesk', sans-serif;
-  overflow-x: hidden;
-  line-height: 1.7;
-}
-a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
-a:hover { opacity: 0.8; }
-::selection { background: rgba(0,229,160,0.2); color: var(--text); }
-
-/* ── TOP NAV BAR ──────────────────────── */
-#signal-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 0 40px;
-  height: 52px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(6,6,8,0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-side {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13px; color: var(--muted);
-  transition: color 0.2s;
-}
-.nav-side:hover { color: var(--accent); }
-.nav-side svg { width: 14px; height: 14px; flex-shrink: 0; }
-.nav-side img { height: 18px; width: auto; opacity: 0.8; }
-.nav-center {
-  position: absolute; left: 50%; transform: translateX(-50%);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--accent); opacity: 0.5;
-}
-#progress-bar {
-  position: fixed; top: 52px; left: 0; right: 0;
-  height: 2px; z-index: 101; background: transparent;
-}
-#progress-fill {
-  height: 100%; width: 0%;
-  background: linear-gradient(90deg, var(--accent), #00b8ff);
-  transition: width 0.1s linear;
-  box-shadow: 0 0 8px rgba(0,229,160,0.4);
-}
-
-/* ── COVER IMAGE ──────────────────────── */
-#signal-cover {
-  width: 100%; height: 50vh; min-height: 360px; max-height: 520px;
-  margin-top: 52px;
-  overflow: hidden; position: relative;
-}
-#signal-cover img {
-  width: 100%; height: 100%; object-fit: cover;
-}
-#signal-cover .cover-placeholder {
-  width: 100%; height: 100%;
-  background: linear-gradient(135deg, rgba(0,229,160,0.08), rgba(0,184,255,0.04));
-  display: flex; align-items: center; justify-content: center;
-  color: var(--accent); font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; letter-spacing: 0.1em;
-}
-#signal-cover::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, transparent, var(--bg));
-}
-
-/* ── ARTICLE HEADER ───────────────────── */
-.article-header {
-  max-width: var(--reading-width); margin: -40px auto 0; padding: 0 24px;
-  position: relative; z-index: 2;
-}
-.article-tag {
-  display: inline-block;
-  background: rgba(0,229,160,0.1); border: 1px solid rgba(0,229,160,0.15);
-  color: var(--accent); padding: 4px 12px; border-radius: 100px;
-  font-size: 10px; font-family: 'JetBrains Mono', monospace;
-  text-transform: uppercase; letter-spacing: 0.12em;
-  margin-bottom: 16px;
-}
-.article-title {
-  font-size: clamp(28px, 5vw, 44px);
-  font-weight: 700; letter-spacing: -0.03em; line-height: 1.15;
-  margin-bottom: 20px;
-}
-.article-meta {
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  font-size: 13px; color: var(--muted);
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.02em;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--border);
-}
-.meta-author {
-  display: flex; align-items: center; gap: 8px;
-}
-.author-avatar {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: rgba(0,229,160,0.15);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; color: var(--accent); font-weight: 600;
-}
-.meta-dot { color: rgba(255,255,255,0.15); }
-
-/* ── ARTICLE BODY ─────────────────────── */
-.article-body {
-  max-width: var(--reading-width); margin: 0 auto;
-  padding: 40px 24px 0;
-}
-.article-body h2 {
-  font-size: 24px; font-weight: 700; letter-spacing: -0.02em;
-  margin: 48px 0 16px; line-height: 1.3;
-  position: relative; padding-left: 16px;
-}
-.article-body h2::before {
-  content: ''; position: absolute; left: 0; top: 4px; bottom: 4px;
-  width: 3px; background: var(--accent); border-radius: 2px;
-}
-.article-body h3 {
-  font-size: 18px; font-weight: 600; margin: 36px 0 12px;
-  letter-spacing: -0.01em; line-height: 1.35;
-}
-.article-body p {
-  font-size: 16px; line-height: 1.8; color: rgba(240,244,248,0.88);
-  margin-bottom: 20px;
-}
-.article-body strong { color: var(--text); font-weight: 600; }
-.article-body em { color: var(--accent); font-style: normal; }
-.article-body ul.article-body ol {
-  padding-left: 24px; margin-bottom: 20px;
-}
-.article-body li {
-  font-size: 16px; line-height: 1.8; color: rgba(240,244,248,0.88);
-  margin-bottom: 8px;
-}
-
-/* ── PULL QUOTE ───────────────────────── */
-.pull-quote {
-  margin: 40px -20px; padding: 28px 32px;
-  border-left: 3px solid var(--accent);
-  background: rgba(0,229,160,0.03);
-  border-radius: 0 12px 12px 0;
-  font-size: 18px; font-weight: 500; line-height: 1.6;
-  color: var(--text); letter-spacing: -0.01em;
-}
-.pull-quote cite {
-  display: block; margin-top: 12px;
-  font-size: 12px; font-style: normal; color: var(--muted);
-  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;
-}
-
-/* ── CODE / PROMPT BLOCKS ─────────────── */
-.prompt-block {
-  margin: 24px 0; border-radius: 12px; overflow: hidden;
-  border: 1px solid var(--border);
-  background: rgba(0,0,0,0.3);
-}
-.prompt-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 16px;
-  background: rgba(255,255,255,0.03);
-  border-bottom: 1px solid var(--border);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; color: var(--muted); letter-spacing: 0.05em;
-}
-.copy-btn {
-  background: rgba(0,229,160,0.1); border: 1px solid rgba(0,229,160,0.2);
-  color: var(--accent); padding: 4px 12px; border-radius: 6px;
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  cursor: pointer; transition: all 0.2s; letter-spacing: 0.05em;
-}
-.copy-btn:hover { background: rgba(0,229,160,0.2); }
-.copy-btn.copied { background: var(--accent); color: #000; }
-.prompt-code {
-  padding: 16px 20px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px; line-height: 1.7;
-  color: rgba(240,244,248,0.85);
-  white-space: pre-wrap; word-break: break-word;
-}
-
-/* ── COMPARISON TABLE ─────────────────── */
-.compare-table {
-  width: 100%; margin: 28px 0; border-collapse: collapse;
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid var(--border);
-}
-.compare-table th {
-  background: rgba(0,229,160,0.06);
-  padding: 12px 16px; text-align: left;
-  font-size: 11px; font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--accent); border-bottom: 1px solid var(--border);
-}
-.compare-table td {
-  padding: 12px 16px; font-size: 14px;
-  border-bottom: 1px solid var(--border);
-  color: rgba(240,244,248,0.8);
-}
-.compare-table tr:last-child td { border-bottom: none; }
-.compare-table tr:hover td { background: rgba(255,255,255,0.02); }
-
-/* ── EXPANDABLE DEEP-DIVE ─────────────── */
-.deep-dive {
-  margin: 24px 0; border: 1px solid var(--border);
-  border-radius: 12px; overflow: hidden;
-}
-.deep-dive-toggle {
-  width: 100%; padding: 16px 20px;
-  background: rgba(255,255,255,0.02);
-  border: none; color: var(--text);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 15px; font-weight: 600;
-  cursor: pointer; text-align: left;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: background 0.2s;
-}
-.deep-dive-toggle:hover { background: rgba(255,255,255,0.04); }
-.deep-dive-toggle .arrow {
-  color: var(--accent); font-size: 12px;
-  transition: transform 0.3s ease;
-}
-.deep-dive.open .deep-dive-toggle .arrow { transform: rotate(90deg); }
-.deep-dive-content {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.4s ease;
-  padding: 0 20px;
-}
-.deep-dive.open .deep-dive-content {
-  max-height: 800px; padding: 0 20px 20px;
-}
-.deep-dive-content p {
-  font-size: 14px; line-height: 1.7; color: rgba(240,244,248,0.75);
-  margin-top: 0;
-}
-
-/* ── INFO CARD ────────────────────────── */
-.info-card {
-  margin: 28px 0; padding: 24px;
-  background: rgba(0,229,160,0.03);
-  border: 1px solid rgba(0,229,160,0.1);
-  border-radius: 14px;
-}
-.info-card-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--accent); opacity: 0.7; margin-bottom: 10px;
-}
-.info-card h4 {
-  font-size: 16px; font-weight: 600; margin-bottom: 8px;
-}
-.info-card p {
-  font-size: 14px; color: var(--muted); line-height: 1.6;
-  margin-bottom: 0;
-}
-
-/* ── INLINE IMAGE ─────────────────────── */
-.article-img {
-  margin: 36px -40px;
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid var(--border);
-}
-.article-img img {
-  width: 100%; height: auto; display: block;
-}
-.article-img figcaption {
-  padding: 10px 16px;
-  font-size: 11px; color: var(--muted);
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.03em;
-  border-top: 1px solid var(--border);
-}
-
-/* ── TAGS FOOTER ──────────────────────── */
-.article-tags {
-  max-width: var(--reading-width); margin: 0 auto;
-  padding: 32px 24px;
-  border-top: 1px solid var(--border);
-  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-}
-.article-tags span {
-  font-size: 10px; color: var(--muted);
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  margin-right: 8px;
-}
-.article-tags a {
-  padding: 4px 12px; border-radius: 100px;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-  color: var(--muted); font-size: 11px; transition: all 0.2s;
-}
-.article-tags a:hover { border-color: rgba(0,229,160,0.2); color: var(--accent); }
-
-/* ── CONTRIBUTOR SECTION ──────────────── */
-#contribute {
-  max-width: 900px; margin: 60px auto 0; padding: 0 24px 80px;
-}
-.contribute-header {
-  text-align: center; margin-bottom: 36px;
-}
-.contribute-header h3 {
-  font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-.contribute-header p {
-  font-size: 14px; color: var(--muted); line-height: 1.6;
-}
-.contribute-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-}
-.contribute-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 14px; padding: 28px;
-  transition: border-color 0.3s;
-}
-.contribute-card:hover { border-color: rgba(0,229,160,0.15); }
-.contribute-card-icon {
-  width: 36px; height: 36px; border-radius: 10px;
-  background: rgba(0,229,160,0.08);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px; color: var(--accent); font-size: 16px;
-}
-.contribute-card h4 {
-  font-size: 16px; font-weight: 600; margin-bottom: 6px;
-}
-.contribute-card .card-sub {
-  font-size: 12px; color: var(--muted); line-height: 1.5;
-  margin-bottom: 20px;
-}
-.contribute-card input.contribute-card textarea {
-  width: 100%; padding: 10px 14px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  border-radius: 8px; color: var(--text);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px; outline: none;
-  transition: border-color 0.2s;
-  margin-bottom: 10px;
-}
-.contribute-card input:focus.contribute-card textarea:focus {
-  border-color: rgba(0,229,160,0.3);
-}
-.contribute-card input::placeholder.contribute-card textarea::placeholder {
-  color: rgba(255,255,255,0.2);
-}
-.contribute-card textarea {
-  resize: vertical; min-height: 80px;
-}
-.contribute-btn {
-  width: 100%; padding: 10px;
-  background: var(--accent); color: #000;
-  border: none; border-radius: 8px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-}
-.contribute-btn:hover {
-  background: #1ffdb3;
-  box-shadow: 0 0 20px rgba(0,229,160,0.25);
-  transform: translateY(-1px);
-}
-.form-success {
-  color: var(--accent); font-size: 13px;
-  font-family: 'JetBrains Mono', monospace;
-  text-align: center; padding: 16px;
-  display: none;
-}
-
-/* ── SOURCES ──────────────────────────── */
-.sources-section {
-  max-width: var(--reading-width); margin: 0 auto;
-  padding: 0 24px 40px;
-}
-.sources-section h3 {
-  font-size: 14px; font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--accent); opacity: 0.6;
-  margin-bottom: 16px; padding-top: 32px;
-  border-top: 1px solid var(--border);
-}
-.source-item {
-  display: flex; align-items: baseline; gap: 12px;
-  margin-bottom: 12px; font-size: 13px; color: var(--muted);
-  line-height: 1.5;
-}
-.source-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px; color: var(--accent); opacity: 0.5;
-  flex-shrink: 0;
-}
-.source-item a { font-size: 13px; }
-
-/* ── THREAT METER ─────────────────────── */
-.threat-meter {
-  margin: 32px 0; padding: 24px;
-  background: rgba(255,107,107,0.03);
-  border: 1px solid rgba(255,107,107,0.12);
-  border-radius: 14px;
-}
-.threat-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: #ff6b6b; opacity: 0.7; margin-bottom: 12px;
-}
-.threat-bar-wrap {
-  background: rgba(255,255,255,0.04); border-radius: 8px;
-  height: 8px; overflow: hidden; margin-bottom: 12px;
-}
-.threat-bar {
-  height: 100%; border-radius: 8px;
-  background: linear-gradient(90deg, var(--accent), #ffcc00, #ff6b6b);
-  width: 0%; transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.threat-labels {
-  display: flex; justify-content: space-between;
-  font-size: 10px; font-family: 'JetBrains Mono', monospace;
-  color: var(--muted); letter-spacing: 0.05em;
-}
-
-/* ── TIMELINE ─────────────────────────── */
-.timeline {
-  margin: 32px 0; position: relative;
-  padding-left: 24px;
-  border-left: 2px solid rgba(0,229,160,0.15);
-}
-.timeline-item {
-  position: relative; margin-bottom: 24px; padding-left: 16px;
-}
-.timeline-item::before {
-  content: '';
-  position: absolute; left: -29px; top: 6px;
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--accent); border: 2px solid var(--bg);
-}
-.timeline-date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; color: var(--accent); opacity: 0.7;
-  margin-bottom: 4px; letter-spacing: 0.05em;
-}
-.timeline-text {
-  font-size: 14px; color: rgba(240,244,248,0.8); line-height: 1.6;
-}
-
-/* ── FOOTER ───────────────────────────── */
-#signal-footer {
-  padding: 32px 40px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  font-size: 12px; color: var(--muted);
-  background: var(--bg);
-}
-#signal-footer a { color: var(--accent); }
-
-/* ── RESPONSIVE ───────────────────────── */
-@media (max-width: 768px) {
-  #signal-nav { padding: 0 20px; }
-  .article-header { padding: 0 16px; }
-  .article-body { padding: 32px 16px 0; }
-  .article-img { margin: 28px 0; }
-  .contribute-grid { grid-template-columns: 1fr; }
-  #contribute { padding: 0 16px 60px; }
-  .pull-quote { margin: 32px 0; padding: 20px 24px; }
-  #signal-cover { height: 40vh; min-height: 260px; }
-  .sources-section { padding: 0 16px 40px; }
-}
-@media (max-width: 480px) {
-  .article-title { font-size: 24px; }
-  .article-meta { flex-direction: column; align-items: flex-start; gap: 8px; }
-}
-
-/* ── FADE IN ──────────────────────────── */
-.fade-in {
-  opacity: 0; transform: translateY(12px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-.fade-in:nth-child(2) { transition-delay: 0.1s; }
-.fade-in:nth-child(3) { transition-delay: 0.2s; }
+/* Article-body styling layered on top of qs-prose, using the site tokens */
+.qs-cover { margin: 0 auto var(--sp-7); max-width: var(--container); }
+.qs-cover img { width: 100%; height: auto; border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); display: block; }
+.qs-prose ul, .qs-prose ol { margin: 0 0 1em; padding-left: 1.4em; max-width: 64ch; }
+.qs-prose li { font-size: var(--fs-body); line-height: 1.7; color: var(--text-muted); margin: 0 0 0.5em; }
+.qs-prose li strong { color: var(--text-strong); font-weight: 600; }
+.qs-prose em { color: var(--accent); font-style: normal; }
+.qs-prose figure { margin: 1.8em 0; }
+.qs-prose figure img { width: 100%; height: auto; border: 1px solid var(--border-hairline); border-radius: var(--radius-md); }
+.qs-prose figcaption { font-family: var(--font-mono); font-size: var(--fs-caption); color: var(--text-faint); margin-top: 8px; }
+.qs-pullquote { margin: 1.8em 0; padding: 22px 26px; border-left: 3px solid var(--accent);
+  background: var(--qs-mint-08); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: var(--fs-body-lg); font-weight: 500; line-height: 1.5; color: var(--text-strong); }
+.qs-pullquote cite { display: block; margin-top: 12px; font-style: normal; font-family: var(--font-mono);
+  font-size: var(--fs-caption); color: var(--text-faint); letter-spacing: 0.04em; }
+.qs-banner { margin: 1.8em 0; padding: 22px 24px; background: var(--surface-card);
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); }
+.qs-banner__label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.qs-meter { background: var(--surface-inset); border-radius: var(--radius-pill); height: 8px; overflow: hidden; margin-bottom: 12px; }
+.qs-meter__fill { height: 100%; width: 92%; border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--accent), #ffcc00, #ff6b6b); }
+.qs-meter__scale { display: flex; justify-content: space-between; font-family: var(--font-mono);
+  font-size: 11px; color: var(--text-faint); letter-spacing: 0.04em; }
+.qs-callout { margin: 1.8em 0; padding: 22px 24px; background: var(--qs-mint-08);
+  border: 1px solid var(--qs-border-mint); border-radius: var(--radius-lg); }
+.qs-callout__label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.qs-callout h3, .qs-callout h4 { font-family: var(--font-display); color: var(--text-strong); margin: 0 0 8px; }
+.qs-callout p { margin: 0; }
+.qs-table-wrap { margin: 1.8em 0; overflow-x: auto; }
+.qs-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md); overflow: hidden; }
+.qs-table th { background: var(--qs-mint-08); padding: 12px 16px; text-align: left;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); border-bottom: 1px solid var(--border-hairline); }
+.qs-table td { padding: 12px 16px; font-size: var(--fs-small); color: var(--text-muted);
+  border-bottom: 1px solid var(--border-hairline); }
+.qs-table tr:last-child td { border-bottom: none; }
+.qs-sources { margin: 2em 0 0; padding-top: var(--sp-6); border-top: 1px solid var(--border-hairline); }
+.qs-sources h2 { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.qs-source { display: flex; gap: 12px; margin-bottom: 12px; font-size: var(--fs-small);
+  line-height: 1.5; color: var(--text-muted); }
+.qs-source__num { font-family: var(--font-mono); font-size: 11px; color: var(--accent); flex-shrink: 0; }
 </style>
 </head>
 <body>
+<a class="qs-skip" href="#main">Skip to content</a>
 
-<!-- TOP NAV -->
-<nav id="signal-nav">
-  <a class='nav-side' href='../radar.html'>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-    Back to Radar
-  </a>
-  <span class="nav-center">SIGNAL</span>
-  <a href="../" class="nav-side">
-    <img src="../logos/quartersmart-q.png" alt="QuarterSmart" width="18" height="18">
-    Back to Home
-  </a>
-</nav>
-<div id="progress-bar"><div id="progress-fill"></div></div>
-
-<!-- COVER IMAGE -->
-<div id="signal-cover">
-  <img src="../assets/images/signals/fable-5-cover.png" alt="The word Mythos crossed out above the words Fable 5 in mint green, Anthropic renamed its most capable AI model">
-</div>
-
-<!-- ARTICLE HEADER -->
-<header class="article-header fade-in">
-  <span class="article-tag">News</span>
-  <h1 class="article-title">They Spent Months Scaring You About Mythos. Then They Named It Fable.</h1>
-  <div class="article-meta">
-    <div class="meta-author">
-      <div class="author-avatar">HH</div>
-      <span>Hyrum Hurst</span>
+<header class="qs-nav" data-open="false">
+  <div class="qs-nav__bar">
+    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
+      <span class="qs-logo__word">QuarterSmart</span>
+    </a>
+    <nav class="qs-nav__links" aria-label="Primary">
+      <a href="/services/">Services</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/about/">About</a>
+      <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="qs-nav__cta">
+      <a class="qs-btn qs-btn--primary qs-btn--sm" href="/contact/#book-a-call">Book a call</a>
     </div>
-    <span class="meta-dot">·</span>
-    <span>Jun 9, 2026</span>
-    <span class="meta-dot">·</span>
-    <span>6 min read</span>
+    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
   </div>
+  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
+    <a href="/services/">Services</a>
+    <a href="/case-studies/">Case Studies</a>
+    <a href="/about/">About</a>
+    <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/contact/">Contact</a>
+    <a class="qs-btn qs-btn--primary qs-btn--full" href="/contact/#book-a-call">Book a call</a>
+  </nav>
 </header>
 
-<!-- ARTICLE BODY -->
-<article class="article-body">
-
-  <p class="fade-in">Two months ago we wrote about <a href="mythos">Claude Mythos breaking out of its sandbox</a>. The most capable model Anthropic had ever built, locked behind a restricted program, available to a few dozen vetted organizations, wrapped in kill switches and quarterly transparency reports. The message of that whole news cycle was simple: this thing is too powerful for you.</p>
-
-  <p class="fade-in">Today, Anthropic <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">shipped it to everyone</a>.</p>
-
-  <p class="fade-in">They named it <strong>Fable</strong>.</p>
-
-  <!-- THREAT METER -->
-  <div class="threat-meter fade-in" id="threat-meter">
-    <div class="threat-label">Mythos-class capability, now generally available</div>
-    <div class="threat-bar-wrap">
-      <div class="threat-bar" id="threat-bar"></div>
+<main id="main">
+  <!-- Article header -->
+  <section class="qs-pagehead">
+    <div class="qs-pagehead__inner">
+      <nav class="qs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/signals/">Signals</a> / They Named It Fable
+      </nav>
+      <span class="qs-eyebrow">News &middot; Jun 9, 2026</span>
+      <h1 class="qs-h1">They Spent Months Scaring You About Mythos. Then They Named It Fable.</h1>
+      <p class="qs-pagehead__lede">Fable 5 is the first public Mythos-class model. Same capability tier that triggered the scary headlines, now wearing a storybook name. Here is what actually changed.</p>
     </div>
-    <div class="threat-labels">
-      <span>Sonnet</span>
-      <span>Opus</span>
-      <span>Fable</span>
-      <span>Mythos</span>
+  </section>
+
+  <!-- Cover -->
+  <section class="qs-section" style="padding-top:0;padding-bottom:0">
+    <div class="qs-wrap">
+      <figure class="qs-cover">
+        <img src="/assets/images/signals/fable-5-cover.png" alt="The word Mythos crossed out above the words Fable 5 in mint green, Anthropic renamed its most capable AI model" loading="lazy" width="1200" height="630">
+      </figure>
+    </div>
+  </section>
+
+  <!-- Article body -->
+  <section class="qs-section">
+    <div class="qs-wrap qs-wrap--prose">
+      <article class="qs-prose">
+
+        <p>Two months ago we wrote about <a href="/signals/mythos">Claude Mythos breaking out of its sandbox</a>. The most capable model Anthropic had ever built, locked behind a restricted program, available to a few dozen vetted organizations, wrapped in kill switches and quarterly transparency reports. The message of that whole news cycle was simple: this thing is too powerful for you.</p>
+
+        <p>Today, Anthropic <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">shipped it to everyone</a>.</p>
+
+        <p>They named it <strong>Fable</strong>.</p>
+
+        <div class="qs-banner">
+          <div class="qs-banner__label">Mythos-class capability, now generally available</div>
+          <div class="qs-meter"><div class="qs-meter__fill"></div></div>
+          <div class="qs-meter__scale">
+            <span>Sonnet</span>
+            <span>Opus</span>
+            <span>Fable</span>
+            <span>Mythos</span>
+          </div>
+        </div>
+
+        <h2>What Actually Shipped Today</h2>
+
+        <p>Anthropic released two models at once: <strong>Claude Fable 5</strong> and <strong>Claude Mythos 5</strong>. Fable 5 is the headline act, the first model from the Mythos class, the capability tier that sits <em>above</em> Opus, ever made generally available. Anthropic says its capabilities exceed any model they have previously released, with state-of-the-art results across nearly every benchmark they tested: software engineering, knowledge work, vision, and scientific research.</p>
+
+        <p>The difference between the two models is not capability. It is the muzzle. Fable 5 ships with safeguards: when a query trips certain risk classifiers, the response you get is quietly generated by Claude Opus 4.8 instead. Anthropic says the safeguards are tuned conservatively, will sometimes catch harmless requests, and trigger in fewer than 5 percent of sessions on average. Mythos 5 is the same model without those safeguards, and access is limited to vetted users, mostly the cybersecurity professionals who had early access under the original restricted program.</p>
+
+        <div class="qs-table-wrap">
+          <table class="qs-table">
+            <thead>
+              <tr><th></th><th>Fable 5</th><th>Mythos 5</th><th>Opus 4.8</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Capability class</td><td style="color:var(--accent)">Mythos-class</td><td style="color:var(--accent)">Mythos-class</td><td>Opus-class</td></tr>
+              <tr><td>Safeguards</td><td>Risky queries rerouted to Opus 4.8</td><td style="color:#ffcc00">None of Fable's reroutes</td><td>Standard</td></tr>
+              <tr><td>Who gets it</td><td style="color:var(--accent)">Everyone</td><td style="color:#ffcc00">Vetted users only</td><td>Everyone</td></tr>
+              <tr><td>Price per M tokens</td><td>$10 in / $50 out</td><td>$10 in / $50 out</td><td>$5 in / $25 out</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Name Is Doing a Lot of Work</h2>
+
+        <p>Think about the sequence. For months, everything the public heard about this model line was frightening. A sandbox escape. A brand new safety classification invented just to describe it. Access restricted to a list of organizations you could fit in one conference room. <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/" target="_blank" rel="noopener">TechCrunch notes</a> the release landed days after Anthropic publicly warned that AI is becoming too dangerous.</p>
+
+        <p>And then the launch name turns out to be... Fable. Bedtime stories. Aesop. A talking fox learns a lesson about humility. It is hard to imagine a more deliberate vibe shift from "containment breach" to "would you like warm milk with that."</p>
+
+        <p>Except here is the part we genuinely love. Look at the etymology Anthropic themselves point to:</p>
+
+        <blockquote class="qs-pullquote">
+          "Fable is from the Latin fabula, 'that which is told,' akin to the Greek mythos."
+          <cite>Anthropic, Fable 5 announcement, June 2026</cite>
+        </blockquote>
+
+        <p><strong>Fable is not a softer name than Mythos. It is the same word.</strong> Latin instead of Greek. They did not rename the monster. They translated it, and the translation happens to sound like a children's book. Whoever made that call deserves a raise: the codename keeps its scary mystique for the vetted-access tier, the public product sounds friendly enough for a procurement committee, and both names mean exactly the same thing.</p>
+
+        <p>That is not an accident. Enterprise buyers do not deploy something named like a threat. Naming is the last mile of go-to-market, and apparently also the last mile of safety communications.</p>
+
+        <h2>From 40 Organizations to Everyone in Ten Weeks</h2>
+
+        <p>The obvious question: what changed between April, when this capability tier was supposedly too dangerous for general release, and today?</p>
+
+        <p>The honest answer is the safeguard architecture. Anthropic did not wait until the model was safe. They wrapped it in a chaperone. Fable 5 is a frontier model with a weaker, better-understood model standing behind it, taking over whenever a query wanders somewhere risky. That is a genuinely new release pattern: ship the capability, gate the edges, and route the gated edges to last generation's flagship.</p>
+
+        <div class="qs-callout">
+          <div class="qs-callout__label">What do Fable 5's safeguards actually do?</div>
+          <p>When a request trips Anthropic's risk classifiers, Fable 5 does not refuse. The response is generated by Claude Opus 4.8 instead, the previous flagship. Anthropic says the thresholds are tuned conservatively, so some harmless requests will get caught, and that the reroute triggers in fewer than 5 percent of sessions on average. Practically, that means two sessions with the same product can be answered by two different models, and you will not always know which one you got.</p>
+        </div>
+
+        <p>It also explains the dual release. The cybersecurity professionals who were inside the original restricted program get Mythos 5, the unmuzzled version, because their work is exactly the kind of thing the safeguards would catch. Everyone else gets the storybook edition.</p>
+
+        <h2>What This Means for Your Team</h2>
+
+        <p>Cute name aside, this is the most capable model anyone can buy as of this morning, and it costs double. A few practical notes before you swap it into production:</p>
+
+        <ul>
+          <li><strong>Double the price changes the math.</strong> At $10 in and $50 out per million tokens, Fable 5 costs twice what Opus 4.8 does. If a workflow already runs well on Opus, upgrading it is a cost increase, not an automatic win. Upgrade the workflows where capability is the bottleneck, keep the rest where they are.</li>
+          <li><strong>The reroute is invisible until it is not.</strong> If your workflows touch security, compliance, legal, or medical edge cases, some sessions will silently come back from Opus 4.8 instead of Fable 5. For most teams that is fine. For workflows where you are paying for frontier reasoning specifically, test whether your prompts trip the classifier.</li>
+          <li><strong>Benchmark your work, not their benchmarks.</strong> State-of-the-art on research benchmarks tells you what is possible, not what your lead-routing automation will do. Run the new model against your actual workflows, measure, then decide. Evaluation over vibes.</li>
+        </ul>
+
+        <div class="qs-callout">
+          <div class="qs-callout__label">The Bottom Line</div>
+          <h3>The scary model shipped. The scary part is how normal it felt.</h3>
+          <p>Ten weeks ago this capability tier was a containment story. Today it is a product page with a friendly name and a price card. The frontier is now something you subscribe to. The teams that win with it will be the ones that test it against real work instead of trusting either the scary headlines or the cute branding.</p>
+        </div>
+
+        <p>We will be running Fable 5 against our own automation workflows this week. If the results change our defaults, you will read about it here.</p>
+
+        <div class="qs-sources">
+          <h2>Sources</h2>
+          <div class="qs-source">
+            <span class="qs-source__num">[1]</span>
+            <span>Anthropic. "Claude Fable 5 and Claude Mythos 5." <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">anthropic.com</a>, June 9, 2026.</span>
+          </div>
+          <div class="qs-source">
+            <span class="qs-source__num">[2]</span>
+            <span>TechCrunch. "Anthropic releases Claude Fable, a version of Mythos, days after warning AI is becoming too dangerous." <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/" target="_blank" rel="noopener">techcrunch.com</a>, June 9, 2026.</span>
+          </div>
+          <div class="qs-source">
+            <span class="qs-source__num">[3]</span>
+            <span>CNBC. "Anthropic releases Mythos-like AI model to the public, Claude Fable 5." <a href="https://www.cnbc.com/2026/06/09/anthropic-mythos-claude-fable-5.html" target="_blank" rel="noopener">cnbc.com</a>, June 9, 2026.</span>
+          </div>
+          <div class="qs-source">
+            <span class="qs-source__num">[4]</span>
+            <span>The Decoder. "Anthropic releases Claude Fable 5 and Mythos 5 with major gains in coding and science." <a href="https://the-decoder.com/anthropic-releases-claude-fable-5-and-mythos-5-with-major-gains-in-coding-and-science/" target="_blank" rel="noopener">the-decoder.com</a>, June 9, 2026.</span>
+          </div>
+          <div class="qs-source">
+            <span class="qs-source__num">[5]</span>
+            <span>NBC News. "Anthropic releases Fable 5, the first public Mythos-class model." <a href="https://www.nbcnews.com/tech/security/fable-5-anthropic-release-public-mythos-claude-model-rcna349104" target="_blank" rel="noopener">nbcnews.com</a>, June 9, 2026.</span>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap qs-wrap--prose">
+      <div class="qs-cta-row">
+        <a class="qs-btn qs-btn--primary" href="/contact/#book-a-call">Book a call</a>
+        <a class="qs-btn qs-btn--ghost" href="/signals/">Back to Signals <span class="qs-ico" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="qs-footer">
+  <div class="qs-footer__inner">
+    <div class="qs-footer__grid">
+      <div class="qs-footer__brand">
+        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+          </svg>
+          <span class="qs-logo__word">QuarterSmart</span>
+        </a>
+        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
+        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Company</h2>
+        <a href="/services/">Services</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/about/">About</a>
+        <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Get in touch</h2>
+        <a href="/faq/">FAQ</a>
+        <a href="/contact/">Contact</a>
+        <a href="/workflow-usage/">Workflow usage</a>
+      </div>
+    </div>
+    <div class="qs-footer__meta">
+      <span class="qs-tag-line">Train your team. Automate the rest.</span>
+      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
     </div>
   </div>
-
-  <h2 class="fade-in">What Actually Shipped Today</h2>
-
-  <p class="fade-in">Anthropic released two models at once: <strong>Claude Fable 5</strong> and <strong>Claude Mythos 5</strong>. Fable 5 is the headline act, the first model from the Mythos class, the capability tier that sits <em>above</em> Opus, ever made generally available. Anthropic says its capabilities exceed any model they have previously released, with state-of-the-art results across nearly every benchmark they tested: software engineering, knowledge work, vision, and scientific research.</p>
-
-  <p class="fade-in">The difference between the two models is not capability. It is the muzzle. Fable 5 ships with safeguards: when a query trips certain risk classifiers, the response you get is quietly generated by Claude Opus 4.8 instead. Anthropic says the safeguards are tuned conservatively, will sometimes catch harmless requests, and trigger in fewer than 5 percent of sessions on average. Mythos 5 is the same model without those safeguards, and access is limited to vetted users, mostly the cybersecurity professionals who had early access under the original restricted program.</p>
-
-  <table class="compare-table fade-in">
-    <thead>
-      <tr><th></th><th>Fable 5</th><th>Mythos 5</th><th>Opus 4.8</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Capability class</td><td style="color:var(--accent)">Mythos-class</td><td style="color:var(--accent)">Mythos-class</td><td>Opus-class</td></tr>
-      <tr><td>Safeguards</td><td>Risky queries rerouted to Opus 4.8</td><td style="color:#ffcc00">None of Fable's reroutes</td><td>Standard</td></tr>
-      <tr><td>Who gets it</td><td style="color:var(--accent)">Everyone</td><td style="color:#ffcc00">Vetted users only</td><td>Everyone</td></tr>
-      <tr><td>Price per M tokens</td><td>$10 in / $50 out</td><td>$10 in / $50 out</td><td>$5 in / $25 out</td></tr>
-    </tbody>
-  </table>
-
-  <h2 class="fade-in">The Name Is Doing a Lot of Work</h2>
-
-  <p class="fade-in">Think about the sequence. For months, everything the public heard about this model line was frightening. A sandbox escape. A brand new safety classification invented just to describe it. Access restricted to a list of organizations you could fit in one conference room. <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/" target="_blank" rel="noopener">TechCrunch notes</a> the release landed days after Anthropic publicly warned that AI is becoming too dangerous.</p>
-
-  <p class="fade-in">And then the launch name turns out to be... Fable. Bedtime stories. Aesop. A talking fox learns a lesson about humility. It is hard to imagine a more deliberate vibe shift from "containment breach" to "would you like warm milk with that."</p>
-
-  <p class="fade-in">Except here is the part we genuinely love. Look at the etymology Anthropic themselves point to:</p>
-
-  <blockquote class="pull-quote fade-in">
-    "Fable is from the Latin fabula, 'that which is told,' akin to the Greek mythos."
-    <cite>, Anthropic, Fable 5 announcement, June 2026</cite>
-  </blockquote>
-
-  <p class="fade-in"><strong>Fable is not a softer name than Mythos. It is the same word.</strong> Latin instead of Greek. They did not rename the monster. They translated it, and the translation happens to sound like a children's book. Whoever made that call deserves a raise: the codename keeps its scary mystique for the vetted-access tier, the public product sounds friendly enough for a procurement committee, and both names mean exactly the same thing.</p>
-
-  <p class="fade-in">That is not an accident. Enterprise buyers do not deploy something named like a threat. Naming is the last mile of go-to-market, and apparently also the last mile of safety communications.</p>
-
-  <h2 class="fade-in">From 40 Organizations to Everyone in Ten Weeks</h2>
-
-  <p class="fade-in">The obvious question: what changed between April, when this capability tier was supposedly too dangerous for general release, and today?</p>
-
-  <p class="fade-in">The honest answer is the safeguard architecture. Anthropic did not wait until the model was safe. They wrapped it in a chaperone. Fable 5 is a frontier model with a weaker, better-understood model standing behind it, taking over whenever a query wanders somewhere risky. That is a genuinely new release pattern: ship the capability, gate the edges, and route the gated edges to last generation's flagship.</p>
-
-  <div class="deep-dive fade-in">
-    <button class="deep-dive-toggle" onclick="toggleDive(this)">
-      What do Fable 5's safeguards actually do?
-      <span class="arrow">▶</span>
-    </button>
-    <div class="deep-dive-content">
-      <p>When a request trips Anthropic's risk classifiers, Fable 5 does not refuse. The response is generated by Claude Opus 4.8 instead, the previous flagship. Anthropic says the thresholds are tuned conservatively, so some harmless requests will get caught, and that the reroute triggers in fewer than 5 percent of sessions on average. Practically, that means two sessions with the same product can be answered by two different models, and you will not always know which one you got.</p>
-    </div>
-  </div>
-
-  <p class="fade-in">It also explains the dual release. The cybersecurity professionals who were inside the original restricted program get Mythos 5, the unmuzzled version, because their work is exactly the kind of thing the safeguards would catch. Everyone else gets the storybook edition.</p>
-
-  <h2 class="fade-in">What This Means for Your Team</h2>
-
-  <p class="fade-in">Cute name aside, this is the most capable model anyone can buy as of this morning, and it costs double. A few practical notes before you swap it into production:</p>
-
-  <ul class="fade-in">
-    <li><strong>Double the price changes the math.</strong> At $10 in and $50 out per million tokens, Fable 5 costs twice what Opus 4.8 does. If a workflow already runs well on Opus, upgrading it is a cost increase, not an automatic win. Upgrade the workflows where capability is the bottleneck, keep the rest where they are.</li>
-    <li><strong>The reroute is invisible until it is not.</strong> If your workflows touch security, compliance, legal, or medical edge cases, some sessions will silently come back from Opus 4.8 instead of Fable 5. For most teams that is fine. For workflows where you are paying for frontier reasoning specifically, test whether your prompts trip the classifier.</li>
-    <li><strong>Benchmark your work, not their benchmarks.</strong> State-of-the-art on research benchmarks tells you what is possible, not what your lead-routing automation will do. Run the new model against your actual workflows, measure, then decide. Evaluation over vibes.</li>
-  </ul>
-
-  <div class="info-card fade-in">
-    <div class="info-card-label">The Bottom Line</div>
-    <h4>The scary model shipped. The scary part is how normal it felt.</h4>
-    <p>Ten weeks ago this capability tier was a containment story. Today it is a product page with a friendly name and a price card. The frontier is now something you subscribe to. The teams that win with it will be the ones that test it against real work instead of trusting either the scary headlines or the cute branding.</p>
-  </div>
-
-  <p class="fade-in">We will be running Fable 5 against our own automation workflows this week. If the results change our defaults, you will read about it here.</p>
-
-</article>
-
-<!-- TAGS -->
-<div class="article-tags fade-in">
-  <span>Tags</span>
-  <a href='../radar.html'>Anthropic</a>
-  <a href='../radar.html'>Fable 5</a>
-  <a href='../radar.html'>Mythos</a>
-  <a href='../radar.html'>Frontier AI</a>
-  <a href='../radar.html'>AI Models</a>
-</div>
-
-<!-- SOURCES -->
-<div class="sources-section fade-in">
-  <h3>Sources</h3>
-  <div class="source-item">
-    <span class="source-num">[1]</span>
-    <span>Anthropic. "Claude Fable 5 and Claude Mythos 5." <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">anthropic.com</a>, June 9, 2026.</span>
-  </div>
-  <div class="source-item">
-    <span class="source-num">[2]</span>
-    <span>TechCrunch. "Anthropic releases Claude Fable, a version of Mythos, days after warning AI is becoming too dangerous." <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/" target="_blank" rel="noopener">techcrunch.com</a>, June 9, 2026.</span>
-  </div>
-  <div class="source-item">
-    <span class="source-num">[3]</span>
-    <span>CNBC. "Anthropic releases Mythos-like AI model to the public, Claude Fable 5." <a href="https://www.cnbc.com/2026/06/09/anthropic-mythos-claude-fable-5.html" target="_blank" rel="noopener">cnbc.com</a>, June 9, 2026.</span>
-  </div>
-  <div class="source-item">
-    <span class="source-num">[4]</span>
-    <span>The Decoder. "Anthropic releases Claude Fable 5 and Mythos 5 with major gains in coding and science." <a href="https://the-decoder.com/anthropic-releases-claude-fable-5-and-mythos-5-with-major-gains-in-coding-and-science/" target="_blank" rel="noopener">the-decoder.com</a>, June 9, 2026.</span>
-  </div>
-  <div class="source-item">
-    <span class="source-num">[5]</span>
-    <span>NBC News. "Anthropic releases Fable 5, the first public Mythos-class model." <a href="https://www.nbcnews.com/tech/security/fable-5-anthropic-release-public-mythos-claude-model-rcna349104" target="_blank" rel="noopener">nbcnews.com</a>, June 9, 2026.</span>
-  </div>
-</div>
-
-<!-- CONTRIBUTOR SECTION -->
-<section id="contribute">
-  <div class="contribute-header fade-in">
-    <h3>We're open to contributors</h3>
-    <p>Have a signal we should cover? Want to write for QuarterSmart Signals? We'd love to hear from you.</p>
-  </div>
-  <div class="contribute-grid">
-    <div class="contribute-card fade-in">
-      <div class="contribute-card-icon">◇</div>
-      <h4>Suggest a Topic</h4>
-      <p class="card-sub">Have a tip, news story, or tool we should cover? Drop it here.</p>
-      <form id="suggest-form" onsubmit="submitForm(event, 'suggest')">
-        <input type="email" placeholder="your@email.com" required>
-        <textarea placeholder="What should we write about?" required></textarea>
-        <button type="submit" class="contribute-btn">Send Suggestion</button>
-      </form>
-      <div class="form-success" id="suggest-success">Thanks! We'll look into it ◆</div>
-    </div>
-    <div class="contribute-card fade-in">
-      <div class="contribute-card-icon">✦</div>
-      <h4>Write for Us</h4>
-      <p class="card-sub">Want to contribute a signal? Pitch us your idea and we'll get back to you.</p>
-      <form id="write-form" onsubmit="submitForm(event, 'write')">
-        <input type="email" placeholder="your@email.com" required>
-        <textarea placeholder="Your pitch, what's the signal, and why does it matter?" required></textarea>
-        <button type="submit" class="contribute-btn">Send Pitch</button>
-      </form>
-      <div class="form-success" id="write-success">Pitch received! We'll be in touch ◆</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer id="signal-footer">
-  <a href='../radar.html'>← Radar</a> &nbsp;·&nbsp; QuarterSmart, AI implementation &amp; workforce enablement &nbsp;·&nbsp; <a href="../">QuarterSmart Home →</a>
 </footer>
 
 <script>
-(function() {
-
-  // ── READING PROGRESS BAR ────────────────
-  var fill = document.getElementById('progress-fill');
-  window.addEventListener('scroll', function() {
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    var pct = h > 0 ? (window.scrollY / h) * 100 : 0;
-    fill.style.width = pct + '%';
-  });
-
-  // ── SCROLL FADE-IN ──────────────────────
-  var fadeEls = document.querySelectorAll('.fade-in');
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  fadeEls.forEach(function(el) { obs.observe(el); });
-
-  // ── THREAT METER ANIMATION ──────────────
-  var threatObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        document.getElementById('threat-bar').style.width = '92%';
-        threatObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  threatObs.observe(document.getElementById('threat-meter'));
-
-  // ── COPY BUTTON ─────────────────────────
-  window.copyBlock = function(btn) {
-    var code = btn.closest('.prompt-block').querySelector('.prompt-code').textContent;
-    navigator.clipboard.writeText(code).then(function() {
-      btn.textContent = 'COPIED';
-      btn.classList.add('copied');
-      setTimeout(function() {
-        btn.textContent = 'COPY';
-        btn.classList.remove('copied');
-      }, 2000);
-    });
-  };
-
-  // ── EXPANDABLE DEEP-DIVE ────────────────
-  window.toggleDive = function(btn) {
-    var dive = btn.closest('.deep-dive');
-    dive.classList.toggle('open');
-  };
-
-  // ── FORM SUBMISSION → WEBHOOK ───────────
-  window.submitForm = function(e, type) {
-    e.preventDefault();
-    var form = e.target;
-    var email = form.querySelector('input[type="email"]').value;
-    var message = form.querySelector('textarea').value;
-    fetch('https://YOUR-WEBHOOK-URL.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        type: type,
-        email: email,
-        message: message,
-        page: document.title,
-        timestamp: new Date().toISOString()
-      })
-    }).then(function() {
-      form.style.display = 'none';
-      document.getElementById(type + '-success').style.display = 'block';
-    }).catch(function() {
-      form.style.display = 'none';
-      document.getElementById(type + '-success').style.display = 'block';
-    });
-  };
-
+(function(){
+  /* mobile nav */
+  var n=document.querySelector('.qs-nav'),t=n&&n.querySelector('.qs-nav__toggle');
+  if(t)t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});
 })();
-</script>
-
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article",
- "headline":"They Spent Months Scaring You About Mythos. Then They Named It Fable.",
- "description":"Anthropic released Fable 5, the first public Mythos-class model, with safeguards that reroute risky queries to Opus 4.8. Same capability tier as the scary headlines, friendlier name.",
- "image":"https://quartersmart.com/assets/images/signals/fable-5-cover.png",
- "datePublished":"2026-06-09","dateModified":"2026-06-09",
- "author":{"@type":"Person","name":"Hyrum Hurst"},
- "publisher":{"@type":"Organization","name":"QuarterSmart","url":"https://quartersmart.com/",
-   "logo":{"@type":"ImageObject","url":"https://quartersmart.com/logos/quartersmart-q.png"}},
- "mainEntityOfPage":{"@type":"WebPage","@id":"https://quartersmart.com/signals/fable-5.html"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"QuarterSmart",
- "url":"https://quartersmart.com/","description":"AI implementation and workforce enablement partner. QuarterSmart helps organizations assess, train, pilot, automate, scale, and measure AI adoption.",
- "founder":{"@type":"Person","name":"Hyrum Hurst"},
- "sameAs":["https://quartersmart.com","https://n8n.io/creators/hyrum-hurst"]}
 </script>
 </body>
 </html>

@@ -18,6 +18,7 @@ Flagship proof: For Structure Properties, QuarterSmart built a 39-course AI vide
 - [For Agencies](https://quartersmart.com/for-agencies): White-label AI implementation partner for agencies and consultancies.
 - [FAQ](https://quartersmart.com/faq): Plain answers about how QuarterSmart works.
 - [Contact](https://quartersmart.com/contact): Book a call or request a proposal.
+- [Signals](https://quartersmart.com/signals): QuarterSmart's AI insight hub. Operator-focused reads on the models, tools, and shifts that change how teams adopt and run AI.
 
 ## People
 - Hyrum Hurst: Founder of QuarterSmart, AI systems and automation specialist based in Mesa, Arizona. Verified top-50 n8n creator with 25 published workflow templates used more than 10,000 times across the n8n community. Google Certified AI Automations Engineer.
@@ -35,4 +36,4 @@ Flagship proof: For Structure Properties, QuarterSmart built a 39-course AI vide
 Book a call or request a proposal at https://quartersmart.com/contact. Email hyrum@quartersmart.com.
 
 ---
-Last updated: 2026-06-23
+Last updated: 2026-06-24
