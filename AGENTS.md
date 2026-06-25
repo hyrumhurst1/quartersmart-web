@@ -143,6 +143,16 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-25 (favicon fix: QuarterSmart mark in link previews)** - ChatGPT/Bing/Google were
+  showing the OLD AI Ed logo (or none) because the ROOT `/favicon.ico`, `/apple-touch-icon.png`,
+  and `icon-*.png` were never replaced in the cutover (crawlers fetch those by CONVENTION, not from
+  HTML). Regenerated the full icon set from `favicon.svg` (the four-quarters mark) with
+  sharp + png-to-ico: new multi-size `favicon.ico` (16/32/48), `favicon-16/32.png`,
+  `icon-48/96/192/512.png`, `apple-touch-icon.png` (180), and matching `/assets` copies. Added
+  `<link rel="icon" href="/favicon.ico" sizes="any">` to all 20 pages. og:image was already correct
+  (assets/qs-og.png). NOTE: engine favicon caches refresh slowly, so the new mark may take days/weeks
+  to appear in ChatGPT/Bing previews even though the files are now correct.
+
 - **2026-06-24 (search-engine registration + workflow-usage re-skin + 404)** - Confirmed Google
   Search Console and Bing Webmaster Tools are both VERIFIED for quartersmart.com (owner was already
   logged in) and re-submitted `/sitemap.xml` in both (GSC already showing ~16 search clicks; Bing
