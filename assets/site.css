@@ -376,6 +376,7 @@ a.qs-card { text-decoration: none; }
 .qs-founder { background: var(--surface-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-xl); padding: 28px; }
 .qs-founder__head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
 .qs-avatar { width: 52px; height: 52px; border-radius: var(--radius-md); background: var(--surface-inset); border: 1px solid var(--border-mint); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 18px; font-weight: 500; color: var(--accent); flex: none; }
+.qs-avatar--photo { display: block; object-fit: cover; background: none; }
 .qs-founder__name { font-family: var(--font-display); font-size: var(--fs-h4); font-weight: 600; color: var(--text-strong); }
 .qs-founder__role { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.04em; margin-top: 2px; }
 .qs-founder p { margin: 0; font-size: var(--fs-small); line-height: 1.7; color: var(--text-muted); }
