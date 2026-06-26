@@ -35,6 +35,12 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Correct content-type for the web app manifest (Netlify defaults to octet-stream)
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+
 # 301 redirects from the old AI Ed / pre-rebrand URLs to the new pages
 [[redirects]]
   from = "/about.html"
