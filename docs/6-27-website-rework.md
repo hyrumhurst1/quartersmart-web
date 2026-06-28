@@ -26,5 +26,18 @@ Working record of the June 27 2026 rework pass on quartersmart.com. Internal doc
 - Redirects added in `netlify.toml`: `/blog/* -> /signals`, `/vs-lms -> /services`, `/radar -> /signals`, `/coming-soon -> /`, plus old AI Ed audience pages (`/teams`, `/schools`, `/government`) `-> /`.
 - CTR/Bing: lengthen the short titles (contact, privacy, terms, 404), tighten the long meta descriptions toward 150 to 160 chars, and make the homepage title and description more benefit and outcome driven. Inbound links are off-site and cannot be fixed in code; noted as an ongoing recommendation.
 
-## Status
-(updated as work completes; see git log for specifics)
+## Status: complete (June 27)
+All shipped to production and verified live.
+- Anonymization: live. Zero "Structure Properties" in published HTML. Case study now at /case-studies/sf-property-management/ with a 301 from the old slug. Name kept in llms.txt only.
+- n8n: workflow-usage trimmed to the top 4 most used templates; the full 25-template list with counts and the n8n creator-profile link moved to llms.txt; JSON-LD ItemList trimmed to 4.
+- Redirects: /blog/*, /vs-lms, /radar, /coming-soon, /teams, /schools, /government, and the old case-study slug all 301 (verified live).
+- For Agencies nav: Signals added (desktop + drawer).
+- SEO/CTR: short titles lengthened (contact, privacy, terms); homepage title and description made benefit-led with a 65 percent proof hook; over-long meta descriptions trimmed.
+- Calendly: created a "Book a Call" event type (30 min, phone call, invitee provides their number, working-hours availability) in Hyrum's account. Public link https://calendly.com/hyrum-quartersmart/book-a-call wired into all 81 "Book a call" CTAs sitewide (opens in a new tab).
+- Lighthouse on the live new pages: 100/100/100/100.
+
+## Owner follow-ups (not blocking)
+- Inbound links from high-quality domains: off-site, cannot be fixed in code. Pursue a few partner and press links (the n8n creator profile, CyberNews, Learning Journey AI, Qwoted already exist; add directory listings and partner backlinks over time).
+- Calendly: review the default availability and connect your Google or Outlook calendar so booked times match your real schedule.
+- Delete the wiring-test entries from the Netlify Forms dashboard (qs-wiring-test@quartersmart.com).
+- Thin content: most pages are substantial. If Bing keeps flagging it, the contact and legal pages are thinnest and could get a short FAQ block later.
