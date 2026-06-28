@@ -347,13 +347,9 @@ a.qs-card { text-decoration: none; }
 .qs-dd-source .qs-dd-title { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 700; color: var(--text-strong); margin-top: 6px; line-height: 1.1; }
 .qs-dd-source p { margin: 10px 0 0; font-size: 13px; line-height: 1.55; color: var(--text-muted); }
 .qs-dd-arrow { position: relative; height: 140px; }
-.qs-dd-arrow > .qs-dd-stem { position: absolute; left: 0; top: 50%; width: 36px; height: 1px; background: var(--border-strong); transform: translateY(-50%); }
-.qs-dd-arrow::before, .qs-dd-arrow::after { content: ""; position: absolute; left: 36px; width: 36px; height: 1px; background: var(--border-strong); }
-.qs-dd-arrow::before { top: 25%; }
-.qs-dd-arrow::after { top: 75%; }
-.qs-dd-arrow .qs-dd-v1, .qs-dd-arrow .qs-dd-v2 { position: absolute; left: 36px; width: 1px; background: var(--border-strong); }
-.qs-dd-arrow .qs-dd-v1 { top: 25%; height: 25%; }
-.qs-dd-arrow .qs-dd-v2 { top: 50%; height: 25%; }
+.qs-dd-arrow > .qs-dd-stem { position: absolute; left: 0; top: 50%; width: 56px; height: 1px; background: var(--border-strong); transform: translateY(-50%); }
+.qs-dd-arrow::after { content: ""; position: absolute; left: 54px; top: 50%; width: 0; height: 0; border-left: 8px solid var(--border-strong); border-top: 5px solid transparent; border-bottom: 5px solid transparent; transform: translateY(-50%); }
+.qs-dd-arrow .qs-dd-v1, .qs-dd-arrow .qs-dd-v2 { display: none; }
 .qs-dd-outs { display: flex; flex-direction: column; gap: 18px; }
 .qs-dd-out { display: flex; align-items: center; gap: 14px; background: var(--surface-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); padding: 20px 22px; }
 .qs-dd-out .qs-dd-pip { width: 10px; height: 10px; border-radius: 3px; background: var(--accent); flex: none; }

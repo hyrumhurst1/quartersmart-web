@@ -1,6 +1,6 @@
 # QuarterSmart
 
-> QuarterSmart builds AI onboarding, training, and automation systems for growing teams. We turn each SOP into two things at once: a training course your team learns from (AI-generated video, quizzes, certification) and an automation that runs the task itself (n8n, Zapier, Power Automate). Same source, two outputs. Tagline: Train your team. Automate the rest.
+> QuarterSmart builds AI onboarding, training, and automation systems for growing teams. We turn each SOP into three things from one source: a training course your team learns from (AI-generated video, quizzes, certification), an automation that runs the task itself (n8n, Zapier, Power Automate), and an AOP, a procedure your AI agent can run. Same source, three outputs: train, automate, operate. Tagline: Train your team. Automate the rest.
 
 QuarterSmart is based in Mesa, Arizona and works with clients across the United States. Founders: Hyrum Hurst builds the systems; Cullen Brown manages engagements. Hyrum Hurst is a Google Certified AI Automations Engineer and a verified top-50 n8n creator with templates used more than 10,000 times.
 
@@ -11,7 +11,7 @@ Offer ladder: 1) AI enablement and training, 2) SOPs to a training system with c
 Flagship proof: For Structure Properties, QuarterSmart built a 39-course AI video training and onboarding library across seven roles with Claude-powered quizzes and an owner reporting dashboard. Onboarding time and repeat questions dropped 65 percent and SOP-related mistakes dropped 36 percent.
 
 ## Key Pages
-- [Home](https://quartersmart.com/): Train your team, automate the rest. The SOP double-duty mechanic.
+- [Home](https://quartersmart.com/): Train your team, automate the rest. The SOP triple-duty mechanic.
 - [Services](https://quartersmart.com/services): The five-step offer ladder, from training to automation to ongoing care.
 - [Case Studies](https://quartersmart.com/case-studies): Structure Properties, Learning Journey AI, Skytech, and the n8n template library.
 - [About](https://quartersmart.com/about): Who QuarterSmart is, founders, and credentials.
