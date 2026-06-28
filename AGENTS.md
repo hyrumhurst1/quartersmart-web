@@ -143,6 +143,26 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-26 (Own Your AI early-access landing page + Netlify Forms enabled)** - New
+  `/own-your-ai/` page for the Own Your AI initiative (finance and OWN a private local AI
+  system to OFFSET the routine ~80 percent of AI work, frontier API for the hard 20 percent;
+  solar framing). Built on the existing design system (qs-nav/footer, self-hosted fonts,
+  page-scoped style/script layer like the Signals hub). Interactive spend calculator (range
+  slider + 12/24/36 term toggle; HARDCODED placeholder estimates, clearly labeled, NOT quotes;
+  cloud-twin pay-as-you-go path with an honest "owning rarely pays back yet" note). Netlify
+  Forms waitlist (`own-your-ai-waitlist`) with honeypot + hidden monthly-spend/term carrying
+  the calculator state as a lead signal; AJAX submit with inline confirmation. Honest framing:
+  early access and a direction, not a live product; no pricing, no client logos, explicit
+  "QuarterSmart does not make hardware" line. Discoverability understated: one Services link
+  ("What we are building next") + a SITEWIDE footer link (Company column, all 22 pages); NOT in
+  top nav or home hero. Added to sitemap.xml and llms.txt; WebPage + BreadcrumbList schema with
+  stable @ids. ENABLED Netlify Forms on the site (`capable-speculoos-78ab6e`, was "not enabled")
+  via the Netlify MCP so submissions actually record; this redeploy runs form detection. Live
+  Lighthouse on /own-your-ai: 100/100/100/100 (LCP 1.2s, CLS 0). PATHS: root-absolute
+  (`/assets/...`) to match the live site; section 2's depth-relative rule is STALE (it predates
+  the 2026-06-24 Netlify root cutover). One labeled test submission
+  (qs-wiring-test@quartersmart.com) was sent to verify wiring; safe to delete.
+
 - **2026-06-25 (favicon fix: QuarterSmart mark in link previews)** - ChatGPT/Bing/Google were
   showing the OLD AI Ed logo (or none) because the ROOT `/favicon.ico`, `/apple-touch-icon.png`,
   and `icon-*.png` were never replaced in the cutover (crawlers fetch those by CONVENTION, not from
