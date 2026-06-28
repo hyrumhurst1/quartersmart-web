@@ -432,3 +432,14 @@ a.qs-card { text-decoration: none; }
 .qs-prose a:hover, p a:hover, .qs-breadcrumb a:hover, .qs-footer__meta .qs-copy a:hover {
   text-decoration-color: var(--accent-bright);
 }
+
+/* ----- Post-end: author byline box + "read next" internal links --------- */
+/* E-E-A-T author signal + topic-cluster internal linking on every Signals post. */
+.post-end .post-author { display: flex; gap: var(--sp-4); align-items: flex-start; margin-bottom: var(--sp-5); }
+.post-author__img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; border: 1px solid var(--qs-border-mint); }
+.post-author__name { font-weight: 600; color: var(--qs-white); margin: 0 0 4px; }
+.post-author__bio { color: var(--qs-muted); font-size: 0.95rem; line-height: 1.65; margin: 0; }
+.post-author__bio a, .post-more a { color: var(--qs-mint); text-decoration: none; }
+.post-author__bio a:hover, .post-more a:hover { text-decoration: underline; }
+.post-more { font-family: var(--font-mono); font-size: 0.82rem; color: var(--qs-muted); margin: 0; padding-top: var(--sp-4); border-top: 1px solid rgba(255,255,255,0.08); line-height: 2; }
+.post-more__label { color: var(--qs-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 8px; }
