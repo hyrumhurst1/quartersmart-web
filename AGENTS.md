@@ -143,6 +143,21 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-06-28 (Signals traction + QS-era thumbnails with watermark)** - Regenerated ALL 10 Signals
+  covers as QuarterSmart-era images: 7 new Codex-generated thumbnails (on the owner's ChatGPT session,
+  not the API) for the older posts + re-watermarked the 3 newest, all 1200x800 JPEG with a four-quarters
+  mark + "Signals" watermark bottom-right (`assets/signals-watermark.png`, built from favicon.svg via
+  sharp). Wired each into og/twitter/Article-schema/inline cover + hub cards with accurate alt + dims;
+  deleted the old AI-Ed PNG covers + `og-weekly.png`; weekly's CSS banner became a real cover and its
+  text hub card became an image card. Pipeline archived in `docs/thumbnail-pipeline/` (excluded).
+  TRACTION: `netlify-build.mjs` now also emits a Google IMAGE SITEMAP (each page's og:image as
+  `<image:image>`, so covers surface in image search and cite the post) and an RSS feed `/feed.xml`
+  (autodiscovery `<link>` on all Signals pages). Added a factual AUTHOR E-E-A-T box (Hyrum headshot +
+  bio + link to /about/#hyrum-hurst) and a "Read next" cornerstone INTERNAL-LINKING line to every post
+  (`.post-end` styles in site.css). Honest note: on-site moves nudge indexing speed; domain authority
+  (inbound links) is the durable accelerant, and GSC "Request indexing" is the fastest per-URL Google
+  nudge. Full record: `docs/2026-06-28-blog-traction-thumbnails.md`. No Telegram (owner asleep).
+
 - **2026-06-26 (Own Your AI early-access landing page + Netlify Forms enabled)** - New
   `/own-your-ai/` page for the Own Your AI initiative (finance and OWN a private local AI
   system to OFFSET the routine ~80 percent of AI work, frontier API for the hard 20 percent;
