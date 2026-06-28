@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Own Your AI: a private AI system you own | QuarterSmart</title>
+<meta name="description" content="QuarterSmart is building Own Your AI: a private AI system your company owns and runs in-house for the everyday work, with frontier models only when you need them. Early access, join the waitlist.">
+<meta name="author" content="QuarterSmart">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://quartersmart.com/own-your-ai">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Own Your AI: a private AI system you own | QuarterSmart">
+<meta property="og:description" content="A private AI system your company owns and runs in-house for the everyday work, with frontier models only when you need them. We are building it now. Join the waitlist.">
+<meta property="og:url" content="https://quartersmart.com/own-your-ai">
+<meta property="og:site_name" content="QuarterSmart">
+<meta property="og:image" content="https://quartersmart.com/assets/qs-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="QuarterSmart. Train your team. Automate the rest.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Own Your AI: a private AI system you own | QuarterSmart">
+<meta name="twitter:description" content="A private AI system your company owns for the everyday work, with frontier models only when you need them. Early access.">
+<meta name="twitter:image" content="https://quartersmart.com/assets/qs-og.png">
+<meta name="theme-color" content="#060608">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://quartersmart.com/#organization",
+      "name": "QuarterSmart",
+      "alternateName": "QuarterSmart AI",
+      "url": "https://quartersmart.com/",
+      "logo": "https://quartersmart.com/assets/qs-mark.png",
+      "image": "https://quartersmart.com/assets/qs-og.png",
+      "description": "QuarterSmart builds AI onboarding, training, and automation systems for growing teams. We turn your SOPs into both a training course your team learns from and an automation that runs the task itself.",
+      "slogan": "Train your team. Automate the rest.",
+      "foundingDate": "2025",
+      "email": "hyrum@quartersmart.com",
+      "founder": [
+        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
+      ],
+      "employee": [
+        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mesa",
+        "addressRegion": "AZ",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Arizona" },
+        { "@type": "Country", "name": "United States" }
+      ],
+      "sameAs": [
+        "https://n8n.io/creators/hyrum-hurst",
+        "https://www.linkedin.com/in/hyrum-hurst-83a5a537a/",
+        "https://app.qwoted.com/sources/hyrum-hurst",
+        "https://github.com/hyrumhurst1"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://quartersmart.com/#website",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "publisher": { "@id": "https://quartersmart.com/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://quartersmart.com/own-your-ai#webpage",
+      "url": "https://quartersmart.com/own-your-ai",
+      "name": "Own Your AI",
+      "description": "Own Your AI is a QuarterSmart initiative in active development: a private local AI system a company finances and owns to handle the routine majority of its AI work, calling frontier models only for the hard minority. It is an offset, not a replacement. Early access waitlist is open.",
+      "isPartOf": { "@id": "https://quartersmart.com/#website" },
+      "about": { "@id": "https://quartersmart.com/#organization" },
+      "primaryImageOfPage": "https://quartersmart.com/assets/qs-og.png",
+      "breadcrumb": { "@id": "https://quartersmart.com/own-your-ai#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://quartersmart.com/own-your-ai#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quartersmart.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Own Your AI", "item": "https://quartersmart.com/own-your-ai" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+/* Own Your AI page layer on top of site.css (uses the same tokens). */
+.oya-pills { display: flex; flex-wrap: wrap; gap: 9px; margin: var(--sp-5) 0 0; padding: 0; list-style: none; }
+.oya-pill { font-family: var(--font-mono); font-size: var(--fs-caption); letter-spacing: var(--ls-label);
+  color: var(--accent); background: var(--qs-mint-08); border: 1px solid var(--qs-border-mint);
+  border-radius: var(--radius-pill); padding: 7px 14px; }
+
+.oya-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; max-width: 760px; }
+.oya-list li { position: relative; padding-left: 26px; color: var(--text-muted); font-size: var(--fs-body); line-height: 1.6; }
+.oya-list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 8px; height: 8px;
+  border-radius: 2px; background: var(--accent); transform: rotate(45deg); }
+.oya-list strong { color: var(--text-strong); font-weight: 600; }
+
+.oya-idea { background: var(--surface-card); border: 1px solid var(--border-hairline);
+  border-left: 3px solid var(--accent); border-radius: var(--radius-lg); padding: 28px; max-width: 820px; }
+.oya-idea p { color: var(--text-muted); margin: 0; }
+.oya-reasons { display: grid; gap: 16px; margin-top: 22px; grid-template-columns: repeat(2, 1fr); }
+.oya-reason { background: var(--surface-inset); border: 1px solid var(--border-hairline); border-radius: var(--radius-md); padding: 18px 20px; }
+.oya-reason__k { font-family: var(--font-mono); font-size: var(--fs-caption); letter-spacing: var(--ls-label); color: var(--accent); margin-bottom: 6px; }
+.oya-reason p { font-size: var(--fs-small); line-height: 1.6; }
+.oya-fineprint { margin-top: 18px; font-size: var(--fs-small); color: var(--text-faint); max-width: 820px; }
+
+/* Calculator */
+.oya-calc { background: var(--surface-raised); border: 1px solid var(--qs-border-mint); border-radius: var(--radius-lg);
+  box-shadow: var(--glow-mint); padding: 26px; display: grid; gap: 26px; grid-template-columns: 0.9fr 1.1fr; align-items: start; }
+.oya-calc__controls { display: flex; flex-direction: column; gap: 22px; }
+.oya-field__label { font-family: var(--font-mono); font-size: var(--fs-caption); letter-spacing: var(--ls-label); color: var(--text-faint); text-transform: uppercase; }
+.oya-calc__val { font-family: var(--font-mono); font-size: 2.4rem; font-weight: 600; color: var(--accent); line-height: 1.1; margin-top: 4px; }
+.oya-range { width: 100%; margin: 14px 0 6px; accent-color: var(--accent); height: 6px; cursor: pointer; }
+.oya-range:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--qs-black), 0 0 0 4px var(--qs-mint); border-radius: var(--radius-pill); }
+.oya-range__ends { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: var(--fs-caption); color: var(--text-faint); }
+.oya-term { display: inline-flex; gap: 6px; background: var(--surface-inset); border: 1px solid var(--border-hairline); border-radius: var(--radius-pill); padding: 4px; margin-top: 8px; }
+.oya-term button { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--text-muted); background: none; border: none; border-radius: var(--radius-pill); padding: 8px 16px; cursor: pointer; transition: background var(--dur) var(--ease-out), color var(--dur) var(--ease-out); }
+.oya-term button:hover { color: var(--text-strong); }
+.oya-term button.is-active { background: var(--qs-mint-12); color: var(--accent); }
+.oya-term button:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--qs-black), 0 0 0 4px var(--qs-mint); }
+
+.oya-out-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.oya-out { background: var(--surface-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-md); padding: 16px 18px; }
+.oya-out__k { font-family: var(--font-mono); font-size: var(--fs-caption); letter-spacing: var(--ls-label); color: var(--text-faint); }
+.oya-out__v { font-family: var(--font-display); font-size: var(--fs-h4); font-weight: 600; color: var(--text-strong); margin-top: 6px; line-height: 1.25; }
+.oya-out__v--mint { color: var(--accent); }
+.oya-out__sub { font-size: var(--fs-caption); color: var(--text-muted); margin-top: 5px; line-height: 1.5; }
+.oya-tiernote { margin-top: 14px; font-size: var(--fs-small); color: var(--text-muted); background: var(--qs-mint-08); border: 1px solid var(--qs-border-mint); border-radius: var(--radius-md); padding: 12px 14px; }
+.oya-disclaimer { margin-top: 16px; font-size: var(--fs-caption); color: var(--text-faint); line-height: 1.55; }
+.oya-calc__cta { margin-top: 18px; }
+
+/* Waitlist form */
+.oya-form { max-width: 520px; margin: 22px auto 0; text-align: left; }
+.oya-form__label { display: block; font-family: var(--font-mono); font-size: var(--fs-caption); letter-spacing: var(--ls-label); color: var(--text-faint); text-transform: uppercase; margin-bottom: 8px; }
+.oya-form__row { display: flex; gap: 10px; flex-wrap: wrap; }
+.oya-form input[type="email"] { flex: 1; min-width: 220px; padding: 13px 16px; background: var(--surface-inset); border: 1px solid var(--border-hairline); border-radius: var(--radius-md); color: var(--text-body); font-family: var(--font-body); font-size: var(--fs-body); outline: none; transition: border-color var(--dur) var(--ease-out); }
+.oya-form input[type="email"]:focus { border-color: var(--accent); }
+.oya-form input[type="email"]::placeholder { color: var(--text-faint); }
+.oya-form__fine { font-size: var(--fs-caption); color: var(--text-faint); margin-top: 12px; line-height: 1.55; }
+.oya-form__err { font-size: var(--fs-small); color: #ff9a8b; margin-top: 12px; }
+.oya-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.oya-confirm { max-width: 520px; margin: 22px auto 0; background: var(--qs-mint-08); border: 1px solid var(--qs-border-mint); border-radius: var(--radius-md); padding: 18px 20px; color: var(--text-strong); font-size: var(--fs-body); }
+.oya-confirm strong { color: var(--accent); }
+
+.oya-note { font-size: var(--fs-small); color: var(--text-faint); text-align: center; max-width: 720px; margin: 0 auto; line-height: 1.6; }
+
+@media (max-width: 860px) {
+  .oya-calc { grid-template-columns: 1fr; }
+  .oya-reasons { grid-template-columns: 1fr; }
+}
+@media (max-width: 460px) {
+  .oya-out-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="qs-skip" href="#main">Skip to content</a>
+<header class="qs-nav" data-open="false">
+  <div class="qs-nav__bar">
+    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
+      <span class="qs-logo__word">QuarterSmart</span>
+    </a>
+    <nav class="qs-nav__links" aria-label="Primary">
+      <a href="/services/">Services</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/about/">About</a>
+      <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/">Signals</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="qs-nav__cta">
+      <a class="qs-btn qs-btn--primary qs-btn--sm" href="/contact/#book-a-call">Book a call</a>
+    </div>
+    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
+  </div>
+  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
+    <a href="/services/">Services</a>
+    <a href="/case-studies/">Case Studies</a>
+    <a href="/about/">About</a>
+    <a href="/for-agencies/">For Agencies</a>
+    <a href="/signals/">Signals</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/contact/">Contact</a>
+    <a class="qs-btn qs-btn--primary qs-btn--full" href="/contact/#book-a-call">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- Page header -->
+  <section class="qs-pagehead">
+    <div class="qs-motif qs-motif--sm" aria-hidden="true">
+      <svg width="420" height="420" viewBox="0 0 100 100" fill="none">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
+    </div>
+    <div class="qs-pagehead__inner">
+      <span class="qs-eyebrow">Early access. We are building this now.</span>
+      <h1 class="qs-h1">Own your AI. Stop renting intelligence forever.</h1>
+      <p class="qs-lede qs-pagehead__lede">A private AI system your company owns and runs in-house, handling the everyday work, with frontier models only when you actually need them. We are developing it now and opening a waitlist.</p>
+      <ul class="oya-pills" aria-label="What owning your AI means">
+        <li class="oya-pill">No session limits</li>
+        <li class="oya-pill">No rate caps, run it 24/7</li>
+        <li class="oya-pill">Your data stays in-house</li>
+        <li class="oya-pill">No vendor lock-in</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- The problem -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap">
+      <div class="qs-section-head">
+        <span class="qs-eyebrow">The trap</span>
+        <h2 class="qs-h2">Renting intelligence forever has a cost</h2>
+        <p>AI is becoming a fixed line item, like rent, that most businesses will pay indefinitely with no asset to show for it. The risk is not just the bill.</p>
+      </div>
+      <ul class="oya-list">
+        <li><strong>The bill never ends.</strong> Routine AI work runs through a metered API every month, and you own none of it.</li>
+        <li><strong>Access can be gated or deprecated.</strong> The model you build on today may be restricted, retired, or regulated tomorrow.</li>
+        <li><strong>The vendor sets the price.</strong> Once your work depends on an API, the vendor has pricing power, and AI hardware keeps trending more expensive.</li>
+        <li><strong>Your data leaves the building, and the limits bite.</strong> Sensitive work runs on someone else's servers, and you hit usage caps and session limits at the worst moments.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- The idea -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap">
+      <div class="qs-section-head">
+        <span class="qs-eyebrow">The idea</span>
+        <h2 class="qs-h2">An offset, not a replacement</h2>
+      </div>
+      <div class="oya-idea">
+        <p>You do not replace AI. You offset most of it onto something you own, the way solar offsets your power bill without taking you off the grid. Route the routine majority of requests (roughly 80 percent) to a private system in your building, and still call a frontier model for the hard 20 percent.</p>
+        <div class="oya-reasons">
+          <div class="oya-reason">
+            <div class="oya-reason__k">Cut the recurring bill</div>
+            <p>Move the routine bulk of your AI work off the metered API and onto hardware you own.</p>
+          </div>
+          <div class="oya-reason">
+            <div class="oya-reason__k">Keep your data in-house</div>
+            <p>Sensitive work runs on a box you control, in your building, not on a vendor's servers.</p>
+          </div>
+        </div>
+      </div>
+      <p class="oya-fineprint">QuarterSmart does not make hardware. This is a system you own, built on proven hardware, with our software and your data. Throughput is bounded by your own box, so there are no vendor-imposed limits, but a bigger workload still wants a bigger machine.</p>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap">
+      <div class="qs-section-head">
+        <span class="qs-eyebrow">Estimate your offset</span>
+        <h2 class="qs-h2">What could you own instead?</h2>
+        <p>Drag your monthly AI spend to see a rough illustration of the system you could own, the routine spend you could move in-house, and a financed monthly payment. Every figure here is an early estimate, not a quote.</p>
+      </div>
+
+      <div class="oya-calc">
+        <div class="oya-calc__controls">
+          <div>
+            <span class="oya-field__label" id="oya-spend-label">Your monthly AI / API spend</span>
+            <div class="oya-calc__val" id="oya-spend-val" aria-live="polite">$3,000</div>
+            <input class="oya-range" type="range" id="oya-spend" min="500" max="12000" step="250" value="3000" aria-labelledby="oya-spend-label" aria-describedby="oya-spend-val">
+            <div class="oya-range__ends"><span>$500</span><span>$12,000+</span></div>
+          </div>
+          <div>
+            <span class="oya-field__label" id="oya-term-label">Financing term</span>
+            <div class="oya-term" role="group" aria-labelledby="oya-term-label">
+              <button type="button" class="oya-term-btn" data-term="12" aria-pressed="false">12 mo</button>
+              <button type="button" class="oya-term-btn" data-term="24" aria-pressed="false">24 mo</button>
+              <button type="button" class="oya-term-btn is-active" data-term="36" aria-pressed="true">36 mo</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="oya-calc__outputs">
+          <div class="oya-out-grid">
+            <div class="oya-out">
+              <div class="oya-out__k">Recommended system (estimate)</div>
+              <div class="oya-out__v" id="oya-tier">Office tier</div>
+              <div class="oya-out__sub" id="oya-tier-cost">$15k to $20k one-time</div>
+            </div>
+            <div class="oya-out">
+              <div class="oya-out__k">Financed monthly (estimate)</div>
+              <div class="oya-out__v oya-out__v--mint" id="oya-pay">$580 / mo</div>
+              <div class="oya-out__sub" id="oya-pay-sub">financed over 36 months</div>
+            </div>
+            <div class="oya-out">
+              <div class="oya-out__k">Routine you could move in-house</div>
+              <div class="oya-out__v oya-out__v--mint" id="oya-routine">$2,250 / mo</div>
+              <div class="oya-out__sub">about 75 percent of your spend (estimate)</div>
+            </div>
+            <div class="oya-out">
+              <div class="oya-out__k">Models it could run (estimate)</div>
+              <div class="oya-out__v" id="oya-models">32B to 70B class</div>
+              <div class="oya-out__sub" id="oya-models-tps">~10 to 30 tokens/sec</div>
+            </div>
+          </div>
+          <p class="oya-tiernote" id="oya-tiernote" hidden>At this spend, owning hardware rarely pays back yet. A rented private instance to pilot is the smarter first step, then own the box once the routine volume justifies it.</p>
+          <p class="oya-disclaimer">Rough illustration from early estimates, not a quote. Your real net savings depend on your actual workload.</p>
+          <div class="oya-calc__cta">
+            <a class="qs-btn qs-btn--primary" href="#waitlist">Get my real numbers <span class="qs-ico" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist -->
+  <section class="qs-section qs-section--lg qs-bordered" id="waitlist">
+    <div class="qs-wrap">
+      <div class="qs-cta-band">
+        <svg width="64" height="64" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+          <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
+          <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+          <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
+          <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+          <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+        </svg>
+        <h2 class="qs-h1">Want your real numbers?</h2>
+        <p>Join the waitlist for an early private assessment and we will map your actual offset, system, and net savings.</p>
+
+        <form name="own-your-ai-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="oya-form" id="oya-form">
+          <input type="hidden" name="form-name" value="own-your-ai-waitlist">
+          <p class="oya-hp" aria-hidden="true"><label>Do not fill this out if you are human: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <input type="hidden" name="monthly-spend" id="oya-hidden-spend" value="3000">
+          <input type="hidden" name="term" id="oya-hidden-term" value="36">
+          <label class="oya-form__label" for="oya-email">Work email</label>
+          <div class="oya-form__row">
+            <input type="email" name="email" id="oya-email" required placeholder="you@company.com" autocomplete="email">
+            <button type="submit" class="qs-btn qs-btn--primary">Join the waitlist</button>
+          </div>
+          <p class="oya-form__fine">We record the spend from the calculator with your signup so we can prepare a useful assessment. No spam. We reach out only as private assessments open.</p>
+          <p class="oya-form__err" id="oya-err" hidden role="alert">Something went wrong. Please email hyrum@quartersmart.com and we will add you.</p>
+        </form>
+        <div class="oya-confirm" id="oya-confirm" hidden role="status"><strong>You are on the list.</strong> We will reach out as private assessments open.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest note -->
+  <section class="qs-section qs-bordered">
+    <div class="qs-wrap">
+      <p class="oya-note">Own Your AI is in active development. Figures shown are early estimates, not quotes. Join the waitlist and we will reach out as private assessments open.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="qs-footer">
+  <div class="qs-footer__inner">
+    <div class="qs-footer__grid">
+      <div class="qs-footer__brand">
+        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+          </svg>
+          <span class="qs-logo__word">QuarterSmart</span>
+        </a>
+        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
+        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Company</h2>
+        <a href="/services/">Services</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/about/">About</a>
+        <a href="/for-agencies/">For Agencies</a>
+        <a href="/signals/">Signals</a>
+        <a href="/own-your-ai">Own your AI</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Get in touch</h2>
+        <a href="/faq/">FAQ</a>
+        <a href="/contact/">Contact</a>
+        <a href="/contact/#book-a-call">Book a call</a>
+        <a href="/workflow-usage/">Workflow usage</a>
+      </div>
+    </div>
+    <div class="qs-footer__meta">
+      <span class="qs-tag-line">Train your team. Automate the rest.</span>
+      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var n=document.querySelector('.qs-nav');var t=n&&n.querySelector('.qs-nav__toggle');if(!t)return;t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});})();
+</script>
+<script>
+/* Own Your AI spend calculator.
+   PLACEHOLDER ESTIMATES ONLY. The tiers, costs, models, throughput, and
+   financing factors below are illustrative and will be replaced with
+   validated data later. Do not present any output as a quote. */
+(function(){
+  var spend = document.getElementById('oya-spend');
+  var spendVal = document.getElementById('oya-spend-val');
+  var termBtns = Array.prototype.slice.call(document.querySelectorAll('.oya-term-btn'));
+  var elTier = document.getElementById('oya-tier');
+  var elTierCost = document.getElementById('oya-tier-cost');
+  var elPay = document.getElementById('oya-pay');
+  var elPaySub = document.getElementById('oya-pay-sub');
+  var elRoutine = document.getElementById('oya-routine');
+  var elModels = document.getElementById('oya-models');
+  var elModelsTps = document.getElementById('oya-models-tps');
+  var elTierNote = document.getElementById('oya-tiernote');
+  var hiddenSpend = document.getElementById('oya-hidden-spend');
+  var hiddenTerm = document.getElementById('oya-hidden-term');
+  if (!spend) return;
+
+  var FACTORS = { 12: 0.088, 24: 0.047, 36: 0.033 }; /* placeholder monthly factors */
+  var term = 36;
+
+  function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+
+  function tierFor(s){
+    /* placeholder lookup table */
+    if (s <= 2000) return { name: 'Cloud-twin pilot', cost: 'about $0 up front (rented GPU)', mid: 0, models: '7B to 14B class', tps: '~20 to 50 tokens/sec', cloud: true };
+    if (s <= 6000) return { name: 'Office tier', cost: '$15k to $20k one-time', mid: 17500, models: '32B to 70B class', tps: '~10 to 30 tokens/sec' };
+    if (s <= 10000) return { name: 'Department tier', cost: '$25k to $35k one-time', mid: 30000, models: '70B class', tps: 'higher throughput, multi-user' };
+    return { name: 'Sovereign / rack tier', cost: '$40k to $60k one-time', mid: 50000, models: 'large / multi-model', tps: 'high throughput, many users' };
+  }
+
+  function compute(){
+    var s = parseInt(spend.value, 10);
+    spendVal.textContent = s >= 12000 ? '$12,000+' : money(s);
+
+    var t = tierFor(s);
+    elTier.textContent = t.name;
+    elTierCost.textContent = t.cost;
+    elModels.textContent = t.models;
+    elModelsTps.textContent = t.tps;
+    elRoutine.textContent = money(s * 0.75) + ' / mo';
+
+    if (t.cloud) {
+      elPay.textContent = 'Pay as you go';
+      elPaySub.textContent = 'rented, no hardware to finance';
+      elTierNote.hidden = false;
+    } else {
+      var pay = Math.round((t.mid * FACTORS[term]) / 10) * 10; /* nearest $10, estimate */
+      elPay.textContent = money(pay) + ' / mo';
+      elPaySub.textContent = 'financed over ' + term + ' months';
+      elTierNote.hidden = true;
+    }
+
+    hiddenSpend.value = s >= 12000 ? '12000+' : String(s);
+    hiddenTerm.value = String(term);
+  }
+
+  spend.addEventListener('input', compute);
+  termBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      termBtns.forEach(function(x){ x.classList.remove('is-active'); x.setAttribute('aria-pressed', 'false'); });
+      b.classList.add('is-active'); b.setAttribute('aria-pressed', 'true');
+      term = parseInt(b.getAttribute('data-term'), 10);
+      compute();
+    });
+  });
+
+  compute();
+})();
+</script>
+<script>
+/* Waitlist: submit to Netlify Forms over fetch, show inline confirmation. */
+(function(){
+  var form = document.getElementById('oya-form');
+  var confirmEl = document.getElementById('oya-confirm');
+  var errEl = document.getElementById('oya-err');
+  if (!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (errEl) errEl.hidden = true;
+    var body = new URLSearchParams(new FormData(form)).toString();
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+      .then(function(r){
+        if (!r.ok) throw new Error('bad status');
+        form.hidden = true;
+        confirmEl.hidden = false;
+        if (confirmEl.scrollIntoView) confirmEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function(){ if (errEl) errEl.hidden = false; });
+  });
+})();
+</script>
+</body>
+</html>

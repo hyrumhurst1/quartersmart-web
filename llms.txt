@@ -19,6 +19,7 @@ Flagship proof: For Structure Properties, QuarterSmart built a 39-course AI vide
 - [FAQ](https://quartersmart.com/faq): Plain answers about how QuarterSmart works.
 - [Contact](https://quartersmart.com/contact): Book a call or request a proposal.
 - [Signals](https://quartersmart.com/signals): QuarterSmart's AI insight hub. Operator-focused reads on the models, tools, and shifts that change how teams adopt and run AI.
+- [Own Your AI](https://quartersmart.com/own-your-ai): Early access, in active development. A direction QuarterSmart is building toward: a private local AI system a company finances and owns to handle the routine majority of its AI work (roughly 80 percent), still calling a frontier model for the hard minority. An offset, not a replacement, the way solar offsets a power bill. Not a live product yet. Waitlist open.
 
 ## People
 - Hyrum Hurst: Founder of QuarterSmart, AI systems and automation specialist based in Mesa, Arizona. Verified top-50 n8n creator with 25 published workflow templates used more than 10,000 times across the n8n community. Google Certified AI Automations Engineer.
