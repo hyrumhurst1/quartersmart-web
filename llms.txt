@@ -33,8 +33,39 @@ Flagship proof: For Structure Properties, QuarterSmart built a 39-course AI vide
 - LinkedIn: https://www.linkedin.com/in/hyrum-hurst-83a5a537a/
 - GitHub: https://github.com/hyrumhurst1
 
+## n8n Templates (full list)
+QuarterSmart founder Hyrum Hurst has published 25 workflow templates on the n8n template marketplace, with 10,876 documented uses total as of June 2026. Each template has its own page and public use counter. Browse and open every template at the creator profile: https://n8n.io/creators/hyrum-hurst
+
+Templates with cumulative uses:
+1. Automate YouTube Shorts creation from Telegram prompts using Gemini and VEO (5,078)
+2. Capture and schedule HVAC leads with OpenAI, Google Sheets, Slack and SMS (1,723)
+3. Create consulting client onboarding tasks with GPT-4, Google Sheets and Slack (1,085)
+4. Create a one-minute video from Telegram prompts with Veo 3 and Fal.ai (941)
+5. Analyze legal contracts with GPT-4.1 and manage cases in Google Sheets and Slack (541)
+6. Analyze website SEO and log AI recommendations to Google Sheets with OpenAI (339)
+7. Send Stripe invoice reminders with GPT-4.1-mini, Google Sheets and Slack (290)
+8. Capture and nurture AI agency leads with Google Gemini, Outlook and Sheets (117)
+9. Nurture landscaping leads and book calls with GoHighLevel, OpenAI and Slack (96)
+10. Extract data from PDF reports with Gmail, OCR, Google Sheets and OpenAI GPT-4.1-mini (95)
+11. Automate property inspections and reporting with OpenAI, Google Sheets and Slack (86)
+12. Send package and visitor alerts with Slack, SMS, email, Google Sheets and Claude (62)
+13. Send Stripe expired charge recovery reminders with OpenAI (60)
+14. Send AI pet grooming reminders and follow-ups with GPT-4o mini, Twilio, email, Google Sheets and Slack (53)
+15. Generate AI SOPs from Google Drive with GPT-4o, Google Docs and Sheets (52)
+16. Generate proposals with GPT-4o, Google Docs, Gmail and Slack (50)
+17. Coordinate move-out cleaning and repair tasks with Sheets, Slack, email and Claude (44)
+18. Triage tenant complaints with GPT-4.1, Slack, email and Google Sheets (43)
+19. Generate consulting KPI summaries with GPT-4o-mini, Slack and Google Sheets (27)
+20. Send AI-prioritized follow-up reminders with GPT-4.1-mini, Gmail and Slack (18)
+21. Qualify and route consulting leads with GPT-4.1-mini, Slack and Google Sheets (17)
+22. Track tenant document compliance with GPT-4, Drive, Sheets, email and Slack (17)
+23. Scrape verified decision-maker emails from Google with GPT-4.1 and Apify (15)
+24. Escalate unresolved maintenance requests with GPT-4o, Google Sheets and Slack (14)
+25. Generate DraftKings DFS lineups with GPT-4o, Google Sheets, email and Slack (13)
+Total: 10,876 documented uses across 25 templates.
+
 ## Contact
 Book a call or request a proposal at https://quartersmart.com/contact. Email hyrum@quartersmart.com.
 
 ---
-Last updated: 2026-06-24
+Last updated: 2026-06-27
