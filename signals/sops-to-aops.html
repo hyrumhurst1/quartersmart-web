@@ -13,14 +13,14 @@
 <meta property="og:description" content="As AI agents start doing the work, they need procedures written for them: AOPs. What an AOP is, why it matters, and how your SOPs can do triple duty: train, automate, operate.">
 <meta property="og:url" content="https://quartersmart.com/signals/sops-to-aops">
 <meta property="og:site_name" content="QuarterSmart">
-<meta property="og:image" content="https://quartersmart.com/assets/qs-og.png">
+<meta property="og:image" content="https://quartersmart.com/assets/images/signals/sops-to-aops-cover.jpg">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="QuarterSmart. Train your team. Automate the rest.">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="A standard operating procedure document transforming into an AI agent procedure">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SOPs Were Written for Humans. Your AI Needs AOPs.">
 <meta name="twitter:description" content="As AI agents start doing the work, they need procedures written for them: AOPs. How your SOPs can do triple duty: train, automate, operate.">
-<meta name="twitter:image" content="https://quartersmart.com/assets/qs-og.png">
+<meta name="twitter:image" content="https://quartersmart.com/assets/images/signals/sops-to-aops-cover.jpg">
 <meta name="theme-color" content="#060608">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -59,10 +59,10 @@
       "@id": "https://quartersmart.com/signals/sops-to-aops#article",
       "headline": "SOPs were written for humans. Your AI needs AOPs.",
       "description": "SOPs were written for people to read. As AI agents start doing the work, they need procedures written for them: AOPs (Agent Operating Procedures). What an AOP is, why it matters, and how your SOPs can do triple duty.",
-      "image": "https://quartersmart.com/assets/qs-og.png",
+      "image": "https://quartersmart.com/assets/images/signals/sops-to-aops-cover.jpg",
       "datePublished": "2026-06-27",
       "dateModified": "2026-06-27",
-      "author": { "@id": "https://quartersmart.com/#organization" },
+      "author": { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
       "publisher": { "@id": "https://quartersmart.com/#organization" },
       "isPartOf": { "@id": "https://quartersmart.com/#website" },
       "mainEntityOfPage": "https://quartersmart.com/signals/sops-to-aops",
@@ -104,6 +104,26 @@
             "@type": "Answer",
             "text": "Not a universal one. AOP is an emerging, partly vendor-driven term as the market shifts from workflows to agents. We adopt it because it names something real, the agent-runnable version of a procedure, but we do not claim to have coined it, and we frame full autonomous agent operation as a direction, not a finished product."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "What does AOP stand for?",
+          "acceptedAnswer": { "@type": "Answer", "text": "AOP stands for Agent Operating Procedure. It is the agent-era version of an SOP, a Standard Operating Procedure: a procedure written so an AI agent, not a person, can run it." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you create an AOP?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Start from an SOP you already have. State the goal, list the decision points a person would normally judge, define the concrete actions and the tools they touch, set the guardrails for what the agent must not do alone, then test it on real cases. The result is a procedure an AI agent can execute, not a document it has to interpret." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are AOPs the same as agent prompts or workflows?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not quite. A prompt is a single instruction and a workflow is a fixed sequence of steps. An AOP sits between them: a natural-language procedure with explicit decision points that compiles into a validated workflow an agent runs, so it handles branches a rigid workflow cannot and stays consistent in a way a one-off prompt cannot." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you give an example of an AOP?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A refund AOP: verify the order exists, check it is inside the refund window, confirm the customer's identity, decide full or partial based on the policy, issue the refund, log it, and notify the customer, escalating to a person on any exception. Each step is a stated decision or action rather than a sentence a human has to interpret." }
         }
       ]
     },
@@ -175,40 +195,11 @@
       <nav class="qs-breadcrumb" aria-label="Breadcrumb">
         <a href="/signals/">Signals</a> / SOPs to AOPs
       </nav>
-      <span class="qs-eyebrow">Insights &middot; June 27, 2026 &middot; 6 min read</span>
+      <span class="qs-eyebrow">Insights &middot; June 27, 2026 &middot; 6 min read &middot; By Hyrum Hurst</span>
       <h1 class="qs-h1">SOPs were written for humans. Your AI needs AOPs.</h1>
       <p class="qs-lede">The procedures that run your business were written for people to read and follow. As AI agents start doing the actual work, they need a version written for them. That version has a name now: the AOP.</p>
 
-      <svg class="aop-cover" viewBox="0 0 800 320" role="img" aria-label="An SOP document on the left, written for humans, transforming into an AOP agent procedure with decision branches on the right, run by an AI agent">
-        <rect width="800" height="320" fill="#060608"/>
-        <g transform="translate(70,70)">
-          <rect x="0" y="0" width="200" height="180" rx="12" fill="#0c1016" stroke="#1b2230" stroke-width="1.5"/>
-          <text x="20" y="34" font-family="ui-monospace, monospace" font-size="15" letter-spacing="2" fill="#8b95a5">SOP</text>
-          <line x1="20" y1="60" x2="180" y2="60" stroke="#39414e" stroke-width="6" stroke-linecap="round"/>
-          <line x1="20" y1="84" x2="150" y2="84" stroke="#39414e" stroke-width="6" stroke-linecap="round"/>
-          <line x1="20" y1="108" x2="172" y2="108" stroke="#39414e" stroke-width="6" stroke-linecap="round"/>
-          <line x1="20" y1="132" x2="130" y2="132" stroke="#39414e" stroke-width="6" stroke-linecap="round"/>
-          <text x="20" y="166" font-family="ui-monospace, monospace" font-size="11" fill="#5b6675">written for humans</text>
-        </g>
-        <g transform="translate(300,160)">
-          <line x1="0" y1="0" x2="120" y2="0" stroke="#00e5a0" stroke-width="3"/>
-          <path d="M120 -8 L138 0 L120 8 Z" fill="#00e5a0"/>
-        </g>
-        <g transform="translate(470,70)">
-          <rect x="0" y="0" width="260" height="180" rx="12" fill="#0c1016" stroke="rgba(0,229,160,0.32)" stroke-width="1.5"/>
-          <text x="20" y="34" font-family="ui-monospace, monospace" font-size="15" letter-spacing="2" fill="#00e5a0">AOP</text>
-          <line x1="44" y1="74" x2="92" y2="74" stroke="#00e5a0" stroke-width="2.5"/>
-          <line x1="116" y1="74" x2="150" y2="56" stroke="#00e5a0" stroke-width="2.5"/>
-          <line x1="116" y1="74" x2="150" y2="92" stroke="#00e5a0" stroke-width="2.5"/>
-          <line x1="174" y1="56" x2="214" y2="56" stroke="#1ffdb3" stroke-width="2.5"/>
-          <line x1="174" y1="92" x2="214" y2="92" stroke="#1ffdb3" stroke-width="2.5"/>
-          <circle cx="36" cy="74" r="9" fill="#060608" stroke="#00e5a0" stroke-width="2.5"/>
-          <rect x="94" y="62" width="24" height="24" rx="5" fill="#060608" stroke="#00e5a0" stroke-width="2.5" transform="rotate(45 106 74)"/>
-          <circle cx="224" cy="56" r="9" fill="#1ffdb3"/>
-          <circle cx="224" cy="92" r="9" fill="#1ffdb3"/>
-          <text x="20" y="166" font-family="ui-monospace, monospace" font-size="11" fill="#00e5a0">run by an AI agent</text>
-        </g>
-      </svg>
+      <img class="aop-cover" src="/assets/images/signals/sops-to-aops-cover.jpg" alt="A standard operating procedure document dissolving into a glowing AI agent procedure with connected nodes and a decision point" width="1200" height="800" loading="lazy" decoding="async">
 
       <div class="qs-prose">
         <h2>The procedure your business runs on was written for a person</h2>
@@ -231,6 +222,18 @@
         <h2>AOPs are the bridge to owning your AI</h2>
         <p>This is where it stops being a buzzword. The private, company-owned AI system we are building toward in <a href="/own-your-ai">Own Your AI</a> needs procedures to follow. An agent running on a box you own does not invent how your business works. It runs the AOPs you gave it. So the AOPs you build now, from the SOPs you already have, are the same procedures that later run on the system you own. The work compounds instead of resetting.</p>
 
+        <h2>How to create an AOP</h2>
+        <p>You do not start from scratch. You start from the SOP you already have and make it explicit enough for an agent to run. The steps:</p>
+        <ol>
+          <li><b>Start from the SOP.</b> The written procedure your team already follows is your source of truth.</li>
+          <li><b>State the goal.</b> Name what a successful run looks like in one sentence, for example "issue a refund the customer is entitled to."</li>
+          <li><b>List the decision points.</b> Write out every place a person would normally pause and judge: the checks, the thresholds, the if-this-then-that. An agent cannot guess these the way a person can.</li>
+          <li><b>Define the actions and tools.</b> Spell out the concrete actions and the systems they touch: look up the order, verify identity, update the record, send the confirmation.</li>
+          <li><b>Set the guardrails.</b> Decide what the agent must never do on its own and where it has to hand off to a person.</li>
+          <li><b>Test and validate.</b> Run it on real cases, compare against how a person handled them, and tighten the steps until it holds. The AOP compiles into a workflow the agent executes, not a document it interprets.</li>
+        </ol>
+        <p>The short version: an SOP describes the work for a person, and an AOP makes the same work runnable by an agent, with the judgment written down instead of assumed.</p>
+
         <h2>The honest part</h2>
         <p>AOP is early. The term is partly vendor-driven, and full autonomous agent operation is a direction, not a finished product you can buy off a shelf today. We are clear about that on purpose. The practical move is the same one we make everywhere: turn the SOPs you already have into agent-runnable procedures, start with the routine majority, automate what is safe to automate, and keep a person on the hard cases. The agent earns more of the work as it proves it can run the work.</p>
         <p>That is the difference between chasing a trend and building on one. The trend is agents. The thing you build is the procedure they run.</p>
@@ -251,6 +254,10 @@
           <details><summary>How is an AOP different from an SOP?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">An SOP assumes a person reads it, interprets it, and uses judgment to fill the gaps. An AOP removes the ambiguity an agent cannot resolve on its own. It states the decision points and the actions explicitly so an AI agent can execute the process reliably, with a human handling the cases the procedure does not cover.</p></details>
           <details><summary>Do I need to throw out my SOPs?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">No. Your SOPs are the source. QuarterSmart turns each SOP into three things from one source: a training course your team learns from, an automation that runs the routine task, and an AOP your AI agent can operate. Same source, three outputs. Train, automate, operate.</p></details>
           <details><summary>Is AOP a real standard yet?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">Not a universal one. AOP is an emerging, partly vendor-driven term as the market shifts from workflows to agents. We adopt it because it names something real, the agent-runnable version of a procedure, but we do not claim to have coined it, and we frame full autonomous agent operation as a direction, not a finished product.</p></details>
+          <details><summary>What does AOP stand for?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">AOP stands for Agent Operating Procedure. It is the agent-era version of an SOP, a Standard Operating Procedure: a procedure written so an AI agent, not a person, can run it.</p></details>
+          <details><summary>How do you create an AOP?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">Start from an SOP you already have. State the goal, list the decision points a person would normally judge, define the concrete actions and the tools they touch, set the guardrails for what the agent must not do alone, then test it on real cases. The result is a procedure an AI agent can execute, not a document it has to interpret.</p></details>
+          <details><summary>Are AOPs the same as agent prompts or workflows?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">Not quite. A prompt is a single instruction and a workflow is a fixed sequence of steps. An AOP sits between them: a natural-language procedure with explicit decision points that compiles into a validated workflow an agent runs, so it handles branches a rigid workflow cannot and stays consistent in a way a one-off prompt cannot.</p></details>
+          <details><summary>Can you give an example of an AOP?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">A refund AOP: verify the order exists, check it is inside the refund window, confirm the customer's identity, decide full or partial based on the policy, issue the refund, log it, and notify the customer, escalating to a person on any exception. Each step is a stated decision or action rather than a sentence a human has to interpret.</p></details>
         </div>
       </section>
 
