@@ -74,3 +74,43 @@
   from = "/rebrand-preview/*"
   to = "/:splat"
   status = 301
+
+# Stale AI Ed era URLs still indexed by Google/Bing (clean up 404s)
+[[redirects]]
+  from = "/blog/*"
+  to = "/signals"
+  status = 301
+[[redirects]]
+  from = "/radar"
+  to = "/signals"
+  status = 301
+[[redirects]]
+  from = "/vs-lms"
+  to = "/services"
+  status = 301
+[[redirects]]
+  from = "/coming-soon"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/teams/*"
+  to = "/services"
+  status = 301
+[[redirects]]
+  from = "/schools/*"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/government/*"
+  to = "/"
+  status = 301
+
+# Structure Properties case study renamed for client anonymity
+[[redirects]]
+  from = "/case-studies/structure-properties"
+  to = "/case-studies/sf-property-management"
+  status = 301
+[[redirects]]
+  from = "/case-studies/structure-properties/*"
+  to = "/case-studies/sf-property-management"
+  status = 301
