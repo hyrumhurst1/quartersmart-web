@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Stretch Your AI Budget: Offload the Routine to Local Models | QuarterSmart</title>
+<meta name="description" content="A practical, vendor-neutral guide to cutting AI costs: route the routine majority of your work to local models and cheaper providers, and pay for a frontier model only on the hard part.">
+<meta name="author" content="Hyrum Hurst">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://quartersmart.com/signals/stretch-ai-budget">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Stretch Your AI Budget: Offload the Routine to Local Models">
+<meta property="og:description" content="Route the routine majority of your AI work to local models and cheaper providers, and pay for a frontier model only on the hard part. A practical, vendor-neutral guide.">
+<meta property="og:url" content="https://quartersmart.com/signals/stretch-ai-budget">
+<meta property="og:site_name" content="QuarterSmart">
+<meta property="og:image" content="https://quartersmart.com/assets/images/signals/stretch-ai-budget-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="A local AI server pulling in a dense stream of work, with a thin stream branching to a distant cloud">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Stretch Your AI Budget: Offload the Routine to Local Models">
+<meta name="twitter:description" content="Route the routine majority of your AI work to local models and cheaper providers, and pay for a frontier model only on the hard part.">
+<meta name="twitter:image" content="https://quartersmart.com/assets/images/signals/stretch-ai-budget-cover.jpg">
+<meta name="theme-color" content="#060608">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://quartersmart.com/#organization",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "logo": "https://quartersmart.com/assets/qs-mark.png",
+      "slogan": "Train your team. Automate the rest.",
+      "founder": [
+        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
+      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://quartersmart.com/#website",
+      "name": "QuarterSmart",
+      "url": "https://quartersmart.com/",
+      "publisher": { "@id": "https://quartersmart.com/#organization" }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://quartersmart.com/signals/stretch-ai-budget#article",
+      "headline": "How to stretch your AI budget by offloading the routine to local models",
+      "description": "A practical, vendor-neutral guide to cutting AI costs: route the routine majority of your work to local models and cheaper providers, and pay for a frontier model only on the hard part.",
+      "image": "https://quartersmart.com/assets/images/signals/stretch-ai-budget-cover.jpg",
+      "datePublished": "2026-06-27",
+      "dateModified": "2026-06-27",
+      "author": { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
+      "publisher": { "@id": "https://quartersmart.com/#organization" },
+      "isPartOf": { "@id": "https://quartersmart.com/#website" },
+      "mainEntityOfPage": "https://quartersmart.com/signals/stretch-ai-budget",
+      "about": "Cutting AI costs by routing routine work to local models and cheaper providers",
+      "keywords": "save money on AI, local AI models, Ollama, LM Studio, OpenRouter, AI cost, offload tokens, stretch AI budget"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://quartersmart.com/signals/stretch-ai-budget#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I save money on AI?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Stop sending every request to a top frontier model. Most of your AI work is routine and can run on a small local model or a cheaper provider for a fraction of the cost. Reserve the expensive frontier model for the hard minority that actually needs it. The cheapest token is the one you do not buy at full price." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I run AI models locally?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tools like Ollama and LM Studio let you run open models such as Llama, Qwen, Mistral, and Gemma on your own computer or server, with no per-token cost. A modern laptop runs small models well; a machine with a capable GPU runs larger ones. They are strong at routine tasks like classification, extraction, drafting, and simple question answering." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is OpenRouter?",
+          "acceptedAnswer": { "@type": "Answer", "text": "OpenRouter is a single API that routes your requests across many model providers, so you can pick a cheaper or free model per task and fall back automatically if one is unavailable. It is a simple way to stop paying frontier prices for work a smaller model handles fine." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a local AI model good enough?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For the routine majority of work, yes. Open models in the 7B to 70B range handle classification, extraction, summaries, drafting, and structured output reliably. They are not the best at the hardest reasoning, which is exactly why you keep a frontier model on call for that small share instead of paying for it on everything." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use AI for cheaper or free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Run open models locally for zero per-token cost, route API calls through a cheaper provider like OpenRouter, use free tiers and student programs such as the GitHub Student Developer Pack, turn on prompt caching, and pick the smallest model that does the job. Open-source proxies can also point a coding agent like Claude Code or Codex at a free or low-cost model provider instead of the default paid one." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quartersmart.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Signals", "item": "https://quartersmart.com/signals" },
+        { "@type": "ListItem", "position": 3, "name": "Stretch your AI budget", "item": "https://quartersmart.com/signals/stretch-ai-budget" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+.sb-cover { width: 100%; height: auto; border-radius: var(--radius-lg); border: 1px solid var(--border-hairline); margin: var(--sp-6) 0; display: block; }
+.sb-rule { background: var(--surface-card); border: 1px solid var(--border-hairline); border-left: 3px solid var(--accent); border-radius: var(--radius-lg); padding: 22px 24px; margin: 1.4em 0; }
+.sb-rule h3 { margin: 0 0 10px; font-size: var(--fs-h4); color: var(--text-strong); }
+.sb-rule p { margin: 0; color: var(--text-muted); font-size: var(--fs-small); line-height: 1.65; }
+.sb-rule .keep { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<a class="qs-skip" href="#main">Skip to content</a>
+<header class="qs-nav" data-open="false">
+  <div class="qs-nav__bar">
+    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+      </svg>
+      <span class="qs-logo__word">QuarterSmart</span>
+    </a>
+    <nav class="qs-nav__links" aria-label="Primary">
+      <a href="/services/">Services</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/about/">About</a>
+      <a href="/for-agencies/">For Agencies</a>
+      <a href="/signals/" aria-current="page">Signals</a>
+      <a href="/own-your-ai">Own Your AI</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="qs-nav__cta">
+      <a class="qs-btn qs-btn--primary qs-btn--sm" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
+    </div>
+    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
+  </div>
+  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
+    <a href="/services/">Services</a>
+    <a href="/case-studies/">Case Studies</a>
+    <a href="/about/">About</a>
+    <a href="/for-agencies/">For Agencies</a>
+    <a href="/signals/" aria-current="page">Signals</a>
+    <a href="/own-your-ai">Own Your AI</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/contact/">Contact</a>
+    <a class="qs-btn qs-btn--primary qs-btn--full" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+  <article class="qs-section">
+    <div class="qs-wrap qs-wrap--prose">
+      <nav class="qs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/signals/">Signals</a> / Stretch your AI budget
+      </nav>
+      <span class="qs-eyebrow">Insights &middot; June 27, 2026 &middot; 7 min read &middot; By Hyrum Hurst</span>
+      <h1 class="qs-h1">How to stretch your AI budget by offloading the routine to local models</h1>
+      <p class="qs-lede">Most teams send every request to a top frontier model and pay for it. You do not have to. The cheapest way to scale AI is to run the routine majority on something cheaper or local, and save the expensive model for the part that actually needs it.</p>
+
+      <img class="sb-cover" src="/assets/images/signals/stretch-ai-budget-cover.jpg" alt="A glowing local AI server pulling in a dense stream of work particles, with one thin stream branching to a faint distant cloud" width="1200" height="800" loading="lazy" decoding="async">
+
+      <div class="qs-prose">
+        <h2>The bill that never stops</h2>
+        <p>Frontier AI is priced per token, and the bill grows with every request. The trap is sending all of it to the most expensive model, including the easy work that a far cheaper model would handle just as well. You also run into rate limits and session caps at the worst moments, because you are leaning on a metered service you do not control. The fix is not to use less AI. It is to stop overpaying for the parts that do not need the best model.</p>
+
+        <h2>Most of your AI work does not need a frontier model</h2>
+        <p>Look at what your AI actually does all day. Classifying tickets. Pulling fields out of a document. Drafting a first version. Answering a simple question from a known source. Tagging, routing, summarizing. This is the routine majority, and it is not hard reasoning. A small, cheap model handles it reliably. The hard minority, the genuinely tricky reasoning, the high-stakes call, is where a frontier model earns its price. Treating every request the same is what makes AI expensive.</p>
+        <p>A useful rule of thumb mirrors how power and water bills work: most of the load is steady and predictable, and only a little is peak. You do not buy peak-rate power for your whole house. You should not buy frontier tokens for your whole workload.</p>
+
+        <h2>Run the routine on a model you control</h2>
+        <p>You can run capable open models on your own hardware with no per-token cost. <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> and <a href="https://lmstudio.ai" target="_blank" rel="noopener">LM Studio</a> make it a few clicks to download and run models like Llama, Qwen, Mistral, and Gemma locally. A modern laptop runs the small ones well. A machine with a capable GPU runs the larger ones and serves a whole team. Once it is running, every routine request that hits it costs you nothing per token and never counts against a vendor rate limit.</p>
+        <p>Local models are strong at exactly the routine work above. They are not the best at the hardest reasoning, which is the point. You keep a frontier model on call for that small share rather than paying for it on everything.</p>
+
+        <h2>Cheaper routes when you do call an API</h2>
+        <p>Some work still belongs in the cloud. When it does, you do not have to pay top-of-menu prices. <a href="https://openrouter.ai" target="_blank" rel="noopener">OpenRouter</a> gives you one API that routes across many providers, so you can pick a cheaper or free model per task and fall back automatically if one is down. Beyond that, the basics add up: turn on prompt caching so you stop re-paying for the same context, pick the smallest model that does the job, and batch where you can. None of this is exotic. It is just refusing to pay frontier rates by default.</p>
+
+        <h2>Cheaper and free coding-agent access</h2>
+        <p>If your team uses AI coding agents, the same logic applies. The <a href="https://education.github.com/pack" target="_blank" rel="noopener">GitHub Student Developer Pack</a> and free tiers cover a lot for students and small teams. Open-source proxies can point a coding agent like Claude Code or Codex at a free or low-cost model provider instead of the default paid one, so the routine edits run cheap and you reserve the premium model for the gnarly problems. The pattern is the same everywhere: route the easy work to the cheap path, and pay for the hard work only when you hit it.</p>
+
+        <h2>A simple rule for what to keep local</h2>
+        <div class="sb-rule">
+          <h3>Keep it local or cheap when the task is</h3>
+          <p><span class="keep">routine and high volume</span> (classify, extract, draft, summarize, route), <span class="keep">latency tolerant</span>, or involves <span class="keep">sensitive data you would rather not send out</span>. Send it to a frontier model when the task is <span class="keep">genuinely hard reasoning</span>, low volume, or high stakes where the best answer is worth the price.</p>
+        </div>
+        <p>You do not have to get this perfect on day one. Start by moving your single highest-volume routine task off the frontier API and onto something cheaper, measure the savings, and expand from there.</p>
+
+        <h2>Where this goes</h2>
+        <p>Offloading tokens is the practical version of a bigger idea: owning more of your AI instead of renting all of it. The more of your routine you can run on hardware and models you control, the less of your budget is exposed to someone else's pricing and limits. That is the thesis behind <a href="/own-your-ai">Own Your AI</a>, a private system your company owns for the everyday work. And once an agent is running that work, the procedures it follows are <a href="/signals/sops-to-aops">AOPs</a>, the agent-runnable version of your SOPs. The offloading you do this month is the on-ramp to both.</p>
+      </div>
+
+      <section class="qs-section qs-bordered" style="margin-top:var(--sp-7);padding-top:var(--sp-7)">
+        <div class="qs-section-head"><h2 class="qs-h2">Common questions</h2></div>
+        <div class="qs-accordion">
+          <details open><summary>How do I save money on AI?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">Stop sending every request to a top frontier model. Most of your AI work is routine and can run on a small local model or a cheaper provider for a fraction of the cost. Reserve the expensive frontier model for the hard minority that actually needs it. The cheapest token is the one you do not buy at full price.</p></details>
+          <details><summary>Can I run AI models locally?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">Yes. Tools like Ollama and LM Studio let you run open models such as Llama, Qwen, Mistral, and Gemma on your own computer or server, with no per-token cost. A modern laptop runs small models well; a machine with a capable GPU runs larger ones. They are strong at routine tasks like classification, extraction, drafting, and simple question answering.</p></details>
+          <details><summary>What is OpenRouter?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">OpenRouter is a single API that routes your requests across many model providers, so you can pick a cheaper or free model per task and fall back automatically if one is unavailable. It is a simple way to stop paying frontier prices for work a smaller model handles fine.</p></details>
+          <details><summary>Is a local AI model good enough?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">For the routine majority of work, yes. Open models in the 7B to 70B range handle classification, extraction, summaries, drafting, and structured output reliably. They are not the best at the hardest reasoning, which is exactly why you keep a frontier model on call for that small share instead of paying for it on everything.</p></details>
+          <details><summary>How do I use AI for cheaper or free?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">Run open models locally for zero per-token cost, route API calls through a cheaper provider like OpenRouter, use free tiers and student programs such as the GitHub Student Developer Pack, turn on prompt caching, and pick the smallest model that does the job. Open-source proxies can also point a coding agent like Claude Code or Codex at a free or low-cost model provider instead of the default paid one.</p></details>
+        </div>
+      </section>
+
+      <section class="qs-section qs-section--lg qs-bordered" style="margin-top:var(--sp-7)">
+        <div class="qs-cta-band">
+          <svg width="64" height="64" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
+            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
+            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
+            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+          </svg>
+          <h2 class="qs-h1">Want help mapping what to move off the frontier?</h2>
+          <p>Tell us where your AI spend goes today. We will show you which routine work can run cheaper or local, and what to keep on a frontier model.</p>
+          <div class="qs-cta-row">
+            <a class="qs-btn qs-btn--primary qs-btn--lg" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
+            <a class="qs-btn qs-btn--secondary qs-btn--lg" href="/own-your-ai">See Own Your AI</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </article>
+</main>
+
+<footer class="qs-footer">
+  <div class="qs-footer__inner">
+    <div class="qs-footer__grid">
+      <div class="qs-footer__brand">
+        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
+          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
+            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
+            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
+            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
+            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
+          </svg>
+          <span class="qs-logo__word">QuarterSmart</span>
+        </a>
+        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
+        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Company</h2>
+        <a href="/services/">Services</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/about/">About</a>
+        <a href="/for-agencies/">For Agencies</a>
+        <a href="/signals/">Signals</a>
+        <a href="/own-your-ai">Own your AI</a>
+      </div>
+      <div class="qs-footer__col">
+        <h2>Get in touch</h2>
+        <a href="/faq/">FAQ</a>
+        <a href="/contact/">Contact</a>
+        <a href="/workflow-usage/">Workflow usage</a>
+      </div>
+    </div>
+    <div class="qs-footer__meta">
+      <span class="qs-tag-line">Train your team. Automate the rest.</span>
+      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var n=document.querySelector('.qs-nav');var t=n&&n.querySelector('.qs-nav__toggle');if(!t)return;t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});})();
+</script>
+</body>
+</html>
