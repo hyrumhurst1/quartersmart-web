@@ -30,6 +30,105 @@
 <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
+<style id="qs-elevate-v1">
+/* ===========================================================================
+   Homepage elevation prototype (v1). PAGE-SCOPED on purpose: it lives in
+   index.html so it only restyles the homepage. On approval, promote this block
+   into assets/site.css to roll the same system across every page.
+   Keeps the brand (mint #00e5a0 on near-black, Space Grotesk + JetBrains Mono);
+   adds depth, premium surfaces, and refined motion. Reduced-motion + a11y safe.
+   =========================================================================== */
+
+/* Eyebrows: a leading mint tick reads as a designed label, not just text */
+.qs-eyebrow::before { content:""; width:20px; height:1px; flex:none;
+  background:linear-gradient(90deg, transparent, var(--qs-mint)); }
+.qs-hero__eyebrow { align-items:flex-start; }
+.qs-hero__eyebrow::before { margin-top:7px; }
+
+/* Nav: a touch more depth on the glass */
+.qs-nav { background:rgba(6,6,8,0.72); backdrop-filter:blur(18px) saturate(1.3);
+  -webkit-backdrop-filter:blur(18px) saturate(1.3); }
+
+/* Hero: atmospheric depth — layered mint glow, soft vignette, faint tech grid */
+.qs-hero { background:
+  radial-gradient(115% 80% at 80% -12%, rgba(0,229,160,0.12), transparent 58%),
+  radial-gradient(70% 60% at 8% 4%, rgba(31,253,179,0.05), transparent 55%),
+  linear-gradient(180deg, #07090d 0%, var(--qs-black) 72%); }
+.qs-hero::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:0.55;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+  background-size:54px 54px;
+  -webkit-mask-image:radial-gradient(120% 95% at 72% 0%, #000 28%, transparent 74%);
+  mask-image:radial-gradient(120% 95% at 72% 0%, #000 28%, transparent 74%); }
+.qs-hero__inner { position:relative; z-index:1; }
+.qs-hero .qs-motif { opacity:0.22; filter:drop-shadow(0 0 64px rgba(0,229,160,0.28)); }
+
+/* Display headline: subtle metallic sheen, tighter tracking */
+.qs-hero .qs-display { letter-spacing:-0.03em;
+  background:linear-gradient(176deg, #ffffff 0%, #c9d4e0 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+/* Primary button: gradient face, inner highlight, tactile hover lift + glow */
+.qs-btn--primary { background:linear-gradient(180deg, var(--qs-mint-bright), var(--qs-mint));
+  box-shadow:0 0 0 1px rgba(0,229,160,0.45), inset 0 1px 0 rgba(255,255,255,0.28), 0 8px 22px rgba(0,229,160,0.22); }
+.qs-btn--primary:hover { background:linear-gradient(180deg, #46ffc6, var(--qs-mint-bright));
+  transform:translateY(-1px);
+  box-shadow:0 0 0 1px rgba(0,229,160,0.6), inset 0 1px 0 rgba(255,255,255,0.32), 0 14px 32px rgba(0,229,160,0.34); }
+.qs-btn--secondary { border-color:var(--qs-border-strong); background:rgba(255,255,255,0.015); }
+.qs-btn--secondary:hover { border-color:var(--qs-mint); color:var(--qs-mint); background:var(--qs-mint-08); }
+
+/* Trust badges: come alive on hover */
+.qs-trust .qs-badge { transition:border-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out), background var(--dur) var(--ease-out); }
+.qs-trust .qs-badge:hover { border-color:var(--qs-border-mint); color:var(--text-strong); background:var(--qs-mint-08); }
+
+/* Info cards: gradient surface, top highlight, refined hover (no lift; not links) */
+.qs-card { background:linear-gradient(180deg, var(--qs-surface-2), var(--qs-surface-1)); position:relative; overflow:hidden;
+  transition:border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
+.qs-card::before { content:""; position:absolute; left:0; right:0; top:0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent); }
+.qs-card:hover { border-color:var(--qs-border-mint); box-shadow:var(--shadow-raised), 0 0 0 1px var(--qs-border-mint); }
+.qs-numbox { transition:box-shadow var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out); }
+.qs-card:hover .qs-numbox { border-color:var(--qs-mint); color:var(--qs-mint-bright); box-shadow:0 0 16px rgba(0,229,160,0.32); }
+
+/* Proof: premium panel + glowing stat numbers */
+.qs-proof { background:radial-gradient(120% 150% at 0% 0%, rgba(0,229,160,0.07), transparent 52%), linear-gradient(180deg, var(--qs-surface-2), var(--qs-surface-1));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.05), 0 22px 54px rgba(0,0,0,0.45); position:relative; overflow:hidden; }
+.qs-proof::before { content:""; position:absolute; left:0; right:0; top:0; height:1px;
+  background:linear-gradient(90deg, transparent, var(--qs-border-mint), transparent); }
+.qs-stat--lg .qs-stat__value { background:linear-gradient(180deg, var(--qs-mint-bright), var(--qs-mint));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  filter:drop-shadow(0 0 22px rgba(0,229,160,0.28)); }
+
+/* Triple-duty: outputs respond, and a mint pulse flows source -> outputs */
+.qs-dd-out { transition:border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), background var(--dur) var(--ease-out); }
+.qs-dd-out:hover { border-color:var(--qs-border-mint); transform:translateX(3px); background:var(--qs-surface-2); }
+.qs-dd-arrow > .qs-dd-stem { background:linear-gradient(90deg, var(--qs-border-mint), var(--qs-border-strong)); overflow:visible; }
+.qs-dd-arrow > .qs-dd-stem::after { content:""; position:absolute; top:50%; left:0; width:6px; height:6px; border-radius:50%;
+  background:var(--qs-mint); box-shadow:0 0 10px var(--qs-mint); transform:translate(-50%,-50%);
+  animation:qs-flow 2.6s var(--ease-in-out) infinite; }
+@keyframes qs-flow { 0%{left:0; opacity:0;} 18%{opacity:1;} 82%{opacity:1;} 100%{left:56px; opacity:0;} }
+
+/* Closing CTA: contained premium panel with a mint halo */
+.qs-cta-band { background:radial-gradient(100% 130% at 50% -10%, rgba(0,229,160,0.12), transparent 60%), linear-gradient(180deg, var(--qs-surface-2), var(--qs-surface-1));
+  border:1px solid var(--qs-border-mint); border-radius:var(--radius-xl);
+  padding:var(--sp-8) var(--sp-6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.06), 0 26px 64px rgba(0,0,0,0.5), 0 0 70px rgba(0,229,160,0.07); }
+.qs-cta-band > svg { filter:drop-shadow(0 0 22px rgba(0,229,160,0.45)); }
+
+/* Hero entrance: a quiet staggered rise (motion-safe only) */
+@media (prefers-reduced-motion: no-preference) {
+  .qs-hero__inner > * { opacity:0; animation:qs-rise 0.7s var(--ease-out) both; }
+  .qs-hero__eyebrow { animation-delay:0.04s; }
+  .qs-hero h1 { animation-delay:0.12s; }
+  .qs-hero__lede { animation-delay:0.22s; }
+  .qs-hero__sub { animation-delay:0.30s; }
+  .qs-hero .qs-cta-row { animation-delay:0.38s; }
+  .qs-hero .qs-trust { animation-delay:0.46s; }
+}
+@keyframes qs-rise { from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;} }
+@media (prefers-reduced-motion: reduce) { .qs-dd-arrow > .qs-dd-stem::after { display:none; } }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
