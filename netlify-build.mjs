@@ -35,7 +35,8 @@ try {
       if (e.isDirectory()) {
         if (SKIP_DIRS.has(e.name)) continue;
         walk(join(dir, e.name), prefix + "/" + e.name);
-      } else if (e.name.endsWith(".html") && e.name !== "404.html") {
+      } else if (e.name.endsWith(".html") && e.name !== "404.html" && !/^google[0-9a-f]+\.html$/i.test(e.name)) {
+        // (skip Google Search Console verification files like google<hash>.html)
         const path = e.name === "index.html" ? prefix : prefix + "/" + e.name.replace(/\.html$/, "");
         const url = path === "" ? BASE + "/" : BASE + path;
         let image = null, title = "", desc = "", date = "";
