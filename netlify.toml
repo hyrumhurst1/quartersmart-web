@@ -122,17 +122,17 @@
   status = 301
 
 # 2026 relaunch: short links and retired page names
-# Booking lives at /insert-coin (the self-hosted calendar; never print its host name in copy).
+# Booking lives at /insert-coin; the calendar itself lives at book.quartersmart.com.
 # Until the /insert-coin page ships, the path itself forwards to the calendar. Once
 # site/insert-coin/index.html exists, Netlify serves the page (this rule is not forced).
 # /insert-coin/calendar stays as the plain fallback link; /book is an alias. 302 so targets can change.
 [[redirects]]
   from = "/insert-coin"
-  to = "https://qs-book.tail4c7b31.ts.net/hyrum/ai-game-plan"
+  to = "https://book.quartersmart.com/hyrum/ai-game-plan"
   status = 302
 [[redirects]]
   from = "/insert-coin/calendar"
-  to = "https://qs-book.tail4c7b31.ts.net/hyrum/ai-game-plan"
+  to = "https://book.quartersmart.com/hyrum/ai-game-plan"
   status = 302
 [[redirects]]
   from = "/book"
