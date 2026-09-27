@@ -160,6 +160,16 @@ public workflow templates.*
   verify actual Netlify 404s before treating production as corrected. Review evidence is outside
   this repo in the campaign project's `research/site_checks/report-withdrawal-local-review.json`.
 
+- **2026-09-27 (NIGHT ARCADE RELAUNCH, live on quartersmart.com via PR #7, merge 227a37e)**
+  - **Positioning.** QuarterSmart is now an early AI adoption partner for owner-led businesses. The offers are Signals (free), Head Start (from $1,500), Day One Setup (from $2,500 per tool), First Quarter (from $1,500 a month; Pro from $3,500), Build and Partner Bench. Cullen, the case studies, Own Your AI and the old n8n proof are retired: they live in graveyard/ with 301s.
+  - **Design system "Night Arcade".** Evergreen is the default theme, with Departure Mono for pixel type, a pixel night sky on every page, echo text instead of glow neon, and terminal-window heroes.
+  - **Homepage.** A full-screen attract-mode hero (`assets/js/attract.js` plus `attract-pack-*.js`: 38 games and a title screen, ribbon morphs, pack API). A timed why.exe story (`quarter.js`), a power-up level select and a footer coin arena (`arena.js`).
+  - **Hidden navigation.** A joystick MENU opens a SELECT STAGE screen, with an insert-coin book-a-call dock beside it (`select.js`, `select.css`, `_partials/nav.html`).
+  - **Inner pages.** The pxstage morph engine is `assets/js/radar.js`.
+  - **Build.** It now stamps `?v=<hash>` on every asset link, because `/assets/*` is cached immutable. Never hand-version.
+  - **Docs and QA.** Reusable kit and style guide: `brand/arcade-kit/` (refresh with `python ../tools/kit.py`). Full report: `docs/2026-09-27-night-arcade-report.md`. Owner confirm list: `docs/2026-09-27-CONFIRM.md`. QA: 27 pages plus the 404 at 1440 and 390, with 0 overflow and 0 errors; valid JSON-LD; the FAQ schema matches the visible text.
+  - **Open for the owner.** The Calendly event is 30 min, a phone call, and open on weekends, while the site says "free 20-minute call". Also: prices and terms, legal review, analytics.
+
 - **2026-06-28 (Signals traction + QS-era thumbnails with watermark)** - Regenerated ALL 10 Signals
   covers as QuarterSmart-era images: 7 new Codex-generated thumbnails (on the owner's ChatGPT session,
   not the API) for the older posts + re-watermarked the 3 newest, all 1200x800 JPEG with a four-quarters

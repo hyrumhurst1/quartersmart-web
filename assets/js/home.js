@@ -12,7 +12,7 @@
     };
     select(Math.max(0, tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true')), false);
     tabs.forEach((t, i) => {
-      // A tap on a phone (stacked layout) brings the chosen panel, its price and Book button into view.
+      // A tap on a phone (stacked layout) brings the chosen panel and its Book button into view.
       // e.detail is 0 for keyboard-fired clicks, so Enter/Space keep focus where it is.
       t.addEventListener('click', (e) => {
         select(i, false);

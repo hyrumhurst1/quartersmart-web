@@ -6,8 +6,6 @@ QuarterSmart works with owner-led and operator-led businesses of roughly 10 to 2
 
 "Day one" always means the first day a tool is available to your account. Rollouts are often staggered by plan, region or company size, so we prepare before that day and start setup as soon as access arrives. We cannot promise early access; vendors control it. We tell clients when a waitlist or beta opens and help them apply.
 
-QuarterSmart is independent and is not affiliated with or endorsed by OpenAI, Anthropic, Google, Microsoft or any other AI vendor. Product names are trademarks of their owners.
-
 ## Founder
 Hyrum Hurst founded QuarterSmart and is the person clients work with directly: he writes every Signal and sets up the assistants, agents and automations himself. There are no account managers or hand-offs.
 
@@ -30,15 +28,15 @@ Every Signal carries one status label:
 - Quiet update: a change inside a tool you may already pay for.
 - Event: a launch event we are covering.
 
-Sourcing: public information only. No confidential documents, credentials, private source code or anything obtained by breaking terms of service. Reported items stay labeled unconfirmed until the company confirms or denies them. Sources are cited, other people's screenshots are linked rather than re-hosted, and corrections are logged with timestamps. The accuracy record for reported items, including misses, is the Signals Log. Signals is general information about third-party products, not legal, security or financial advice.
+Sources are cited on every Signal. Reported items stay labeled unconfirmed until the company confirms or denies them, and corrections are logged with timestamps. The Signals Log is the accuracy record for reported items, including misses.
 
 ## Ways to work with us
 The services ladder, five levels from 0 (free) to 4:
 - Level 0: Signals (free): the public feed and the Signals Weekly email.
-- Level 1: Head Start (from $1,500, one time): a review of the software a business already pays for, looking for AI features it has not switched on, with the three most relevant launches or tools, each with a verdict, and a 30-day plan. About a week from kickoff. The full fee counts toward a Day One Setup or the first month of First Quarter if the client starts within 30 days.
-- Level 2: Day One Setup (from $2,500 per tool): one tool set up properly in the client's accounts with least-access permissions, connected to email, calendar, docs or CRM, tested with a few people first, then taught to the team.
-- Level 2, team training: Rollout Session (quoted): live, role-based team training on a tool the team already has, using the team's own work.
-- Level 3: First Quarter membership (from $1,500 a month; Pro from $3,500 a month): Client Signals filtered to the member's own tools and delivered the same business day for anything that affects their stack, setup and training time every month, and priority on launch weeks.
+- Level 1: Head Start (one time): a review of the software a business already pays for, looking for AI features it has not switched on, with the three most relevant launches or tools, each with a verdict, and a 30-day plan. About a week from kickoff.
+- Level 2: Day One Setup (per tool): one tool set up properly in the client's accounts with least-access permissions, connected to email, calendar, docs or CRM, tested with a few people first, then taught to the team.
+- Level 2, team training: Rollout Session: live, role-based team training on a tool the team already has, using the team's own work.
+- Level 3: First Quarter membership (monthly, Core and Pro plans): Client Signals filtered to the member's own tools and delivered the same business day for anything that affects their stack, setup and training time every month, and priority on launch weeks.
 - Level 4: Build (scoped): custom agents and automations for work that repeats, scoped after a Head Start or for members.
 
 Agencies and IT providers can resell Signals and Day One Setups through the Partner Bench (see For Agencies).
@@ -46,14 +44,14 @@ Agencies and IT providers can resell Signals and Day One Setups through the Part
 ## Key pages
 - [Home](https://quartersmart.com/): Use new AI while it's still an advantage. What QuarterSmart does, latest Signals, ways to work with us.
 - [Signals](https://quartersmart.com/signals/): Plain-English coverage of AI launches, early access and quiet updates, each with a verdict.
-- [How we source Signals](https://quartersmart.com/signals/policy/): Sourcing rules, status labels, verdicts, corrections and independence.
+- [How we source Signals](https://quartersmart.com/signals/policy/): Sourcing, status labels, verdicts and corrections.
 - [Signals Log](https://quartersmart.com/signals/log/): The accuracy record for reported items: what we posted, when, and whether it was confirmed or denied. Misses stay on the list.
-- [Services](https://quartersmart.com/services/): The services ladder, level 0 to 4, with published starting prices: Signals (free), Head Start (from $1,500), Day One Setup (from $2,500 per tool), Rollout Session (quoted), the First Quarter membership (from $1,500 and $3,500 a month) and Build (scoped).
+- [Services](https://quartersmart.com/services/): The services ladder, level 0 to 4: Signals (free), Head Start, Day One Setup, Rollout Session, the First Quarter membership (Core and Pro) and Build.
 - [Approach](https://quartersmart.com/approach/): Train your team. Automate the rest. The two halves of every engagement, the Detect, Decode, Deploy, Stay current method, the questions a tool must pass before we recommend it, and the security rules for every setup.
-- [About](https://quartersmart.com/about/): Who we are, why the name "Quarter," who you will work with, and why we stay independent.
+- [About](https://quartersmart.com/about/): Who we are, why the name "Quarter," and who you will work with.
 - [Hyrum Hurst](https://quartersmart.com/about/hyrum-hurst/): The founder's page: background, what he builds, credentials you can check, experience and recent Signals.
 - [For Agencies](https://quartersmart.com/for-agencies/): Partner Bench. Resell Signals and Day One Setups under your brand.
-- [FAQ](https://quartersmart.com/faq/): Pricing, membership terms, security, what "day one" means, how Signals is sourced, what we won't do, affiliation.
+- [FAQ](https://quartersmart.com/faq/): Cost, membership terms, security, what "day one" means and how Signals is sourced.
 - [Contact](https://quartersmart.com/contact/): Book a free 20-minute call, or email.
 - [Workflow usage](https://quartersmart.com/workflow-usage/): Per-template data and method for Hyrum's public n8n workflow templates.
 - [Privacy](https://quartersmart.com/privacy/) and [Terms](https://quartersmart.com/terms/), including the Signals disclaimer.

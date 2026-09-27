@@ -99,7 +99,6 @@
 .ab-lead { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: end; margin-bottom: clamp(48px, 5vw, 72px); }
 .ab-lead__body { display: grid; gap: 18px; }
 .ab-big { font: 400 66px/1.06 var(--pixel); letter-spacing: -.01em; }
-.ab-ind .ab-big { font-size: 55px; }
 .ab-more { margin-top: 40px; }
 .ab-stack { display: grid; gap: 20px; align-content: start; }
 
@@ -113,7 +112,7 @@
 .rows li > div, .rows li > p { color: var(--fg-1); font-size: 17px; max-width: 62ch; }
 .rows li > div { display: grid; gap: 12px; }
 .rows li > div p { max-width: 62ch; }
-.rows .row-links, .ab-links { display: flex; flex-wrap: wrap; gap: 24px 26px; margin-top: 4px; }
+.rows .row-links { display: flex; flex-wrap: wrap; gap: 24px 26px; margin-top: 4px; }
 .band .rows, .band .rows > li { border-color: color-mix(in srgb, var(--fg-0) 14%, transparent); }
 
 /* ---------- About: why the name ---------- */
@@ -130,12 +129,6 @@
 .ab-p1__tag { font: 400 22px/1 var(--pixel); color: var(--accent); }
 .ab-p1__copy { display: grid; gap: 22px; }
 .ab-p1__cta { display: flex; flex-wrap: wrap; gap: 14px 26px; align-items: center; }
-
-/* ---------- About: independence and the verdicts ---------- */
-.ab-ind { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
-.ab-ind__body { display: grid; gap: 22px; }
-.verds { display: flex; flex-wrap: wrap; gap: 6px 26px; margin: 8px 0; font: 400 33px/1.2 var(--pixel); color: var(--fg-2); }
-.verds b { font-weight: 400; color: var(--accent); }
 
 /* ---------- Closing call ---------- */
 .ab-close { padding: clamp(96px, 11vw, 168px) 0; border-top: 1px solid var(--line); }
@@ -247,7 +240,7 @@ main .btn--arcade { max-width: 100%; }
   .ah__h--name { font-size: 77px; }
 }
 @media (max-width: 1000px) {
-  .ah__grid, .ab-lead, .ab-why__grid, .ab-p1, .ab-ind, .fh-bg, .ct-split, .fq-g, .ab-close__grid { grid-template-columns: minmax(0, 1fr); }
+  .ah__grid, .ab-lead, .ab-why__grid, .ab-p1, .fh-bg, .ct-split, .fq-g, .ab-close__grid { grid-template-columns: minmax(0, 1fr); }
   .ah__stage { order: -1; justify-self: center; max-width: 468px; }
   .ah--center .ah__stage { order: 0; }
   /* contact: the booking button comes first on phones, the stage follows it */
@@ -269,13 +262,12 @@ main .btn--arcade { max-width: 100%; }
   .ah--center .ah__copy { gap: 18px; margin-top: 4px; }
   .ah__h { font-size: 38.5px; }
   .ah__h--name { font-size: 55px; }
-  .ab-big, .ab-ind .ab-big { font-size: 38.5px; }
+  .ab-big { font-size: 38.5px; }
   .rows > li { grid-template-columns: minmax(0, 1fr); padding: 24px 0; }
   .rows--big .rows__k { font-size: 38.5px; }
   .rows__k { font-size: 27.5px; }
   .ab-why__art { width: 196px; }
   .ab-p1__id img { width: 237px; }
-  .verds { font-size: 27.5px; gap: 4px 18px; }
   .qa > div { padding: 24px 0; }
   .facts div { grid-template-columns: 80px minmax(0, 1fr); gap: 12px; }
   .fh-builds__head { grid-template-columns: minmax(0, 1fr); }
@@ -295,7 +287,7 @@ main .btn--arcade { max-width: 100%; }
 @media (max-width: 420px) {
   .ah__h { font-size: 38.5px; }
   .ah__h.ah__h--name { font-size: 44px; }
-  .ab-big, .ab-ind .ab-big, .ab-close__h, .rows--big .rows__k { font-size: 33px; }
+  .ab-big, .ab-close__h, .rows--big .rows__k { font-size: 33px; }
 }
 /* Small phones: the arcade button may wrap instead of pushing the page wide */
 @media (max-width: 400px) {
