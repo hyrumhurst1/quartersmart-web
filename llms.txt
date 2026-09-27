@@ -82,3 +82,5 @@ Book a call or request a proposal at https://quartersmart.com/contact. Email hyr
 
 ---
 Last updated: 2026-06-28
+
+- [OpenAI o assistant leak](https://quartersmart.com/signals/openai-o-assistant-leak): Unconfirmed report, confirmed DevDay schedule, and practical business preparation.
