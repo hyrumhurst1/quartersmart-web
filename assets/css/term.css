@@ -44,7 +44,7 @@
 .qs-lives.is-continue em { display: inline; }
 .qs-art { position: absolute; inset: 0; min-height: 0; overflow: hidden; }
 .qs-art canvas { display: block; image-rendering: pixelated; }
-.qs-line { --p: 0; position: absolute; z-index: 1; height: 3px; background: var(--accent); transform-origin: left center; transform: scaleX(var(--p)); box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 50%, transparent); }
+.qs-line { --p: 0; position: absolute; z-index: 1; height: 3px; background: var(--accent); transform-origin: left center; transform: scaleX(var(--p)); }
 .qs-copy { position: relative; z-index: 1; grid-column: 2; display: grid; gap: 18px; opacity: 0; transform: translateY(8px); transition: opacity .48s steps(4, jump-start) .18s, transform .48s steps(4, jump-start) .18s; }
 .qscroll.is-on .qs-copy, .qscroll:not(.is-live) .qs-copy { opacity: 1; transform: none; }
 .qs-big { margin: 0 0 18px; font: 400 clamp(66px, 6vw, 96px)/.9 var(--pixel); color: var(--fg-0); letter-spacing: -.02em; }
@@ -62,6 +62,8 @@
 .qs-replay::after { content: ""; position: absolute; inset: -15px 0; }
 .qs-replay:hover { color: var(--fg-0); }
 .qs-replay[hidden] { display: none; }
+/* pause / play sits on the bottom border at the left, clear of "replay" on the right */
+.qs-win .win__b { right: auto; left: 16px; }
 .qs-why { position: absolute; left: 50%; bottom: 5%; transform: translateX(-50%); margin: 0; font: 400 22px/1 var(--pixel); color: var(--fg-2); white-space: nowrap; opacity: .9; transition: opacity .16s steps(2, jump-start); }
 .qs-hint { position: absolute; left: 50%; bottom: 1%; transform: translateX(-50%); margin: 0; width: 2px; height: 22px; background: var(--fg-2); animation: pulse 1.4s steps(2) infinite; }
 .qscroll.is-on .qs-why { opacity: 0; }

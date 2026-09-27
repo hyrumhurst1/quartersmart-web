@@ -12,7 +12,7 @@
   const fine = matchMedia('(hover: hover) and (pointer: fine)');
   const phone = matchMedia('(max-width: 699px)');
   const $ = (s, el = document) => el.querySelector(s);
-  const typing = (t) => t && t.closest && t.closest('input, textarea, select, [contenteditable]');
+  const typing = (t) => t && t.closest && t.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])');
   const modified = (e) => e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey;
 
   const credit = $('[data-sel-credit]');
@@ -79,6 +79,20 @@
     // the top: a jump or a fast fling past the button still flips it.
     new IntersectionObserver(([e]) => dock.classList.toggle('is-call', !e.isIntersecting && e.boundingClientRect.bottom < 0), { rootMargin: '0px 0px 100000px 0px' }).observe(firstBook);
   }
+  // Phones: the dock tucks up while the page scrolls down, so it never sits
+  // on the line being read, and any scroll back up (or reaching the end)
+  // brings it straight back. qs.css only applies .hud-tuck under 700px.
+  if (dock) {
+    let y0 = scrollY, tucked = false;
+    addEventListener('scroll', () => {
+      const y = scrollY, d = y - y0;
+      if (d > -6 && d < 6) return; // ignore jitter, but let small moves add up
+      y0 = y;
+      const end = y + innerHeight >= root.scrollHeight - 4;
+      const t = d > 0 && y > 120 && !end && phone.matches;
+      if (t !== tucked) { tucked = t; root.classList.toggle('hud-tuck', t); }
+    }, { passive: true });
+  }
   if (document.getElementById('book-a-call')) {
     document.querySelectorAll('a.hud__coin, a.sel__coin').forEach((a) => { if (a.pathname === location.pathname) a.setAttribute('href', '#book-a-call'); });
   }
@@ -99,6 +113,25 @@
   const edge = $('[data-sel-edge]');
   const coin = $('[data-sel-coin]', sel);
   tiles.forEach((t, i) => t.style.setProperty('--i', i));
+
+  // Phones: the open menu fills the screen, so the page under it goes inert
+  // too, and a screen reader swipe stays inside the menu. The part of the
+  // top bar that holds the joystick stays live (it closes the menu); so does
+  // anything already inert, which is left exactly as it was.
+  let benched = [];
+  const bench = (parent) => {
+    for (const n of parent.children) {
+      if (n === sel || n.inert || n.classList.contains('tty') || /^(SCRIPT|STYLE|LINK|TEMPLATE|NOSCRIPT)$/.test(n.tagName)) continue;
+      if (n.contains(start)) { bench(n); continue; }
+      n.inert = true;
+      benched.push(n);
+    }
+  };
+  const under = (on) => {
+    benched.forEach((n) => { n.inert = false; });
+    benched = [];
+    if (on) bench(document.body);
+  };
 
   let open = false;
   let mode = null; // 'hover' | 'click' | 'key'
@@ -165,6 +198,7 @@
     sel.classList.add('is-open');
     root.classList.add('sel-open');
     root.classList.toggle('sel-lock', phone.matches);
+    under(phone.matches);
     start.setAttribute('aria-expanded', 'true');
     start.setAttribute('aria-label', 'Close menu');
     select(idx, { instant: true });
@@ -180,6 +214,7 @@
     start.setAttribute('aria-expanded', 'false');
     start.setAttribute('aria-label', 'Open menu');
     root.classList.remove('sel-open', 'sel-lock');
+    under(false);
     sel.classList.remove('is-open');
     sel.inert = true;
     if (!reduce.matches) {
@@ -281,7 +316,10 @@
       if (open && !ttyOpen) { e.preventDefault(); hide({ focus: true }); }
       return;
     }
-    if ((e.key === 'm' || e.key === 'M') && !typing(e.target) && !ttyOpen) {
+    // "m" only on its own: no Shift (the others return above), no key repeat,
+    // never while typing in a field or the terminal, and not once the footer
+    // "shortcuts" button has turned the one-key shortcuts off (term.js)
+    if ((e.key === 'm' || e.key === 'M') && !e.shiftKey && !e.repeat && !e.isComposing && !typing(e.target) && !ttyOpen && !root.classList.contains('keys-off')) {
       e.preventDefault();
       if (open) hide({ focus: sel.contains(document.activeElement) });
       else show('key');
@@ -340,7 +378,7 @@
   }
 
   addEventListener('resize', () => { if (open) place(true); });
-  phone.addEventListener && phone.addEventListener('change', () => { if (open) root.classList.toggle('sel-lock', phone.matches); });
+  phone.addEventListener && phone.addEventListener('change', () => { if (open) { root.classList.toggle('sel-lock', phone.matches); under(phone.matches); } });
 
   // Back/forward cache: come back to a closed menu and a fresh credit.
   addEventListener('pageshow', (e) => {

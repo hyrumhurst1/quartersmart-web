@@ -326,7 +326,7 @@
     const MORPH = +cv.dataset.morphMs || 1800, HOLD = +cv.dataset.hold || 2400, FIRST = +cv.dataset.firstHold || 4000;
     const SPAN = 0.58, FL = 130 / MORPH;
     let idx = 0, next = 1, phase = 'hold', clock = 0, parts = null, turn = 0, last = performance.now();
-    let visible = true, paused = false, drawnHold = -1, noise = [], lastNoise = -1e9;
+    let visible = true, paused = false, drawnHold = -1, noise = [], lastNoise = -1e9, raf = 0;
 
     let path = 'arc';
     function startMorph(from, to) {
@@ -382,30 +382,34 @@
       return t < D + 80;
     }
 
+    // The loop only runs while the stage is on screen, the tab is shown and
+    // it is not paused; kick() restarts it when any of those change back.
     function tick(now) {
-      const dt = Math.min(50, now - last); last = now;
-      if (visible && !document.hidden && !paused) {
-        clock += dt;
-        if (phase === 'tune') { if (!drawTune(clock)) { phase = 'hold'; clock = 0; drawnHold = -1; } }
-        else if (phase === 'intro' || phase === 'morph') {
-          const T = clock / (phase === 'intro' ? 1600 : MORPH);
-          if (T >= 1 + FL) { idx = next; phase = 'hold'; clock = 0; drawnHold = -1; still(scenes[idx]); }
-          else drawMorph(T);
-        } else {
-          const hold = idx === 0 ? FIRST : HOLD, g0 = hold * 0.4, gd = 900;
-          if (clock >= g0 && clock < g0 + gd) { still(scenes[idx], -H + ((clock - g0) / gd) * (W + H * 1.5)); drawnHold = 1; }
-          else if (drawnHold !== (clock < g0 ? 0 : 2)) { still(scenes[idx]); drawnHold = clock < g0 ? 0 : 2; }
-          if (clock >= hold) startMorph(idx, (idx + 1) % scenes.length);
-        }
+      raf = 0;
+      const dt = Math.max(0, Math.min(50, now - last)); last = now;
+      if (!visible || document.hidden || paused) return;
+      clock += dt;
+      if (phase === 'tune') { if (!drawTune(clock)) { phase = 'hold'; clock = 0; drawnHold = -1; } }
+      else if (phase === 'intro' || phase === 'morph') {
+        const T = clock / (phase === 'intro' ? 1600 : MORPH);
+        if (T >= 1 + FL) { idx = next; phase = 'hold'; clock = 0; drawnHold = -1; still(scenes[idx]); }
+        else drawMorph(T);
+      } else {
+        const hold = idx === 0 ? FIRST : HOLD, g0 = hold * 0.4, gd = 900;
+        if (clock >= g0 && clock < g0 + gd) { still(scenes[idx], -H + ((clock - g0) / gd) * (W + H * 1.5)); drawnHold = 1; }
+        else if (drawnHold !== (clock < g0 ? 0 : 2)) { still(scenes[idx]); drawnHold = clock < g0 ? 0 : 2; }
+        if (clock >= hold) startMorph(idx, (idx + 1) % scenes.length);
       }
-      requestAnimationFrame(tick);
+      raf = requestAnimationFrame(tick);
     }
-    requestAnimationFrame(tick);
+    const kick = () => { if (!raf && visible && !document.hidden && !paused) { last = performance.now(); raf = requestAnimationFrame(tick); } };
+    raf = requestAnimationFrame(tick);
 
-    new IntersectionObserver((es) => { visible = es.some((e) => e.intersectionRatio > 0.1); }, { threshold: [0, 0.1, 0.5] }).observe(cv);
+    new IntersectionObserver((es) => { visible = es.some((e) => e.intersectionRatio > 0.1); kick(); }, { threshold: [0, 0.1, 0.5] }).observe(cv);
+    document.addEventListener('visibilitychange', kick);
     if (btn) {
       btn.hidden = false;
-      btn.addEventListener('click', () => { paused = !paused; btn.setAttribute('aria-pressed', paused ? 'true' : 'false'); });
+      btn.addEventListener('click', () => { paused = !paused; btn.setAttribute('aria-pressed', paused ? 'true' : 'false'); kick(); });
     }
     const redo = () => { if (dims()) { if (idx >= scenes.length) idx = 0; phase = 'hold'; clock = 0; drawnHold = -1; still(scenes[idx]); } };
     let rt = 0;

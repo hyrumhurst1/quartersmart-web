@@ -581,25 +581,27 @@
     blit();
   }
 
-  let running = false, onScreen = false, last = 0;
+  let running = false, onScreen = false, last = 0, raf = 0;
   const q = new URLSearchParams(location.search);
   const freeze = q.has('arenastill');
   // debug for screenshots: ?arena=ms jumps into the loop; ?arenastill freezes it
   if (q.has('arena')) { T = (+q.get('arena') || 0) % LOOP; window.__arena = (ms, clk) => { T = ms % LOOP; if (clk != null) clock = clk; render(); return cast; }; window.__arenaLoop = LOOP; }
   function frame(now) {
+    raf = 0;
     if (!running) return;
-    const dt = Math.min(50, now - last); last = now;
+    // the first rAF stamp can be older than the performance.now() sync() stored
+    const dt = Math.max(0, Math.min(50, now - last)); last = now;
     clock += dt;
     const prev = T; T = (T + dt) % LOOP;
     for (const [tm, n] of EVENTS) if (prev <= T ? tm > prev && tm <= T : tm > prev || tm <= T) fire(n);
     if (clock > sp.next && clock - sp.t0 > sp.dur) spin(16, 1000, false);
     render();
-    requestAnimationFrame(frame);
+    raf = requestAnimationFrame(frame);
   }
   function drawIdle() { if (reduce) still(false); else render(); }
   function sync() {
     const want = onScreen && !document.hidden && !reduce && !freeze;
-    if (want && !running) { running = true; last = performance.now(); requestAnimationFrame(frame); }
+    if (want && !running) { running = true; last = performance.now(); if (!raf) raf = requestAnimationFrame(frame); }
     else if (!want) running = false;
   }
 

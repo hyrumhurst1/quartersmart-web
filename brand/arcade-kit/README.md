@@ -15,7 +15,6 @@ processed, transparent PNG sprites at native pixel size (scale up with integer f
 - `sprites/coin-slot-mini.png`
 - `sprites/coin-slot.png`
 - `sprites/coin-spin.png`
-- `sprites/desk-hacker.png`
 - `sprites/joystick.png`
 - `sprites/player-at-cabinet.png`
 - `sprites/pu-map.png`
@@ -23,17 +22,10 @@ processed, transparent PNG sprites at native pixel size (scale up with integer f
 - `sprites/pu-robot.png`
 - `sprites/pu-setup.png`
 - `sprites/pu-token.png`
-- `sprites/scene-desert-dusk.png`
-- `sprites/scene-horizon.png`
-- `sprites/scene-radar-night.png`
-- `sprites/sprite-answering-machine.png`
 - `sprites/sprite-arcade.png`
 - `sprites/sprite-assistant.png`
-- `sprites/sprite-floppies.png`
 - `sprites/sprite-keyboard-manual.png`
 - `sprites/sprite-radar.png`
-- `sprites/sprite-radio.png`
-- `sprites/sprite-workstation.png`
 
 ## sprites-raw/
 
@@ -82,7 +74,6 @@ the canvas engines and page behaviours (attract hero + scene packs, night sky, s
 - `engine/attract-pack-quest.js`
 - `engine/attract.js`
 - `engine/home.js`
-- `engine/idle.js`
 - `engine/night.js`
 - `engine/qs.js`
 - `engine/quarter.js`

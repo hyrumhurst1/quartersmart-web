@@ -180,11 +180,13 @@
 .sel__joy[data-f="4"] { background-position: -256px 0; }
 .sel__btn { display: block; flex: none; width: 48px; height: 48px; margin: 10px 4px 0 -10px; background: url(/assets/px/arcade-button.png) 0 0 / 96px 48px no-repeat; image-rendering: pixelated; }
 .sel__btn.is-down { background-position: -48px 0; }
-.sel__keys { display: grid; }
-.sel__keys span + span::before { content: none; }
+.sel__keys { display: grid; white-space: nowrap; }
+/* the backtick is two pixels tall in the pixel face, so it borrows the mono one */
+.sel__keys kbd { font: 700 13px/1 var(--mono); letter-spacing: 0; }
+/* the footer "shortcuts off" switch (term.js) drops the one-key hints */
+.keys-off .sel__keys > span:nth-child(n+3) { display: none; }
 @media (min-width: 1240px) {
-  .sel__keys { display: flex; gap: 0; }
-  .sel__keys span + span::before { content: "\00b7"; margin: 0 .7em; }
+  .sel__keys { grid-template-rows: auto auto; grid-auto-flow: column; column-gap: 1.6em; }
 }
 
 .sel__coin { margin-left: auto; display: flex; align-items: flex-end; gap: 14px; padding: 0 6px 4px 0; text-decoration: none; color: var(--fg-0); -webkit-tap-highlight-color: transparent; }
@@ -316,6 +318,7 @@
   .sel__title { font-size: 22px; }
   .sel__hud { position: static; height: auto; justify-content: space-between; gap: 12px; padding: 10px 0 12px; border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line); }
   .sel__hud .sel__close { padding: 8px 10px 7px; }
+  .sel__hud button { min-height: 44px; }
   .sel__esc { display: none; }
   .sel__x { display: inline; }
   .sel__body { display: flex; flex-direction: column; flex: 1; padding-top: 0; }
@@ -336,7 +339,7 @@
   }
   .sel__coin:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--e); }
   .sel__cointxt { justify-items: center; gap: 8px; padding: 0; }
-  .sel__insert { color: var(--accent-ink); opacity: .75; }
+  .sel__insert { color: var(--accent-ink); }
   .sel__book, .sel__coin:hover .sel__book, .sel__coin.is-drop .sel__book { color: var(--accent-ink); font-size: 22px; }
   .sel__coin.is-coin { animation: coinfx-flash .12s steps(2) .08s; }
 }
@@ -344,3 +347,4 @@
   .sel__name, .sel__book { font-size: 16.5px; }
   .sel__hud { font-size: 11px; letter-spacing: .06em; }
 }
+@media (forced-colors: active) and (max-width: 699px) { .sel__coin { border: 2px solid ButtonText; } }

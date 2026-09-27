@@ -97,18 +97,41 @@
     }
     g.globalAlpha = 1;
   }
+  // The sky steps about 7 times a second, so it waits on a timer between
+  // steps instead of asking for every display frame. It stops outright on
+  // the paper theme and in hidden tabs; kick() starts it again.
+  let pending = false;
+  const kick = () => {
+    if (pending || reduce || !dark || document.hidden) return;
+    pending = true;
+    setTimeout(() => requestAnimationFrame(loop), 140);
+  };
   function loop(now) {
+    pending = false;
+    if (!dark || document.hidden) return;
     // hold the sky perfectly still while the page is moving; resume a beat after
-    if (!document.hidden && now - scrolled > 450 && now - last > 140) { last = now; clock += 140; frame(clock); }
-    requestAnimationFrame(loop);
+    if (now - scrolled > 450) { last = now; clock += 140; frame(clock); }
+    kick();
   }
   function mount() {
     document.body.prepend(cv);
     size(); dark = isDark(); cv.hidden = !dark;
     addEventListener('resize', () => { size(); frame(clock); });
     addEventListener('scroll', () => { scrolled = performance.now(); }, { passive: true });
-    addEventListener('qs:theme', () => { P = pal(); dark = isDark(); cv.hidden = !dark; frame(clock); });
-    if (reduce) frame(4000); else requestAnimationFrame(loop);
+    addEventListener('qs:theme', () => { P = pal(); dark = isDark(); cv.hidden = !dark; frame(clock); kick(); });
+    document.addEventListener('visibilitychange', kick);
+    if (reduce) frame(4000); else kick();
+    pauseOffscreen();
+  }
+
+  // ---------- CSS loops off screen ----------
+  // A few stepped CSS loops make Chrome restyle every display frame even far
+  // below the fold, so each top-level section (and the footer) is marked
+  // .is-off while it is out of view and qs.css holds its animations still.
+  function pauseOffscreen() {
+    if (!('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('is-off', !e.isIntersecting)), { rootMargin: '100px' });
+    document.querySelectorAll('main > section, main > article, main > aside, main > header, main > div, footer.foot').forEach((s) => io.observe(s));
   }
   if (document.body) mount(); else document.addEventListener('DOMContentLoaded', mount);
 })();

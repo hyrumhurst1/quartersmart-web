@@ -46,31 +46,31 @@
 # 301 redirects from the old AI Ed / pre-rebrand URLs to the new pages
 [[redirects]]
   from = "/about.html"
-  to = "/about"
+  to = "/about/"
   status = 301
 [[redirects]]
   from = "/privacy.html"
-  to = "/privacy"
+  to = "/privacy/"
   status = 301
 [[redirects]]
   from = "/terms.html"
-  to = "/terms"
+  to = "/terms/"
   status = 301
 [[redirects]]
   from = "/ai-implementation/*"
-  to = "/services"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/n8n-automation/*"
-  to = "/services"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/workforce-enablement/*"
-  to = "/services"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/radar.html"
-  to = "/signals"
+  to = "/signals/"
   status = 301
 [[redirects]]
   from = "/rebrand-preview/*"
@@ -80,23 +80,27 @@
 # Stale AI Ed era URLs still indexed by Google/Bing (clean up 404s)
 [[redirects]]
   from = "/blog/*"
-  to = "/signals"
+  to = "/signals/"
   status = 301
 [[redirects]]
   from = "/radar"
-  to = "/signals"
+  to = "/signals/"
   status = 301
 [[redirects]]
   from = "/vs-lms"
-  to = "/services"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/coming-soon"
   to = "/"
   status = 301
 [[redirects]]
+  from = "/coming-soon.html"
+  to = "/"
+  status = 301
+[[redirects]]
   from = "/teams/*"
-  to = "/services"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/schools/*"

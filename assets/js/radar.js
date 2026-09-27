@@ -4,8 +4,7 @@
 // its own, the wordmark, a satellite, the four verdicts, a broadcast tower, a
 // launch pad, the Monday email, a voice wave, an assistant, the keyboard and
 // manual, the brand mark, an arcade cabinet and the five power-ups, plus the
-// founder's avatar for his page. A page picks its own list with data-scenes
-// ("floppies" is kept as another name for the power-ups).
+// founder's avatar for his page. A page picks its own list with data-scenes.
 // Between scenes every lit pixel travels to a pixel of the next scene, the
 // same morph as the home page: both pictures are cut into matching upright
 // strips and paired in order, so neighbours stay neighbours; each pixel's path bends by a
@@ -590,9 +589,7 @@
       stat() { floorLine(91, 24, 120); spr('avatar-hyrum', 33, 7); },
     },
   };
-  // older names, so no page breaks: the floppies became the power-ups
-  const ALIAS = { floppies: 'powerups' };
-  const named = (n) => ALIAS[n] || n;
+  const named = (n) => n;
   const ORDER = ['radar', 'scope', 'word', 'satellite', 'verdicts', 'tower', 'rocket', 'mail', 'wave', 'assistant', 'keyboard', 'mark', 'arcade', 'powerups'];
   const ready = (sc) => !sc.sprites || sc.sprites.every((n) => SPR[n] && SPR[n].ok);
   function cacheOf(sc) {

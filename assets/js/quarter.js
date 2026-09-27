@@ -10,7 +10,7 @@
 // reads 25%. Click the quarter to lose a life; three and it asks you to
 // continue. It plays once when the window scrolls into view (every frame is a
 // pure function of its clock); afterwards a tiny UFO keeps drifting through the
-// far sky. "replay" runs it again.
+// far sky. "replay" runs it again; "pause" on the bottom border holds it.
 (() => {
   const sec = document.querySelector('[data-quarter]');
   if (!sec) return;
@@ -270,41 +270,64 @@
     [...livesEl.children].forEach((i, n) => i.classList.toggle('is-lost', !cont && n >= 3 - deaths));
   }
   // the copy steps in (CSS, .is-on) as soon as a fifth of the window is in view and
-  // then stays for good; the story clock starts once a good third is in view
-  let visible = true, t0 = -1;
+  // then stays for good; the story clock starts once a good third is in view.
+  // The loop only runs while the window is on screen and not paused.
+  let visible = true, t0 = -1, paused = false, pausedAt = 0, raf = 0, lastP = 0, lastNow = 0;
+  const wake = () => { if (visible && !paused && !reduce && !raf) raf = requestAnimationFrame(frame); };
   new IntersectionObserver((es) => {
     for (const e of es) {
       visible = e.isIntersecting;
       if (e.intersectionRatio >= 0.2) sec.classList.add('is-on');
       if (e.intersectionRatio >= 0.35 && t0 < 0) t0 = performance.now();
     }
+    wake();
   }, { threshold: [0, 0.2, 0.35] }).observe(win);
   function frame(now) {
-    if (visible) draw(t0 < 0 ? 0 : clamp((now - t0) / TOTAL), now);
-    requestAnimationFrame(frame);
+    raf = 0;
+    if (paused || !visible) return;
+    lastP = t0 < 0 ? 0 : clamp((now - t0) / TOTAL); lastNow = now;
+    draw(lastP, now);
+    raf = requestAnimationFrame(frame);
   }
+  // pause / play on the window's bottom border, like the hero: the picture holds and the story clock stops
+  const pz = win.querySelector('[data-qs-pause]');
+  const setPaused = (v) => {
+    if (v === paused) return;
+    const now = performance.now();
+    paused = v;
+    if (v) { pausedAt = now; cancelAnimationFrame(raf); raf = 0; }
+    else { if (t0 >= 0) t0 += now - pausedAt; died += now - pausedAt; wake(); }
+    if (pz) pz.firstElementChild.textContent = v ? 'play' : 'pause';
+    win.classList.toggle('is-paused', v);   // the title light holds too
+  };
   if (big) big.addEventListener('animationend', () => big.classList.remove('is-pop'));
   if (replay) replay.addEventListener('click', () => {
     const had = document.activeElement === replay;
+    setPaused(false);
     t0 = performance.now(); popped = false; if (big) big.classList.remove('is-pop'); replay.hidden = true;
     if (had) { win.tabIndex = -1; win.focus({ preventScroll: true }); }   // the button hides: keep keyboard focus in the window
   });
   cv.addEventListener('click', () => {
     const now = performance.now();
-    if (now - died < 1800) return;
+    if (paused || now - died < 1800) return;
     died = now; deaths++;
     if (deaths >= 3) { deaths = 0; contAt = now + 1400; setTimeout(lives, 1400); setTimeout(lives, 3700); }
     lives();
   });
   cv.style.cursor = 'pointer';
   cv.setAttribute('title', 'Click the quarter');
-  // reduced motion draws the final frame once, so redraw it whenever the canvas is rebuilt or recoloured
-  const onResize = () => { if (size() && reduce) draw(1, 0); };
+  // reduced motion draws the final frame once, and a paused story holds its frame, so redraw whenever the canvas is rebuilt or recoloured
+  const still = () => { if (reduce) draw(1, 0); else if (paused) draw(lastP, lastNow); };
+  const onResize = () => { if (size()) still(); };
   addEventListener('resize', onResize);
   if ('ResizeObserver' in window) new ResizeObserver(onResize).observe(copy);   // the copy reflows when its font arrives
-  addEventListener('qs:theme', () => { pal(); if (reduce) draw(1, 0); });
+  addEventListener('qs:theme', () => { pal(); still(); });
   size();
   draw(0, 0);
   sec.classList.add('is-live');
-  if (reduce) { sec.classList.add('is-on'); draw(1, 0); } else requestAnimationFrame(frame);
+  if (reduce) { sec.classList.add('is-on'); draw(1, 0); }
+  else {
+    wake();
+    if (pz) { pz.hidden = false; pz.addEventListener('click', () => setPaused(!paused)); }
+  }
 })();

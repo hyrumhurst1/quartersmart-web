@@ -17,10 +17,10 @@ Hyrum Hurst is also CTO of Learning Journey AI (https://learningjourneyai.com/),
 - Works in: Claude, ChatGPT and n8n, every day, on live client work.
 - Other roles: AI automation consultant (contract) for Dual Logic, a Washington, DC AI integration consultancy; pro bono AI work for Ability Builders, a Mesa nonprofit. These are his own roles, not QuarterSmart clients.
 - Verified n8n creator. Quoted in CyberNews on local AI models. Registered expert source on Qwoted.
-- Profile page: https://quartersmart.com/about/hyrum-hurst
+- Profile page: https://quartersmart.com/about/hyrum-hurst/
 
 ## Signals
-Signals is QuarterSmart's free, public coverage of AI launches, published at https://quartersmart.com/signals with a Monday email, Signals Weekly. Each Signal says what happened, whether it matters and to whom, and ends in a verdict: Act now, Prepare, Wait or Ignore. Wait and Ignore are common verdicts.
+Signals is QuarterSmart's free, public coverage of AI launches, published at https://quartersmart.com/signals/ with a Monday email, Signals Weekly. Each Signal says what happened, whether it matters and to whom, and ends in a verdict: Act now, Prepare, Wait or Ignore. Wait and Ignore are common verdicts.
 
 Every Signal carries one status label:
 - Reported: publicly reported, not confirmed by the company. Always shown as "Reported · unconfirmed."
@@ -33,33 +33,33 @@ Every Signal carries one status label:
 Sourcing: public information only. No confidential documents, credentials, private source code or anything obtained by breaking terms of service. Reported items stay labeled unconfirmed until the company confirms or denies them. Sources are cited, other people's screenshots are linked rather than re-hosted, and corrections are logged with timestamps. The accuracy record for reported items, including misses, is the Signals Log. Signals is general information about third-party products, not legal, security or financial advice.
 
 ## Ways to work with us
-The services ladder, from free to ongoing:
-1. Signals (free): the public feed and the Signals Weekly email.
-2. Head Start (from $1,500, one time): a review of the software a business already pays for, looking for AI features it has not switched on, with the three most relevant launches or tools, each with a verdict, and a 30-day plan. About a week from kickoff. The full fee counts toward a Day One Setup or the first month of First Quarter if the client starts within 30 days.
-3. Day One Setup (from $2,500 per tool): one tool set up properly in the client's accounts with least-access permissions, connected to email, calendar, docs or CRM, tested with a few people first, then taught to the team.
-4. Rollout Session (quoted): live, role-based team training on a tool the team already has, using the team's own work.
-5. First Quarter membership (from $1,500 a month; Pro from $3,500 a month): Client Signals filtered to the member's own tools and delivered the same business day for anything that affects their stack, setup and training time every month, and priority on launch weeks.
-6. Build (scoped): custom agents and automations for work that repeats, scoped after a Head Start or for members.
+The services ladder, five levels from 0 (free) to 4:
+- Level 0: Signals (free): the public feed and the Signals Weekly email.
+- Level 1: Head Start (from $1,500, one time): a review of the software a business already pays for, looking for AI features it has not switched on, with the three most relevant launches or tools, each with a verdict, and a 30-day plan. About a week from kickoff. The full fee counts toward a Day One Setup or the first month of First Quarter if the client starts within 30 days.
+- Level 2: Day One Setup (from $2,500 per tool): one tool set up properly in the client's accounts with least-access permissions, connected to email, calendar, docs or CRM, tested with a few people first, then taught to the team.
+- Level 2, team training: Rollout Session (quoted): live, role-based team training on a tool the team already has, using the team's own work.
+- Level 3: First Quarter membership (from $1,500 a month; Pro from $3,500 a month): Client Signals filtered to the member's own tools and delivered the same business day for anything that affects their stack, setup and training time every month, and priority on launch weeks.
+- Level 4: Build (scoped): custom agents and automations for work that repeats, scoped after a Head Start or for members.
 
 Agencies and IT providers can resell Signals and Day One Setups through the Partner Bench (see For Agencies).
 
 ## Key pages
 - [Home](https://quartersmart.com/): Use new AI while it's still an advantage. What QuarterSmart does, latest Signals, ways to work with us.
-- [Signals](https://quartersmart.com/signals): Plain-English coverage of AI launches, early access and quiet updates, each with a verdict.
-- [How we source Signals](https://quartersmart.com/signals/policy): Sourcing rules, status labels, verdicts, corrections and independence.
-- [Signals Log](https://quartersmart.com/signals/log): The accuracy record for reported items: what we posted, when, and whether it was confirmed or denied. Misses stay on the list.
-- [Services](https://quartersmart.com/services): The services ladder, level 0 to 4, with published starting prices: Signals (free), Head Start (from $1,500), Day One Setup (from $2,500 per tool), Rollout Session (quoted), the First Quarter membership (from $1,500 and $3,500 a month) and Build (scoped).
-- [Approach](https://quartersmart.com/approach): Train your team. Automate the rest. The two halves of every engagement, the Detect, Decode, Deploy, Stay current method, the questions a tool must pass before we recommend it, and the security rules for every setup.
-- [About](https://quartersmart.com/about): Who we are, why the name "Quarter," who you will work with, and why we stay independent.
-- [Hyrum Hurst](https://quartersmart.com/about/hyrum-hurst): The founder's page: background, what he builds, credentials you can check, experience and recent Signals.
-- [For Agencies](https://quartersmart.com/for-agencies): Partner Bench. Resell Signals and Day One Setups under your brand.
-- [FAQ](https://quartersmart.com/faq): Pricing, membership terms, security, what "day one" means, how Signals is sourced, what we won't do, affiliation.
-- [Contact](https://quartersmart.com/contact): Book a free 20-minute call, or email.
-- [Workflow usage](https://quartersmart.com/workflow-usage): Per-template data and method for Hyrum's public n8n workflow templates.
-- [Privacy](https://quartersmart.com/privacy) and [Terms](https://quartersmart.com/terms), including the Signals disclaimer.
+- [Signals](https://quartersmart.com/signals/): Plain-English coverage of AI launches, early access and quiet updates, each with a verdict.
+- [How we source Signals](https://quartersmart.com/signals/policy/): Sourcing rules, status labels, verdicts, corrections and independence.
+- [Signals Log](https://quartersmart.com/signals/log/): The accuracy record for reported items: what we posted, when, and whether it was confirmed or denied. Misses stay on the list.
+- [Services](https://quartersmart.com/services/): The services ladder, level 0 to 4, with published starting prices: Signals (free), Head Start (from $1,500), Day One Setup (from $2,500 per tool), Rollout Session (quoted), the First Quarter membership (from $1,500 and $3,500 a month) and Build (scoped).
+- [Approach](https://quartersmart.com/approach/): Train your team. Automate the rest. The two halves of every engagement, the Detect, Decode, Deploy, Stay current method, the questions a tool must pass before we recommend it, and the security rules for every setup.
+- [About](https://quartersmart.com/about/): Who we are, why the name "Quarter," who you will work with, and why we stay independent.
+- [Hyrum Hurst](https://quartersmart.com/about/hyrum-hurst/): The founder's page: background, what he builds, credentials you can check, experience and recent Signals.
+- [For Agencies](https://quartersmart.com/for-agencies/): Partner Bench. Resell Signals and Day One Setups under your brand.
+- [FAQ](https://quartersmart.com/faq/): Pricing, membership terms, security, what "day one" means, how Signals is sourced, what we won't do, affiliation.
+- [Contact](https://quartersmart.com/contact/): Book a free 20-minute call, or email.
+- [Workflow usage](https://quartersmart.com/workflow-usage/): Per-template data and method for Hyrum's public n8n workflow templates.
+- [Privacy](https://quartersmart.com/privacy/) and [Terms](https://quartersmart.com/terms/), including the Signals disclaimer.
 
 ## Signals posts
-Written by Hyrum Hurst. Full hub at https://quartersmart.com/signals. RSS: https://quartersmart.com/feed.xml
+Written by Hyrum Hurst. Full hub at https://quartersmart.com/signals/. RSS: https://quartersmart.com/feed.xml
 - [OpenAI's leaked "o" assistant: what business owners should know before Tuesday](https://quartersmart.com/signals/openai-o-assistant-leak) (Sep 27, 2026): Reported · unconfirmed. What was reported, what is confirmed, and what to do before OpenAI's DevDay keynote. Verdict: Prepare.
 - [ChatGPT's mobile app can now draft, summarize and build by voice](https://quartersmart.com/signals/chatgpt-mobile-voice-work) (Sep 27, 2026): Available on Plus and Pro. Advice: if your team is on Plus or Pro, test one voice-drafted email this week.
 - [Sonnet 5 ships and Fable 5 comes back online on the same day](https://quartersmart.com/signals/sonnet-5-fable-5-same-day) (Jun 30, 2026): Two Anthropic model moves on June 30, 2026 and what they mean for business users.
@@ -75,16 +75,16 @@ Written by Hyrum Hurst. Full hub at https://quartersmart.com/signals. RSS: https
 - [This Week in AI, April 22, 2026](https://quartersmart.com/signals/weekly-advancements-apr-22-2026) (Apr 22, 2026): A roundup of the releases and shifts that mattered that week.
 
 ## Public evidence
-- Signals archive, dated, with an update log on every post: https://quartersmart.com/signals
+- Signals archive, dated, with an update log on every post: https://quartersmart.com/signals/
 - CyberNews feature quoting Hyrum Hurst on local AI models: https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/
 - Qwoted source profile: https://app.qwoted.com/sources/hyrum-hurst
 - Hyrum Hurst n8n creator profile: https://n8n.io/creators/hyrum-hurst
-- Workflow usage data and method (per-template table): https://quartersmart.com/workflow-usage. Metric rule: the figure on that page counts documented template uses recorded by n8n. It is not a count of users, people, customers or clients.
+- Workflow usage data and method (per-template table): https://quartersmart.com/workflow-usage/. Metric rule: the figure on that page counts documented template uses recorded by n8n. It is not a count of users, people, customers or clients.
 - LinkedIn: https://www.linkedin.com/in/hyrum-hurst-83a5a537a/
 - GitHub: https://github.com/hyrumhurst1
 
 ## Contact
-Book a 20-minute call at https://quartersmart.com/contact or https://quartersmart.com/book. Email hyrum@quartersmart.com.
+Book a free 20-minute call at https://quartersmart.com/contact/ or https://quartersmart.com/book. Email hyrum@quartersmart.com.
 
 ---
 Last updated: 2026-09-27

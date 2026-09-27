@@ -138,3 +138,5 @@
 /* the footer logo plays the quarter pop on its own now and then, and on hover */
 .foot .brand.qq-wig svg path:last-child, footer .brand.qq-wig svg path:last-child { animation: qq-wig .6s steps(1) both; }
 @media (prefers-reduced-motion: reduce) { .qq.qq::after { animation: none; } }
+/* Windows High Contrast: the Book button keeps its box (it is background-only otherwise) */
+@media (forced-colors: active) { .btn--arcade, .btn--arcade:hover { border: 2px solid ButtonText; } }

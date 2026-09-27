@@ -60,7 +60,7 @@
     // ASTEROIDS: a vector ship turns and fires; each letter it hits cracks into three rocks
     // that drift apart, then every rock glides home and the word snaps back together.
     classicsAsteroids: {
-      name: 'asteroids', dur: 7200,
+      name: 'rocks', dur: 7200,
       word: { lay: 'line', F: 2, style: 'neon' },
       parade: [['..x..', '.x.x.', '.x.x.', 'x...x', 'xx.xx'], 'cream'],
       init() {
@@ -166,7 +166,7 @@
     // MISSILE COMMAND: the letters are the cities. Missiles streak down, the crosshair glides to
     // meet them and interceptor blooms pop them; one gets through, scorches a letter, and it heals.
     classicsMissile: {
-      name: 'missile command', dur: 7200,
+      name: 'defense', dur: 7200,
       word: { lay: 'line', F: 2, style: 'band', cy: 0.72 },
       parade: [['..x..', '.xxx.', 'xxxxx'], 'teal'],
       rad(b, t) { const u = (t - b.tb) / b.dur; return u <= 0 || u >= 1 ? 0 : b.R * Math.pow(Math.sin(Math.PI * u), 0.6); },
@@ -311,7 +311,7 @@
     // formation (held red, like a captured fighter); the fighter shoots the boss and the letter
     // drops back home. Then the formation peels away.
     classicsGalaga: {
-      name: 'galaga', dur: 7400,
+      name: 'swarm', dur: 7400,
       word: { lay: 'line', F: 2, style: 'multi', cy: 0.66 },
       parade: [['.x.x.', 'xxxxx', 'x.x.x', '.x.x.'], 'butter'],
       init() {
@@ -448,7 +448,7 @@
     // letters. Below the word the shooter chips its head into fresh mushrooms, and each new head
     // bumps the mushroom it just became and turns, just like the cabinet.
     classicsCentipede: {
-      name: 'centipede', dur: 7400,
+      name: 'crawler', dur: 7400,
       word: { lay: 'line', F: 2, style: 'bunker', cy: 0.44 },
       parade: [['.x.x.x.x.x', 'xxxxxxxxxx', 'x.x.x.x.x.'], 'rose'],
       free(x, y) {
@@ -575,7 +575,7 @@
     // LUNAR LANDER: a lander drifts in, burns, corrects with side puffs and sets down gently on
     // the flat top of a letter. Pad lights chase, dust puffs out, a tiny astronaut plants a flag.
     classicsLander: {
-      name: 'lunar lander', dur: 7400,
+      name: 'landing', dur: 7400,
       word: { lay: 'line', F: 2, style: 'bright', cy: 0.62 },
       parade: [['..x..', '.xxx.', '.x.x.', 'xxxxx', 'x...x'], 'cream'],
       init() {

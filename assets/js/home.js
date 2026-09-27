@@ -40,4 +40,10 @@
     addEventListener('resize', set);
     set();
   }
+  // "player one" blinks three times when its section comes into view, then holds steady (CSS: .p1.is-in)
+  const p1 = document.querySelector('.p1');
+  if (p1 && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { p1.classList.add('is-in'); io.disconnect(); } }, { threshold: 0.4 });
+    io.observe(p1);
+  }
 })();

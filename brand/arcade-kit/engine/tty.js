@@ -1,9 +1,11 @@
-// qsh: a small hidden terminal. Press ` or ~ (or click the cursor in the
-// footer) to drop it down. Real commands that navigate the site, read the
-// Signals feed, switch themes, and print a neofetch-style card.
+// qsh: a small hidden terminal. Press ` (or click qsh in the footer) to drop
+// it down. Real commands that navigate the site, read the Signals feed,
+// switch themes, and print a neofetch-style card. Closed, it is inert (out
+// of the tab order and the accessibility tree); Esc hands focus back to
+// whatever opened it.
 const PAGES = { home: '/', signals: '/signals/', services: '/services/', approach: '/approach/', about: '/about/', hyrum: '/about/hyrum-hurst/', contact: '/contact/', faq: '/faq/', agencies: '/for-agencies/', policy: '/signals/policy/', log: '/signals/log/' };
 const THEMES = ['evergreen', 'obsidian', 'forest', 'midnight', 'rose', 'paper'];
-let el, out, input, history = [], hi = 0;
+let el, out, input, history = [], hi = 0, opener = null;
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 function print(html) { out.insertAdjacentHTML('beforeend', html + '\n'); out.scrollTop = out.scrollHeight; }
@@ -117,12 +119,27 @@ function build() {
   input = el.querySelector('.tty__in');
   print('<span class="dim">qsh 1.0  ·  type help</span>');
   input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') { const v = input.value; input.value = ''; if (v.trim()) { history.push(v); hi = history.length; } run(v); }
+    // preventDefault: "exit" hands focus back to the opener mid-keystroke, and
+    // an un-cancelled Enter would then press that button and reopen the terminal
+    if (e.key === 'Enter') { e.preventDefault(); const v = input.value; input.value = ''; if (v.trim()) { history.push(v); hi = history.length; } run(v); }
     else if (e.key === 'ArrowUp') { if (hi > 0) { hi--; input.value = history[hi]; } e.preventDefault(); }
     else if (e.key === 'ArrowDown') { if (hi < history.length) { hi++; input.value = history[hi] || ''; } e.preventDefault(); }
     else if (e.key === 'Escape' || ((e.key === '`' || e.key === '~') && !input.value)) { e.preventDefault(); close(); }
   });
 }
-export function open() { if (!el) build(); el.classList.add('is-open'); setTimeout(() => input.focus(), 50); }
-export function close() { if (el) { el.classList.remove('is-open'); input.blur(); } }
+export function open() {
+  if (!el) build();
+  if (!el.classList.contains('is-open')) opener = document.activeElement;
+  el.inert = false;
+  el.classList.add('is-open');
+  setTimeout(() => input.focus(), 50);
+}
+export function close() {
+  if (!el) return;
+  el.classList.remove('is-open');
+  input.blur();
+  el.inert = true;
+  if (opener && opener !== document.body && opener.isConnected) opener.focus({ preventScroll: true });
+  opener = null;
+}
 export function toggle() { if (el && el.classList.contains('is-open')) close(); else open(); }

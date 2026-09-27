@@ -255,6 +255,13 @@ body.home .hud > * { display: none; }
   .hud__coin:hover .hud__coin-tip, .hud__coin:focus-visible .hud__coin-tip, .hud__coin.is-call .hud__coin-tip { animation: coin-tip .16s steps(2) backwards; }
 }
 @keyframes coin-tip { from { transform: translateX(8px); opacity: 0; } }
+/* Once the page's own Book button has scrolled away, the plaque itself reads
+   BOOK / A CALL (as on phones) instead of a tag hanging over the content.
+   The hover slide-out before that is unchanged. */
+@media (min-width: 700px) {
+  .hud__coin.is-call .hud__coin-lbl { display: none; }
+  .hud__coin.is-call .hud__coin-tip { position: static; order: -1; display: grid; justify-items: center; margin-right: -.06em; padding: 0; line-height: 11px; background: none; border: 0; box-shadow: none; animation: none; }
+}
 /* Phones: the words sit over the slot, like MENU over the joystick, and the
    whole column is the tap target. Under 375px it is just BOOK, so the dock
    clears the wordmark and its hidden quarter; under 360px the wordmark
@@ -267,6 +274,13 @@ body.home .hud > * { display: none; }
   }
 }
 @media (max-width: 374px) { .hud__coin-tip > span + span { display: none; } }
+/* Phones: scrolling down tucks the dock up out of the reading line and any
+   scroll up (or reaching the end) brings it back (select.js sets .hud-tuck).
+   It stays put while the menu is open or it holds keyboard focus. */
+@media (max-width: 699px) {
+  .hud__dock { transition: transform .18s steps(4); }
+  html.hud-tuck:not(.sel-open) .hud__dock:not(:focus-within) { transform: translateY(calc(-100% - 4px)); }
+}
 @media (max-width: 359px) { .hud .brand { gap: 8px; font-size: 16.5px; } }
 
 /* ---------- Buttons: keycaps ---------- */
@@ -436,7 +450,7 @@ body.home .hud > * { display: none; }
 .field { display: flex; gap: 10px; flex-wrap: wrap; }
 .input {
   flex: 1 1 240px; min-width: 0; min-height: 44px; padding: 0 14px; border-radius: var(--r);
-  font: 400 15px var(--mono); color: var(--fg-0); background: var(--bg-0); border: 1px solid var(--line-2);
+  font: 400 15px var(--mono); color: var(--fg-0); background: var(--bg-0); border: 1px solid var(--fg-2);
 }
 .input::placeholder { color: var(--fg-2); }
 .input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
@@ -483,6 +497,9 @@ form.is-done .field { display: none; }
 .foot a { text-decoration: none; }
 .foot a:hover { color: var(--fg-0); text-decoration: underline; }
 .foot__base { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line); font: 400 12.5px/1.6 var(--mono); color: var(--fg-2); }
+/* one-key shortcuts switch (term.js), styled like the qsh cue beside it */
+.keys-cue { font: 400 12px/1 var(--mono); color: var(--fg-2); background: none; border: 0; padding: 16px 6px; margin: -16px -6px; cursor: pointer; }
+.keys-cue:hover { color: var(--accent); }
 .themes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
 .themes button { font: 500 12px var(--mono); color: var(--fg-1); background: var(--bg-1); border: 1px solid var(--line); border-radius: 0; padding: 6px 9px; cursor: pointer; display: inline-flex; gap: 7px; align-items: center; }
 .themes button i { width: 10px; height: 10px; border-radius: 1px; display: inline-block; }
@@ -736,6 +753,10 @@ form.is-done .field { display: none; }
   }
 }
 @keyframes qs-quarters { to { --qs-q: 100%; } }
+
+/* Sections out of view hold their CSS loops still (night.js sets .is-off):
+   some stepped loops otherwise restyle every frame even far off screen. */
+.is-off *, .is-off *::before, .is-off *::after { animation-play-state: paused !important; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

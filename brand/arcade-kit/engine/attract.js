@@ -22,8 +22,10 @@
 
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   let C = {};
+  // paper is the one light theme: the pale mint washes out on its cream window, so it takes the theme's own green
   const palette = () => {
-    C = { dim: css('--line-2') || '#4a5a4f', line: css('--line') || '#2c3730', body: '#2a9a70', deep: '#1d7a58', quart: '#a9d99f',
+    const paper = document.documentElement.dataset.theme === 'paper';
+    C = { dim: css('--line-2') || '#4a5a4f', line: css('--line') || '#2c3730', body: '#2a9a70', deep: '#1d7a58', quart: (paper && css('--accent')) || '#a9d99f',
       butter: css('--warn') || '#dfc07f', rose: css('--event') || '#d99bb8', teal: css('--info') || '#86c3ba', cream: css('--fg-1') || '#cbc3ab', hi: css('--fg-0') || '#ece4cc' };
   };
   palette();
@@ -254,7 +256,7 @@
     if (go) for (let k = 1; k < 5; k++) rect(x - 4 - k * 7, road + 2 + (k % 3), 6 - k, 1, C.dim);
   } };
 
-  S.breakout = { dur: 7000, name: 'breakout', word: { lay: 'stack', F: 3, style: 'bricks', mob: { lay: 'stack', F: 2 } }, init() { this.gone = new Set(); this.x = GW / 2; this.y = PH - 10; this.vx = 0.035; this.vy = -0.04; this.pad = GW / 2; }, update(t, dt) {
+  S.breakout = { dur: 7000, name: 'bricks', word: { lay: 'stack', F: 3, style: 'bricks', mob: { lay: 'stack', F: 2 } }, init() { this.gone = new Set(); this.x = GW / 2; this.y = PH - 10; this.vx = 0.035; this.vy = -0.04; this.pad = GW / 2; }, update(t, dt) {
     for (let s = 0; s < dt; s += 3) {
       this.x += this.vx * 3; this.y += this.vy * 3;
       if (this.x < 1 || this.x > GW - 2) this.vx *= -1;
@@ -289,7 +291,7 @@
     }
   }, draw() { drawWord(); for (const k of this.blocks) { rect(k.x, k.y, 4, 4, k.c); rect(k.x + 2, k.y, 2, 2, C.hi); } } };
 
-  S.pong = { dur: 6400, name: 'pong', word: { lay: 'vert', F: 2, alt: { lay: 'stack', F: 2 } }, init() { this.x = GW / 2 - 20; this.y = 6; this.vx = 0.06; this.vy = 0.03; this.l = PH / 2; this.r = PH / 2; this.flash = new Map(); }, update(t, dt) {
+  S.pong = { dur: 6400, name: 'rally', word: { lay: 'vert', F: 2, alt: { lay: 'stack', F: 2 } }, init() { this.x = GW / 2 - 20; this.y = 6; this.vx = 0.06; this.vy = 0.03; this.l = PH / 2; this.r = PH / 2; this.flash = new Map(); }, update(t, dt) {
     for (let s = 0; s < dt; s += 3) {
       const nx = this.x + this.vx * 3, ny = this.y + this.vy * 3;
       const hx = at.get(Math.round(nx) * 1000 + Math.round(this.y)), hy = at.get(Math.round(this.x) * 1000 + Math.round(ny));
@@ -328,7 +330,7 @@
     }
   }, draw() { for (const q of this.parts) px(q.x, q.y, q.c); rect(0, PH - 1, GW, 1, C.line); } };
 
-  S.frogger = { dur: 6800, name: 'frogger', word: { lay: 'line', F: 2, style: 'multi' }, init() { this.t = 0; }, update(t) { this.t = t; }, draw() {
+  S.frogger = { dur: 6800, name: 'crossing', word: { lay: 'line', F: 2, style: 'multi' }, init() { this.t = 0; }, update(t) { this.t = t; }, draw() {
     const slide = Math.round(Math.sin(this.t / 900) * 10);
     drawWord({ off: () => [slide, 0] });
     const lanes = [{ y: WY1 + 4, v: 0.03, c: C.rose }, { y: Math.min(PH - 5, WY1 + 10), v: -0.04, c: C.butter }, { y: Y0 - 7, v: 0.035, c: C.teal }];
@@ -528,8 +530,10 @@
   const SKY = window.QSSky;
   let stars = [], P = SKY ? SKY.pal() : null, comet = null, nextComet = 3500;
   function makeStars() { if (SKY) stars = SKY.field(GW, Math.max(10, PH - 4), Math.round(GW * PH / (small ? 120 : 170)), 99, { noBig: true, calm: 0.75 }); }
+  let walkAt = 0;
   function drawSky(now) {
     k2.clearRect(0, 0, GW, GH);
+    const walk = walkAt ? clamp((now - walkAt) / (1000 / 60), 0, 3) : 1; walkAt = now;   // the parade walks by the clock (60fps steps), whatever the paint rate
     const put = (x, y, c, a = 1) => { if (y >= PH - 1) return; k2.globalAlpha = a; k2.fillStyle = c; k2.fillRect(Math.round(x), Math.round(y), 1, 1); };
     if (SKY) {
       for (const st of stars) { if (st.x > X0 - 4 && st.x < X0 + WW + 4 && st.y > Y0 - 4 && st.y < WY1 + 4) continue; SKY.drawStar(put, st, now, P); }
@@ -556,7 +560,7 @@
     k2.globalAlpha = 0.4; k2.fillStyle = C.dim; for (let x = -(Math.floor(now / 140) % 6); x < GW; x += 6) k2.fillRect(x, road + 1, 3, 1);
     k2.globalAlpha = 1;
     for (const m of crowd) {
-      if (!reduce) { m.x -= m.sp; if (m.x < -12) m.x = GW + 6; }
+      if (!reduce) { m.x -= m.sp * walk; if (m.x < -12) m.x = GW + 6; }
       const hop = Math.floor(now / 200 + m.ph) % 2;
       k2.fillStyle = C[m.c] || C.quart;
       m.rows.forEach((row, j) => [...row].forEach((ch, i) => { if (ch !== '.') k2.fillRect(Math.round(m.x) + i, road - m.rows.length + j - hop, 1, 1); }));
@@ -594,9 +598,19 @@
     cache.clear(); makeStars(); mode = 'play'; t0 = paused ? pausedAt : performance.now(); start(scene);
     if (reduce) scene.update(scene.dur, 0);          // the title's finished frame: extruded, glint gone
   }
+  // A game paints at about 30fps: its motion snaps to art pixels several device pixels wide, so faster
+  // frames only repeat the picture. Morphs keep about 60fps so the flying pixels stay fluid. It paints on
+  // every Nth display frame (N from the measured refresh interval) so the pacing stays even on 60, 120 and
+  // 144Hz screens; the clocks are absolute, so nothing plays faster or slower.
+  let vsync = 1000 / 60, prevNow = 0, skip = 0;
   function tick(now) {
     raf = 0;
     if (paused) return;
+    const gap = now - prevNow; prevNow = now;
+    // a long gap (tab switch, slow phone) counts as 40ms, so a device that can't reach 30fps paints every frame it gets
+    if (gap > 2) vsync += (Math.min(gap, 40) - vsync) * 0.1;
+    if (++skip < Math.max(1, Math.round((mode === 'morph' ? 16 : 32) / vsync))) { raf = requestAnimationFrame(tick); return; }
+    skip = 0;
     const dt = Math.min(50, now - last) * SPEED; last = now;
     if (visible && !document.hidden) {
       const t = (now - t0) * SPEED;
@@ -635,8 +649,9 @@
     if (v === paused) return;
     const now = performance.now();
     if (v) { paused = true; pausedAt = now; cancelAnimationFrame(raf); raf = 0; }
-    else { paused = false; t0 += now - pausedAt; last = now; if (!raf) raf = requestAnimationFrame(tick); }
+    else { paused = false; t0 += now - pausedAt; last = now; walkAt = 0; if (!raf) raf = requestAnimationFrame(tick); }
     if (pb) (pb.firstElementChild || pb).textContent = paused ? 'play' : 'pause';
+    const w = cv.closest('.h4__win'); if (w) w.classList.toggle('is-paused', paused);   // the title light holds too
   };
   if (pb) { pb.hidden = false; pb.addEventListener('click', () => setPaused(!paused)); }
   // click the world: every letter hops once (a tiny bit of play)
