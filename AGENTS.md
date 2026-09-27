@@ -143,6 +143,23 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-09-27 (local Phase 2 report hold after the Night Arcade rebrand)** - Prepared a targeted
+  withdrawal on top of merged PR #7 (`227a37e`), preserving the new branding. The owner reserved
+  the report for Phase 2, so removed `signals/openai-o-assistant-leak.html`, its dedicated OG cover,
+  and report references from Home, Hyrum's author page, the mobile-voice post's Read next links,
+  Signals Log, llms.txt and the committed sitemap. The existing DevDay homepage event now links
+  to the verified official event page, `https://devday.openai.com/`. The build excludes this
+  report's file, clean-route directory and cover even if restored, and rejects any remaining
+  published discovery reference before production IndexNow submission. Netlify rules force 404
+  for the clean URL, .html URL, descendants and cover. Keep these holds until publication of the
+  finished report is authorized. No report body was rewritten; Git history retains the prior source.
+  Local `CONTEXT=deploy-preview` builds passed: 12 other Signals, 12 RSS items, 26 sitemap URLs,
+  and zero report references in 61 published text files. Synthetic restored-page/cover fixtures
+  stayed excluded; a restored discovery reference rejected the build; fixtures were removed and
+  the final build passed. This entry describes LOCAL work only; root must review, publish and
+  verify actual Netlify 404s before treating production as corrected. Review evidence is outside
+  this repo in the campaign project's `research/site_checks/report-withdrawal-local-review.json`.
+
 - **2026-09-27 (NIGHT ARCADE RELAUNCH, live on quartersmart.com via PR #7, merge 227a37e)**
   - **Positioning.** QuarterSmart is now an early AI adoption partner for owner-led businesses. The offers are Signals (free), Head Start (from $1,500), Day One Setup (from $2,500 per tool), First Quarter (from $1,500 a month; Pro from $3,500), Build and Partner Bench. Cullen, the case studies, Own Your AI and the old n8n proof are retired: they live in graveyard/ with 301s.
   - **Design system "Night Arcade".** Evergreen is the default theme, with Departure Mono for pixel type, a pixel night sky on every page, echo text instead of glow neon, and terminal-window heroes.

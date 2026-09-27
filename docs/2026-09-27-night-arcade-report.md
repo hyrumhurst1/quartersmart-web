@@ -9,6 +9,8 @@ background agents and workflows. Owner: Hyrum Hurst (QuarterSmart founder).
 - Post-launch checks passed on production: 6 key pages, overflow 0, no console errors; the retired URLs 301 correctly.
 - Continued development: branch `night-arcade-polish`, draft PR #8. Previews go to deploy-preview-8--capable-speculoos-78ab6e.netlify.app, and verified checkpoints get merged to main.
 
+- **Update 2026-09-27 08:36 AZ:** Hyrum (in the Codex campaign session, PR #9) reserved the "o" assistant leak report for Phase 2. It is unpublished, and every route plus its share image is forced to 404. The build excludes it and fails if any published page links to it. Do not republish it until he authorizes it.
+
 ## 1. What QuarterSmart is now (the positioning)
 - **Early AI adoption partner for owner-led businesses (20 to 80 staff).** Promise: know the second AI news drops and
   put it to work from day one, but only when it's worth it ("we say wait a lot").
