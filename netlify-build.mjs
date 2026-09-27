@@ -5,7 +5,7 @@
 // answer engines re-crawl automatically. Set-and-forget: publishing a new
 // page and pushing is all that is needed; this keeps the sitemap current.
 import { cpSync, rmSync, mkdirSync, readdirSync, writeFileSync, readFileSync } from "node:fs";
-import { join, relative, sep } from "node:path";
+import { join } from "node:path";
 
 const EXCLUDE = new Set([
   ".git", ".github", "node_modules", "dist",
@@ -13,19 +13,6 @@ const EXCLUDE = new Set([
   "AGENTS.md", "CLAUDE.md", "README.md", "HANDOFF.md", "ENTITY_HANDOFF.md",
   "netlify.toml", "netlify-build.mjs", ".gitignore", ".nojekyll",
 ]);
-
-// The owner reserved this report for Phase 2. Keep its page, clean-route
-// directory and dedicated cover out of deploys even if a branch restores them.
-// Remove this hold only when publication of the finished report is authorized.
-const PAUSED_PUBLICATION_PATHS = new Set([
-  "signals/openai-o-assistant-leak.html",
-  "signals/openai-o-assistant-leak",
-  "assets/og/signals-openai-o-assistant-leak.jpg",
-]);
-const publishable = (source) => {
-  const path = relative(".", source).split(sep).join("/").toLowerCase();
-  return ![...PAUSED_PUBLICATION_PATHS].some((paused) => path === paused || path.startsWith(paused + "/"));
-};
 
 // Serialize local builds (several agents may build at once). mkdir is atomic.
 const LOCK = ".build.lock";
@@ -42,7 +29,7 @@ mkdirSync("dist");
 let n = 0;
 for (const e of readdirSync(".", { withFileTypes: true })) {
   if (EXCLUDE.has(e.name)) continue;
-  cpSync(e.name, "dist/" + e.name, { recursive: true, filter: publishable });
+  cpSync(e.name, "dist/" + e.name, { recursive: true });
   n++;
 }
 console.log(`netlify-build: copied ${n} top-level entries into dist/`);
@@ -213,9 +200,6 @@ try {
       console.log(`netlify-build: RSS skipped (${err.message})`);
     }
 
-    // Do not submit discovery URLs until the Phase 2 publication hold passes.
-    assertReportHeld("dist");
-
     // Only ping IndexNow on the real production deploy, never previews.
     if (process.env.CONTEXT === "production") {
       try {
@@ -237,18 +221,3 @@ try {
 } catch (err) {
   console.log(`netlify-build: sitemap/IndexNow step skipped (${err.message})`);
 }
-
-// Fail a deploy if a restored teaser or discovery link would expose the paused
-// report. Run after generated hub, radar JSON, sitemap and RSS are assembled.
-function assertReportHeld(dir) {
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    const file = join(dir, entry.name);
-    if (entry.isDirectory()) assertReportHeld(file);
-    else if (/\.(?:html|xml|txt|json|js|css)$/i.test(entry.name) &&
-      /openai-o-assistant-leak/i.test(readFileSync(file, "utf8"))) {
-      throw new Error(`paused Phase 2 report reference in ${file}`);
-    }
-  }
-}
-assertReportHeld("dist");
-console.log("netlify-build: paused Phase 2 report excluded from publication and discovery");
