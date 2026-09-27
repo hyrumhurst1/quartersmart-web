@@ -11,7 +11,7 @@ const EXCLUDE = new Set([
   ".git", ".github", "node_modules", "dist",
   "brand", "research", "docs", "design-system", "tmp", "_partials", "_proto", "graveyard", ".build.lock", ".claude",
   "AGENTS.md", "CLAUDE.md", "README.md", "HANDOFF.md", "ENTITY_HANDOFF.md",
-  "netlify.toml", "netlify-build.mjs", ".gitignore", ".nojekyll",
+  "netlify.toml", "netlify-build.mjs", ".gitignore", ".nojekyll", "netlify",
 ]);
 
 // Serialize local builds (several agents may build at once). mkdir is atomic.

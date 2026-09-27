@@ -54,27 +54,28 @@
 <!-- @include nav -->
 <main id="main">
 
-  <!-- 1. Hero: a radar station in a terminal window. The copy on the left, the pixel stage on the right,
-       the live Signals count in the top border and the stage's scene pips in the bottom border. -->
+  <!-- 1. Hero: the copy on the open night, the radar station in a terminal window on the right (its
+       right edge on the text column, as on /about/). The window's top border holds the scene pips,
+       the bottom border the live Signals count and the pause key. -->
   <section class="shero" aria-labelledby="sig-h">
-    <div class="swin shero__win">
-      <span class="swin__t" aria-hidden="true">signals.exe</span>
-      <span class="swin__r" aria-hidden="true"><i class="swin__led"></i><!-- @signals-count --> on radar</span>
-      <div class="wrap shero__grid">
-        <div class="shero__copy">
-          <p class="shero__sign"><img class="shero__pu" src="/assets/px/pu-radar.png" width="32" height="32" alt=""><span class="echo">Signals</span></p>
-          <h1 class="shero__h" id="sig-h">What changed in AI, and what to do about it.</h1>
-          <p class="lede">Launches, early access, quiet updates and credible leaks, read in plain English for a working business. Each one gets a verdict: act now, prepare, wait or ignore.</p>
-          <p class="shero__why">Signals is free. When a launch is worth it, we set it up in your accounts and train your team.</p>
-          <div class="shero__cta">
-            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
-            <a class="link" href="#weekly">Get Signals Weekly</a>
-          </div>
-          <p class="shero__fine">Updated <time datetime="2026-09-27T11:45-07:00">Sep 27, 2026, 11:45 AM</time> Arizona time. We post fast, label how sure we are, and update the post when the facts change. <a href="/signals/policy/">How we source</a> · <a href="/signals/log/">Signals Log</a></p>
+    <div class="wrap shero__grid">
+      <div class="shero__copy">
+        <p class="shero__sign"><img class="shero__pu" src="/assets/px/flat/pu-radar.png" width="16" height="16" alt=""><span class="echo">Signals</span></p>
+        <h1 class="shero__h" id="sig-h">What changed in AI, and what to do about it.</h1>
+        <p class="lede">Launches, early access, quiet updates and credible leaks, read in plain English for a working business. Each one gets a verdict: act now, prepare, wait or ignore.</p>
+        <p class="shero__why">Signals is free. When a launch is worth it, we set it up in your accounts and train your team.</p>
+        <div class="shero__cta">
+          <a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free 20-minute call</a>
+          <a class="link" href="#weekly">Get Signals Weekly</a>
         </div>
+        <p class="shero__fine">Updated <time datetime="2026-09-27T11:45-07:00">Sep 27, 2026, 11:45 AM</time> Arizona time. We post fast, label how sure we are, and update the post when the facts change. <a href="/signals/policy/">How we source</a> · <a href="/signals/log/">Signals Log</a></p>
+      </div>
+      <div class="pxwin shero__win">
+        <span class="win__t" aria-hidden="true">signals.exe</span>
+        <span class="shero__count" aria-hidden="true"><i class="swin__led"></i><!-- @signals-count --> on radar</span>
         <div class="pxstage shero__art" data-pxstage data-first="radar" data-scenes="radar scope verdicts satellite tower mail wave rocket assistant keyboard powerups mark arcade" data-max="4">
           <div class="pxstage__screen">
-            <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" style="--x:45;--y:10;--w:54" alt="Pixel art of a radar dish on a lattice tower, listening for new launches." fetchpriority="high">
+            <img class="pxstage__still" src="/assets/px/flat/radar-tower.png" width="20" height="24" style="--x:42;--y:19;--w:60" alt="Pixel art of a radar dish on a lattice tower, listening for new launches." fetchpriority="high">
             <canvas aria-hidden="true"></canvas>
           </div>
         </div>
@@ -82,8 +83,8 @@
     </div>
   </section>
 
-  <!-- 2. The feed: a high-score table in a window. Filters are arcade toggles; the row under the
-       pointer or focus gets the 1P cursor. Rank numbers and the header row are drawn by CSS. -->
+  <!-- 2. The feed: a high-score table in an open frame (2px border, no fill, the title on the border).
+       Filters are arcade toggles; the row under the pointer or focus gets the 1P cursor. Rank numbers and the header row are drawn by CSS. -->
   <section class="slist" id="latest" aria-labelledby="all-h">
     <div class="wrap">
       <div class="swin slist__win">
@@ -112,8 +113,8 @@
     </div>
   </section>
 
-  <!-- 3. How to read one: a full-bleed band, the same chips the table uses -->
-  <section class="band band--slate slegend" aria-labelledby="legend-h">
+  <!-- 3. How to read one: the same chips the table uses -->
+  <section class="slegend seam" aria-labelledby="legend-h">
     <div class="wrap">
       <p class="label label--accent slegend__kick">How to play</p>
       <h2 class="slegend__h" id="legend-h">Every Signal says how sure we are, and what to do.</h2>
@@ -144,13 +145,13 @@
   </section>
 
   <!-- 4. Close: members and the call, with the Monday email in its own small window -->
-  <section class="scloser" aria-labelledby="close-h">
+  <section class="scloser seam" aria-labelledby="close-h">
     <div class="wrap scloser__grid">
       <div class="scloser__main">
-        <p class="label label--accent scloser__k"><img class="scloser__pu" src="/assets/px/pu-token.png" width="32" height="32" alt="">For members</p>
+        <p class="label label--accent scloser__k"><img class="scloser__pu" src="/assets/px/flat/pu-token.png" width="16" height="16" alt="">For members</p>
         <h2 class="scloser__h" id="close-h">Filtered to your tools, the same business day.</h2>
         <p class="body-l">First Quarter members get Signals filtered to the tools they actually use, with setup time already held for launch weeks.</p>
-        <div class="scloser__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a free 20-minute call</a><a class="link" href="/services/#first-quarter">See First Quarter</a></div>
+        <div class="scloser__cta"><a class="btn btn--arcade btn--xl" href="/insert-coin/" data-cta="book">Book a free 20-minute call</a><a class="link" href="/services/#first-quarter">See First Quarter</a></div>
       </div>
       <form class="swin scloser__form" id="weekly" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
         <p class="label swin__t">Signals Weekly</p>

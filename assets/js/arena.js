@@ -19,23 +19,21 @@
   const buf = document.createElement('canvas');
   const b = buf.getContext('2d');
 
-  // ---------- palette: theme tokens plus the brand greens ----------
-  const EYE = '#f3efe2', INK = '#141a16';
-  const G = { body: '#2a9a70', deep: '#1d7a58', dark: '#135a41', hi: '#4cb88a', quart: '#a9d99f', qhi: '#dcf2d3', qsh: '#78bd8a', shine: '#f6fcf2' };
+  // ---------- palette: theme tokens plus the brand greens (flat: a body, one
+  // shadow tone and the sage quarter, like the brand mark) ----------
+  const EYE = '#ece4cc', INK = '#121814';
+  const G = { body: '#2a9a70', deep: '#1d7a58', quart: '#a9d99f', shine: '#ece4cc' };
   let C = {};
   const tok = (v, f) => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || f;
   function palette() {
     C = { line: tok('--line', '#2c3730'), dim: tok('--line-2', '#4a5a4f'), ink: tok('--fg-0', '#ece4cc'), cream: tok('--fg-1', '#cbc3ab'),
-      faint: tok('--fg-2', '#a1a99d'), accent: tok('--accent', '#a9d99f'), butter: tok('--warn', '#dfc07f'), rose: tok('--event', '#d99bb8'), teal: tok('--info', '#86c3ba') };
+      faint: tok('--fg-1', '#cbc3ab'), accent: tok('--accent', '#a9d99f'), butter: tok('--warn', '#dfc07f'), rose: tok('--event', '#d99bb8'), teal: tok('--info', '#86c3ba') };
   }
 
   // ---------- drawing helpers (grid units) ----------
-  const BAY = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
-  let dens = 1, dsh = 0; // ordered-dither density for see-through things
   const px = (x, y, c) => {
     x = Math.round(x); y = Math.round(y);
     if (x < 0 || y < 0 || x >= GW || y >= GH) return;
-    if (dens < 1 && (BAY[((y + dsh) & 3) * 4 + (x & 3)] + 0.5) / 16 > dens) return;
     b.fillStyle = c; b.fillRect(x, y, 1, 1);
   };
   const rect = (x, y, w, h, c) => { x = Math.round(x); y = Math.round(y); for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) px(x + i, y + j, c); };
@@ -64,7 +62,7 @@
 
   // ---------- the coin: the mark, struck as a coin ----------
   // A 14px pixel circle; the top-right quarter is popped 2px up and out, like
-  // the logo. Rim and bevel on the body, an embossed edge on the quarter.
+  // the logo. Flat fills: the green body and the sage quarter, nothing else.
   let GRID = [];
   function buildCoin() {
     const W = [4, 8, 10, 12, 12, 14, 14, 14, 14, 12, 12, 10, 8, 4];
@@ -74,33 +72,18 @@
     const inQ = (x, y) => inC(x, y) && isQ(x, y);
     const S = D + POP;
     GRID = Array.from({ length: S }, () => new Array(S).fill(null));
-    const rim = (x, y) => inB(x, y) && (!inB(x - 1, y) || !inB(x + 1, y) || !inB(x, y - 1) || !inB(x, y + 1));
-    const ring = (x, y) => inB(x, y) && !rim(x, y) && (rim(x - 1, y) || rim(x + 1, y) || rim(x, y - 1) || rim(x, y + 1));
-    const shine = new Set(['3,5', '3,6', '4,4']);
     for (let y = 0; y < D; y++) for (let x = 0; x < D; x++) {
-      if (inB(x, y)) {
-        let c = G.body;
-        if (rim(x, y)) c = G.dark;
-        else if (ring(x, y)) c = x + y < 13 ? G.hi : G.deep;
-        else if (shine.has(x + ',' + y)) c = G.quart;
-        GRID[y + POP][x] = c;
-      } else if (inQ(x, y)) {
-        const top = !inQ(x, y - 1), left = !inQ(x - 1, y), right = !inQ(x + 1, y), bot = !inQ(x, y + 1);
-        let c = G.quart;
-        if (bot || (right && y > 3)) c = G.qsh;
-        else if (top || left) c = G.qhi;
-        GRID[y][x + POP] = c;
-      }
+      if (inB(x, y)) GRID[y + POP][x] = G.body;
+      else if (inQ(x, y)) GRID[y][x + POP] = G.quart;
     }
   }
-  const QUARTS = new Set([G.quart, G.qhi, G.qsh]);
   // step 0..15 around one turn: the face narrows to a reeded edge and back
   function coin(cx, cy, step, glint) {
     const oy = cy - 7 - POP;
     const w = Math.round(D * Math.abs(Math.cos(step * Math.PI / 8)));
     if (w <= 2) {
-      for (let y = 0; y < D; y++) { px(cx - 1, oy + POP + y, y % 2 ? G.dark : G.deep); px(cx, oy + POP + y, y % 2 ? G.deep : G.body); }
-      px(cx - 1, oy, G.quart); px(cx, oy, G.qhi); px(cx - 1, oy + 1, G.qsh); px(cx, oy + 1, G.quart);
+      for (let y = 0; y < D; y++) { px(cx - 1, oy + POP + y, G.deep); px(cx, oy + POP + y, G.body); }
+      px(cx - 1, oy, G.quart); px(cx, oy, G.quart); px(cx - 1, oy + 1, G.quart); px(cx, oy + 1, G.quart);
       return;
     }
     const f = w / D, S = D + POP, side = Math.sin(step * Math.PI / 8) > 0 ? 1 : -1;
@@ -112,29 +95,20 @@
         if (sx < 0 || sx >= S) continue;
         let c = GRID[gy][sx];
         if (!c) continue;
-        if (glint != null && w === D) { const k = sx + gy - glint; if (k === 0 || k === 1) c = QUARTS.has(c) ? G.shine : G.quart; }
+        if (glint != null && w === D) { const k = sx + gy - glint; if (k === 0 || k === 1) c = G.shine; }
         px(dx, oy + gy, c);
         if (dx < lo) lo = dx;
         if (dx > hi) hi = dx;
       }
-      if (w < D - 1 && gy >= POP + 1 && gy < S - 1 && hi >= lo) px(side > 0 ? hi + 1 : lo - 1, oy + gy, G.dark);
+      if (w < D - 1 && gy >= POP + 1 && gy < S - 1 && hi >= lo) px(side > 0 ? hi + 1 : lo - 1, oy + gy, G.deep);
     }
   }
 
-  // the floor glow: a flat ellipse of light that shrinks as the coin rises
+  // the coin's shadow: one solid green row on the floor that shrinks as the coin rises
   function glow(x, y) {
     const h = FY - (y + 7);
-    const hw = Math.round(clamp(19 - h * 0.62, 3, 15));
-    const a = clamp(1.05 - h * 0.028, 0.3, 0.9);
-    const band = (row, w, k) => {
-      for (let dx = -w; dx < w; dx++) {
-        const r = Math.abs(dx + 0.5) / w;
-        b.globalAlpha = a * k * (r < 0.34 ? 1 : r < 0.67 ? 0.6 : 0.3);
-        px(x + dx, row, C.accent);
-      }
-    };
-    band(FY, hw, 1); band(FY - 1, Math.round(hw * 0.55), 0.45); band(FY + 1, Math.round(hw * 0.7), 0.5); band(FY + 2, Math.round(hw * 0.36), 0.3);
-    b.globalAlpha = 1;
+    const hw = Math.round(clamp(11 - h * 0.4, 2, 8));
+    rect(x - hw, FY, hw * 2, 1, G.body);
   }
 
   // ---------- the cast ----------
@@ -243,9 +217,6 @@
   function cloud(x, y, t, cols) {
     const k = Math.floor(t / 90);
     for (let i = 0; i < 5; i++) { const a = (i / 5) * Math.PI * 2 + k * 0.45; disc(x + Math.cos(a) * 5, y + Math.sin(a) * 2.2, 3 + ((i + k) % 2), C.dim); }
-    dens = 0.35;
-    for (let i = 0; i < 3; i++) { const a = (i / 3) * Math.PI * 2 - k * 0.6; disc(x + Math.cos(a) * 3, y - 1 + Math.sin(a) * 1.4, 2, C.cream); }
-    dens = 1;
     for (let i = 0; i < 3; i++) { const a = (((k * 5 + i * 7) % 12) / 12) * Math.PI * 2; line(x + Math.cos(a) * 7, y + Math.sin(a) * 3.5, x + Math.cos(a) * 10, y + Math.sin(a) * 5.5, cols[(k + i) % cols.length]); }
     if (k % 4 < 2) star(x + ((k * 5) % 11) - 5, y - 7 - (k % 2), 1, C.butter);
   }
@@ -363,12 +334,13 @@
   const UK = [[13600, 'R', -9], [14800, 0, -2, eo], [18600, 0, -2], [19600, 'R', -12, ei]];
   function drawBeam(t) {
     if (!inW(t, 15000, 18600)) return;
-    const d = seg(t, 15000, 15200), sc = Math.floor(t / 80);
-    for (let y = 4; y < FY; y++) {
-      const hw = Math.round(3 + (y - 4) * 0.3), scan = (y + sc) % 5 === 0;
-      for (let x = CX - hw; x < CX + hw; x++) { dens = d * (x === CX - hw || x === CX + hw - 1 ? 0.42 : scan ? 0.3 : 0.07); dsh = sc; px(x, y, C.teal); }
+    // a flat beam: two solid edges and rungs that run down it, drawn in as it switches on
+    const d = seg(t, 15000, 15200), sc = Math.floor(t / 80), bot = 4 + Math.round(d * (FY - 4));
+    for (let y = 4; y < bot; y++) {
+      const hw = Math.round(3 + (y - 4) * 0.3);
+      px(CX - hw, y, C.teal); px(CX + hw - 1, y, C.teal);
+      if ((y + sc) % 5 === 0) for (let x = CX - hw + 2; x < CX + hw - 2; x++) px(x, y, C.teal);
     }
-    dens = 1; dsh = 0;
   }
   function drawU(t) {
     if (!inW(t, 13600, 19600)) return;
@@ -452,9 +424,8 @@
     const f = Math.floor(t / 160) % 2, y = Math.round(k.y + Math.sin(t / 260) * 1.2);
     if (t >= 26900) { if (!(t > 27900 && Math.floor(t / 90) % 2)) sprC(k.x, y, SCARED(f), { g: C.teal, w: EYE }); return k.x; }
     const look = inW(t, 26400, 26900) ? 1 : -1, boo = inW(t, 25800, 26100);
-    dens = Math.abs(k.x - CX) < 11 && y < 25 ? 0.5 : 1;
-    sprC(k.x, y, ghostRows(look, f), { g: boo && Math.floor(t / 70) % 2 ? C.ink : C.rose, w: EYE, p: INK });
-    dens = 1;
+    // passing through the coin it flickers (every other frame) instead of going see-through
+    if (!(Math.abs(k.x - CX) < 11 && y < 25 && Math.floor(t / 70) % 2)) sprC(k.x, y, ghostRows(look, f), { g: boo && Math.floor(t / 70) % 2 ? C.ink : C.rose, w: EYE, p: INK });
     return k.x;
   }
 
@@ -529,7 +500,7 @@
   function sparkle(x, y, n) {
     for (let i = 0; i < n; i++) {
       const a = (i / n) * Math.PI * 2 + Math.random() * 0.4, v = 0.016 + Math.random() * 0.012;
-      parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v * 0.8, t0: clock, life: 480 + Math.random() * 220, c: i % 3 ? G.qhi : C.butter });
+      parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v * 0.8, t0: clock, life: 480 + Math.random() * 220, c: i % 3 ? G.quart : C.butter });
     }
   }
   function fire(n) {
@@ -540,8 +511,9 @@
   }
 
   // ---------- frame ----------
+  // the floor: a solid line whose ends break into dots (no fade), and a dotted row under it
   function floor() {
-    for (let x = 0; x < GW; x++) px(x, FY, C.line);
+    for (let x = 0; x < GW; x++) if ((x > 7 && x < GW - 8) || x % 2 === 0) px(x, FY, C.line);
     for (let x = 4; x < GW; x += 9) px(x, FY + 2, C.line);
   }
   function blit() {
@@ -562,7 +534,7 @@
     drawBeam(T);
     const g = clock - sp.glint;
     coin(x, y, stepNow(), g >= 0 && g < 480 ? Math.floor(g / 14) - 2 : null);
-    if (g >= 150 && g < 450) { const k = Math.floor((g - 150) / 75); star(x + 9, y - 9, [0, 1, 2, 1][k] || 0, G.qhi); }
+    if (g >= 150 && g < 450) { const k = Math.floor((g - 150) / 75); star(x + 9, y - 9, [0, 1, 2, 1][k] || 0, G.shine); }
     drawCast(T);
     parts = parts.filter((p) => clock - p.t0 < p.life);
     for (const p of parts) { const a = clock - p.t0; if (a / p.life > 0.7 && Math.floor(a / 60) % 2) continue; px(p.x + p.vx * a, p.y + p.vy * a + 0.00003 * a * a, p.c); }

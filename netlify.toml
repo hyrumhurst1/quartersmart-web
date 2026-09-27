@@ -9,6 +9,14 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Serverless functions (source stays out of dist/). insert-coin.mjs serves
+# /insert-coin/api/slots, /insert-coin/api/book and /insert-coin/calendar
+# (routes are set in the file's own config). The booking server's address
+# lives only in the CAL_ORIGIN environment variable, never in this repo or
+# in any redirect: no rule here may point at it.
+[functions]
+  directory = "netlify/functions"
+
 # Long-cache the immutable media (frame sequences, video, images, logos).
 # This also covers /assets/img/* (page art) and /assets/og/* (social cards);
 # Netlify sets their Content-Type from the file extension.
@@ -122,10 +130,15 @@
   status = 301
 
 # 2026 relaunch: short links and retired page names
-# /book is a clean link for emails and slides. 302 so the target can change.
+# Booking lives at /insert-coin: the page (insert-coin/index.html) plus the
+# insert-coin function, which also answers /insert-coin/calendar with a 302
+# to the public calendar page on book.quartersmart.com (our proxy domain).
+# No redirect rules for those paths: when merging main, drop its stopgap
+# /insert-coin and /insert-coin/calendar rules. /book is an alias; 302 so
+# the target can change.
 [[redirects]]
   from = "/book"
-  to = "https://calendly.com/hyrum-quartersmart/book-a-call"
+  to = "/insert-coin/"
   status = 302
 [[redirects]]
   from = "/offers"

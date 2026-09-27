@@ -1,0 +1,244 @@
+{
+ "pu-decode": {
+  "file": "/assets/px/flat/pu-decode.png",
+  "frame": [
+   16,
+   16
+  ],
+  "frames": 1,
+  "colours": "bcnq",
+  "group": "method",
+  "note": "Decode: a lens with a tick in the glass (the method rail)"
+ },
+ "pu-radar": {
+  "file": "/assets/px/flat/pu-radar.png",
+  "frame": [
+   16,
+   16
+  ],
+  "frames": 1,
+  "colours": "bhmq",
+  "group": "power-ups",
+  "note": "Signals: a radar dish"
+ },
+ "pu-map": {
+  "file": "/assets/px/flat/pu-map.png",
+  "frame": [
+   16,
+   16
+  ],
+  "frames": 1,
+  "colours": "chr",
+  "group": "power-ups",
+  "note": "Head Start: a folded map"
+ },
+ "pu-setup": {
+  "file": "/assets/px/flat/pu-setup.png",
+  "frame": [
+   16,
+   16
+  ],
+  "frames": 1,
+  "colours": "chmq",
+  "group": "power-ups",
+  "note": "Day One Setup: a wrench and a joystick"
+ },
+ "pu-token": {
+  "file": "/assets/px/flat/pu-token.png",
+  "frame": [
+   16,
+   16
+  ],
+  "frames": 1,
+  "colours": "bdhq",
+  "group": "power-ups",
+  "note": "First Quarter: a token with the quarter-circle emblem"
+ },
+ "pu-robot": {
+  "file": "/assets/px/flat/pu-robot.png",
+  "frame": [
+   16,
+   16
+  ],
+  "frames": 1,
+  "colours": "bnqt",
+  "group": "power-ups",
+  "note": "Build: a little robot"
+ },
+ "pu-sheet": {
+  "file": "/assets/px/flat/pu-sheet.png",
+  "frame": [
+   16,
+   16
+  ],
+  "frames": 5,
+  "colours": "bcdhmnqrt",
+  "group": "power-ups",
+  "note": "all five power-ups in site order, one 16x16 frame each"
+ },
+ "cabinet-sage": {
+  "file": "/assets/px/flat/cabinet-sage.png",
+  "frame": [
+   16,
+   28
+  ],
+  "frames": 1,
+  "colours": "hmnq",
+  "group": "cabinets",
+  "note": "arcade cabinet, sage marquee"
+ },
+ "cabinet-butter": {
+  "file": "/assets/px/flat/cabinet-butter.png",
+  "frame": [
+   16,
+   28
+  ],
+  "frames": 1,
+  "colours": "bhmn",
+  "group": "cabinets",
+  "note": "arcade cabinet, butter marquee"
+ },
+ "cabinet-rose": {
+  "file": "/assets/px/flat/cabinet-rose.png",
+  "frame": [
+   16,
+   28
+  ],
+  "frames": 1,
+  "colours": "hmnr",
+  "group": "cabinets",
+  "note": "arcade cabinet, rose marquee"
+ },
+ "cabinet-row": {
+  "file": "/assets/px/flat/cabinet-row.png",
+  "frame": [
+   56,
+   29
+  ],
+  "frames": 1,
+  "colours": "bhmnqrv",
+  "group": "cabinets",
+  "note": "the three cabinets standing together on a floor line"
+ },
+ "joystick": {
+  "file": "/assets/px/flat/joystick.png",
+  "frame": [
+   10,
+   12
+  ],
+  "frames": 3,
+  "colours": "bhmv",
+  "group": "dock",
+  "note": "menu joystick for the top-right dock: left, centre, right"
+ },
+ "coin-slot": {
+  "file": "/assets/px/flat/coin-slot.png",
+  "frame": [
+   8,
+   12
+  ],
+  "frames": 2,
+  "colours": "bmn",
+  "group": "dock",
+  "note": "coin slot for the book-a-call dock: idle, lit"
+ },
+ "arcade-button": {
+  "file": "/assets/px/flat/arcade-button.png",
+  "frame": [
+   10,
+   7
+  ],
+  "frames": 2,
+  "colours": "hmqv",
+  "group": "dock",
+  "note": "the select screen button beside the joystick: up, pressed"
+ },
+ "coin-spin": {
+  "file": "/assets/px/flat/coin-spin.png",
+  "frame": [
+   6,
+   6
+  ],
+  "frames": 4,
+  "colours": "bh",
+  "group": "dock",
+  "note": "a quarter spinning: face, turn, edge, turn"
+ },
+ "keyboard": {
+  "file": "/assets/px/flat/keyboard.png",
+  "frame": [
+   22,
+   8
+  ],
+  "frames": 1,
+  "colours": "hmqv",
+  "group": "approach",
+  "note": "a keyboard, top view"
+ },
+ "manual": {
+  "file": "/assets/px/flat/manual.png",
+  "frame": [
+   14,
+   10
+  ],
+  "frames": 1,
+  "colours": "chmq",
+  "group": "approach",
+  "note": "an open manual, top view"
+ },
+ "keyboard-manual": {
+  "file": "/assets/px/flat/keyboard-manual.png",
+  "frame": [
+   39,
+   10
+  ],
+  "frames": 1,
+  "colours": "chmqv",
+  "group": "approach",
+  "note": "the keyboard beside the open manual"
+ },
+ "radar-tower": {
+  "file": "/assets/px/flat/radar-tower.png",
+  "frame": [
+   20,
+   24
+  ],
+  "frames": 1,
+  "colours": "bhmq",
+  "group": "props",
+  "note": "a radar tower with its dish"
+ },
+ "assistant": {
+  "file": "/assets/px/flat/assistant.png",
+  "frame": [
+   16,
+   14
+  ],
+  "frames": 1,
+  "colours": "hmnq",
+  "group": "props",
+  "note": "a small assistant device with a friendly screen"
+ },
+ "desk-crt": {
+  "file": "/assets/px/flat/desk-crt.png",
+  "frame": [
+   28,
+   18
+  ],
+  "frames": 1,
+  "colours": "hmnq",
+  "group": "props",
+  "note": "a desk with a CRT, a keyboard and a mug"
+ },
+ "cabinet-tile": {
+  "file": "/assets/px/flat/cabinet-tile.png",
+  "frame": [
+   16,
+   16
+  ],
+  "frames": 1,
+  "colours": "dmnq",
+  "group": "cabinets",
+  "note": "About: a small QuarterSmart cabinet with the mark on its screen (the menu tile)"
+ }
+}

@@ -4,7 +4,9 @@
    top edge spawns a green CRT "select stage" screen: five stage tiles with a
    pixel cursor, a preview box, an echo RADAR marquee with a comic burst, a
    joystick and button deck, and a coin door that books the call. The screen
-   assembles out of an 8x8 Bayer dither when it spawns. Pixel art stays at integer scales with image-rendering: pixelated.
+   assembles out of an 8x8 Bayer dither when it spawns. The sprites are the
+   flat set in /assets/px/flat/ (few colours, square pixels, no shading),
+   always at integer scales with image-rendering: pixelated.
    Motion is stepped (steps()) so it moves like hardware, and all of it drops
    away under prefers-reduced-motion.
    ========================================================================== */
@@ -24,29 +26,22 @@
   visibility: hidden;
   color: var(--fg-0); background: var(--scr);
   border-bottom: 2px solid var(--accent);
-  box-shadow: 0 2px 0 color-mix(in srgb, var(--accent) 22%, transparent), 0 28px 90px rgba(0, 0, 0, .6);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--accent) 22%, transparent);
 }
 .sel.is-open, .sel.is-closing { visibility: visible; }
-[data-theme="paper"] .sel { --scr: var(--bg-0); box-shadow: 0 24px 70px rgba(0, 0, 0, .2); }
+[data-theme="paper"] .sel { --scr: var(--bg-0); box-shadow: none; }
 /* Closed, the panel's idle loops (blinks, marquee, cursor, deck) hold still
    so they cost nothing; they pick up again the moment it opens. */
 .sel:not(.is-open):not(.is-closing) *, .sel:not(.is-open):not(.is-closing) *::before, .sel:not(.is-open):not(.is-closing) *::after { animation-play-state: paused !important; }
 
-/* The CRT: faint 1px scanlines and a soft vignette over the whole width. */
+/* The screen: a flat night fill, the same glass as every window (no scanlines, no vignette). */
 .sel__screen { position: relative; overflow: hidden; }
-.sel__screen::after {
-  content: ""; position: absolute; inset: 0; z-index: 6; pointer-events: none;
-  background:
-    repeating-linear-gradient(to bottom, rgba(0, 0, 0, .2) 0 1px, transparent 1px 3px),
-    radial-gradient(120% 140% at 50% 40%, transparent 55%, rgba(0, 0, 0, .38) 100%);
-}
-[data-theme="paper"] .sel__screen::after { background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, .05) 0 1px, transparent 1px 3px); }
 .sel__in { max-width: calc(var(--wrap) + 64px); margin: 0 auto; padding: 0 var(--gut) 22px; }
 
 /* ---------- Top row: sits exactly where the page HUD sits ---------- */
 .sel__top { display: flex; align-items: center; height: 72px; }
 .sel__title { display: flex; align-items: center; gap: 12px; font: 400 22px/1 var(--pixel); letter-spacing: .02em; text-transform: uppercase; color: var(--fg-0); }
-.sel__title::before { content: ""; width: 11px; height: 11px; background: var(--accent); box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 60%, transparent); animation: sel-blink 1.2s steps(1) infinite; }
+.sel__title::before { content: ""; width: 11px; height: 11px; background: var(--accent); animation: sel-blink 1.2s steps(1) infinite; }
 .sel__hud {
   position: absolute; top: 0; right: 96px; z-index: 2; height: 72px;
   display: flex; align-items: center; gap: 20px;
@@ -62,25 +57,19 @@
 /* ---------- Body: preview | tiles ---------- */
 .sel__body { display: grid; grid-template-columns: clamp(200px, 19vw, 256px) minmax(0, 1fr); gap: clamp(24px, 3vw, 40px); padding-top: 4px; }
 
-/* Preview: the fighting-game portrait. A little night horizon to stand on. */
+/* Preview: the selected stage's sprite, drawn big (8x) on a flat night with
+   one floor band and a dotted floor line to stand on. */
 .sel__pv { display: grid; align-content: start; gap: 12px; min-width: 0; }
 .sel__pv-art {
-  --floor: 30px;
-  position: relative; height: 184px; display: grid; place-items: end center; padding-bottom: calc(var(--floor) - 6px);
+  --floor: 28px;
+  position: relative; height: 184px; display: grid; place-items: end center; padding-bottom: var(--floor);
   border: 2px solid var(--line-2); overflow: hidden;
-  background: linear-gradient(to top,
-    color-mix(in srgb, var(--bg-1) 55%, var(--scr)) 0 var(--floor),
-    color-mix(in srgb, var(--warn) 22%, var(--scr)) var(--floor) calc(var(--floor) + 8px),
-    color-mix(in srgb, var(--bad) 18%, var(--scr)) calc(var(--floor) + 8px) calc(var(--floor) + 18px),
-    color-mix(in srgb, var(--event) 17%, var(--scr)) calc(var(--floor) + 18px) calc(var(--floor) + 32px),
-    color-mix(in srgb, var(--accent) 9%, var(--scr)) calc(var(--floor) + 32px) calc(var(--floor) + 56px),
-    var(--scr) calc(var(--floor) + 56px));
+  background: linear-gradient(var(--bg-2) 0 0) 0 100% / 100% var(--floor) no-repeat, var(--scr);
 }
-.sel__pv-art::before { content: ""; position: absolute; left: 0; right: 0; bottom: var(--floor); height: 2px; background: repeating-linear-gradient(90deg, var(--line-2) 0 8px, transparent 8px 16px); }
-/* two pixel stars */
-.sel__pv-art::after { content: ""; position: absolute; left: 22px; top: 20px; width: 2px; height: 2px; background: var(--fg-1); box-shadow: 146px 14px 0 var(--warn), 60px 40px 0 color-mix(in srgb, var(--fg-0) 60%, transparent), 184px 58px 0 var(--fg-2); animation: sel-blink 2.6s steps(1) infinite; }
+.sel__pv-art::before { content: ""; position: absolute; left: 0; right: 0; bottom: calc(var(--floor) - 4px); height: 4px; background: repeating-linear-gradient(90deg, var(--line-2) 0 8px, transparent 8px 16px); }
+/* a few pixel stars */
+.sel__pv-art::after { content: ""; position: absolute; left: 20px; top: 20px; width: 4px; height: 4px; background: var(--fg-1); box-shadow: 148px 12px 0 var(--warn), 60px 40px 0 var(--fg-2), 184px 56px 0 var(--fg-2); animation: sel-blink 2.6s steps(1) infinite; }
 .sel__pv-sp { position: relative; display: block; width: 128px; height: 128px; background: var(--sp) 0 0 / 128px 128px no-repeat; image-rendering: pixelated; }
-.sel__pv-sp.is-av { background-size: 512px 128px; animation: sel-av 3.2s steps(1) infinite; --av: 128px; }
 .sel__pv-name { font: 400 33px/1 var(--pixel); color: var(--fg-0); margin-top: 4px; }
 .sel__pv-desc { font: 400 11px/1.55 var(--pixel); letter-spacing: .02em; color: var(--fg-1); min-height: 3.1em; }
 
@@ -101,7 +90,6 @@
 .sel__tile:focus-visible { outline: 2px solid var(--fg-0); outline-offset: 2px; }
 .sel__n { position: absolute; top: 8px; left: 9px; font: 400 11px/1 var(--pixel); color: var(--fg-2); opacity: .75; }
 .sel__sp { display: block; width: 64px; height: 64px; background: var(--sp) 0 0 / 64px 64px no-repeat; image-rendering: pixelated; }
-.sel__tile--av .sel__sp { background-size: 256px 64px; --av: 64px; }
 .sel__name { font: 400 22px/1 var(--pixel); color: var(--fg-1); white-space: nowrap; }
 .sel__here {
   display: none; position: absolute; top: 6px; right: 6px;
@@ -109,6 +97,8 @@
   color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
 }
 .sel__tile[aria-current="page"] .sel__here { display: block; }
+/* in narrow tiles a sprite can reach the badge: the badge keeps the tile colour behind it */
+.sel__here { z-index: 1; background: inherit; }
 .sel__tile.is-sel { background: color-mix(in srgb, var(--accent) 9%, var(--bg-1)); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
 .sel__tile.is-sel .sel__name { color: var(--fg-0); }
 .sel__tile.is-sel .sel__n { color: var(--accent); opacity: 1; }
@@ -128,7 +118,6 @@
     linear-gradient(var(--c) 0 0) 0 100% / 18px 3px, linear-gradient(var(--c) 0 0) 0 100% / 3px 18px,
     linear-gradient(var(--c) 0 0) 100% 100% / 18px 3px, linear-gradient(var(--c) 0 0) 100% 100% / 3px 18px;
   background-repeat: no-repeat;
-  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 55%, transparent));
   animation: sel-breathe .9s steps(1) infinite;
 }
 .sel__cur::after {
@@ -143,7 +132,7 @@
    time, like an 80s marquee popping out of the screen. The layer
    colours chase. */
 .sel__marq {
-  position: absolute; left: 0; right: 0; bottom: calc(100% + 18px); z-index: 7; /* over the scanlines */
+  position: absolute; left: 0; right: 0; bottom: calc(100% + 18px); z-index: 7;
   font: 400 22px/1 var(--pixel); letter-spacing: .12em; text-indent: .1em; text-align: center; text-transform: uppercase; white-space: nowrap;
   color: var(--fg-0); pointer-events: none;
   text-shadow: 0 1px 0 var(--event), 0 2px 0 var(--warn), 0 3px 0 var(--accent), 0 4px 0 var(--info), 0 5px 0 var(--ink), 0 6px 0 var(--ink);
@@ -152,7 +141,7 @@
 /* ---------- BANG: a pixel comic burst, only when Signals is selected ----------
    A stepped burst drawn on a 2px grid (inline SVG, crisp edges), with the
    long spike pointing back at Signals. It sits in the headroom above the
-   next tiles and over the scanlines, like a sticker on the glass. */
+   next tiles, like a sticker on the glass. */
 .sel__bang {
   position: absolute; z-index: 8; top: calc(var(--head) - 102px);
   left: calc(2 * (100% - 4 * var(--tg)) / 5 + var(--tg) - 14px);
@@ -170,16 +159,15 @@
 /* only while the panel is up: a visible child would otherwise show through the hidden panel */
 .sel.is-open[data-cur="signals"] .sel__bang, .sel.is-closing[data-cur="signals"] .sel__bang { visibility: visible; }
 
-/* ---------- Bottom row: joystick, coin door, the player ---------- */
+/* ---------- Bottom row: joystick and coin door ---------- */
 .sel__bottom { display: flex; align-items: flex-end; gap: clamp(14px, 2vw, 28px); margin-top: 18px; min-height: 80px; }
 .sel__stick { display: flex; align-items: center; gap: 12px; align-self: center; font: 400 11px/1.6 var(--pixel); letter-spacing: .1em; text-transform: uppercase; color: var(--fg-2); }
-.sel__joy { display: block; flex: none; width: 64px; height: 64px; background: url(/assets/px/joystick.png) -128px 0 / 320px 64px no-repeat; image-rendering: pixelated; }
-.sel__joy[data-f="0"] { background-position: 0 0; }
-.sel__joy[data-f="1"] { background-position: -64px 0; }
-.sel__joy[data-f="3"] { background-position: -192px 0; }
-.sel__joy[data-f="4"] { background-position: -256px 0; }
-.sel__btn { display: block; flex: none; width: 48px; height: 48px; margin: 10px 4px 0 -10px; background: url(/assets/px/arcade-button.png) 0 0 / 96px 48px no-repeat; image-rendering: pixelated; }
-.sel__btn.is-down { background-position: -48px 0; }
+/* the deck: joystick (left, centre, right) and button (up, down), both 4x */
+.sel__joy { display: block; flex: none; width: 40px; height: 48px; background: url(/assets/px/flat/joystick.png) -40px 0 / 120px 48px no-repeat; image-rendering: pixelated; }
+.sel__joy[data-f="l"] { background-position: 0 0; }
+.sel__joy[data-f="r"] { background-position: -80px 0; }
+.sel__btn { display: block; flex: none; width: 40px; height: 28px; margin: 20px 4px 0 -4px; background: url(/assets/px/flat/arcade-button.png) 0 0 / 80px 28px no-repeat; image-rendering: pixelated; }
+.sel__btn.is-down { background-position: -40px 0; }
 .sel__keys { display: grid; white-space: nowrap; }
 /* the backtick is two pixels tall in the pixel face, so it borrows the mono one */
 .sel__keys kbd { font: 700 13px/1 var(--mono); letter-spacing: 0; }
@@ -191,26 +179,25 @@
 
 .sel__coin { margin-left: auto; display: flex; align-items: flex-end; gap: 14px; padding: 0 6px 4px 0; text-decoration: none; color: var(--fg-0); -webkit-tap-highlight-color: transparent; }
 .sel__coin:focus-visible { outline: 2px solid var(--fg-0); outline-offset: 6px; }
-.sel__door { position: relative; flex: none; width: 64px; height: 80px; background: url(/assets/px/coin-slot.png) 0 0 / 64px 80px no-repeat; image-rendering: pixelated; }
-/* the slot glow, lit when a coin goes in */
-.sel__door::after { content: ""; position: absolute; left: 28px; top: 22px; width: 2px; height: 20px; background: var(--accent); box-shadow: 0 0 10px 4px color-mix(in srgb, var(--accent) 65%, transparent); opacity: 0; }
-/* the flight window ends at the top of the slit, so the coin vanishes into it */
-.sel__fly { position: absolute; left: 13px; top: -20px; width: 32px; height: 40px; overflow: hidden; pointer-events: none; }
+/* the coin door: the same 4x slot as the dock (idle, lit). It lights on
+   hover and when a coin goes in. */
+.sel__door { position: relative; flex: none; width: 32px; height: 48px; background: url(/assets/px/flat/coin-slot.png) 0 0 / 64px 48px no-repeat; image-rendering: pixelated; }
+.sel.is-open .sel__coin:hover .sel__door, .sel.is-open .sel__coin:focus-visible .sel__door, .sel__coin.is-fed .sel__door { background-position: -32px 0; }
+/* On hover a coin spins over the slot. The flight window ends at the top
+   of the slit (12px down), so the coin vanishes into it; the 4x coin
+   (face, turn, edge, turn) is centred on the slit. */
+.sel__fly { position: absolute; left: 4px; top: -28px; width: 24px; height: 40px; overflow: hidden; pointer-events: none; }
 .sel__fly i {
-  position: absolute; left: 0; top: 6px; width: 32px; height: 32px;
-  background: url(/assets/px/coin-spin.png) 0 0 / 192px 32px no-repeat; image-rendering: pixelated;
+  position: absolute; left: 0; top: 4px; width: 24px; height: 24px;
+  background: url(/assets/px/flat/coin-spin.png) 0 0 / 96px 24px no-repeat; image-rendering: pixelated;
   visibility: hidden;
 }
 .sel.is-open .sel__coin:hover .sel__fly i, .sel.is-open .sel__coin:focus-visible .sel__fly i, .sel.is-open .sel__coin.is-drop .sel__fly i { visibility: visible; }
-.sel__cointxt { display: grid; gap: 9px; padding-bottom: 8px; }
+.sel__cointxt { display: grid; gap: 9px; padding-bottom: 4px; }
 .sel__insert { font: 400 11px/1 var(--pixel); letter-spacing: .16em; text-transform: uppercase; color: var(--warn); animation: sel-blink-long 1.1s steps(1) infinite; }
 .sel__book { font: 400 22px/1 var(--pixel); color: var(--fg-0); white-space: nowrap; }
 .sel__coin:hover .sel__book { color: var(--accent); }
 .sel__coin.is-drop .sel__book { color: var(--accent); }
-
-/* the hidden one: player one at a cabinet, on his break */
-.sel__egg { flex: none; width: 64px; height: 80px; background: url(/assets/px/player-at-cabinet.png) 0 0 / 256px 80px no-repeat; image-rendering: pixelated; opacity: .32; filter: saturate(.6); transition: opacity .4s, filter .4s; }
-.sel__egg:hover { opacity: 1; filter: none; }
 
 /* ---------- Motion (skipped entirely under reduced motion) ----------
    Spawn: the screen assembles in eight Bayer-dither steps of 4px cells
@@ -225,17 +212,13 @@
   .sel.is-open .sel__marq { animation: sel-in .01s .34s backwards, sel-chase 1.4s steps(1) .35s infinite; }
   .sel.is-open .sel__cur { animation: sel-in .01s .34s backwards; }
   .sel__tile.is-sel .sel__sp { animation: sel-bob .6s steps(1) infinite; }
-  .sel__tile--av.is-sel .sel__sp { animation: sel-bob .6s steps(1) infinite, sel-av 3.2s steps(1) infinite; }
   .sel__pv-art.is-swap .sel__pv-sp { animation: sel-swap .18s steps(3); }
-  .sel__pv-art.is-swap .sel__pv-sp.is-av { animation: sel-swap .18s steps(3), sel-av 3.2s steps(1) infinite; }
   .sel[data-cur="signals"] .sel__bang { animation: sel-bang .24s steps(3) backwards; }
   .sel.is-open[data-cur="signals"] .sel__bang { animation-delay: .38s; }
   .sel__joy:not([data-f]) { animation: sel-joy-idle 5.2s steps(1) infinite; }
-  .sel__egg { animation: sel-egg 2.8s steps(4) infinite; }
-  .sel__coin:hover .sel__fly i, .sel__coin:focus-visible .sel__fly i { animation: sel-spin .6s steps(6) infinite, sel-hover .8s steps(1) infinite; }
-  .sel__coin.is-drop .sel__fly i { background-position: -96px 0; animation: sel-drop-coin .1s steps(5) forwards; }
-  .sel__coin.is-fed .sel__door::after { animation: sel-glow .5s steps(2) forwards; }
-  .sel__coin.is-fed .sel__door { animation: sel-door .3s steps(2); }
+  .sel__coin:hover .sel__fly i, .sel__coin:focus-visible .sel__fly i { animation: sel-spin .6s steps(4) infinite, sel-hover .8s steps(1) infinite; }
+  .sel__coin.is-drop .sel__fly i { background-position: -48px 0; animation: sel-drop-coin .1s steps(4) forwards; }
+  .sel__coin.is-fed .sel__door { animation: sel-door .3s steps(1); }
 }
 @media (prefers-reduced-motion: reduce) {
   .sel__insert, .sel__title::before, .sel__cur::after, .sel__marq, .sel__pv-art::after { animation: none; }
@@ -274,27 +257,24 @@
 @keyframes sel-bang { 0% { transform: scale(0); } 60% { transform: scale(1.16); } 100% { transform: none; } }
 @keyframes sel-swap { 0% { transform: translateY(6px); filter: brightness(2.2); } 100% { transform: none; filter: none; } }
 /* the deck joystick fidgets now and then while nobody is steering */
-@keyframes sel-joy-idle { 0%, 78% { background-position: -128px 0; } 80% { background-position: -192px 0; } 83% { background-position: -128px 0; } 86% { background-position: -64px 0; } 89%, 100% { background-position: -128px 0; } }
-/* avatar idle: hold, blink, smile, wink. --av is one frame at the drawn scale */
-@keyframes sel-av { 0%, 56% { background-position: 0 0; } 57%, 66% { background-position: calc(var(--av) * -1) 0; } 67%, 80% { background-position: calc(var(--av) * -2) 0; } 81%, 100% { background-position: calc(var(--av) * -3) 0; } }
-@keyframes sel-egg { to { background-position: -256px 0; } }
-@keyframes sel-spin { to { background-position: -192px 0; } }
-@keyframes sel-hover { 50% { top: 4px; } }
-@keyframes sel-drop-coin { 0% { top: 6px; } 100% { top: 42px; } }
-@keyframes sel-glow { 0% { opacity: 1; } 50% { opacity: .5; } 100% { opacity: 1; } }
-@keyframes sel-door { 50% { filter: brightness(1.35); } }
+@keyframes sel-joy-idle { 0%, 78% { background-position: -40px 0; } 80% { background-position: -80px 0; } 83% { background-position: -40px 0; } 86% { background-position: 0 0; } 89%, 100% { background-position: -40px 0; } }
+@keyframes sel-spin { to { background-position: -96px 0; } }
+@keyframes sel-hover { 50% { top: 0; } }
+@keyframes sel-drop-coin { 0% { top: 4px; } 100% { top: 40px; } }
+/* the slot flickers once as the coin lands, then stays lit */
+@keyframes sel-door { 34% { background-position: 0 0; } 67% { background-position: -32px 0; } }
 
 /* ---------- Coin drop on the Book buttons (anywhere on the site) ---------- */
-.coinfx { position: fixed; z-index: 195; width: 32px; height: 46px; overflow: hidden; pointer-events: none; }
+.coinfx { position: fixed; z-index: 195; width: 24px; height: 40px; overflow: hidden; pointer-events: none; }
 .coinfx i {
-  position: absolute; left: 0; top: 0; width: 32px; height: 32px;
-  background: url(/assets/px/coin-spin.png) 0 0 / 192px 32px no-repeat; image-rendering: pixelated;
-  animation: sel-spin .3s steps(6) infinite, coinfx-drop .2s steps(5) forwards;
+  position: absolute; left: 0; top: 0; width: 24px; height: 24px;
+  background: url(/assets/px/flat/coin-spin.png) 0 0 / 96px 24px no-repeat; image-rendering: pixelated;
+  animation: sel-spin .24s steps(4) infinite, coinfx-drop .2s steps(5) forwards;
 }
-@keyframes coinfx-drop { 0% { top: -4px; } 20% { top: 2px; } 100% { top: 48px; } }
+@keyframes coinfx-drop { 0% { top: -4px; } 20% { top: 2px; } 100% { top: 42px; } }
 .btn--arcade.is-coin { animation: coinfx-flash .12s steps(2) .08s; }
 @keyframes coinfx-flash {
-  0% { background: color-mix(in srgb, var(--accent) 55%, #fff); box-shadow: 0 5px 0 var(--e), 0 0 0 3px color-mix(in srgb, var(--warn) 70%, transparent), 0 0 22px color-mix(in srgb, var(--accent) 60%, transparent); }
+  0% { background: color-mix(in srgb, var(--accent) 55%, #fff); box-shadow: 0 5px 0 var(--e), 0 0 0 3px var(--warn); }
   100% { background: var(--accent); }
 }
 
@@ -331,7 +311,7 @@
   .sel__name { font-size: 22px; }
   .sel__bang { display: none; }
   .sel__bottom { flex-direction: column; align-items: stretch; margin-top: auto; padding-top: 38px; min-height: 0; }
-  .sel__stick, .sel__egg, .sel__door { display: none; }
+  .sel__stick, .sel__door { display: none; }
   .sel__coin {
     --e: color-mix(in srgb, var(--accent) 55%, #000);
     position: relative; margin: 0 0 5px; justify-content: center; align-items: center; min-height: 64px; padding: 10px 16px;

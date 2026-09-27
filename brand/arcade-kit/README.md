@@ -6,63 +6,39 @@ Everything here is a copy of what ships on quartersmart.com, kept together for r
 
 ## sprites/
 
-processed, transparent PNG sprites at native pixel size (scale up with integer factors, image-rendering: pixelated).
+the flat sprite set (site/assets/px/flat): transparent PNGs at native pixel size, flat palette fills, at most 4 colours each (scale up with integer factors, image-rendering: pixelated); animated sprites are horizontal frame strips.
 
 - `sprites/arcade-button.png`
-- `sprites/avatar-hyrum.png`
-- `sprites/avatar-idle.png`
+- `sprites/assistant.png`
+- `sprites/cabinet-butter.png`
+- `sprites/cabinet-rose.png`
 - `sprites/cabinet-row.png`
-- `sprites/coin-slot-mini.png`
+- `sprites/cabinet-sage.png`
+- `sprites/cabinet-tile.png`
 - `sprites/coin-slot.png`
 - `sprites/coin-spin.png`
+- `sprites/desk-crt.png`
 - `sprites/joystick.png`
-- `sprites/player-at-cabinet.png`
+- `sprites/keyboard-manual.png`
+- `sprites/keyboard.png`
+- `sprites/manual.png`
+- `sprites/pu-decode.png`
 - `sprites/pu-map.png`
 - `sprites/pu-radar.png`
 - `sprites/pu-robot.png`
 - `sprites/pu-setup.png`
+- `sprites/pu-sheet.png`
 - `sprites/pu-token.png`
-- `sprites/sprite-arcade.png`
-- `sprites/sprite-assistant.png`
-- `sprites/sprite-keyboard-manual.png`
-- `sprites/sprite-radar.png`
+- `sprites/radar-tower.png`
 
-## sprites-raw/
+## source/
 
-the original Codex image-generation outputs on flat #ff00ff, by batch.
+tools/pxgen.py, the sprite compiler that draws every sprite above from ASCII grids (python pxgen.py rebuilds them), its contact sheet and manifest, and the frame-strip review tool.
 
-- `sprites-raw/pixel/avatar-hyrum-full.png`
-- `sprites-raw/pixel/avatar-hyrum.png`
-- `sprites-raw/pixel/scene-desert-dusk.png`
-- `sprites-raw/pixel/scene-horizon.png`
-- `sprites-raw/pixel/scene-radar-night.png`
-- `sprites-raw/pixel/sprite-answering-machine.png`
-- `sprites-raw/pixel/sprite-arcade.png`
-- `sprites-raw/pixel/sprite-assistant.png`
-- `sprites-raw/pixel/sprite-cartridges.png`
-- `sprites-raw/pixel/sprite-floppies.png`
-- `sprites-raw/pixel/sprite-keyboard-manual.png`
-- `sprites-raw/pixel/sprite-radar.png`
-- `sprites-raw/pixel/sprite-radio.png`
-- `sprites-raw/pixel/sprite-workstation.png`
-- `sprites-raw/pixel2/avatar-hyrum-full.png`
-- `sprites-raw/pixel2/avatar-hyrum.png`
-- `sprites-raw/pixel2/ref-hyrum.png`
-- `sprites-raw/pixel2/scene-horizon.png`
-- `sprites-raw/pixel2/sprite-arcade.png`
-- `sprites-raw/pixel2/sprite-assistant.png`
-- `sprites-raw/pixel2/sprite-cartridges.png`
-- `sprites-raw/pixel2/sprite-keyboard-manual.png`
-- `sprites-raw/pixel2/sprite-radar.png`
-- `sprites-raw/pixel3/avatar-idle-sheet.png`
-- `sprites-raw/pixel3/cabinet-row.png`
-- `sprites-raw/pixel3/desk-hacker.png`
-- `sprites-raw/pixel3/powerups-sheet.png`
-- `sprites-raw/pixel4/button-sheet.png`
-- `sprites-raw/pixel4/coin-sheet.png`
-- `sprites-raw/pixel4/coin-slot.png`
-- `sprites-raw/pixel4/joystick-sheet.png`
-- `sprites-raw/pixel4/player-at-cabinet.png`
+- `source/manifest.json`
+- `source/pxgen.py`
+- `source/sheet.png`
+- `source/strip.mjs`
 
 ## engine/
 
@@ -104,17 +80,3 @@ Departure Mono (OFL) and the text faces.
 - `fonts/ibm-plex-sans-500.woff2`
 - `fonts/jetbrains-mono-400.woff2`
 - `fonts/jetbrains-mono-500.woff2`
-
-## prompts/
-
-image-generation prompts that produced the art, the magenta key-out script, the frame-strip review tool.
-
-- `prompts/codex-img-prompt.md`
-- `prompts/codex-img2-prompt.md`
-- `prompts/codex-pixel-prompt.md`
-- `prompts/codex-pixel2-prompt.md`
-- `prompts/codex-pixel3-prompt.md`
-- `prompts/codex-pixel4-prompt.md`
-- `prompts/codex-refs-prompt.md`
-- `prompts/px3_process.py`
-- `prompts/strip.mjs`

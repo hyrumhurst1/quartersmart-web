@@ -6,7 +6,7 @@
 (() => {
   const css = (v, d) => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || d;
   const pal = () => ({ hi: css('--fg-0', '#ece4cc'), cream: css('--fg-1', '#cbc3ab'), butter: css('--warn', '#dfc07f'), sage: '#a9d99f',
-    teal: css('--info', '#86c3ba'), rose: css('--rose', '#ebbcba'), ember: css('--ember', '#eba66f'), dim: css('--line-2', '#4a5a4f'), line: css('--line', '#2c3730') });
+    teal: css('--info', '#86c3ba'), rose: css('--event', '#d99bb8'), ember: css('--warn', '#dfc07f'), dim: css('--line-2', '#4a5a4f'), line: css('--line', '#2c3730') });
 
   // shape(level): list of [dx, dy, tone] with tone 0 = core, 1 = arm, 2 = tip
   const SH = {

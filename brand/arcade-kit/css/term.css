@@ -28,10 +28,10 @@
 
 /* ---------- Pinned scroll story: why QuarterSmart, inside a terminal window ---------- */
 .qscroll { position: relative; }
-.qscroll__stage { display: grid; place-items: center; padding: clamp(48px, 7vw, 96px) clamp(10px, 2vw, 28px); }
-.qs-win { position: relative; width: min(1240px, 100%); height: min(80svh, 720px); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: clamp(16px, 3vw, 48px); padding: clamp(22px, 3vw, 44px); border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
+/* the window spans the text column exactly (the same edges as every section below it) */
+.qscroll__stage { display: grid; place-items: center; padding: clamp(48px, 7vw, 96px) var(--wrap-pad); }
+.qs-win { position: relative; width: min(calc(var(--wrap) - 2 * var(--wrap-pad)), 100%); height: min(80svh, 720px); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: clamp(16px, 3vw, 48px); padding: clamp(22px, 3vw, 44px); border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000); }
 .qs-win:focus { outline: none; }
-.qs-win::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
 .qs-win .win__t, .qs-win .win__r { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--bg-0); white-space: nowrap; top: -8px; }
 .qs-win .win__t { left: 16px; color: var(--fg-1); }
 .qs-win .win__r { right: 16px; color: var(--fg-2); display: inline-flex; gap: 8px; align-items: center; }
@@ -88,8 +88,7 @@
   .qs-big.is-pop { animation: none; }
 }
 /* paper: the window takes the light surface so the copy reads, and the quarter art darkens a step */
-[data-theme="paper"] .qs-win { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line), 0 24px 60px rgba(0, 0, 0, .12); }
-[data-theme="paper"] .qs-win::after { opacity: .2; }
+[data-theme="paper"] .qs-win { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line); }
 [data-theme="paper"] .qscroll { --qs-sage: #5e9a57; --qs-light: #8fc585; }
 
 /* ---------- Echo text: stacked layers stepping down, like an 80s arcade marquee popping out of the screen ---------- */
@@ -146,9 +145,8 @@ html { background: var(--bg-0); }
 body { background: transparent; }
 .nightsky { position: fixed; inset: 0; z-index: -1; width: 100vw; height: 100vh; pointer-events: none; image-rendering: pixelated; opacity: .5; }
 .nightsky[hidden] { display: none; }
-.band--slate { background: color-mix(in srgb, var(--block, var(--bg-2)) 88%, transparent); }
-.band--deep { background: color-mix(in srgb, var(--bg-0) 55%, rgba(0, 0, 0, .55)); }
-body:not(.home) .nightsky {
+/* the text column stays clear of stars on every page; the home hero paints its own opaque sky over this one */
+.nightsky {
   --clear-a: max(1%, calc(50% - 720px)); --clear-b: max(2.5%, calc(50% - 600px));   /* text starts at 50% - 588px on wide screens */
   -webkit-mask-image: linear-gradient(90deg, #000 0 var(--clear-a), transparent var(--clear-b) calc(100% - var(--clear-b)), #000 calc(100% - var(--clear-a)));
   mask-image: linear-gradient(90deg, #000 0 var(--clear-a), transparent var(--clear-b) calc(100% - var(--clear-b)), #000 calc(100% - var(--clear-a)));
@@ -162,8 +160,8 @@ html { scrollbar-color: color-mix(in srgb, var(--accent) 55%, var(--bg-2)) var(-
 ::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--accent) 45%, var(--bg-2)); border: 2px solid var(--bg-0); }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-/* ---------- Accent warmth: a little rose (borrowed from the Rose theme) and a teeny bit of ember orange ---------- */
-:root, [data-theme="evergreen"] { --rose: #ebbcba; --ember: #eba66f; }
+/* ---------- Accent warmth: a little rose and butter (the palette's own event and warn tones on Evergreen) ---------- */
+:root, [data-theme="evergreen"] { --rose: var(--event); --ember: var(--warn); }
 [data-theme="midnight"], [data-theme="obsidian"], [data-theme="forest"] { --rose: var(--event); --ember: var(--warn); }
 [data-theme="rose"] { --rose: #ebbcba; --ember: #f6c177; }
 [data-theme="paper"] { --rose: #9b4d63; --ember: #9a5a1e; }

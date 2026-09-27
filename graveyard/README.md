@@ -9,3 +9,4 @@ old URLs 301-redirect in `netlify.toml`.
 | `own-your-ai/` (private local AI waitlist, "Lab") | 2026-09-27 | Old direction; does not fit the early-adoption rebrand |
 | `case-studies/` (Work page + SF property management case) | 2026-09-27 | Old training-studio proof; the new brand leads with Signals and day-one setups |
 | `assets/`, `logos/transparent/` (AI Ed frame sequences and videos, old page art, unused sprites incl. floppies, old fonts, `site.css`, `work.css`, `dither.js`, `idle.js`, old Signals cover renders) | 2026-09-27 | Referenced by nothing on the live site; Signals share images are now the pixel cards in `/assets/og/` |
+| `px-codex/` (the 18 generated, shaded sprites: power-ups, cabinets, dock joystick and coin slot, avatars, radar dish, assistant, keyboard and manual) | 2026-09-27 | Replaced by the flat set in `/assets/px/flat/`, drawn in code by `tools/pxgen.py` in the homepage hero's hand; nothing on the live site references them |

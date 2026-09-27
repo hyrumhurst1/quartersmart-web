@@ -1,8 +1,13 @@
 /* Partner pages: /for-agencies/, /workflow-usage/, /404.html.
    Same hand as the homepage: big editorial headings, a pixel stage in the
    hero that morphs from scene to scene, hairline rows instead of boxes,
-   full-bleed colour bands for rhythm, and an arcade-at-night close.
+   one continuous night (no colour bands; a quiet dotted seam between
+   sections), and an arcade-at-night close.
+   Rhythm, shared with the other inner pages: every section and close pads
+   var(--sec-y) and opens on the dotted horizon (.seam, drawn in qs.css);
+   page h1 66px, regular h2 44px, close h2 55px.
    Tokens only, so every theme works. */
+
 
 /* ---------- Hero ---------- */
 .pt-hero { position: relative; overflow: hidden; padding: clamp(64px, 8vw, 120px) 0 clamp(56px, 7vw, 96px); }
@@ -10,7 +15,7 @@
 .pt-hero__in--stage { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: clamp(40px, 5vw, 72px); align-items: center; }
 .pt-hero__in--stage .pt-for { grid-column: 1 / -1; }
 .pt-hero__copy { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
-.pt-h1 { font: 400 55px/1.12 var(--pixel); letter-spacing: -.01em; max-width: 21ch; color: var(--fg-0); }
+.pt-h1 { font: 400 66px/1.08 var(--pixel); letter-spacing: -.01em; max-width: 17ch; color: var(--fg-0); }   /* the site's page h1 */
 .pt-h1--xl { font-size: 88px; line-height: 1.04; max-width: 15ch; }
 .pt-nw { white-space: nowrap; }
 .pt-cta { display: flex; flex-wrap: wrap; gap: 14px 18px; align-items: center; margin-top: 6px; }
@@ -36,9 +41,8 @@
 
 /* Terminal window around a stage (for-agencies, 404), the homepage's hand:
    a 2px border with the title and the pause control set into it (btop
-   style), a deep-night fill and faint scanlines. */
-.pxwin { --win-bg: var(--bg-0); position: relative; min-width: 0; padding: 26px 16px 24px; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
-.pxwin::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
+   style), a flat deep-night fill. */
+.pxwin { --win-bg: var(--bg-0); position: relative; min-width: 0; padding: 26px 16px 24px; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000); }
 .pxwin .win__t, .pxwin .pxs__pause { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--win-bg); white-space: nowrap; }
 .pxwin .win__t { top: -8px; left: 16px; color: var(--fg-1); }
 .pxwin .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); animation: pulse 2.4s steps(2) infinite; }
@@ -50,7 +54,6 @@
 .pxwin .pxs__pause::after { content: ""; position: absolute; inset: -15px 0; }
 .pxwin .pxs__pause:focus-visible { outline-offset: 4px; }
 [data-theme="paper"] .pxwin { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line); }
-[data-theme="paper"] .pxwin::after { opacity: .18; }
 @media (prefers-reduced-motion: reduce) { .pxwin .win__t::before { animation: none; } }
 
 /* The banded wordmark, the no-script fallback inside a stage. */
@@ -68,8 +71,7 @@
 .pt-for b { display: block; font: 400 22px/1.2 var(--pixel); color: var(--fg-0); margin-bottom: 8px; font-weight: 400; }
 
 /* ---------- Section rhythm ---------- */
-.pt-sec { padding: clamp(72px, 8vw, 112px) 0; }
-.band.pt-band { padding: clamp(72px, 8vw, 112px) 0; }
+.pt-sec { padding: var(--sec-y) 0; }
 .pt-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 48px; align-items: end; margin-bottom: clamp(40px, 5vw, 64px); }
 .pt-head--single { grid-template-columns: minmax(0, 1fr); max-width: 820px; gap: 18px; }
 .pt-head .body-l { max-width: 52ch; }
@@ -101,7 +103,6 @@
 .pt-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px clamp(40px, 6vw, 96px); align-items: start; }
 .pt-split .pt-head { margin: 0; }
 .pt-note { margin-top: 28px; color: var(--fg-2); font-size: 15px; max-width: 72ch; }
-[data-theme="paper"] .band--slate .pt-note { color: var(--fg-1); }
 
 /* ---------- The handoff: four stops on a rail that lights up ---------- */
 .pt-rail { height: 4px; position: relative; background: repeating-linear-gradient(90deg, var(--line-2) 0 8px, transparent 8px 12px); }
@@ -142,13 +143,18 @@
 .pt-stat { margin: 0; font: 400 77px/.9 var(--pixel); letter-spacing: -.03em; color: var(--fg-0); }
 .pt-total__cap { margin-top: 18px; font-size: 17px; color: var(--fg-1); max-width: 40ch; }
 .pt-total__cap a { color: var(--fg-0); text-decoration-color: var(--accent); }
+/* the counter's pause: the site's text control ("pause" in 11px pixel type), under the caption */
+.pt-wu__pause { position: relative; display: block; width: auto; height: auto; margin-top: 12px; padding: 6px 0; font: 400 11px/14px var(--pixel); letter-spacing: .06em; color: var(--fg-2); }
+.pt-wu__pause::before, .pt-wu__pause[aria-pressed="true"]::before { content: "pause"; width: auto; height: auto; background: none; box-shadow: none; transform: none; clip-path: none; }
+.pt-wu__pause[aria-pressed="true"]::before { content: "play"; }
+.pt-wu__pause::after { content: ""; position: absolute; inset: -10px -6px; }
 .pt-datahead { margin-bottom: clamp(36px, 4vw, 52px); }
 .pt-facts { list-style: none; margin: clamp(40px, 5vw, 64px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); }
 .pt-facts li { padding: 20px 20px 0 0; display: grid; gap: 6px; align-content: start; }
 .pt-facts span { font: 400 14px/1.4 var(--sans); color: var(--fg-2); }
 .pt-facts b { font: 400 22px/1.2 var(--pixel); color: var(--fg-0); font-weight: 400; }
 
-/* ---------- Method: four answers on a band ---------- */
+/* ---------- Method: four answers ---------- */
 .pt-method { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(32px, 5vw, 80px); }
 .pt-method > div { padding: 28px 0 34px; border-top: 1px solid color-mix(in srgb, var(--fg-0) 14%, transparent); }
 .pt-method h3 { font: 400 27.5px/1.15 var(--pixel); margin-bottom: 14px; scroll-margin-top: 90px; }
@@ -175,18 +181,24 @@
 .pt-table tfoot .num { font-size: 27.5px; }
 
 /* ---------- Close: the call, with one arcade cabinet standing by ----------
-   The cabinet is a sprite at a whole-pixel scale (3x), level with the last
-   line of the close, like the Signals posts; phones and tablets drop it. */
-.pt-close { position: relative; overflow: hidden; padding: clamp(96px, 11vw, 160px) 0; }
-.pt-close__cab { position: absolute; right: clamp(16px, 8vw, 140px); bottom: clamp(96px, 11vw, 160px); width: 153px; height: auto; image-rendering: pixelated; pointer-events: none; }
+   The site's one closer (home, services, approach, posts): the cabinet, the
+   flat 16x28 sprite at 6x, stands on the dotted horizon (2px dots every 8px)
+   inside the text column, its right edge on the column's edge. Phones and
+   tablets drop the cabinet and its floor. */
+.pt-close { --floor: 44px; position: relative; overflow: hidden; padding: var(--sec-y) 0 clamp(112px, 11vw, 152px); }
+.pt-close::after { content: ""; position: absolute; bottom: var(--floor); height: 2px; pointer-events: none;
+  left: max(var(--wrap-pad), calc((100% - var(--wrap)) / 2 + var(--wrap-pad))); right: max(var(--wrap-pad), calc((100% - var(--wrap)) / 2 + var(--wrap-pad)));
+  background: repeating-linear-gradient(90deg, var(--line-2) 0 2px, transparent 2px 8px); }
+.pt-close__cab { position: absolute; right: max(var(--wrap-pad), calc((100% - var(--wrap)) / 2 + var(--wrap-pad))); bottom: calc(var(--floor) + 2px); width: 96px; height: auto; image-rendering: pixelated; pointer-events: none; }
+/* a close with no cabinet (workflow usage) has no floor either */
+.pt-close--plain { padding-bottom: var(--sec-y); }
+.pt-close--plain::after { display: none; }
 .pt-close .wrap { position: relative; }
 .pt-close__main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; max-width: 760px; }
-.pt-close__h { font: 400 88px/1.02 var(--pixel); letter-spacing: -.01em; max-width: 13ch; }
-.pt-close__h--m { font-size: 66px; max-width: 20ch; }
+.pt-close__h { font: 400 55px/1.06 var(--pixel); letter-spacing: -.01em; max-width: 15ch; }
+.pt-close__h--m { max-width: 20ch; }
 .pt-close__alt { color: var(--fg-2); font-size: 15px; }
 .pt-close__alt a { color: var(--fg-1); }
-/* A quieter close without the night scene */
-.pt-close--plain { padding-bottom: clamp(96px, 11vw, 160px); }
 
 /* ---------- 404 ---------- */
 .nf { position: relative; overflow: hidden; display: grid; align-items: start; padding: clamp(56px, 7vw, 96px) 0 clamp(88px, 10vw, 144px); }
@@ -200,10 +212,11 @@
 
 /* ---------- Responsive ---------- */
 /* Departure Mono stays on its 11px grid: sizes step, they don't slide. */
+@media (max-width: 1200px) { .pt-h1 { font-size: 55px; } }
 @media (max-width: 1100px) {
   .pt-h1 { font-size: 44px; }
-  .pt-h1--xl, .pt-close__h { font-size: 66px; }
-  .pt-close__h--m { font-size: 55px; }
+  .pt-h1--xl { font-size: 66px; }
+  .pt-close__h { font-size: 49.5px; }
   .pt-stat { font-size: 66px; }
   .pt-wu .pt-h1--xl { font-size: 55px; }
 }
@@ -216,7 +229,8 @@
   .pt-faq .pt-head { position: static; }
   .pt-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; }
   .pt-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
-  .pt-close__cab { display: none; }
+  .pt-close__cab, .pt-close::after { display: none; }
+  .pt-close { padding-bottom: var(--sec-y); }
 }
 @media (max-width: 760px) {
   .pt-for { grid-template-columns: minmax(0, 1fr); }
@@ -224,9 +238,9 @@
   .pt-for li:last-child { border-bottom: 0; }
 }
 @media (max-width: 640px) {
-  .pt-h1 { font-size: 33px; }
+  .pt-h1 { font-size: 38.5px; }
   .pt-h1--xl { font-size: 44px; }
-  .pt-close__h { font-size: 44px; }
+  .pt-close__h { font-size: 38.5px; }
   .pt-h2, .pt-rows__t { font-size: 33px; }
   .pt-stat { font-size: 55px; }
   .pt-wu .pt-h1--xl { font-size: 44px; }
@@ -243,7 +257,6 @@
   .pt-table .n { display: none; }
   .pt-table .num { font-size: 16.5px; }
   .pt-table tfoot .num { font-size: 22px; }
-  .pt-close__h--m { font-size: 44px; }
   .pt-facts { grid-template-columns: minmax(0, 1fr); }
   .pt-facts li { grid-template-columns: 104px minmax(0, 1fr); align-items: baseline; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
   .pt-facts b { font-size: 16.5px; }

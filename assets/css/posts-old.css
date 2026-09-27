@@ -39,7 +39,9 @@
 .po-faq p { font-size: 16.5px; margin: 0; }
 
 /* Self-check */
-.po-quiz { margin: 2em 0 !important; padding: clamp(22px, 3vw, 34px); background: var(--bg-1); border-top: 2px solid var(--accent); }
+/* a quiet terminal window like the rest of the site: a 2px frame, no fill, its title on the top border */
+.po-quiz { position: relative; margin: 2.4em 0 2em !important; padding: clamp(26px, 3vw, 36px) clamp(18px, 3vw, 34px) clamp(22px, 3vw, 30px); background: none; border: 2px solid var(--line-2); }
+.po-quiz::before { content: "checklist.exe"; content: "checklist.exe" / ""; position: absolute; top: -8px; left: 16px; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; color: var(--fg-1); background: var(--bg-0); white-space: nowrap; }
 .po-quiz > * + * { margin-top: 14px; }
 .po-quiz__q { font: 400 27.5px/1.2 var(--pixel); color: var(--fg-0); }
 .po .po-quiz .quiz__opt { border-top: 0; padding: 10px 0; }

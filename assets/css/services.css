@@ -1,11 +1,18 @@
 /* Services + Approach. Night arcade: a retro site, not a retro theme.
-   Each hero sits in a terminal window like the homepage; art is flat pixel
+   Each hero is copy on the open night with its pixel screen in a terminal
+   window beside it (right edge on the text column, as on /about/); art is flat pixel
    art from /assets/px at whole-number scales; signs are echo text (term.css),
    never glow. Namespaced so nothing collides: pg- (window, page top, section
    next steps and close, both pages), sv- (services), ap- (approach), pxs (the
    pixel screen in both heroes). Theme tokens only, so every theme works.
    Pixel type stays on Departure's 11px grid: 11, 16.5, 22, 27.5, 33, 44, 55,
-   66, 77, 88, 99. */
+   66, 77, 88, 99.
+   One continuous night: no colour bands. Sections share the page's sky and
+   a quiet dotted seam marks where one ends. Rhythm, shared with the other
+   inner pages: every section and close pads var(--sec-y) and opens on the
+   dotted horizon (.seam, drawn in qs.css); page h1 66px, statement h2 55px,
+   regular h2 44px (.h-1), close h2 55px (never above the h1). */
+
 
 .nw { white-space: nowrap; }
 .px { image-rendering: pixelated; }
@@ -16,16 +23,15 @@ main .link::before { content: ""; position: absolute; inset: -12px -6px; }
 main .btn--arcade { max-width: 100%; }
 
 /* ---------- Top (both pages): a big pixel headline, a clear line, the booking button ---------- */
-.pg-hero__h { margin-top: 18px; font: 400 88px/1.02 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); max-width: 12ch; }
+.pg-hero__h { margin-top: 18px; font: 400 66px/1.04 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); max-width: 12ch; }
 .pg-hero__h--wide { max-width: none; }
 .pg-hero__h span { display: block; }
 .pg-hero__cta { display: flex; flex-wrap: wrap; gap: 14px 26px; align-items: center; }
 .pg-hero__cta .link, .pg-close__cta .link { align-self: center; margin-bottom: 5px; }
 
-/* ---------- Terminal window (both heroes), the homepage's frame: 2px border, the title and a live
-   status set into the top border like btop, pause on the bottom border, faint scanlines, deep-night fill ---------- */
-.pg-win { position: relative; padding: clamp(32px, 4vw, 48px); border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
-.pg-win::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
+/* ---------- Terminal window (both heroes, around the screen only), the homepage's frame: 2px border, the
+   title and a live status set into the top border like btop, pause on the bottom border, a flat deep-night fill ---------- */
+.pg-win { position: relative; padding: clamp(32px, 4vw, 48px); border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000); }
 .pg-win > .win__t, .pg-win > .win__r, .pg-win > .win__b { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--bg-0); white-space: nowrap; }
 .pg-win > .win__t { top: -8px; left: 16px; color: var(--fg-1); }
 .pg-win > .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); vertical-align: 0; animation: pulse 2.4s steps(2) infinite; }
@@ -36,8 +42,8 @@ main .btn--arcade { max-width: 100%; }
 .pg-win > .win__b[hidden] { display: none; }
 /* paper: a light window so the headline keeps its contrast */
 [data-theme="paper"] .pg-win { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line); }
-[data-theme="paper"] .pg-win::after { opacity: .12; }
-.pg-win .pg-hero__h { font-size: 77px; }
+/* the art window: the /about/ stage window's padding, sized to its screen */
+.pg-win--art { padding: 26px 16px 24px; }
 .pg-win .lede, .pg-close .body-l, .pg-go__t { text-wrap: pretty; }
 
 /* ---------- The pixel screen (both heroes). Scenes morph into each other; drawn by the inline script ---------- */
@@ -48,20 +54,20 @@ main .btn--arcade { max-width: 100%; }
 .pxs--sv .pxs__cv { width: 480px; aspect-ratio: 16 / 9; }
 .pxs--ap .pxs__cv { width: 480px; aspect-ratio: 8 / 5; }
 
-/* Services top: one window holds the headline and the level-select screen; the staircase stands below */
-.sv-hero { padding: clamp(28px, 3vw, 40px) 0 clamp(72px, 8vw, 112px); }
-.sv-hero__top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px 48px; align-items: end; margin-bottom: clamp(24px, 3vw, 36px); }
+/* Services top: the headline on the night, the level-select screen in its window on the right; the staircase stands below */
+.sv-hero { padding: clamp(56px, 7vw, 104px) 0 var(--sec-y); }
+.sv-hero__top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px 48px; align-items: center; margin-bottom: clamp(40px, 5vw, 64px); }
 .sv-hero__copy { display: grid; gap: 22px; justify-items: start; }
-.sv-hero__copy .pg-hero__h { margin-top: -6px; }
+.sv-hero__copy .pg-hero__h { margin-top: 0; }
 .sv-hero__copy .lede { max-width: 40ch; }
 
-/* Approach top: headline across, then the line on the left and the screen on the right */
-.ap-hero { padding: clamp(28px, 3vw, 40px) 0 clamp(56px, 6vw, 88px); }
+/* Approach top: headline across the column, then the line on the left and the screen's window on the right */
+.ap-hero { padding: clamp(56px, 7vw, 104px) 0 var(--sec-y); }
 .ap-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "h h" "c p"; gap: 28px 48px; align-items: end; }
 .ap-hero__h { grid-area: h; }
 .ap-hero__copy { grid-area: c; display: grid; gap: 26px; justify-items: start; align-self: start; padding-top: 8px; }
 .ap-hero__copy .lede { max-width: 40ch; }
-.pxs--ap { grid-area: p; }
+.ap-hero__art { grid-area: p; }
 
 /* ---------- Shared section head: heading left, a line of copy right ---------- */
 .sv-head { display: grid; grid-template-columns: 1fr 1fr; gap: 20px clamp(32px, 5vw, 80px); align-items: end; margin-bottom: clamp(48px, 6vw, 80px); }
@@ -101,34 +107,38 @@ main .btn--arcade { max-width: 100%; }
 
 /* ---------- Services top: the level select staircase ----------
    One power-up per level, in the homepage's order. The screen above plays each level in turn;
-   the step on screen lights and its power-up hops up and hovers. Everything moves in whole art
-   pixels on stepped frames, like hardware. Level 1 keeps a quiet start-here label in accent. */
+   the step on screen lights and its power-up hops up and hovers. The power-ups are 16x16 flat
+   sprites at 4x, so every move is a whole art pixel (4px) on stepped frames, like hardware.
+   Level 1 keeps a quiet start-here label in accent. */
 .sv-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .sv-step { position: relative; display: flex; flex-direction: column; min-width: 0; }
 .sv-step__art { height: 188px; display: flex; flex-direction: column; justify-content: flex-end; }
 .sv-step__pu { display: block; width: 64px; height: 64px; margin-left: 20px; }
 .sv-step__pu img {
   display: block; width: 64px; height: 64px; image-rendering: pixelated;
-  opacity: .5; filter: saturate(.55); transition: opacity .2s steps(2, end), filter .2s steps(2, end), transform .12s steps(3, end);
+  filter: url(#qs-off); transition: transform .12s steps(3, end);
 }
+/* each step is a ledge, not a block: the 4px top edge, then a fill that steps down to nothing
+   within two art pixels (4px bands), so the staircase reads as open night under the ledges */
 .sv-step__block {
+  --k: color-mix(in srgb, var(--fg-0) 7%, transparent); --k2: color-mix(in srgb, var(--fg-0) 3%, transparent);
   height: calc(16px + var(--i) * 24px);
-  background: color-mix(in srgb, var(--fg-0) 7%, transparent);
+  background: linear-gradient(180deg, var(--k) 0 4px, var(--k2) 4px 8px, transparent 8px);
   border-top: 4px solid color-mix(in srgb, var(--fg-0) 30%, transparent);
-  transition: border-color .15s steps(2), background-color .15s steps(2);
+  transition: border-color .15s steps(2);
 }
-.sv-step:hover .sv-step__pu img { opacity: .8; filter: none; }
-.sv-step.is-live .sv-step__pu img { opacity: 1; filter: none; transform: translateY(-22px); animation: sv-hop .48s steps(1, end) both, sv-bob 1.2s steps(1, end) .48s infinite; }
-.sv-step.is-live .sv-step__block { border-top-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.sv-step:hover .sv-step__pu img { filter: none; }
+.sv-step.is-live .sv-step__pu img { filter: none; transform: translateY(-24px); animation: sv-hop .48s steps(1, end) both, sv-bob 1.2s steps(1, end) .48s infinite; }
+.sv-step.is-live .sv-step__block { border-top-color: var(--accent); --k: color-mix(in srgb, var(--accent) 14%, transparent); --k2: color-mix(in srgb, var(--accent) 6%, transparent); }
 /* the hop: a table of whole-pixel heights, one per frame (40ms), up past the hover height and back */
 @keyframes sv-hop {
-  0% { transform: translateY(0); } 8% { transform: translateY(-12px); } 17% { transform: translateY(-22px); }
-  25% { transform: translateY(-30px); } 33% { transform: translateY(-36px); } 42% { transform: translateY(-40px); }
-  50% { transform: translateY(-42px); } 58% { transform: translateY(-40px); } 67% { transform: translateY(-36px); }
-  75% { transform: translateY(-30px); } 83% { transform: translateY(-24px); } 92% { transform: translateY(-20px); }
-  100% { transform: translateY(-22px); }
+  0% { transform: translateY(0); } 8% { transform: translateY(-12px); } 17% { transform: translateY(-24px); }
+  25% { transform: translateY(-32px); } 33% { transform: translateY(-36px); } 42% { transform: translateY(-40px); }
+  50% { transform: translateY(-44px); } 58% { transform: translateY(-40px); } 67% { transform: translateY(-36px); }
+  75% { transform: translateY(-32px); } 83% { transform: translateY(-24px); } 92% { transform: translateY(-20px); }
+  100% { transform: translateY(-24px); }
 }
-@keyframes sv-bob { 0%, 100% { transform: translateY(-22px); } 50% { transform: translateY(-26px); } }
+@keyframes sv-bob { 0%, 100% { transform: translateY(-24px); } 50% { transform: translateY(-28px); } }
 .sv-step__txt { display: grid; gap: 10px; align-content: start; padding: 26px 26px 0 0; }
 .sv-step__n { font: 400 11px/1.4 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
 .sv-step--pick .sv-step__n { color: var(--accent); }
@@ -143,33 +153,38 @@ main .btn--arcade { max-width: 100%; }
 .sv-step__also a:hover { color: var(--accent); }
 .sv-step:hover .sv-step__name a, .sv-step.is-live .sv-step__name a, .sv-step__name a:focus-visible { color: var(--accent); }
 
-/* Each level's power-up, beside its name further down; it pops in once when it scrolls into view */
+/* Each level's power-up, beside its name further down (4x); it pops in once when it scrolls into view */
 .sv-pu { display: block; width: 64px; height: 64px; image-rendering: pixelated; }
 .js .sv-pu[data-reveal] { transform: none; transition: none; }
 .js .sv-pu[data-reveal].is-in { animation: sv-pop .4s steps(1, end) both; }
 @keyframes sv-pop {
-  0% { opacity: 0; transform: translateY(0); } 10% { opacity: 1; transform: translateY(-6px); } 20% { transform: translateY(-12px); }
-  30% { transform: translateY(-16px); } 40% { transform: translateY(-18px); } 50% { transform: translateY(-16px); }
-  60% { transform: translateY(-12px); } 70% { transform: translateY(-6px); } 80% { transform: translateY(0); }
-  90% { transform: translateY(-2px); } 100% { opacity: 1; transform: translateY(0); }
+  0% { opacity: 0; transform: translateY(0); } 10% { opacity: 1; transform: translateY(-4px); } 20% { transform: translateY(-12px); }
+  30% { transform: translateY(-16px); } 40% { transform: translateY(-20px); } 50% { transform: translateY(-16px); }
+  60% { transform: translateY(-12px); } 70% { transform: translateY(-4px); } 80% { transform: translateY(0); }
+  90% { transform: translateY(-4px); } 100% { opacity: 1; transform: translateY(0); }
 }
 
-/* ---------- Next step (both pages): the one action, where a section ends ---------- */
+/* ---------- Next step (both pages): the one action, where a section ends ----------
+   No rule of its own: it closes the section on space alone, and the next section's
+   dotted horizon is the only line after it. */
 .pg-go {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px;
-  margin-top: clamp(48px, 6vw, 72px); padding-top: clamp(28px, 3vw, 36px);
-  background: repeating-linear-gradient(90deg, var(--line-2) 0 6px, transparent 6px 12px) top left / 100% 2px no-repeat;
+  margin-top: clamp(56px, 7vw, 96px);
 }
 .pg-go__t { font: 400 27.5px/1.2 var(--pixel); color: var(--fg-0); max-width: 26ch; }
 .pg-go .btn--arcade { flex: none; }
 
 /* ---------- Services 2: one spread per level ---------- */
-.sv-levels { padding: clamp(88px, 10vw, 140px) 0 clamp(8px, 2vw, 24px); }
-.sv-lvl { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px clamp(32px, 6vw, 96px); padding: clamp(56px, 6vw, 88px) 0; border-top: 1px solid var(--line); }
+.sv-levels { padding: var(--sec-y) 0; }
+/* the last spread's own padding is the air above the strip */
+.sv-levels .pg-go { margin-top: 0; }
+/* each level opens on the shared dotted horizon (2px dots every 8px), not a solid rule */
+.sv-lvl { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px clamp(32px, 6vw, 96px); padding: clamp(56px, 6vw, 88px) 0;
+  background: repeating-linear-gradient(90deg, var(--line-2) 0 2px, transparent 2px 8px) top left / 100% 2px no-repeat; }
 .sv-lvl__id { display: grid; gap: 16px; align-content: start; justify-items: start; align-self: start; position: sticky; top: 104px; }
 .sv-lvl__id .sv-pu { margin-bottom: 4px; }
 .sv-lvl__tag { font: 400 11px/1.4 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
-.sv-lvl__name { font: 400 55px/1.02 var(--pixel); letter-spacing: -.01em; }
+.sv-lvl__name { font: 400 44px/1.04 var(--pixel); letter-spacing: -.01em; }
 .sv-lvl__price { font: 400 14px/1.5 var(--mono); color: var(--fg-2); }
 .sv-lvl__price b { font-weight: 500; color: var(--fg-0); }
 .sv-lvl__lead { font-size: 17px; color: var(--fg-1); max-width: 42ch; margin-bottom: 6px; }
@@ -193,10 +208,10 @@ main .btn--arcade { max-width: 100%; }
 .sv-lvl--row .sv-list { align-self: start; }
 
 /* ---------- Services 3: First Quarter, under its sign ---------- */
+.sv-fq, .sv-faq { padding: var(--sec-y) 0; }
 .sv-fq__head { display: grid; grid-template-columns: auto 1fr; gap: 24px clamp(40px, 7vw, 112px); align-items: end; margin-bottom: clamp(40px, 5vw, 64px); }
 .sv-fq__head .sv-pu { margin-bottom: 18px; }
-/* echo steps are whole pixels (never em), so every layer lands on the pixel grid and stays crisp */
-.sv-fq__sign { --es: 2px; margin: 14px 0 12px; font: 400 77px/1 var(--pixel); letter-spacing: .01em; white-space: nowrap; color: var(--fg-0); }
+.sv-fq__sign { margin: 14px 0 12px; font: 400 44px/1.04 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); }   /* the other levels' heading size, no echo */
 .sv-cmp { width: 100%; border-collapse: collapse; font-size: 16px; }
 .sv-cmp th, .sv-cmp td { text-align: left; vertical-align: top; padding: 18px 28px 18px 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 14%, transparent); }
 .sv-cmp thead th { border-top: 0; padding-bottom: 28px; vertical-align: bottom; }
@@ -210,11 +225,9 @@ main .btn--arcade { max-width: 100%; }
 .sv-cmp__for { display: block; margin-top: 10px; font: 400 15.5px/1.5 var(--sans); color: var(--fg-1); max-width: 36ch; }
 .sv-fq__foot { display: flex; flex-wrap: wrap; gap: 22px 40px; align-items: center; justify-content: space-between; margin-top: 40px; }
 .sv-fq__foot p { max-width: 62ch; color: var(--fg-1); font-size: 15.5px; }
-/* Small text on the slate band: fg-2 drops under 4.5:1 in some themes, so it steps up to fg-1 */
-.band--slate .label { color: var(--fg-1); }
 
 /* ---------- Services 4: Build ---------- */
-.sv-build { padding: clamp(96px, 11vw, 160px) 0; }
+.sv-build { padding: var(--sec-y) 0; }
 .sv-build .sv-pu { margin-bottom: 18px; }
 .sv-build__h { margin-top: 18px; font: 400 55px/1.04 var(--pixel); letter-spacing: -.01em; max-width: 22ch; }
 .sv-build__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px clamp(40px, 6vw, 96px); margin-top: clamp(40px, 5vw, 64px); align-items: start; }
@@ -230,27 +243,30 @@ main .btn--arcade { max-width: 100%; }
 .sv-qa dt { font: 400 22px/1.3 var(--pixel); color: var(--fg-0); }
 .sv-qa dd { margin: 0; color: var(--fg-1); font-size: 16.5px; max-width: 56ch; }
 
-/* ---------- Close: the booking call, by an arcade cabinet standing on the footer's rule ---------- */
-.pg-close { position: relative; overflow: hidden; padding: clamp(104px, 12vw, 176px) 0 clamp(120px, 12vw, 176px); }
+/* ---------- Close: the booking call, by an arcade cabinet standing on the site's dotted horizon
+   (2px dots every 8px, inside the text column), the home closer's floor ---------- */
+.pg-close { --s: 6; --floor: 44px; position: relative; overflow: hidden; padding: var(--sec-y) 0 clamp(112px, 11vw, 152px); }
+.pg-close::after { content: ""; position: absolute; bottom: var(--floor); height: 2px; pointer-events: none;
+  left: max(var(--wrap-pad), calc((100% - var(--wrap)) / 2 + var(--wrap-pad))); right: max(var(--wrap-pad), calc((100% - var(--wrap)) / 2 + var(--wrap-pad)));
+  background: repeating-linear-gradient(90deg, var(--line-2) 0 2px, transparent 2px 8px); }
 .pg-close__in { position: relative; z-index: 1; display: grid; gap: 26px; justify-items: start; }
 .pg-close__sign { --es: 1px; margin-bottom: -4px; font: 400 22px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; color: var(--fg-0); }
-.pg-close__h { font: 400 77px/1.02 var(--pixel); letter-spacing: -.01em; max-width: 20ch; }
+.pg-close__h { font: 400 55px/1.06 var(--pixel); letter-spacing: -.01em; max-width: 20ch; }
 .pg-close .body-l { max-width: 56ch; }
 .pg-close__cta { justify-self: stretch; display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: 4px; }
 .pg-close__fine { color: var(--fg-2); font-size: 15.5px; }
-/* the art stands on the footer's rule: a player at a cabinet (services, 4 frames), and on approach the
-   pong cabinet from cabinet-row.png (its middle cabinet, x 58 to 110), idle and waiting for a player */
-.pg-close__art { --s: 3; position: absolute; right: clamp(16px, 8vw, 150px); bottom: 0; pointer-events: none; image-rendering: pixelated; background-repeat: no-repeat; }
-.pg-close__art--player { bottom: calc(-8px * var(--s)); width: calc(64px * var(--s)); height: calc(80px * var(--s)); background-image: url(/assets/px/player-at-cabinet.png); background-size: calc(256px * var(--s)) calc(80px * var(--s)); animation: pg-play 1.2s steps(4, end) infinite; }
-@keyframes pg-play { to { background-position: calc(-256px * var(--s)) 0; } }
-.pg-close__art--cab { --s: 2; width: calc(53px * var(--s)); height: calc(88px * var(--s)); background-image: url(/assets/px/cabinet-row.png); background-size: calc(169px * var(--s)) calc(88px * var(--s)); background-position: calc(-58px * var(--s)) 0; }
+/* the art stands on the floor, its right edge on the text column's edge, flat sprites at one whole scale (--s): an arcade
+   cabinet idle and waiting for a player, the sage one on services (flat/cabinet-sage.png) and the butter one on approach
+   (flat/cabinet-butter.png), both 16x28. No figure stands at it. */
+.pg-close__art { position: absolute; right: max(var(--wrap-pad), calc((100% - var(--wrap)) / 2 + var(--wrap-pad))); bottom: calc(var(--floor) + 2px); pointer-events: none; image-rendering: pixelated; background-repeat: no-repeat; }
+.pg-close__art--cab { width: calc(16px * var(--s)); height: calc(28px * var(--s)); background-image: url(/assets/px/flat/cabinet-butter.png); background-size: calc(16px * var(--s)) calc(28px * var(--s)); }
+.pg-close__art--sage { background-image: url(/assets/px/flat/cabinet-sage.png); }
 
-/* ---------- Approach 1: the two halves, on a two-sided court ---------- */
-.ap-halves { padding-top: clamp(16px, 2vw, 32px); }
+/* ---------- Approach 1: the two halves, side by side on the same night ---------- */
+.ap-halves { padding: var(--sec-y) 0; }
 .ap-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 24px clamp(40px, 6vw, 96px); align-items: start; margin-bottom: clamp(56px, 7vw, 96px); }
 .ap-intro__h { grid-column: 1 / -1; font: 400 55px/1.08 var(--pixel); letter-spacing: -.01em; max-width: 22ch; margin-bottom: 8px; }
-.ap-court { position: relative; background: color-mix(in srgb, var(--bg-0) 62%, #000); padding: clamp(72px, 8vw, 120px) 0; }
-[data-theme="paper"] .ap-court { background: var(--bg-2); }
+.ap-court { position: relative; }
 .ap-court__in { display: grid; grid-template-columns: 1fr 1fr; }
 .ap-half { display: grid; gap: 20px; align-content: start; }
 .ap-half:first-child { padding-right: clamp(40px, 6vw, 104px); }
@@ -261,7 +277,7 @@ main .btn--arcade { max-width: 100%; }
 .ap-half__note .link { display: table; margin-top: 14px; }
 
 /* ---------- Approach 2: the method, down a rail ---------- */
-.ap-method { padding: clamp(96px, 11vw, 156px) 0 clamp(72px, 8vw, 112px); }
+.ap-method { padding: var(--sec-y) 0; }
 .ap-steps { list-style: none; margin: 0; padding: 0 0 0 52px; position: relative; }
 .ap-steps::before { content: ""; position: absolute; left: 7px; top: 18px; bottom: 60px; width: 2px; background: var(--line-2); }
 .ap-step { position: relative; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 20px clamp(28px, 5vw, 80px); padding-bottom: clamp(56px, 6vw, 88px); }
@@ -275,6 +291,7 @@ main .btn--arcade { max-width: 100%; }
 .js .ap-step:not(.is-in) .ap-step__n { color: var(--fg-2); }
 
 /* ---------- Approach 3: principles, under a wait sign ---------- */
+.ap-princ, .ap-secure { padding: var(--sec-y) 0; }
 .ap-princ__grid { display: grid; grid-template-columns: 5fr 7fr; gap: 48px clamp(40px, 7vw, 112px); align-items: start; }
 .ap-sign { display: grid; gap: 4px; justify-items: start; align-self: start; position: sticky; top: 140px; margin-top: 44px; font: 400 99px/1 var(--pixel); text-transform: uppercase; letter-spacing: .02em; user-select: none; }
 .ap-sign__go { color: color-mix(in srgb, var(--fg-0) 12%, transparent); }
@@ -288,7 +305,7 @@ main .btn--arcade { max-width: 100%; }
 .ap-rows__in b { color: var(--fg-1); font-weight: 600; }
 
 /* ---------- Approach 4: six open questions ---------- */
-.ap-pick { padding: clamp(96px, 11vw, 156px) 0; }
+.ap-pick { padding: var(--sec-y) 0; }
 .ap-pick__lede { display: grid; gap: 14px; }
 .ap-pick__fine { color: var(--fg-2); font-size: 15.5px; }
 .ap-checks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(32px, 5vw, 80px); }
@@ -311,9 +328,11 @@ main .btn--arcade { max-width: 100%; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1239px) {
-  .pg-hero__h, .pg-win .pg-hero__h { font-size: 66px; }
-  .pg-close__h { font-size: 66px; }
+  .pg-hero__h { font-size: 55px; }
   .ap-sign { font-size: 88px; }
+}
+@media (max-width: 1100px) {
+  .pg-close__h { font-size: 49.5px; }
 }
 /* laptops and tablets: the screen steps down to a whole 2x so the copy keeps its column */
 @media (max-width: 1140px) {
@@ -324,6 +343,7 @@ main .btn--arcade { max-width: 100%; }
   .ap-hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "h" "c" "p"; gap: 28px; }
   .ap-hero__copy { padding-top: 0; }
   .pxs.pxs--sv, .pxs.pxs--ap { justify-items: start; }
+  .sv-hero__top > .pg-win, .ap-hero__art { justify-self: start; }
   .pxs--sv, .pxs--ap, .pxs--sv .pxs__cv, .pxs--ap .pxs__cv { width: 480px; }
 }
 @media (max-width: 1000px) {
@@ -337,14 +357,15 @@ main .btn--arcade { max-width: 100%; }
   .ap-step { grid-template-columns: minmax(0, 1fr); }
   .ap-intro__h { font-size: 44px; }
   .ap-sign { position: static; margin-top: 0; grid-auto-flow: column; justify-content: start; gap: 40px; font-size: 77px; }
-  .pg-close__art { --s: 2; }
+  .pg-close { --s: 5; --floor: 32px; }
 }
 @media (max-width: 760px) {
-  .pg-hero__h, .pg-win .pg-hero__h { font-size: 44px; }
+  .pg-hero__h { font-size: 44px; }
   .sv-hero__copy { gap: 20px; }
   .pg-win { padding: 30px 16px 26px; }
   /* the screen uses the window's full inner width, so it keeps a whole 2x scale on phones */
   .pxs.pxs--sv, .pxs.pxs--ap { margin-inline: -16px; width: auto; max-width: none; justify-items: center; }
+  .sv-hero__top > .pg-win, .ap-hero__art { justify-self: stretch; }
 
   .sv-steps { grid-template-columns: minmax(0, 1fr); }
   .sv-step { flex-direction: row; align-items: flex-start; gap: 18px; padding: 22px 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 12%, transparent); }
@@ -356,11 +377,12 @@ main .btn--arcade { max-width: 100%; }
   .sv-step__name { min-height: 0; }
   .sv-verdicts span { flex-basis: 100%; }
 
-  .sv-lvl__name { font-size: 44px; }
+  .sv-lvl__name { font-size: 33px; }
   .sv-lvl__big { font-size: 27.5px; }
   .sv-facts div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-  .sv-fq__sign { font-size: 38.5px; --es: 1px; }
-  .sv-build__h, .pg-close__h { font-size: 44px; }
+  .sv-fq__sign { font-size: 33px; }
+  .sv-build__h { font-size: 44px; }
+  .pg-close__h { font-size: 38.5px; }
   .ap-intro__h { font-size: 33px; }
   .sv-qa { grid-template-columns: minmax(0, 1fr); }
   .pg-go__t { font-size: 22px; }
@@ -379,9 +401,8 @@ main .btn--arcade { max-width: 100%; }
   .sv-cmp td { width: auto; padding: 4px 0 18px; font-size: 15px; }
   .sv-cmp td::before { content: attr(data-plan); display: block; margin-bottom: 4px; font: 400 11px/1.4 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-1); }
 
-  .pg-close { padding-bottom: 0; display: grid; }
-  .pg-close__art { position: relative; right: auto; bottom: auto; justify-self: end; margin: 40px 24px 0 0; }
-  .pg-close__art--player { margin-bottom: calc(-8px * var(--s)); }
+  .pg-close { --s: 4; --floor: 24px; padding-bottom: 0; display: grid; }
+  .pg-close__art { position: relative; right: auto; bottom: auto; justify-self: end; margin: 40px var(--wrap-pad) calc(var(--floor) + 2px) 0; }
 
   .ap-court__in { grid-template-columns: minmax(0, 1fr); }
   .ap-half:first-child { padding: 0 0 56px; }
@@ -405,19 +426,18 @@ main .btn--arcade { max-width: 100%; }
 /* phones: the booking button spans its column in one line, like the homepage hero */
 @media (max-width: 480px) {
   main .btn--arcade { font-size: 16.5px; padding-inline: 14px; white-space: normal; text-align: center; justify-content: center; line-height: 1.2; }
-  .pg-win .btn--arcade, .pg-go .btn--arcade, .pg-close .btn--arcade, .sv-build .btn--arcade { width: 100%; }
+  .sv-hero .btn--arcade, .ap-hero .btn--arcade, .pg-go .btn--arcade, .pg-close .btn--arcade, .sv-build .btn--arcade { width: 100%; }
   .pg-win .win__nm { display: none; }
 }
 @media (max-width: 380px) {
-  .pg-hero__h, .pg-win .pg-hero__h { font-size: 38.5px; }
+  .pg-hero__h { font-size: 38.5px; }
   .pg-win { padding-inline: 12px; }
   .pxs.pxs--sv, .pxs.pxs--ap { margin-inline: -12px; }
   main .btn--arcade { padding-inline: 10px; }
-  .sv-fq__sign { font-size: 33px; }
 }
 /* reduced motion: still frames. The live power-up hovers without hopping; nothing loops */
 @media (prefers-reduced-motion: reduce) {
-  .pg-win > .win__t::before, .pg-close__art--player { animation: none; }
+  .pg-win > .win__t::before { animation: none; }
   .sv-step.is-live .sv-step__pu img, .js .sv-pu[data-reveal].is-in { animation: none; }
   .sv-step__pu img { transition: none; }
 }

@@ -1,6 +1,23 @@
 /* Signals posts: the post template on top of qs.css, plus the pixel stage
    (assets/js/radar.js) and the post ending (_partials/post-end.html).
-   Tokens only, square corners. Linked right after the shared head. */
+   Tokens only, square corners. Linked right after the shared head.
+   One continuous night: the header, the article and the ending share the
+   page's sky, with no colour bands; a quiet dotted seam marks each step.
+   Rhythm, shared with the other inner pages: every section and close pads
+   var(--sec-y) and opens on the dotted horizon (.seam, drawn in qs.css);
+   the close h2 matches the post's h1 (44px) and the closing cabinet stands on the
+   same dotted horizon as the other pages' closes. */
+
+/* ---------- Seams: the dotted horizon (.seam) is drawn in qs.css; the post
+   ending comes from a partial, so its two sections and the article get the
+   same line here, in the same place ---------- */
+.pend, .pclose, .sig-post .post-grid { position: relative; }
+.pend::before, .pclose::before, .sig-post .post-grid::before {
+  content: ""; position: absolute; top: 0; height: 2px; pointer-events: none;
+  left: max(var(--wrap-pad, 16px), calc((100% - var(--wrap)) / 2 + var(--wrap-pad, 16px)));
+  right: max(var(--wrap-pad, 16px), calc((100% - var(--wrap)) / 2 + var(--wrap-pad, 16px)));
+  background: repeating-linear-gradient(90deg, var(--line-2) 0 2px, transparent 2px 8px);
+}
 
 /* ==========================================================================
    Article body helpers (used by every post, old and new)
@@ -64,10 +81,8 @@
 
 /* Terminal window around the stage, the homepage's hand: a 2px border with
    the title, the scene pips and the pause control set into it (btop style),
-   a deep-night fill and faint scanlines. Posts only; the hub keeps its own. */
-.pxwin { --win-bg: var(--bg-0); position: relative; min-width: 0; padding: 26px 16px 24px; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
-.phero .pxwin { --win-bg: var(--deep); }
-.pxwin::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
+   a flat deep-night fill. Posts only; the hub keeps its own. */
+.pxwin { --win-bg: var(--bg-0); position: relative; min-width: 0; padding: 26px 16px 24px; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000); }
 .pxwin .win__t, .pxwin .pxstage__pips, .pxwin .pxstage__pause { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--win-bg); white-space: nowrap; }
 .pxwin .win__t { top: -8px; left: 16px; color: var(--fg-1); }
 .pxwin .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); animation: pulse 2.4s steps(2) infinite; }
@@ -82,15 +97,12 @@
 .pxwin .pxstage__pause::after { inset: -15px 0; }
 .pxwin .pxstage__pause:hover, .pxwin .pxstage__pause:focus-visible { color: var(--fg-0); }
 [data-theme="paper"] .pxwin { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line); }
-[data-theme="paper"] .pxwin::after { opacity: .18; }
 @media (prefers-reduced-motion: reduce) { .pxwin .win__t::before { animation: none; } }
 
 /* ==========================================================================
-   Post header: a bold pixel headline beside the stage, on a calm deep band
+   Post header: a bold pixel headline beside the stage, on the night itself
    ========================================================================== */
-.sig-post { --deep: color-mix(in srgb, var(--bg-0) 62%, #000); }
-[data-theme="paper"] .sig-post { --deep: var(--bg-2); }
-.phero { background: var(--deep); border-bottom: 1px solid var(--line); padding: clamp(40px, 5vw, 72px) 0 clamp(44px, 5vw, 72px); }
+.phero { padding: clamp(40px, 5vw, 72px) 0 clamp(48px, 5.5vw, 80px); }
 .phero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 468px); gap: clamp(32px, 5vw, 72px); align-items: center; }
 .phero__copy { display: grid; gap: 22px; justify-items: start; }
 .phero__crumbs { font: 400 12.5px var(--mono); color: var(--fg-2); }
@@ -112,13 +124,12 @@
 /* ==========================================================================
    Body and side column
    ========================================================================== */
-.sig-post .post-grid { padding-top: clamp(48px, 6vw, 88px); }
-/* long reading: keep the site-wide night sky (night.js) faint behind the text */
-.sig-post .post-grid, .sig-post .pend { background: color-mix(in srgb, var(--bg-0) 90%, transparent); box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--bg-0) 90%, transparent); clip-path: inset(0 -100vmax); }
+.sig-post .post-grid { padding-top: clamp(56px, 6vw, 88px); }
 .sig-post .shortv { border: 0; border-left: 2px solid var(--accent); background: none; padding: 2px 0 2px 22px; }
 .sig-post .shortv h2 { font: 400 11px/1.4 var(--pixel) !important; letter-spacing: .08em !important; }
 .sig-post .shortv ul { color: var(--fg-0); }
-.sig-post .prose .callout { border: 0; border-left: 2px solid var(--warn); background: var(--bg-1); padding: 18px 20px; }
+/* callouts are an unfilled left rule, like the short verdict above them */
+.sig-post .prose .callout { border: 0; border-left: 2px solid var(--warn); background: none; padding: 2px 0 2px 22px; }
 .sig-post .prose .callout--info { border-left-color: var(--info); }
 .sig-post .prose .callout--accent { border-left-color: var(--accent); }
 .sig-post .prose .callout .label { color: var(--fg-2); }
@@ -147,29 +158,36 @@
 /* ==========================================================================
    Post ending (_partials/post-end.html): the author, the Monday email, the call
    ========================================================================== */
-.pend { border-top: 1px solid var(--line); padding: clamp(56px, 7vw, 96px) 0; }
+.pend { padding: var(--sec-y) 0; }
 .pend__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
-.pend__author { display: grid; grid-template-columns: 72px 1fr; gap: 20px; align-items: start; }
-.pend__author img { width: 72px; height: 72px; object-fit: cover; filter: grayscale(.2) contrast(1.03); }
+/* the byline is type only: the one photo of the founder lives on his profile page (/about/hyrum-hurst/) */
+.pend__author { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; }
 .pend__by { font: 400 15px/1.4 var(--sans); color: var(--fg-1); margin-bottom: 8px; }
 .pend__by b { font-weight: 600; color: var(--fg-0); }
 .pend__author p:not(.pend__by) { color: var(--fg-1); font-size: 16px; }
 .pend__form { display: grid; gap: 12px; }
 .pend__h { font: 400 27.5px/1.2 var(--pixel); color: var(--fg-0); }
 .pend__form .muted { font-size: 15.5px; margin-bottom: 4px; }
-.pclose { position: relative; overflow: hidden; background: var(--deep, color-mix(in srgb, var(--bg-0) 62%, #000)); border-top: 1px solid var(--line); padding: clamp(80px, 10vw, 140px) 0; }
-[data-theme="paper"] .pclose { background: var(--bg-2); }
+.pclose { --floor: 44px; overflow: hidden; padding: var(--sec-y) 0 calc(var(--floor) + 2px); }
 .pclose__grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(32px, 6vw, 96px); align-items: end; }
-.pclose__in { display: grid; gap: 24px; justify-items: start; }
-.pclose__h { font: 400 clamp(44px, 5vw, 66px)/1.08 var(--pixel); letter-spacing: -.01em; max-width: 16ch; color: var(--fg-0); }
+.pclose__in { display: grid; gap: 24px; justify-items: start; margin-bottom: clamp(48px, 5vw, 72px); }
+/* the close never outweighs the post's own h1 (44px, 33px on phones) */
+.pclose__h { font: 400 44px/1.14 var(--pixel); letter-spacing: -.01em; max-width: 20ch; color: var(--fg-0); }
 .pclose .body-l { max-width: 56ch; }
-.pclose__cab { width: 153px; height: auto; image-rendering: pixelated; margin-right: clamp(0px, 4vw, 64px); }
+/* the site's one closer: the cabinet (a flat 16x28 sprite, flat/cabinet-*.png, at 6x) stands on the dotted
+   horizon (2px dots every 8px) inside the text column, its right edge on the column's edge */
+.pclose__cab { width: 96px; height: auto; image-rendering: pixelated; }
+.pclose::after { content: ""; position: absolute; bottom: var(--floor); height: 2px; pointer-events: none;
+  left: max(var(--wrap-pad, 16px), calc((100% - var(--wrap)) / 2 + var(--wrap-pad, 16px)));
+  right: max(var(--wrap-pad, 16px), calc((100% - var(--wrap)) / 2 + var(--wrap-pad, 16px)));
+  background: repeating-linear-gradient(90deg, var(--line-2) 0 2px, transparent 2px 8px); }
 
 /* ==========================================================================
    Responsive
    ========================================================================== */
+/* wide screens: the stage draws at 4x in a window whose right edge is the text column's edge (as on /about/) */
 @media (min-width: 1200px) {
-  .phero__grid.wrap { max-width: none; padding-left: max(clamp(16px, 3vw, 32px), calc((100% - var(--wrap)) / 2 + clamp(16px, 3vw, 32px))); padding-right: clamp(16px, 2vw, 24px); grid-template-columns: minmax(0, 1fr) minmax(0, 612px); gap: clamp(32px, 4vw, 56px); }
+  .phero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 612px); gap: clamp(32px, 4vw, 56px); }
 }
 @media (max-width: 1000px) {
   .phero__grid { grid-template-columns: 1fr; }
@@ -185,11 +203,11 @@
   .phero__art { order: 2; }
   .phero__h { font-size: 33px; }
   .psum__v { font-size: 33px; }
-  .pend__author { grid-template-columns: 56px 1fr; gap: 16px; }
-  .pend__author img { width: 56px; height: 56px; }
   .pend__h { font-size: 22px; }
-  .pclose__h { font-size: 38.5px; }
+  .pclose__h { font-size: 33px; }
   .pclose__grid { grid-template-columns: 1fr; }
-  .pclose__cab { display: none; }
+  .pclose__cab, .pclose::after { display: none; }
+  .pclose { padding-bottom: var(--sec-y); }
+  .pclose__in { margin-bottom: 0; }
   .pfaq > div { padding: 18px 0; }
 }

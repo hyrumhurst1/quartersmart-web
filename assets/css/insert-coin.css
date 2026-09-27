@@ -1,0 +1,294 @@
+/* Book a call (/insert-coin): "Insert coin to start".
+   One terminal window, book.exe, holds four screens on data-state:
+   attract (echo wordmark, one plain line, the coin slot button), ready (a
+   short PLAYER 1 READY flash), pick (days, times and a short form) and done
+   (GAME ON). The window copies the homepage terminal window so this page
+   does not depend on home.css. Pixel type only at multiples of 11px (and
+   27.5px); the picker and the form use IBM Plex Sans. Flat pixel sprites at
+   whole-number scales only, image-rendering: pixelated. */
+
+.ic { padding: clamp(12px, 2.4vw, 32px) 0 clamp(72px, 8vw, 112px); }
+.ic [hidden] { display: none !important; }
+
+/* ---------- The window ---------- */
+.ic__win {
+  --win: color-mix(in srgb, var(--bg-0) 52%, #020507);
+  position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
+  min-height: min(640px, calc(100svh - 120px));
+  padding: clamp(64px, 8vw, 104px) clamp(16px, 4vw, 56px) clamp(48px, 6vw, 80px);
+  border: 2px solid var(--line-2); background: var(--win);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000);
+}
+.ic__head, .ic__play, .ic__nojs, .ic__pick, .ic__done { position: relative; z-index: 2; }
+
+/* title and status set into the top border, btop style */
+.ic__t, .ic__r { position: absolute; z-index: 4; top: -8px; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; white-space: nowrap; background: var(--bg-0); }
+.ic__t { left: 16px; color: var(--fg-1); }
+.ic__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); animation: pulse 2.4s steps(2) infinite; }
+.ic__r { right: 16px; color: var(--fg-2); text-transform: uppercase; visibility: hidden; }
+.ic__r b { font-weight: 400; color: var(--warn); }
+.ic__win:not([data-state="attract"]) .ic__r { visibility: visible; }
+
+/* ---------- Attract: the wordmark and one line ---------- */
+.ic__head { display: grid; justify-items: center; gap: clamp(20px, 2.4vw, 28px); }
+.ic__word {
+  --es: 2px;
+  margin: 0 0 calc(var(--es) * 6); font: 400 110px/1 var(--pixel); letter-spacing: 0; text-transform: uppercase; color: var(--fg-0);
+}
+.ic__word > span { white-space: nowrap; }
+.ic__lede { margin: 0; max-width: 42ch; font: 400 clamp(17px, 1.5vw, 20px)/1.55 var(--sans); color: var(--fg-1); text-wrap: balance; }
+/* the person on the call: the real photo, framed like the founder page */
+.ic__host { display: inline-flex; align-items: center; gap: 12px; margin: 0; font: 400 15px/1.3 var(--sans); color: var(--fg-2); }
+.ic__host img { display: block; flex: none; width: 48px; height: 48px; padding: 3px; object-fit: cover; background: var(--bg-0); border: 2px solid var(--line-2); }
+.ic__host b { font-weight: 500; color: var(--fg-1); }
+
+/* ---------- The coin slot button ---------- */
+.ic__play { display: grid; justify-items: center; gap: 22px; margin-top: clamp(48px, 6vw, 64px); }
+.ic__coin {
+  --e: color-mix(in srgb, var(--accent) 55%, #000);
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 20px;
+  min-width: min(100%, 380px); min-height: 88px; padding: 16px 32px 16px 26px; margin-bottom: 6px;
+  font: 400 27.5px/1 var(--pixel); letter-spacing: 0; text-align: left; text-decoration: none; white-space: nowrap;
+  color: var(--accent-ink); background: var(--accent); box-shadow: 0 6px 0 var(--e);
+  cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; user-select: none;
+  transition: transform .08s, box-shadow .08s, background .15s;
+}
+.ic__coin::before { content: ""; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 2px 0 rgba(255, 255, 255, .35), inset 0 -2px 0 rgba(0, 0, 0, .18); }
+.ic__coin:hover { background: color-mix(in srgb, var(--accent) 85%, #fff); }
+.ic__coin:active, .ic__coin.is-drop { transform: translateY(5px); box-shadow: 0 1px 0 var(--e); }
+.ic__coin:focus-visible { outline: 2px solid var(--fg-0); outline-offset: 6px; }
+.ic__cointxt { display: grid; justify-items: start; gap: 10px; min-width: 0; }
+.ic__insert { font: 400 11px/1 var(--pixel); letter-spacing: .16em; text-transform: uppercase; }
+.ic__book { font: 400 27.5px/1.1 var(--pixel); }
+.ic__nw { white-space: nowrap; }
+[data-theme="paper"] .ic__coin:hover { background: var(--accent-2); }
+
+/* the slot: flat sprite, 8x12 art at 4x, idle and lit frames side by side */
+.ic__door { position: relative; flex: none; width: 32px; height: 48px; background: url(/assets/px/flat/coin-slot.png) 0 0 / 64px 48px no-repeat; image-rendering: pixelated; }
+.ic__coin:hover .ic__door, .ic__coin:focus-visible .ic__door, .ic__coin.is-fed .ic__door { background-position: -32px 0; }
+/* the coin (6x6 at 4x: face, turn, edge, turn) hovers over the slot; its
+   window ends at the top of the slit, 12px down the door, so a dropped coin
+   vanishes into it */
+.ic__fly { position: absolute; left: 4px; top: -30px; width: 24px; height: 42px; overflow: hidden; pointer-events: none; }
+.ic__fly i { position: absolute; left: 0; top: 2px; width: 24px; height: 24px; background: url(/assets/px/flat/coin-spin.png) 0 0 / 96px 24px no-repeat; image-rendering: pixelated; }
+.ic__coin.is-fed .ic__fly { visibility: hidden; }
+
+.ic__credit { margin: 0; font: 400 22px/1 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
+.ic__credit b { font-weight: 400; color: var(--warn); }
+
+/* no JS: the coin hides (only the script drives it) and the email path shows.
+   The CSS timer shows the email path under the coin if the script failed to load. */
+.ic__nojs { display: none; max-width: 46ch; margin: 24px 0 0; }
+.ic__nojs p { margin: 0 0 18px; font: 400 17px/1.55 var(--sans); color: var(--fg-1); text-wrap: balance; }
+.ic__nojs p a { color: var(--accent); overflow-wrap: anywhere; }
+html:not(.ic-js) .ic__play { display: none; }
+html:not(.ic-js) .ic__nojs { display: block; margin-top: clamp(40px, 6vw, 64px); }
+html.ic-js:not(.ic-ready) .ic__nojs { display: block; visibility: hidden; animation: ic-show 0s 6s forwards; }
+/* reduced motion goes straight to the picker, so the coin never shows */
+@media (prefers-reduced-motion: reduce) {
+  html.ic-js .ic__win[data-state="attract"] .ic__play { display: none; }
+}
+
+/* ---------- PLAYER 1 READY: a short echo flash over the window ---------- */
+.ic__flash {
+  position: absolute; inset: 0; z-index: 3; display: none; justify-content: center; align-items: center;
+  padding: 0 16px; background: var(--win);
+}
+.ic__win[data-state="ready"] .ic__flash { display: flex; }
+.ic__ready { --es: 1px; margin: 0; font: 400 55px/1 var(--pixel); text-transform: uppercase; white-space: nowrap; color: var(--fg-0); }
+.ic__win[data-state="ready"] .ic__ready { animation: echo-chase .56s steps(1) infinite, ic-flash .64s steps(1) both; }
+
+/* ---------- Pick: same window, the wordmark steps back ---------- */
+.ic__win:is([data-state="ready"], [data-state="pick"]) { padding-top: clamp(40px, 4.4vw, 60px); padding-bottom: clamp(28px, 3.4vw, 48px); }
+.ic__win:is([data-state="ready"], [data-state="pick"]) .ic__head { gap: 12px; }
+.ic__win:is([data-state="ready"], [data-state="pick"]) .ic__word { --es: 1px; font-size: 44px; }
+.ic__win:is([data-state="ready"], [data-state="pick"]) .ic__lede { font-size: 17px; }
+.ic__win:not([data-state="attract"]) .ic__play, .ic__win:not([data-state="attract"]) .ic__nojs { display: none; }
+
+.ic__pick { width: 100%; margin-top: clamp(28px, 3.4vw, 44px); text-align: left; outline: none; }
+.ic__win[data-state="pick"] .ic__pick { animation: ic-in .24s steps(4) backwards; }
+
+/* step labels: small pixel caps with a numbered chip */
+.ic__lbl { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; padding: 0; font: 400 11px/1 var(--pixel); letter-spacing: .1em; text-transform: uppercase; color: var(--fg-1); }
+.ic__n { display: inline-grid; place-items: center; width: 22px; height: 22px; font: 400 11px/1 var(--pixel); letter-spacing: 0; color: var(--bg-0); background: var(--warn); }
+
+.ic__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 380px); gap: clamp(28px, 3.6vw, 56px); align-items: start; }
+.ic__when { display: grid; gap: 28px; min-width: 0; }
+.ic__set { min-width: 0; margin: 0; padding: 0; border: 0; }
+
+/* the day buttons: chunky pixel keys, a radio group (arrow keys move) */
+.ic__days { --cols: 5; display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 10px; max-width: calc(var(--cols) * 112px); }
+.ic__day, .ic__time { position: relative; display: block; min-width: 0; }
+.ic__day .ic__face { height: 100%; }
+.ic__day input, .ic__time input { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.ic__day input:disabled, .ic__time input:disabled { cursor: default; }
+.ic__face {
+  display: grid; justify-items: center; align-content: center; gap: 6px; min-height: 80px; padding: 10px 4px 9px;
+  border: 2px solid var(--line-2); background: var(--bg-1); color: var(--fg-0); box-shadow: 0 4px 0 var(--line);
+  transition: background .12s, border-color .12s, transform .06s, box-shadow .06s;
+}
+.ic__dw, .ic__dm { font: 400 11px/1 var(--pixel); letter-spacing: .1em; text-transform: uppercase; color: var(--fg-2); }
+.ic__dn { font: 400 22px/1 var(--pixel); color: var(--fg-0); }
+.ic__day input:hover:not(:disabled) + .ic__face, .ic__time input:hover:not(:disabled) + .ic__face { border-color: var(--accent); }
+.ic__day input:checked + .ic__face, .ic__time input:checked + .ic__face {
+  background: var(--accent); border-color: var(--accent); color: var(--accent-ink);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--accent) 55%, #000); transform: translateY(0);
+}
+.ic__day input:checked + .ic__face :is(.ic__dw, .ic__dm, .ic__dn) { color: var(--accent-ink); }
+.ic__day input:active:not(:disabled) + .ic__face, .ic__time input:active:not(:disabled) + .ic__face { transform: translateY(3px); box-shadow: 0 1px 0 var(--line); }
+.ic__day input:focus-visible + .ic__face, .ic__time input:focus-visible + .ic__face { outline: 2px solid var(--fg-0); outline-offset: 3px; }
+.ic__day input:disabled + .ic__face { border-style: dashed; background: transparent; box-shadow: none; }
+.ic__day input:disabled + .ic__face :is(.ic__dw, .ic__dn, .ic__dm) { color: var(--fg-2); opacity: .55; }
+.ic__full { font: 400 11px/1.2 var(--pixel); letter-spacing: .06em; text-transform: uppercase; text-align: center; color: var(--fg-2); }
+
+.ic__tz { margin: -4px 0 14px; font: 400 14px/1.45 var(--sans); color: var(--fg-2); }
+.ic__tz b { font-weight: 500; color: var(--fg-1); }
+.ic__note { margin: 0 0 14px; padding: 10px 14px; font: 500 15px/1.45 var(--sans); color: var(--fg-0); border-left: 4px solid var(--warn); background: color-mix(in srgb, var(--warn) 10%, transparent); outline: none; }
+.ic__times { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 10px; }
+.ic__time .ic__face { min-height: 48px; padding: 8px 6px; gap: 0; font: 500 16px/1.2 var(--sans); font-variant-numeric: tabular-nums; box-shadow: 0 3px 0 var(--line); }
+.ic__alt { margin: 18px 0 0; font: 400 15px/1.5 var(--sans); color: var(--fg-2); }
+.ic__alt a { color: var(--accent); overflow-wrap: anywhere; }
+
+/* ---------- The form ---------- */
+.ic__form { display: grid; gap: 16px; min-width: 0; padding: clamp(18px, 2vw, 24px); border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-1) 70%, transparent); scroll-margin-top: 16px; }
+.ic__form .ic__lbl { margin-bottom: 0; }
+.ic__sum { margin: 0; font: 400 16px/1.5 var(--sans); color: var(--fg-2); }
+.ic__sum b { font-weight: 600; color: var(--fg-0); }
+.ic__sum.is-set { color: var(--fg-1); }
+.ic__sum.is-err { color: var(--fg-0); padding-left: 12px; border-left: 4px solid var(--event); }
+.ic__f { display: grid; gap: 6px; }
+.ic__f label { font: 600 15px/1.3 var(--sans); color: var(--fg-0); }
+.ic__opt { margin-left: 6px; font: 400 13px/1 var(--sans); color: var(--fg-2); }
+.ic__f input, .ic__f textarea {
+  width: 100%; min-height: 48px; padding: 11px 13px; font: 400 17px/1.4 var(--sans); color: var(--fg-0);
+  background: var(--bg-0); border: 2px solid var(--line-2); border-radius: 0; box-shadow: none; appearance: none;
+}
+.ic__f textarea { min-height: 88px; resize: vertical; }
+.ic__f input:hover, .ic__f textarea:hover { border-color: color-mix(in srgb, var(--line-2) 50%, var(--fg-2)); }
+.ic__f input:focus, .ic__f textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent); }
+.ic__f [aria-invalid="true"] { border-color: var(--event); }
+.ic__ferr { margin: 0; font: 500 14px/1.4 var(--sans); color: var(--event); }
+.ic__ferr--form { padding: 12px 14px; color: var(--fg-0); border-left: 4px solid var(--event); background: color-mix(in srgb, var(--event) 10%, transparent); outline: none; }
+.ic__ferr--form p { margin: 0; }
+.ic__ferr--form p + p { margin-top: 8px; }
+.ic__ferr--form a:not(.ic__fall) { color: var(--accent); }
+/* the honeypot: out of sight and out of the tab order */
+.ic__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.ic__go, .ic__fall {
+  --e: color-mix(in srgb, var(--accent) 55%, #000);
+  position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 56px; max-width: 100%; padding: 12px 24px; margin: 4px 0 5px;
+  font: 400 22px/1.2 var(--pixel); text-decoration: none; color: var(--accent-ink); background: var(--accent); border: 0; border-radius: 0; box-shadow: 0 5px 0 var(--e);
+  cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.ic__go::before, .ic__fall::before { content: ""; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 2px 0 rgba(255, 255, 255, .35), inset 0 -2px 0 rgba(0, 0, 0, .18); }
+.ic__go:hover, .ic__fall:hover { background: color-mix(in srgb, var(--accent) 85%, #fff); }
+.ic__go:active, .ic__fall:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--e); }
+.ic__go:focus-visible, .ic__fall:focus-visible { outline: 2px solid var(--fg-0); outline-offset: 4px; }
+.ic__go[aria-disabled="true"] { cursor: progress; }
+.ic__go .ic__spin { margin-right: 14px; }
+.ic__slowbook { margin: 0; font: 500 15px/1.45 var(--sans); color: var(--fg-1); }
+[data-theme="paper"] .ic__go:hover, [data-theme="paper"] .ic__fall:hover { background: var(--accent-2); }
+.ic__fall::after { content: "\00a0\2192"; content: "\00a0\2192" / ""; }
+
+/* ---------- Loading, and the calm fallback ---------- */
+.ic__load { display: grid; justify-items: center; gap: 18px; padding: 56px 0 64px; }
+.ic__load p { margin: 0; font: 400 11px/1 var(--pixel); letter-spacing: .12em; text-transform: uppercase; color: var(--fg-2); }
+.ic__load .ic__slow { max-width: 40ch; font: 400 16px/1.55 var(--sans); letter-spacing: 0; text-transform: none; text-align: center; color: var(--fg-1); text-wrap: balance; }
+.ic__slow a { color: var(--accent); overflow-wrap: anywhere; }
+.ic__spin, .ic__coin1 { display: inline-block; width: 24px; height: 24px; background: url(/assets/px/flat/coin-spin.png) 0 0 / 96px 24px no-repeat; image-rendering: pixelated; }
+.ic__oops { display: grid; justify-items: center; gap: 14px; max-width: 560px; margin: 0 auto; padding: 32px 0 40px; text-align: center; outline: none; }
+.ic__oops-h { margin: 0; font: 400 22px/1.3 var(--pixel); color: var(--fg-0); text-wrap: balance; }
+.ic__oops-p { margin: 0; font: 400 17px/1.55 var(--sans); color: var(--fg-1); text-wrap: balance; }
+.ic__oops-p a { color: var(--accent); overflow-wrap: anywhere; }
+.ic__oops-a { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 22px; margin: 8px 0 0; }
+.ic__again { min-height: 44px; padding: 0 6px; font: 500 14px var(--mono); color: var(--fg-0); background: none; border: 0; border-bottom: 1px solid var(--line-2); border-radius: 0; cursor: pointer; }
+.ic__again:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- GAME ON ---------- */
+.ic__win[data-state="done"] .ic__head, .ic__win[data-state="done"] .ic__pick { display: none; }
+.ic__done { display: grid; justify-items: center; gap: 14px; margin: auto 0; max-width: 100%; outline: none; }
+.ic__win[data-state="done"] .ic__done { animation: ic-pop .3s steps(3) backwards; }
+.ic__gameon { --es: 2px; margin: 0 0 calc(var(--es) * 6 + 8px); font: 400 88px/1 var(--pixel); text-transform: uppercase; color: var(--fg-0); }
+.ic__see { margin: 0; font: 400 33px/1.2 var(--pixel); color: var(--fg-0); }
+.ic__when-done { margin: 0; font: 500 19px/1.45 var(--sans); color: var(--accent); text-wrap: balance; }
+.ic__plus { margin: 6px 0 8px; max-width: 52ch; font-size: 16px; line-height: 1.6; color: var(--fg-1); text-wrap: balance; overflow-wrap: anywhere; }
+.ic__plus .ic__coin1 { vertical-align: -5px; margin-right: 10px; }
+.ic__plus b { margin-right: 8px; font: 400 22px/1 var(--pixel); color: var(--warn); }
+.ic__dry { margin: 6px 0 8px; padding: 8px 14px; font: 400 11px/1.4 var(--pixel); letter-spacing: .1em; text-transform: uppercase; color: var(--fg-0); border: 2px dashed var(--warn); }
+.ic__done .link { justify-self: center; }
+/* text links keep their look but get a 44px tall hit area */
+.ic .link { position: relative; }
+.ic .link::before { content: ""; position: absolute; left: -4px; right: -4px; top: 50%; height: 44px; transform: translateY(-50%); }
+
+/* ---------- Motion (none of it under reduced motion) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .ic__fly i { animation: ic-bob 1.6s steps(1) infinite; }
+  .ic__coin:hover .ic__fly i, .ic__coin:focus-visible .ic__fly i { animation: ic-spin .6s steps(4) infinite, ic-bob .8s steps(1) infinite; }
+  .ic__coin.is-drop .ic__fly i { background-position: -48px 0; animation: ic-drop .14s steps(4) forwards; }
+  .ic__coin.is-fed .ic__door { animation: ic-door .3s steps(1); }
+  .ic__credit.is-up b { animation: ic-blink .16s steps(1) 3; }
+  .ic__spin { animation: ic-spin .6s steps(4) infinite; }
+  .ic__coin1 { animation: ic-spin .6s steps(4) 3; }
+}
+@keyframes ic-bob { 50% { top: 0; } }
+@keyframes ic-spin { to { background-position: -96px 0; } }
+@keyframes ic-drop { 0% { top: 2px; } 100% { top: 44px; } }
+@keyframes ic-door { 34% { background-position: 0 0; } 67% { background-position: -32px 0; } }
+@keyframes ic-blink { 50% { opacity: 0; } }
+@keyframes ic-flash { 0% { opacity: 0; } 12% { opacity: 1; } 22% { opacity: .2; } 32%, 88% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes ic-in { 0% { opacity: 0; transform: translateY(24px); } 100% { opacity: 1; transform: none; } }
+@keyframes ic-pop { 0% { opacity: 0; transform: scale(.94); } 100% { opacity: 1; transform: none; } }
+@keyframes ic-show { to { visibility: visible; } }
+@media (prefers-reduced-motion: reduce) {
+  .ic__t::before, .ic__ready, .ic__pick, .ic__done, .ic__fly i, .ic__door, .ic__credit b, .ic__spin, .ic__coin1 { animation: none !important; }
+  .ic__face, .ic__coin { transition: none; }
+}
+
+/* ---------- Paper theme: the window takes the light surface ---------- */
+[data-theme="paper"] .ic__win { --win: var(--bg-1); box-shadow: 0 0 0 1px var(--line); }
+
+/* ---------- Narrower screens ---------- */
+@media (max-width: 1023px) {
+  .ic__word { --es: 2px; font-size: 88px; }
+  .ic__gameon { font-size: 66px; --es: 2px; }
+  .ic__grid { grid-template-columns: minmax(0, 1fr); }
+}
+/* phones: the wordmark stacks, the coin button runs full width, and the
+   picker takes the whole width of the window */
+@media (max-width: 719px) {
+  .ic { padding-top: 16px; }
+  .ic__win { min-height: 0; padding: 56px 16px 40px; }
+  .ic__t { left: 10px; } .ic__r { right: 10px; }
+  .ic__word { --es: 2px; font-size: 66px; line-height: 1.05; }
+  .ic__word > span { display: block; }
+  .ic__lede { font-size: 17px; }
+  .ic__play { width: 100%; margin-top: 40px; gap: 20px; }
+  .ic__coin { width: 100%; min-width: 0; min-height: 92px; padding: 16px 20px; gap: 16px; font-size: 22px; }
+  .ic__book { font-size: 22px; white-space: normal; text-wrap: balance; }
+  .ic__win:is([data-state="ready"], [data-state="pick"]) { padding: 32px 12px 24px; }
+  .ic__win:is([data-state="ready"], [data-state="pick"]) .ic__head { gap: 10px; }
+  .ic__win:is([data-state="ready"], [data-state="pick"]) .ic__word { font-size: 33px; }
+  .ic__win:is([data-state="ready"], [data-state="pick"]) .ic__word > span { display: inline; }
+  .ic__win:is([data-state="ready"], [data-state="pick"]) .ic__lede { font-size: 15.5px; }
+  .ic__pick { margin-top: 24px; }
+  .ic__when { gap: 24px; }
+  .ic__days { gap: 8px; max-width: none; }
+  .ic__face { min-height: 72px; }
+  .ic__times { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .ic__time .ic__face { min-height: 48px; font-size: 15px; }
+  .ic__form { padding: 16px 14px 18px; }
+  .ic__go { width: 100%; }
+  .ic__oops-a { flex-direction: column; }
+  .ic__fall { width: 100%; }
+  .ic__ready { font-size: 33px; }
+  .ic__win[data-state="done"] { padding: 56px 16px 48px; }
+  .ic__gameon { font-size: 55px; --es: 1px; }
+  .ic__see { font-size: 22px; }
+  .ic__when-done { font-size: 17px; }
+}
+@media (max-width: 379px) {
+  .ic__word { --es: 1px; font-size: 55px; }
+  .ic__ready { font-size: 27.5px; }
+  .ic__win:is([data-state="ready"], [data-state="pick"]) { padding-left: 10px; padding-right: 10px; }
+}

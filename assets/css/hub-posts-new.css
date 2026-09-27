@@ -1,27 +1,27 @@
 /* Signals hub: an arcade radar station. A retro site, not a retro theme:
-   the hero and the feed sit in btop-style terminal windows (title and status
-   in the top border), the page name is an echo sign, the feed reads like a
+   the hero is copy on the open night with the radar in a btop-style terminal
+   window beside it (as on /about/), the feed sits in an open 2px frame (no fill,
+   the title on the border), the page name is an echo sign, the feed reads like a
    high-score table with a 1P cursor, filters are arcade toggles, and verdicts
    are pixel chips. Tokens only; every rule is scoped to .sig-hub so post
-   pages that load this file are untouched. */
+   pages that load this file are untouched.
+   One continuous night: no colour bands; a quiet dotted seam between the
+   sections below the feed (.seam, drawn in qs.css). Rhythm, shared
+   with the other inner pages: sections pad var(--sec-y); the close h2 never
+   outweighs the page h1 (both 44px, stepping down together). */
 
 /* ---------- 0. Terminal windows ---------- */
-.sig-hub .swin { position: relative; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
-.sig-hub .swin::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
+.sig-hub .swin { position: relative; border: 2px solid var(--line-2); background: transparent; }
 .sig-hub .swin__t, .sig-hub .swin__r { position: absolute; z-index: 2; top: -8px; margin: 0; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; text-transform: none; background: var(--bg-0); white-space: nowrap; }
 .sig-hub .swin__t { left: 16px; color: var(--fg-1); }
 .sig-hub .swin__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); vertical-align: 0; animation: pulse 2.4s steps(2) infinite; }
 .sig-hub .swin__r { right: 16px; display: inline-flex; align-items: center; gap: 8px; color: var(--accent); }
 .sig-hub .swin__led { width: 7px; height: 7px; background: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent); }
-[data-theme="paper"] .sig-hub .swin { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line), 0 24px 60px rgba(0, 0, 0, .1); }
-[data-theme="paper"] .sig-hub .swin::after { opacity: .18; }
+[data-theme="paper"] .sig-hub .swin { background: transparent; }
 
-/* ---------- 1. Hero: signals.exe ---------- */
-.sig-hub .shero { padding: 6px clamp(10px, 1.6vw, 22px) clamp(56px, 6vw, 88px); }
-.sig-hub .shero__win { max-width: 1396px; margin: 0 auto; }
-.sig-hub .shero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 600px); gap: clamp(32px, 4vw, 56px); align-items: center; padding-top: clamp(36px, 4vw, 52px); padding-bottom: clamp(40px, 4.4vw, 56px); }
-/* the live count sits clear of the insert-coin dock, as on the home window */
-.sig-hub .shero__win > .swin__r { right: 112px; }
+/* ---------- 1. Hero: the copy on the night, the radar in signals.exe ---------- */
+.sig-hub .shero { padding: clamp(56px, 7vw, 104px) 0 clamp(56px, 6vw, 88px); }
+.sig-hub .shero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 612px); gap: clamp(32px, 4vw, 56px); align-items: center; }
 .sig-hub .shero__copy { position: relative; z-index: 1; display: grid; gap: 18px; justify-items: start; }
 /* the page name as an echo sign, beside the Signals power-up */
 .sig-hub .shero__sign { display: flex; align-items: center; gap: 18px; margin: 0 0 4px; font: 400 55px/1 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); }
@@ -38,21 +38,15 @@
 .sig-hub .shero__fine { font-size: 14.5px; line-height: 1.55; color: var(--fg-2); max-width: 56ch; }
 .sig-hub .shero__fine a { color: var(--fg-1); }
 .sig-hub .shero__fine a:hover { color: var(--accent); }
-/* the stage hugs its canvas; its scene pips and pause key ride in the bottom border */
-.sig-hub .shero__art { position: static; width: 100%; justify-self: end; }
-/* the screen snaps to a whole number of art pixels (144 wide, 4x at most), so the still that shows
-   before the canvas takes over is integer-scaled and sits exactly where the canvas draws it */
-.sig-hub .shero__art .pxstage__screen { width: 100%; width: min(576px, round(down, 100%, 144px)); }
-@media (min-resolution: 2dppx) { .sig-hub .shero__art .pxstage__screen { width: min(576px, round(down, 100%, 72px)); } }
-.sig-hub .shero__art .pxstage__bar { position: absolute; z-index: 2; right: 16px; bottom: -8px; height: 14px; min-height: 0; gap: 12px; padding: 0 8px; background: var(--bg-0); }
-.sig-hub .shero__art .pxstage__pips i { height: 4px; width: 4px; }
-.sig-hub .shero__art .pxstage__pips i.on { width: 14px; }
-.sig-hub .shero__art .pxstage__pause { width: 16px; height: 14px; border: 0; background: none; }
-.sig-hub .shero__art .pxstage__pause:hover { color: var(--accent); }
+/* the stage window (.pxwin, signals-post.css): scene pips on the top border, pause on the bottom
+   border at the right, and the live count on the bottom border at the left */
+.sig-hub .shero__art { position: static; width: 100%; }
+.sig-hub .shero__count { position: absolute; z-index: 2; bottom: -8px; left: 16px; display: inline-flex; align-items: center; gap: 8px; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; color: var(--accent); background: var(--bg-0); white-space: nowrap; }
 
 /* ---------- 2. The feed: a high-score table ---------- */
-.sig-hub .slist { padding: clamp(24px, 3vw, 40px) 0 clamp(80px, 9vw, 128px); scroll-margin-top: 24px; }
+.sig-hub .slist { padding: clamp(24px, 3vw, 40px) 0 var(--sec-y); scroll-margin-top: 24px; }
 .sig-hub .slist__win { padding: 34px 0 10px; }
+/* the filters sit on the open night: a line and a lamp each, no filled key */
 .sig-hub .slist__h { top: -13px; font: 400 22px/22px var(--pixel); letter-spacing: 0; color: var(--fg-0); }
 .sig-hub .slist__h::before { width: 8px; height: 8px; margin-right: 12px; vertical-align: 3px; }
 .sig-hub .slist__win .swin__r { color: var(--fg-1); }
@@ -61,7 +55,7 @@
 
 /* filters: a bank of arcade toggles, each with its own lamp */
 .sig-hub .sig-filter { gap: 8px 10px; }
-.sig-hub .sig-filter button { --k: var(--accent); position: relative; display: inline-flex; align-items: center; gap: 9px; min-height: 40px; margin-bottom: 4px; padding: 0 13px; color: var(--fg-1); background: var(--bg-1); border: 2px solid var(--line-2); border-radius: 0; box-shadow: 0 4px 0 var(--line); transition: transform .06s, box-shadow .06s, color .12s, border-color .12s; }
+.sig-hub .sig-filter button { --k: var(--accent); position: relative; display: inline-flex; align-items: center; gap: 9px; min-height: 40px; margin-bottom: 4px; padding: 0 13px; color: var(--fg-1); background: transparent; border: 2px solid var(--line-2); border-radius: 0; box-shadow: 0 4px 0 var(--line); transition: transform .06s, box-shadow .06s, color .12s, border-color .12s; }
 .sig-hub .sig-filter button::before { content: ""; width: 7px; height: 7px; flex: none; background: color-mix(in srgb, var(--k) 28%, transparent); }
 .sig-hub .sig-filter button:hover { color: var(--fg-0); border-color: var(--fg-2); background: var(--bg-2); }
 .sig-hub .sig-filter button:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--line); }
@@ -78,8 +72,8 @@
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11'%3E%3Cpath d='M2 0h4v1H2zM1 1h1v1H1zM6 1h1v1H6zM0 2h1v4H0zM7 2h1v4H7zM1 6h1v1H1zM6 6h1v1H6zM2 7h4v1H2zM7 7h2v2H7zM9 9h2v2H9z'/%3E%3C/svg%3E") center / 11px 11px no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11'%3E%3Cpath d='M2 0h4v1H2zM1 1h1v1H1zM6 1h1v1H6zM0 2h1v4H0zM7 2h1v4H7zM1 6h1v1H1zM6 6h1v1H6zM2 7h4v1H2zM7 7h2v2H7zM9 9h2v2H9z'/%3E%3C/svg%3E") center / 11px 11px no-repeat; }
 .sig-hub .sig-find:focus-within::before { background: var(--accent); }
-.sig-hub .sig-q { width: 100%; padding-left: 36px; border-width: 2px; border-radius: 0; background: var(--bg-0); }
-[data-theme="paper"] .sig-hub .sig-q { background: var(--bg-0); }
+.sig-hub .sig-q { width: 100%; padding-left: 36px; border-width: 2px; border-radius: 0; background: transparent; }
+[data-theme="paper"] .sig-hub .sig-q { background: transparent; }
 
 /* the table: rank, date, signal, status, verdict */
 .sig-hub .slist__win { --cols: 40px 118px minmax(0, 1fr) 208px 116px; --gx: 24px; }
@@ -128,7 +122,7 @@
 .sig-hub .verdict[data-v="ign"]::before { height: 2px; }
 
 /* ---------- 3. Reading a Signal ---------- */
-.sig-hub .slegend { padding-bottom: clamp(64px, 7vw, 96px); }
+.sig-hub .slegend { padding: var(--sec-y) 0; }
 .sig-hub .slegend__kick { margin-bottom: 14px; }
 .sig-hub .slegend__h { font: 400 44px/1.14 var(--pixel); letter-spacing: -.01em; max-width: 30ch; text-wrap: balance; }
 .sig-hub .slegend__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); margin-top: clamp(40px, 5vw, 64px); }
@@ -140,7 +134,7 @@
 .sig-hub .slegend__verdicts dt { line-height: 1; }
 .sig-hub .slegend__note { margin-top: 20px; color: var(--fg-1); font-size: 16px; }
 .sig-hub .slegend__note + .slegend__note { margin-top: 8px; }
-/* on the slate band the chips sit on a dark key fill, so the small labels keep AA in every theme */
+/* the chips sit on a dark key fill, so the small labels keep AA in every theme */
 .sig-hub .slegend .verdict { background: color-mix(in srgb, var(--v) 10%, var(--bg-1)); }
 [data-theme="paper"] .sig-hub .slegend .verdict { background: var(--bg-1); }
 .v-act { color: var(--accent); }
@@ -149,13 +143,14 @@
 .v-ign { color: var(--fg-1); }
 
 /* ---------- 4. Close ---------- */
-.sig-hub .scloser { padding: clamp(88px, 10vw, 148px) 0; }
+.sig-hub .scloser { padding: var(--sec-y) 0; }
 .sig-hub .scloser__grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(32px, 6vw, 96px); align-items: end; }
 .sig-hub .scloser__main { display: grid; gap: 24px; justify-items: start; }
 .sig-hub .scloser__k { display: grid; gap: 16px; justify-items: start; }
-.sig-hub .scloser__pu { width: 64px; height: 64px; image-rendering: pixelated; animation: sig-bob 1.2s steps(2) infinite; }
-@keyframes sig-bob { 50% { transform: translateY(-3px); } }
-.sig-hub .scloser__h { font: 400 60.5px/1.06 var(--pixel); letter-spacing: -.01em; max-width: 16ch; text-wrap: balance; }
+/* the power-ups are 16x16 flat sprites at 4x, so the bob is one whole art pixel (4px) */
+.sig-hub .scloser__pu { width: 64px; height: 64px; image-rendering: pixelated; animation: sig-bob 1.2s steps(1, end) infinite; }
+@keyframes sig-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.sig-hub .scloser__h { font: 400 44px/1.14 var(--pixel); letter-spacing: -.01em; max-width: 20ch; text-wrap: balance; }
 .sig-hub .scloser__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 6px; }
 .sig-hub .scloser__cta .link { position: relative; align-self: center; }
 .sig-hub .scloser__cta .link::before { content: ""; position: absolute; inset: -12px -4px; }
@@ -174,10 +169,10 @@
 /* ---------- Responsive ---------- */
 /* laptops: a 3x stage beside the copy */
 @media (max-width: 1279px) {
-  .sig-hub .shero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 448px); }
+  .sig-hub .shero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 468px); }
   .sig-hub .shero__sign { font-size: 44px; }
   .sig-hub .shero__pu { width: 64px; height: 64px; }
-  .sig-hub .shero__h { font-size: 33px; }
+  .sig-hub .shero__h, .sig-hub .scloser__h { font-size: 33px; }
 }
 /* tablets: the status moves under the title */
 @media (max-width: 1100px) {
@@ -188,17 +183,16 @@
   .sig-hub .sigtable a::before, .sig-hub .sig__date { grid-row: 1 / span 2; }
   /* pixel type stays on its 11px grid between breakpoints */
   .sig-hub .slegend__h { font-size: 38.5px; }
-  .sig-hub .scloser__h { font-size: 49.5px; }
 }
 @media (max-width: 900px) {
-  .sig-hub .shero__grid { grid-template-columns: 1fr; padding-top: 28px; }
-  .sig-hub .shero__art { order: -1; justify-self: center; max-width: 600px; }
+  .sig-hub .shero__grid { grid-template-columns: minmax(0, 1fr); }
+  .sig-hub .shero__win { order: -1; justify-self: center; width: 100%; max-width: 612px; }
   .sig-hub .shero__sign { font-size: 44px; }
   .sig-hub .slegend__grid, .sig-hub .scloser__grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .sig-hub .shero { padding: 4px 8px 48px; }
-  .sig-hub .shero__grid { gap: 20px; padding-top: 24px; padding-bottom: 36px; }
+  .sig-hub .shero { padding: 32px 0 48px; }
+  .sig-hub .shero__grid { gap: 22px; }
   .sig-hub .shero__copy { gap: 18px; }
   .sig-hub .shero__sign { gap: 14px; font-size: 44px; }
   .sig-hub .shero__sign .echo { padding-bottom: 10px; }
@@ -207,11 +201,9 @@
   .sig-hub .shero__why { font-size: 16px; }
   .sig-hub .shero__cta { width: 100%; }
   .sig-hub .shero__cta .btn--arcade, .sig-hub .scloser__cta .btn--arcade { width: 100%; justify-content: center; font-size: 16.5px; padding-inline: 14px; }
-  .sig-hub .shero__art .pxstage__bar { right: 10px; }
   .sig-hub .swin__t { left: 10px; }
   .sig-hub .swin__r { right: 10px; }
   .sig-hub .slist { padding-top: 12px; }
-  .sig-hub .slist > .wrap { padding-inline: 8px; }
   .sig-hub .slist__win { --gx: 12px; padding-top: 30px; }
   .sig-hub .slist__h { font-size: 22px; }
   .sig-hub .slist__tools { padding: 0 12px 18px; }
@@ -233,7 +225,7 @@
   .sig-hub .sig__d { font-size: 15px; }
   .sig-hub .slegend__labels div, .sig-hub .slegend__verdicts div { grid-template-columns: 1fr; gap: 8px; }
   .sig-hub .slegend__verdicts dt { justify-self: start; }
-  .sig-hub .scloser__h { font-size: 38.5px; }
+  .sig-hub .scloser__h { font-size: 27.5px; line-height: 1.18; }
   .sig-hub .scloser__cta .btn--xl { min-height: 56px; }
   .sig-hub .scloser__form { padding: 30px 16px 20px; }
 }

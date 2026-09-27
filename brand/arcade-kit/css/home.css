@@ -16,11 +16,18 @@
 .sig-sign__pu { width: 64px; height: 64px; flex: none; image-rendering: pixelated; margin-top: -6px; }
 .sig-sign .echo { --es: 1px; color: var(--fg-0); padding-bottom: 6px; }
 .closer__sign { margin: 0; font: 400 33px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; }
-.px { image-rendering: pixelated; width: calc(var(--w, attr(width px)) * var(--s, 3)); height: auto; }
-.levels__art .px { width: 402px; max-width: 100%; }
-.approachx__art .px { width: 464px; max-width: 100%; }
+/* flat pixel art: whole-number scales only, set per sprite below */
+.px { image-rendering: pixelated; }
 @media (max-width: 640px) { .wordmark { font-size: clamp(44px, 14.5vw, 66px); } .h4 { min-height: 0; } .h4__attract { opacity: .35; -webkit-mask-image: linear-gradient(180deg, transparent 0 40%, #000 80%); mask-image: linear-gradient(180deg, transparent 0 40%, #000 80%); } }
 @media (prefers-reduced-motion: reduce) { .wordmark { animation: none; } }
+
+/* ---------- One night scene below the hero ----------
+   Every section after why.exe is .hs: no colour bands, the night sky shows through,
+   the site's one section rhythm (--sec-y, qs.css), and the shared dotted horizon
+   (2px dots every 8px, drawn in qs.css) at the top of each, inside the text column. */
+.hs { position: relative; padding-block: var(--sec-y); }
+/* a section head: small accent label, then the h2 */
+.hs__head { display: grid; gap: 14px; align-content: end; }
 
 /* statement */
 .hx { padding: clamp(64px, 8vw, 120px) 0 clamp(72px, 8vw, 120px); border-top: 1px solid var(--line); }
@@ -49,8 +56,7 @@
 .sigrows__v b { font: 400 11px var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-right: 8px; }
 
 /* boot sequence */
-.boot { padding: clamp(60px, 6.5vw, 96px) 0; }
-.boot__head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 40px; }
+.boot__head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 48px; }
 .boot__rail { height: 4px; background: repeating-linear-gradient(90deg, var(--line-2) 0 8px, transparent 8px 12px); position: relative; }
 .boot__fill { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--boot, 0) * 100%); background: var(--accent); }
 .boot__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -84,11 +90,13 @@
 .levels__list button[aria-selected="true"] .lv__name::before { content: "\25B6\00a0"; content: "\25B6\00a0" / ""; color: var(--accent); font-size: .7em; vertical-align: .15em; }
 .levels__panels { min-width: 0; }
 .lv > * { min-width: 0; overflow-wrap: anywhere; }
-.lv { min-width: 0; display: grid; gap: 18px; align-content: start; padding: clamp(24px, 3vw, 40px); background: var(--bg-1); border: 2px solid var(--accent); height: 100%; }
+/* the chosen level opens in a terminal window like why.exe: quiet frame, its tag sits on the top border as the title */
+.lv { position: relative; min-width: 0; display: grid; gap: 18px; align-content: start; padding: clamp(28px, 3vw, 40px) clamp(22px, 3vw, 40px) clamp(24px, 3vw, 40px); background: color-mix(in srgb, var(--bg-0) 52%, #020507); border: 2px solid var(--line-2); height: 100%; }
 .lv[hidden] { display: none; }
 /* a tapped level scrolls its panel into view on phones; keep a little air below its border */
 .lv { scroll-margin-bottom: 16px; }
-.lv__tag { font: 400 11px var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.lv > .lv__tag { position: absolute; top: -8px; left: 16px; max-width: calc(100% - 32px); padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--bg-0); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+[data-theme="paper"] .lv { background: var(--bg-1); }
 .lv h3 { font: 400 55px/1 var(--pixel); }
 .lv p { color: var(--fg-1); font-size: 17px; }
 .lv ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; color: var(--fg-1); }
@@ -98,40 +106,39 @@
 .lv__cta { display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; margin-top: 8px; }
 .levels__more { margin-top: 28px; }
 
-/* approach statement */
-.approachx { padding: clamp(60px, 6.5vw, 96px) 0; }
-.approachx__h { margin: 18px 0 0; font: 400 55px/1.04 var(--pixel); letter-spacing: -.01em; max-width: 20ch; }
+/* approach statement: the same h-1 scale as every other section head */
+.approachx__h { max-width: 20ch; }
 .approachx__h span { display: block; }
-.approachx__grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: 56px; }
+.approachx__grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: 48px; }
 .approachx__grid h3 { font: 400 22px/1 var(--pixel); color: var(--accent); margin-bottom: 12px; }
 .approachx__grid p { color: var(--fg-1); font-size: 17px; }
-.approachx__art { margin: 0; }
-.approachx__art .ansi { --ansi: clamp(4.5px, .5vw, 7px); }
-.rules { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+/* the two text columns top-align so 01 and 02 share a baseline; the art centres between them */
+.approachx__grid { align-items: start; }
+.approachx__art { --kp: 8px; margin: 0; align-self: center; }
+/* keyboard-manual.png is 39x10: 8x on wide screens, 6x once the columns stack */
+.approachx__art .px { display: block; width: calc(var(--kp) * 39); height: calc(var(--kp) * 10); }
+.rules { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
 .rules li { padding: 24px 24px 0 0; color: var(--fg-1); font-size: 16px; }
 .rules b { display: block; font: 400 22px/1.2 var(--pixel); color: var(--fg-0); font-weight: 400; margin-bottom: 8px; }
 .approachx__more { margin-top: 36px; }
 
-/* player one */
-.p1__grid { display: grid; grid-template-columns: auto 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
-.p1__photo { width: 252px; height: 268px; display: grid; place-items: end center; background: var(--bg-0); box-shadow: 0 0 0 4px var(--accent), 10px 10px 0 4px color-mix(in srgb, var(--accent) 30%, transparent); overflow: hidden; }
-.p1__photo img { width: 237px; height: 252px; image-rendering: pixelated; }
-.p1__tag { margin-top: 26px; font: 400 22px/1 var(--pixel); color: var(--accent); text-align: center; }
+/* player one: a name plate on the left (no portrait), the copy on the right; same columns as the services level spreads */
+.p1__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px clamp(32px, 6vw, 96px); align-items: start; }
+.p1__id { display: grid; gap: 12px; justify-items: start; padding-top: 6px; }
+/* the same sign as "insert coin" below it: 22px pixel caps with a small stepped echo */
+.p1__tag { font: 400 22px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); --es: .06em; }
 /* "player one" blinks three times as the section comes into view (home.js adds .is-in), then holds steady */
 .p1.is-in .p1__tag { animation: pulse 1.6s steps(2) 3; }
+.p1__name { margin-top: 6px; font: 400 33px/1.1 var(--pixel); color: var(--fg-0); }
+.p1__role { font: 400 13.5px/1.5 var(--mono); color: var(--fg-2); }
 .p1__copy { display: grid; gap: 22px; }
-.p1__facts { margin: 0; display: grid; gap: 8px; font: 400 14px/1.5 var(--mono); }
-.p1__facts div { display: grid; grid-template-columns: max-content 1fr; gap: 16px; }
-.p1__facts dt { color: var(--accent); }
-.p1__facts dd { margin: 0; color: var(--fg-1); }
-.p1__cta { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
+.p1__cta { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; margin-top: 4px; }
 
 /* closer */
-.closer { padding: clamp(72px, 7.5vw, 112px) 0; }
 .closer__grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(32px, 6vw, 96px); align-items: end; }
 .closer__main { display: grid; gap: 24px; }
 .closer__coin { font: 400 22px/1 var(--pixel); letter-spacing: .12em; text-transform: uppercase; color: var(--warn); animation: pulse 1.4s steps(2) infinite; }
-.closer__h { font: 400 60.5px/1.04 var(--pixel); letter-spacing: -.01em; max-width: 14ch; }
+.closer__h { font: 400 55px/1.06 var(--pixel); letter-spacing: -.01em; max-width: 14ch; }
 .closer__form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding-left: clamp(0px, 3vw, 40px); border-left: 1px solid var(--line); }
 .closer__form .muted { font-size: 15px; }
 .closer__form .field { flex-wrap: nowrap; }
@@ -143,11 +150,11 @@
   .sigband__intro { position: static; }
   .boot__steps { grid-template-columns: 1fr 1fr; row-gap: 32px; }
   .approachx__grid { grid-template-columns: 1fr; }
+  .approachx__art { --kp: 6px; }
   .rules { grid-template-columns: 1fr; }
   .levels__head { grid-template-columns: 1fr; }
   .closer__form { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 24px; }
-  .closer__h { font-size: 49.5px; }
-  .approachx__h { font-size: 44px; }
+  .closer__h { font-size: 44px; }
 }
 @media (max-width: 640px) {
   .lv .btn--arcade { white-space: normal; text-align: left; line-height: 1.25; padding: 12px 18px; }
@@ -160,33 +167,21 @@
   .boot__n { font-size: 22px; }
   .boot__steps h3 { font-size: 22px; }
   .boot__steps p { font-size: 15px; }
-  .closer__h { font-size: 44px; }
-  .approachx__h { font-size: 38.5px; }
+  .closer__h { font-size: 38.5px; }
   .closer .btn--xl { width: 100%; justify-content: center; font-size: 16.5px; line-height: 1.25; padding-inline: 16px; min-height: 56px; }
   .sigrows__t { font-size: 22px; }
   .lv h3 { font-size: 38.5px; }
   .levels__list button { font-size: 22px; grid-template-columns: 40px 1fr; }
   .levels__list .lv__meta { grid-column: 2; }
-  .p1__photo { width: 160px; height: 160px; }
-  .p1__facts div { grid-template-columns: 1fr; gap: 2px; }
+  .p1__name { font-size: 27.5px; }
   .hx__art .ansi { --ansi: 4.4px; }
 }
 @media (prefers-reduced-motion: reduce) { .p1 .p1__tag, .closer__coin { animation: none; } }
 
-/* closer: an arcade at night */
-.closer { position: relative; overflow: hidden; padding-bottom: clamp(220px, 26vw, 360px); }
-.closer__scene { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; min-height: 60%; object-fit: cover; object-position: bottom; image-rendering: pixelated; opacity: .9; pointer-events: none;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 45%); mask-image: linear-gradient(180deg, transparent 0, #000 45%); }
-.closer__cab { position: absolute; right: clamp(16px, 8vw, 140px); bottom: clamp(24px, 3vw, 44px); width: 204px; height: auto; image-rendering: pixelated; pointer-events: none; }
-.closer .wrap { position: relative; }
-@media (max-width: 1000px) { .closer__cab { width: 120px; } }
-@media (max-width: 640px) { .p1__photo { width: 174px; height: 184px; } .p1__photo img { width: 158px; height: 168px; } .closer__cab { display: none; } }
-
 /* ---------- Hero: a title screen inside a terminal window ---------- */
 /* 14px on top keeps the window border clear of the fixed coin/menu dock (it ends at y 79) */
 .h4 { --hud-h: 72px; position: relative; height: calc(100svh - var(--hud-h)); min-height: 600px; max-height: 1180px; padding: 14px clamp(10px, 1.6vw, 22px) clamp(10px, 1.6vw, 22px); }
-.h4__win { position: relative; height: 100%; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
-.h4__win::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
+.h4__win { position: relative; height: 100%; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000); }
 .win__t, .win__r, .win__b { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--bg-0); white-space: nowrap; }
 .win__t { top: -8px; left: 16px; color: var(--fg-1); }
 .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); vertical-align: 0; animation: pulse 2.4s steps(2) infinite; }
@@ -220,21 +215,28 @@ button.win__b:hover { color: var(--fg-0); }
 [data-theme="paper"] .h4__win { background: var(--bg-1); }
 [data-theme="paper"] .h4__h { text-shadow: none; }
 
-/* level select: the power-up shelf (one item per level; the selected one lights and bobs) */
-.pu-shelf { display: flex; gap: clamp(10px, 2vw, 22px); align-items: end; margin: 0; }
-.pu-shelf .pu { width: 64px; height: 64px; image-rendering: pixelated; opacity: .38; filter: saturate(.5); transition: opacity .2s steps(3), filter .2s steps(3); }
-.pu-shelf .pu.is-on { opacity: 1; filter: none; animation: pu-bob 1s steps(2) infinite; }
-@keyframes pu-bob { 50% { transform: translateY(-4px); } }
-@media (max-width: 640px) { .pu-shelf .pu { width: 48px; height: 48px; } }
+/* level select: the power-up shelf (one 16x16 item per level; the selected one lights and bobs one art pixel) */
+.pu-shelf { --pp: 4px; display: flex; gap: calc(var(--pp) * 6); align-items: end; margin: 0; }
+.pu-shelf .pu { width: calc(var(--pp) * 16); height: calc(var(--pp) * 16); image-rendering: pixelated; filter: url(#qs-off); }
+.pu-shelf .pu.is-on { filter: none; animation: pu-bob 1s steps(2) infinite; }
+@keyframes pu-bob { 50% { transform: translateY(calc(var(--pp) * -1)); } }
+@media (max-width: 640px) { .pu-shelf { --pp: 3px; } }
 @media (prefers-reduced-motion: reduce) { .pu-shelf .pu.is-on { animation: none; } }
 
-/* closer: the arcade at night, standing on the floor; stars show through */
-.closer { padding-bottom: clamp(200px, 20vw, 280px); }
-.closer::after { content: ""; position: absolute; left: 0; right: 0; bottom: clamp(24px, 3vw, 44px); height: 2px; background: repeating-linear-gradient(90deg, var(--line-2) 0 6px, transparent 6px 12px); }
-.closer__cab { position: absolute; right: clamp(16px, 7vw, 120px); bottom: calc(clamp(24px, 3vw, 44px) + 2px); width: 338px; height: auto; image-rendering: pixelated; pointer-events: none; }
+/* closer: the arcade at night; three cabinets stand on the site's dotted horizon (2px dots every 8px),
+   drawn inside the text column like every seam, stars show through. The same closer as services,
+   approach, for-agencies and every post. cabinet-row.png is 56x29 and its last row is its own floor:
+   cover-fit to 28 rows crops it, so the cabinets sit on this line. */
+.closer { --cp: 6px; --floor: 44px; position: relative; overflow: hidden; padding-bottom: clamp(240px, 20vw, 280px); }
+.closer::after { content: ""; position: absolute; bottom: var(--floor); height: 2px; pointer-events: none;
+  left: max(var(--wrap-pad), calc((100% - var(--wrap)) / 2 + var(--wrap-pad))); right: max(var(--wrap-pad), calc((100% - var(--wrap)) / 2 + var(--wrap-pad)));
+  background: repeating-linear-gradient(90deg, var(--line-2) 0 2px, transparent 2px 8px); }
+/* the right marquee lines up with the column's right edge (the art has 2 clear pixels on its right) */
+.closer__cab { position: absolute; right: calc(max(var(--wrap-pad), (100% - var(--wrap)) / 2 + var(--wrap-pad)) - var(--cp) * 2); bottom: calc(var(--floor) + 2px); width: calc(var(--cp) * 56); height: calc(var(--cp) * 28); object-fit: cover; object-position: 50% 0; image-rendering: pixelated; pointer-events: none; }
+.closer .wrap { position: relative; }
 .closer__sign { font-size: 22px; color: var(--fg-0); --es: .06em; }
-@media (max-width: 1000px) { .closer__cab { width: 169px; } }
-@media (max-width: 640px) { .closer__cab { display: block; width: 169px; right: 50%; transform: translateX(50%); } .closer { padding-bottom: 150px; } }
+@media (max-width: 1000px) { .closer { --cp: 4px; --floor: 32px; padding-bottom: 200px; } }
+@media (max-width: 640px) { .closer { --cp: 3px; --floor: 24px; padding-bottom: 150px; } .closer__cab { right: 50%; transform: translateX(50%); } }
 /* phones: the hero text column never grows past the screen; long CTAs wrap */
 .h4__in { grid-template-columns: minmax(0, 1fr); }
 @media (max-width: 760px) {
@@ -258,10 +260,24 @@ button.win__b:hover { color: var(--fg-0); }
 .sigband__form [data-form-status]:empty { margin-top: 0; }
 .sigband__more { margin-top: -6px; }
 
-/* home rhythm: calmer section padding so the offer and the close arrive sooner */
-.home .band { padding-block: clamp(60px, 6.5vw, 96px); }
 
 /* in-page jumps (e.g. the hero link to #levels) glide unless motion is reduced */
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 /* the hero's "see the plans" jump lands with the level list in view (html has an 88px scroll-padding) */
 #levels { scroll-margin-top: -56px; }
+
+/* ---------- Hero: a full-screen game world (no window frame) ---------- */
+body.home .hud { height: 0; }
+.h4 { --hud-h: 0px; position: relative; height: 100vh; height: 100svh; min-height: 560px; max-height: 1400px; padding: 0; overflow: hidden;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-0) 42%, #020507) 0%, color-mix(in srgb, var(--bg-0) 58%, #020507) 64%, var(--bg-0) 100%); }
+.h4__world { position: absolute; inset: 0; width: 100%; height: 100%; display: block; image-rendering: pixelated; cursor: pointer; }
+.h4__in { bottom: clamp(30px, 6.5vh, 80px); }
+.h4__hud { position: absolute; z-index: 2; top: 0; left: clamp(16px, 2.4vw, 32px); display: flex; align-items: center; gap: 18px; font: 400 11px/14px var(--pixel); letter-spacing: .08em; text-transform: uppercase; }
+.h4__lv { color: var(--fg-2); }
+.h4__pause { margin: 0; padding: 8px 0; font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--fg-2); background: none; border: 0; cursor: pointer; opacity: .75; }
+.h4__pause:hover, .h4__pause:focus-visible { color: var(--fg-0); opacity: 1; }
+.h4__pause[hidden] { display: none; }
+[data-theme="paper"] .h4 { background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg-0) 100%); }
+@media (max-width: 760px) { .h4 { min-height: 520px; padding: 0; } .h4__in { bottom: 24px; } .h4__hud { top: 0; } }
+@media (max-width: 480px) { .h4__lv .win__nm { display: none; } }
+@media (prefers-reduced-motion: reduce) { .h4__world { cursor: default; } }

@@ -101,7 +101,7 @@
   --fg-0: #1d1c19; --fg-1: #45423b; --fg-2: #625e55;
   --accent: #2f6b52; --accent-ink: #f6f3ec; --accent-2: #24563f;
   --warn: #8a5a12; --event: #5d4a8f; --info: #2d5b80; --bad: #9b3438;
-  --block: var(--bg-3); /* slate band tokens are darkened in arcade.css */
+  --block: var(--bg-3); /* raised colour block (bands no longer use it) */
   --grain: .05; color-scheme: light;
 }
 
@@ -112,6 +112,8 @@
   --gap: 12px;          /* tile gap, like a tiling WM */
   --pad: clamp(20px, 2.6vw, 32px);
   --wrap: 1240px;
+  --wrap-pad: clamp(16px, 3vw, 32px);   /* .wrap's side gutter */
+  --sec-y: clamp(72px, 8vw, 112px);     /* one section rhythm on every page */
   --r: 0px;
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
@@ -125,13 +127,7 @@ body {
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
-/* Film grain across everything. Static, cheap, and it kills the flat-vector look. */
-body::after {
-  content: ""; position: fixed; inset: -50%; z-index: 100; pointer-events: none;
-  opacity: var(--grain);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1.6 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
-}
+/* No film grain: the art is flat, so nothing textures the pixels (the --grain tokens are kept but unused). */
 ::selection { background: var(--accent); color: var(--accent-ink); }
 a { color: inherit; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); text-underline-offset: .2em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-color: currentColor; }
@@ -143,7 +139,21 @@ p { margin: 0; }
 .skip:focus { left: 8px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(16px, 3vw, 32px); }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--wrap-pad); }
+
+/* The horizon: the one section separator. A dotted line two pixels tall,
+   quiet (line-2 dots, three quarters air), set in the content column rather
+   than across the whole screen, so the page reads as one night with sections
+   laid on it instead of stacked colour blocks. Every .band (arcade.css) and
+   every .sec after another opens on it; .horizon (or .seam, the name the page
+   sheets use; .hs on the homepage) adds it to any section. A page sheet may restyle its own. */
+.horizon, .seam, .hs { position: relative; }
+.horizon::before, .seam::before, .hs::before, .band::before, .sec + .sec::before {
+  content: ""; position: absolute; top: 0; height: 2px; pointer-events: none;
+  left: max(var(--wrap-pad), calc((100% - var(--wrap)) / 2 + var(--wrap-pad)));
+  right: max(var(--wrap-pad), calc((100% - var(--wrap)) / 2 + var(--wrap-pad)));
+  background: repeating-linear-gradient(90deg, var(--line-2) 0 2px, transparent 2px 8px);
+}
 
 /* ---------- Type ---------- */
 .mono { font-family: var(--mono); }
@@ -172,6 +182,12 @@ p { margin: 0; }
 @keyframes pulse { 50% { opacity: 0; } }
 .accent { color: var(--accent); }
 
+/* Inactive sprites: one flat dim silhouette everywhere (filter: url(#qs-off),
+   defined once in the nav partial); the real colours show only when lit or
+   hovered. No opacity, no desaturation. */
+.qs-fx { position: absolute; width: 0; height: 0; overflow: hidden; }
+.qs-fx feFlood { flood-color: var(--line-2); }
+
 /* ---------- HUD: no nav bar ----------
    The page opens on the brand alone, in flow, and it scrolls away. The site
    menu lives behind a small pixel joystick (fixed top right, every page) and
@@ -192,95 +208,77 @@ body.home .hud > * { display: none; }
 @keyframes brand-pop { 0% { transform: translate(-2px, 2px); } 22% { transform: translate(-1px, 1px); } 40% { transform: translate(1px, -1px); } 62% { transform: none; } 76% { transform: translate(1px, -1px); } 90%, 100% { transform: none; } }
 @keyframes brand-pop-idle { 0%, 91% { transform: none; } 92% { transform: translate(-2px, 2px); } 93.5% { transform: translate(-1px, 1px); } 95% { transform: translate(1px, -1px); } 96.5% { transform: none; } 97.5% { transform: translate(1px, -1px); } 98.5%, 100% { transform: none; } }
 
-/* The dock: the joystick (menu) and the coin door (book), fixed top right on
-   every page. They share one small night panel with square pixel corners
-   and a 1px line, so page content never shows through them mid-scroll. The
-   panel drops away while the menu is open (the menu screen backs it). */
+/* The dock: the coin slot (book a call) and the joystick (menu), fixed top
+   right on every page. Both are flat 4x sprites of the same height standing
+   on one baseline, each under a one-word pixel label (COIN, CALL, MENU are
+   all four letters, so the words line up over their sprites and the lead-in
+   words hang to the left). No panel and no boxes: the sprites stand bare
+   with a one-art-pixel night outline and the words keep a one-pixel night
+   outline, so the dock reads over any band without stepped backings. It
+   tucks up while the page scrolls down and comes back on any scroll up
+   (select.js sets .hud-tuck), so it never sits on the line being read.
+   The label row shares its line with the home hero's level HUD. The
+   joystick's outer edge sits on the page gutter (16px on phones, 22px on
+   wide screens, where the full-width windows put their borders). Pixel art
+   stays at integer scales with image-rendering: pixelated. */
 .hud__dock {
-  --dock: color-mix(in srgb, var(--bg-0) 88%, #000);
-  position: fixed; top: 2px; right: 3px; z-index: 190; display: flex; align-items: stretch; gap: 4px;
-  padding: 3px 2px; background: var(--dock); border: 1px solid var(--line-2); border-radius: 0;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, .35);
+  position: fixed; top: 6px; right: calc(clamp(16px, 1.6vw, 22px) - 4px); z-index: 190;
+  display: flex; align-items: flex-end;
 }
-[data-theme="paper"] .hud__dock { --dock: var(--bg-1); box-shadow: 0 2px 0 rgba(0, 0, 0, .08); }
-.sel-open .hud__dock { background: none; border-color: transparent; box-shadow: none; }
+.hud__coin, .hud__start {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  min-width: 48px; min-height: 44px; margin: 0; padding: 4px;
+  color: var(--fg-1); background: none; border: 0; border-radius: 0;
+  font: inherit; text-decoration: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.hud__lbl { position: relative; display: block; font: 400 11px/11px var(--pixel); letter-spacing: .1em; margin-right: -.1em; text-transform: uppercase; white-space: nowrap; text-shadow: 1px 0 var(--bg-0), -1px 0 var(--bg-0), 0 1px var(--bg-0), 0 -1px var(--bg-0); }
+/* the lead-in words hang left of the four-letter word, one space away */
+.hud__pre { position: absolute; right: 100%; top: 0; padding-right: calc(1ch + .1em); }
+.hud__say--call { display: none; }
+.hud__slot, .hud__joy { display: block; flex: none; height: 48px; background: 0 0 / auto 48px no-repeat; image-rendering: pixelated;
+  filter: drop-shadow(4px 0 0 var(--bg-0)) drop-shadow(-4px 0 0 var(--bg-0)) drop-shadow(0 4px 0 var(--bg-0)) drop-shadow(0 -4px 0 var(--bg-0)); }
+.hud__slot { width: 32px; background-image: url(/assets/px/flat/coin-slot.png); }
+.hud__joy { width: 40px; background-image: url(/assets/px/flat/joystick.png); background-position: -40px 0; }
+.hud__coin:focus-visible, .hud__start:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 
-/* The menu trigger: a low-res pixel joystick at 2x with a small MENU label
-   on top. It sits still and centred; hovering rocks the stick left and right,
-   and a click snaps it back to centre. The sprite is cropped to its drawn
-   area (rows and columns 2 to 29 of each 32px frame). */
-.hud__start {
-  position: relative;
-  display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0;
-  color: var(--fg-1); background: none; border: 0; border-radius: 0; cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-.hud__lbl { display: block; font: 400 11px/1 var(--pixel); letter-spacing: .14em; margin-right: -.14em; text-transform: uppercase; text-shadow: 0 1px 0 var(--bg-0); transition: color .12s; }
-.hud__joy { display: block; flex: none; width: 56px; height: 56px; background: url(/assets/px/joystick.png) -132px -4px / 320px 64px no-repeat; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .45)); }
+/* The joystick opens the menu: hovering rocks it left and right (reduced
+   motion: it just leans), a click snaps it back to centre. */
 .hud__start:hover .hud__lbl, .hud__start:focus-visible .hud__lbl, .hud__start[aria-expanded="true"] .hud__lbl { color: var(--accent); }
-.hud__start:hover:not(.is-snap) .hud__joy { animation: joy-rock .9s steps(1) infinite; }
-.hud__start:active .hud__joy, .hud__start.is-snap .hud__joy { animation: none; background-position: -132px -4px; }
-.hud__start:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-[data-theme="paper"] .hud__joy { filter: none; }
-[data-theme="paper"] .hud__lbl { text-shadow: none; }
-@keyframes joy-rock { 0% { background-position: -196px -4px; } 12.5% { background-position: -260px -4px; } 25% { background-position: -196px -4px; } 37.5% { background-position: -132px -4px; } 50% { background-position: -68px -4px; } 62.5% { background-position: -4px -4px; } 75% { background-position: -68px -4px; } 87.5% { background-position: -132px -4px; } }
+.hud__start:hover .hud__joy { background-position: -80px 0; }
+.hud__start:active .hud__joy, .hud__start.is-snap .hud__joy { animation: none; background-position: -40px 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .hud__start:hover:not(.is-snap) .hud__joy { animation: joy-rock .9s steps(1) infinite; }
+}
+@keyframes joy-rock { 0% { background-position: -80px 0; } 25% { background-position: -40px 0; } 50% { background-position: 0 0; } 75% { background-position: -40px 0; } }
 
-/* Insert coin: the one persistent action. A tiny coin door (12x20 sprite at
-   2x) under a two-line plaque. A "book a call" tag slides out of the panel's
-   left side on hover, and stays out once the page's first Book button has
-   scrolled away (select.js sets .is-call). Clicking drops a coin into the
-   slit (select.js) and goes to /contact/. Hidden while the menu is open,
-   which has its own coin door. Phones swap the plaque for the words. */
-.hud__coin {
-  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
-  padding: 0 1px; color: var(--fg-1); text-decoration: none; -webkit-tap-highlight-color: transparent;
-}
-.hud__coin-lbl { display: grid; justify-items: center; font: 400 11px/11px var(--pixel); letter-spacing: .06em; margin-right: -.06em; text-transform: uppercase; text-shadow: 0 1px 0 var(--bg-0); transition: color .12s; }
-.hud__slot { display: block; flex: none; width: 24px; height: 40px; margin-top: 3px; background: url(/assets/px/coin-slot-mini.png) 0 0 / 24px 40px no-repeat; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .45)); }
-.hud__coin-tip {
-  position: absolute; right: calc(100% + 3px); bottom: 10px; padding: 4px 6px 3px;
-  font: 400 11px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap;
-  color: var(--accent); background: var(--dock); border: 1px solid var(--line-2); border-right: 0; box-shadow: 0 2px 0 rgba(0, 0, 0, .35);
-  visibility: hidden;
-}
-.hud__coin:hover .hud__coin-lbl, .hud__coin:focus-visible .hud__coin-lbl { color: var(--warn); }
-.hud__coin:hover .hud__slot, .hud__coin:focus-visible .hud__slot, .hud__coin.is-coin .hud__slot { filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .45)) drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 55%, transparent)) brightness(1.15); }
-.hud__coin:hover .hud__coin-tip, .hud__coin:focus-visible .hud__coin-tip, .hud__coin.is-call .hud__coin-tip { visibility: visible; }
-.hud__coin:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-.sel-open .hud__coin, .sel-open .hud__coin .hud__coin-tip { visibility: hidden; }
-[data-theme="paper"] .hud__slot { filter: none; }
-[data-theme="paper"] .hud__coin-lbl { text-shadow: none; }
-[data-theme="paper"] .hud__coin-tip { box-shadow: 0 2px 0 rgba(0, 0, 0, .08); }
-@media (prefers-reduced-motion: no-preference) and (min-width: 700px) {
-  .hud__coin:hover .hud__coin-tip, .hud__coin:focus-visible .hud__coin-tip, .hud__coin.is-call .hud__coin-tip { animation: coin-tip .16s steps(2) backwards; }
-}
-@keyframes coin-tip { from { transform: translateX(8px); opacity: 0; } }
-/* Once the page's own Book button has scrolled away, the plaque itself reads
-   BOOK / A CALL (as on phones) instead of a tag hanging over the content.
-   The hover slide-out before that is unchanged. */
-@media (min-width: 700px) {
-  .hud__coin.is-call .hud__coin-lbl { display: none; }
-  .hud__coin.is-call .hud__coin-tip { position: static; order: -1; display: grid; justify-items: center; margin-right: -.06em; padding: 0; line-height: 11px; background: none; border: 0; box-shadow: none; animation: none; }
-}
-/* Phones: the words sit over the slot, like MENU over the joystick, and the
-   whole column is the tap target. Under 375px it is just BOOK, so the dock
-   clears the wordmark and its hidden quarter; under 360px the wordmark
-   steps down to 1.5x as well. */
+/* The coin slot books the call. It reads INSERT COIN; on hover or focus it
+   reads BOOK A CALL and the slot lights, and once the page's first Book
+   button has scrolled away (select.js sets .is-call) it keeps reading BOOK
+   A CALL. Both phrases are eleven letters, so the swap moves nothing.
+   Clicking drops a coin into the slit (select.js). Hidden while the menu is
+   open (the menu has its own coin door). */
+.hud__coin:hover .hud__say--coin, .hud__coin:focus-visible .hud__say--coin, .hud__coin.is-call .hud__say--coin { display: none; }
+.hud__coin:hover .hud__say--call, .hud__coin:focus-visible .hud__say--call, .hud__coin.is-call .hud__say--call { display: inline; }
+.hud__coin:hover .hud__lbl, .hud__coin:focus-visible .hud__lbl, .hud__coin.is-call .hud__lbl { color: var(--accent); }
+.hud__coin:hover .hud__slot, .hud__coin:focus-visible .hud__slot, .hud__coin.is-coin .hud__slot { background-position: -32px 0; }
+.sel-open .hud__coin { visibility: hidden; }
+/* over the home hero (darker than the page) and the open menu the sprites need no outline */
+.hud-bare .hud__slot, .hud-bare .hud__joy, .sel-open .hud__joy { filter: none; }
+
+/* Scrolling down tucks the dock up out of the reading line; any scroll up
+   (or reaching the end, or the mouse at the top edge) brings it back
+   (select.js sets .hud-tuck). It stays put while the menu is open or it
+   holds keyboard focus. */
+.hud__dock { transition: transform .18s steps(4); }
+html.hud-tuck:not(.sel-open) .hud__dock:not(:focus-within) { transform: translateY(calc(-100% - 12px)); }
+@media (prefers-reduced-motion: reduce) { .hud__dock { transition: none; } }
+/* Phones: it always reads BOOK A CALL (no hover to reveal it); under 375px
+   just CALL, so nothing crowds the wordmark and its hidden quarter. */
 @media (max-width: 699px) {
-  .hud__coin-lbl { display: none; }
-  .hud__coin .hud__coin-tip {
-    position: static; order: -1; display: grid; justify-items: center; margin-right: -.06em; padding: 0;
-    line-height: 11px; background: none; border: 0; box-shadow: none; visibility: inherit;
-  }
+  .hud__say--coin, .hud__coin:hover .hud__say--coin { display: none; }
+  .hud__say--call { display: inline; }
 }
-@media (max-width: 374px) { .hud__coin-tip > span + span { display: none; } }
-/* Phones: scrolling down tucks the dock up out of the reading line and any
-   scroll up (or reaching the end) brings it back (select.js sets .hud-tuck).
-   It stays put while the menu is open or it holds keyboard focus. */
-@media (max-width: 699px) {
-  .hud__dock { transition: transform .18s steps(4); }
-  html.hud-tuck:not(.sel-open) .hud__dock:not(:focus-within) { transform: translateY(calc(-100% - 4px)); }
-}
+@media (max-width: 374px) { .hud__pre { display: none; } }
 @media (max-width: 359px) { .hud .brand { gap: 8px; font-size: 16.5px; } }
 
 /* ---------- Buttons: keycaps ---------- */
@@ -330,12 +328,12 @@ body.home .hud > * { display: none; }
 }
 [data-theme="paper"] .shot::after { opacity: .25; }
 
-/* ---------- Sections ---------- */
-.sec { padding: clamp(64px, 8vw, 112px) 0; }
+/* ---------- Sections ----------
+   One night, no colour blocks: sections sit on the page's own night and hand
+   over at a dotted horizon (see .horizon). --deep is kept as a name only. */
+.sec { position: relative; padding: var(--sec-y) 0; }
 .sec--tight { padding: clamp(44px, 5vw, 72px) 0; }
-.sec + .sec { border-top: 1px solid var(--line); }
-.sec--deep { background: color-mix(in srgb, var(--bg-0) 55%, #000); }
-.sec--deep .pane__t { background: color-mix(in srgb, var(--bg-0) 55%, #000); }
+.sec--deep { background: none; }
 .sec__head { display: grid; gap: 16px; max-width: 760px; margin-bottom: clamp(36px, 4vw, 56px); }
 .rule { height: 1px; background: var(--line); border: 0; margin: 0; }
 .qrule { display: flex; width: 160px; height: 2px; gap: 3px; }
@@ -458,7 +456,7 @@ form.is-done .field { display: none; }
 [data-form-status] { font: 400 13px var(--mono); color: var(--accent); margin-top: 12px; min-height: 1.4em; }
 
 /* ---------- Page head (inner pages) ---------- */
-.phead { padding: clamp(48px, 6vw, 88px) 0 clamp(36px, 4vw, 56px); border-bottom: 1px solid var(--line); }
+.phead { padding: clamp(48px, 6vw, 88px) 0 clamp(36px, 4vw, 56px); }
 .phead__crumbs { font: 400 12.5px var(--mono); color: var(--fg-2); margin-bottom: 22px; }
 .phead__crumbs a { color: var(--fg-2); text-decoration: none; }
 .phead__crumbs a:hover { color: var(--fg-0); }
@@ -490,13 +488,14 @@ form.is-done .field { display: none; }
 .callout--accent { border-left-color: var(--accent); }
 
 /* ---------- Footer ---------- */
-.foot { border-top: 1px solid var(--line); padding: 56px 0 40px; margin-top: 0; font-size: 14.5px; color: var(--fg-1); }
+/* no rule across the screen: the coin arena's own dotted floor is the footer's horizon */
+.foot { padding: 56px 0 40px; margin-top: 0; font-size: 14.5px; color: var(--fg-1); }
 .foot__grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; }
 .foot h2 { font: 500 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--fg-2); margin-bottom: 14px; }
 .foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
 .foot a { text-decoration: none; }
 .foot a:hover { color: var(--fg-0); text-decoration: underline; }
-.foot__base { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line); font: 400 12.5px/1.6 var(--mono); color: var(--fg-2); }
+.foot__base { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; margin-top: 48px; padding-top: 22px; background: repeating-linear-gradient(90deg, var(--line-2) 0 2px, transparent 2px 8px) 0 0 / 100% 2px no-repeat; font: 400 12.5px/1.6 var(--mono); color: var(--fg-2); }
 /* one-key shortcuts switch (term.js), styled like the qsh cue beside it */
 .keys-cue { font: 400 12px/1 var(--mono); color: var(--fg-2); background: none; border: 0; padding: 16px 6px; margin: -16px -6px; cursor: pointer; }
 .keys-cue:hover { color: var(--accent); }

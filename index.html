@@ -55,20 +55,19 @@
 
   <!-- 1. Hero: the wordmark over an idle arcade -->
   <section class="h4" aria-labelledby="hero-h">
-    <div class="h4__win">
-      <span class="win__t" aria-hidden="true">attract.exe</span>
-      <span class="win__r" aria-hidden="true" data-scene-label>lv 01<span class="win__nm"> title</span></span>
-      <canvas class="h4__world" data-attract role="img" aria-label="QuarterSmart, in pixel letters under a night sky."></canvas>
-      <div class="h4__in">
+    <canvas class="h4__world" data-attract role="img" aria-label="QuarterSmart, in pixel letters under a night sky."></canvas>
+    <div class="h4__hud">
+      <span class="h4__lv" aria-hidden="true" data-scene-label>lv 01<span class="win__nm"> title</span></span>
+      <button class="h4__pause" type="button" data-attract-pause hidden><span>pause</span><span class="sr"> animation</span></button>
+    </div>
+    <div class="h4__in">
         <h1 class="h4__h" id="hero-h">Use new AI while it's still an advantage.</h1>
         <p class="lede">For owner-led businesses: we watch AI launches, tell you which ones matter, and set them up for your team the day you get access.</p>
         <div class="hx__cta">
-          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
+          <a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free 20-minute call</a>
           <a class="btn btn--ghost" href="#levels">See the plans</a>
         </div>
       </div>
-      <button class="win__b" type="button" data-attract-pause hidden><span>pause</span><span class="sr"> animation</span></button>
-    </div>
   </section>
 
   <!-- 2. Why QuarterSmart: a pinned scroll story -->
@@ -91,11 +90,11 @@
     </div>
   </section>
 
-  <!-- 3. Signals: the live proof, on a full-bleed slate block -->
-  <section class="band band--slate" aria-labelledby="sig-h">
+  <!-- 3. Signals: the live proof -->
+  <section class="hs" aria-labelledby="sig-h">
     <div class="wrap sigband">
       <div class="sigband__intro">
-        <p class="sig-sign"><img class="sig-sign__pu" src="/assets/px/pu-radar.png" width="64" height="64" alt=""><span class="echo">Signals</span></p>
+        <p class="sig-sign"><img class="sig-sign__pu" src="/assets/px/flat/pu-radar.png" width="16" height="16" alt=""><span class="echo">Signals</span></p>
         <h2 class="h-1" id="sig-h">Know what changed. Know what to do.</h2>
         <p class="body-l">AI launches, each with a verdict: act now, prepare, wait or ignore. Free every Monday.</p>
         <form class="sigband__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
@@ -132,10 +131,13 @@
   </section>
 
   <!-- 4. How it works: a boot sequence, not a card grid -->
-  <section class="boot" aria-labelledby="how-h" data-boot>
+  <section class="hs boot" aria-labelledby="how-h" data-boot>
     <div class="wrap">
       <div class="boot__head">
-        <h2 class="h-1" id="how-h">From headline to habit.</h2>
+        <div class="hs__head">
+          <p class="label label--accent">How it works</p>
+          <h2 class="h-1" id="how-h">From headline to habit.</h2>
+        </div>
         <p class="body-l">Most launches aren't worth it. We tell you which ones are.</p>
       </div>
       <div class="boot__rail" aria-hidden="true"><span class="boot__fill"></span></div>
@@ -149,19 +151,19 @@
   </section>
 
   <!-- 5. Level select: the offer ladder -->
-  <section class="band band--deep levels" id="levels" aria-labelledby="lv-h" data-levels>
+  <section class="hs levels" id="levels" aria-labelledby="lv-h" data-levels>
     <div class="wrap">
       <div class="levels__head">
-        <div>
+        <div class="hs__head">
           <p class="label label--accent">Ways to work with us</p>
           <h2 class="h-1" id="lv-h">Select your level.</h2>
         </div>
         <figure class="levels__art pu-shelf" aria-hidden="true">
-          <img class="pu" data-pu="0" src="/assets/px/pu-radar.png" width="32" height="32" alt="">
-          <img class="pu" data-pu="1" src="/assets/px/pu-map.png" width="32" height="32" alt="">
-          <img class="pu" data-pu="2" src="/assets/px/pu-setup.png" width="32" height="32" alt="">
-          <img class="pu" data-pu="3" src="/assets/px/pu-token.png" width="32" height="32" alt="">
-          <img class="pu" data-pu="4" src="/assets/px/pu-robot.png" width="32" height="32" alt="">
+          <img class="pu" data-pu="0" src="/assets/px/flat/pu-radar.png" width="16" height="16" alt="">
+          <img class="pu" data-pu="1" src="/assets/px/flat/pu-map.png" width="16" height="16" alt="">
+          <img class="pu" data-pu="2" src="/assets/px/flat/pu-setup.png" width="16" height="16" alt="">
+          <img class="pu" data-pu="3" src="/assets/px/flat/pu-token.png" width="16" height="16" alt="">
+          <img class="pu" data-pu="4" src="/assets/px/flat/pu-robot.png" width="16" height="16" alt="">
         </figure>
       </div>
       <div class="levels__grid">
@@ -185,21 +187,21 @@
             <h3>Head Start</h3>
             <p>We find the AI you already pay for and aren't using, then hand you a 30-day plan.</p>
             <ul><li>The three launches that matter to you</li><li>A 30-day plan</li></ul>
-            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a>
+            <a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free call</a>
           </div>
           <div class="lv" role="tabpanel" id="lv-2" aria-labelledby="lv-t2">
             <p class="lv__tag">level 2 · project · per tool</p>
             <h3>Day One Setup</h3>
             <p>One tool, set up for how you work, tested, then taught to your team.</p>
             <ul><li>Inside accounts you own</li><li>A small test first</li><li>Live training for the team</li></ul>
-            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a>
+            <a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free call</a>
           </div>
           <div class="lv lv--feature" role="tabpanel" id="lv-3" aria-labelledby="lv-t3">
             <p class="lv__tag">level 3 · membership · monthly</p>
             <h3>First Quarter</h3>
             <p>Signals for your tools, same business day. Priority on launch weeks.</p>
             <ul><li>Verdicts written for your business</li><li>Setup hours held every month</li><li>Team training every quarter</li></ul>
-            <div class="lv__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a><a class="link" href="/services/#first-quarter">Compare plans</a></div>
+            <div class="lv__cta"><a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free call</a><a class="link" href="/services/#first-quarter">Compare plans</a></div>
           </div>
           <div class="lv" role="tabpanel" id="lv-4" aria-labelledby="lv-t4">
             <p class="lv__tag">level 4 · custom · scoped</p>
@@ -215,16 +217,18 @@
   </section>
 
   <!-- 6. The approach as one editorial statement -->
-  <section class="approachx" aria-labelledby="ap-h">
+  <section class="hs approachx" aria-labelledby="ap-h">
     <div class="wrap">
-      <p class="label label--accent">Our approach</p>
-      <h2 class="approachx__h" id="ap-h"><span>Train your team.</span> <span class="accent">Automate the rest.</span></h2>
+      <div class="hs__head">
+        <p class="label label--accent">Our approach</p>
+        <h2 class="h-1 approachx__h" id="ap-h"><span>Train your team.</span> <span class="accent">Automate the rest.</span></h2>
+      </div>
       <div class="approachx__grid">
         <div>
           <h3>01 · Train</h3>
           <p>Early only pays if people use it. We train your team on their own work.</p>
         </div>
-        <figure class="approachx__art"><img class="px" src="/assets/px/sprite-keyboard-manual.png" width="116" height="41" alt="A keyboard beside an open manual, in pixel art." style="--s:3" loading="lazy"></figure>
+        <figure class="approachx__art"><img class="px" src="/assets/px/flat/keyboard-manual.png" width="39" height="10" alt="A keyboard beside an open manual, in pixel art." loading="lazy"></figure>
         <div>
           <h3>02 · Automate</h3>
           <p>Then we automate the repetitive work that's left.</p>
@@ -239,33 +243,31 @@
     </div>
   </section>
 
-  <!-- 7. Player one -->
-  <section class="band band--slate p1" aria-labelledby="p1-h">
+  <!-- 7. Player one: a name plate, no portrait -->
+  <section class="hs p1" aria-labelledby="p1-h">
     <div class="wrap p1__grid">
       <div class="p1__id">
-        <div class="p1__photo"><img class="px" src="/assets/px/avatar-hyrum.png" width="79" height="84" alt="Hyrum Hurst drawn as a pixel-art character: blond hair, a smile, a navy suit." loading="lazy"></div>
-        <p class="p1__tag">player one</p>
+        <p class="p1__tag echo echo--sm">player one</p>
+        <p class="p1__name">Hyrum Hurst</p>
+        <p class="p1__role">Founder of QuarterSmart</p>
       </div>
       <div class="p1__copy">
         <h2 class="h-1" id="p1-h">You talk to the person who does the work.</h2>
-        <p class="body-l">Hyrum Hurst builds every setup himself. He's also CTO of Learning Journey AI, an AI education company, so staying current on AI is his day job.</p>
-        <dl class="p1__facts">
-          <div><dt>you work with</dt><dd>Hyrum, start to finish</dd></div>
-        </dl>
-        <div class="p1__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a><a class="link" href="/about/hyrum-hurst/">More about Hyrum</a></div>
+        <p class="body-l">Hyrum builds every setup himself. He's also CTO of Learning Journey AI, an AI education company, so staying current on AI is his day job.</p>
+        <div class="p1__cta"><a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free call</a><a class="link" href="/about/hyrum-hurst/">More about Hyrum</a></div>
       </div>
     </div>
   </section>
 
   <!-- 8. Close -->
-  <section class="closer" aria-labelledby="cta-h">
-    <img class="closer__cab" src="/assets/px/cabinet-row.png" width="169" height="88" alt="" aria-hidden="true" loading="lazy">
+  <section class="hs closer" aria-labelledby="cta-h">
+    <img class="closer__cab" src="/assets/px/flat/cabinet-row.png" width="56" height="29" alt="" aria-hidden="true" loading="lazy">
     <div class="wrap closer__grid">
       <div class="closer__main">
         <p class="closer__sign echo echo--chase" aria-hidden="true">insert coin</p>
         <h2 class="closer__h" id="cta-h">Get in the first quarter.</h2>
         <p class="body-l">We'll tell you what's worth doing now.</p>
-        <div class="hx__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a free 20-minute call</a></div>
+        <div class="hx__cta"><a class="btn btn--arcade btn--xl" href="/insert-coin/" data-cta="book">Book a free 20-minute call</a></div>
       </div>
       <form class="closer__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
         <p class="label">Not ready for a call?</p>

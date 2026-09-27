@@ -50,14 +50,13 @@ muted pastel voices. Defined as CSS custom properties on `:root` (see `css/qs-to
 | `--line` / `--line-2` | `#2c3730` / `#4a5a4f` | rules, window borders |
 | `--fg-0` / `--fg-1` / `--fg-2` | `#ece4cc` / `#cbc3ab` / `#a1a99d` | cream ink, body, muted |
 | `--accent` | `#a9d99f` | sage mint: brand, primary buttons, the light quarter |
-| brand greens | `#2a9a70` `#1d7a58` `#16664a` | the dark quarters of the mark |
+| brand greens | `#2a9a70` `#1d7a58` | the dark quarters of the mark (flat, one shadow tone) |
 | `--warn` | `#dfc07f` | butter: coins, highlights, comets |
 | `--event` | `#d99bb8` | rose (UFO lights, invaders) |
 | `--info` | `#86c3ba` | teal |
-| `--rose` | `#ebbcba` | a touch of Rose-theme pink: selection, kickers, window dots |
-| `--ember` | `#eba66f` | a teeny bit of orange: rare accents only |
+| `--rose` / `--ember` | `var(--event)` / `var(--warn)` on Evergreen | selection, kickers, window dots; star accents |
 
-Rules: sage is the brand voice; rose and ember are seasoning (a few touches per page). Text on `--bg-0`
+Rules: sage is the brand voice; rose and butter are seasoning (a few touches per page). Text on `--bg-0`
 must stay above 4.5:1 contrast. Other themes (Midnight, Obsidian, Forest, Rose, Paper) swap the same
 tokens; never hard-code a hex in a component when a token exists.
 
@@ -87,11 +86,15 @@ extrusion drawn only below each letter's lowest pixels so counters stay clean.
   that makes the wordmark about 86% of the width), then draw everything on that grid.
 - Integer upscale only; canvas `imageSmoothingEnabled = false`; CSS `image-rendering: pixelated`.
 - Sprites: 5 to 12 art pixels tall for characters in a scene; items 32x32; avatar busts 64x64.
-- Flat colours from the palette, a 1px darker outline or none, one highlight cluster, no dithering noise.
-- Generated art (Codex / GPT image) is produced on flat `#ff00ff`, then keyed out and saved at native
-  resolution (`tools/px3_process.py`). Prompts that worked are in `prompts/`.
+- Flat colours from the palette (night, surface, line, dim, cream, soft cream, sage, green, deep green,
+  butter, rose, teal), at most 4 per sprite, one flat shadow tone at most, an outline only where the
+  silhouette needs it. No gradients, no dithering, no shading, front, back or side views only.
+- Sprites are drawn in code, not generated: `source/pxgen.py` holds every sprite as an ASCII grid plus a
+  palette key and writes the PNGs (`python pxgen.py`; `--check` validates colour counts). Inactive
+  sprites show as one flat dim silhouette (`filter: url(#qs-off)` in the nav), never faded or desaturated.
+- Windows are flat: a 2px dim border, no blurred drop shadows, no scanline overlays, no vignettes.
 - Stars (see `engine/night.js`): dots, plus signs, 4-point and 8-point sparkles, diamonds and dotted
-  twinkles in cream, butter, sage, teal, a little rose and ember. Most hold still; a few breathe slowly
+  twinkles in cream, butter, sage, teal and a little rose. Most hold still; a few breathe slowly
   through their sizes. Site sky: 3 css px per sky pixel, 50% opacity, patchy density, frozen while scrolling.
 
 ---
@@ -148,6 +151,6 @@ continue?), never in the core promise.
 2. Add `engine/night.js` for the sky and `css/term.css` for windows, echo text and the scrollbar.
 3. Frame the hero in a terminal window; put your wordmark in the attract engine (swap `TEXT` and the
    `GLYPH` table in `attract.js`) or a still pixel title with an echo.
-4. Generate sprites with the prompt style in `prompts/` on flat magenta, key them out, keep native size.
+4. Draw sprites in `source/pxgen.py` (ASCII grid plus palette key), build them at native size, scale by whole numbers.
 5. Replace the nav with the select-stage menu.
 6. Check every screen at 1440 and 390 wide, in reduced motion, and with the keyboard.
