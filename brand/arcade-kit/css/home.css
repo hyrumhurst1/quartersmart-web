@@ -77,10 +77,10 @@
 }
 .levels__list .lv__n { font-size: 22px; color: var(--fg-2); }
 .levels__list .lv__n::before { content: "L"; }
-.levels__list .lv__price { grid-column: 2; font: 400 14px var(--mono); color: var(--fg-2); }
+.levels__list .lv__meta { grid-column: 2; font: 400 14px var(--mono); color: var(--fg-2); }
 .levels__list button:hover { background: color-mix(in srgb, var(--fg-0) 5%, transparent); color: var(--fg-0); }
 .levels__list button[aria-selected="true"] { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--fg-0); border-left-color: var(--accent); }
-.levels__list button[aria-selected="true"] .lv__n, .levels__list button[aria-selected="true"] .lv__price { color: var(--fg-1); }
+.levels__list button[aria-selected="true"] .lv__n, .levels__list button[aria-selected="true"] .lv__meta { color: var(--fg-1); }
 .levels__list button[aria-selected="true"] .lv__name::before { content: "\25B6\00a0"; content: "\25B6\00a0" / ""; color: var(--accent); font-size: .7em; vertical-align: .15em; }
 .levels__panels { min-width: 0; }
 .lv > * { min-width: 0; overflow-wrap: anywhere; }
@@ -166,7 +166,7 @@
   .sigrows__t { font-size: 22px; }
   .lv h3 { font-size: 38.5px; }
   .levels__list button { font-size: 22px; grid-template-columns: 40px 1fr; }
-  .levels__list .lv__price { grid-column: 2; }
+  .levels__list .lv__meta { grid-column: 2; }
   .p1__photo { width: 160px; height: 160px; }
   .p1__facts div { grid-template-columns: 1fr; gap: 2px; }
   .hx__art .ansi { --ansi: 4.4px; }
@@ -263,5 +263,5 @@ button.win__b:hover { color: var(--fg-0); }
 
 /* in-page jumps (e.g. the hero link to #levels) glide unless motion is reduced */
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-/* the hero's "plans and prices" jump lands with the level list and prices in view (html has an 88px scroll-padding) */
+/* the hero's "see the plans" jump lands with the level list in view (html has an 88px scroll-padding) */
 #levels { scroll-margin-top: -56px; }
