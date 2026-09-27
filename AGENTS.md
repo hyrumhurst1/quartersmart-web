@@ -143,8 +143,6 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
-- **2026-09-27 (DevDay campaign Signals article)** Added /signals/openai-o-assistant-leak to the existing site and hub, with source links, hypothetical workflows, confirmed keynote time, and clear unconfirmed status. No product availability, feature, price, or affiliation claims. Uses existing brand assets and layout. Build generates sitemap/RSS. Launch handoff authorizes publishing after preview validation.
-
 - **2026-06-28 (Signals traction + QS-era thumbnails with watermark)** - Regenerated ALL 10 Signals
   covers as QuarterSmart-era images: 7 new Codex-generated thumbnails (on the owner's ChatGPT session,
   not the API) for the older posts + re-watermarked the 3 newest, all 1200x800 JPEG with a four-quarters
