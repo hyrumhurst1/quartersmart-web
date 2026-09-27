@@ -521,10 +521,8 @@
   const SKY = window.QSSky;
   let stars = [], P = SKY ? SKY.pal() : null, comet = null, nextComet = 3500;
   function makeStars() { if (SKY) stars = SKY.field(GW, Math.max(10, PH - 4), Math.round(GW * PH / (small ? 120 : 170)), 99, { noBig: true, calm: 0.75 }); }
-  let walkAt = 0;
   function drawSky(now) {
     k2.clearRect(0, 0, GW, GH);
-    const walk = walkAt ? clamp((now - walkAt) / (1000 / 60), 0, 3) : 1; walkAt = now;   // the parade walks by the clock (60fps steps), whatever the paint rate
     const put = (x, y, c, a = 1) => { if (y >= PH - 1) return; k2.globalAlpha = a; k2.fillStyle = c; k2.fillRect(Math.round(x), Math.round(y), 1, 1); };
     if (SKY) {
       for (const st of stars) { if (st.x > X0 - 4 && st.x < X0 + WW + 4 && st.y > Y0 - 4 && st.y < WY1 + 4) continue; if (st.y < CLEAR_Y && (st.x < CLEAR_L || st.x > GW - CLEAR_R)) continue; SKY.drawStar(put, st, now, P); }
@@ -627,7 +625,7 @@
     if (v === paused) return;
     const now = performance.now();
     if (v) { paused = true; pausedAt = now; cancelAnimationFrame(raf); raf = 0; }
-    else { paused = false; t0 += now - pausedAt; last = now; walkAt = 0; if (!raf) raf = requestAnimationFrame(tick); }
+    else { paused = false; t0 += now - pausedAt; last = now; if (!raf) raf = requestAnimationFrame(tick); }
     if (pb) (pb.firstElementChild || pb).textContent = paused ? 'play' : 'pause';
     const w = cv.closest('.h4'); if (w) w.classList.toggle('is-paused', paused);   // the title light holds too
   };
