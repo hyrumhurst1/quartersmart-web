@@ -143,6 +143,23 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-09-27 (local Phase 2 report hold after the Night Arcade rebrand)** - Prepared a targeted
+  withdrawal on top of merged PR #7 (`227a37e`), preserving the new branding. The owner reserved
+  the report for Phase 2, so removed `signals/openai-o-assistant-leak.html`, its dedicated OG cover,
+  and report references from Home, Hyrum's author page, the mobile-voice post's Read next links,
+  Signals Log, llms.txt and the committed sitemap. The existing DevDay homepage event now links
+  to the verified official event page, `https://devday.openai.com/`. The build excludes this
+  report's file, clean-route directory and cover even if restored, and rejects any remaining
+  published discovery reference before production IndexNow submission. Netlify rules force 404
+  for the clean URL, .html URL, descendants and cover. Keep these holds until publication of the
+  finished report is authorized. No report body was rewritten; Git history retains the prior source.
+  Local `CONTEXT=deploy-preview` builds passed: 12 other Signals, 12 RSS items, 26 sitemap URLs,
+  and zero report references in 61 published text files. Synthetic restored-page/cover fixtures
+  stayed excluded; a restored discovery reference rejected the build; fixtures were removed and
+  the final build passed. This entry describes LOCAL work only; root must review, publish and
+  verify actual Netlify 404s before treating production as corrected. Review evidence is outside
+  this repo in the campaign project's `research/site_checks/report-withdrawal-local-review.json`.
+
 - **2026-06-28 (Signals traction + QS-era thumbnails with watermark)** - Regenerated ALL 10 Signals
   covers as QuarterSmart-era images: 7 new Codex-generated thumbnails (on the owner's ChatGPT session,
   not the API) for the older posts + re-watermarked the 3 newest, all 1200x800 JPEG with a four-quarters
