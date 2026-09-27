@@ -1,0 +1,71 @@
+/* Legal, 404 and Signals policy/log pages. Page-level additions to qs.css.
+   Tokens only, square corners, no shadows: works in all five themes. */
+
+/* Page head with a summary pane on the right (privacy, terms, log) */
+.phead__grid { align-items: end; }
+.phead__grid .pane { min-width: 0; }
+.phead__grid .spec div { grid-template-columns: 112px 1fr; }
+
+/* Long document: prose left, sticky contents right. Side comes first in the
+   DOM so it sits above the text on narrow screens. */
+.doc { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: clamp(28px, 4vw, 64px); align-items: start; padding-top: clamp(44px, 5vw, 72px); padding-bottom: clamp(56px, 7vw, 96px); }
+.doc__main { grid-column: 1; grid-row: 1; }
+.doc__side { --pad: 24px; grid-column: 2; grid-row: 1; position: sticky; top: 76px; }
+.toc { list-style: none; margin: 0; padding: 0; counter-reset: toc; font: 400 13.5px/1.45 var(--mono); }
+.toc li { counter-increment: toc; border-top: 1px dashed var(--line); }
+.toc li:first-child { border-top: 0; }
+.toc a { display: grid; grid-template-columns: 30px 1fr; padding: 8px 0; color: var(--fg-1); text-decoration: none; }
+.toc a::before { content: counter(toc, decimal-leading-zero); color: var(--fg-2); }
+.toc a:hover { color: var(--accent); }
+.prose h2[id], .prose h3[id] { scroll-margin-top: 76px; }
+
+/* Numbered rules (Signals policy) */
+.rules { list-style: none; margin: 0; padding: 0; counter-reset: rule; }
+.rules li { counter-increment: rule; display: grid; grid-template-columns: 36px 1fr; gap: 6px 12px; padding: 16px 0; border-top: 1px dashed var(--line-2); }
+.rules li:first-child { border-top: 0; padding-top: 2px; }
+.rules li:last-child { padding-bottom: 0; }
+.rules li::before { content: counter(rule, decimal-leading-zero); grid-row: span 2; font: 500 13px/1.7 var(--mono); color: var(--accent); }
+.rules b { font: 600 17px/1.35 var(--sans); color: var(--fg-0); }
+.rules span { font-size: 15.5px; color: var(--fg-1); }
+
+/* Text panes */
+.card { display: grid; gap: 16px; align-content: start; }
+.card h3 { font: 400 22px/1.25 var(--pixel); }
+.card p { font-size: 15.5px; color: var(--fg-1); }
+.card__go { display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; margin-top: 6px; }
+
+/* Signals Log table. Stacks into labeled rows on phones. */
+.ltable { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+.ltable th { text-align: left; padding: 0 16px 12px 0; border-bottom: 1px solid var(--line-2); font: 500 11.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--fg-2); white-space: nowrap; }
+.ltable td { padding: 18px 16px 18px 0; border-bottom: 1px dashed var(--line-2); vertical-align: top; color: var(--fg-1); }
+.ltable tr:last-child td { border-bottom: 0; padding-bottom: 4px; }
+.ltable td:first-child a { color: var(--fg-0); font-weight: 500; text-decoration-color: var(--accent); }
+.ltable .mono { font: 400 13.5px/1.6 var(--mono); white-space: nowrap; }
+.keys { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); margin-top: calc(var(--gap) + 18px); }
+.keys div { padding-top: 12px; border-top: 1px dashed var(--line-2); font-size: 14.5px; color: var(--fg-1); }
+.keys b { display: block; margin-bottom: 4px; font: 500 13px var(--mono); color: var(--fg-0); }
+.go-row { display: flex; flex-wrap: wrap; gap: 14px 24px; margin-top: 32px; }
+
+/* 404: a console line above the headline */
+.term { display: grid; gap: 2px; font: 400 14px/1.7 var(--mono); color: var(--fg-1); overflow-wrap: anywhere; }
+.term__err { color: var(--warn); }
+
+@media (max-width: 960px) {
+  .doc { grid-template-columns: 1fr; }
+  .doc__main, .doc__side { grid-column: auto; grid-row: auto; }
+  .doc__side { position: relative; top: auto; }
+  .toc { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; }
+  .toc li:nth-child(2) { border-top: 0; }
+  .keys { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .phead__grid .spec div { grid-template-columns: 96px 1fr; gap: 12px; }
+  .toc { grid-template-columns: 1fr; }
+  .toc li:nth-child(2) { border-top: 1px dashed var(--line); }
+  .keys { grid-template-columns: 1fr; }
+  .ltable thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .ltable, .ltable tbody, .ltable tr, .ltable td { display: block; }
+  .ltable tr { padding: 4px 0 8px; }
+  .ltable td { display: grid; grid-template-columns: 84px 1fr; gap: 12px; padding: 7px 0; border: 0; }
+  .ltable td::before { content: attr(data-label); font: 500 11px/1.9 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--fg-2); }
+}

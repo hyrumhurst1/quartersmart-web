@@ -1,4 +1,4 @@
-# QuarterSmart — Netlify continuous deployment from GitHub.
+# QuarterSmart: Netlify continuous deployment from GitHub.
 # On every push to main, Netlify runs the build (which copies only the
 # publishable site into dist/) and publishes dist/.
 
@@ -9,7 +9,9 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Long-cache the immutable media (frame sequences, video, images, logos)
+# Long-cache the immutable media (frame sequences, video, images, logos).
+# This also covers /assets/img/* (page art) and /assets/og/* (social cards);
+# Netlify sets their Content-Type from the file extension.
 [[headers]]
   for = "/assets/*"
   [headers.values]
@@ -113,4 +115,23 @@
 [[redirects]]
   from = "/case-studies/structure-properties/*"
   to = "/case-studies/sf-property-management"
+  status = 301
+
+# 2026 relaunch: short links and retired page names
+# /book is a clean link for emails and slides. 302 so the target can change.
+[[redirects]]
+  from = "/book"
+  to = "https://calendly.com/hyrum-quartersmart/book-a-call"
+  status = 302
+[[redirects]]
+  from = "/offers"
+  to = "/services/"
+  status = 301
+[[redirects]]
+  from = "/why-us"
+  to = "/approach/"
+  status = 301
+[[redirects]]
+  from = "/team"
+  to = "/about/"
   status = 301

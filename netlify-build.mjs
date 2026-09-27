@@ -9,10 +9,20 @@ import { join } from "node:path";
 
 const EXCLUDE = new Set([
   ".git", ".github", "node_modules", "dist",
-  "brand", "research", "docs", "design-system", "tmp",
+  "brand", "research", "docs", "design-system", "tmp", "_partials", "_proto", ".build.lock", ".claude",
   "AGENTS.md", "CLAUDE.md", "README.md", "HANDOFF.md", "ENTITY_HANDOFF.md",
   "netlify.toml", "netlify-build.mjs", ".gitignore", ".nojekyll",
 ]);
+
+// Serialize local builds (several agents may build at once). mkdir is atomic.
+const LOCK = ".build.lock";
+for (let i = 0; ; i++) {
+  try { mkdirSync(LOCK); break; } catch {
+    if (i > 900) rmSync(LOCK, { recursive: true, force: true }); // stale lock after ~90s
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+  }
+}
+process.on("exit", () => { try { rmSync(LOCK, { recursive: true, force: true }); } catch { /* gone */ } });
 
 rmSync("dist", { recursive: true, force: true });
 mkdirSync("dist");
@@ -23,6 +33,83 @@ for (const e of readdirSync(".", { withFileTypes: true })) {
   n++;
 }
 console.log(`netlify-build: copied ${n} top-level entries into dist/`);
+
+// --- Shared chrome: replace <!-- @include name --> with _partials/name.html,
+// then mark the current page's nav links with aria-current. One nav and one
+// footer for the whole site instead of 25 hand-kept copies.
+{
+  const partials = {};
+  for (const f of readdirSync("_partials")) partials[f.replace(/\.html$/, "")] = readFileSync(join("_partials", f), "utf8");
+  let pages = 0;
+  const walkInc = (dir, prefix) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      if (e.isDirectory()) { if (e.name !== "assets") walkInc(join(dir, e.name), prefix + "/" + e.name); continue; }
+      if (!e.name.endsWith(".html")) continue;
+      const file = join(dir, e.name);
+      let h = readFileSync(file, "utf8");
+      if (!h.includes("<!-- @include")) continue;
+      h = h.replace(/<!-- @include ([\w-]+) -->/g, (m, name) => {
+        if (!(name in partials)) throw new Error(`missing partial ${name} in ${file}`);
+        return partials[name];
+      });
+      // Current section: /signals/foo.html -> /signals/ ; /index.html -> /
+      const section = prefix === "" ? "/" : "/" + prefix.split("/")[1] + "/";
+      h = h.replace(/<a ([^>]*?)data-nav href="([^"]+)"/g, (m, pre, href) =>
+        `<a ${pre}href="${href}"` + (href === section ? ' aria-current="page"' : ""));
+      writeFileSync(file, h);
+      pages++;
+    }
+  };
+  walkInc("dist", "");
+  console.log(`netlify-build: injected shared partials into ${pages} pages`);
+}
+
+// --- Signals index: read every post's meta and render the hub list plus a
+// JSON copy for the radar. Adding a post file is all it takes to list it.
+{
+  const meta = (h, attr, key) => {
+    const m = h.match(new RegExp(`<meta ${attr}="${key}" content="([^"]*)"`));
+    return m ? m[1] : "";
+  };
+  const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+  const unesc = (t) => t.replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&#39;/g, "'");
+  const posts = [];
+  for (const f of readdirSync("dist/signals")) {
+    if (!f.endsWith(".html") || f === "index.html") continue;
+    const h = readFileSync(join("dist/signals", f), "utf8");
+    const title = unesc(meta(h, "property", "og:title"));
+    if (!title) continue;
+    posts.push({
+      url: "/signals/" + f.replace(/\.html$/, ""),
+      title,
+      desc: unesc(meta(h, "name", "description") || meta(h, "property", "og:description")),
+      date: (h.match(/"datePublished": "([^"]+)"/) || [])[1] || "",
+      kind: meta(h, "name", "qs:kind") || "insight",
+      label: unesc(meta(h, "name", "qs:label")) || "Insight",
+      verdict: unesc(meta(h, "name", "qs:verdict")) || "Read",
+      cover: meta(h, "name", "qs:cover"),
+    });
+  }
+  posts.sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title));
+  const fmt = (d) => d ? new Date(d + "T12:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }) : "";
+  const rows = posts.map((p) => `<li data-kind="${p.kind}" data-text="${esc((p.title + " " + p.desc + " " + p.label).toLowerCase())}"><a href="${p.url}">
+  <span class="sig__date">${fmt(p.date)}</span>
+  <span><span class="sig__t">${esc(p.title)}</span><span class="sig__d">${esc(p.desc)}</span></span>
+  <span class="sig__cell sig__cell--a"><span class="label">status</span><span class="chip chip--${p.kind}">${esc(p.label)}</span></span>
+  <span class="sig__cell sig__cell--v"><span class="label">verdict</span><span class="verdict">${esc(p.verdict)}</span></span>
+</a></li>`).join("\n");
+  const hub = "dist/signals/index.html";
+  try {
+    let h = readFileSync(hub, "utf8");
+    h = h.replace("<!-- @signals-list -->", rows)
+      .replace("<!-- @signals-json -->", `<script id="sig-data" type="application/json">${JSON.stringify(posts).replace(/</g, "\\u003c")}</script>`)
+      .replace(/<!-- @signals-count -->/g, String(posts.length));
+    writeFileSync(hub, h);
+    console.log(`netlify-build: rendered ${posts.length} Signals into the hub`);
+  } catch (err) {
+    console.log(`netlify-build: Signals hub skipped (${err.message})`);
+  }
+}
 
 // --- Auto sitemap + IndexNow. Wrapped so it can NEVER fail the deploy. ---
 try {

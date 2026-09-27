@@ -1,0 +1,44 @@
+/* Signals posts: the few pieces the archive posts need on top of qs.css.
+   Tokens only, square corners, no shadows. Linked right after the shared head. */
+
+/* Citation markers: [1] */
+.prose sup.cite { font: 500 .62em/0 var(--mono); margin-left: 1px; }
+
+/* Callouts that carry a label, a heading and text */
+.prose .callout > * + * { margin-top: .6em; }
+.prose .callout h3 { font-size: 18px; }
+
+/* Panes set inside the article column */
+.prose .pane > * + * { margin-top: .6em; }
+.prose .pane > .pane__t + * { margin-top: 0; }
+
+/* Gauge: one block meter with a labelled scale under it */
+.gauge .meter__bar { display: block; margin: 14px 0 8px; }
+.gauge__scale { display: flex; justify-content: space-between; gap: 8px; }
+
+/* Stat meters that cite a source */
+.meter__src { display: block; margin-top: 2px; }
+
+/* Before and after cost panes */
+.costs .stat { font-size: clamp(40px, 4.4vw, 56px); }
+.costs .stat small { display: block; margin-top: 8px; font-size: 13px; letter-spacing: 0; font-family: var(--mono); }
+
+/* Timeline inside prose */
+.prose .timeline li + li { margin-top: 0; }
+
+/* Collapsible explainers and FAQs inside prose */
+.prose .faq summary { color: var(--fg-0); }
+
+/* Name list in columns */
+.prose .orglist { list-style: none; padding-left: 0; columns: 3 150px; column-gap: 24px; font: 400 14.5px/1.5 var(--mono); }
+.prose .orglist li { break-inside: avoid; margin: 0 0 8px; }
+
+/* Self-check */
+.quiz__opt { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px dashed var(--line-2); font-size: 16px; line-height: 1.55; cursor: pointer; }
+.quiz__opt:hover { color: var(--fg-0); }
+.quiz__opt input { flex: none; width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); cursor: pointer; }
+.quiz__result { padding-top: 16px; border-top: 1px solid var(--line-2); }
+.quiz__verdict { font: 500 22px/1.25 var(--mono); letter-spacing: -.03em; color: var(--fg-0); margin: 6px 0; }
+
+/* Read next list in the side column */
+.readnext { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
