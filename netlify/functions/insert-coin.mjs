@@ -20,7 +20,8 @@
 //        (PUBLIC_CALENDAR below, never CAL_ORIGIN), the fallback when this API can't answer
 //
 // Environment (Netlify UI only)
-//   CAL_ORIGIN           required (https only; http only for localhost tests)
+//   CAL_ORIGIN           optional, default https://book.quartersmart.com (https only;
+//                        http only for localhost tests; an invalid value is refused)
 //   CAL_EVENT_TYPE_ID    set it (3). Without it a cold instance looks the id up first,
 //                        which eats into the booking time budget
 //   CAL_USERNAME         default "hyrum"
@@ -44,6 +45,10 @@
 
 const MAX_BODY = 8192;
 const MAX_RANGE_DAYS = 21;
+// The calendar's public face is book.quartersmart.com (a proxy we own). It is the default
+// upstream when CAL_ORIGIN is unset, and the /insert-coin/calendar redirect always uses this
+// constant, never CAL_ORIGIN, so pointing CAL_ORIGIN somewhere private never leaks it.
+const PUBLIC_CALENDAR = 'https://book.quartersmart.com';
 const SLOTS_TIMEOUT_MS = 8000;
 const LOOKUP_TIMEOUT_MS = 3000;
 const CHECK_TIMEOUT_MS = 3500;
@@ -95,7 +100,7 @@ function env(name) {
 
 function settings() {
   let origin = null;
-  const raw = env('CAL_ORIGIN');
+  const raw = env('CAL_ORIGIN') || PUBLIC_CALENDAR;
   if (raw) {
     try {
       const u = new URL(raw);
@@ -290,10 +295,6 @@ async function book(req, url, s, ip, context) {
   }
   return json(502, { ok: false, error: 'unavailable' });
 }
-
-// The calendar's public face is book.quartersmart.com (a proxy we own). It is a fixed
-// constant, not CAL_ORIGIN, so pointing CAL_ORIGIN somewhere private never leaks it here.
-const PUBLIC_CALENDAR = 'https://book.quartersmart.com';
 
 function calendar(req, s) {
   if (req.method !== 'GET' && req.method !== 'HEAD') return json(405, { ok: false, error: 'invalid' }, { allow: 'GET, HEAD' });
