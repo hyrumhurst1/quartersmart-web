@@ -143,6 +143,26 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-09-27 11:45 AM MST (Phase 2 report hold LIFTED: owner said "Publish it")** - The hold in
+  the entry below is over. Do NOT put it back: the netlify.toml force-404 rules and the
+  netlify-build.mjs exclusion and reference check were removed, and both files match `227a37e`.
+  `signals/openai-o-assistant-leak.html` is restored at the same URL and fact-checked against the
+  sources on Sep 27: Jake Boggs is named as the Sep 25 poster; TestingCatalog's post and article
+  (only briefly, for some users; email handling is its inference) are cited; ChatGPT Work's
+  existing Gmail-triggered scheduled tasks (release notes, Aug 25) are noted; the callout says "o"
+  is absent from the DevDay page, OpenAI News and the release notes as of Sep 27; Fort Mason and
+  Sam Altman's keynote are added from devday.openai.com. Removed: the unsourced November 2022
+  comparison, the unreachable pasqualepillitteri.it source, the filler disclaimer (now the
+  one-line template) and the Plus/Business implication. Reported · unconfirmed label and the
+  Prepare verdict stay. Home Signals band has the report row again (above the DevDay row, which
+  still links to https://devday.openai.com/); hub stamp set to 11:45 AM. Share card re-rendered
+  with `tools/og.mjs` (1200x630, same title). Build (CONTEXT unset): 13 Signals, 13 RSS items,
+  27 sitemap URLs. QA: every sitemap URL at 1440 and 390 returns 200 with overflow 0, one h1, no
+  console errors or 4xx, and JSON-LD that parses. Shots are in `../shots/publish/`. When
+  committing, `git add` the untracked `signals/openai-o-assistant-leak.html` and
+  `assets/og/signals-openai-o-assistant-leak.jpg` explicitly, or five published links 404.
+  After DevDay, if og:title changes, delete that jpg and rerun `tools/og.mjs` (no `--force`).
+
 - **2026-09-27 (local Phase 2 report hold after the Night Arcade rebrand)** - Prepared a targeted
   withdrawal on top of merged PR #7 (`227a37e`), preserving the new branding. The owner reserved
   the report for Phase 2, so removed `signals/openai-o-assistant-leak.html`, its dedicated OG cover,
