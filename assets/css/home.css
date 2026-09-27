@@ -166,7 +166,7 @@
 .win__t, .win__r, .win__b { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--bg-0); white-space: nowrap; }
 .win__t { top: -8px; left: 16px; color: var(--fg-1); }
 .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); vertical-align: 0; animation: pulse 2.4s steps(2) infinite; }
-.win__r { top: -8px; right: 16px; color: var(--accent); }
+.win__r { top: -8px; right: 112px; color: var(--accent); }
 .win__b { bottom: -8px; right: 16px; color: var(--fg-2); }
 .h4__world { position: absolute; inset: 0; width: 100%; height: 100%; display: block; image-rendering: pixelated; cursor: pointer; }
 .h4__in { position: absolute; left: 0; right: 0; bottom: clamp(26px, 5.5vh, 64px); z-index: 1; display: grid; justify-items: center; gap: 16px; padding: 0 20px; text-align: center; pointer-events: none; }

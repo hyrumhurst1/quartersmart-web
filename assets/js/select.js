@@ -21,20 +21,26 @@
   // ---- Coin drop on every "Book" arcade button: a coin falls into the
   // button, the button flashes, then we go. Ctrl/meta/shift/middle click and
   // reduced motion get the plain link.
+  // The coin falls through a window that ends at the drop line (the top of
+  // the button, or the slit of the little coin door), so it vanishes into it.
   function coinInto(a) {
-    const r = a.getBoundingClientRect();
+    const slot = a.querySelector('.hud__slot');
+    const r = (slot || a).getBoundingClientRect();
+    const line = Math.round(slot ? r.top + 8 : r.top);
+    const top = Math.max(0, line - 46);
     const fx = document.createElement('span');
     fx.className = 'coinfx';
     fx.setAttribute('aria-hidden', 'true');
     fx.style.left = Math.round(r.left + r.width / 2 - 16) + 'px';
-    fx.style.top = Math.round(r.top - 46) + 'px';
+    fx.style.top = top + 'px';
+    fx.style.height = (line - top) + 'px';
     fx.appendChild(document.createElement('i'));
     document.body.appendChild(fx);
     a.classList.add('is-coin');
     setTimeout(() => { fx.remove(); a.classList.remove('is-coin'); delete a.dataset.coin; }, 900);
   }
   document.addEventListener('click', (e) => {
-    const a = e.target.closest && e.target.closest('a.btn--arcade[data-cta="book"]');
+    const a = e.target.closest && e.target.closest('a.btn--arcade[data-cta="book"], a.hud__coin');
     if (!a || e.defaultPrevented || modified(e) || reduce.matches) return;
     const blank = a.target === '_blank';
     if (a.dataset.coin) { if (!blank) e.preventDefault(); return; }
@@ -165,6 +171,7 @@
     else show(e.detail === 0 ? 'key' : 'click');
   });
   start.addEventListener('pointerenter', (e) => {
+    start.classList.remove('is-snap');
     if (!isMouse(e)) return;
     clearTimeout(tLeave);
     if (!open) { clearTimeout(tDwell); tDwell = setTimeout(() => show('hover'), 260); }

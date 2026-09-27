@@ -170,13 +170,13 @@ p { margin: 0; }
    The page opens on the brand alone, in flow, and it scrolls away. The site
    menu lives behind a small pixel joystick (fixed top right, every page) and
    a hover strip on the top edge; the menu itself is in assets/css/select.css. */
-.hud { position: relative; z-index: 2; display: flex; align-items: center; height: 60px; max-width: calc(var(--wrap) + 64px); margin: 0 auto; padding: 0 clamp(16px, 2.4vw, 32px); }
+.hud { position: relative; z-index: 2; display: flex; align-items: center; height: 72px; max-width: calc(var(--wrap) + 64px); margin: 0 auto; padding: 0 clamp(16px, 2.4vw, 32px); }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg-0); white-space: nowrap; font: 400 22px/1 var(--pixel); letter-spacing: 0; }
 .brand svg { width: 28px; height: 28px; flex: none; }
 .hud .brand { padding: 6px 0; }
 /* the home hero is already the wordmark: the HUD row stays (it holds the
    joystick's place) but nothing in it shows */
-.home .hud > * { display: none; }
+body.home .hud > * { display: none; }
 
 /* Brand pop: the popped quarter knocks back into the coin and out again.
    .brand--pop runs on hover and keyboard focus; add .brand--idle to also
@@ -190,8 +190,9 @@ p { margin: 0; }
    on top. No chip, no box. It sits still and centred; hovering rocks the
    stick left and right, and a click snaps it back to centre. The sprite is
    cropped to its drawn area (rows and columns 2 to 29 of each 32px frame). */
+.hud__dock { position: fixed; top: 5px; right: 8px; z-index: 190; display: flex; align-items: stretch; gap: 4px; }
 .hud__start {
-  position: fixed; top: 3px; right: 8px; z-index: 190;
+  position: relative;
   display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0 2px 2px;
   color: var(--fg-1); background: none; border: 0; border-radius: 0; cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -205,6 +206,39 @@ p { margin: 0; }
 [data-theme="paper"] .hud__joy { filter: none; }
 [data-theme="paper"] .hud__lbl { text-shadow: none; }
 @keyframes joy-rock { 0% { background-position: -196px -4px; } 12.5% { background-position: -260px -4px; } 25% { background-position: -196px -4px; } 37.5% { background-position: -132px -4px; } 50% { background-position: -68px -4px; } 62.5% { background-position: -4px -4px; } 75% { background-position: -68px -4px; } 87.5% { background-position: -132px -4px; } }
+
+/* Insert coin: the one persistent action. A tiny coin door (12x20 sprite at
+   2x) under a two-line plaque; hovering lights the slot and slides out a
+   "book a call" tag to the left. Clicking drops a coin into the slit
+   (select.js) and then goes to /contact/. Hidden while the menu is open,
+   which has its own coin door. Phones keep just the door. */
+.hud__coin {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+  padding: 0 2px 2px; color: var(--fg-1); text-decoration: none; -webkit-tap-highlight-color: transparent;
+}
+.hud__coin-lbl { display: grid; justify-items: center; font: 400 11px/11px var(--pixel); letter-spacing: .06em; margin-right: -.06em; text-transform: uppercase; text-shadow: 0 1px 0 var(--bg-0); transition: color .12s; }
+.hud__slot { display: block; flex: none; width: 24px; height: 40px; margin-top: 3px; background: url(/assets/px/coin-slot-mini.png) 0 0 / 24px 40px no-repeat; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .45)); }
+.hud__coin-tip {
+  position: absolute; right: calc(100% + 4px); bottom: 12px; padding: 4px 6px 3px;
+  font: 400 11px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap;
+  color: var(--accent); background: var(--bg-0); border: 1px solid var(--line-2); box-shadow: 0 2px 0 rgba(0, 0, 0, .4);
+  visibility: hidden; pointer-events: none;
+}
+.hud__coin:hover .hud__coin-lbl, .hud__coin:focus-visible .hud__coin-lbl { color: var(--warn); }
+.hud__coin:hover .hud__slot, .hud__coin:focus-visible .hud__slot, .hud__coin.is-coin .hud__slot { filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .45)) drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 55%, transparent)) brightness(1.15); }
+.hud__coin:hover .hud__coin-tip, .hud__coin:focus-visible .hud__coin-tip { visibility: visible; }
+.hud__coin:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.sel-open .hud__coin { visibility: hidden; }
+[data-theme="paper"] .hud__slot { filter: none; }
+[data-theme="paper"] .hud__coin-lbl { text-shadow: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .hud__coin:hover .hud__coin-tip, .hud__coin:focus-visible .hud__coin-tip { animation: coin-tip .16s steps(2) backwards; }
+}
+@keyframes coin-tip { from { transform: translateX(8px); opacity: 0; } }
+@media (max-width: 699px) {
+  .hud__coin-lbl, .hud__coin-tip { display: none; }
+  .hud__coin { justify-content: flex-end; padding-bottom: 4px; }
+}
 
 /* ---------- Buttons: keycaps ---------- */
 .btn {
@@ -662,6 +696,6 @@ form.is-done .field { display: none; }
   .js [data-reveal] { opacity: 1; transform: none; }
 }
 @media print {
-  body::after, .hud, .hud__start, .sel, .sel-edge, .foot, .themes { display: none; }
+  body::after, .hud, .hud__dock, .sel, .sel-edge, .foot, .themes { display: none; }
   body { background: #fff; color: #000; }
 }

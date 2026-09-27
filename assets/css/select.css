@@ -41,11 +41,11 @@
 .sel__in { max-width: calc(var(--wrap) + 64px); margin: 0 auto; padding: 0 var(--gut) 22px; }
 
 /* ---------- Top row: sits exactly where the page HUD sits ---------- */
-.sel__top { display: flex; align-items: center; height: 60px; }
+.sel__top { display: flex; align-items: center; height: 72px; }
 .sel__title { display: flex; align-items: center; gap: 12px; font: 400 22px/1 var(--pixel); letter-spacing: .02em; text-transform: uppercase; color: var(--fg-0); }
 .sel__title::before { content: ""; width: 11px; height: 11px; background: var(--accent); box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 60%, transparent); animation: sel-blink 1.2s steps(1) infinite; }
 .sel__hud {
-  position: absolute; top: 0; right: 128px; z-index: 2; height: 60px;
+  position: absolute; top: 0; right: 96px; z-index: 2; height: 72px;
   display: flex; align-items: center; gap: 20px;
   font: 400 11px/1 var(--pixel); letter-spacing: .12em; text-transform: uppercase; color: var(--fg-2);
 }
@@ -83,7 +83,7 @@
 
 /* ---------- Tiles ---------- */
 .sel__main { display: grid; align-content: start; min-width: 0; }
-.sel__grid { --tg: clamp(10px, 1.3vw, 18px); --head: 80px; position: relative; padding-top: var(--head); }
+.sel__grid { --tg: clamp(10px, 1.3vw, 18px); --head: 74px; position: relative; padding-top: var(--head); }
 .sel__tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--tg); }
 .sel__tiles > li { position: relative; min-width: 0; }
 .sel__tile {
@@ -190,7 +190,7 @@
 /* the slot glow, lit when a coin goes in */
 .sel__door::after { content: ""; position: absolute; left: 28px; top: 22px; width: 2px; height: 20px; background: var(--accent); box-shadow: 0 0 10px 4px color-mix(in srgb, var(--accent) 65%, transparent); opacity: 0; }
 /* the flight window ends at the top of the slit, so the coin vanishes into it */
-.sel__fly { position: absolute; left: 13px; top: -48px; width: 32px; height: 68px; overflow: hidden; pointer-events: none; }
+.sel__fly { position: absolute; left: 13px; top: -20px; width: 32px; height: 40px; overflow: hidden; pointer-events: none; }
 .sel__fly i {
   position: absolute; left: 0; top: 6px; width: 32px; height: 32px;
   background: url(/assets/px/coin-spin.png) 0 0 / 192px 32px no-repeat; image-rendering: pixelated;
@@ -274,8 +274,8 @@
 @keyframes sel-av { 0%, 56% { background-position: 0 0; } 57%, 66% { background-position: calc(var(--av) * -1) 0; } 67%, 80% { background-position: calc(var(--av) * -2) 0; } 81%, 100% { background-position: calc(var(--av) * -3) 0; } }
 @keyframes sel-egg { to { background-position: -256px 0; } }
 @keyframes sel-spin { to { background-position: -192px 0; } }
-@keyframes sel-hover { 50% { top: 2px; } }
-@keyframes sel-drop-coin { 0% { top: 6px; } 100% { top: 70px; } }
+@keyframes sel-hover { 50% { top: 4px; } }
+@keyframes sel-drop-coin { 0% { top: 6px; } 100% { top: 42px; } }
 @keyframes sel-glow { 0% { opacity: 1; } 50% { opacity: .5; } 100% { opacity: 1; } }
 @keyframes sel-door { 50% { filter: brightness(1.35); } }
 
@@ -319,7 +319,7 @@
   .sel__main { display: flex; flex-direction: column; flex: 1; }
   .sel__grid { --head: 50px; }
   .sel__marq { bottom: calc(100% + 18px); }
-  .sel__tiles { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sel__tiles { grid-template-columns: 1fr 1fr; gap: 24px 12px; }
   .sel__tiles > li:last-child { grid-column: 1 / -1; }
   .sel__tile { height: auto; min-height: 118px; gap: 10px; padding: 14px 6px 14px; }
   .sel__name { font-size: 22px; }
@@ -338,6 +338,6 @@
   .sel__coin.is-coin { animation: coinfx-flash .26s steps(2) .22s; }
 }
 @media (max-width: 359px) {
-  .sel__name, .sel__book, .sel__book { font-size: 16.5px; }
+  .sel__name, .sel__book { font-size: 16.5px; }
   .sel__hud { font-size: 11px; letter-spacing: .06em; }
 }

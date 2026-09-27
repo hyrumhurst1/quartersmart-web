@@ -33,8 +33,11 @@
   };
 
   const first = (...sels) => { for (const s of sels) { const el = document.querySelector(s); if (el) return el; } return null; };
+  // on phones the menu HUD row is full, so the menu quarter and the counter
+  // go on the menu's title row instead
+  const hudRow = matchMedia('(max-width: 699px)').matches ? '.sel__top' : '.sel__hud';
   const spots = {
-    strip: () => first('.sys .sys__ws', '.sel__hud', '.sel__top', '.foot__grid > div:nth-child(3) h2'),
+    strip: () => first('.sys .sys__ws', hudRow, '.sel__hud', '.foot__grid > div:nth-child(3) h2'),
     menu: () => first('.nav__in', '.hud', '.foot__grid > div:nth-child(4) h2'),
     theme: () => first('[data-qq-slot="theme"]', '.foot .themes'),
     copy: () => first('[data-qq-slot="copy"]', '.foot__base > span'),
@@ -47,15 +50,15 @@
   function count(bump) {
     if (!found.size) return;
     if (!counter) {
-      const r = first('.sys .sys__r', '.sel__hud');
+      const r = first('.sys .sys__r', hudRow, '.sel__hud');
       if (!r) return;
       if (r.closest('.sys')) openStrip();
       counter = document.createElement('span');
       counter.className = 'qq-count';
-      r.insertBefore(counter, r.firstChild);
+      const title = r.querySelector('.sel__title');
+      if (title) title.after(counter); else r.insertBefore(counter, r.firstChild);
     }
     counter.innerHTML = `${glyph}<span class="qq-count__w">quarters </span>${found.size}/4`;
-    counter.setAttribute('aria-label', `quarters found: ${found.size} of 4`);
     counter.classList.toggle('is-whole', found.size === ALL.length);
     if (bump && !reduce) { counter.classList.remove('is-bump'); void counter.offsetWidth; counter.classList.add('is-bump'); }
   }
@@ -118,8 +121,7 @@
   if (found.size === ALL.length && get(SEEN) !== '1') setTimeout(toast, 900);
 
   // ---- the nav logo pops its quarter on hover (or keyboard focus)
-  const brand = first('.hud .brand', '.nav .brand');
-  if (brand && !reduce) {
+  if (!reduce) document.querySelectorAll('.hud .brand, .nav .brand, footer .brand').forEach((brand) => {
     let busy = false;
     const pop = () => {
       if (busy) return;
@@ -128,7 +130,8 @@
     };
     brand.addEventListener('pointerenter', pop);
     brand.addEventListener('focus', pop);
-  }
+    if (brand.closest('footer')) setInterval(() => { if (!document.hidden) pop(); }, 7000);
+  });
 
   // ---- arcade buttons: a one-frame pixel flash on press
   const flash = (el) => {
