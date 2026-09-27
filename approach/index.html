@@ -65,38 +65,45 @@
 
 <main id="main">
 
-  <!-- Top: the headline, then a pixel screen that opens on a rally and plays the approach scene by scene -->
+  <!-- Top: the headline and a pixel screen inside one terminal window. The screen plays the
+       approach scene by scene; the window's top border names the scene on screen. -->
   <section class="ap-hero" aria-labelledby="hero-h">
-    <div class="wrap ap-hero__grid">
-      <div class="ap-hero__h">
-        <p class="label label--accent">Our approach</p>
-        <h1 class="pg-hero__h pg-hero__h--wide" id="hero-h"><span>Train your team.</span> <span class="accent">Automate the rest.</span></h1>
-      </div>
-      <div class="ap-hero__copy">
-        <p class="lede">How we decide which new AI tools are worth your time, set them up safely in accounts you own, and train your team until they're part of the day.</p>
-        <div class="pg-hero__cta">
-          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
-          <a class="link" href="#method">See the method</a>
+    <div class="wrap">
+      <div class="pg-win ap-hero__grid" data-pxs-win>
+        <span class="win__t" aria-hidden="true">approach.exe</span>
+        <span class="win__r" aria-hidden="true" data-pxs-label>01/12<span class="win__nm"> train</span></span>
+        <div class="ap-hero__h">
+          <p class="label label--accent">Our approach</p>
+          <h1 class="pg-hero__h pg-hero__h--wide" id="hero-h"><span>Train your team.</span> <span class="accent">Automate the rest.</span></h1>
         </div>
-      </div>
-      <div class="pxs pxs--ap">
-        <canvas class="pxs__cv" data-pxs="approach" width="176" height="110" aria-hidden="true"></canvas>
-        <button class="pxs__ctl" type="button" aria-pressed="false" data-pxs-pause><span>Pause</span><span class="sr"> the animation</span></button>
+        <div class="ap-hero__copy">
+          <p class="lede">How we pick the new AI worth your time, set it up safely in accounts you own, and train your team until it's part of the day.</p>
+          <div class="pg-hero__cta">
+            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
+            <a class="link" href="#method">See the method</a>
+          </div>
+        </div>
+        <div class="pxs pxs--ap">
+          <canvas class="pxs__cv" data-pxs="approach" width="160" height="100" aria-hidden="true"></canvas>
+        </div>
+        <button class="win__b" type="button" aria-pressed="false" data-pxs-pause hidden><span>pause</span><span class="sr"> the animation</span></button>
       </div>
     </div>
   </section>
 <!-- pxs:start (pixel screen; one copy per page until a shared morph module exists) -->
 <script>
-// Pixel screen: a run of small scenes on a low-res buffer, shown at an integer
-// scale. Between scenes every lit pixel flies into the next scene's first
-// frame (the homepage attract morph), never a cut. Pauses off screen and on
-// request; reduced motion gets one still frame. Scenes carry a level (lv) so
-// the staircase can light the matching step; hovering a step jumps to it.
+// Pixel screen: a run of small scenes on a low-res buffer, shown at a whole-number
+// scale inside a terminal window. Between scenes every lit pixel flies into the
+// next scene's first frame along one smooth shared path field (the homepage
+// attract morph), never a cut. The window's top border names the scene; its
+// bottom border holds pause. Pauses off screen and on request; reduced motion
+// gets one still frame. Scenes carry a level (lv) so the staircase can light the
+// matching step; hovering a step jumps to it.
 // Debug: ?pxs=<scene>&pxst=<ms> freezes that scene at that time.
 (() => {
   const cv = document.querySelector('canvas[data-pxs]');
   if (!cv || !cv.getContext) return;
-  const box = cv.closest('.pxs');
+  const box = cv.closest('.pxs'), win = box.closest('[data-pxs-win]') || box;
   box.classList.add('pxs--on');
   const W = +cv.width, H = +cv.height, FL = H - 5;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -157,9 +164,9 @@
   const PLUG = ['.x.x.', '.x.x.', 'xxxxx', 'xxxxx', '.xxx.', '..x..', '..x..'];
   const LOOP = ['.xxxx..', 'x....x.', 'x...xxx', 'x....x.', 'x......', '.x....x', '..xxxx.'];
   const QMARK = ['.xxx.', 'x...x', '...x.', '..x..', '.....', '..x..'];
+  const CHAT = ['xxxxxxxxx', 'x.......x', 'x.ooooo.x', 'x.......x', 'xxxxxxxxx', '.xx......', '.x.......'];
+  const SPARK = ['....x....', '....x....', '...xxx...', 'xxxxxxxxx', '...xxx...', '....x....', '....x....'];
 
-  // one "verdict" chip, as a coloured block
-  const chip = (x, y, c, w = 9) => { R(x, y, w, 5, c); };
 
   // ---------- scenes ----------
   const SC = {
@@ -172,21 +179,24 @@
       for (let k = 0; k < 3; k++) {
         const r = Math.floor(((t + k * 800) % 2400) / 2400 * W * 0.9 / 3) * 3;
         if (r < 8) continue;
-        ring(cx, cy, r, r < W * 0.45 ? C.acc : C.dim, -1.2, 0.35);
+        const c = r < W * 0.45 ? C.acc : C.dim;
+        ring(cx, cy, r, c, -1.15, 0.3); ring(cx, cy, r + 1, c, -1.15, 0.3);
       }
-      const B = [[0.6, 0.2, C.butter, 500], [0.84, 0.36, C.rose, 1200], [0.56, 0.5, C.teal, 1900], [0.9, 0.12, C.acc, 2600], [0.72, 0.62, C.cream, 3300]];
+      // each launch: a square blip that pings once, then holds with a steady glow
+      const B = [[0.6, 0.22, C.butter, 500], [0.84, 0.38, C.rose, 1200], [0.56, 0.52, C.teal, 1900], [0.88, 0.14, C.acc, 2600], [0.74, 0.64, C.cream, 3300]];
       for (const [fx, fy, c, at] of B) {
         if (t < at) continue;
         const x = Math.round(W * fx), y = Math.round(FL * fy), a = t - at;
-        if (a < 480) ring(x, y, 1 + Math.floor(a / 120), c);
-        plus(x, y, c, a < 480 ? 2 : 1 + (Math.floor((t + at) / 500) % 2));
+        if (a < 600) box1(x - 2 - Math.floor(a / 150) * 2, y - 2 - Math.floor(a / 150) * 2, 5 + Math.floor(a / 150) * 4, 5 + Math.floor(a / 150) * 4, c);
+        R(x - 1, y - 1, 3, 3, c);
+        if (Math.floor((t + at) / 450) % 3 === 0) box1(x - 2, y - 2, 5, 5, c);
       }
     } },
 
     // Signals Weekly: one email lands on Monday; a rare alert mid-week
     monday: { lv: 0, dur: 5000, still: 4200, draw(t) {
       floor();
-      const tw = 16, th = 20, gap = 5, n = 7, x0 = Math.round((W - (n * tw + (n - 1) * gap)) / 2), y0 = Math.round(FL - th - 22);
+      const tw = 16, th = 20, gap = 5, n = 7, x0 = Math.round((W - (n * tw + (n - 1) * gap)) / 2), y0 = Math.round((FL - th) / 2) + 6;
       const land = 1500, lit = t >= land;
       for (let d = 0; d < n; d++) {
         const x = x0 + d * (tw + gap), on = d === 0 && lit, c = on ? C.acc : C.dim;
@@ -199,8 +209,6 @@
         const x = sx + (ex - sx) * q, y = sy + (ey - sy) * q - Math.sin(q * Math.PI) * 16;
         pat(x, y, MAIL, { x: C.hi });
       }
-      const vx = x0, vy = y0 + th + 8;
-      [C.acc, C.teal, C.butter, C.dim].forEach((c, k) => { if (t > 2200 + k * 260) chip(vx + k * 13, vy, c); });
     } },
 
     // Head Start: look through what you already pay for, switch on what's there
@@ -246,10 +254,11 @@
       floor();
       const ax = Math.round((W - 78) / 2), ay = FL - 45;
       spr('assistant', ax, ay);
-      const icons = [[MAIL, 11], [CAL, 9], [DOC, 8], [CARD, 11]], top = 6, bus = ay - 10;
+      // four wires that never cross: the inner two turn high, the outer two turn low
+      const icons = [[MAIL, 11], [CAL, 9], [DOC, 8], [CARD, 11]], top = 6, busHi = top + 16, busLo = top + 24;
       icons.forEach(([rows, w], k) => {
-        const ix = Math.round(W * (0.14 + k * 0.24)) - (w >> 1), start = 300 + k * 650, dx = ax + 22 + k * 11;
-        const pts = [[ix + (w >> 1), top + rows.length + 2], [ix + (w >> 1), bus], [dx, bus], [dx, ay + 1]];
+        const ix = Math.round(W * (0.14 + k * 0.24)) - (w >> 1), start = 300 + k * 650, dx = ax + 24 + k * 8, bus = k === 1 || k === 2 ? busHi : busLo;
+        const pts = [[ix + (w >> 1), top + rows.length + 2], [ix + (w >> 1), bus], [dx, bus], [dx, ay + 2 + Math.max(0, k - 1)]];
         const L = plen(pts), n = Math.floor(cl((t - start) / 520) * L), done = n >= L;
         pat(ix, top, rows, { x: done ? C.acc : C.dim, o: done ? C.hi : C.dim });
         path(pts, n, done ? C.cream : C.mid);
@@ -274,14 +283,14 @@
     // Rollout Session: the team learns on its own work
     rollout: { lv: 2, dur: 5200, still: 4800, draw(t) {
       floor();
-      const kx = Math.round((W - 116) / 2), ky = FL - 41;
+      const kx = W - 116 - Math.round(W * 0.03), ky = FL - 41;
+      const shirts = [C.teal, C.rose, C.butter];
       spr('keys', kx, ky);
-      const shirts = [C.teal, C.rose, C.butter], gx = [0.22, 0.47, 0.72];
-      gx.forEach((fx, k) => {
-        const x = Math.round(W * fx), at = 700 + k * 1000, got = t > at;
-        guy(x, ky - 4, shirts[k], got && t - at < 300 ? 2 : 0);
-        if (got) pat(x, ky - 4 - 11 - 9, BULB, { x: C.butter, o: C.mid });
-      });
+      for (let k = 0; k < 3; k++) {                    // the team, side by side at the desk
+        const x = Math.round(kx / 2 - 16) + k * 11, at = 700 + k * 1000, got = t > at;
+        guy(x, FL - 1, shirts[k], got && t - at < 300 ? 2 : 0);
+        if (got) pat(x, FL - 1 - 11 - 9, BULB, { x: C.butter, o: C.mid });
+      }
       const K = KEYS();
       if (K.length) for (let j = 0; j < 4; j++) { const p = K[(Math.floor(t / 110) * 7 + j * 13) % K.length]; R(kx + p[0], ky + p[1], 2, 1, C.acc); }
     } },
@@ -289,7 +298,7 @@
     // First Quarter: thirteen weeks fill the quarter, and the quarter pops out (the mark)
     quarter: { lv: 3, dur: 5400, still: 5200, draw(t) {
       floor();
-      const r = Math.min(28, Math.floor((FL - 16) / 2)), cx = Math.round(W / 2), cy = Math.round(FL / 2) + 2;
+      const r = Math.min(36, Math.floor((FL - 16) / 2)), cx = Math.round(W / 2), cy = Math.round(FL / 2) + 3;
       const wk = Math.floor(cl((t - 300) / 170, 0, 13)), pop = t > 300 + 13 * 170 + 250 ? Math.min(3, Math.floor((t - 2760) / 90)) : 0;
       for (let y = -r; y <= r; y++) for (let x = -r; x <= r; x++) {
         if (x * x + y * y > r * r + r * 0.6) continue;
@@ -305,14 +314,14 @@
     // First Quarter: the stack review. What you pay for, what gets used, what changes
     stack: { lv: 3, dur: 5200, still: 4800, draw(t) {
       floor();
-      const n = 5, tw = 18, gap = Math.round(W * 0.06), x0 = Math.round((W - (n * tw + (n - 1) * gap)) / 2), base = FL - 6;
+      const n = 5, tw = 19, gap = Math.round(W * 0.06), glyph = [MAIL, CAL, DOC, CARD, CHAT], x0 = Math.round((W - (n * tw + (n - 1) * gap)) / 2), base = FL - 6;
       const use = [0.8, 0.55, 0.12, 0.9, 0.65], fill = cl((t - 200) / 1400), out = cl((t - 2200) / 700), inn = cl((t - 3000) / 700);
       for (let k = 0; k < n; k++) {
         const x = x0 + k * (tw + gap), swap = k === 2;
         let y = base - 44, col = C.dim;
         if (swap && out > 0 && inn === 0) { y += Math.round(eio(out) * 60); col = C.line; }
         if (swap && inn > 0) { y = base - 44 - Math.round((1 - eio(inn)) * 60); col = C.acc; }
-        box1(x, y, tw, tw, col); R(x + 4, y + 4, tw - 8, tw - 8, swap && inn > 0 ? C.acc : col === C.dim ? C.mid : col);
+        box1(x, y, tw, tw, col); const g = swap && inn > 0 ? SPARK : glyph[k]; pat(x + ((tw - g[0].length) >> 1), y + ((tw - g.length) >> 1), g, { x: swap && inn > 0 ? C.acc : col === C.dim ? C.cream : col, o: swap && inn > 0 ? C.acc : C.mid });
         const u = swap && inn > 0 ? 0.85 * cl((t - 3700) / 900) : use[k] * fill, bh = Math.round(u * 18);
         if (!(swap && out > 0 && inn === 0)) R(x + 5, base - bh, tw - 10, bh, swap && inn > 0 ? C.acc : u < 0.2 ? C.bad : C.cream);
       }
@@ -324,6 +333,7 @@
       const by = FL - 12, rx = Math.round(W / 2) - 16, ry = by - 44;
       R(0, by, W, 1, C.dim); R(0, by + 5, W, 1, C.dim);
       for (let x = -(Math.floor(t / 90) % 6); x < W; x += 6) R(x, by + 2, 2, 2, C.line);
+      R(rx - 8, ry - 4, 48, 2, C.dim); R(rx - 8, ry - 4, 2, by - ry + 4, C.dim); R(rx + 38, ry - 4, 2, by - ry + 4, C.dim);
       spr('robot', rx, ry);
       const sx = rx + 16, cols = [C.rose, C.butter, C.teal, C.cream], sp = 0.032, cyc = W + 24;
       let press = 0;
@@ -370,7 +380,7 @@
     team: { lv: -1, dur: 5000, still: 4600, draw(t) {
       floor();
       const shirts = [C.teal, C.rose, C.butter, C.acc], n = 4, sp = Math.round(W * 0.16), x0 = Math.round(W / 2 - sp * 1.5) - 2;
-      const bw = Math.round(W * 0.5), bx = Math.round((W - bw) / 2), bh = 26, byy = 8;
+      const bw = Math.round(W * 0.5), bx = Math.round((W - bw) / 2), bh = 26, byy = Math.max(6, FL - 1 - 20 - 14 - bh);
       box1(bx, byy, bw, bh, C.dim);
       for (let r = 0; r < 3; r++) { const on = t > 600 + r * 700, yy = byy + 6 + r * 7; if (on) R(bx + 6, yy, 5, 5, C.acc); else box1(bx + 6, yy, 5, 5, C.dim); R(bx + 15, yy + 2, Math.round(bw * [0.55, 0.42, 0.62][r]), 2, on ? C.cream : C.line); }
       for (let k = 0; k < n; k++) {
@@ -401,17 +411,21 @@
     // Decode: most launches land in wait or ignore
     decode: { lv: -1, dur: 5600, still: 5400, draw(t) {
       floor();
-      const cols = [C.acc, C.teal, C.butter, C.dim], bw = Math.round(W * 0.16), gap = Math.round(W * 0.06), x0 = Math.round((W - (4 * bw + 3 * gap)) / 2), top = FL - 22;
+      // four bins: act now, prepare, wait, ignore (marked !, hourglass, pause, x)
+      const cols = [C.acc, C.teal, C.butter, C.dim], bw = Math.round(W * 0.18), gap = Math.round(W * 0.05), x0 = Math.round((W - (4 * bw + 3 * gap)) / 2), bh = 30, top = FL - bh;
+      const marks = [['..x..', '..x..', '..x..', '.....', '..x..'], ['xxxxx', '.x.x.', '..x..', '.x.x.', 'xxxxx'], ['xx.xx', 'xx.xx', 'xx.xx', 'xx.xx', 'xx.xx'], CROSS];
       const drops = [2, 3, 0, 2, 3, 1, 2, 3, 2];
       const fill = [0, 0, 0, 0];
-      cols.forEach((c, k) => { const x = x0 + k * (bw + gap); R(x, top, 1, 22, c); R(x + bw - 1, top, 1, 22, c); R(x, FL - 1, bw, 1, c); });
+      cols.forEach((c, k) => { const x = x0 + k * (bw + gap); R(x, top, 1, bh, c); R(x + bw - 1, top, 1, bh, c); R(x, FL - 1, bw, 1, c); pat(x + (bw >> 1) - 2, top - 9, marks[k], { x: c }); });
+      const sx = Math.round(W / 2) - 2;
+      pat(sx - 3, 2, ['xxxxxxxxxx', '.xxxxxxxx.', '..xxxxxx..', '...xxxx...'], { x: C.dim });
       drops.forEach((bin, k) => {
         const at = 200 + k * 520, a = t - at;
         if (a < 0) return;
-        const tx = x0 + bin * (bw + gap) + 3 + (fill[bin] % 3) * 4, ty = FL - 5 - Math.floor(fill[bin] / 3) * 4, sx = Math.round(W / 2) - 1, sy = 2;
+        const tx = x0 + bin * (bw + gap) + 3 + (fill[bin] % 4) * 6, ty = FL - 6 - Math.floor(fill[bin] / 4) * 6, sy = 6;
         const q = cl(a / 700);
         const x = sx + (tx - sx) * eio(q), y = sy + (ty - sy) * q * q;
-        R(x, y, 3, 3, q < 1 ? C.hi : cols[bin]);
+        R(x, y, 4, 4, q < 1 ? C.hi : cols[bin]);
         fill[bin]++;
       });
     } },
@@ -428,28 +442,34 @@
       const lane = FL - 4;
       for (let k = 0; k < 5; k++) {
         const x0 = W + 6 + k * 14, stopAt = x + 14 + k * 11, pos = x0 - t * 0.05;
-        const px = go && k === 0 ? pos - ((t % 5200) - 4300) * 0.12 : Math.max(stopAt, pos);
+        const px = k === 0 && (t % 5200) >= 4300 ? stopAt - ((t % 5200) - 4300) * 0.14 : Math.max(stopAt, pos);
         if (px < -6) continue;
         R(px, lane - 5, 6, 5, k === 0 && go ? C.acc : C.cream); R(px + 1, lane, 1, 1, C.dim); R(px + 4, lane, 1, 1, C.dim);
       }
     } },
 
-    // Security basics: least access, and a lock that closes
-    secure: { lv: -1, dur: 5000, still: 4600, draw(t) {
+    // Security basics: least access. It needs the calendar, so it gets the calendar; the rest stay locked
+    secure: { lv: -1, dur: 5200, still: 4800, draw(t) {
       floor();
-      const cx = Math.round(W / 2), bw = 26, bh = 20, bx = cx - 13, by = FL - bh - 4;
-      const shut = t > 2200 ? Math.min(4, Math.floor((t - 2200) / 60)) : 0, sy = by - 12 + shut;
-      R(bx + 5, sy, 3, 14 - shut, C.cream); R(bx + bw - 8, sy + (shut ? 0 : 4), 3, 14 - shut - (shut ? 0 : 4), C.cream); R(bx + 5, sy - 3, bw - 10, 3, C.cream);
-      R(bx, by, bw, bh, C.butter); R(cx - 2, by + 6, 4, 4, C.bg); R(cx - 1, by + 10, 2, 5, C.bg);
-      const keys = 4;
-      for (let k = 0; k < keys; k++) {
-        const kx0 = Math.round(W * 0.1) + k * 9, ky0 = by + 4, chosen = k === 1, a = cl((t - 600) / 1300);
-        const kx = chosen ? kx0 + (cx - 12 - kx0) * eio(a) : kx0, ky = chosen ? ky0 + (by + 7 - ky0) * eio(a) : ky0 + 14;
-        const col = chosen ? C.hi : t > 400 ? C.line : C.dim;
-        if (chosen && a >= 1 && t > 2200) continue;
-        R(kx, ky, 4, 4, col); R(kx + 4, ky + 1, 7, 2, col); R(kx + 8, ky + 3, 1, 2, col);
-      }
-      if (t > 2400 && t < 3000) plus(cx + 16, by - 14, C.acc, 1 + Math.floor((t - 2400) / 200));
+      const rx = Math.round(W / 2) - 16, ry = FL - 32, top = 12;
+      spr('robot', rx, ry);
+      const icons = [[MAIL, 11], [CAL, 9], [DOC, 8], [CARD, 11]];
+      const LOCK = ['.xxxxx.', 'xx...xx', 'x.....x', 'xxxxxxx', 'xxx.xxx', 'xxx.xxx', 'xxxxxxx'];
+      let lock = 0;
+      icons.forEach(([rows, w], k) => {
+        const ix = Math.round(W * (0.14 + k * 0.24)) - (w >> 1), give = k === 1;
+        if (give) {
+          const pts = [[ix + (w >> 1), top + rows.length + 2], [ix + (w >> 1), ry - 8], [rx + 16, ry - 8], [rx + 16, ry - 1]];
+          const L = plen(pts), n = Math.floor(cl((t - 400) / 900) * L), done = n >= L;
+          path(pts, n, done ? C.cream : C.mid);
+          pat(ix, top, rows, { x: done ? C.acc : C.dim, o: done ? C.hi : C.dim });
+          if (done) { const [px, py] = pat1(pts, Math.floor(((t - 1300) % 1000) / 1000 * L)); R(px - 1, py - 1, 3, 3, C.acc); }
+        } else {
+          const at = 1700 + lock++ * 420, a = t - at;
+          pat(ix, top, rows, { x: a > 0 ? C.line : C.dim, o: a > 0 ? C.line : C.dim });
+          if (a > 0) pat(ix + w - 3, top + rows.length - 5 - Math.round((1 - eio(cl(a / 360))) * 18), LOCK, { x: C.butter });
+        }
+      });
     } },
 
     // How we pick tools: six questions, and one it fails
@@ -459,9 +479,9 @@
       for (let q = 0; q < 6; q++) {
         const col = q % 2, row = Math.floor(q / 2), x = gx + col * (cw + 12), y = y0 + row * rh, at = 500 + q * 520, a = t - at;
         const fail = q === 4;
-        if (a < 0) { box1(x, y, 11, 11, C.dim); pat(x + 3, y + 3, QMARK.slice(0, 5), { x: C.mid }); }
+        if (a < 0) { box1(x, y, 11, 11, C.dim); pat(x + 3, y + 2, QMARK, { x: C.mid }); }
         else if (fail) { R(x, y, 11, 11, C.butter); pat(x + 3, y + 3, CROSS, { x: C.bg }); }
-        else { R(x, y, 11, 11, C.acc); pat(x + 3, y + 3, TICK.map((r) => r.slice(1)), { x: C.bg }); }
+        else { R(x, y, 11, 11, C.acc); pat(x + 2, y + 3, TICK, { x: C.bg }); }
         R(x + 15, y + 4, Math.round(cw * [0.7, 0.55, 0.62, 0.5, 0.66, 0.45][q]), 2, a < 0 ? C.line : C.cream);
       }
     } },
@@ -479,15 +499,23 @@
 
   const SETS = {
     services: ['radar', 'monday', 'scan', 'plan', 'connect', 'checklist', 'rollout', 'quarter', 'stack', 'belt'],
-    approach: ['pong', 'train', 'team', 'belt', 'rail', 'radar', 'decode', 'connect', 'quarter', 'waitsign', 'secure', 'questions'],
+    approach: ['train', 'belt', 'pong', 'team', 'rail', 'radar', 'decode', 'connect', 'quarter', 'waitsign', 'secure', 'questions'],
   };
   const names = (SETS[cv.dataset.pxs] || SETS.services).filter((k) => SC[k]);
   const S = names.map((k) => ({ name: k, ...SC[k] }));
   const SRC = { radar: 'sprite-radar.png', assistant: 'sprite-assistant.png', keys: 'sprite-keyboard-manual.png', robot: 'pu-robot.png' };
-  const need = { radar: ['radar'], connect: ['assistant'], rollout: ['keys'], train: ['keys'], belt: ['robot'] };
+  const need = { radar: ['radar'], connect: ['assistant'], rollout: ['keys'], train: ['keys'], belt: ['robot'], secure: ['robot'] };
+
+  // the window's status: the level on screen (services), or the scene and its place in the run (approach)
+  const LVN = ['signals', 'head start', 'day one setup', 'first quarter', 'build'];
+  const TAG = { train: 'train', belt: 'automate', pong: 'two halves', team: 'part of the day', rail: 'the method', radar: 'detect', decode: 'decode', connect: 'deploy', quarter: 'stay current', waitsign: 'wait', secure: 'least access', questions: 'six questions' };
+  const pad = (n) => String(n).padStart(2, '0');
+  const label = (s, j) => cv.dataset.pxs === 'services' && s.lv >= 0
+    ? 'lv ' + s.lv + '<span class="win__nm"> ' + LVN[s.lv] + '</span>'
+    : pad(j + 1) + '/' + pad(S.length) + '<span class="win__nm"> ' + (TAG[s.name] || s.name) + '</span>';
 
   // ---------- the morph ----------
-  const MORPH = 1500, STY = ['arc', 'rain', 'swirl', 'burst'];
+  const MORPH = 1150, STY = ['arc', 'rain', 'swirl', 'burst'];
   let parts = [], still = [], ms = -1;
   const img = b.createImageData(W, H);
   function snap() {
@@ -524,9 +552,11 @@
       if (st === 'arc') { x += Math.sin(q * Math.PI) * o.arc * 0.5; y -= Math.sin(q * Math.PI) * Math.abs(o.arc) * 0.6; }
       else if (st === 'swirl') { const th = Math.sin(q * Math.PI) * (0.9 + o.arc / 40), dx = x - cx, dy = y - cy; x = cx + dx * Math.cos(th) - dy * Math.sin(th) * 0.5; y = cy + dx * Math.sin(th) * 0.3 + dy * Math.cos(th); }
       else if (st === 'rain') {
-        const r = cl((k - o.delay) / 0.62);
-        if (r < 0.45) { const f = r / 0.45; x = p.x + o.arc * 0.2 * f; y = p.y + (FL - 1 - p.y) * f * f; }
-        else { const f = eio((r - 0.45) / 0.55); x = p.x + o.arc * 0.2 + (e.x - p.x - o.arc * 0.2) * f; y = FL - 1 + (e.y - FL + 1) * f; }
+        // one unbroken curve: pixels sink toward the floor and rise into place without stopping
+        // (a cubic whose middle control points sit on the floor), so neighbours flow as a ribbon
+        const u = eio(cl((k - o.delay) / 0.62)), v = 1 - u, fx = p.x + o.arc * 0.2;
+        x = v * v * v * p.x + 3 * v * v * u * fx + 3 * v * u * u * (e.x + o.arc * 0.1) + u * u * u * e.x;
+        y = v * v * v * p.y + 3 * v * v * u * (FL - 1) + 3 * v * u * u * (FL - 1) + u * u * u * e.y;
       } else { const dx = p.x - cx, dy = p.y - cy, L = Math.hypot(dx, dy) || 1; x += dx / L * Math.sin(q * Math.PI) * (10 + Math.abs(o.arc)); y += dy / L * Math.sin(q * Math.PI) * (6 + Math.abs(o.arc) * 0.5); }
       const c = [p.c[0] + (e.c[0] - p.c[0]) * q, p.c[1] + (e.c[1] - p.c[1]) * q, p.c[2] + (e.c[2] - p.c[2]) * q];
       put(x, y, c, e.fade ? 255 * (1 - q) : p.from ? 255 * q : 255);
@@ -537,18 +567,22 @@
   // ---------- screen ----------
   let SCL = 1;
   function fit() {
-    const cw = box.clientWidth || W, dpr = Math.min(3, window.devicePixelRatio || 1), s = Math.max(1, Math.floor(cw / W));
+    const cw = box.clientWidth || W, dpr = Math.min(3, window.devicePixelRatio || 1), f = cw / W, s = Math.max(1, Math.floor(f));   // whole steps only, so every art pixel is the same size
     SCL = Math.max(1, Math.round(s * dpr));
     if (cv.width !== W * SCL) { cv.width = W * SCL; cv.height = H * SCL; }
     cv.style.width = W * s + 'px'; cv.style.height = H * s + 'px';
   }
   function blit() { ctx.imageSmoothingEnabled = false; ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(buf, 0, 0, W * SCL, H * SCL); }
-  const render = (s, t) => { b.clearRect(0, 0, W, H); s.draw(t); };
+  const render = (s, t) => { b.clearRect(0, 0, W, H); s.draw(Math.max(0, t)); };   // t can dip below 0 after an offscreen pause
 
   // the staircase (services): light the step whose level is on screen
   const steps = [...document.querySelectorAll('[data-pxs-lv]')];
-  const sync = (lv) => steps.forEach((el) => el.classList.toggle('is-live', +el.dataset.pxsLv === lv));
-  const btn = box.querySelector('[data-pxs-pause]');
+  const btn = win.querySelector('[data-pxs-pause]'), lab = win.querySelector('[data-pxs-label]');
+  const sync = (lv) => {
+    cv.dataset.scene = sc.name;
+    if (lab) lab.innerHTML = label(sc, i);
+    steps.forEach((el) => el.classList.toggle('is-live', +el.dataset.pxsLv === lv));
+  };
 
   let i = 0, sc = S[0], t0 = 0, last = 0, mode = 'play', paused = false, seen = true, hold = false;
   function go(j, now) {
@@ -575,7 +609,7 @@
     const q = new URLSearchParams(location.search), dbg = names.indexOf(q.get('pxs'));
     if (dbg >= 0 && q.has('pxst')) { i = dbg; sc = S[dbg]; render(sc, +q.get('pxst')); blit(); sync(sc.lv); return; }
     if (reduce) { if (btn) btn.hidden = true; showStill(0); }
-    else { if (dbg >= 0) { i = dbg; sc = S[dbg]; } sync(sc.lv); t0 = last = performance.now(); render(sc, 0); blit(); requestAnimationFrame(tick); }
+    else { if (btn) btn.hidden = false; if (dbg >= 0) { i = dbg; sc = S[dbg]; } sync(sc.lv); t0 = last = performance.now(); render(sc, 0); blit(); requestAnimationFrame(tick); }
     // hover or focus a step: show that level, and stay there while you look
     steps.forEach((el) => {
       const lv = +el.dataset.pxsLv, first = S.findIndex((s) => s.lv === lv);
@@ -585,7 +619,7 @@
       el.addEventListener('mouseenter', on); el.addEventListener('mouseleave', off);
       el.addEventListener('focusin', on); el.addEventListener('focusout', off);
     });
-    if (btn) btn.addEventListener('click', () => { paused = !paused; btn.setAttribute('aria-pressed', String(paused)); btn.querySelector('span').textContent = paused ? 'Play' : 'Pause'; });
+    if (btn) btn.addEventListener('click', () => { paused = !paused; btn.setAttribute('aria-pressed', String(paused)); btn.querySelector('span').textContent = paused ? 'play' : 'pause'; });
     if ('IntersectionObserver' in window) new IntersectionObserver((es) => { seen = es.some((e) => e.isIntersecting); }).observe(cv);
     if ('ResizeObserver' in window) new ResizeObserver(() => { fit(); blit(); }).observe(box);
     addEventListener('qs:theme', () => { palette(); if (reduce || paused) { render(sc, reduce ? sc.still : performance.now() - t0); blit(); } });
@@ -598,8 +632,7 @@
   <section class="ap-halves" id="two-halves" aria-labelledby="halves-h">
     <div class="wrap ap-intro">
       <h2 class="ap-intro__h" id="halves-h">Being early only pays if people use it.</h2>
-      <p class="body-l">So every engagement has two halves, in this order. First we train your team on the new tool, inside their own work. Then we automate the repetitive work that's left.</p>
-      <p class="body-l">Training comes first because an automation is only as good as the people who check it.</p>
+      <p class="body-l">So every engagement has two halves, in this order. Training comes first because an automation is only as good as the people who check it.</p>
     </div>
     <div class="ap-court">
       <div class="wrap ap-court__in">
@@ -625,6 +658,12 @@
           </ul>
           <p class="ap-half__note">Build is scoped after a Head Start or for members, once we know how your business runs. <a class="link" href="/services/#build">How Build works</a></p>
         </article>
+      </div>
+      <div class="wrap">
+        <div class="pg-go">
+          <p class="pg-go__t">Start with the first half.</p>
+          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
+        </div>
       </div>
     </div>
   </section>
@@ -658,7 +697,7 @@
           <div class="ap-step__k"><span class="ap-step__n">03</span><h3>Deploy</h3><p class="ap-step__when">from the day it's available to you</p></div>
           <div class="ap-step__b">
             <p>When it's worth it, we set it up in your accounts, connect it to the tools you already use, test it with a few people, then train the team.</p>
-            <p>Day one means the first day a tool is available to your account. Rollouts are often staggered by plan, region or company size, so we prepare beforehand wherever the vendor has published enough detail.</p>
+            <p>Day one means the first day a tool is available to your account. We prepare beforehand wherever the vendor has published enough detail.</p>
             <a class="link" href="/services/#day-one-setup">Day One Setup</a>
           </div>
         </li>
@@ -671,6 +710,10 @@
           </div>
         </li>
       </ol>
+      <div class="pg-go">
+        <p class="pg-go__t">Ask what's worth switching on this week.</p>
+        <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
+      </div>
     </div>
   </section>
 
@@ -679,7 +722,7 @@
     <div class="wrap ap-princ__grid">
       <div class="ap-sign" aria-hidden="true">
         <span class="ap-sign__go">go</span>
-        <span class="ap-sign__wait neon neon--warm">wait</span>
+        <span class="ap-sign__wait echo echo--chase">wait</span>
       </div>
       <div>
         <p class="label label--accent">Principles</p>
@@ -723,6 +766,10 @@
         <li><h3>Is it worth the cost and the learning time?</h3><p>The price per seat plus the hours to learn it, weighed against the time it gives back.</p></li>
         <li><h3>Can you leave?</h3><p>You should be able to export your work and switch it off without losing anything.</p></li>
       </ol>
+      <div class="pg-go">
+        <p class="pg-go__t">Bring the tool you're weighing.</p>
+        <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
+      </div>
     </div>
   </section>
 
@@ -746,15 +793,16 @@
     </div>
   </section>
 
-  <!-- Close: the booking call, by an arcade cabinet -->
+  <!-- Close: the booking call, by an idle pong cabinet waiting for a player -->
   <section class="pg-close" aria-labelledby="cta-h">
     <div class="wrap pg-close__in">
+      <p class="pg-close__sign echo" aria-hidden="true">press start</p>
       <h2 class="pg-close__h" id="cta-h">Start with what you already pay for.</h2>
-      <p class="body-l">The fastest wins are often in software you already have. On a <span class="nw">20-minute</span> call, tell us what you use and what's eating your team's week. We'll tell you what's worth doing now and what can wait.</p>
-      <div class="pg-close__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a><a class="link" href="/services/">See services and prices</a></div>
+      <p class="body-l">The fastest wins are often in software you already have. Tell us what you use and what's eating your team's week. We'll tell you what's worth doing now and what can wait.</p>
+      <div class="pg-close__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a free 20-minute call</a><a class="link" href="/services/">See services and prices</a></div>
       <p class="pg-close__fine">Not ready to talk? <a href="/signals/">Read this week's Signals</a> first.</p>
     </div>
-    <img class="pg-close__cab" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="" aria-hidden="true" loading="lazy">
+    <span class="pg-close__art pg-close__art--cab" aria-hidden="true"></span>
   </section>
 
 </main>

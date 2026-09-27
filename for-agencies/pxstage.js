@@ -19,6 +19,7 @@
 //   check          a check mark
 //   cal:JUN 2026:11:1:30   a calendar page (label : day to mark : weekday of the 1st : days)
 //   grid, tree, bars, sky  data pictures; numbers come from the table in data-table
+// data-align="bottom" stands every scene on the stage floor (default: centred).
 //
 // Crisp: a low-resolution buffer drawn at an integer device-pixel scale.
 // Pauses off screen, in hidden tabs and from its pause button. Reduced
@@ -44,7 +45,7 @@
     const v = (n, d) => rgb(cs.getPropertyValue(n), d);
     const fg = v('--fg-0', [236, 228, 204]), f1 = v('--fg-1', [203, 195, 171]), ac = v('--accent', [169, 217, 159]);
     const inf = v('--info', [134, 195, 186]), bg = v('--bg-0', [18, 24, 20]), ln = v('--line-2', [74, 90, 79]);
-    return { fg, f1, ac, inf, bg, ln, band: [fg, ac, inf, mix(ac, bg, 0.58), mix(ac, bg, 0.36)], dim: mix(ln, bg, 0.8) };
+    return { fg, f1, ac, inf, bg, ln, band: [fg, ac, inf, mix(ac, bg, 0.64), mix(ac, bg, 0.46)], dim: mix(ln, bg, 0.8) };
   }
 
   // ---------- Departure Mono, read from the font's own pixel grid ----------
@@ -100,11 +101,11 @@
     });
     return out;
   }
-  function artScene(rows, W, H, P, cap = 9) {
+  function artScene(rows, W, H, c, cap = 8) {
     const w = rows[0].length, h = rows.length;
     const cell = Math.max(1, Math.min(cap, Math.floor((W * 0.8) / w), Math.floor((H * 0.72) / h)));
     const ox = Math.round((W - w * cell) / 2), oy = Math.round((H - h * cell) / 2), out = [];
-    artDots(rows).forEach(([x, y]) => fill(out, ox + x * cell, oy + y * cell, cell, cell, P.band[Math.min(4, Math.floor((y / h) * 5))]));
+    artDots(rows).forEach(([x, y]) => fill(out, ox + x * cell, oy + y * cell, cell, cell, c));
     return out;
   }
   // the mark from _partials/mark.html, as "x,y,width" runs on a 14x14 grid
@@ -170,7 +171,7 @@
     return rects;
   }
   function treeScene(vals, W, H, P) {
-    const tw = Math.round(W * 0.84), th = Math.round(H * 0.82), ox = Math.round((W - tw) / 2), oy = Math.round((H - th) / 2), out = [];
+    const tw = Math.round(W * 0.8), th = Math.round(H * 0.82), ox = Math.round((W - tw) / 2), oy = Math.round((H - th) / 2), out = [];
     squarify(vals, 0, 0, tw, th).forEach(([x, y, w, h], i) => {
       const x0 = Math.round(x), y0 = Math.round(y), x1 = Math.round(x + w), y1 = Math.round(y + h);
       fill(out, ox + x0, oy + y0, Math.max(1, x1 - x0 - 1), Math.max(1, y1 - y0 - 1), rankC(i, P));
@@ -178,7 +179,7 @@
     return out;
   }
   function barsScene(vals, W, H, P) {
-    const v = vals.slice(0, 10), bh = 5, g = 3, L = Math.round(W * 0.86), th = v.length * bh + (v.length - 1) * g;
+    const v = vals.slice(0, 10), bh = 5, g = 3, L = Math.round(W * 0.8), th = v.length * bh + (v.length - 1) * g;
     const ox = Math.round((W - L) / 2), oy = Math.round((H - th) / 2), out = [];
     v.forEach((n, i) => fill(out, ox, oy + i * (bh + g), Math.max(2, Math.round((n / v[0]) * L)), bh, rankC(i, P)));
     return out;
@@ -192,10 +193,24 @@
   }
 
   // ---------- the morph ----------
-  // Both pictures are ranked along the same path and matched rank to rank,
-  // so neighbouring pixels travel together and the art flows across as one
-  // sheet. Choreographies take turns: a sweep to the right, a pour over the
-  // top, a spiral out of the middle, a sweep to the left.
+  // The picture travels in 3x3 chunks. Each chunk carries its own pixels, so
+  // both ends of a morph are the exact art and the shapes stay legible in
+  // flight. Both pictures are ranked along the same path and matched rank to
+  // rank, so neighbouring chunks travel together and the art flows across as
+  // one sheet. Choreographies take turns: a sweep to the right, a pour over
+  // the top, a spiral out of the middle, a sweep to the left.
+  const CH = 3;
+  function chunks(pts) {
+    const m = new Map();
+    for (const p of pts) {
+      const cx = Math.floor(p.x / CH), cy = Math.floor(p.y / CH), k = (cx + 512) * 4096 + cy + 512;
+      let c = m.get(k);
+      if (!c) { c = { x: cx * CH, y: cy * CH, px: [], c: null }; m.set(k, c); }
+      c.px.push([p.x - c.x, p.y - c.y, p.c]);
+    }
+    for (const c of m.values()) { const t = [0, 0, 0]; c.px.forEach(([, , q]) => { t[0] += q[0]; t[1] += q[1]; t[2] += q[2]; }); c.c = t.map((v) => Math.round(v / c.px.length)); }
+    return [...m.values()];
+  }
   const MODES = [
     { k: (p) => p.x + p.y * 0.35, path: 'arc', bend: 0.24, lift: 0.26 },
     { k: (p, W) => p.y * 1.6 + Math.abs(p.x - W / 2) * 0.3, path: 'pour' },
@@ -209,14 +224,17 @@
     const rank = (P) => P.map((p) => [mode.k(p, W, H) + rnd() * 1.6, p]).sort((m, n) => m[0] - n[0]).map((m) => m[1]);
     const a = rank(A), b = rank(B), n = Math.max(a.length, b.length), out = new Array(n);
     const clx = (v) => Math.max(1, Math.min(W - 2, v)), cly = (v) => Math.max(1, Math.min(H - 2, v));
+    // Neighbouring chunks share their flight, so the art moves in streams, not dust.
+    const hash = (x, y) => { let h = (Math.floor(x / 9) * 374761393 + Math.floor(y / 9) * 668265263) ^ salt; h = (h ^ (h >>> 13)) * 1274126177; return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
+    const salt = Math.floor(rnd() * 1e9);
     for (let i = 0; i < n; i++) {
-      const s = a[Math.floor((i * a.length) / n)], t = b[Math.floor((i * b.length) / n)], r = rnd();
+      const s = a[Math.floor((i * a.length) / n)], t = b[Math.floor((i * b.length) / n)], r = hash(s.x, s.y) * 0.8 + rnd() * 0.2;
       const dx = t.x - s.x, dy = t.y - s.y;
       let cx = (s.x + t.x) / 2, cy = (s.y + t.y) / 2;
       if (mode.path === 'arc') { const bend = mode.bend * (0.75 + r * 0.5); cx -= dy * bend; cy += dx * bend - Math.abs(dx) * mode.lift; }
-      // pour: up and over the top; the control point is capped so the arc's peak stays inside the stage
-      else if (mode.path === 'pour') { cx += (r - 0.5) * 10; cy = Math.max(2 - (s.y + t.y) / 2, Math.min(s.y, t.y) - H * 0.55); }
-      out[i] = { sx: s.x, sy: s.y, tx: t.x, ty: t.y, sc: s.c, tc: t.c, cx: clx(cx), cy: mode.path === 'pour' ? cy : cly(cy), r, at: 0.38 * (i / n) + r * 0.04 };
+      // pour: up and over the top, each chunk to its own height, and never out of the stage
+      else if (mode.path === 'pour') { cx += (r - 0.5) * 10; const peak = Math.max(2 + r * H * 0.16, Math.min(s.y, t.y) - H * 0.24 * (0.5 + r * 0.5)); cy = 2 * peak - (s.y + t.y) / 2; }
+      out[i] = { sx: s.x, sy: s.y, tx: t.x, ty: t.y, sc: s.c, tc: t.c, sp: s.px, tp: t.px, cx: clx(cx), cy: mode.path === 'pour' ? cy : cly(cy), r, at: 0.38 * (i / n) + r * 0.05 };
     }
     return out;
   }
@@ -243,7 +261,7 @@
 
     const ctx = cv.getContext('2d');
     const buf = document.createElement('canvas'), bg = buf.getContext('2d');
-    let W = 0, H = 0, S = 1, frame = null, px = null, P = palette(), scenes = [];
+    let W = 0, H = 0, S = 1, frame = null, px = null, P = palette(), scenes = [], cells = [];
     const pack = (c, a = 255) => ((a << 24) | ((c[2] & 255) << 16) | ((c[1] & 255) << 8) | (c[0] & 255)) >>> 0;
 
     function build(tok) {
@@ -251,7 +269,7 @@
       if (tok.startsWith('img:')) return imgs[tok] ? imgScene(imgs[tok], W, H) : null;
       if (tok.startsWith('cal:')) return calScene(tok.slice(4), W, H, P);
       if (tok === 'mark') return markScene(W, H);
-      if (tok === 'check') return artScene(ART.check, W, H, P);
+      if (tok === 'check') return artScene(ART.check, W, H, P.ac);
       if (vals.length > 2) {
         if (tok === 'grid') return gridScene(W, H, P);
         if (tok === 'tree') return treeScene(vals, W, H, P);
@@ -259,6 +277,12 @@
         if (tok === 'sky') return skyScene(vals, W, H, P);
       }
       return null;
+    }
+    // data-align="bottom" sets every scene on the stage's floor instead of its middle
+    function buildAll() {
+      scenes = tokens.map(build).filter((sc) => sc && sc.length);
+      if (cv.dataset.align === 'bottom') scenes.forEach((sc) => { let m = 0; sc.forEach((p) => { m = Math.max(m, p.y); }); const d = H - 2 - m; sc.forEach((p) => { p.y += d; }); });
+      cells = scenes.map(chunks);
     }
     function dims() {
       const bw = box.clientWidth;
@@ -268,11 +292,11 @@
       const dpr = Math.min(3, window.devicePixelRatio || 1), nS = Math.max(1, Math.round(s * dpr));
       const changed = nW !== W || nH !== H || nS !== S;
       W = nW; H = nH; S = nS;
-      cv.width = W * S; cv.height = H * S;
       cv.style.width = (W * S) / dpr + 'px'; cv.style.height = (H * S) / dpr + 'px';
       if (changed) {
+        cv.width = W * S; cv.height = H * S; // resizing clears the canvas, so only when the size really changed
         buf.width = W; buf.height = H; frame = bg.createImageData(W, H); px = new Uint32Array(frame.data.buffer);
-        scenes = tokens.map(build).filter((s) => s && s.length);
+        buildAll();
       }
       return changed;
     }
@@ -307,15 +331,15 @@
     let path = 'arc';
     function startMorph(from, to) {
       const m = MODES[turn++ % MODES.length];
-      next = to; path = m.path; parts = pair(scenes[from], scenes[to], m, W, H); phase = 'morph'; clock = 0;
+      next = to; path = m.path; parts = pair(cells[from], cells[to], m, W, H); phase = 'morph'; clock = 0;
     }
     // Entrance: the first scene assembles inside the stage.
     const intro = cv.dataset.intro;
     const r0 = box.getBoundingClientRect();
     const inView = r0.top < innerHeight && r0.bottom > 0;
     if (intro === 'fly' && inView) {
-      const A = scenes[0].map(() => ({ x: Math.floor(rnd() * W), y: Math.floor(rnd() * H), c: P.dim }));
-      parts = pair(A, scenes[0], MODES[2], W, H); path = 'spiral'; next = 0; phase = 'intro'; clock = 0;
+      const A = cells[0].map(() => ({ x: Math.floor(rnd() * W), y: Math.floor(rnd() * H), c: P.dim, px: [[0, 0, P.dim]] }));
+      parts = pair(A, cells[0], MODES[2], W, H); path = 'spiral'; next = 0; phase = 'intro'; clock = 0;
     } else if (intro === 'tune' && inView) { phase = 'tune'; clock = 0; scenes[0].forEach((p) => { p.r = rnd(); }); }
     else still(scenes[0]);
 
@@ -328,16 +352,18 @@
         if (path === 'spiral') {
           // a vortex: turn about the centre on an ellipse the shape of the stage, drawn in a little mid-flight
           const bx = p.sx + (p.tx - p.sx) * e, by = p.sy + (p.ty - p.sy) * e, q = W / H, s = Math.sin(e * Math.PI);
-          const th = s * (1.2 + p.r * 0.7), dx = bx - W / 2, dy = (by - H / 2) * q, sc = 1 - s * 0.28;
+          const th = s * (0.85 + p.r * 0.45), dx = bx - W / 2, dy = (by - H / 2) * q, sc = 1 - s * 0.2;
           x = W / 2 + (dx * Math.cos(th) - dy * Math.sin(th)) * sc; y = H / 2 + ((dx * Math.sin(th) + dy * Math.cos(th)) / q) * sc;
           x = Math.max(0, Math.min(W - 1, x)); y = Math.max(0, Math.min(H - 1, y));
         } else {
           x = u * u * p.sx + 2 * u * e * p.cx + e * e * p.tx;
           y = u * u * p.sy + 2 * u * e * p.cy + e * e * p.ty;
         }
-        const landed = T - p.at - SPAN;
-        const c = landed >= 0 && landed < FL ? mix(P.fg, p.tc, 0.6) : mix(p.tc, p.sc, e);
-        put(x, y, c, 255);
+        // a chunk shows its own pixels, then the pixels it becomes, easing its colours across
+        const xi = Math.round(x), yi = Math.round(y), landed = T - p.at - SPAN;
+        if (landed >= 0 && landed < FL) for (const [dx, dy, c] of p.tp) put(xi + dx, yi + dy, mix(P.fg, c, 0.6), 255);
+        else if (e < 0.5) for (const [dx, dy, c] of p.sp) put(xi + dx, yi + dy, e > 0 ? mix(p.tc, c, e) : c, 255);
+        else for (const [dx, dy, c] of p.tp) put(xi + dx, yi + dy, e < 1 ? mix(c, p.sc, e) : c, 255);
       }
       blit();
     }
@@ -385,7 +411,7 @@
     let rt = 0;
     if ('ResizeObserver' in window) new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(redo, 120); }).observe(box);
     else addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(redo, 120); });
-    addEventListener('qs:theme', () => { P = palette(); scenes = tokens.map(build).filter((s) => s && s.length); if (idx >= scenes.length) idx = 0; phase = 'hold'; clock = 0; drawnHold = -1; still(scenes[idx]); });
+    addEventListener('qs:theme', () => { P = palette(); buildAll(); if (idx >= scenes.length) idx = 0; phase = 'hold'; clock = 0; drawnHold = -1; still(scenes[idx]); });
   }
   stages.forEach(run);
 })();

@@ -27,7 +27,10 @@
   box-shadow: 0 2px 0 color-mix(in srgb, var(--accent) 22%, transparent), 0 28px 90px rgba(0, 0, 0, .6);
 }
 .sel.is-open, .sel.is-closing { visibility: visible; }
-[data-theme="paper"] .sel { --scr: color-mix(in srgb, var(--bg-0) 90%, #000); box-shadow: 0 24px 70px rgba(0, 0, 0, .2); }
+[data-theme="paper"] .sel { --scr: var(--bg-0); box-shadow: 0 24px 70px rgba(0, 0, 0, .2); }
+/* Closed, the panel's idle loops (blinks, marquee, cursor, deck) hold still
+   so they cost nothing; they pick up again the moment it opens. */
+.sel:not(.is-open):not(.is-closing) *, .sel:not(.is-open):not(.is-closing) *::before, .sel:not(.is-open):not(.is-closing) *::after { animation-play-state: paused !important; }
 
 /* The CRT: faint 1px scanlines and a soft vignette over the whole width. */
 .sel__screen { position: relative; overflow: hidden; }
@@ -228,7 +231,7 @@
   .sel__joy:not([data-f]) { animation: sel-joy-idle 5.2s steps(1) infinite; }
   .sel__egg { animation: sel-egg 2.8s steps(4) infinite; }
   .sel__coin:hover .sel__fly i, .sel__coin:focus-visible .sel__fly i { animation: sel-spin .6s steps(6) infinite, sel-hover .8s steps(1) infinite; }
-  .sel__coin.is-drop .sel__fly i { background-position: -96px 0; animation: sel-drop-coin .3s steps(6) forwards; }
+  .sel__coin.is-drop .sel__fly i { background-position: -96px 0; animation: sel-drop-coin .1s steps(5) forwards; }
   .sel__coin.is-fed .sel__door::after { animation: sel-glow .5s steps(2) forwards; }
   .sel__coin.is-fed .sel__door { animation: sel-door .3s steps(2); }
 }
@@ -284,10 +287,10 @@
 .coinfx i {
   position: absolute; left: 0; top: 0; width: 32px; height: 32px;
   background: url(/assets/px/coin-spin.png) 0 0 / 192px 32px no-repeat; image-rendering: pixelated;
-  animation: sel-spin .3s steps(6) infinite, coinfx-drop .34s steps(6) forwards;
+  animation: sel-spin .3s steps(6) infinite, coinfx-drop .2s steps(5) forwards;
 }
-@keyframes coinfx-drop { 0% { top: -4px; } 35% { top: 2px; } 100% { top: 48px; } }
-.btn--arcade.is-coin { animation: coinfx-flash .26s steps(2) .22s; }
+@keyframes coinfx-drop { 0% { top: -4px; } 20% { top: 2px; } 100% { top: 48px; } }
+.btn--arcade.is-coin { animation: coinfx-flash .12s steps(2) .08s; }
 @keyframes coinfx-flash {
   0% { background: color-mix(in srgb, var(--accent) 55%, #fff); box-shadow: 0 5px 0 var(--e), 0 0 0 3px color-mix(in srgb, var(--warn) 70%, transparent), 0 0 22px color-mix(in srgb, var(--accent) 60%, transparent); }
   100% { background: var(--accent); }
@@ -335,7 +338,7 @@
   .sel__cointxt { justify-items: center; gap: 8px; padding: 0; }
   .sel__insert { color: var(--accent-ink); opacity: .75; }
   .sel__book, .sel__coin:hover .sel__book, .sel__coin.is-drop .sel__book { color: var(--accent-ink); font-size: 22px; }
-  .sel__coin.is-coin { animation: coinfx-flash .26s steps(2) .22s; }
+  .sel__coin.is-coin { animation: coinfx-flash .12s steps(2) .08s; }
 }
 @media (max-width: 359px) {
   .sel__name, .sel__book { font-size: 16.5px; }

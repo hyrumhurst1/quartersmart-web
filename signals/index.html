@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-signals.png">
 <!-- @include head -->
 <link rel="stylesheet" href="/assets/css/signals-post.css?v=20260927m">
-<link rel="stylesheet" href="/assets/css/hub-posts-new.css?v=20260927m">
+<link rel="stylesheet" href="/assets/css/hub-posts-new.css?v=20260927r">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -36,7 +36,7 @@
       "description": "Plain-English coverage of AI launches, early access and quiet updates, each with a verdict for working businesses: act now, prepare, wait or ignore.",
       "isPartOf": { "@id": "https://quartersmart.com/#website" },
       "publisher": { "@id": "https://quartersmart.com/#organization" },
-      "author": { "@id": "https://quartersmart.com/about.html#hyrum-hurst" }
+      "author": { "@type": "Person", "@id": "https://quartersmart.com/about.html#hyrum-hurst", "name": "Hyrum Hurst", "url": "https://quartersmart.com/about/hyrum-hurst" }
     },
     {
       "@type": "BreadcrumbList",
@@ -53,56 +53,68 @@
 <!-- @include nav -->
 <main id="main">
 
-  <!-- 1. Hero: the headline beside a stage of pixel scenes that flow into each other -->
+  <!-- 1. Hero: a radar station in a terminal window. The copy on the left, the pixel stage on the right,
+       the live Signals count in the top border and the stage's scene pips in the bottom border. -->
   <section class="shero" aria-labelledby="sig-h">
-    <div class="wrap shero__grid">
-      <div class="shero__copy">
-        <p class="shero__sign"><span class="nradar" aria-hidden="true"><svg viewBox="0 0 34 24"><path class="dish" d="M11 21h12M17 21v-5M9 9a8 8 0 0 0 16 0z"/><path class="arc l1" d="M7 5a12 12 0 0 0-3 9"/><path class="arc l2" d="M3 2a17 17 0 0 0-3 13"/><path class="arc r1" d="M27 5a12 12 0 0 1 3 9"/><path class="arc r2" d="M31 2a17 17 0 0 1 3 13"/></svg></span><span class="neon">Signals</span></p>
-        <h1 class="shero__h" id="sig-h">What changed in AI, and what to do about it.</h1>
-        <p class="lede">Launches, early-access programs, quiet product updates and credible leaks. Each one gets a plain-English read on whether it matters to a working business, and a verdict: act now, prepare, wait or ignore.</p>
-        <div class="shero__cta">
-          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
-          <a class="link" href="#latest">Read the latest</a>
-          <a class="link" href="#weekly">Get Signals Weekly</a>
+    <div class="swin shero__win">
+      <span class="swin__t" aria-hidden="true">signals.exe</span>
+      <span class="swin__r" aria-hidden="true"><i class="swin__led"></i><!-- @signals-count --> on radar</span>
+      <div class="wrap shero__grid">
+        <div class="shero__copy">
+          <p class="shero__sign"><img class="shero__pu" src="/assets/px/pu-radar.png" width="32" height="32" alt=""><span class="echo">Signals</span></p>
+          <h1 class="shero__h" id="sig-h">What changed in AI, and what to do about it.</h1>
+          <p class="lede">Launches, early access, quiet updates and credible leaks, read in plain English for a working business. Each one gets a verdict: act now, prepare, wait or ignore.</p>
+          <p class="shero__why">Signals is free. When a launch is worth it, we set it up in your accounts and train your team.</p>
+          <div class="shero__cta">
+            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
+            <a class="link" href="#weekly">Get Signals Weekly</a>
+          </div>
+          <p class="shero__fine">Updated <time datetime="2026-09-27T01:45-07:00">Sep 27, 2026, 1:45 AM</time> Arizona time. We post fast, label how sure we are, and update the post when the facts change. <a href="/signals/policy/">How we source</a> · <a href="/signals/log/">Signals Log</a></p>
         </div>
-        <p class="shero__fine">We post fast, label how sure we are, and update the post when the facts change. <a href="/signals/policy/">How we source</a> · <a href="/signals/log/">Signals Log</a></p>
-      </div>
-      <div class="pxstage shero__art" data-pxstage data-first="radar" data-max="5">
-        <div class="pxstage__screen">
-          <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, listening for new launches." fetchpriority="high">
-          <canvas aria-hidden="true"></canvas>
+        <div class="pxstage shero__art" data-pxstage data-first="radar" data-scenes="radar scope verdicts satellite tower mail wave rocket assistant keyboard powerups mark arcade" data-max="4">
+          <div class="pxstage__screen">
+            <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" style="--x:45;--y:10;--w:54" alt="Pixel art of a radar dish on a lattice tower, listening for new launches." fetchpriority="high">
+            <canvas aria-hidden="true"></canvas>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. The feed -->
+  <!-- 2. The feed: a high-score table in a window. Filters are arcade toggles; the row under the
+       pointer or focus gets the 1P cursor. Rank numbers and the header row are drawn by CSS. -->
   <section class="slist" id="latest" aria-labelledby="all-h">
     <div class="wrap">
-      <div class="slist__head">
-        <h2 class="h-1" id="all-h">All Signals</h2>
+      <div class="swin slist__win">
+        <h2 class="swin__t slist__h" id="all-h">All Signals</h2>
+        <p class="swin__r" aria-hidden="true"><span data-sig-shown><!-- @signals-count --></span> shown</p>
         <div class="slist__tools">
           <div class="sig-filter" role="group" aria-label="Filter by status">
             <button type="button" data-filter="all" aria-pressed="true">All</button>
             <button type="button" data-filter="reported">Reported</button>
+            <button type="button" data-filter="confirmed">Confirmed</button>
             <button type="button" data-filter="available">Available</button>
-            <button type="button" data-filter="event">Event</button>
             <button type="button" data-filter="insight">Insight</button>
           </div>
-          <label class="sr" for="sig-q">Search Signals</label>
-          <input class="input sig-q" id="sig-q" type="search" placeholder="Search Signals" autocomplete="off">
+          <div class="sig-find">
+            <label class="sr" for="sig-q">Search Signals</label>
+            <input class="input sig-q" id="sig-q" type="search" placeholder="Search Signals" autocomplete="off">
+          </div>
         </div>
-      </div>
-      <ul class="sigtable" id="sig-list">
+        <div class="sighead" aria-hidden="true"><span>No.</span><span>Date</span><span>Signal</span><span>Status</span><span>Verdict</span></div>
+        <ul class="sigtable" id="sig-list">
 <!-- @signals-list -->
-      </ul>
-      <p class="slist__empty" hidden>No Signals match that yet.</p>
+        </ul>
+        <p class="slist__empty" hidden>No Signals match that yet.</p>
+        <p class="sr" role="status" id="sig-count"></p>
+      </div>
     </div>
   </section>
 
-  <!-- 3. How to read one: a full-bleed band, two typographic columns -->
+  <!-- 3. How to read one: a full-bleed band, the same chips the table uses -->
   <section class="band band--slate slegend" aria-labelledby="legend-h">
     <div class="wrap">
+      <p class="label label--accent slegend__kick">How to play</p>
       <h2 class="slegend__h" id="legend-h">Every Signal says how sure we are, and what to do.</h2>
       <div class="slegend__grid">
         <div>
@@ -119,32 +131,34 @@
         <div>
           <h3 class="slegend__k">What to do</h3>
           <dl class="slegend__verdicts">
-            <div><dt class="v-act">Act now</dt><dd>Worth doing this week for most businesses it applies to.</dd></div>
-            <div><dt class="v-prep">Prepare</dt><dd>Not ready yet, but a little groundwork now saves time later.</dd></div>
-            <div><dt class="v-wait">Wait</dt><dd>Promising, not ready. We'll tell you when that changes.</dd></div>
-            <div><dt class="v-ign">Ignore</dt><dd>Noise for a working business. Skip it.</dd></div>
+            <div><dt><span class="verdict" data-v="act">Act now</span></dt><dd>Worth doing this week for most businesses it applies to.</dd></div>
+            <div><dt><span class="verdict" data-v="prep">Prepare</span></dt><dd>Not ready yet, but a little groundwork now saves time later.</dd></div>
+            <div><dt><span class="verdict" data-v="wait">Wait</span></dt><dd>Promising, not ready. We'll tell you when that changes.</dd></div>
+            <div><dt><span class="verdict" data-v="ign">Ignore</span></dt><dd>Noise for a working business. Skip it.</dd></div>
           </dl>
           <p class="slegend__note">Wait and Ignore are common verdicts. That's the point.</p>
+          <p class="slegend__note">Insights and weekly roundups are our own analysis across several launches, so they carry no verdict.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Close: members and the call, with the Monday email beside it -->
+  <!-- 4. Close: members and the call, with the Monday email in its own small window -->
   <section class="scloser" aria-labelledby="close-h">
     <div class="wrap scloser__grid">
       <div class="scloser__main">
-        <p class="label label--accent">For members</p>
+        <p class="label label--accent scloser__k"><img class="scloser__pu" src="/assets/px/pu-token.png" width="32" height="32" alt="">For members</p>
         <h2 class="scloser__h" id="close-h">Filtered to your tools, the same business day.</h2>
-        <p class="body-l">First Quarter members get Signals filtered to the tools they actually use, with setup time already held for launch weeks. Start with a free 20-minute call.</p>
-        <div class="scloser__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a><a class="link" href="/services/#first-quarter">See First Quarter</a></div>
+        <p class="body-l">First Quarter members get Signals filtered to the tools they actually use, with setup time already held for launch weeks.</p>
+        <div class="scloser__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a free 20-minute call</a><a class="link" href="/services/#first-quarter">See First Quarter</a></div>
       </div>
-      <form class="scloser__form" id="weekly" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
-        <p class="label">Signals Weekly</p>
+      <form class="swin scloser__form" id="weekly" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+        <p class="label swin__t">Signals Weekly</p>
+        <span class="swin__r">free</span>
         <h3 class="scloser__fh" id="weekly-h">Get the few that matter, every Monday.</h3>
-        <p class="muted">Each item with a verdict. A short alert in between only when something needs action that week. Free.</p>
+        <p class="muted">Each item with a verdict. A short alert in between only when something needs action that week.</p>
         <input type="hidden" name="form-name" value="signals-weekly">
-        <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
+        <p class="sr" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <input type="hidden" name="source" value="signals-hub">
         <label class="sr" for="hub-email">Work email</label>
         <div class="field"><input class="input" id="hub-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required><button class="btn" type="submit">Subscribe</button></div>
@@ -160,22 +174,40 @@
 (() => {
   const list = document.getElementById('sig-list'); if (!list) return;
   const items = [...list.children], q = document.getElementById('sig-q'), empty = document.querySelector('.slist__empty');
+  const shown = document.querySelector('[data-sig-shown]'), live = document.getElementById('sig-count');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // colour each verdict chip by its verdict (the build writes the words; CSS picks the palette)
+  const V = { 'act now': 'act', prepare: 'prep', wait: 'wait', ignore: 'ign' };
+  items.forEach((li) => { const v = li.querySelector('.verdict'); const k = v && V[v.textContent.trim().toLowerCase()]; if (k) v.dataset.v = k; });
+  // redraw the table row by row, like a high-score screen, when it first comes into view and on each filter
+  const draw = () => {
+    if (still) return;
+    let i = 0;
+    items.forEach((li) => { if (!li.hidden) li.style.setProperty('--i', Math.min(i++, 12)); });
+    list.classList.remove('is-drawn'); void list.offsetWidth; list.classList.add('is-drawn');
+  };
   let kind = 'all';
   const run = () => {
     const t = (q.value || '').trim().toLowerCase(); let n = 0;
     items.forEach((li) => {
-      const k = li.dataset.kind, okK = kind === 'all' || k === kind || (kind === 'available' && (k === 'confirmed' || k === 'early' || k === 'quiet'));
+      const k = li.dataset.kind, okK = kind === 'all' || k === kind || (kind === 'available' && (k === 'early' || k === 'quiet'));
       const ok = okK && (!t || (li.dataset.text || '').includes(t));
       li.hidden = !ok; if (ok) n++;
     });
     empty.hidden = n > 0;
+    if (shown) shown.textContent = n;
+    if (live) live.textContent = n ? n + (n === 1 ? ' Signal' : ' Signals') + ' shown' : 'No Signals match that yet.';
   };
   document.querySelectorAll('[data-filter]').forEach((b) => b.addEventListener('click', () => {
     kind = b.dataset.filter;
     document.querySelectorAll('[data-filter]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    run();
+    run(); draw();
   }));
   q.addEventListener('input', run);
+  if (!still && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); if (list.getBoundingClientRect().top > innerHeight * 0.6) draw(); } }, { rootMargin: '0px 0px 20% 0px' });
+    io.observe(list);
+  }
 })();
 </script>
 <!-- @include footer -->

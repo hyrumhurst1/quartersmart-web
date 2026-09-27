@@ -8,9 +8,10 @@
 <meta name="robots" content="noindex, follow">
 <meta property="og:title" content="Page not found | QuarterSmart">
 <meta property="og:description" content="That page could not be found.">
+<meta property="og:image" content="https://quartersmart.com/assets/og/og-home.png">
 <meta property="og:site_name" content="QuarterSmart">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/partners.css?v=20260927f">
+<link rel="stylesheet" href="/assets/css/partners.css?v=20260927h">
 </head>
 <body>
 <!-- @include nav -->
@@ -18,11 +19,6 @@
 <main id="main">
   <!-- 404: the page is out of order; the arcade is still open -->
   <section class="nf" aria-labelledby="nf-h">
-    <img class="pt-close__scene" src="/assets/px/scene-horizon.png" width="128" height="72" alt="" aria-hidden="true">
-    <div class="nf__arcade" aria-hidden="true">
-      <p class="nf__sign neon neon--rose">out of order</p>
-      <img class="nf__cab" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="">
-    </div>
     <div class="wrap nf__grid">
       <div class="nf__copy">
         <h1 class="pt-h1" id="nf-h">Nothing lives at this address.</h1>
@@ -37,18 +33,21 @@
         </div>
         <p class="nf__fix">Followed a broken link on our site? Tell us at <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a> and we'll fix it.</p>
       </div>
-      <div class="pxs nf__stage" data-pxs>
-        <p class="pxw pxs__alt" aria-hidden="true">4O4</p>
-        <canvas aria-hidden="true" data-h="92" data-first-hold="4000" data-intro="tune"
-          data-scenes="text:4O4 | text:? | img:/assets/px/sprite-radar.png | mark | text:&lt;HOME | img:/assets/px/sprite-assistant.png | img:/assets/px/sprite-floppies.png | img:/assets/px/sprite-keyboard-manual.png | text:SIGNALS | img:/assets/px/avatar-hyrum.png"></canvas>
-        <button class="pxs__pause" type="button" aria-pressed="false" aria-label="Pause animation" hidden></button>
+      <div class="pxwin nf__stage">
+        <span class="win__t" aria-hidden="true">404.exe</span>
+        <div class="pxs" data-pxs>
+          <p class="pxw pxs__alt" aria-hidden="true">4O4</p>
+          <canvas aria-hidden="true" data-h="92" data-first-hold="2400"
+            data-scenes="text:4O4 | text:? | img:/assets/px/sprite-radar.png | mark | text:&lt;HOME | img:/assets/px/sprite-assistant.png | img:/assets/px/pu-map.png | img:/assets/px/sprite-keyboard-manual.png | text:SIGNALS | img:/assets/px/avatar-hyrum.png"></canvas>
+          <button class="pxs__pause" type="button" aria-pressed="false" aria-label="Pause animation" hidden></button>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
 <script>(function(){var el=document.querySelector('[data-path]');var p=location.pathname;try{p=decodeURIComponent(p)}catch(e){}if(el&&p&&p!=='/404.html'&&p!=='/404')el.textContent=p;})();</script>
-<script src="/for-agencies/pxstage.js?v=20260927f" defer></script>
+<script src="/for-agencies/pxstage.js?v=20260927j" defer></script>
 <!-- @include footer -->
 </body>
 </html>

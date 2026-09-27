@@ -1,5 +1,5 @@
-// Homepage behaviours: level select (tabs with hover preview and arrow keys)
-// and the boot rail that fills as you scroll past How it works.
+// Homepage behaviours: level select (tabs: click, tap or arrow keys select;
+// hover only highlights) and the boot rail that fills as you scroll past How it works.
 (() => {
   const list = document.querySelector('.levels__list');
   if (list) {
@@ -12,8 +12,14 @@
     };
     select(Math.max(0, tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true')), false);
     tabs.forEach((t, i) => {
-      t.addEventListener('click', () => select(i, false));
-      t.addEventListener('mouseenter', () => { if (matchMedia('(hover: hover)').matches) select(i, false); });
+      // A tap on a phone (stacked layout) brings the chosen panel, its price and Book button into view.
+      // e.detail is 0 for keyboard-fired clicks, so Enter/Space keep focus where it is.
+      t.addEventListener('click', (e) => {
+        select(i, false);
+        if (e.detail && matchMedia('(max-width: 1000px)').matches) {
+          panels[i].scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        }
+      });
       t.addEventListener('keydown', (e) => {
         const k = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
         if (k) { e.preventDefault(); select((i + k + tabs.length) % tabs.length, true); }

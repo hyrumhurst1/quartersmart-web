@@ -1,12 +1,12 @@
 // QuarterSmart attract mode. The hero IS a game: the wordmark is drawn as
 // pixel letters inside a night-time world that fills the first screen, and a
-// run of little arcade scenes play with it. The loop opens on a clean title
-// frame so it reads as QuarterSmart first; each game after that re-lays the
+// run of little arcade scenes play with it. The loop opens on a game whose
+// first frame shows the whole word, so it reads as QuarterSmart first; each game re-lays the
 // wordmark its own way (one line, stacked, italic for the racer, bricks for
 // breakout, a vertical net for pong, an arc on the radar, neon outlines...).
 // Between scenes every lit pixel flies into the next scene's first frame: a
 // morph, never a cut. Crisp: low-res buffer, integer upscale, grid-snapped.
-// Pauses off screen; one still title frame for reduced motion.
+// Pauses off screen and from the frame's pause button; one still title frame for reduced motion.
 // Debug: ?scene=<name>&t=<ms> jumps to a scene.
 (() => {
   const cv = document.querySelector('canvas[data-attract]');
@@ -201,7 +201,7 @@
   const T = (s) => s.t / s.dur;
 
   // The title frame: the clean wordmark, block-extruded like an arcade logo, a glint and a few sparkles.
-  S.title = { dur: 5600, name: 'title', word: { lay: 'line', F: 2, style: 'bright', mob: { lay: 'stack', F: 2 } }, init() { this.t = 0; }, update(t) { this.t = t; }, draw() {
+  S.title = { dur: 3000, name: 'title', word: { lay: 'line', F: 2, style: 'bright', mob: { lay: 'stack', F: 2 } }, init() { this.t = 0; }, update(t) { this.t = t; }, draw() {
     const p = T(this), g = -12 + clamp((p - 0.3) / 0.45) * (WW + 40);
     echo(Math.round(clamp((this.t - 300) / 900) * (small ? 3 : 5)), Math.floor(this.t / 180));
     drawWord({ col: (w) => { const d = (w.x - X0) + (w.y - Y0) * 0.8 - g; return d > -3 && d < 0 ? C.hi : null; } });
@@ -357,7 +357,9 @@
   } };
 
   S.bounce = { dur: 6600, name: 'bounce', word: { lay: 'line', F: 2, shadow: 1 }, init() { this.t = 0; }, update(t) { this.t = t; }, draw() {
-    drawWord({ off: (w) => { const tt = this.t / 1000 - w.li * 0.12; if (tt < 0) return [0, 0]; const h = Math.abs(Math.sin(tt * 3.2)) * Math.min(14, Y0 - 2) * Math.exp(-tt * 0.55); return [0, -Math.round(h)]; } });
+    // stacked (phones): a second-line letter only hops as high as the gap under the first line, so the lines never touch
+    const top = letters[0] ? letters[0].y1 : 0;
+    drawWord({ off: (w) => { const tt = this.t / 1000 - w.li * 0.12; if (tt < 0) return [0, 0]; const l = letters[w.li], cap = l && l.y0 > top ? l.y0 - top - 3 : Math.min(14, Y0 - 2); const h = Math.abs(Math.sin(tt * 3.2)) * cap * Math.exp(-tt * 0.55); return [0, -Math.round(h)]; } });
     rect(0, WY1 + 1, GW, 1, C.line);
   } };
 
@@ -444,19 +446,28 @@
   };
   const TAIL = Object.keys(S).filter((k) => k !== 'title');
   let level = 1, loop = 0, ORDER = ['title'];
-  // Every page load starts somewhere new: a random opener whose first frame shows the wordmark cleanly
-  // (no outline-only or rotated layouts), then a fresh shuffle; the title screen returns each loop.
+  // Every page load starts somewhere new: a random opener, then a fresh shuffle; the title screen opens
+  // every later loop (never twice in a row). Openers come from an allowlist of built-in games, each checked
+  // by eye at 0 and 1.2s: the whole word is lit and readable (no outline-only, rotated, eaten, scrolled,
+  // warped, overdrawn or half-dark layouts). On phones an opener must also keep the big 2px letters (flap
+  // and coin block drop to 1px there). Everything else still plays later in the loop.
   const SEED = (Math.floor(Math.random() * 2147483645) + 1);
-  const clean = (k) => { const w = S[k].word || {}; return w.style !== 'neon' && w.lay !== 'vert'; };
+  const OPENERS = ['race', 'flap', 'stack', 'frogger', 'bounce', 'bump'];
+  const clean = (k) => { if (!OPENERS.includes(k)) return false; useWord(S[k].word); return WF >= 2; };
   function deal() {
     let sd = ((SEED + loop * 7919) % 2147483646) || 1; const rr = () => { sd = (sd * 16807) % 2147483647; return sd / 2147483647; };
     const deck = TAIL.slice(); for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(rr() * (i + 1)); [deck[i], deck[j]] = [deck[j], deck[i]]; }
-    if (loop === 0) { const opener = deck.find(clean) || deck[0]; ORDER = [opener, ...deck.filter((k) => k !== opener).slice(0, 11), 'title']; }
-    else ORDER = ['title', ...deck.slice(0, Math.min(12, deck.length))];
+    if (loop === 0) { const opener = deck.find(clean) || 'title'; ORDER = [opener, ...deck.filter((k) => k !== opener).slice(0, 11)]; }
+    else { const recent = new Set(ORDER.slice(-4)); ORDER = ['title', ...[...deck.filter((k) => !recent.has(k)), ...deck.filter((k) => recent.has(k))].slice(0, 12)]; }  // no "dig > title > dig"
     loop++;
   }
-  deal();
-  const setLabel = () => { if (label) label.textContent = `lv ${String(level).padStart(2, '0')} ${scene.name}`; };
+  dims(); deal();                                     // the opener check needs the real play-field size
+  // "lv 07 snake": the name sits in its own span so phones can show just the level number
+  const setLabel = () => {
+    if (!label) return;
+    const nm = document.createElement('span'); nm.className = 'win__nm'; nm.textContent = ` ${scene.name}`;
+    label.replaceChildren(`lv ${String(level).padStart(2, '0')}`, nm);
+  };
   const crowd = [];
   function joinParade(id) {
     const sc = S[id], pr = sc.parade !== undefined ? sc.parade : PARADE[id];
@@ -561,15 +572,31 @@
     ctx.drawImage(sky, ox, oy, w, h);
     ctx.drawImage(buf, ox, oy, w, h);
   }
-  dims(); makeStars();
+  makeStars();
   let idx = 0, scene = S[ORDER[0]], t0 = performance.now(), last = t0, mode = 'play', visible = true;
+  let paused = false, pausedAt = 0, mt = 0, raf = 0;
   const q = new URLSearchParams(location.search);
   if (q.get('scene') && S[q.get('scene')]) { ORDER.splice(1, 0, q.get('scene')); idx = 1; scene = S[q.get('scene')]; }
   else if (q.has('title')) { ORDER.unshift('title'); scene = S.title; }
   const start = (s) => { useWord(s.word); s.init(); s.update(0, 0); };
   start(scene); setLabel();
   if (q.get('t')) { const target = +q.get('t'); for (let tt = 16; tt < target; tt += 16) scene.update(tt, 16); t0 -= target; }
+  const STILL = 2000;                                // the sky's clock for the one still frame (reduced motion)
+  // the scene's clock right now (it stands still while paused)
+  const clock = () => ((paused ? pausedAt : performance.now()) - t0) * SPEED;
+  // redraw what is on screen without advancing anything: after a resize, a theme switch, or while paused
+  function paint() {
+    if (mode === 'morph') drawMorph(mt); else render(scene);
+    drawSky(reduce ? STILL : paused ? pausedAt : performance.now()); blit();
+  }
+  // re-lay the current scene from its start (the world changed size or colour)
+  function restart() {
+    cache.clear(); makeStars(); mode = 'play'; t0 = paused ? pausedAt : performance.now(); start(scene);
+    if (reduce) scene.update(scene.dur, 0);          // the title's finished frame: extruded, glint gone
+  }
   function tick(now) {
+    raf = 0;
+    if (paused) return;
     const dt = Math.min(50, now - last) * SPEED; last = now;
     if (visible && !document.hidden) {
       const t = (now - t0) * SPEED;
@@ -579,27 +606,40 @@
           joinParade(ORDER[idx]); level++;
           idx++; if (idx >= ORDER.length) { deal(); idx = 0; }
           scene = S[ORDER[idx]]; start(scene); render(scene); const B = snapshot();
-          buildMorph(A, B); mode = 'morph'; t0 = now; setLabel(); drawMorph(0);
+          buildMorph(A, B); mode = 'morph'; t0 = now; setLabel(); mt = 0; drawMorph(0);
         } else { scene.update(t, dt); render(scene); }
       } else if (t >= MORPH * SPEED) { mode = 'play'; t0 = now; start(scene); scene.update(0, 0); render(scene); }
-      else drawMorph(t / SPEED);
+      else { mt = t / SPEED; drawMorph(mt); }
       drawSky(now);
       blit();
     } else { t0 += dt / SPEED; }
-    requestAnimationFrame(tick);
+    raf = requestAnimationFrame(tick);
   }
   let rs = 0;
-  addEventListener('resize', () => {
-    clearTimeout(rs);
-    rs = setTimeout(() => { const w = GW, h = GH; dims(); if (w !== GW || h !== GH) { cache.clear(); makeStars(); mode = 'play'; t0 = performance.now(); start(scene); } render(scene); drawSky(performance.now()); blit(); }, 120);
+  // dims() clears the buffers, so every relayout repaints; under reduced motion that is the only paint
+  const relayout = () => { const w = GW, h = GH, p = PH; dims(); if (w !== GW || h !== GH || p !== PH) restart(); paint(); };
+  addEventListener('resize', () => { clearTimeout(rs); rs = setTimeout(relayout, 120); });
+  addEventListener('qs:theme', () => {
+    palette(); if (SKY) P = SKY.pal(); cache.clear(); start(scene);
+    if (reduce) scene.update(scene.dur, 0);
+    else if (paused && mode === 'play') scene.update(clock(), 0);
+    if (reduce || paused) paint();
   });
-  addEventListener('qs:theme', () => { palette(); if (SKY) P = SKY.pal(); cache.clear(); start(scene); });
-  const relayout = () => { const w = GW, h = GH, p = PH; dims(); if (w !== GW || h !== GH || p !== PH) { cache.clear(); makeStars(); mode = 'play'; t0 = performance.now(); start(scene); render(scene); } drawSky(performance.now()); blit(); };
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
   if (textBox && 'ResizeObserver' in window) new ResizeObserver(() => { clearTimeout(rs); rs = setTimeout(relayout, 120); }).observe(textBox);
-  if (reduce) { scene = S.title; start(scene); render(scene); drawSky(4000); blit(); return; }
+  if (reduce) { scene = S.title; start(scene); scene.update(scene.dur, 0); setLabel(); paint(); return; }
   new IntersectionObserver((es) => { visible = es.some((e) => e.isIntersecting); }).observe(cv);
+  // pause / play on the window's bottom border (hidden until here, so it never shows without the loop)
+  const pb = document.querySelector('[data-attract-pause]');
+  const setPaused = (v) => {
+    if (v === paused) return;
+    const now = performance.now();
+    if (v) { paused = true; pausedAt = now; cancelAnimationFrame(raf); raf = 0; }
+    else { paused = false; t0 += now - pausedAt; last = now; if (!raf) raf = requestAnimationFrame(tick); }
+    if (pb) (pb.firstElementChild || pb).textContent = paused ? 'play' : 'pause';
+  };
+  if (pb) { pb.hidden = false; pb.addEventListener('click', () => setPaused(!paused)); }
   // click the world: every letter hops once (a tiny bit of play)
-  cv.addEventListener('click', () => { if (mode === 'play' && ORDER[idx] !== 'bounce') { ORDER.splice(idx + 1, 0, 'bounce'); t0 = performance.now() - scene.dur; } });
-  requestAnimationFrame(tick);
+  cv.addEventListener('click', () => { if (!paused && mode === 'play' && ORDER[idx] !== 'bounce') { ORDER.splice(idx + 1, 0, 'bounce'); t0 = performance.now() - scene.dur; } });
+  raf = requestAnimationFrame(tick);
 })();

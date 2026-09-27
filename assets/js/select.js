@@ -4,8 +4,8 @@
 // stage tiles, the joystick leans the way it moves, and the coin door books
 // the call. Opened by hover it closes when the mouse leaves; opened by click
 // or keyboard ("m", or Enter on the joystick) it stays until Esc, the close
-// button, the joystick again, or a click outside. Reduced motion: no animation, and coin
-// links navigate at once.
+// button, the joystick again, a click outside, or focus leaving it. Reduced
+// motion: no animation, and coin links navigate at once.
 (() => {
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
@@ -18,9 +18,11 @@
   const credit = $('[data-sel-credit]');
   const addCredit = () => { if (credit) credit.textContent = '01'; };
 
-  // ---- Coin drop on every "Book" arcade button: a coin falls into the
-  // button, the button flashes, then we go. Ctrl/meta/shift/middle click and
-  // reduced motion get the plain link.
+  // ---- Coin drop on every "Book" arcade button: a coin starts falling into
+  // the button at once and the page goes a beat later (WAIT), so the click
+  // never feels held; it is fine if the next page lands mid-fall.
+  // Ctrl/meta/shift/middle click and reduced motion get the plain link.
+  const WAIT = 110;
   // The coin falls through a window that ends at the drop line (the top of
   // the button, or the slit of the little coin door), so it vanishes into it.
   function coinInto(a) {
@@ -49,8 +51,37 @@
     coinInto(a);
     if (blank) return; // new tab opens now; the coin still drops here
     e.preventDefault();
-    setTimeout(() => { location.href = a.href; }, 420);
+    setTimeout(() => { location.href = a.href; }, WAIT);
   });
+
+  // Warm the booking page on intent (hover, focus, touch), so the short coin
+  // beat overlaps the fetch. Same site only, once per page, never on load.
+  const warmed = new Set();
+  const warm = (e) => {
+    const a = e.target.closest && e.target.closest('a.btn--arcade[data-cta="book"], a.hud__coin, a.sel__coin');
+    if (!a || a.target === '_blank' || a.origin !== location.origin || a.pathname === location.pathname || warmed.has(a.pathname)) return;
+    warmed.add(a.pathname);
+    const l = document.createElement('link');
+    l.rel = 'prefetch';
+    l.href = a.pathname;
+    document.head.appendChild(l);
+  };
+  ['pointerover', 'focusin', 'touchstart'].forEach((t) => document.addEventListener(t, warm, { capture: true, passive: true }));
+
+  // The dock coin reads as booking: once the page's first Book button has
+  // scrolled off the top, its "book a call" tag stays out (desktop; phones
+  // always show the words). On the booking page itself the coins scroll to
+  // the booking block instead of reloading the page.
+  const dock = $('a.hud__coin');
+  const firstBook = $('main a[data-cta="book"]');
+  if (dock && firstBook && 'IntersectionObserver' in window) {
+    // The root reaches far below the screen, so the one edge that counts is
+    // the top: a jump or a fast fling past the button still flips it.
+    new IntersectionObserver(([e]) => dock.classList.toggle('is-call', !e.isIntersecting && e.boundingClientRect.bottom < 0), { rootMargin: '0px 0px 100000px 0px' }).observe(firstBook);
+  }
+  if (document.getElementById('book-a-call')) {
+    document.querySelectorAll('a.hud__coin, a.sel__coin').forEach((a) => { if (a.pathname === location.pathname) a.setAttribute('href', '#book-a-call'); });
+  }
 
   // ---- The menu
   const start = $('[data-sel-start]');
@@ -208,9 +239,23 @@
     if (open && !sel.contains(e.target) && !start.contains(e.target)) hide({ focus: false });
   }, true);
 
-  // Phones: keep focus inside the full-screen menu while it is open.
+  // Focus leaving the open menu: phones wrap inside the full-screen menu
+  // (Tab past the last item goes to the first, Shift+Tab past the first goes
+  // to the last); larger screens just close it. The joystick stays reachable.
+  // On phones Tab is caught before focus leaves, so the page under the menu
+  // never scrolls to a stray focus; focusin is the fallback for anything else.
+  const stops = () => [...sel.querySelectorAll('a[href], button:not([hidden]):not([disabled])')].filter((el) => el.getClientRects().length);
+  document.addEventListener('keydown', (e) => {
+    if (!open || e.key !== 'Tab' || !phone.matches || e.altKey || e.ctrlKey || e.metaKey) return;
+    const f = stops(), a = document.activeElement;
+    const to = e.shiftKey ? (a === start ? f[f.length - 1] : null) : (a === f[f.length - 1] ? f[0] : null);
+    if (to) { e.preventDefault(); to.focus({ preventScroll: true }); }
+  });
   document.addEventListener('focusin', (e) => {
-    if (open && phone.matches && !sel.contains(e.target) && e.target !== start) tiles[idx].focus({ preventScroll: true });
+    if (!open || sel.contains(e.target) || e.target === start) return;
+    if (!phone.matches) { hide({ focus: false }); return; }
+    const f = stops();
+    (e.relatedTarget === f[f.length - 1] ? f[0] : f[f.length - 1]).focus({ preventScroll: true });
   });
 
   // Moving by geometry: left/right along the row (wrapping), up/down to the
@@ -266,22 +311,31 @@
   });
 
   // INSERT COIN: the coin (spinning over the door on hover) turns edge-on,
-  // drops into the slot, the slot lights, CREDIT ticks to 01, then we go.
+  // drops into the slot, the slot lights, CREDIT ticks to 01, and we go on
+  // the same short beat as the Book buttons. On the booking page the link is
+  // a hash: close the menu first so the page can scroll to it.
   if (coin) {
+    const go = () => {
+      if (coin.pathname === location.pathname) { hide({ focus: false }); coin.classList.remove('is-drop', 'is-fed'); }
+      location.href = coin.href;
+    };
     coin.addEventListener('click', (e) => {
-      if (e.defaultPrevented || modified(e) || reduce.matches) return;
+      if (e.defaultPrevented || modified(e) || reduce.matches) {
+        if (!e.defaultPrevented && coin.pathname === location.pathname && !modified(e)) hide({ focus: false });
+        return;
+      }
       e.preventDefault();
       if (coin.classList.contains('is-drop') || coin.classList.contains('is-coin')) return;
       if (phone.matches) { // no door on phones: the coin drops into the button
         coin.dataset.coin = '1';
         addCredit();
         coinInto(coin);
-        setTimeout(() => { location.href = coin.href; }, 420);
+        setTimeout(go, WAIT);
         return;
       }
       coin.classList.add('is-drop');
-      setTimeout(() => { coin.classList.add('is-fed'); addCredit(); }, 300);
-      setTimeout(() => { location.href = coin.href; }, 520);
+      setTimeout(() => { coin.classList.add('is-fed'); addCredit(); }, 70);
+      setTimeout(go, WAIT);
     });
   }
 

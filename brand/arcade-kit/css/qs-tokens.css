@@ -60,6 +60,7 @@
   --accent-ink: #0b1a12;
   --accent-2: #86d0a3;
   --warn: #ebc97d;   /* yellow */
+  --block: var(--bg-3);  /* raised colour block; fg-2 4.65:1 */
   --event: #b9a4f4;  /* purple */
   --info: #82cff0;   /* cyan */
   --bad: #f08ea3;
@@ -73,6 +74,7 @@
   --fg-0: #eceae4; --fg-1: #b9b7b0; --fg-2: #96948e;
   --accent: #86e8be; --accent-ink: #0a0b0b; --accent-2: #6fd6aa;
   --warn: #f1d98f; --event: #bdb0f4; --info: #8fd3ec; --bad: #f4a48f;
+  --block: var(--bg-3); /* fg-2 4.93:1 */
   --grain: .07; color-scheme: dark;
 }
 [data-theme="rose"] {
@@ -81,6 +83,7 @@
   --fg-0: #e0def4; --fg-1: #bcb8d6; --fg-2: #908caa;
   --accent: #ebbcba; --accent-ink: #2a1718; --accent-2: #d9a6a4;
   --warn: #f6c177; --event: #c4a7e7; --info: #9ccfd8; --bad: #eb6f92;
+  --block: var(--bg-2); /* fg-2 4.71:1 (bg-3 would be 4.18) */
   --grain: .06; color-scheme: dark;
 }
 [data-theme="forest"] {
@@ -89,6 +92,7 @@
   --fg-0: #e2d9c2; --fg-1: #c4bca5; --fg-2: #9da9a0;
   --accent: #a7c080; --accent-ink: #1b2412; --accent-2: #93ad6d;
   --warn: #dbbc7f; --event: #d699b6; --info: #7fbbb3; --bad: #e67e80;
+  --block: var(--bg-2); /* fg-2 4.71:1 */
   --grain: .06; color-scheme: dark;
 }
 [data-theme="paper"] {
@@ -97,6 +101,7 @@
   --fg-0: #1d1c19; --fg-1: #45423b; --fg-2: #625e55;
   --accent: #2f6b52; --accent-ink: #f6f3ec; --accent-2: #24563f;
   --warn: #8a5a12; --event: #5d4a8f; --info: #2d5b80; --bad: #9b3438;
+  --block: var(--bg-3); /* slate band tokens are darkened in arcade.css */
   --grain: .05; color-scheme: light;
 }
 
@@ -113,7 +118,7 @@
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: 24px; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
 body {
   margin: 0; background: var(--bg-0); color: var(--fg-0);
   font: 400 17px/1.62 var(--sans);
@@ -134,7 +139,7 @@ a:hover { text-decoration-color: currentColor; }
 img { max-width: 100%; height: auto; display: block; }
 h1, h2, h3, h4 { margin: 0; font-weight: 500; text-wrap: balance; }
 p { margin: 0; }
-.skip { position: absolute; left: -9999px; top: 8px; z-index: 200; background: var(--accent); color: var(--accent-ink); padding: 8px 12px; font: 500 14px var(--mono); }
+.skip { position: absolute; left: -9999px; top: 8px; z-index: 200; background: var(--accent); color: var(--accent-ink); padding: 13px 14px; font: 500 14px var(--mono); }
 .skip:focus { left: 8px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -164,19 +169,20 @@ p { margin: 0; }
   background: var(--accent); vertical-align: -.14em; animation: blink 1.1s steps(1) infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
+@keyframes pulse { 50% { opacity: 0; } }
 .accent { color: var(--accent); }
 
 /* ---------- HUD: no nav bar ----------
    The page opens on the brand alone, in flow, and it scrolls away. The site
    menu lives behind a small pixel joystick (fixed top right, every page) and
    a hover strip on the top edge; the menu itself is in assets/css/select.css. */
-.hud { position: relative; z-index: 2; display: flex; align-items: center; height: 60px; max-width: calc(var(--wrap) + 64px); margin: 0 auto; padding: 0 clamp(16px, 2.4vw, 32px); }
+.hud { position: relative; z-index: 2; display: flex; align-items: center; height: 72px; max-width: calc(var(--wrap) + 64px); margin: 0 auto; padding: 0 clamp(16px, 2.4vw, 32px); }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg-0); white-space: nowrap; font: 400 22px/1 var(--pixel); letter-spacing: 0; }
 .brand svg { width: 28px; height: 28px; flex: none; }
 .hud .brand { padding: 6px 0; }
 /* the home hero is already the wordmark: the HUD row stays (it holds the
    joystick's place) but nothing in it shows */
-.home .hud > * { display: none; }
+body.home .hud > * { display: none; }
 
 /* Brand pop: the popped quarter knocks back into the coin and out again.
    .brand--pop runs on hover and keyboard focus; add .brand--idle to also
@@ -186,13 +192,26 @@ p { margin: 0; }
 @keyframes brand-pop { 0% { transform: translate(-2px, 2px); } 22% { transform: translate(-1px, 1px); } 40% { transform: translate(1px, -1px); } 62% { transform: none; } 76% { transform: translate(1px, -1px); } 90%, 100% { transform: none; } }
 @keyframes brand-pop-idle { 0%, 91% { transform: none; } 92% { transform: translate(-2px, 2px); } 93.5% { transform: translate(-1px, 1px); } 95% { transform: translate(1px, -1px); } 96.5% { transform: none; } 97.5% { transform: translate(1px, -1px); } 98.5%, 100% { transform: none; } }
 
+/* The dock: the joystick (menu) and the coin door (book), fixed top right on
+   every page. They share one small night panel with square pixel corners
+   and a 1px line, so page content never shows through them mid-scroll. The
+   panel drops away while the menu is open (the menu screen backs it). */
+.hud__dock {
+  --dock: color-mix(in srgb, var(--bg-0) 88%, #000);
+  position: fixed; top: 2px; right: 3px; z-index: 190; display: flex; align-items: stretch; gap: 4px;
+  padding: 3px 2px; background: var(--dock); border: 1px solid var(--line-2); border-radius: 0;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .35);
+}
+[data-theme="paper"] .hud__dock { --dock: var(--bg-1); box-shadow: 0 2px 0 rgba(0, 0, 0, .08); }
+.sel-open .hud__dock { background: none; border-color: transparent; box-shadow: none; }
+
 /* The menu trigger: a low-res pixel joystick at 2x with a small MENU label
-   on top. No chip, no box. It sits still and centred; hovering rocks the
-   stick left and right, and a click snaps it back to centre. The sprite is
-   cropped to its drawn area (rows and columns 2 to 29 of each 32px frame). */
+   on top. It sits still and centred; hovering rocks the stick left and right,
+   and a click snaps it back to centre. The sprite is cropped to its drawn
+   area (rows and columns 2 to 29 of each 32px frame). */
 .hud__start {
-  position: fixed; top: 3px; right: 8px; z-index: 190;
-  display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0 2px 2px;
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0;
   color: var(--fg-1); background: none; border: 0; border-radius: 0; cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -205,6 +224,50 @@ p { margin: 0; }
 [data-theme="paper"] .hud__joy { filter: none; }
 [data-theme="paper"] .hud__lbl { text-shadow: none; }
 @keyframes joy-rock { 0% { background-position: -196px -4px; } 12.5% { background-position: -260px -4px; } 25% { background-position: -196px -4px; } 37.5% { background-position: -132px -4px; } 50% { background-position: -68px -4px; } 62.5% { background-position: -4px -4px; } 75% { background-position: -68px -4px; } 87.5% { background-position: -132px -4px; } }
+
+/* Insert coin: the one persistent action. A tiny coin door (12x20 sprite at
+   2x) under a two-line plaque. A "book a call" tag slides out of the panel's
+   left side on hover, and stays out once the page's first Book button has
+   scrolled away (select.js sets .is-call). Clicking drops a coin into the
+   slit (select.js) and goes to /contact/. Hidden while the menu is open,
+   which has its own coin door. Phones swap the plaque for the words. */
+.hud__coin {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+  padding: 0 1px; color: var(--fg-1); text-decoration: none; -webkit-tap-highlight-color: transparent;
+}
+.hud__coin-lbl { display: grid; justify-items: center; font: 400 11px/11px var(--pixel); letter-spacing: .06em; margin-right: -.06em; text-transform: uppercase; text-shadow: 0 1px 0 var(--bg-0); transition: color .12s; }
+.hud__slot { display: block; flex: none; width: 24px; height: 40px; margin-top: 3px; background: url(/assets/px/coin-slot-mini.png) 0 0 / 24px 40px no-repeat; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .45)); }
+.hud__coin-tip {
+  position: absolute; right: calc(100% + 3px); bottom: 10px; padding: 4px 6px 3px;
+  font: 400 11px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap;
+  color: var(--accent); background: var(--dock); border: 1px solid var(--line-2); border-right: 0; box-shadow: 0 2px 0 rgba(0, 0, 0, .35);
+  visibility: hidden;
+}
+.hud__coin:hover .hud__coin-lbl, .hud__coin:focus-visible .hud__coin-lbl { color: var(--warn); }
+.hud__coin:hover .hud__slot, .hud__coin:focus-visible .hud__slot, .hud__coin.is-coin .hud__slot { filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .45)) drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 55%, transparent)) brightness(1.15); }
+.hud__coin:hover .hud__coin-tip, .hud__coin:focus-visible .hud__coin-tip, .hud__coin.is-call .hud__coin-tip { visibility: visible; }
+.hud__coin:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.sel-open .hud__coin, .sel-open .hud__coin .hud__coin-tip { visibility: hidden; }
+[data-theme="paper"] .hud__slot { filter: none; }
+[data-theme="paper"] .hud__coin-lbl { text-shadow: none; }
+[data-theme="paper"] .hud__coin-tip { box-shadow: 0 2px 0 rgba(0, 0, 0, .08); }
+@media (prefers-reduced-motion: no-preference) and (min-width: 700px) {
+  .hud__coin:hover .hud__coin-tip, .hud__coin:focus-visible .hud__coin-tip, .hud__coin.is-call .hud__coin-tip { animation: coin-tip .16s steps(2) backwards; }
+}
+@keyframes coin-tip { from { transform: translateX(8px); opacity: 0; } }
+/* Phones: the words sit over the slot, like MENU over the joystick, and the
+   whole column is the tap target. Under 375px it is just BOOK, so the dock
+   clears the wordmark and its hidden quarter; under 360px the wordmark
+   steps down to 1.5x as well. */
+@media (max-width: 699px) {
+  .hud__coin-lbl { display: none; }
+  .hud__coin .hud__coin-tip {
+    position: static; order: -1; display: grid; justify-items: center; margin-right: -.06em; padding: 0;
+    line-height: 11px; background: none; border: 0; box-shadow: none; visibility: inherit;
+  }
+}
+@media (max-width: 374px) { .hud__coin-tip > span + span { display: none; } }
+@media (max-width: 359px) { .hud .brand { gap: 8px; font-size: 16.5px; } }
 
 /* ---------- Buttons: keycaps ---------- */
 .btn {
@@ -223,7 +286,7 @@ p { margin: 0; }
 .btn .k { font-size: 11px; padding: 2px 5px; border: 1px solid currentColor; border-radius: 0; opacity: .55; }
 .link { justify-self: start; align-self: start; width: max-content; max-width: 100%; font: 500 14px var(--mono); color: var(--fg-0); text-decoration: none; border-bottom: 1px solid var(--line-2); padding-bottom: 2px; }
 .link:hover { border-color: var(--accent); color: var(--accent); }
-.link::after { content: " \2192"; }
+.link::after { content: " \2192"; content: " \2192" / ""; }
 
 /* ---------- Panes (tiles with titles set into the border) ---------- */
 .pane {
@@ -317,7 +380,7 @@ p { margin: 0; }
 .step__n { font: 500 13px var(--mono); color: var(--accent); }
 .step h3 { font: 400 22px/1.2 var(--pixel); }
 .step p { color: var(--fg-1); font-size: 15.5px; }
-.step__when { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--line-2); font: 400 12px var(--mono); color: var(--fg-2); }
+.step__when { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); font: 400 12px var(--mono); color: var(--fg-2); }
 
 /* ---------- Offers ---------- */
 .offers { display: grid; grid-template-columns: repeat(6, 1fr); gap: calc(var(--gap) + 10px) var(--gap); }
@@ -404,7 +467,7 @@ form.is-done .field { display: none; }
 .prose th, .prose td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
 .prose th { font: 500 12px var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--fg-2); border-bottom-color: var(--line-2); }
 .prose code { font: 400 .88em var(--mono); background: var(--bg-2); padding: .1em .35em; border-radius: 0; color: var(--fg-0); }
-.prose hr { border: 0; border-top: 1px dashed var(--line-2); margin: 2.4em 0; }
+.prose hr { border: 0; border-top: 1px solid var(--line-2); margin: 2.4em 0; }
 .prose figure { margin: 2em 0; }
 .prose figcaption { font: 400 12.5px var(--mono); color: var(--fg-2); margin-top: 10px; }
 .prose img { border-radius: 0; }
@@ -419,7 +482,7 @@ form.is-done .field { display: none; }
 .foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
 .foot a { text-decoration: none; }
 .foot a:hover { color: var(--fg-0); text-decoration: underline; }
-.foot__base { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; margin-top: 48px; padding-top: 22px; border-top: 1px dashed var(--line-2); font: 400 12.5px/1.6 var(--mono); color: var(--fg-2); }
+.foot__base { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line); font: 400 12.5px/1.6 var(--mono); color: var(--fg-2); }
 .themes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
 .themes button { font: 500 12px var(--mono); color: var(--fg-1); background: var(--bg-1); border: 1px solid var(--line); border-radius: 0; padding: 6px 9px; cursor: pointer; display: inline-flex; gap: 7px; align-items: center; }
 .themes button i { width: 10px; height: 10px; border-radius: 1px; display: inline-block; }
@@ -532,7 +595,7 @@ form.is-done .field { display: none; }
 .sources { font-size: 15px; }
 .sources a { word-break: break-word; }
 .updlog { list-style: none; padding: 0 !important; font: 400 13.5px/1.6 var(--mono); }
-.updlog li { display: grid; grid-template-columns: 170px 1fr; gap: 12px; padding: 10px 0; border-top: 1px dashed var(--line-2); }
+.updlog li { display: grid; grid-template-columns: 170px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
 .updlog time { color: var(--fg-2); }
 .disclaim { font: 400 12.5px/1.6 var(--mono); color: var(--fg-2); border-top: 1px solid var(--line); padding-top: 18px; }
 .author { display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: start; }
@@ -657,11 +720,28 @@ form.is-done .field { display: none; }
   .foot__grid { grid-template-columns: 1fr; }
   .pane { --pad: 20px; }
 }
+/* ---------- Page transitions ----------
+   Cross-document view transition (progressive: browsers without it just cut).
+   The new page arrives as a grid of 22px cells that fill one quarter at a
+   time, clockwise from the top right: the logo's popped-out quarter, on the
+   11px grid. Off under reduced motion. */
+@property --qs-q { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: none; }
+  ::view-transition-new(root) {
+    -webkit-mask: conic-gradient(#000 var(--qs-q), #0000 0) 0 0 / 22px 22px;
+    mask: conic-gradient(#000 var(--qs-q), #0000 0) 0 0 / 22px 22px;
+    animation: qs-quarters .44s steps(4, end) both;
+  }
+}
+@keyframes qs-quarters { to { --qs-q: 100%; } }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .js [data-reveal] { opacity: 1; transform: none; }
 }
 @media print {
-  body::after, .hud, .hud__start, .sel, .sel-edge, .foot, .themes { display: none; }
+  body::after, .hud, .hud__dock, .sel, .sel-edge, .foot, .themes { display: none; }
   body { background: #fff; color: #000; }
 }

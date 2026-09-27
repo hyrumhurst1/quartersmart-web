@@ -2,7 +2,6 @@
 // a platformer knight, a fire dragon, a slicing ninja, a flooded level,
 // a wizard's transmutation and a stomping mech with a confetti cannon.
 (window.QSAttractPacks = window.QSAttractPacks || []).push((A) => {
-  window.__qa = A;
   // ---------- small kit on top of A ----------
   const lerp = (a, b, u) => a + (b - a) * u;
   const ease = (u) => (u <= 0 ? 0 : u >= 1 ? 1 : u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2);
@@ -10,6 +9,8 @@
   const box = (x, y, w, h, c) => { const y0 = Math.max(0, Math.round(y)), y1 = Math.min(A.PH, Math.round(y) + Math.round(h)); if (y1 > y0) A.rect(Math.round(x), y0, Math.round(w), y1 - y0, c); };
   const fade = (c, a) => { const m = /^#?([0-9a-f]{6})$/i.exec(String(c).trim()); if (!m) return c; const n = parseInt(m[1], 16); return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${a})`; };
   const pal = () => { const C = A.C; return { h: C.hi, c: C.cream, r: C.rose, b: C.butter, t: C.teal, q: C.quart, d: C.deep, o: C.body, v: C.line, m: C.dim }; };
+  // the sky's crescent moon (drawn by the engine) sits here; keep pickups from piling onto it
+  const nearMoon = (x, y, pad) => { const mx = Math.round(A.GW * (A.small ? 0.8 : 0.84)), my = A.small ? 9 : 10, r = A.small ? 4 : 5; return Math.abs(x - mx) < r + pad && Math.abs(y - my) < r + pad; };
   // draw a multi-colour sprite; rows use the pal() keys, '.' is clear; flip mirrors it
   const spr = (x, y, rows, P, flip) => {
     x = Math.round(x); y = Math.round(y);
@@ -44,11 +45,11 @@
   };
   const G_UP = 0.00045;                                 // jump gravity, art px per ms^2
   const platformer = {
-    name: 'platformer', dur: 7600,
+    name: 'platformer', dur: 7000,
     word: { lay: 'wave', F: 2, style: 'bunker', cy: 0.56, mob: { lay: 'stack', F: 2, cy: 0.56 }, alt: { lay: 'line', F: 2 } },
     parade: [['..xx..', '.xxxx.', '.x..xx', '.xxxx.', 'xxxxx.', '.x..x.'], 'cream'],
     init() {
-      this.t = 0; this.stomp = undefined; this.grab = undefined; this.onSlime = undefined; window.__qp = this;
+      this.t = 0; this.stomp = undefined; this.grab = undefined; this.onSlime = undefined;
       const P = platforms(), n = P.length, V = 0.034;
       const minTop = Math.min(...P.map((p) => p.ty));
       const H = A.clamp(minTop - 10, 2, 5), HB = A.clamp(minTop - 12, 3, 8);
@@ -100,7 +101,7 @@
         this.land = t;
       } else this.land = t;
       // stretch or squeeze the whole run so it ends near the same beat on every screen
-      const k = A.clamp(5400 / t, 0.8, 1.35);
+      const k = A.clamp(5300 / t, 0.8, 1.35);
       for (const sg of seg) { sg.t0 *= k; sg.t1 *= k; }
       if (this.stomp !== undefined) this.stomp *= k;
       if (this.grab !== undefined) this.grab *= k;
@@ -112,7 +113,7 @@
         const us = sg.coin === 3 ? [0.3, 0.5, 0.7] : [sg.su];
         for (const u of us) {
           const tc = lerp(sg.t0, sg.t1, u), pos = this.pos(tc, sg);
-          if (pos.y - 9 >= 1) this.coins.push({ x: Math.round(pos.x) - 2, y: Math.round(pos.y) - 9, tc });
+          if (pos.y - 9 >= 1 && !nearMoon(pos.x, pos.y - 7, 6)) this.coins.push({ x: Math.round(pos.x) - 2, y: Math.round(pos.y) - 9, tc });
         }
       }
     },
@@ -183,6 +184,13 @@
         if (g && hq > 0.3 && hq < 2.4) A.sparkle(g.x + 1, g.top - 4, Math.floor(t / 90) % 3, C.butter);
       }
       spr(Math.round(p.x) - 3, fy - h + 1, fr, P);
+      // level clear: a few little bursts over the goal
+      const L = this.seg[this.seg.length - 1];
+      const bx = g ? g.x + 1 : Math.round(L.x1), by = g ? g.top - 5 : Math.round(L.y1) - 14;
+      [[500, 0, 0, C.butter], [950, -9, 4, C.rose], [1400, 5, 6, C.teal]].forEach(([d, ox, oy, c]) => {
+        const q = (t - this.land - d) / 650; if (q < 0 || q > 1) return;
+        for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4; dot(bx + ox + Math.cos(a) * q * 6, by + oy + Math.sin(a) * q * 5 + q * q * 3, q < 0.55 ? c : C.dim); }
+      });
     },
   };
 
@@ -200,67 +208,86 @@
     word: { lay: 'line', F: 2, style: 'neon', cy: 0.62 },
     parade: [['..xxx.....', '.xxxx...x.', 'xxxxxxxxxx', '.x.xxxxx..', '...x..x...'], 'quart'],
     init() {
-      this.t = 0; this.heat = new Float32Array(A.word.length); this.embers = []; this.puffs = []; this.flame = null; this.nextEmber = 0; this.nextPuff = 350;
-      this.depth = A.word.map((w) => w.y - A.letters[w.li].y0);
+      this.t = 0; this.heat = new Float32Array(12); this.embers = []; this.puffs = []; this.flame = null; this.nextEmber = 0; this.nextGlow = 0; this.nextPuff = 820;
       const P = platforms(); this.perch = P[0];
-      this.xr = Math.min(A.GW - 13, A.X0 + A.WW - 4); this.xl = Math.max(7, A.X0 - 2); this.hy = Math.max(1, A.Y0 - 11);
+      this.xr = Math.min(A.GW - 14, A.X0 + A.WW - 4); this.xl = Math.max(7, A.X0 - 2); this.hy = Math.max(1, A.Y0 - 11);
       A.seed(31);
     },
+    // fly in from the right, rear back and draw breath, one long strafing breath right to left,
+    // a turn, then settle on the Q and watch the letters cool
     pos(t) {
       const { xr, xl, hy } = this, pc = this.perch, px = Math.round((pc.a + pc.b) / 2) - 6, py = pc.ty - 6;
-      const flap = Math.floor(t / 190) % 2;
-      if (t < 700) return { x: xr, y: hy + flap, face: -1, fr: flap ? DR.up : DR.down };
-      if (t < 4600) return { x: lerp(xr, xl, trap((t - 700) / 3900)), y: hy + flap, face: -1, fr: flap ? DR.up : DR.down };
-      if (t < 5000) { const u = (t - 4600) / 400; return { x: xl - Math.sin(u * Math.PI / 2) * 6, y: hy - Math.sin(u * Math.PI) * 3 + flap, face: u < 0.5 ? -1 : 1, fr: flap ? DR.up : DR.down }; }
-      if (t < 5500) { const u = ease((t - 5000) / 500); return { x: lerp(xl - 6, px, u), y: lerp(hy, py, u), face: 1, fr: DR.down }; }
-      return { x: px, y: py, face: 1, fr: Math.floor((t - 5500) / 600) % 3 === 1 ? DR.perch2 : DR.perch, perched: true };
+      const flap = Math.floor(t / 190) % 2, fr = flap ? DR.up : DR.down;
+      if (t < 800) { const u = 1 - Math.pow(1 - t / 800, 2); return { x: lerp(A.GW + 2, xr, u), y: hy + flap, face: -1, fr }; }
+      if (t < 1100) return { x: xr + (t > 940 ? 1 : 0), y: hy + flap - (t > 940 ? 1 : 0), face: -1, fr };
+      if (t < 4300) return { x: lerp(xr, xl, trap((t - 1100) / 3200)), y: hy + flap, face: -1, fr };
+      if (t < 4700) { const u = (t - 4300) / 400; return { x: xl - Math.sin(u * Math.PI / 2) * 6, y: hy - Math.sin(u * Math.PI) * 3 + flap, face: u < 0.5 ? -1 : 1, fr }; }
+      if (t < 5200) { const u = ease((t - 4700) / 500); return { x: lerp(xl - 6, px, u), y: lerp(hy, py, u), face: 1, fr: DR.down }; }
+      return { x: px, y: py, face: 1, fr: Math.floor((t - 5200) / 600) % 3 === 1 ? DR.perch2 : DR.perch, perched: true };
     },
     update(t, dt) {
       this.t = t;
-      const d = this.pos(t), H = this.heat;
+      const d = this.pos(t), H = this.heat, L = A.letters;
       this.flame = null;
-      if (t > 850 && t < 4450) {
-        const mx = Math.round(d.x) - 1, my = Math.round(d.y) + 4, dx = -0.55, dy = 1;
+      if (t > 1150 && t < 4250) {
+        const mx = Math.round(d.x) - 1, my = Math.round(d.y) + 4, dx = -0.48, dy = 0.88;
         let hit = null, k = 1;
-        for (; k < 44; k++) {
+        for (; k < 46; k++) {
           const x = Math.round(mx + dx * k), y = Math.round(my + dy * k);
           if (y >= A.WY1 || y >= A.PH) break;
           if (A.at.has(x * 1000 + y)) { hit = [x, y]; break; }
         }
-        this.flame = { mx, my, dx, dy, len: Math.min(k, hit ? k : 14), hit };
+        this.flame = { mx, my, dx, dy, len: hit ? k : Math.min(k, 16), hit };
         if (hit && dt > 0) {
-          const rate = dt * 0.02, row = A.letters[A.word[A.at.get(hit[0] * 1000 + hit[1])].li].y1;
-          for (const w of A.word) {
-            const ax = Math.abs(w.x - hit[0]); if (ax > 3 || A.letters[w.li].y1 !== row) continue;
-            const dep = this.depth[w.i]; if (dep > 11) continue;
-            H[w.i] = Math.min(1.4, H[w.i] + rate * Math.exp(-dep / 4.2) * (1 - ax / 4.5));
-          }
-          while (this.nextEmber < t) { this.embers.push({ x: hit[0] + (A.rnd() - 0.5) * 5, y: hit[1] - 1, vx: (A.rnd() - 0.5) * 0.02, vy: -0.012 - A.rnd() * 0.014, t0: this.nextEmber }); this.nextEmber += 55; }
+          // a whole letter heats at once, so the word glows letter by letter behind the dragon
+          const row = L[A.word[A.at.get(hit[0] * 1000 + hit[1])].li].y1;
+          L.forEach((l, li) => {
+            if (!l) return;
+            if (l.y1 === row && hit[0] >= l.x0 - 2 && hit[0] <= l.x1 + 2) H[li] = Math.min(1.25, H[li] + dt * (hit[0] >= l.x0 && hit[0] <= l.x1 ? 0.0045 : 0.002));
+            else if (l.y0 > row && hit[0] >= l.x0 && hit[0] <= l.x1) H[li] = Math.min(1, H[li] + dt * 0.0016);   // heat soaks down into a lower row
+          });
+          while (this.nextEmber < t) { this.embers.push({ x: hit[0] + (A.rnd() - 0.5) * 5, y: hit[1] - 1, vx: (A.rnd() - 0.5) * 0.02, vy: -0.012 - A.rnd() * 0.014, t0: this.nextEmber }); this.nextEmber += 60; }
         }
       }
-      if (dt > 0) for (let i = 0; i < H.length; i++) if (H[i] > 0) H[i] = Math.max(0, H[i] - dt * 0.0003);
+      if (dt > 0) for (let i = 0; i < 12; i++) if (H[i] > 0) H[i] = Math.max(0, H[i] - dt * 0.00042);
+      // hot letters keep shedding the odd ember from their tops as they cool
+      while (this.nextGlow < t) {
+        const li = Math.floor(A.rnd() * 12), l = L[li];
+        if (l && H[li] > 0.55) this.embers.push({ x: l.x0 + A.rnd() * (l.x1 - l.x0), y: l.y0 - 1, vx: (A.rnd() - 0.5) * 0.01, vy: -0.01 - A.rnd() * 0.008, t0: this.nextGlow });
+        this.nextGlow += 90;
+      }
       for (const e of this.embers) { e.x += e.vx * dt; e.y += e.vy * dt; }
       this.embers = this.embers.filter((e) => t - e.t0 < 650);
-      // smoke from the nostrils: once before the breath, then idly while perched
+      // smoke from the nostrils: a few puffs while drawing breath, then idly while perched
       while (this.nextPuff < t) {
-        const q = this.pos(this.nextPuff);
-        if (this.nextPuff < 800 || q.perched) this.puffs.push({ x: q.face < 0 ? q.x - 1 : q.x + 12, y: q.y + (q.perched ? 2 : 3), t0: this.nextPuff, dir: q.face });
-        this.nextPuff += this.nextPuff < 800 ? 180 : 700;
-        if (this.nextPuff > 800 && this.nextPuff < 5800) this.nextPuff = 5800;
+        const tp = this.nextPuff, q = this.pos(tp);
+        if ((tp >= 800 && tp < 1120) || q.perched) this.puffs.push({ x: q.face < 0 ? q.x - 1 : q.x + 12, y: q.y + (q.perched ? 2 : 3), t0: tp, dir: q.face });
+        this.nextPuff += tp < 1120 ? 140 : 700;
+        if (this.nextPuff >= 1120 && this.nextPuff < 5500) this.nextPuff = 5500;
       }
       this.puffs = this.puffs.filter((p) => t - p.t0 < 1000);
     },
     draw() {
       const t = this.t, C = A.C, P = pal(), H = this.heat;
-      A.drawWord({ col: (w) => { const h = H[w.i]; return h > 0.85 ? C.hi : h > 0.55 ? C.butter : h > 0.22 ? C.rose : null; } });
+      // a heated letter glows as a whole: white hot outline and a molten core, cooling through yellow and pink back to neon
+      A.drawWord({ col: (w) => {
+        const h = H[w.li]; if (h < 0.08) return null;
+        if (w.edge) return h > 0.9 ? C.hi : h > 0.5 ? C.butter : h > 0.2 ? C.rose : null;
+        return h > 0.75 ? C.butter : h > 0.38 ? C.rose : null;
+      } });
       for (const e of this.embers) { const a = (t - e.t0) / 650; dot(e.x, e.y, a < 0.35 ? C.butter : a < 0.7 ? C.rose : C.dim); }
       const f = this.flame;
       if (f) {
+        // the breath: a cone that widens from a white hot core, flickering pink at its edges
+        const ph = Math.floor(t / 55);
         for (let k = 1; k < f.len; k++) {
           const wob = Math.round(Math.sin(k * 0.8 - t / 70) * Math.min(1, k / 6));
-          const x = f.mx + f.dx * k + wob, y = f.my + f.dy * k;
-          dot(x, y, k < 3 ? C.hi : [C.butter, C.hi, C.butter, C.rose][((Math.floor(k / 2 - t / 60) % 4) + 4) % 4]);
-          if (k > 3) dot(x + 1, y, (k + Math.floor(t / 90)) % 3 ? C.rose : C.butter);
+          const cx = f.mx + f.dx * k + wob, cy = f.my + f.dy * k, w = k < 3 ? 0 : k < 8 ? 1 : 2, tip = k > f.len - 3;
+          for (let s = -w; s <= w; s++) {
+            const rim = w > 0 && Math.abs(s) === w;
+            if ((rim || tip) && (k * 3 + s * 5 + ph) % 4 === 0) continue;
+            dot(cx + s, cy, tip ? C.rose : s === 0 ? (k < 5 ? C.hi : (k + ph) % 3 ? C.butter : C.hi) : rim ? C.rose : C.butter);
+          }
         }
         if (f.hit) for (let j = -3; j <= 3; j++) {
           if (!j || (j + Math.floor(t / 110)) % 3 === 0) continue;
@@ -332,7 +359,9 @@
     },
     update(t) { this.t = t; },
     draw() {
-      const t = this.t, C = A.C, P = pal();
+      const t = this.t, C = A.C, P = pal(), s = this.state(t);
+      // afterimages trail behind the letters, so they only show in the gaps and never smudge the word
+      if (!s.gone && s.dash) for (let k = 1; k <= 2; k++) { const gx = s.cx - s.face * k * 7; spr(gx - 5, this.cy(s.dash, gx) - 1, NJ.dash, { r: C.dim, o: k === 1 ? C.dim : C.line, h: C.dim, c: C.dim }, s.face < 0); }
       A.drawWord({
         off: (w) => {
           const e = this.cut(w.li, t); if (!e) return null;
@@ -362,9 +391,7 @@
         const pp = this.perchPos(p), cx = pp.x + 3, cy = pp.y + 4, r = 1 + a * 4;
         for (let k = 0; k < 8; k++) { const an = k * Math.PI / 4; dot(cx + Math.cos(an) * r, cy + Math.sin(an) * r * 0.8, a < 0.5 ? C.cream : C.dim); }
       }
-      const s = this.state(t);
       if (!s.gone) {
-        if (s.dash) for (let k = 1; k <= 2; k++) { const gx = s.cx - s.face * k * 7; spr(gx - 5, this.cy(s.dash, gx) - 1, NJ.dash, { r: C.dim, o: k === 1 ? C.dim : C.line, h: C.dim, c: C.dim }, s.face < 0); }
         spr(s.x, s.y, s.fr, P, s.face < 0);
         if (s.glint) A.sparkle(s.x + 7, s.y, Math.floor((t - 5300) / 100) % 3, C.butter);
       }
@@ -379,6 +406,7 @@
 
   // ---------- underwater ----------
   const FISH = [['b.bb.', 'bbbhb', 'b.bb.'], ['..bb.', 'bbbhb', '..bb.']];
+  const HERO = [['...bb..', 'b.bbbb.', 'bbbbbhb', 'b.bbbb.', '...bb..'], ['...bb..', '.bbbbb.', 'bbbbbhb', '.bbbbb.', '...bb..']];
   const underwater = {
     name: 'underwater', dur: 7600,
     word: { lay: 'line', F: 2, style: 'band', cy: 0.5 },
@@ -387,8 +415,10 @@
       this.t = 0; this.bub = []; this.nextBub = 1400; A.seed(23);
       const Y0 = A.Y0, WY1 = A.WY1;
       this.hi = Math.max(2, Y0 - 7);
+      // the hero fish crosses the flooded word once, weaving in front of and behind the letters
+      this.h0 = 2000; this.h1 = 5500; this.hx0 = -8; this.hx1 = A.GW + 2; this.nextPuff = this.h0 + 300;
       this.fish = [
-        { y: Y0 + 2, v: 0.026, dir: 1, c: 'butter', x0: 20 },
+        { y: Y0 + 2, v: 0.026, dir: 1, c: 'cream', x0: 20 },
         { y: Y0 + 10, v: 0.019, dir: -1, c: 'rose', x0: A.GW * 0.6 },
         { y: Math.min(A.PH - 4, WY1 + 4), v: 0.03, dir: 1, c: 'teal', x0: A.GW * 0.35 },
         { y: Math.max(this.hi + 3, Y0 - 3), v: 0.022, dir: -1, c: 'quart', x0: A.GW * 0.15 },
@@ -396,9 +426,20 @@
     },
     level(t) { const lo = A.PH + 2, hi = this.hi; if (t < 250) return lo; if (t < 2100) return lerp(lo, hi, ease((t - 250) / 1850)); if (t < 5500) return hi; if (t < 7200) return lerp(hi, lo, ease((t - 5500) / 1700)); return lo; },
     surf(x, t, L) { return Math.round(L + Math.sin(x * 0.21 + t / 280) * 1.1 + Math.sin(x * 0.09 - t / 470) * 0.9); },
+    hero(t) {
+      if (t < this.h0 || t > this.h1) return null;
+      const x = lerp(this.hx0, this.hx1, (t - this.h0) / (this.h1 - this.h0));
+      const y = Math.round((A.Y0 + A.WY1) / 2 + Math.sin((x - A.X0) / 7) * Math.max(2, (A.WY1 - A.Y0) * 0.3)) - 2;
+      return { x: Math.round(x), y, front: Math.floor((x - A.X0 + 12) / 26) % 2 === 1, fr: HERO[Math.floor(t / 160) % 2] };
+    },
     update(t, dt) {
       this.t = t;
       const L = this.level(t);
+      while (this.nextPuff < t) {
+        const h = this.hero(this.nextPuff);
+        if (h && h.y > L + 2) this.bub.push({ x: h.x + 7, y: h.y + 1, v: 0.012, ph: 0, big: false, t0: this.nextPuff });
+        this.nextPuff += 450;
+      }
       if (L < A.WY1 && t < 5600) while (this.nextBub < t) {
         const big = A.rnd() < 0.3;
         this.bub.push({ x: A.X0 + A.rnd() * A.WW, y: Math.min(A.PH - 2, A.WY1 + 1 + A.rnd() * 6), v: 0.011 + A.rnd() * 0.009, ph: A.rnd() * 6, big, t0: this.nextBub });
@@ -410,7 +451,8 @@
     draw() {
       const t = this.t, C = A.C, L = this.level(t), GW = A.GW;
       const sub = A.clamp((A.WY1 - L) / (A.WY1 - this.hi));
-      const ys = []; for (let x = 0; x < GW; x++) ys.push(this.surf(x, t, L));
+      const ys = this.ys && this.ys.length === GW ? this.ys : (this.ys = new Int16Array(GW));
+      for (let x = 0; x < GW; x++) ys[x] = this.surf(x, t, L);
       // the water: a bright surface line over a thin wash of the palette teal, so the night still shows through
       const wash = fade(C.teal, 0.17);
       for (let x = 0; x < GW; x++) { const y = ys[x]; if (y < A.PH - 1) box(x, y + 1, 1, A.PH - y - 1, wash); }
@@ -421,12 +463,15 @@
         const sy = ys[A.clamp(Math.round(x + 2), 0, GW - 1)];
         const y = Math.max(f.y + Math.round(Math.sin(t / 380 + f.x0)), sy + 2);
         if (y >= A.PH - 2 || sy >= A.PH) continue;
-        spr(x, y - 1, FISH[Math.floor(t / 200 + f.x0) % 2], { b: C[f.c], h: C.hi }, f.dir < 0);
+        spr(x, y - 1, FISH[Math.floor(t / 200 + f.x0) % 2], { b: C[f.c], h: f.c === 'cream' ? C.line : C.hi }, f.dir < 0);
       }
+      const hf = this.hero(t), HP = { b: C.butter, h: C.line };
+      if (hf && !hf.front) spr(hf.x, hf.y, hf.fr, HP);
       A.drawWord({
         off: (w) => { if (w.y <= ys[w.x]) return null; return [Math.round(Math.sin(t / 560 + w.li * 0.8) * 1.4 * sub * (A.WY1 - w.y) / (A.WY1 - A.Y0)), 0]; },
         col: (w) => (w.y > ys[w.x] && w.c === C.hi ? C.teal : null),
       });
+      if (hf && hf.front) spr(hf.x, hf.y, hf.fr, HP);
       for (const b of this.bub) {
         const x = b.x + Math.round(Math.sin((t - b.t0) / 240 + b.ph) * 0.8);
         if (b.pop) { dot(x, b.y - 1, C.hi); continue; }
@@ -473,6 +518,8 @@
           if (a < 70) return C.hi;
           const dd = (w.x - X0) + (w.y - Y0) * 0.8;
           if ((t > 5200 && t < 6200 && dd - g1 > -3 && dd - g1 < 0) || (t > 6300 && t < 7300 && dd - g2 > 0 && dd - g2 < 3)) return C.hi;
+          // the finished word shimmers: a soft ripple of light runs along the tops of the letters
+          if (t > 5400 && w.gy < 2 && Math.sin((t - 5400) / 260 - w.li * 0.7) > 0.93) return C.hi;
           return M[w.li % 4];
         },
       });
@@ -483,10 +530,11 @@
         const u = (t - c.tc) / (c.ti - c.tc); if (u < 0 || u > 1) continue;
         const cx = lerp(c.sx, c.tx, 0.5) + (c.tx - c.sx) * 0.15, cy = Math.min(c.sy, c.ty) - 10;
         const at = (v) => { v = A.clamp(v); const a = (1 - v) * (1 - v), b = 2 * v * (1 - v), d = v * v; return [a * c.sx + b * cx + d * c.tx, a * c.sy + b * cy + d * c.ty]; };
-        const trail = [C.butter, C.rose, C.teal, C.dim];
-        for (let k = 4; k >= 1; k--) { const v = Math.pow(u, 1.3) - k * 0.05; if (v > 0) { const [x, y] = at(v); dot(x, y, trail[k - 1]); } }
+        // the bolt carries the colour its letter is about to become
+        const col = M[c.li % 4], trail = [C.hi, col, col, C.butter, col, C.dim, col, C.dim, C.line];
+        for (let k = 9; k >= 1; k--) { const v = Math.pow(u, 1.3) - k * 0.032; if (v > 0) { const [x, y] = at(v); dot(x, y, trail[k - 1]); if (k < 4) dot(x + 1, y, trail[k]); } }
         const [hx, hy] = at(Math.pow(u, 1.3));
-        A.sparkle(Math.round(hx), Math.round(hy), Math.floor(t / 70) % 2 ? 1 : 0, C.butter);
+        A.sparkle(Math.round(hx), Math.round(hy), Math.floor(t / 70) % 2 ? 2 : 1, col);
       }
       // impact sparkles
       for (const c of this.casts) { const a = t - c.ti; if (a > 0 && a < 220) A.sparkle(Math.round(c.tx), Math.round(c.ty), a < 110 ? 2 : 1, M[c.li % 4]); }
@@ -508,51 +556,69 @@
   };
 
   // ---------- mech ----------
-  const MECH = ['..m.........', '.cccccccccc.', 'ccccccvvtttc', 'ccccccvtthtc', 'cccccccccccc', '.rrrrrrrrrr.', '.vv......vv.'];
+  // A boxy walker stomps along the horizon under the word. Every footfall is a beat: the foot lands,
+  // dust kicks out, and a tremor runs up through the letters above. It plants itself under the middle,
+  // swings its cannon up and fires three volleys of confetti that flutter down and settle on the letters.
+  const MECHB = ['..m.......', '.cccccccc.', 'ccccccvttc', 'cccccvthtc', 'cccccccccc', '.rrrrrrrr.'];
   const mech = {
     name: 'mech', dur: 7600,
-    word: { lay: 'line', F: 2, style: 'bricks', cy: 0.4 },
+    // sit the word low enough to feel the footsteps, but leave the walker room on short screens
+    word: { lay: 'line', F: 2, style: 'band', shadow: 1, get cy() { return A.PH < 50 ? 0.42 : 0.5; }, mob: { lay: 'stack', F: 2, cy: 0.58 } },
     parade: [['.xxxxx.', 'xxxx.xx', 'xxxxxxx', '.x...x.', 'xx...xx'], 'cream'],
     init() {
-      this.t = 0; this.conf = []; A.seed(41);
-      this.fy = Math.min(A.PH - 2, A.WY1 + 16);           // the row the feet stand on
-      this.c0 = Math.max(8, A.X0 + 2);                    // body centre before the first step
-      this.SD = 480; this.steps = Math.max(4, Math.min(9, Math.round((A.X0 + A.WW / 2 - 10 - this.c0) / 8))); this.w0 = 300;
+      this.t = 0; this.conf = []; this.fired = 0; A.seed(41);
+      this.fy = A.PH - 1;                                  // the feet stand on the horizon
+      this.SD = 420; this.SW = 0.6; this.w0 = 450;         // step length in ms, swing share, first step
+      const c0 = A.X0 + Math.max(8, A.WW * 0.16), c1 = A.X0 + A.WW / 2 - 3;
+      this.steps = A.clamp(Math.round((c1 - c0) / 7), 4, 7);
+      this.D = (c1 - c0) / this.steps; this.c0 = c0;      // body centre moves D per step
       this.stomps = [];
-      for (let k = 0; k < this.steps; k++) this.stomps.push({ t: this.w0 + (k + 1) * this.SD, x: this.cx(k + 1) + 4 });
+      for (let k = 0; k < this.steps; k++) {
+        const c = c0 + this.D * (k + 1), front = k % 2 === 1;  // even steps swing the back leg, odd ones the front
+        this.stomps.push({ t: this.w0 + (k + this.SW) * this.SD, x: Math.round(this.foot(c, front, this.D / 2)) + 0.5 });
+      }
       const te = this.w0 + this.steps * this.SD;
-      this.tAim = te + 150; this.tFire = [te + 480, te + 830, te + 1180];
-      this.fired = 0;
+      this.tBrace = te; this.tAim = te + 180; this.tFire = [te + 620, te + 980, te + 1340]; this.tHome = te + 2300;
     },
-    cx(k) { return this.c0 + 8 * k; },
+    // world x of a foot: the hip sits 4 left (back leg) or 1 right (front leg) of the body centre
+    foot(c, front, off) { return c + (front ? 1 : -4) + off; },
+    // body centre, per-leg foot offsets from the hip, lifts and the body bob, all pure functions of t
     pose(t) {
-      const tw = t - this.w0, SD = this.SD;
-      if (tw < 0) return { bx: this.cx(0), lift: 0, fa: this.cx(0) + 4, fb: this.cx(0) - 4, ya: 0, yb: 0 };
-      const k = Math.floor(tw / SD);
-      if (k >= this.steps) { const c = this.cx(this.steps), odd = this.steps % 2; return { bx: c, lift: 0, fa: c + (odd ? 4 : -4), fb: c + (odd ? -4 : 4), ya: 0, yb: 0, done: true }; }
-      const u = (tw - k * SD) / SD, e = ease(u), c = this.cx(k);
-      const mv = c - 4 + 16 * e, up = Math.round(Math.sin(u * Math.PI) * 3), pl = c + 4;
-      const bMoves = k % 2 === 0;
-      return { bx: c + 8 * e, lift: Math.round(Math.sin(u * Math.PI)), fa: bMoves ? pl : mv, fb: bMoves ? mv : pl, ya: bMoves ? 0 : up, yb: bMoves ? up : 0 };
+      const { SD, SW, D } = this, h = D / 2, tw = t - this.w0;
+      let k = Math.floor(tw / SD), u = tw / SD - k;
+      if (tw < 0) { k = 0; u = 0; }
+      if (k >= this.steps) { const odd = this.steps % 2; return { c: this.c0 + D * this.steps, of: odd ? h : -h, ob: odd ? -h : h, lf: 0, lb: 0, bob: 0 }; }
+      const c0 = this.c0 + D * k, e = ease(Math.min(1, u / SW)), backSwings = k % 2 === 0;
+      const lift = u < SW ? Math.round(Math.sin(u / SW * Math.PI) * 3) : 0;
+      const sw = -h + 2 * h * e, pl = h - D * e;           // the swinging foot overtakes, the planted one stays put
+      const bob = u < SW ? (u / SW > 0.25 && u / SW < 0.8 ? -1 : 0) : u < SW + 0.14 ? 1 : 0;
+      return { c: c0 + D * e, of: backSwings ? pl : sw, ob: backSwings ? sw : pl, lf: backSwings ? 0 : lift, lb: backSwings ? lift : 0, bob: tw < 0 ? 0 : bob };
     },
-    aim(t) { return A.clamp((t - this.tAim) / 300); },
-    tip(t) { const p = this.pose(t), a = this.aim(t), by = this.fy - 12; return [Math.round(p.bx) + 7 + Math.round(a * 1), by + 3 - Math.round(a * 5)]; },
+    aim(t) { const up = ease(A.clamp((t - this.tAim) / 320)), down = ease(A.clamp((t - this.tHome) / 500)); return up * (1 - down); },
+    body(t) {
+      const p = this.pose(t), a = this.aim(t);
+      const brace = t >= this.tBrace && t < this.tBrace + 160 ? 1 : 0;
+      const kick = this.tFire.some((tf) => t >= tf && t < tf + 90) ? 1 : 0;
+      const hop = t > this.tHome + 300 && t < this.tHome + 900 ? -Math.round(Math.abs(Math.sin((t - this.tHome - 300) / 300 * Math.PI))) : 0;
+      return { p, a, bx: Math.round(p.c) - 5 - kick, by: this.fy - 11 + p.bob + brace + hop };
+    },
+    tip(t) { const { a, bx, by } = this.body(t), an = a * 1.15; return [Math.round(bx + 10 + Math.cos(an) * 4), Math.round(by + 3 - Math.sin(an) * 4)]; },
     update(t, dt) {
       this.t = t;
       while (this.fired < this.tFire.length && t >= this.tFire[this.fired]) {
-        const tip = this.tip(this.tFire[this.fired]), rise = Math.max(14, tip[1] - (A.Y0 - 8)), vn = Math.sqrt(2 * 0.00011 * rise);
-        const M = [A.C.rose, A.C.butter, A.C.quart, A.C.teal, A.C.hi];
-        const spread = [[-0.35, 0.6], [-0.7, 0.2], [-0.1, 0.8]][this.fired];
-        for (let i = 0; i < 26; i++) {
-          const an = -Math.PI / 2 + (spread[0] + A.rnd() * (spread[1] - spread[0])), v = vn * (0.8 + A.rnd() * 0.3);
-          this.conf.push({ x: tip[0], y: tip[1], vx: Math.cos(an) * v * 1.8, vy: Math.sin(an) * v, c: M[i % 5], ph: A.rnd() * 6 });
+        const tip = this.tip(this.tFire[this.fired]), rise = Math.max(14, tip[1] - (A.Y0 - 7)), vn = Math.sqrt(2 * 0.00011 * rise);
+        const M = [A.C.rose, A.C.butter, A.C.quart, A.C.teal];
+        const spread = [[-0.45, 0.7], [-0.95, 0.2], [-0.1, 1.0]][this.fired];
+        for (let i = 0; i < 28; i++) {
+          const an = -Math.PI / 2 + (spread[0] + A.rnd() * (spread[1] - spread[0])), v = vn * (0.82 + A.rnd() * 0.26);
+          this.conf.push({ x: tip[0], y: tip[1], vx: Math.cos(an) * v * 2.2, vy: Math.sin(an) * v, c: M[i % 4], ph: A.rnd() * 6 });
         }
         this.fired++;
       }
       if (dt > 0) for (const p of this.conf) {
         if (p.rest) continue;
-        p.vy = Math.min(0.014, p.vy + 0.00011 * dt); p.vx *= Math.pow(0.998, dt);
-        const nx = p.x + p.vx * dt + (p.vy > 0 ? Math.sin(t / 210 + p.ph) * 0.007 * dt : 0), ny = p.y + p.vy * dt;
+        p.vy = Math.min(0.013, p.vy + 0.00011 * dt); p.vx *= Math.pow(0.9985, dt);
+        const nx = p.x + p.vx * dt + (p.vy > 0 ? Math.sin(t / 230 + p.ph) * 0.011 * dt : 0), ny = p.y + p.vy * dt;
         if (p.vy > 0) {
           const inside = A.at.has(Math.round(p.x) * 1000 + Math.round(p.y));
           if (!inside && A.at.has(Math.round(nx) * 1000 + Math.round(ny) + 1)) { p.x = nx; p.y = Math.round(ny); p.rest = true; continue; }
@@ -563,35 +629,39 @@
     },
     draw() {
       const t = this.t, C = A.C, P = pal(), fy = this.fy;
-      if (fy + 1 < A.PH) for (let x = 1; x < A.GW; x += 3) dot(x, fy + 1, C.line);
+      // each footfall sends a one pixel tremor up through the letters, rippling out from the foot
       A.drawWord({
         off: (w) => {
           const l = A.letters[w.li], lc = (l.x0 + l.x1) / 2;
-          for (const s of this.stomps) { const d = Math.abs(lc - s.x); if (d > 18) continue; const a = t - s.t - d * 5; if (a >= 0 && a < 130) return [0, -1]; }
+          for (const s of this.stomps) { const d = Math.abs(lc - s.x); if (d > 34) continue; const a = t - s.t - d * 4; if (a >= 0 && a < 110) return [0, d < 12 && a < 55 ? -2 : -1]; }
           return null;
         },
       });
-      // dust puffs where each foot lands
+      // dust kicked out sideways from each landing foot
       for (const s of this.stomps) {
-        const a = (t - s.t) / 340; if (a < 0 || a > 1) continue;
+        const a = (t - s.t) / 360; if (a < 0 || a > 1) continue;
         const c = a < 0.4 ? C.cream : a < 0.7 ? C.dim : C.line;
-        for (const sd of [-1, 1]) { dot(s.x + sd * (3 + a * 5), fy - Math.round(a * 2), c); dot(s.x + sd * (4 + a * 7), fy - Math.round(a * 1.2), c); dot(s.x + sd * (2 + a * 3), fy - 1 - Math.round(a * 2.5), c); }
+        for (const sd of [-1, 1]) { dot(s.x + sd * (3 + a * 5), fy - Math.round(a * 2), c); dot(s.x + sd * (4 + a * 8), fy - Math.round(a * 1.2), c); if (a < 0.6) dot(s.x + sd * (2 + a * 3), fy - 1 - Math.round(a * 3), c); }
       }
-      const p = this.pose(t), a = this.aim(t);
-      const recoil = this.tFire.some((tf) => t >= tf && t < tf + 110) ? -1 : 0;
-      const bx = Math.round(p.bx) + recoil - 6, by = fy - 12 - p.lift + (p.done && a > 0 && a < 1 ? 1 : 0);
-      const leg = (hx, hy, fx, fyy, c) => {
-        const kx = (hx + fx) / 2 - 2, ky = (hy + fyy) / 2;
-        const seg = (x0, y0, x1, y1) => { const n = Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0), 1); for (let i = 0; i <= n; i++) { const x = x0 + (x1 - x0) * i / n, y = y0 + (y1 - y0) * i / n; dot(x, y, c); dot(x + 1, y, c); } };
-        seg(hx, hy, kx, ky); seg(kx, ky, fx - 1, fyy);
-        box(fx - 2, fyy, 5, 1, c);
+      const { p, a, bx, by } = this.body(t);
+      // legs: a straight two pixel strut from hip to foot, a knee plate half way, a wide foot pad
+      const leg = (front, off, lift, c) => {
+        const hx = bx + (front ? 6 : 1), hy = by + 6, fx = Math.round(this.foot(p.c, front, off)), fyy = fy - lift;
+        for (let y = hy; y < fyy; y++) { const x = Math.round(lerp(hx, fx, (y - hy) / Math.max(1, fyy - hy))); box(x, y, 2, 1, c); if (y === hy + 2) box(x - 1, y, 1, 1, c); }
+        box(fx - 1, fyy, 4, 1, c);
       };
-      leg(bx + 1, by + 7, Math.round(p.fb), fy - p.yb, C.dim);
-      leg(bx + 9, by + 7, Math.round(p.fa), fy - p.ya, C.cream);
-      spr(bx, by, MECH, P);
-      // the cannon: level while walking, raised for the finale
-      for (let i = 0; i < 4; i++) { const x = bx + 12 + i - Math.round(a * i * 0.5), y = by + 4 - Math.round(a * i * 1.5); dot(x, y, i === 3 ? C.butter : C.dim); dot(x, y + 1, C.dim); }
-      for (const tf of this.tFire) { const q = t - tf; if (q >= 0 && q < 160) { const tp = this.tip(tf); A.sparkle(tp[0] + 6, tp[1] - 1, q < 80 ? 2 : 1, C.hi); } }
+      leg(false, p.ob, p.lb, C.dim);
+      const an = a * 1.15;
+      spr(bx, by, MECHB, P);
+      dot(bx + 2, by - 1, Math.floor(t / 300) % 2 ? C.rose : C.dim);           // antenna light
+      leg(true, p.of, p.lf, C.cream);
+      // the cannon on the hull's front: level while walking, swung up to fire
+      for (let i = 0; i <= 4; i++) {
+        const x = bx + 10 + Math.cos(an) * i, y = by + 3 - Math.sin(an) * i;
+        dot(x, y, i === 4 ? C.butter : C.dim);
+        if (i < 4) dot(x + (a > 0.5 ? 1 : 0), y + (a > 0.5 ? 0 : 1), C.line);
+      }
+      for (const tf of this.tFire) { const q = t - tf; if (q >= 0 && q < 170) { const tp = this.tip(tf); A.sparkle(tp[0], tp[1] - 1, q < 85 ? 2 : 1, C.hi); } }
       for (const c of this.conf) {
         const flip = c.rest ? 0 : Math.floor(t / 150 + c.ph) % 2;
         dot(c.x, c.y, c.c); dot(c.x + (flip ? 0 : 1), c.y + (flip ? 1 : 0), c.c);
@@ -599,5 +669,6 @@
     },
   };
 
-  return { questPlatformer: platformer, questDragon: dragon, questNinja: ninja, questDeep: underwater, questWizard: wizard, questMech: mech };
+  const all = { questPlatformer: platformer, questDragon: dragon, questNinja: ninja, questDeep: underwater, questWizard: wizard, questMech: mech };
+  return all;
 });

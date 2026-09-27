@@ -65,13 +65,13 @@ Written by Hyrum Hurst. Full hub at https://quartersmart.com/signals. RSS: https
 - [Sonnet 5 ships and Fable 5 comes back online on the same day](https://quartersmart.com/signals/sonnet-5-fable-5-same-day) (Jun 30, 2026): Two Anthropic model moves on June 30, 2026 and what they mean for business users.
 - [SOPs were written for humans. Your AI needs AOPs.](https://quartersmart.com/signals/sops-to-aops) (Jun 27, 2026): What an AOP (Agent Operating Procedure) is and how to write one.
 - [How to stretch your AI budget by offloading the routine to local models](https://quartersmart.com/signals/stretch-ai-budget) (Jun 27, 2026): Route routine work to local models and cheaper providers, and keep frontier models for the hard minority of tasks.
-- [Why 95% of AI pilots fail to show ROI, and what the 5% do differently](https://quartersmart.com/signals/why-ai-pilots-fail) (Jun 25, 2026): The pattern behind failed pilots and what the successful minority do differently.
+- [Why 95% of AI pilots show no return, and what the ones that work have in common](https://quartersmart.com/signals/why-ai-pilots-fail) (Jun 25, 2026): Why most AI pilots never reach wide use, what the ones that work have in common, and a self-check for your own.
 - [Anthropic's Claude Fable 5: what it is and what to do](https://quartersmart.com/signals/fable-5) (Jun 9, 2026): The first public Mythos-class model and what changed.
-- [Claude Mythos escaped its test sandbox: what happened and what it means for your team](https://quartersmart.com/signals/mythos) (Apr 6, 2026): What Anthropic disclosed and why restricted-access frontier models matter for buyers.
-- [Anthropic's Project Glasswing: 40 organizations get Claude Mythos for cyber defense](https://quartersmart.com/signals/glasswing) (Apr 5, 2026): The organizations given restricted access to Claude Mythos for cyber defense.
+- [Claude Mythos escaped its test sandbox: what happened and what it means for your business](https://quartersmart.com/signals/mythos) (Apr 6, 2026): Anthropic kept Claude Mythos Preview private after it broke out of a test sandbox. What happened, who can use it, and what it means for your business.
+- [Anthropic's Project Glasswing: who can use Claude Mythos Preview, and why it is not public](https://quartersmart.com/signals/glasswing) (Apr 5, 2026): Anthropic kept Claude Mythos Preview private and gave it to a group of software and security companies for defensive work.
 - [Free Claude and GPT access for students: GitHub Copilot Pro and ChatGPT Edu](https://quartersmart.com/signals/free-ai-students) (Apr 4, 2026): How students get pro-level AI tools at no cost through education programs.
-- [Anthropic cut off third-party Claude resellers: what happened and what to do](https://quartersmart.com/signals/third-party-killed) (Apr 3, 2026): What changed for third-party Claude services and the alternatives.
-- [OpenAI's 2026 pricing changes: what changed and who pays more](https://quartersmart.com/signals/openai-pricing) (Apr 2, 2026): A plain breakdown of OpenAI's restructured tiers.
+- [Anthropic stopped Claude subscriptions from running third-party agents: what happened and what changed](https://quartersmart.com/signals/third-party-killed) (Apr 3, 2026): Claude subscriptions stopped powering third-party agent tools in April 2026, then were allowed again in May with a separate metered credit.
+- [OpenAI's pricing in spring 2026: what GPT-5.4 costs and which plan you need](https://quartersmart.com/signals/openai-pricing) (Apr 2, 2026): Which ChatGPT plans include GPT-5.4, what it costs on the API, and whether your team needs Pro. Figures from OpenAI's own pages.
 - [This Week in AI, April 22, 2026](https://quartersmart.com/signals/weekly-advancements-apr-22-2026) (Apr 22, 2026): A roundup of the releases and shifts that mattered that week.
 
 ## Public evidence
@@ -79,7 +79,7 @@ Written by Hyrum Hurst. Full hub at https://quartersmart.com/signals. RSS: https
 - CyberNews feature quoting Hyrum Hurst on local AI models: https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/
 - Qwoted source profile: https://app.qwoted.com/sources/hyrum-hurst
 - Hyrum Hurst n8n creator profile: https://n8n.io/creators/hyrum-hurst
-- Workflow usage data and method (per-template table): https://quartersmart.com/workflow-usage/. Metric rule: the figure on that page counts documented template uses recorded by n8n. It is not a count of users, people, customers or clients.
+- Workflow usage data and method (per-template table): https://quartersmart.com/workflow-usage. Metric rule: the figure on that page counts documented template uses recorded by n8n. It is not a count of users, people, customers or clients.
 - LinkedIn: https://www.linkedin.com/in/hyrum-hurst-83a5a537a/
 - GitHub: https://github.com/hyrumhurst1
 

@@ -86,7 +86,7 @@ console.log(`netlify-build: copied ${n} top-level entries into dist/`);
       date: (h.match(/"datePublished": "([^"]+)"/) || [])[1] || "",
       kind: meta(h, "name", "qs:kind") || "insight",
       label: unesc(meta(h, "name", "qs:label")) || "Insight",
-      verdict: unesc(meta(h, "name", "qs:verdict")) || "Read",
+      verdict: unesc(meta(h, "name", "qs:verdict")) || "",
       cover: meta(h, "name", "qs:cover"),
     });
   }
@@ -96,7 +96,7 @@ console.log(`netlify-build: copied ${n} top-level entries into dist/`);
   <span class="sig__date">${fmt(p.date)}</span>
   <span><span class="sig__t">${esc(p.title)}</span><span class="sig__d">${esc(p.desc)}</span></span>
   <span class="sig__cell sig__cell--a"><span class="label">status</span><span class="chip chip--${p.kind}">${esc(p.label)}</span></span>
-  <span class="sig__cell sig__cell--v"><span class="label">verdict</span><span class="verdict">${esc(p.verdict)}</span></span>
+  ${p.verdict ? `<span class="sig__cell sig__cell--v"><span class="label">verdict</span><span class="verdict">${esc(p.verdict)}</span></span>` : ""}
 </a></li>`).join("\n");
   const hub = "dist/signals/index.html";
   try {

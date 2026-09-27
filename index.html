@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="We track AI launches, tell you which ones matter, and set them up for your team.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-home.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/home.css?v=20260927k">
+<link rel="stylesheet" href="/assets/css/home.css?v=20260927pc">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -57,17 +57,17 @@
   <section class="h4" aria-labelledby="hero-h">
     <div class="h4__win">
       <span class="win__t" aria-hidden="true">attract.exe</span>
-      <span class="win__r" aria-hidden="true" data-scene-label>01/21 title</span>
-      <canvas class="h4__world" data-attract role="img" aria-label="QuarterSmart, drawn in pixels under a starry night sky, being played with by a run of small retro arcade games. Click it to make the letters jump."></canvas>
+      <span class="win__r" aria-hidden="true" data-scene-label>lv 01<span class="win__nm"> title</span></span>
+      <canvas class="h4__world" data-attract role="img" aria-label="QuarterSmart, in pixel letters under a night sky."></canvas>
       <div class="h4__in">
         <h1 class="h4__h" id="hero-h">Use new AI while it's still an advantage.</h1>
         <p class="lede">For owner-led businesses: we watch AI launches, tell you which ones matter, and set them up for your team the day you get access.</p>
         <div class="hx__cta">
           <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
-          <a class="btn btn--ghost" href="/signals/">See this week's AI verdicts</a>
+          <a class="btn btn--ghost" href="#levels">See plans and prices</a>
         </div>
       </div>
-      <span class="win__b" aria-hidden="true">click the world to play</span>
+      <button class="win__b" type="button" data-attract-pause hidden><span>pause</span><span class="sr"> animation</span></button>
     </div>
   </section>
 
@@ -80,7 +80,7 @@
         <div class="qs-art"><canvas aria-hidden="true"></canvas><p class="qs-why" aria-hidden="true">why QuarterSmart?</p></div>
         <div class="qs-copy">
           <h2 class="label label--accent" id="why-h">Why QuarterSmart</h2>
-          <p class="qs-big echo echo--chase" data-count="25">25%</p>
+          <p class="qs-big echo">25%</p>
           <p class="qs-lead">Every AI shift has an early group. We get you in, when it's worth it.</p>
           <p class="qs-kicker">25%? That's a quarter.</p>
         </div>
@@ -97,7 +97,18 @@
         <p class="sig-sign"><span class="nradar" aria-hidden="true"><svg viewBox="0 0 34 24"><path class="dish" d="M11 21h12M17 21v-5M9 9a8 8 0 0 0 16 0z"/><path class="arc l1" d="M7 5a12 12 0 0 0-3 9"/><path class="arc l2" d="M3 2a17 17 0 0 0-3 13"/><path class="arc r1" d="M27 5a12 12 0 0 1 3 9"/><path class="arc r2" d="M31 2a17 17 0 0 1 3 13"/></svg></span><span class="neon">Signals</span></p>
         <h2 class="h-1" id="sig-h">Know what changed. Know what to do.</h2>
         <p class="body-l">AI launches, each with a verdict: act now, prepare, wait or ignore. Free every Monday.</p>
-        <div class="sigband__cta"><a class="btn" href="/signals/">Read Signals</a></div>
+        <form class="sigband__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+          <input type="hidden" name="form-name" value="signals-weekly">
+          <p class="sr" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <input type="hidden" name="source" value="home-signals">
+          <label class="sr" for="sig-email">Work email</label>
+          <div class="field">
+            <input class="input" id="sig-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+            <button class="btn" type="submit">Get Signals</button>
+          </div>
+          <p data-form-status aria-live="polite"></p>
+        </form>
+        <p class="sigband__more"><a class="link" href="/signals/">Read Signals</a></p>
       </div>
       <ol class="sigrows">
         <li><a href="/signals/openai-o-assistant-leak">
@@ -133,12 +144,11 @@
         <li><span class="boot__n">03</span><h3>Deploy</h3><p>Set up in your accounts, tested, taught to the team.</p><span class="boot__ok">from the day it's available to you</span></li>
         <li><span class="boot__n">04</span><h3>Stay current</h3><p>Your setup, adjusted as the tools change.</p><span class="boot__ok">for members</span></li>
       </ol>
-      <p class="boot__verdicts"><b>Act now</b> <b>Prepare</b> <b>Wait</b> <b>Ignore</b></p>
     </div>
   </section>
 
   <!-- 5. Level select: the offer ladder -->
-  <section class="band band--deep levels" aria-labelledby="lv-h" data-levels>
+  <section class="band band--deep levels" id="levels" aria-labelledby="lv-h" data-levels>
     <div class="wrap">
       <div class="levels__head">
         <div>
@@ -167,28 +177,28 @@
             <h3>Signals</h3>
             <p>The feed and a Monday email. What changed, and what to do.</p>
             <ul><li>How sure we are, on every item</li><li>A verdict on every Signal</li></ul>
-            <a class="btn" href="/signals/">Get Signals</a>
+            <a class="btn" href="/signals/#weekly">Get Signals</a>
           </article>
           <article class="lv" role="tabpanel" id="lv-1" aria-labelledby="lv-t1">
             <p class="lv__tag">level 1 · start here · from $1,500 one time</p>
             <h3>Head Start</h3>
             <p>We find the AI you already pay for and aren't using, then hand you a 30-day plan. The fee counts toward your next step.</p>
             <ul><li>The three launches that matter to you</li><li>A 30-day plan</li></ul>
-            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a Head Start call</a>
+            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a>
           </article>
           <article class="lv" role="tabpanel" id="lv-2" aria-labelledby="lv-t2">
             <p class="lv__tag">level 2 · project · from $2,500 per tool</p>
             <h3>Day One Setup</h3>
             <p>One tool, set up for how you work, tested, then taught to your team.</p>
             <ul><li>Inside accounts you own</li><li>A small test first</li><li>Live training for the team</li></ul>
-            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a setup call</a>
+            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a>
           </article>
           <article class="lv lv--feature" role="tabpanel" id="lv-3" aria-labelledby="lv-t3">
             <p class="lv__tag">level 3 · membership · from $1,500 a month</p>
             <h3>First Quarter</h3>
             <p>Signals for your tools, same business day. Priority on launch weeks.</p>
             <ul><li>Verdicts written for your business</li><li>Setup hours held every month</li><li>Team training every quarter</li></ul>
-            <div class="lv__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a call about membership</a><a class="link" href="/services/#first-quarter">Compare plans</a></div>
+            <div class="lv__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a><a class="link" href="/services/#first-quarter">Compare plans</a></div>
           </article>
           <article class="lv" role="tabpanel" id="lv-4" aria-labelledby="lv-t4">
             <p class="lv__tag">level 4 · custom · scoped</p>
@@ -199,6 +209,7 @@
           </article>
         </div>
       </div>
+      <p class="levels__more"><a class="link" href="/services/">See all prices</a></p>
     </div>
   </section>
 
@@ -240,7 +251,7 @@
         <dl class="p1__facts">
           <div><dt>you get</dt><dd>No account managers, no hand-offs</dd></div>
         </dl>
-        <div class="p1__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a call with Hyrum</a><a class="link" href="/about/hyrum-hurst/">More about Hyrum</a></div>
+        <div class="p1__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a><a class="link" href="/about/hyrum-hurst/">More about Hyrum</a></div>
       </div>
     </div>
   </section>
@@ -252,15 +263,15 @@
       <div class="closer__main">
         <p class="closer__sign echo echo--chase" aria-hidden="true">insert coin</p>
         <h2 class="closer__h" id="cta-h">Get in the first quarter.</h2>
-        <p class="body-l">Free, 20 minutes. We'll tell you what's worth doing now.</p>
-        <div class="hx__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
+        <p class="body-l">We'll tell you what's worth doing now.</p>
+        <div class="hx__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a free 20-minute call</a></div>
       </div>
       <form class="closer__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
         <p class="label">Not ready for a call?</p>
         <h3 class="h-3">Get the next Signal instead.</h3>
         <p class="muted">One email, Mondays.</p>
         <input type="hidden" name="form-name" value="signals-weekly">
-        <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
+        <p class="sr" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <input type="hidden" name="source" value="home">
         <label class="sr" for="cta-email">Work email</label>
         <div class="field">
@@ -278,7 +289,7 @@
 <script src="/assets/js/attract-pack-quest.js?v=1" defer></script>
 <script src="/assets/js/attract.js?v=20260927k" defer></script>
 <script src="/assets/js/quarter.js?v=20260927k" defer></script>
-<script src="/assets/js/home.js?v=20260927i" defer></script>
+<script src="/assets/js/home.js?v=20260927pg" defer></script>
 <!-- @include footer -->
 </body>
 </html>

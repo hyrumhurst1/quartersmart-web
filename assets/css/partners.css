@@ -34,6 +34,25 @@
 .pxs__pause:focus-visible { outline: 2px solid var(--fg-0); outline-offset: 2px; }
 .pxs__pause[hidden] { display: none; }
 
+/* Terminal window around a stage (for-agencies, 404), the homepage's hand:
+   a 2px border with the title and the pause control set into it (btop
+   style), a deep-night fill and faint scanlines. */
+.pxwin { --win-bg: var(--bg-0); position: relative; min-width: 0; padding: 26px 16px 24px; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
+.pxwin::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
+.pxwin .win__t, .pxwin .pxs__pause { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--win-bg); white-space: nowrap; }
+.pxwin .win__t { top: -8px; left: 16px; color: var(--fg-1); }
+.pxwin .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); animation: pulse 2.4s steps(2) infinite; }
+.pxwin .pxs { position: static; }
+.pxwin .pxs__pause { right: 16px; bottom: -8px; display: block; width: auto; height: 14px; color: var(--fg-2); }
+.pxwin .pxs__pause[hidden] { display: none; }
+.pxwin .pxs__pause::before, .pxwin .pxs__pause[aria-pressed="true"]::before { content: "pause"; width: auto; height: auto; background: none; box-shadow: none; transform: none; clip-path: none; }
+.pxwin .pxs__pause[aria-pressed="true"]::before { content: "play"; }
+.pxwin .pxs__pause::after { content: ""; position: absolute; inset: -15px 0; }
+.pxwin .pxs__pause:focus-visible { outline-offset: 4px; }
+[data-theme="paper"] .pxwin { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line); }
+[data-theme="paper"] .pxwin::after { opacity: .18; }
+@media (prefers-reduced-motion: reduce) { .pxwin .win__t::before { animation: none; } }
+
 /* The banded wordmark, the no-script fallback inside a stage. */
 .pxw {
   --pb1: var(--fg-0); --pb2: var(--accent); --pb3: var(--info);
@@ -70,13 +89,17 @@
 .pt-ticks a { color: var(--fg-0); text-decoration-color: var(--accent); }
 
 /* ---------- Plain rows (what the partner owns) ---------- */
-.pt-sign { margin: 0 0 18px; font: 400 33px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; }
+.pt-sign { margin: 0 0 18px; font: 400 22px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; }
+/* the homepage's closer sign: the full six-layer echo, one whole pixel per step */
+.pt-sign.echo { margin-bottom: 26px; color: var(--fg-0); --es: 1px; }
 .pt-duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(32px, 5vw, 80px); }
 .pt-duo--one { grid-template-columns: minmax(0, 760px); }
 .pt-duo h3 { font: 400 22px/1.2 var(--pixel); color: var(--fg-0); padding-bottom: 16px; }
 .pt-duo ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 14%, transparent); }
 .pt-duo li { padding: 20px 0; border-bottom: 1px solid color-mix(in srgb, var(--fg-0) 14%, transparent); color: var(--fg-1); font-size: 16px; }
 .pt-duo li b { display: block; font: 400 22px/1.2 var(--pixel); color: var(--fg-0); margin-bottom: 6px; }
+.pt-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px clamp(40px, 6vw, 96px); align-items: start; }
+.pt-split .pt-head { margin: 0; }
 .pt-note { margin-top: 28px; color: var(--fg-2); font-size: 15px; max-width: 72ch; }
 [data-theme="paper"] .band--slate .pt-note { color: var(--fg-1); }
 
@@ -151,11 +174,11 @@
 .pt-table tfoot td { border-bottom: 0; padding-top: 18px; color: var(--fg-0); font-weight: 500; }
 .pt-table tfoot .num { font-size: 27.5px; }
 
-/* ---------- Close: an arcade at night ---------- */
-.pt-close { position: relative; overflow: hidden; padding: clamp(96px, 11vw, 160px) 0 clamp(150px, 26vw, 380px); }
-.pt-close__scene { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; aspect-ratio: 128 / 36; object-fit: cover; object-position: bottom; image-rendering: pixelated; opacity: .9; pointer-events: none; transform: scaleX(-1);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 62%); mask-image: linear-gradient(180deg, transparent 0, #000 62%); }
-.pt-close__cab { position: absolute; right: clamp(16px, 8vw, 140px); bottom: clamp(24px, 3vw, 44px); width: 204px; height: auto; image-rendering: pixelated; pointer-events: none; }
+/* ---------- Close: the call, with one arcade cabinet standing by ----------
+   The cabinet is a sprite at a whole-pixel scale (3x), level with the last
+   line of the close, like the Signals posts; phones and tablets drop it. */
+.pt-close { position: relative; overflow: hidden; padding: clamp(96px, 11vw, 160px) 0; }
+.pt-close__cab { position: absolute; right: clamp(16px, 8vw, 140px); bottom: clamp(96px, 11vw, 160px); width: 153px; height: auto; image-rendering: pixelated; pointer-events: none; }
 .pt-close .wrap { position: relative; }
 .pt-close__main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; max-width: 760px; }
 .pt-close__h { font: 400 88px/1.02 var(--pixel); letter-spacing: -.01em; max-width: 13ch; }
@@ -166,7 +189,7 @@
 .pt-close--plain { padding-bottom: clamp(96px, 11vw, 160px); }
 
 /* ---------- 404 ---------- */
-.nf { position: relative; overflow: hidden; min-height: calc(100vh - 90px); display: grid; align-items: start; padding: clamp(56px, 7vw, 96px) 0 clamp(360px, 29vw, 420px); }
+.nf { position: relative; overflow: hidden; display: grid; align-items: start; padding: clamp(56px, 7vw, 96px) 0 clamp(88px, 10vw, 144px); }
 .nf__grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 40px clamp(40px, 6vw, 96px); align-items: center; }
 .nf__copy { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
 .nf .lede code { font: 400 .9em var(--mono); color: var(--fg-0); background: var(--bg-2); padding: .1em .4em; word-break: break-all; }
@@ -174,10 +197,6 @@
 .nf__fix { color: var(--fg-2); font-size: 15px; }
 .nf__fix a { color: var(--fg-1); }
 .nf__stage .pxw { font-size: 132px; line-height: .86; }
-/* the one neon sign hangs over the cabinet on the horizon */
-.nf__arcade { position: absolute; right: clamp(16px, 8vw, 140px); bottom: clamp(24px, 3vw, 44px); display: grid; justify-items: center; gap: 14px; pointer-events: none; }
-.nf__cab { display: block; width: 153px; height: auto; image-rendering: pixelated; }
-.nf__sign { margin: 0; font: 400 22px/1 var(--pixel); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 
 /* ---------- Responsive ---------- */
 /* Departure Mono stays on its 11px grid: sizes step, they don't slide. */
@@ -189,16 +208,15 @@
   .pt-wu .pt-h1--xl { font-size: 55px; }
 }
 @media (max-width: 1000px) {
-  .pt-hero__in--stage, .pt-head, .pt-rows > li, .pt-duo, .pt-method, .pt-faq, .pt-wu, .nf__grid { grid-template-columns: minmax(0, 1fr); }
+  .pt-hero__in--stage, .pt-head, .pt-rows > li, .pt-duo, .pt-method, .pt-faq, .pt-wu, .pt-split, .nf__grid { grid-template-columns: minmax(0, 1fr); }
   .pt-hero__stage, .nf__stage { order: -1; }
   .pxs { max-width: 480px; }
+  .pxwin { width: 100%; max-width: 516px; }
+  .pxwin .pxs { max-width: none; }
   .pt-faq .pt-head { position: static; }
   .pt-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; }
   .pt-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
-  .pt-close__cab { width: 120px; }
-  .nf { padding-bottom: 300px; }
-  .nf__arcade { right: 16px; bottom: 20px; }
-  .nf__cab { width: 102px; }
+  .pt-close__cab { display: none; }
 }
 @media (max-width: 760px) {
   .pt-for { grid-template-columns: minmax(0, 1fr); }
@@ -220,24 +238,21 @@
   .pt-steps li { padding: 0 0 36px; }
   .pt-steps li::before { top: 6px; left: -34px; width: 12px; height: 12px; }
   .pt-steps__n { font-size: 55px; }
-  .pt-sign { font-size: 27.5px; }
   .pt-table { font-size: 15px; }
   .pt-table th, .pt-table td { padding: 12px 6px; }
   .pt-table .n { display: none; }
   .pt-table .num { font-size: 16.5px; }
   .pt-table tfoot .num { font-size: 22px; }
-  .pt-close__cab { display: none; }
   .pt-close__h--m { font-size: 44px; }
   .pt-facts { grid-template-columns: minmax(0, 1fr); }
   .pt-facts li { grid-template-columns: 104px minmax(0, 1fr); align-items: baseline; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
   .pt-facts b { font-size: 16.5px; }
   .pxw { font-size: 44px; }
   .nf__stage .pxw { font-size: 88px; }
-  .nf__sign { font-size: 16.5px; }
+  .pt-hero, .nf { padding-top: 40px; }
 }
 /* Small phones: the arcade button steps down a size so it never runs past the edge. */
 @media (max-width: 400px) {
   .pt-cta .btn--arcade, .nf__book .btn--arcade { font-size: 16.5px; padding: 0 18px; }
   .pt-cta .btn--xl { min-height: 56px; padding: 0 22px; }
 }
-[data-theme="paper"] .pt-close__scene { opacity: .5; }

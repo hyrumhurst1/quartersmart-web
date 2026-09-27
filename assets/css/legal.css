@@ -22,13 +22,47 @@
 .lhead__meta { display: flex; flex-wrap: wrap; gap: 6px 26px; font-size: 15px; color: var(--fg-2); }
 .lhead__meta b { font-weight: 500; color: var(--fg-1); }
 .lhead__meta a { color: var(--fg-1); }
-.lhead__art { margin: 0 0 6px; display: grid; justify-items: center; }
-.lhead__art .px { width: 162px; }
-.lhead__art::after { content: ""; width: 124%; height: 2px; margin-top: 2px; background: color-mix(in srgb, var(--fg-0) 16%, transparent); }
+/* Hero art: the pixel stage (radar.js) inside a terminal window, the
+   homepage's hand: a 2px border with the title, the scene pips and the pause
+   control set into it (btop style), a deep-night fill and faint scanlines. */
+.lhead__art { margin: 0 0 6px; }
+.pxwin { --win-bg: var(--bg-0); position: relative; min-width: 0; padding: 26px 16px 24px; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
+.lhead__art.pxwin { width: 324px; }
+.pxwin::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
+.pxwin .win__t, .pxwin .pxstage__pips, .pxwin .pxstage__pause { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--win-bg); white-space: nowrap; }
+.pxwin .win__t { top: -8px; left: 16px; color: var(--fg-1); }
+.pxwin .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); animation: pulse 2.4s steps(2) infinite; }
+.pxstage { margin: 0; display: grid; justify-items: center; min-width: 0; }
+.pxstage__screen { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 3 / 2; }
+.pxstage__screen > * { grid-area: 1 / 1; }
+/* the screen snaps to the stage grid (whole multiples of its 144 art pixels,
+   as radar.js scales), so a placed still sits at a whole-pixel scale too */
+.pxwin .pxstage__screen { width: 100%; width: min(576px, round(down, 100%, 144px)); }
+@media (min-resolution: 2dppx) { .pxwin .pxstage__screen { width: min(576px, round(down, 100%, 72px)); } }
+@media (min-resolution: 3dppx) { .pxwin .pxstage__screen { width: min(576px, round(down, 100%, 48px)); } }
+.pxstage canvas { display: block; image-rendering: pixelated; opacity: 0; transition: opacity .4s; }
+.pxstage.is-live canvas { opacity: 1; }
+.pxstage__still { width: auto; height: 76%; image-rendering: pixelated; transition: opacity .5s; }
+.pxstage__still[style*="--w"] { position: absolute; left: calc(var(--x) / 144 * 100%); top: calc(var(--y) / 96 * 100%); width: calc(var(--w) / 144 * 100%); height: auto; }
+.pxstage.is-live .pxstage__still { opacity: 0; pointer-events: none; }
+.pxstage__bar { display: contents; }
+.pxwin .pxstage__pips { top: -8px; right: 16px; height: 14px; display: flex; align-items: center; gap: 5px; }
+.pxstage__pips i { display: block; width: 5px; height: 5px; background: var(--line-2); transition: width .3s var(--ease), background .3s; }
+.pxstage__pips i.on { width: 15px; background: var(--accent); }
+.pxwin .pxstage__pause { bottom: -8px; right: 16px; display: block; height: 14px; border: 0; border-radius: 0; color: var(--fg-2); cursor: pointer; }
+.pxwin .pxstage__pause::before { content: "pause"; }
+.pxwin .pxstage__pause[aria-pressed="true"]::before { content: "play"; }
+.pxwin .pxstage__pause::after { content: ""; position: absolute; inset: -15px 0; }
+.pxwin .pxstage__pause:hover, .pxwin .pxstage__pause:focus-visible { color: var(--fg-0); }
+[data-theme="paper"] .pxwin { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line); }
+[data-theme="paper"] .pxwin::after { opacity: .18; }
+@media (prefers-reduced-motion: reduce) { .pxwin .win__t::before { animation: none; } .pxstage canvas, .pxstage__still { transition: none; } }
 
-/* Neon sign used as the eyebrow on a Signals page (one per page) */
-.lsign { display: flex; align-items: center; gap: 12px; margin: 0; font: 400 27.5px/1 var(--pixel); }
-.lsign .nradar svg { width: 48px; height: 33px; }
+/* Echo sign used as the eyebrow on a Signals page (one per page): the Signals
+   power-up at 1x beside the homepage's small echo sign, like the Signals hub */
+.lsign { display: flex; align-items: center; gap: 12px; margin: 0 0 6px; font: 400 22px/1 var(--pixel); letter-spacing: .02em; }
+.lsign__pu { display: block; flex: none; width: 32px; height: 32px; image-rendering: pixelated; }
+.lsign .echo { color: var(--fg-0); --es: 1px; }
 
 /* ---------- The short version: big plain statements on a colour band ---------- */
 .tldr { display: grid; gap: clamp(36px, 4vw, 52px); }
@@ -151,7 +185,6 @@
   .lhead__grid { grid-template-columns: 1fr; }
   .lhead__art { display: none; }
   .lhead__h { font-size: 44px; line-height: 1.06; }
-  .lsign { font-size: 27.5px; }
   .tldr__list li { grid-template-columns: 1fr; }
   .tldr__list b { font-size: 22px; }
   .ldoc__toc ol { grid-template-columns: 1fr 1fr; column-gap: 16px; }

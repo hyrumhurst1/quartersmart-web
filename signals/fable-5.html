@@ -23,7 +23,7 @@
 <meta name="twitter:image" content="https://quartersmart.com/assets/images/signals/fable-5-cover.jpg">
 <meta name="qs:kind" content="available">
 <meta name="qs:label" content="Available · Jun 2026">
-<meta name="qs:verdict" content="Try it">
+<meta name="qs:verdict" content="Act now">
 <meta name="qs:cover" content="/assets/px/sprite-radar.png">
 <!-- @include head -->
 <link rel="stylesheet" href="/assets/css/signals-post.css?v=20260927m">
@@ -50,7 +50,10 @@
       "datePublished": "2026-06-09",
       "dateModified": "2026-09-27",
       "author": {
-        "@id": "https://quartersmart.com/about.html#hyrum-hurst"
+        "@type": "Person",
+        "@id": "https://quartersmart.com/about.html#hyrum-hurst",
+        "name": "Hyrum Hurst",
+        "url": "https://quartersmart.com/about/hyrum-hurst"
       },
       "publisher": {
         "@id": "https://quartersmart.com/#organization"
@@ -94,16 +97,19 @@
     <div class="wrap phero__grid">
       <div class="phero__copy">
         <nav class="phero__crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/signals/">Signals</a></nav>
-        <p class="phero__meta"><span class="chip chip--available">Available · Jun 2026</span><span class="phero__verdict">Verdict<b>Try it</b></span></p>
+        <p class="phero__meta"><span class="chip chip--available">Available · Jun 2026</span><span class="phero__verdict">Verdict:<b>Act now</b></span></p>
         <h1 class="phero__h">Anthropic's Claude Fable 5: what it is and what to do</h1>
         <p class="lede">Fable 5 was the first Mythos-class model anyone could buy: the capability tier behind the sandbox headlines, released under a storybook name at twice the price of Opus 4.8. Here is what changed and how to test it.</p>
         <p class="byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-06-09">Jun 9, 2026</time></span></p>
         <div class="phero__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a><a class="link" href="#for-your-team">What it means for your team</a></div>
       </div>
-      <div class="pxstage phero__art" data-pxstage data-first="radar" data-scenes="radar rocket scope verdicts word satellite tower mail wave assistant keyboard mark arcade floppies" data-max="3">
-        <div class="pxstage__screen">
-          <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, picking up a model release." fetchpriority="high">
-          <canvas aria-hidden="true"></canvas>
+      <div class="pxwin phero__art">
+        <span class="win__t" aria-hidden="true">signal.exe</span>
+        <div class="pxstage" data-pxstage data-first="radar" data-scenes="radar rocket scope verdicts satellite tower mail wave assistant keyboard mark" data-max="4">
+          <div class="pxstage__screen">
+            <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" style="--x:45;--y:10;--w:54" alt="Pixel art of a radar dish on a lattice tower, picking up a model release." fetchpriority="high">
+            <canvas aria-hidden="true"></canvas>
+          </div>
         </div>
       </div>
     </div>
@@ -121,12 +127,14 @@
         </ul>
       </div>
 
-      <p>In April we wrote about <a href="/signals/mythos">Claude Mythos breaking out of its test sandbox</a>. It was the most capable model Anthropic had built, held in a restricted program for a few dozen vetted organizations, with kill switches and transparency reports around it. The message of that news cycle was that this capability tier was not ready for general release.</p>
+      <div class="callout"><strong>Later update:</strong> On June 12, 2026 the US government directed Anthropic to suspend access to Fable 5 and Mythos 5 by foreign nationals, and Anthropic switched both models off for all of its customers to comply. Access began returning on June 30. <a href="/signals/sonnet-5-fable-5-same-day">What happened and what it means</a>.</div>
+
+      <p>In April we wrote about <a href="/signals/mythos">Claude Mythos breaking out of its test sandbox</a>. It was the most capable model Anthropic had built, and Anthropic kept it out of general release, giving access only to a vetted group of partners through <a href="/signals/glasswing">Project Glasswing</a>. The message of that news cycle was that this capability tier was not ready for general release.</p>
       <p>On June 9, Anthropic <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" rel="noopener">released it to everyone</a>, under the name <strong>Fable</strong>.</p>
 
       <h2>What shipped</h2>
       <p>Anthropic released two models at once: <strong>Claude Fable 5</strong> and <strong>Claude Mythos 5</strong>. Fable 5 is the first model from the Mythos class, the capability tier above Opus, to be made generally available. Anthropic says its capabilities exceed any model it had previously released, with state-of-the-art results across nearly every benchmark it tested: software engineering, knowledge work, vision and scientific research.</p>
-      <p>The difference between the two models is not capability. It is the safeguards. When a query trips certain risk classifiers, the response you get from Fable 5 is generated by Claude Opus 4.8 instead. Anthropic says the safeguards are tuned conservatively, will sometimes catch harmless requests, and trigger in fewer than 5 percent of sessions on average. Mythos 5 is the same model without those safeguards, and access is limited to vetted users, mostly the cybersecurity professionals who had early access under the original restricted program.</p>
+      <p>The two models have the same capability. They differ in safeguards. When a query trips certain risk classifiers, the response you get from Fable 5 is generated by Claude Opus 4.8 instead. Anthropic says the safeguards are tuned conservatively, will sometimes catch harmless requests, and trigger in fewer than 5 percent of sessions on average. Mythos 5 is the same model without those safeguards, and access is limited to vetted users, mostly the cybersecurity professionals who had early access under the original restricted program.</p>
       <table>
         <thead>
           <tr><th></th><th>Fable 5</th><th>Mythos 5</th><th>Opus 4.8</th></tr>
@@ -134,7 +142,7 @@
         <tbody>
           <tr><td>Capability class</td><td>Mythos-class</td><td>Mythos-class</td><td>Opus-class</td></tr>
           <tr><td>Safeguards</td><td>Risky queries rerouted to Opus 4.8</td><td>No reroute</td><td>Standard</td></tr>
-          <tr><td>Who gets it</td><td>Everyone</td><td>Vetted users only</td><td>Everyone</td></tr>
+          <tr><td>Who got it at launch</td><td>Everyone</td><td>Vetted users only</td><td>Everyone</td></tr>
           <tr><td>Price per million tokens</td><td>$10 in / $50 out</td><td>$10 in / $50 out</td><td>$5 in / $25 out</td></tr>
         </tbody>
       </table>
@@ -143,14 +151,14 @@
       <p>For months, most of what the public heard about this model line was alarming: a sandbox escape, a new safety classification, access restricted to a short list of organizations. <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/" rel="noopener">TechCrunch notes</a> the release landed days after Anthropic publicly warned that AI is becoming too dangerous. The public product then arrived with a name that sounds like a children's book.</p>
       <p>Anthropic's own announcement explains the choice:</p>
       <figure><blockquote><p>"Fable is from the Latin fabula, 'that which is told,' akin to the Greek mythos."</p></blockquote><figcaption>Anthropic, Fable 5 announcement, June 2026</figcaption></figure>
-      <p><strong>Fable is not a softer name than Mythos. It is the same word</strong>, in Latin instead of Greek. The restricted tier keeps the original name, and the public product gets one that reads well in a procurement meeting. Both mean the same thing.</p>
+      <p><strong>Fable and Mythos mean the same thing</strong>, one in Latin and one in Greek. The restricted tier keeps the original name, and the public product gets one that reads well in a procurement meeting.</p>
 
       <h2>From a restricted program to general release in ten weeks</h2>
       <p>What changed between April, when this tier was held back, and June? The safeguard architecture. Fable 5 is a frontier model with a better-understood model standing behind it, taking over when a query wanders somewhere risky. That is a new release pattern: ship the capability, gate the edges, and route the gated edges to the previous flagship.</p>
 
       <div class="callout callout--info">
         <p class="label">What do Fable 5's safeguards actually do?</p>
-        <p>When a request trips Anthropic's risk classifiers, Fable 5 does not refuse. The response is generated by Claude Opus 4.8 instead, the previous flagship. Anthropic says the thresholds are tuned conservatively, so some harmless requests will get caught, and that the reroute triggers in fewer than 5 percent of sessions on average. Practically, that means two sessions with the same product can be answered by two different models, and you will not always know which one you got.</p>
+        <p>When a request trips Anthropic's risk classifiers, the response comes from Claude Opus 4.8, the previous flagship. Anthropic says the thresholds are tuned conservatively, so some harmless requests will get caught, and that the reroute triggers in fewer than 5 percent of sessions on average. Practically, that means two sessions with the same product can be answered by two different models, and you will not always know which one you got.</p>
       </div>
 
       <p>It also explains the dual release. The cybersecurity professionals inside the original restricted program get Mythos 5 without the reroute, because their work is exactly what the safeguards would catch. Everyone else gets Fable 5.</p>
@@ -158,9 +166,9 @@
       <h2 id="for-your-team">What this means for your team</h2>
       <p>This is the most capable model you can buy as of June 9, and it costs double. A few practical notes before you swap it into production:</p>
       <ul>
-        <li><strong>Double the price changes the math.</strong> At $10 in and $50 out per million tokens, Fable 5 costs twice what Opus 4.8 does. If a workflow already runs well on Opus, upgrading it is a cost increase, not an automatic win. Upgrade the workflows where capability is the bottleneck, and keep the rest where they are.</li>
+        <li><strong>Double the price changes the math.</strong> At $10 in and $50 out per million tokens, Fable 5 costs twice what Opus 4.8 does. If a workflow already runs well on Opus, upgrading it doubles the cost. Upgrade the workflows where capability is the bottleneck, and keep the rest where they are.</li>
         <li><strong>The reroute is invisible until it is not.</strong> If your workflows touch security, compliance, legal or medical edge cases, some sessions will come back from Opus 4.8 instead of Fable 5. For most teams that is fine. Where you are paying for frontier reasoning specifically, test whether your prompts trip the classifier.</li>
-        <li><strong>Test on your work, not their benchmarks.</strong> State-of-the-art results on research benchmarks tell you what is possible, not what your own workflows will do. Run the new model against real tasks, measure, then decide.</li>
+        <li><strong>Test on your own work.</strong> Benchmarks show what is possible. Your own tasks show what you will get. Run the new model against real tasks, measure, then decide.</li>
       </ul>
 
       <div class="callout callout--accent">
@@ -183,7 +191,7 @@
 
       <h2>Update log</h2>
       <ul class="updlog">
-        <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout, retitled, and trimmed our own commentary. The reporting, prices and dates are unchanged. Original title: "They Spent Months Scaring You About Mythos. Then They Named It Fable."</span></li>
+        <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout, retitled, trimmed our own commentary, and added a note on the June 12 suspension and the return that began June 30. Original title: "They Spent Months Scaring You About Mythos. Then They Named It Fable."</span></li>
         <li><time datetime="2026-06-09">Jun 9, 2026</time><span>First posted.</span></li>
       </ul>
 
@@ -193,7 +201,7 @@
     <aside class="psum" aria-label="Signal summary">
       <div>
         <p class="psum__k">Verdict</p>
-        <p class="psum__v">Try it</p>
+        <p class="psum__v">Act now</p>
       </div>
       <dl class="psum__kv">
         <div><dt>Status</dt><dd><span class="chip chip--available">Available · Jun 2026</span></dd></div>

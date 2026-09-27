@@ -12,6 +12,7 @@ processed, transparent PNG sprites at native pixel size (scale up with integer f
 - `sprites/avatar-hyrum.png`
 - `sprites/avatar-idle.png`
 - `sprites/cabinet-row.png`
+- `sprites/coin-slot-mini.png`
 - `sprites/coin-slot.png`
 - `sprites/coin-spin.png`
 - `sprites/desk-hacker.png`

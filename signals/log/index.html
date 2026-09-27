@@ -70,7 +70,15 @@
           </div>
           <p class="lhead__meta"><span>1 item logged · 1 open</span><span>Updated <b><time datetime="2026-09-27">Sep 27, 2026</time></b></span><span>Corrections: <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a></span></p>
         </div>
-        <figure class="lhead__art"><img class="px" src="/assets/px/sprite-radar.png" width="54" height="81" alt="A radar dish on a stand, in pixel art." loading="eager"></figure>
+        <div class="pxwin lhead__art">
+          <span class="win__t" aria-hidden="true">log.exe</span>
+          <div class="pxstage" data-pxstage data-first="radar" data-scenes="radar scope tower" data-max="2" data-hold="2400">
+            <div class="pxstage__screen">
+              <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" style="--x:45;--y:10;--w:54" alt="A radar dish on a stand, in pixel art." loading="eager">
+              <canvas aria-hidden="true"></canvas>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -121,6 +129,7 @@
   </section>
 </main>
 
+<script src="/assets/js/radar.js?v=20260927m" defer></script>
 <!-- @include footer -->
 </body>
 </html>

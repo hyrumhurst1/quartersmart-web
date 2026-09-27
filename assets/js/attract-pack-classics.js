@@ -64,14 +64,15 @@
       word: { lay: 'line', F: 2, style: 'neon' },
       parade: [['..x..', '.x.x.', '.x.x.', 'x...x', 'xx.xx'], 'cream'],
       init() {
-        this.t = 0;
+        this.t = 0; this.back = 1100;
         const L = A.letters, W = A.word;
         this.sy = Math.round(A.WY1 + (A.PH - A.WY1) * 0.5);
         const cen = L.map((l) => [(l.x0 + l.x1) / 2, (l.y0 + l.y1) / 2]);
-        const want = A.small ? [8, 0, 10, 6, 7, 11] : [2, 9, 5, 0, 11, 7];
+        // five shots, spaced so at most two letters are ever cracked at once
+        const want = A.small ? [8, 10, 7, 11, 9] : [2, 9, 5, 0, 7];
         this.shots = [];
         const seen = new Set();
-        let tf = 900;
+        let tf = 850;
         for (const li of want) {
           const ox = this.shipX(tf), a = Math.atan2(cen[li][1] - this.sy, cen[li][0] - ox);
           let hit = null;
@@ -84,14 +85,17 @@
           if (!hit || seen.has(hit.li)) continue;
           seen.add(hit.li);
           this.shots.push({ tf, a, ox, li: hit.li, hx: hit.x, hy: hit.y, th: tf + (hit.d - 6) / 0.12 });
-          tf += 600;
+          tf += 780;
         }
-        // each struck letter cracks in two along the bullet's path; the halves drift apart like rocks
+        // each struck letter cracks in two along the bullet's path; the halves shear apart like split
+        // rocks (a small sideways slip plus one pixel up / down, so they never run into the neighbours)
         this.ch = new Map();
         for (const s of this.shots) {
-          const fx = Math.cos(s.a), fy = Math.sin(s.a), nx = -fy, ny = fx;
-          const dirs = [[nx + fx * 0.35, ny + fy * 0.35], [-nx + fx * 0.35, -ny + fy * 0.35]].map(([x, y]) => { const m = Math.hypot(x, y) || 1; return [x / m, y / m]; });
-          this.ch.set(s.li, { th: s.th, dirs, nx, ny, cx: cen[s.li][0], cy: cen[s.li][1] });
+          const fx = Math.cos(s.a), fy = Math.sin(s.a);
+          let nx = -fy, ny = fx;
+          if (nx < 0) { nx = -nx; ny = -ny; }
+          const sx = Math.abs(nx) > 0.35 ? 1 : 0;
+          this.ch.set(s.li, { th: s.th, dirs: [[sx, -1], [-sx, 1]], nx, ny, cx: cen[s.li][0], cy: cen[s.li][1] });
         }
         this.k = new Int8Array(W.length).fill(-1);
         for (const w of W) {
@@ -111,18 +115,18 @@
         this.ang = -Math.PI / 2;
       },
       // the ship glides slowly along the space under the word
-      shipX(t) { return Math.round(A.GW / 2 + Math.sin(t / 1900 - 0.7) * A.GW * (A.small ? 0.26 : 0.16)); },
+      shipX(t) { return Math.round(A.GW / 2 + Math.sin(t / 1900 - 0.7) * A.GW * (A.small ? 0.34 : 0.16)); },
       update(t) {
         this.t = t;
         this.sx = this.shipX(t);
         this.ang = keyed(this.keys, t, -Math.PI / 2);
-        const D = A.small ? 2.5 : 3;
         this.off = new Map();
         for (const [li, c] of this.ch) {
-          if (t < c.th || t > c.th + 2200) continue;
-          let d = D * eo(seg(t, c.th, c.th + 500)) + Math.min(1.5, Math.max(0, t - c.th - 500) * 0.0012);
-          d *= 1 - eio(seg(t, c.th + 1450, c.th + 2050));
-          this.off.set(li, c.dirs.map(([x, y]) => [Math.round(x * d), Math.round(y * d)]));
+          if (t < c.th || t > c.th + this.back + 420) continue;
+          // snap apart fast, drift one more pixel, then glide home
+          let d = eo(seg(t, c.th, c.th + 260)) * 1.5 + eio(seg(t, c.th + 260, c.th + 900)) * 0.5;
+          d *= 1 - eio(seg(t, c.th + this.back - 30, c.th + this.back + 420));
+          this.off.set(li, c.dirs.map(([x, y]) => [Math.round(x * Math.min(1, d)), Math.round(y * d)]));
         }
       },
       draw() {
@@ -133,8 +137,8 @@
             const c = this.ch.get(w.li);
             if (!c || t < c.th) return null;
             if (t - c.th < 110) return C.hi;
-            const back = c.th + 2050;
-            if (t > back && t < back + 130) return C.hi;
+            const back = c.th + this.back + 420;
+            if (t > back && t < back + 120) return C.hi;
             return t < back && w.edge ? C.cream : null;
           },
         });
@@ -175,23 +179,30 @@
           return [x, A.Y0];
         };
         this.gy = Math.min(A.PH - 1, A.WY1 + 1);
-        const bw = Math.max(4, Math.round(X0 / 2));
-        this.bases = [[bw, this.gy - 4], [GW - 1 - bw, this.gy - 4]];
+        // three batteries perch on tall letters (left, middle, right), so every interceptor climbs
+        // clear of the word instead of streaking across it
+        const L = A.letters, stacked = L[7].y0 > L[6].y1;
+        this.bases = (stacked ? [0, 4, 6] : [0, 7, 11]).map((li) => {
+          const l = L[li];
+          let x0 = 1e9, x1 = -1e9;
+          for (const w of A.word) if (w.li === li && w.y === l.y0) { x0 = Math.min(x0, w.x); x1 = Math.max(x1, w.x); }
+          return [Math.round((x0 + x1) / 2), l.y0 - 3];
+        });
         this.ms = []; this.bl = []; this.sc = null;
         const add = (x0, y0, x1, y1, t0, T) => { const m = { x0, y0, x1, y1, t0, T, end: t0 + T, pop: false }; this.ms.push(m); return m; };
         const at = (m, t) => { const u = (t - m.t0) / m.T; return [lerp(m.x0, m.x1, u), lerp(m.y0, m.y1, u)]; };
-        const near = (x) => (Math.abs(x - this.bases[0][0]) < Math.abs(x - this.bases[1][0]) ? this.bases[0] : this.bases[1]);
+        const near = (x) => this.bases.reduce((p, q) => (Math.abs(x - q[0]) < Math.abs(x - p[0]) ? q : p));
         const plan = [
-          { t0: 100, sx: 0.14, tx: 0.1, f: 0.68 },
-          { t0: 420, sx: 0.86, tx: 0.8, f: 0.64 },
-          { t0: 850, sx: 0.5, tx: 0.44, f: 0.7 },
-          { t0: 1250, sx: 0.66, tx: 0.63, hit: true },
-          { t0: 2150, sx: 0.3, kids: [0.16, 0.38], f: 0.3 },
-          { t0: 2600, sx: 0.97, tx: 0.93, f: 0.66 },
-          { t0: 3150, sx: 0.04, tx: 0.27, f: 0.62 },
-          { t0: 3650, sx: 0.76, tx: 0.72, f: 0.66 },
-          { t0: 4250, sx: 0.4, tx: 0.55, f: 0.7 },
-          { t0: 4500, sx: 0.88, tx: 0.99, f: 0.62 },
+          { t0: 100, sx: 0.14, tx: 0.1, f: 0.6 },
+          { t0: 420, sx: 0.86, tx: 0.8, f: 0.58 },
+          { t0: 850, sx: 0.5, tx: 0.44, f: 0.62 },
+          { t0: 1250, sx: 0.3, tx: 0.22, hit: true },
+          { t0: 2150, sx: 0.62, kids: [0.5, 0.72], f: 0.3 },
+          { t0: 2600, sx: 0.97, tx: 0.93, f: 0.6 },
+          { t0: 3150, sx: 0.04, tx: 0.27, f: 0.58 },
+          { t0: 3650, sx: 0.76, tx: 0.72, f: 0.6 },
+          { t0: 4250, sx: 0.4, tx: 0.55, f: 0.62 },
+          { t0: 4500, sx: 0.88, tx: 0.99, f: 0.56 },
         ];
         const R = A.small ? 5 : 6;
         for (const p of plan) {
@@ -242,11 +253,13 @@
       draw() {
         const C = A.C, t = this.t, s = this.sc;
         rect(0, this.gy, A.GW, 1, C.line);
-        for (const [bx, by] of this.bases) spr(bx - 2, by + 1, ['..x..', '.xxx.', 'xxxxx'], { x: C.quart });
         for (const b of this.bl) {
           if (!b.base || t < b.tl || t >= b.tb) continue;
-          const u = (t - b.tl) / (b.tb - b.tl), hx = lerp(b.base[0], b.x, u), hy = lerp(b.base[1], b.y, u);
-          line(b.base[0], b.base[1], hx, hy, C.teal); px(hx, hy, C.hi);
+          const u = (t - b.tl) / (b.tb - b.tl), hx = lerp(b.base[0], b.x, u), hy = lerp(b.base[1] - 1, b.y, u);
+          // the mark the interceptor is flying to, as on the cabinet
+          const mx = Math.round(b.x), my = Math.round(b.y);
+          for (const [dx, dy] of [[-1, -1], [1, -1], [0, 0], [-1, 1], [1, 1]]) px(mx + dx, my + dy, C.teal);
+          line(b.base[0], b.base[1] - 1, hx, hy, C.teal); px(hx, hy, C.hi);
         }
         for (const m of this.ms) {
           if (t < m.t0 || t > m.end + 260) continue;
@@ -266,6 +279,17 @@
             return d < 2.2 ? C.line : C.dim;
           } : null,
         });
+        // the batteries sit on their letters; the tip lights as each one fires
+        for (const [bx, by] of this.bases) {
+          const fire = this.bl.some((b) => b.base && b.base[0] === bx && t >= b.tl && t < b.tl + 140);
+          spr(bx - 2, by, ['..o..', '.xxx.', 'xxxxx'], { x: C.teal, o: fire ? C.hi : C.teal });
+        }
+        // a thin wisp of smoke over the scorch while it heals
+        if (s && t > s.th) for (let k = 0; k < 4; k++) {
+          const a = t - s.th - k * 280;
+          if (a < 0 || a > 900) continue;
+          px(s.x + (k % 2 ? 1 : -1) + Math.sin(a / 170 + k) * 1.2, s.y - 3 - a * 0.013, a < 450 ? C.dim : C.line);
+        }
         // blooms: layered discs whose colours roll inward, the cabinet's flashing explosion, slowed down
         const bc = [C.rose, C.butter, C.hi];
         for (const b of this.bl) {
@@ -359,9 +383,9 @@
       loff(t) {
         const l = this.l, lh = this.lh;
         if (t < this.tRise) return Z;
-        if (t < this.tBack) return [0, Math.round(lerp(0, this.hy - 2 - lh - l.y0 + 1, eio(seg(t, this.tRise, this.tHeld))))];
-        if (t < this.tHit) { const b = this.enemy(this.boss, t); return [Math.round(b[0] - this.lcx), Math.round(b[1] - 2 - lh + 1 - l.y0)]; }
-        const dy0 = this.fy - 2 - lh + 1 - l.y0;
+        if (t < this.tBack) return [0, Math.round(lerp(0, this.hy - 3 - lh - l.y0 + 1, eio(seg(t, this.tRise, this.tHeld))))];
+        if (t < this.tHit) { const b = this.enemy(this.boss, t); return [Math.round(b[0] - this.lcx), Math.round(b[1] - 3 - lh + 1 - l.y0)]; }
+        const dy0 = this.fy - 3 - lh + 1 - l.y0;
         if (t < this.tHit + 520) return [0, Math.round(dy0 * (1 - Math.pow(seg(t, this.tHit, this.tHit + 520), 2)))];
         return [0, -Math.round(2 * Math.sin(Math.PI * seg(t, this.tHit + 520, this.tHit + 720)))];
       },
@@ -390,14 +414,15 @@
             return null;
           },
         });
+        // bees: striped body, cream wings that beat; the boss: a wider green flagship with a crown
         const flap = Math.floor(t / 260) % 2;
-        const bee = flap ? ['x.x.x', 'xxxxx', '.oxo.', '.x.x.'] : ['.x.x.', 'xxxxx', '.oxo.', 'x...x'];
-        const boss = flap ? ['..o.o..', '.xxxxx.', 'xx.x.xx', 'xxxxxxx', 'x.x.x.x'] : ['..o.o..', '.xxxxx.', 'xx.x.xx', 'xxxxxxx', '.x.x.x.'];
+        const bee = flap ? ['w.....w', 'ww.o.ww', '.wxxxw.', '..xox..', '...x...'] : ['.......', '...o...', 'wwxxxww', 'w.xox.w', '...x...'];
+        const boss = flap ? ['...o.o...', '..xxxxx..', 'x.xhxhx.x', 'xxxxxxxxx', 'xx.x.x.xx', 'x.......x'] : ['...o.o...', '..xxxxx..', '..xhxhx..', 'xxxxxxxxx', 'xx.x.x.xx', '.x.....x.'];
         for (const e of this.en) {
           const p = this.enemy(e, t);
           if (!p) continue;
-          if (e.boss) spr(p[0] - 3, p[1], boss, { x: C.quart, o: C.rose });
-          else spr(p[0] - 2, p[1], bee, { x: C.butter, o: C.teal });
+          if (e.boss) spr(p[0] - 4, p[1] - 1, boss, { x: C.quart, o: C.rose, h: C.hi });
+          else spr(p[0] - 3, p[1], bee, { x: C.butter, o: C.teal, w: C.cream });
         }
         // boss explosion
         const age = t - this.tHit;
@@ -424,8 +449,8 @@
     // bumps the mushroom it just became and turns, just like the cabinet.
     classicsCentipede: {
       name: 'centipede', dur: 7400,
-      word: { lay: 'line', F: 2, style: 'bricks', cy: 0.44 },
-      parade: [['.x.x.x.x.x', 'xxxxxxxxxx', 'x.x.x.x.x.'], 'quart'],
+      word: { lay: 'line', F: 2, style: 'bunker', cy: 0.44 },
+      parade: [['.x.x.x.x.x', 'xxxxxxxxxx', 'x.x.x.x.x.'], 'rose'],
       free(x, y) {
         if (x < 0 || x + 1 > A.GW - 1) return false;
         for (let j = 0; j < 2; j++) for (let i = 0; i < 2; i++) if (this.occ.has((x + i) * 1000 + y + j)) return false;
@@ -470,10 +495,10 @@
         A.seed(41);
         const cols = [], lanes = [];
         for (let y = WY1; y <= this.maxY; y += 4) lanes.push(y);
-        const n = Math.max(3, Math.min(lanes.length * 2, Math.round(A.GW / 26)));
+        const n = Math.max(3, Math.min(lanes.length * 2, Math.round(A.WW / 30)));
         for (let k = 0; k < n; k++) {
           const y = lanes[(k * 3 + 1) % lanes.length];
-          const x = Math.round(6 + ((k + 0.2 + A.rnd() * 0.6) / n) * (A.GW - 16));
+          const x = Math.round(A.X0 + ((k + 0.2 + A.rnd() * 0.6) / n) * (A.WW - 4));
           if (cols.some((c) => Math.abs(c - x) < 7)) continue;
           cols.push(x);
           this.addM(x, y, -1);
@@ -483,7 +508,7 @@
         let xs, ys, d0;
         if (stacked) {
           // phone: a gap that runs clean through both rows (a|r above, m|a below)
-          xs = L[2].x1 + 1; ys = WY1 - 2; d0 = 1;
+          xs = L[2].x1 + 1; ys = WY1 - 2; d0 = -1;
           for (let y = Y0; y < WY1; y++) if (!this.free(xs, y)) { xs = L[1].x1 + 1; break; }
         } else { xs = L[5].x0 + 4; ys = Y0 + 2; d0 = -1; }
         this.path = [];
@@ -527,18 +552,22 @@
         for (const m of this.mush) {
           if (m.t > 0 && t < m.t) continue;
           const pop = m.t > 0 && t - m.t < 160;
-          spr(m.x, m.y, ['.xx.', 'xxxx', '.ss.'], { x: pop ? C.hi : C.rose, s: C.cream });
+          spr(m.x, m.y, ['.xx.', 'xxxx', '.ss.'], { x: pop ? C.hi : C.quart, s: C.body });
         }
+        // rose beads with a butter head; little legs scuttle underneath wherever there is open sky
+        const gait = Math.floor(t / 110);
         for (let k = this.N - 1; k >= this.dead; k--) {
           const s = this.path[i - k * P];
           if (!s) continue;
-          const head = k === this.dead;
-          rect(s.x, s.y, 2, 2, head ? C.butter : (k % 2 ? C.quart : C.teal));
+          const head = k === this.dead, lx = s.x + ((k + gait) % 2);
+          if (!head && !A.at.has(lx * 1000 + s.y + 2)) px(lx, s.y + 2, C.dim);
+          rect(s.x, s.y, 2, 2, head ? C.butter : C.rose);
           if (head) px(s.dir > 0 ? s.x + 1 : s.x, s.y, C.hi);
         }
         const sh = this.shot;
         if (sh && t >= sh.fire && t < sh.tj) { const y = A.PH - 5 - (t - sh.fire) * 0.3; px(sh.x, y, C.hi); px(sh.x, y + 1, C.cream); }
-        spr(Math.round(this.shx) - 1, A.PH - 4, ['.o.', 'xxx', 'xxx'], { x: C.teal, o: C.hi });
+        // the player: a little gnome head with a cap, as on the cabinet
+        spr(Math.round(this.shx) - 1, A.PH - 5, ['.oo.', 'xttx', 'xxxx', '.xx.'], { x: C.cream, o: C.rose, t: C.teal });
       },
     },
 
@@ -561,25 +590,25 @@
           return { li, x0, x1, y: l.y0, w: n };
         };
         let pad = null;
-        for (const li of [8, 0, 5, 2, 9, 7]) { pad = run(li); if (pad && pad.w >= 8) break; pad = null; }
+        for (const li of [8, 5, 0, 2, 9, 7]) { pad = run(li); if (pad && pad.w >= 8) break; pad = null; }
         if (!pad) pad = { li: 0, x0: L[0].x0, x1: L[0].x1, y: L[0].y0, w: L[0].x1 - L[0].x0 + 1 };
         this.pad = pad;
-        this.lx = pad.x0 + (pad.w >= 12 ? 0 : Math.max(0, Math.floor((pad.w - 7) / 2) - 1));
-        this.ly = pad.y - 6;
+        this.lx = pad.x0 + Math.max(0, Math.min(1, Math.floor((pad.w - 9) / 2)));
+        this.ly = pad.y - 7;
         this.sx = A.clamp(this.lx + (this.lx < A.GW / 2 ? 40 : -40), 3, A.GW - 10);
         this.side = Math.sign(this.lx - this.sx) || 1;
-        this.tTD = 5000;
+        this.tTD = 4000;
         A.seed(23);
         this.dust = Array.from({ length: 12 }, (_, k) => ({ side: k % 2 ? 1 : -1, v: 0.008 + A.rnd() * 0.022, up: 0.6 + A.rnd() * 1.6, d: A.rnd() * 80 }));
       },
       pos(t) {
         const ly = this.ly, td = this.tTD;
         let y;
-        if (t < 2800) y = lerp(-9, ly - 14, eio(seg(t, 0, 2800)));
-        else if (t < 4000) y = lerp(ly - 14, ly - 5, eo(seg(t, 2800, 4000)));
-        else y = lerp(ly - 5, ly, seg(t, 4000, td));
-        let x = lerp(this.sx, this.lx + 2 * this.side, eo(seg(t, 0, 3300)));
-        if (t > 3300) x = lerp(this.lx + 2 * this.side, this.lx, eio(seg(t, 3300, 4100)));
+        if (t < 2300) y = lerp(-9, ly - 14, eio(seg(t, 0, 2300)));
+        else if (t < 3300) y = lerp(ly - 14, ly - 5, eo(seg(t, 2300, 3300)));
+        else y = lerp(ly - 5, ly, seg(t, 3300, td));
+        let x = lerp(this.sx, this.lx + 2 * this.side, eo(seg(t, 0, 2700)));
+        if (t > 2700) x = lerp(this.lx + 2 * this.side, this.lx, eio(seg(t, 2700, 3450)));
         return [Math.round(x), Math.round(y)];
       },
       update(t) { this.t = t; this.p = this.pos(t); },
@@ -595,39 +624,44 @@
         });
         // exhaust: main burn while braking, a gentle trim on the final approach
         let burn = 0;
-        if (t > 900 && t < 2800) burn = 2 + seg(t, 900, 1800);
-        else if (t >= 2800 && t < 4000) burn = 2;
-        else if (t >= 4000 && t < td) burn = 1;
+        if (t > 750 && t < 2300) burn = 2 + seg(t, 750, 1500);
+        else if (t >= 2300 && t < 3300) burn = 2;
+        else if (t >= 3300 && t < td) burn = 1;
         if (burn) {
-          const len = Math.round(burn) + (Math.floor(t / 60) % 2);
-          for (let k = 0; k < len; k++) px(x + 3, y + 6 + k, k === 0 ? C.butter : C.rose);
-          if (len > 2) { px(x + 2, y + 6, C.butter); px(x + 4, y + 6, C.butter); }
+          const len = Math.round(burn) + 1 + (Math.floor(t / 60) % 2);
+          for (let k = 0; k < len; k++) px(x + 4, y + 5 + k, k < 2 ? C.butter : C.rose);
+          if (len > 3) { px(x + 3, y + 5, C.butter); px(x + 5, y + 5, C.butter); }
         }
         // side thruster puffs while it trims its drift
-        if (t > 3300 && t < 3900 && Math.floor(t / 90) % 2 === 0) { const sx = this.side > 0 ? x + 7 : x - 1; px(sx, y + 2, C.cream); px(sx + this.side, y + 2, C.dim); }
+        if (t > 2750 && t < 3350 && Math.floor(t / 90) % 2 === 0) { const sx = this.side > 0 ? x + 9 : x - 1; px(sx, y + 1, C.cream); px(sx + this.side, y + 1, C.dim); }
+        // ascent stage, gold foil descent stage, splayed legs with footpads
         const squash = down && t < td + 160 ? 1 : 0;
-        spr(x, y + squash, ['..xxx..', '.xxxxx.', '.xoxox.', 'xxxxxxx'], { x: C.cream, o: C.teal });
-        spr(x, y + 4, ['.x...x.', 'x.....x'], { x: C.dim });
+        spr(x, y + squash, ['...ccc...', '..cocoh..', '..ccccc..', '.bbbbbbb.', '.bbdbdbb.'], { c: C.cream, o: C.teal, h: C.hi, b: C.butter, d: C.dim });
+        spr(x, y + 5, ['.l.....l.', 'll.....ll'], { l: C.cream });
         // touchdown dust
         const age = t - td;
         if (age >= 0 && age < 900) {
           for (const d of this.dust) {
             const a = age - d.d;
             if (a < 0 || a > 700) continue;
-            const fx = (d.side > 0 ? x + 6 : x) + d.side * d.v * a, fy = pad.y - 1 - d.up * Math.sin(Math.PI * Math.min(1, a / 700));
+            const fx = (d.side > 0 ? x + 8 : x) + d.side * d.v * a, fy = pad.y - 1 - d.up * Math.sin(Math.PI * Math.min(1, a / 700));
             px(fx, fy, a < 320 ? C.cream : C.dim);
           }
         }
-        // a tiny astronaut hops out and plants a flag
-        const room = pad.x1 - (x + 6);
-        if (t > td + 700 && room >= 3) {
-          const ax = x + 7 + Math.min(room - 3, Math.floor((t - td - 700) / 220));
-          const hop = t > td + 2000 && Math.floor((t - td - 2000) / 200) % 3 === 0 ? 1 : 0;
-          spr(ax, pad.y - 3 - hop, ['x', 'x', 'x'], { x: C.hi });
-          if (t > td + 1300) {
-            const fxp = ax + 2, wave = Math.floor(t / 280) % 2;
-            rect(fxp, pad.y - 5, 1, 5, C.cream);
-            spr(fxp + 1, pad.y - 5, wave ? ['xx', 'x.'] : ['xx', '.x'], { x: C.rose });
+        // a tiny astronaut climbs down, walks off along the letter tops and plants a flag
+        if (t > td + 450) {
+          const top = (xx) => { let y0 = 1e9; for (let i = 0; i < 3; i++) { const v = A.topOf.get(xx + i); if (v !== undefined) y0 = Math.min(y0, v); } return y0 < 1e9 ? y0 : pad.y; };
+          const steps = Math.min(6, Math.floor((t - td - 450) / 170)), walk = steps < 6 && Math.floor((t - td) / 85) % 2;
+          const ax = x + 9 + steps;
+          // helmet with a teal visor, suit, stepping legs
+          spr(ax, top(ax) - 5 - (walk ? 1 : 0), ['.h.', 'hvh', 'hhh', '.h.', walk ? '.h.' : 'h.h'], { h: C.hi, v: C.teal });
+          if (steps >= 6) {
+            const fx0 = ax + 4, fy0 = top(fx0), wave = Math.floor(t / 280) % 2;
+            const rise = Math.min(5, Math.floor((t - td - 450 - 6 * 170) / 60));
+            if (rise > 0) {
+              rect(fx0, fy0 - rise, 1, rise, C.cream);
+              if (rise >= 5) spr(fx0 + 1, fy0 - 5, wave ? ['xxx', 'xx.'] : ['xxx', '.xx'], { x: C.rose });
+            }
           }
         }
       },
@@ -635,7 +669,8 @@
 
     // ---------------------------------------------------------------------------------------
     // HOPPER: a cube hopper bounces letter to letter along the arc; every letter it lands on
-    // flips colour. When the word is done it flashes, and a spinning disc carries the hero off.
+    // flips colour. When the word is done a glint runs across it, and a spinning disc carries the
+    // hero back up to the top of the word, where it hops off: home, like the pyramid top.
     classicsHopper: {
       name: 'hopper', dur: 7200,
       word: { lay: 'arc', F: 2, style: 'bunker', mob: { lay: 'stack', F: 2 } },
@@ -651,7 +686,7 @@
           const cx = Math.round((Math.min(...tops) + Math.max(...tops)) / 2);
           return [cx - 3, l.y0 - 6];
         });
-        this.T0 = 420; this.HOP = 420;
+        this.T0 = 420; this.HOP = 400;
         this.land = new Map();
         this.order.forEach((li, k) => this.land.set(li, this.T0 + k * this.HOP));
         this.tDone = this.T0 + (this.order.length - 1) * this.HOP;
@@ -659,7 +694,13 @@
         this.dir = dir;
         const ds = this.stand[this.order[11]];
         this.disc = [dir > 0 ? last.x1 + 6 : last.x0 - 13, ds[1] + 5];
-        this.tJump = this.tDone + 700; this.tRide = this.tJump + 360;
+        // the top of the word: the arc's crest, or the middle of the top row when stacked
+        this.apex = stacked ? 3 : (this.stand[5][1] <= this.stand[6][1] ? 5 : 6);
+        const ap = this.stand[this.apex];
+        this.hover = [ap[0], Math.max(8, ap[1] - 1)];
+        this.tJump = this.tDone + 480; this.tRide = this.tJump + 340;
+        this.tFly = this.tRide + 120; this.tHover = this.tFly + 760;
+        this.tDrop = this.tHover + 90; this.tHome = this.tDrop + 300;
       },
       // hero position and facing at time t
       hero(t) {
@@ -674,30 +715,51 @@
           const v = (u - 0.1) / 0.78, hgt = 6 + Math.abs(b[1] - a[1]) * 0.4;
           return { x: lerp(a[0], b[0], v), y: lerp(a[1], b[1], v) - hgt * 4 * v * (1 - v), f, sq: 0 };
         }
-        const e = this.stand[o[11]], d = this.discAt(t);
-        const tgt = [d[0], d[1] - 6];
-        if (t < this.tJump) return { x: e[0], y: e[1], f: this.dir, sq: 0 };
+        const e = this.stand[o[11]], d = this.discAt(t), ap = this.stand[this.apex];
+        const tgt = [d[0], d[1] - 6], back = ap[0] >= e[0] ? 1 : -1;
+        if (t < this.tJump) return { x: e[0], y: e[1], f: this.dir, sq: t < this.tDone + 60 ? 1 : 0 };
         if (t < this.tRide) { const v = seg(t, this.tJump, this.tRide); return { x: lerp(e[0], tgt[0], v), y: lerp(e[1], tgt[1], v) - 7 * 4 * v * (1 - v), f: this.dir, sq: 0 }; }
-        return { x: tgt[0], y: tgt[1], f: this.dir, sq: 0 };
+        if (t < this.tDrop) return { x: tgt[0], y: tgt[1], f: t < this.tFly ? this.dir : back, sq: 0 };
+        // hop off the disc onto the top of the word, and land with a squash
+        const h0 = this.hoverHero();
+        if (t < this.tHome) { const v = seg(t, this.tDrop, this.tHome); return { x: lerp(h0[0], ap[0], v), y: lerp(h0[1], ap[1], v) - 5 * 4 * v * (1 - v), f: back, sq: 0 }; }
+        return { x: ap[0], y: ap[1], f: back, sq: t < this.tHome + 120 ? 1 : 0 };
       },
+      hoverHero() { return [this.hover[0], this.hover[1] - 6]; },
       discAt(t) {
         const [x, y] = this.disc, bob = Math.round(Math.sin(t / 260));
-        if (t < this.tRide + 150) return [x, y + bob];
-        const u = eio(seg(t, this.tRide + 150, this.dur - 150));
-        return [Math.round(lerp(x, A.GW / 2 - 3, u)), Math.round(lerp(y + bob, 6, u))];
+        if (t < this.tFly) return [x, y + bob];
+        const [hx, hy] = this.hover;
+        if (t < this.tHover) {
+          // a low arc that skims just over the letters (and stays clear of the moon)
+          const sd = Math.sign(x - hx) || 1, p0 = [x, y + bob];
+          const p = bez(p0, [x - 10 * sd, Math.max(8, y - 10)], [hx + 22 * sd, Math.max(8, hy - 2)], [hx, hy], eio(seg(t, this.tFly, this.tHover)));
+          return [Math.round(p[0]), Math.round(p[1])];
+        }
+        if (t < this.tDrop + 60) return [hx, hy];
+        // empty, it spins away up and out of the sky
+        const u = seg(t, this.tDrop + 60, this.dur);
+        return [Math.round(hx + u * u * 30 * this.dir), Math.round(hy - u * u * (hy + 6))];
       },
       update(t) { this.t = t; this.h = this.hero(t); },
       draw() {
         const C = A.C, t = this.t, h = this.h || this.hero(0);
         const warm = [C.hi, C.butter, C.butter, C.butter, C.butter, C.rose, C.rose, C.rose];
-        const wave = t - this.tDone - 120;
+        // one diagonal glint across the finished word
+        const g = -12 + eio(seg(t, this.tDone + 140, this.tDone + 900)) * (A.WW + 40), glint = t > this.tDone + 140 && t < this.tDone + 900;
+        const home = this.tHome;
         A.drawWord({
-          off: (w) => { const tl = this.land.get(w.li); return t >= tl && t < tl + 90 ? [0, 1] : Z; },
+          off: (w) => {
+            const tl = this.land.get(w.li);
+            if (t >= tl && t < tl + 90) return [0, 1];
+            return w.li === this.apex && t >= home && t < home + 90 ? [0, 1] : Z;
+          },
           col: (w) => {
             const tl = this.land.get(w.li);
             if (t < tl) return null;
             if (t < tl + 90) return C.hi;
-            if (wave > 0 && wave < 900) { const ph = (w.x - A.X0) * 3 - (wave % 450) * 0.9 * (A.WW / 150); if (ph > -14 && ph < 0) return C.hi; }
+            if (w.li === this.apex && t >= home && t < home + 110) return C.hi;
+            if (glint) { const d = (w.x - A.X0) + (w.y - A.Y0) * 0.8 - g; if (d > -3 && d < 0) return C.hi; }
             return warm[w.gy];
           },
         });

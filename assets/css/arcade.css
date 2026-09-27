@@ -13,6 +13,11 @@
 .btn--arcade:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--e); }
 .btn--arcade:focus-visible { outline: 2px solid var(--fg-0); outline-offset: 4px; }
 .btn--xl { min-height: 64px; padding: 0 32px; }
+/* never wider than its column: on narrow phones the label wraps instead of overflowing */
+.btn--arcade { max-width: 100%; }
+@media (max-width: 400px) { .btn--arcade { white-space: normal; text-align: center; justify-content: center; padding-block: 10px; } }
+/* paper: the light hover mix drops the label under 4.5:1, so darken instead */
+[data-theme="paper"] .btn--arcade:hover { background: var(--accent-2); }
 .btn--ghost { background: transparent; border-color: var(--line-2); box-shadow: none; }
 .btn--ghost:hover { border-color: var(--fg-1); background: color-mix(in srgb, var(--fg-0) 5%, transparent); }
 
@@ -23,7 +28,8 @@
 .band--slate { background: var(--block, var(--bg-2)); }
 .band--deep { background: color-mix(in srgb, var(--bg-0) 62%, #000); }
 [data-theme="paper"] .band--deep { background: var(--bg-2); }
-[data-theme="paper"] .band--slate { background: var(--bg-3); }
+[data-theme="paper"] .band--slate { background: var(--bg-3); --accent: var(--accent-2); --warn: #7a4f0f; --fg-2: var(--fg-1); }   /* AA on #ddd7ca: accent 5.9, warn 5.0, fg-2 7.0 */
+[data-theme="paper"] .band--slate .input { background: var(--bg-1); }
 .band--slate .pane__t, .band--slate .input { background: var(--block, var(--bg-2)); }
 
 @media (prefers-reduced-motion: reduce) { .led { animation: none; } }

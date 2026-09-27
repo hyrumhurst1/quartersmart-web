@@ -1,6 +1,7 @@
 // Hidden extras, loaded on every page. Nothing here is required to read the
-// site. ` or ~ opens the qsh terminal; a minute without input starts the idle
-// screen. Both respect reduced motion where it matters.
+// site. ` or ~ opens the qsh terminal (it respects reduced motion).
+
+
 (() => {
   const typing = (t) => t && t.closest && t.closest('input, textarea, select, [contenteditable]');
   let tty = null;
@@ -16,8 +17,5 @@
   });
 
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  let idleTimer = 0;
-  const arm = () => { clearTimeout(idleTimer); idleTimer = setTimeout(() => import('/assets/js/idle.js?v=20260927e').then((m) => m.start()).catch(() => {}), 75000); };
-  ['pointermove', 'keydown', 'scroll', 'touchstart'].forEach((ev) => addEventListener(ev, arm, { passive: true }));
-  arm();
+  // The idle screen is retired (the homepage hero is the attract mode now), so no idle timer runs.
 })();

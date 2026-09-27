@@ -1,10 +1,10 @@
 // Coin arena. A short pixel stage at the top of every footer: the
 // QuarterSmart coin (the logo, struck as a coin) hovers and spins in the
-// middle while small retro game characters take turns trying to get it.
-// Drawn on a buffer 40 art pixels tall and scaled up by an integer factor
-// with nearest neighbour, so every pixel stays square. One loop is about
-// 44 seconds. Pauses off screen and in hidden tabs; one still frame for
-// reduced motion. Click (or press) the coin for a spin.
+// middle while a small cast of retro game characters brawls over it, at
+// least three at a time. Drawn on a buffer 40 art pixels tall and scaled up
+// by an integer factor with nearest neighbour, so every pixel stays square.
+// One loop is 31 seconds. Pauses off screen and in hidden tabs; one still
+// frame for reduced motion. Click (or press) the coin for a spin.
 (() => {
   const host = document.querySelector('[data-arena]');
   if (!host) return;

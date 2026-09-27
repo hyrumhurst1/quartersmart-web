@@ -5,7 +5,7 @@
 
 /* ---------- Hero: headline left, the pixel stage right ---------- */
 .ah { position: relative; padding: clamp(56px, 7vw, 104px) 0 clamp(64px, 7vw, 104px); }
-.ah__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 576px); gap: clamp(32px, 4vw, 64px); align-items: center; }
+.ah__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 612px); gap: clamp(32px, 3vw, 64px); align-items: center; }
 .ah__copy { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; align-content: center; min-width: 0; }
 .ah__h { font: 400 66px/1.1 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); max-width: 17ch; }
 .ah__h .ln { display: block; }
@@ -18,7 +18,7 @@
 .ah__back a { color: var(--fg-1); text-decoration: none; border-bottom: 1px solid var(--line-2); }
 .ah__back a:hover { color: var(--accent); border-color: var(--accent); }
 .ah__back a::before { content: "\2190\00a0"; }
-.ab-sign { margin: 0; font: 400 33px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; }
+.ab-sign { margin: 0; font: 400 22px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; }
 .ah__stage { width: 100%; }
 /* On wide screens the stage leans past the text column toward the right edge,
    like the Signals hub, so it can draw at 4x without squeezing the copy. */
@@ -27,11 +27,11 @@
 }
 
 /* Founder: a centred character-select screen. Sign, stage, name, lede, buttons. */
-.ah--center { padding-top: clamp(32px, 4vw, 56px); }
+.ah--center { padding-top: clamp(24px, 3vw, 40px); }
 .ah--center .ah__grid { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; gap: 18px; }
 .ah--center .ah__back { justify-self: start; text-align: left; }
-.ah--center .ah__stage { max-width: 432px; }
-.ah--center .ah__copy { justify-items: center; gap: 22px; margin-top: 8px; }
+.ah--center .ah__stage { max-width: 468px; }
+.ah--center .ah__copy { justify-items: center; gap: 22px; margin-top: 0; }
 .ah--center .ah__h { max-width: none; }
 .ah--center .lede { max-width: 64ch; margin-inline: auto; }
 .ah--center .ah__cta { justify-content: center; }
@@ -41,9 +41,17 @@
 .pxstage { margin: 0; display: grid; justify-items: center; gap: 12px; min-width: 0; }
 .pxstage__screen { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 3 / 2; }
 .pxstage__screen > * { grid-area: 1 / 1; }
+/* the screen snaps to the stage grid (whole multiples of its 144 art pixels,
+   as radar.js scales), so a placed still sits at a whole-pixel scale too */
+.pxwin .pxstage__screen { width: 100%; width: min(576px, round(down, 100%, 144px)); }
+@media (min-resolution: 2dppx) { .pxwin .pxstage__screen { width: min(576px, round(down, 100%, 72px)); } }
+@media (min-resolution: 3dppx) { .pxwin .pxstage__screen { width: min(576px, round(down, 100%, 48px)); } }
 .pxstage canvas { display: block; image-rendering: pixelated; opacity: 0; transition: opacity .4s; }
 .pxstage.is-live canvas { opacity: 1; }
-.pxstage__still { width: auto; height: 76%; max-width: 92%; image-rendering: pixelated; }
+.pxstage__still { width: auto; height: 76%; max-width: 92%; image-rendering: pixelated; transition: opacity .4s; }
+/* a still placed on the stage grid (x, y, width in art pixels), so it is the
+   scene's own first frame at a whole-pixel scale before the canvas takes over */
+.pxstage__still[style*="--w"] { position: absolute; left: calc(var(--x) / 144 * 100%); top: calc(var(--y) / 96 * 100%); width: calc(var(--w) / 144 * 100%); height: auto; max-width: none; }
 .pxstage__still.is-wide { width: 80%; height: auto; }
 .pxstage.is-live .pxstage__still { opacity: 0; pointer-events: none; }
 .pxstage__bar { display: flex; align-items: center; justify-content: center; gap: 18px; min-height: 30px; }
@@ -54,8 +62,34 @@
 .pxstage__pause::before { content: ""; width: 8px; height: 10px; background: linear-gradient(90deg, currentColor 0 3px, transparent 3px 5px, currentColor 5px 8px); }
 .pxstage__pause[aria-pressed="true"]::before { width: 0; height: 0; background: none; border-left: 8px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; margin-left: 2px; }
 .pxstage__pause:hover { color: var(--accent); border-color: var(--accent); }
-@media (prefers-reduced-motion: reduce) { .pxstage canvas { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .pxstage canvas, .pxstage__still { transition: none; } }
 .px { image-rendering: pixelated; height: auto; }
+
+/* Terminal window around the stage, the homepage's hand: a 2px border with
+   the title, the scene pips and the pause control set into it (btop style),
+   a deep-night fill and faint scanlines. */
+.pxwin { --win-bg: var(--bg-0); position: relative; min-width: 0; padding: 26px 16px 24px; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
+.pxwin::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
+.pxwin .win__t, .pxwin .pxstage__pips, .pxwin .pxstage__pause { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--win-bg); white-space: nowrap; }
+.pxwin .win__t { top: -8px; left: 16px; color: var(--fg-1); }
+.pxwin .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); animation: pulse 2.4s steps(2) infinite; }
+.pxwin .pxstage { position: static; }
+.pxwin .pxstage__bar { display: contents; }
+.pxwin .pxstage__pips { top: -8px; right: 16px; height: 14px; }
+.pxwin .pxstage__pips i { width: 5px; height: 5px; }
+.pxwin .pxstage__pips i.on { width: 15px; }
+.pxwin .pxstage__pause { bottom: -8px; right: 16px; display: block; width: auto; height: 14px; border: 0; color: var(--fg-2); }
+.pxwin .pxstage__pause::before { content: "pause"; display: inline; width: auto; height: auto; margin: 0; background: none; border: 0; }
+.pxwin .pxstage__pause[aria-pressed="true"]::before { content: "play"; }
+.pxwin .pxstage__pause::after { content: ""; position: absolute; inset: -15px 0; }
+.pxwin .pxstage__pause:hover, .pxwin .pxstage__pause:focus-visible { color: var(--fg-0); }
+[data-theme="paper"] .pxwin { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line); }
+[data-theme="paper"] .pxwin::after { opacity: .18; }
+@media (prefers-reduced-motion: reduce) { .pxwin .win__t::before { animation: none; } }
+
+/* Echo signs, the homepage's closer sign: small pixel type with the full
+   six-layer echo stepping down one whole pixel at a time */
+.ab-sign.echo { color: var(--fg-0); --es: 1px; margin-bottom: 6px; }
 
 .nowrap { white-space: nowrap; }
 
@@ -205,7 +239,7 @@ main .btn--arcade { max-width: 100%; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1280px) {
-  .ah__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 432px); }
+  .ah__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 468px); }
 }
 @media (max-width: 1200px) {
   .ah__h { font-size: 55px; }
@@ -214,8 +248,10 @@ main .btn--arcade { max-width: 100%; }
 }
 @media (max-width: 1000px) {
   .ah__grid, .ab-lead, .ab-why__grid, .ab-p1, .ab-ind, .fh-bg, .ct-split, .fq-g, .ab-close__grid { grid-template-columns: minmax(0, 1fr); }
-  .ah__stage { order: -1; justify-self: center; max-width: 432px; }
+  .ah__stage { order: -1; justify-self: center; max-width: 468px; }
   .ah--center .ah__stage { order: 0; }
+  /* contact: the booking button comes first on phones, the stage follows it */
+  #book-a-call .ah__stage { order: 1; }
   .fq-g__h { position: static; }
   .fq-jump ol { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; }
   .fq-jump li:nth-child(n+3) a { padding-bottom: 22px; }
@@ -233,7 +269,6 @@ main .btn--arcade { max-width: 100%; }
   .ah--center .ah__copy { gap: 18px; margin-top: 4px; }
   .ah__h { font-size: 38.5px; }
   .ah__h--name { font-size: 55px; }
-  .ab-sign { font-size: 22px; }
   .ab-big, .ab-ind .ab-big { font-size: 38.5px; }
   .rows > li { grid-template-columns: minmax(0, 1fr); padding: 24px 0; }
   .rows--big .rows__k { font-size: 38.5px; }

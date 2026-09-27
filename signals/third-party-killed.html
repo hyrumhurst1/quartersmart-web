@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Anthropic Cut Off Third-Party Claude Resellers: What Happened | QuarterSmart</title>
-<meta name="description" content="Anthropic cut off third-party resellers of Claude API access, including OpenClaw, leaving their users facing up to 50x higher costs. What happened, why, and what the options were.">
+<title>Anthropic Stopped Claude Subscriptions From Running Third-Party Agents | QuarterSmart</title>
+<meta name="description" content="In April 2026 Anthropic stopped Claude subscriptions from powering third-party agent tools like OpenClaw, then allowed them again in May with a separate metered credit. What happened and what it means for your tools.">
 <meta name="author" content="Hyrum Hurst">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://quartersmart.com/signals/third-party-killed">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Anthropic cut off third-party Claude resellers: what happened and what to do">
-<meta property="og:description" content="Resellers charged $100 to $200 a month for use that cost up to $5,000 in compute. Anthropic cut them off. What happened and what the options were.">
+<meta property="og:title" content="Anthropic stopped Claude subscriptions from running third-party agents: what happened and what changed">
+<meta property="og:description" content="In April 2026 Anthropic stopped Claude subscriptions from powering third-party agent tools like OpenClaw, then allowed them again in May with a separate metered credit. What happened and what it means for your tools.">
 <meta property="og:url" content="https://quartersmart.com/signals/third-party-killed">
 <meta property="og:site_name" content="QuarterSmart">
 <meta property="og:image" content="https://quartersmart.com/assets/images/signals/anthropic-killed-third-party-access-cover.jpg">
@@ -18,15 +18,16 @@
 <meta property="og:image:height" content="800">
 <meta property="og:image:alt" content="A glowing mint-green chain snapping apart in the dark, representing cut-off third-party access to Claude">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Anthropic cut off third-party Claude resellers: what happened and what to do">
-<meta name="twitter:description" content="Why Anthropic cut off Claude resellers, who was affected, and what the options were.">
+<meta name="twitter:title" content="Anthropic stopped Claude subscriptions from running third-party agents: what happened and what changed">
+<meta name="twitter:description" content="What changed for third-party agents like OpenClaw on Claude subscriptions in April 2026, and what changed again in May.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/images/signals/anthropic-killed-third-party-access-cover.jpg">
 <meta name="qs:kind" content="confirmed">
 <meta name="qs:label" content="Confirmed · policy change">
 <meta name="qs:verdict" content="Act now">
 <meta name="qs:cover" content="/assets/px/sprite-radar.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927b">
+<link rel="stylesheet" href="/assets/css/signals-post.css?v=20260927m">
+<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927p">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -44,13 +45,16 @@
     {
       "@type": "Article",
       "@id": "https://quartersmart.com/signals/third-party-killed#article",
-      "headline": "Anthropic cut off third-party Claude resellers: what happened and what to do",
-      "description": "Anthropic cut off third-party resellers of Claude API access, including OpenClaw, leaving their users facing up to 50x higher costs. What happened, why, and what the options were.",
+      "headline": "Anthropic stopped Claude subscriptions from running third-party agents: what happened and what changed",
+      "description": "In April 2026 Anthropic stopped Claude subscriptions from powering third-party agent tools like OpenClaw, then allowed them again in May with a separate metered credit. What happened and what it means for your tools.",
       "image": "https://quartersmart.com/assets/images/signals/anthropic-killed-third-party-access-cover.jpg",
       "datePublished": "2026-04-03",
       "dateModified": "2026-09-27",
       "author": {
-        "@id": "https://quartersmart.com/about.html#hyrum-hurst"
+        "@type": "Person",
+        "@id": "https://quartersmart.com/about.html#hyrum-hurst",
+        "name": "Hyrum Hurst",
+        "url": "https://quartersmart.com/about/hyrum-hurst/"
       },
       "publisher": {
         "@id": "https://quartersmart.com/#organization"
@@ -77,7 +81,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Anthropic cuts off third-party Claude resellers",
+          "name": "Anthropic stopped Claude subscriptions from running third-party agents",
           "item": "https://quartersmart.com/signals/third-party-killed"
         }
       ]
@@ -86,193 +90,103 @@
 }
 </script>
 </head>
-<body class="po">
+<body class="sig-post po">
 <!-- @include nav -->
 <main id="main">
-
-  <header class="po-head">
-    <div class="wrap">
-      <p class="phead__crumbs"><a href="/">home</a> / <a href="/signals/">signals</a> / third-party-killed</p>
-      <div class="po-chips"><span class="chip chip--confirmed">Confirmed · policy change</span><span class="verdict"><b>verdict</b> Act now</span></div>
-      <h1 class="po-h">Anthropic cut off third-party Claude resellers: what happened and what to do</h1>
-      <p class="lede">Anthropic shut off the resellers that sold discounted Claude API access, including OpenClaw. Here is why it happened, who was affected, and what the options were for teams that relied on them.</p>
-      <p class="po-byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-04-03">Apr 3, 2026</time></span><span>Updated <time datetime="2026-09-27">Sep 27, 2026</time></span></p>
-      <div class="po-head__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
+  <header class="phero">
+    <div class="wrap phero__grid">
+      <div class="phero__copy">
+        <nav class="phero__crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/signals/">Signals</a></nav>
+        <p class="phero__meta"><span class="chip chip--confirmed">Confirmed · policy change</span><span class="phero__verdict">Verdict, Apr 2026<b>Act now</b></span></p>
+        <h1 class="phero__h">Anthropic stopped Claude subscriptions from running third-party agents: what happened and what changed</h1>
+        <p class="lede">For a few weeks, agent tools like OpenClaw could no longer run on a Claude subscription. Here is what changed on April 4, why Anthropic did it, what changed again in May, and the lesson for any tool your work depends on.</p>
+        <p class="byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-04-03">Apr 3, 2026</time></span><span>Corrected <time datetime="2026-09-27">Sep 27, 2026</time></span></p>
+        <div class="phero__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
+      </div>
+      <div class="pxwin phero__art">
+        <span class="win__t" aria-hidden="true">signal.exe</span>
+        <div class="pxstage" data-pxstage data-first="tower" data-scenes="radar satellite scope verdicts tower rocket mail wave assistant keyboard mark" data-max="4">
+          <div class="pxstage__screen">
+            <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" style="--x:45;--y:10;--w:54" alt="Pixel art of a radar dish on a lattice tower, listening." fetchpriority="high">
+            <canvas aria-hidden="true"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <section class="band band--deep po-band" aria-labelledby="short-h">
-    <div class="wrap po-band__grid">
-      <figure class="po-art" data-po-form>
-        <p class="po-sign"><span class="label">Our verdict</span><span class="po-sign__word neon">Act now</span></p>
-        <img src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, listening." style="--w:54px;--s:3;--s-m:2" fetchpriority="high">
-      </figure>
-      <div class="po-sum">
-        <h2 class="po-sum__h" id="short-h">The short version</h2>
+  <div class="wrap post-grid">
+    <article class="prose">
+      <div class="callout"><strong>Corrected on September 27, 2026.</strong> The first version of this post described a crackdown on resellers that did not happen as written, with a quote and figures we could not verify. We rewrote it from the reporting linked below. The update log at the end lists what changed.</div>
+
+      <div class="shortv">
+        <h2>The short version</h2>
         <ul>
-          <li>In early April 2026, Anthropic revoked API access for third-party services that resold Claude at deep discounts, including OpenClaw and ClaudeProxy.</li>
-          <li>Resellers had charged $100 to $200 a month for use that cost $3,000 to $5,000 in compute. Users moving to the direct API faced up to 50 times their old cost.</li>
-          <li>Anthropic's terms prohibit API reselling. There was no warning and no migration period.</li>
-          <li>If you relied on a reseller, the options were Claude Pro, the direct API, or another provider. Keep a fallback for any tool your work depends on.</li>
+          <li>Anthropic said that from April 4, 2026, Claude subscriptions would stop covering third-party agent tools such as OpenClaw, an open-source personal agent.</li>
+          <li>People could keep using those tools, but had to pay for that usage separately, through pay-as-you-go extra usage or a separate API key.</li>
+          <li>Anthropic said its subscriptions were not built for how these tools use Claude.</li>
+          <li>On May 13, 2026, Anthropic announced that subscriptions could power third-party agents again, through a separate monthly credit billed at API rates.</li>
+          <li>The lesson for any business: know what each AI tool runs on, and whose account and terms it depends on.</li>
         </ul>
       </div>
-    </div>
-  </section>
 
-  <div class="po-body">
-    <div class="wrap po-grid">
-      <article class="prose">
-        <p>On April 4, 2026, dozens of third-party Claude services stopped working. There was no warning and no migration period, only a message: <em>"Access revoked."</em></p>
-        <p>Anthropic shut down the resellers, including OpenClaw and ClaudeProxy, that sold access to Claude's API at deep discounts. Developers and power users who relied on them faced a <strong>cost increase of up to 50 times</strong> overnight.</p>
+      <h2>What changed on April 4</h2>
+      <p>Anthropic told subscribers that from noon Pacific on April 4, 2026, their Claude subscription limits would no longer cover third-party harnesses: tools built by other people that run Claude on your behalf. OpenClaw, an open-source personal agent, was the first. Anthropic said the rule applied to all third-party harnesses and would roll out to more of them.</p>
+      <p>Nothing was switched off. People could keep using these tools, but the usage was billed separately: pay-as-you-go extra usage on the Claude account, or a separate API key. That is why the verdict at the time was Act now for anyone running an agent this way. Without a change to billing, the agent would stop working the next day.</p>
 
-        <h2>Why Anthropic did it</h2>
-        <p>The resellers charged $100 to $200 a month for "unlimited" Claude access. Each heavy user consumed $3,000 to $5,000 in actual compute. The resellers covered the gap with venture capital, betting they could lock in users before Anthropic acted.</p>
-        <div class="po-vs">
-          <div><span class="po-vs__v">$100</span><span class="po-vs__k">a month through a reseller</span></div>
-          <span class="po-vs__arrow" aria-hidden="true">&rarr;</span>
-          <div><span class="po-vs__v po-vs__v--hi">$5,000</span><span class="po-vs__k">a month, the equivalent at direct API cost</span></div>
-        </div>
-        <figure><blockquote><p>"We cannot sustain a model where intermediaries charge $200 for $5,000 worth of compute. This isn't about restricting access, it's about survival."</p></blockquote><figcaption>Anthropic spokesperson, April 4, 2026</figcaption></figure>
+      <h2>Why Anthropic did it</h2>
+      <p>Boris Cherny, who leads Claude Code at Anthropic, said the company's subscriptions were not built for the usage patterns of these third-party tools, and that it had to manage growth to keep serving customers sustainably.</p>
+      <p>Our read: a flat monthly subscription works because most people use it in bursts. An agent that runs all day on the same subscription uses it very differently.</p>
 
-        <h2>Who was affected</h2>
-        <ul>
-          <li><strong>OpenClaw.</strong> The largest reseller, with about 15,000 active users. It shut down entirely within 24 hours of the cutoff.</li>
-          <li><strong>ClaudeProxy.</strong> Offered "unlimited Opus" for $150 a month. Its API keys were revoked on April 4.</li>
-          <li><strong>Discord bots.</strong> Hundreds of bots offering Claude access in Discord servers stopped at the same time.</li>
-          <li><strong>Small SaaS products.</strong> Startups that built their product on resold Claude access lost a core feature.</li>
+      <h2>What changed in May</h2>
+      <p>On May 13, 2026, Anthropic announced that subscriptions could run third-party agents again, with a catch. That usage draws from a separate monthly credit, billed at API rates, that does not roll over. When it runs out, you buy more credit or turn on extra usage.</p>
+
+      <h2>What it means for your business</h2>
+      <p>If an AI tool matters to your work, know three things about it: which model it runs on, whose account pays for it, and whose terms it depends on. A tool that rides on someone else's subscription can change price overnight, even when the tool itself does not change at all.</p>
+
+      <h2>If you want help</h2>
+      <p>We set tools up inside accounts you own, so a middleman going dark cannot take your setup with it. See <a href="/services/#day-one-setup">Day One Setup</a>, or <a href="/contact/">book a 20-minute call</a>.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ul class="sources">
+        <li><a href="https://techcrunch.com/2026/04/04/anthropic-says-claude-code-subscribers-will-need-to-pay-extra-for-openclaw-support/" rel="noopener">TechCrunch: Anthropic says Claude Code subscribers will need to pay extra for OpenClaw support</a>, April 4, 2026</li>
+        <li><a href="https://news.ycombinator.com/item?id=47633396" rel="noopener">Hacker News: Anthropic no longer allowing Claude Code subscriptions to use OpenClaw</a>, April 2026</li>
+        <li><a href="https://venturebeat.com/technology/anthropic-reinstates-openclaw-and-third-party-agent-usage-on-claude-subscriptions-with-a-catch" rel="noopener">VentureBeat: Anthropic reinstates OpenClaw and third-party agent usage on Claude subscriptions, with a catch</a>, May 13, 2026</li>
+      </ul>
+
+      <h2>Update log</h2>
+      <ul class="updlog">
+        <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Correction: the original post described OpenClaw as a reseller that shut down, and included a quote, user counts, cost figures and sources we could not verify. What changed was how Claude subscriptions cover third-party tools. We rewrote the post from the reporting linked above and added the May change.</span></li>
+        <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Retitled and edited for tone.</span></li>
+        <li><time datetime="2026-04-03">Apr 3, 2026</time><span>First posted.</span></li>
+      </ul>
+
+      <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by Anthropic or any tool named here. Product names are trademarks of their owners. First posted April 3, 2026 and corrected September 27, 2026. Signals is general information about third-party products, not legal, security or financial advice. <a href="/signals/policy/">How we source Signals</a>.</p>
+    </article>
+
+    <aside class="psum" aria-label="Signal summary">
+      <div>
+        <p class="psum__k">Verdict when posted</p>
+        <p class="psum__v">Act now</p>
+      </div>
+      <dl class="psum__kv">
+        <div><dt>Status</dt><dd><span class="chip chip--confirmed">Confirmed · policy change</span></dd></div>
+        <div><dt>Who it's for</dt><dd>Teams running a third-party agent such as OpenClaw on a Claude subscription</dd></div>
+        <div><dt>Since then</dt><dd>Allowed again from May 2026, on a separate metered credit</dd></div>
+      </dl>
+      <nav aria-label="Read next">
+        <p class="psum__k">Read next</p>
+        <ul class="psum__next">
+          <li><a href="/signals/stretch-ai-budget">How to stretch your AI budget</a></li>
+          <li><a href="/signals/openai-pricing">OpenAI's pricing in spring 2026</a></li>
+          <li><a href="/signals/">All Signals</a></li>
         </ul>
-
-        <h2>How developers reacted</h2>
-        <p>The response on X, Reddit and Hacker News was fast and angry. The top post on r/artificial, "Anthropic just pulled the rug on 50,000 users," reached 8,000 upvotes in 12 hours. Developers who had built workflows on these services had to rebuild them.</p>
-        <p>The most common complaints:</p>
-        <ul>
-          <li><strong>"No warning."</strong> Users woke up to dead API keys with no advance notice.</li>
-          <li><strong>"No migration path."</strong> Anthropic did not offer discounted direct API access as a transition.</li>
-          <li><strong>"They're punishing users for their own pricing failure."</strong> If the API was priced unsustainably, the argument goes, that is Anthropic's problem, not the users'.</li>
-        </ul>
-        <h3>Could the resellers fight back?</h3>
-        <p>Probably not. Anthropic's terms of service prohibit API reselling. The resellers were always operating in a gray area, most knew it, and their own terms disclaimed liability for exactly this scenario. Some users have explored class actions against the resellers, not Anthropic, for failing to disclose the risk. As of this writing, none has been filed.</p>
-
-        <h2>OpenAI's response</h2>
-        <p>Within hours, OpenAI's developer relations team began courting displaced Claude users, offering <strong>migration credits</strong>, onboarding support and a pointed message: <em>we don't do this to our developers.</em></p>
-        <p>OpenAI still allows full third-party API access. Any developer can build on GPT-4o, GPT-5.4 or any model in its lineup, with no restrictions beyond standard rate limits.</p>
-        <p>The story that stuck was simple: Anthropic restricts, OpenAI opens up. Anthropic would argue it is protecting the sustainability of its platform.</p>
-        <div class="po-note">
-          <h3>Two different bets</h3>
-          <p>Anthropic is betting that controlling access to its most capable models builds a sustainable business. OpenAI is betting that open access drives adoption, and adoption wins.</p>
-        </div>
-
-        <h2>Your options</h2>
-        <p>If you were using a third-party Claude service, here is where things stood:</p>
-        <table>
-          <thead>
-            <tr><th scope="col">Option</th><th scope="col">Cost</th><th scope="col">Access</th><th scope="col">Downside</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Claude Pro (direct)</td><td>$20/mo</td><td>Claude Sonnet + limited Opus</td><td>Rate limits, no API</td></tr>
-            <tr><td>Anthropic API (direct)</td><td>Pay-per-token</td><td>Full model access</td><td>Up to 50x your old cost</td></tr>
-            <tr><td>Switch to OpenAI API</td><td>Pay-per-token</td><td>GPT-4o, GPT-5.4</td><td>Different model behavior</td></tr>
-            <tr><td>Google Gemini API</td><td>Pay-per-token</td><td>Gemini 2.0 Pro</td><td>Less coding capability</td></tr>
-            <tr><td>Open-source (Llama, Mistral)</td><td>Self-hosted</td><td>Full control</td><td>Infra costs, lower quality</td></tr>
-          </tbody>
-        </table>
-
-        <h2>What this means going forward</h2>
-        <p>This is about control as much as price. Anthropic is building an ecosystem where it decides who gets access to Claude and at what price. OpenAI and Google run more open marketplaces.</p>
-        <p>The Mythos restriction to 40 organizations under <a href="/signals/glasswing">Project Glasswing</a> looks like part of the same pattern. Anthropic is betting that controlled access is the right model for frontier AI. Whether developers, and the market, agree is still open.</p>
-
-        <h2>If you want help</h2>
-        <p>We set tools up inside accounts you own, so a middleman going dark cannot take your setup with it. See <a href="/services/#day-one-setup">Day One Setup</a>, or <a href="/contact/">book a 20-minute call</a>.</p>
-
-        <h2 id="sources">Sources</h2>
-        <ol class="sources">
-          <li>Anthropic. "Updates to API Terms of Service." <a href="https://www.anthropic.com/news/api-terms-update" rel="noopener">anthropic.com</a>, April 4, 2026.</li>
-          <li>r/artificial. "Anthropic just pulled the rug on 50,000 users." <a href="https://reddit.com/r/artificial" rel="noopener">reddit.com</a>, April 4, 2026.</li>
-          <li>Hacker News. Discussion thread on Anthropic API changes. <a href="https://news.ycombinator.com" rel="noopener">news.ycombinator.com</a>, April 4, 2026.</li>
-          <li>OpenClaw. "Service Sunset Notice." <a href="https://openclaw.dev" rel="noopener">openclaw.dev</a>, April 5, 2026.</li>
-          <li>Heath, A. "Anthropic Cracks Down on API Resellers, Sparking Developer Revolt." <a href="https://www.theverge.com/2026/4/5/anthropic-api-resellers" rel="noopener">The Verge</a>, April 5, 2026.</li>
-        </ol>
-
-        <h2>Update log</h2>
-        <ul class="updlog">
-          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Retitled and edited for tone. The reported facts and sources are unchanged. Original title: "Anthropic Just Killed Third-Party Access to Claude, Here's Why Developers Are Furious"</span></li>
-          <li><time datetime="2026-04-03">Apr 3, 2026</time><span>First posted.</span></li>
-        </ul>
-        <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by Anthropic, OpenAI or any service named here. Product names are trademarks of their owners. This post reflects public information as of April 3, 2026. <a href="/signals/policy/">How we source Signals</a>.</p>
-        <div class="po-author">
-          <img src="/assets/images/team/hyrum-hurst.webp" alt="Hyrum Hurst" width="64" height="64" loading="lazy">
-          <p><b>Hyrum Hurst</b>Founder of QuarterSmart and CTO of Learning Journey AI. He writes Signals and sets up the tools himself. <a href="/about/hyrum-hurst/">More about Hyrum</a></p>
-        </div>
-      </article>
-
-      <aside class="po-rail" aria-label="Signal summary">
-        <dl class="po-kv">
-          <div><dt>Verdict</dt><dd class="po-kv__big">Act now</dd></div>
-          <div><dt>Who it's for</dt><dd>Anyone who used a third-party Claude reseller</dd></div>
-          <div><dt>Options</dt><dd>Claude Pro, the direct API, or another provider</dd></div>
-          <div><dt>Posted</dt><dd>Apr 3, 2026</dd></div>
-        </dl>
-        <nav class="po-next" aria-label="Read next">
-          <h2>Read next</h2>
-          <ul>
-            <li><a href="/signals/stretch-ai-budget">Stretch your AI budget</a></li>
-            <li><a href="/signals/openai-pricing">OpenAI's 2026 pricing changes</a></li>
-            <li><a href="/signals/">All Signals</a></li>
-          </ul>
-        </nav>
-      </aside>
-    </div>
+      </nav>
+    </aside>
   </div>
-
-  <section class="band band--slate po-close" aria-labelledby="close-h">
-    <div class="wrap po-close__grid">
-      <div class="po-close__main">
-        <h2 class="po-close__h" id="close-h">Get in the first quarter.</h2>
-        <p class="body-l">A free 20-minute call. Tell us what your team uses and what's eating the week. We'll tell you what's worth doing now and what can wait.</p>
-        <div class="po-head__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
-      </div>
-      <form class="po-close__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
-        <p class="label">Not ready for a call?</p>
-        <h3 class="h-3">Get the next Signal instead.</h3>
-        <p class="muted">The few AI launches worth your attention, every Monday, each with a verdict. Free.</p>
-        <input type="hidden" name="form-name" value="signals-weekly">
-        <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
-        <input type="hidden" name="source" value="post">
-        <label class="sr" for="pe-email">Work email</label>
-        <div class="field">
-          <input class="input" id="pe-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
-          <button class="btn" type="submit">Subscribe</button>
-        </div>
-        <p data-form-status aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
-
+  <!-- @include post-end -->
 </main>
-<!-- po-form:start -->
-<script>
-/* The band's sprite assembles from its own pixels once, then the verdict sign lights. Skipped for reduced motion. */
-(function(){var f=document.querySelector('[data-po-form]');if(!f)return;var b=f.closest('.po-band'),m=f.querySelector('img');
-if(!m||!b||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
-b.classList.add('po-arm');var ran=0;
-function lit(){f.classList.remove('is-forming');b.classList.add('is-lit');}
-function go(){if(ran)return;ran=1;var w=m.naturalWidth,h=m.naturalHeight,r=m.getBoundingClientRect(),fr=f.getBoundingClientRect();if(!w||!r.width)return lit();
-var sc=r.width/w,o=document.createElement('canvas');o.width=w;o.height=h;var ox=o.getContext('2d'),d;ox.drawImage(m,0,0);
-try{d=ox.getImageData(0,0,w,h).data}catch(e){return lit()}
-var pad=Math.round(Math.max(r.width,r.height)*.55),cw=Math.round(r.width+pad*2),ch=Math.round(r.height+pad*2),c=document.createElement('canvas');
-c.width=cw;c.height=ch;c.style.width=cw+'px';c.style.height=ch+'px';c.style.left=Math.round(r.left-fr.left-pad)+'px';c.style.top=Math.round(r.top-fr.top-pad)+'px';
-var x=c.getContext('2d'),P=[],s=Math.ceil(sc);
-for(var y=0;y<h;y++)for(var i=0;i<w;i++){var k=(y*w+i)*4;if(d[k+3]<60)continue;var a=Math.random()*6.2832,q=(.3+Math.random()*.7)*pad;
-P.push([pad+r.width/2+Math.cos(a)*q*1.5,pad+r.height/2+Math.sin(a)*q,pad+i*sc,pad+y*sc,Math.random()*320+(1-y/h)*240,'rgb('+d[k]+','+d[k+1]+','+d[k+2]+')'])}
-f.appendChild(c);f.classList.add('is-forming');var T=820,t0=performance.now();
-function tick(now){var el=now-t0,done=1;x.clearRect(0,0,cw,ch);
-for(var j=0;j<P.length;j++){var p=P[j],t=(el-p[4])/T;if(t<1)done=0;t=t<0?0:t>1?1:t;var e=Math.round((1-Math.pow(1-t,3))*16)/16;
-x.globalAlpha=.28+.72*t;x.fillStyle=p[5];x.fillRect(Math.round(p[0]+(p[2]-p[0])*e),Math.round(p[1]+(p[3]-p[1])*e),s,s)}
-if(!done)requestAnimationFrame(tick);else{c.remove();lit()}}
-requestAnimationFrame(tick)}
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();(m.complete?Promise.resolve():m.decode()).then(go,go)}})},{threshold:.2});io.observe(f)})();
-</script>
-<!-- po-form:end -->
+<script src="/assets/js/radar.js?v=20260927m" defer></script>
 <!-- @include footer -->
 </body>
 </html>
