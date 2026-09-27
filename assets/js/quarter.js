@@ -207,12 +207,6 @@
       }));
     }
 
-    // ---- afterwards: a tiny UFO drifting through the far sky, lights blinking
-    if (p >= 0.74 && !reduce) {
-      const q = ((now / 1000) % 16) / 16, x = -8 + q * (AW + 16), y = 4 + Math.round(Math.sin(now / 900) * 1);
-      if (q < 0.97) { put(x + 1, y, 2, 1, K.teal); put(x, y + 1, 4, 1, K.cream); put(x + (Math.floor(now / 300) % 2 ? 0 : 3), y + 2, 1, 1, K.rose); }
-    }
-
     // ---- the light quarter: lifts out and grows; click it to lose a life (and it glints while it waits)
     const lift = ease(clamp((p - 0.56) / 0.1));
     const G = CS + lift, dx = lift * 7, dy = -lift * 7;
