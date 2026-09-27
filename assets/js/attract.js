@@ -526,7 +526,7 @@
     b.globalAlpha = 1;
   }
 
-  // ---------- the sky: pixel stars, a crescent moon, comets, a passing UFO (never morphed) ----------
+  // ---------- the sky: pixel stars, a crescent moon and the odd comet (never morphed) ----------
   const SKY = window.QSSky;
   let stars = [], P = SKY ? SKY.pal() : null, comet = null, nextComet = 3500;
   function makeStars() { if (SKY) stars = SKY.field(GW, Math.max(10, PH - 4), Math.round(GW * PH / (small ? 120 : 170)), 99, { noBig: true, calm: 0.75 }); }
@@ -542,17 +542,6 @@
         if (!comet && now > nextComet) { const r = ((now * 9301) % 1000) / 1000; comet = { t0: now, dur: 1000 + r * 400, x0: GW * (0.45 + r * 0.5), y0: 2 + r * 6, len: 10 + Math.round(r * 5) }; comet.x1 = comet.x0 - GW * 0.3; comet.y1 = comet.y0 + PH * 0.35; }
         if (comet) { const q = (now - comet.t0) / comet.dur; if (q >= 1) { comet = null; nextComet = now + 7000 + (now % 5000); } else SKY.drawComet(put, comet, q, P); }
       }
-    }
-    // UFO every 17s: drifts across, lights blink, sometimes beams down
-    const cyc = now % 17000;
-    if (cyc < 9000) {
-      const q = cyc / 9000, ux = -12 + q * (GW + 24), uy = (small ? 4 : 5) + Math.sin(now / 400) * 1.2;
-      const blink = Math.floor(now / 200) % 3;
-      k2.globalAlpha = 1;
-      k2.fillStyle = C.teal; k2.fillRect(Math.round(ux) + 3, Math.round(uy), 4, 2);
-      k2.fillStyle = C.cream; k2.fillRect(Math.round(ux), Math.round(uy) + 2, 10, 2);
-      [[1, C.rose], [4, C.butter], [7, C.rose]].forEach(([dx, c], i) => put(ux + dx + 1, uy + 3, i === blink ? c : C.dim));
-      if (q > 0.42 && q < 0.58) { k2.globalAlpha = 0.28; k2.fillStyle = C.quart; for (let y = 0; y < 14; y++) k2.fillRect(Math.round(ux) + 5 - Math.floor(y / 3), Math.round(uy) + 4 + y, 1 + Math.floor(y / 3) * 2, 1); }
     }
     // the horizon: the game ends here; below it, everyone who already played walks home
     k2.globalAlpha = 1; k2.fillStyle = C.line; for (let x = 0; x < GW; x += 2) k2.fillRect(x, PH, 1, 1);
