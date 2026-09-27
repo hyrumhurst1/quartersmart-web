@@ -32,7 +32,8 @@
 
   // ---------- world size: the buffer covers the whole canvas at an integer scale ----------
   let GW = 160, GH = 90, PH = 60, SC = 1, small = false;
-  const GROUND = 9;                                   // art rows between the play field and the title text
+  const GROUND = 3;                                  // art rows between the play field and the headline
+  let CLEAR_Y = 0, CLEAR_L = 0, CLEAR_R = 0;                                   // art rows between the play field and the title text
   function dims() {
     const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
     cv.width = Math.max(1, Math.round(r.width * dpr)); cv.height = Math.max(1, Math.round(r.height * dpr));
@@ -47,6 +48,8 @@
     const tb = textBox ? textBox.getBoundingClientRect() : null;
     const top = tb ? (tb.top - r.top) * dpr / SC : GH * 0.64;
     PH = Math.max(40, Math.min(GH - 4, Math.floor(top) - GROUND));
+    // keep the two top corners clear of stars: the level HUD sits top-left, the menu dock top-right
+    const art = dpr / SC; CLEAR_Y = Math.ceil(84 * art); CLEAR_L = Math.ceil(300 * art); CLEAR_R = Math.ceil(140 * art);
   }
 
   // ---------- helpers ----------
@@ -440,12 +443,6 @@
     try { const add = pack(A); for (const [k, v] of Object.entries(add)) if (v && v.draw && v.init && v.update && !S[k]) S[k] = { name: k, dur: 6800, word: { lay: 'line', F: 2 }, ...v }; }
     catch (e) { console.warn('attract pack failed', e); }
   }
-  // characters that join the parade on the ground once their game has played
-  const PARADE = {
-    chomp: [['.xxx.', 'xxx..', 'xx...', 'xxx..', '.xxx.'], 'body'], invaders: [['.x...x.', '..xxx..', 'xxx.xxx', 'x.x.x.x'], 'rose'], race: [['..xxxx...', '.xxxxxxx.', 'xxxxxxxxx', '.x.....x.'], 'rose'],
-    flap: [['.xxx.', 'xxxxx', '.xx..'], 'butter'], frogger: [['x.x', '.x.', 'xxx'], 'quart'], walkers: [['xx', 'xx', 'x.'], 'teal'], dig: [['.xx.', 'xxxx', 'x.xx', '.xx.'], 'butter'],
-    snake: [['xxxxxx.', '.....xx'], 'body'], float: [['..x..', '.xxx.', 'xx.xx'], 'quart'], bump: [['.xx.', 'xxxx', 'x..x'], 'rose'],
-  };
   const TAIL = Object.keys(S).filter((k) => k !== 'title');
   let level = 1, loop = 0, ORDER = ['title'];
   // Every page load starts somewhere new: a random opener, then a fresh shuffle; the title screen opens
@@ -470,13 +467,7 @@
     const nm = document.createElement('span'); nm.className = 'win__nm'; nm.textContent = ` ${scene.name}`;
     label.replaceChildren(`lv ${String(level).padStart(2, '0')}`, nm);
   };
-  const crowd = [];
-  function joinParade(id) {
-    const sc = S[id], pr = sc.parade !== undefined ? sc.parade : PARADE[id];
-    if (!pr || crowd.some((m) => m.id === id)) return;
-    crowd.push({ id, rows: pr[0], c: pr[1], x: GW + 4 + (crowd.length % 3) * 9, sp: 0.1 + (crowd.length % 3) * 0.03, ph: crowd.length });
-    if (crowd.length > 7) crowd.shift();
-  }
+
 
   // ---------- morph ----------
   const MORPH = 1250;
@@ -536,24 +527,15 @@
     const walk = walkAt ? clamp((now - walkAt) / (1000 / 60), 0, 3) : 1; walkAt = now;   // the parade walks by the clock (60fps steps), whatever the paint rate
     const put = (x, y, c, a = 1) => { if (y >= PH - 1) return; k2.globalAlpha = a; k2.fillStyle = c; k2.fillRect(Math.round(x), Math.round(y), 1, 1); };
     if (SKY) {
-      for (const st of stars) { if (st.x > X0 - 4 && st.x < X0 + WW + 4 && st.y > Y0 - 4 && st.y < WY1 + 4) continue; SKY.drawStar(put, st, now, P); }
+      for (const st of stars) { if (st.x > X0 - 4 && st.x < X0 + WW + 4 && st.y > Y0 - 4 && st.y < WY1 + 4) continue; if (st.y < CLEAR_Y && (st.x < CLEAR_L || st.x > GW - CLEAR_R)) continue; SKY.drawStar(put, st, now, P); }
       SKY.crescent(put, Math.round(GW * (small ? 0.8 : 0.84)), small ? 9 : 10, small ? 4 : 5, P);
       if (!reduce) {
         if (!comet && now > nextComet) { const r = ((now * 9301) % 1000) / 1000; comet = { t0: now, dur: 1000 + r * 400, x0: GW * (0.45 + r * 0.5), y0: 2 + r * 6, len: 10 + Math.round(r * 5) }; comet.x1 = comet.x0 - GW * 0.3; comet.y1 = comet.y0 + PH * 0.35; }
         if (comet) { const q = (now - comet.t0) / comet.dur; if (q >= 1) { comet = null; nextComet = now + 7000 + (now % 5000); } else SKY.drawComet(put, comet, q, P); }
       }
     }
-    // the horizon: the game ends here; below it, everyone who already played walks home
+    // the horizon: one quiet dotted line where the game ends and the headline begins
     k2.globalAlpha = 1; k2.fillStyle = C.line; for (let x = 0; x < GW; x += 2) k2.fillRect(x, PH, 1, 1);
-    const road = PH + GROUND - 2;
-    k2.globalAlpha = 0.4; k2.fillStyle = C.dim; for (let x = -(Math.floor(now / 140) % 6); x < GW; x += 6) k2.fillRect(x, road + 1, 3, 1);
-    k2.globalAlpha = 1;
-    for (const m of crowd) {
-      if (!reduce) { m.x -= m.sp * walk; if (m.x < -12) m.x = GW + 6; }
-      const hop = Math.floor(now / 200 + m.ph) % 2;
-      k2.fillStyle = C[m.c] || C.quart;
-      m.rows.forEach((row, j) => [...row].forEach((ch, i) => { if (ch !== '.') k2.fillRect(Math.round(m.x) + i, road - m.rows.length + j - hop, 1, 1); }));
-    }
   }
 
   // ---------- loop ----------
@@ -606,7 +588,7 @@
       if (mode === 'play') {
         if (t >= scene.dur) {
           render(scene); const A = snapshot();
-          joinParade(ORDER[idx]); level++;
+          level++;
           idx++; if (idx >= ORDER.length) { deal(); idx = 0; }
           scene = S[ORDER[idx]]; start(scene); render(scene); const B = snapshot();
           buildMorph(A, B); mode = 'morph'; t0 = now; setLabel(); mt = 0; drawMorph(0);
@@ -640,7 +622,7 @@
     if (v) { paused = true; pausedAt = now; cancelAnimationFrame(raf); raf = 0; }
     else { paused = false; t0 += now - pausedAt; last = now; walkAt = 0; if (!raf) raf = requestAnimationFrame(tick); }
     if (pb) (pb.firstElementChild || pb).textContent = paused ? 'play' : 'pause';
-    const w = cv.closest('.h4__win'); if (w) w.classList.toggle('is-paused', paused);   // the title light holds too
+    const w = cv.closest('.h4'); if (w) w.classList.toggle('is-paused', paused);   // the title light holds too
   };
   if (pb) { pb.hidden = false; pb.addEventListener('click', () => setPaused(!paused)); }
   // click the world: every letter hops once (a tiny bit of play)
