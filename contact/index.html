@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="Tell us what tools you use and what's eating your team's week.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-contact.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/about.css?v=20260927f">
+<link rel="stylesheet" href="/assets/css/about.css?v=20260927p">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -79,10 +79,12 @@
         </div>
         <p class="ah__note">Free, with Hyrum Hurst, the founder. No obligation to buy anything after it. The calendar opens in a new tab and shows open times in your own time zone.</p>
       </div>
-      <figure class="morph ah__art ah__art--xl" style="--cw:64px;--iw:51px">
-        <img class="px" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="An arcade cabinet with a green screen, in pixel art.">
-        <canvas data-morph="mark /assets/px/sprite-arcade.png" data-w="64" data-h="100" data-cell="4" data-loop="0" data-hold="900" data-first="900" role="img" aria-label="The QuarterSmart mark breaks into pixels that re-form as an arcade cabinet with a green screen."></canvas>
-      </figure>
+      <div class="pxstage ah__stage" data-pxstage data-first="arcade" data-scenes="arcade wave mail assistant verdicts keyboard rocket radar scope tower satellite floppies mark" data-max="4" data-hold="2400">
+        <div class="pxstage__screen">
+          <img class="pxstage__still" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="Pixel art that changes scenes: an arcade cabinet, a voice wave, the Monday email, an assistant, the four verdicts, a keyboard and manual, a launch pad, a radar dish, a radar scope, a broadcast tower, a satellite, five floppy disks and the QuarterSmart mark.">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -97,8 +99,9 @@
         <li><span class="seq__n">01</span><h3>You tell us</h3><p>What your business does, which tools you already pay for, and what's eating the week.</p></li>
         <li><span class="seq__n">02</span><h3>We ask</h3><p>A few questions about who owns your accounts, how your team works, and anything that has to stay private.</p></li>
         <li><span class="seq__n">03</span><h3>We answer</h3><p>What's worth doing now, what can wait, and whether the launch you've been hearing about matters to you.</p></li>
-        <li><span class="seq__n">04</span><h3>You decide</h3><p>If there's a fit, most businesses start with a Head Start. If there isn't, we'll say so on the call.</p></li>
+        <li><span class="seq__n">04</span><h3>You decide</h3><p>If there's a fit, most businesses start with a Head Start, from $1,500 one time. If there isn't, we'll say so on the call.</p></li>
       </ol>
+      <p class="ab-more"><a class="link" href="/services/">See all prices</a></p>
     </div>
   </section>
 
@@ -147,7 +150,7 @@
   </section>
 
 </main>
-<script src="/about/pxmorph.js?v=20260927f" defer></script>
+<script src="/assets/js/radar.js?v=20260927m" defer></script>
 <!-- @include footer -->
 </body>
 </html>

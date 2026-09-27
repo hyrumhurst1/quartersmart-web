@@ -69,7 +69,7 @@
 .echo { --es: .022em; --e1: #d99bb8; --e2: #dfc07f; --e3: #a9d99f; --e4: #86c3ba; --e5: #2a9a70; --e6: #16362a;
   text-shadow: 0 var(--es) 0 var(--e1), 0 calc(var(--es) * 2) 0 var(--e2), 0 calc(var(--es) * 3) 0 var(--e3), 0 calc(var(--es) * 4) 0 var(--e4), 0 calc(var(--es) * 5) 0 var(--e5), 0 calc(var(--es) * 6) 0 var(--e6); }
 .echo--sm { --es: .03em; text-shadow: 0 var(--es) 0 var(--e1), 0 calc(var(--es) * 2) 0 var(--e3), 0 calc(var(--es) * 3) 0 var(--e5); }
-.echo--chase { animation: echo-chase 1.6s steps(1) infinite; }
+.echo--chase { animation: echo-chase 2.8s steps(1) infinite; }
 @keyframes echo-chase {
   0% { --e1: #d99bb8; --e2: #dfc07f; --e3: #a9d99f; --e4: #86c3ba; }
   25% { --e1: #86c3ba; --e2: #d99bb8; --e3: #dfc07f; --e4: #a9d99f; }

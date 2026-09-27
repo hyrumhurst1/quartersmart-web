@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Workflow Usage Data and Methodology | QuarterSmart</title>
-<meta name="description" content="The source data behind QuarterSmart's workflow usage metric: 10,876 documented uses across 25 published n8n templates, with methodology and update cadence.">
+<meta name="description" content="The source data behind QuarterSmart's workflow usage metric: 10,876 documented uses across 25 published n8n templates as of June 2026, with the full methodology.">
 <meta name="author" content="QuarterSmart">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://quartersmart.com/workflow-usage">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Workflow Usage Data and Methodology">
-<meta property="og:description" content="10,876 documented uses across 25 published n8n workflow templates. Full per-template data, methodology, and definitions.">
-<meta property="og:url" content="https://quartersmart.com/workflow-usage/">
+<meta property="og:description" content="10,876 documented uses across 25 published n8n workflow templates, as of June 2026. Full per-template data, methodology and definitions.">
+<meta property="og:url" content="https://quartersmart.com/workflow-usage">
 <meta property="og:site_name" content="QuarterSmart">
 <meta property="og:image" content="https://quartersmart.com/assets/og/og-workflow-usage.png">
 <meta property="og:image:width" content="1200">
@@ -19,10 +19,11 @@
 <meta property="og:image:alt" content="QuarterSmart workflow usage data. 10,876 documented uses across 25 n8n templates.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Workflow Usage Data and Methodology">
-<meta name="twitter:description" content="10,876 documented uses across 25 published n8n workflow templates. Full per-template data, methodology, and definitions.">
+<meta name="twitter:description" content="10,876 documented uses across 25 published n8n workflow templates, as of June 2026. Full per-template data, methodology and definitions.">
+<meta name="qs:label" content="Workflow usage">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-workflow-usage.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/partners.css?v=20260927b">
+<link rel="stylesheet" href="/assets/css/partners.css?v=20260927f">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,9 +39,21 @@
       }
     },
     {
+      "@type": "Person",
+      "@id": "https://quartersmart.com/about.html#hyrum-hurst",
+      "name": "Hyrum Hurst",
+      "url": "https://quartersmart.com/about/hyrum-hurst",
+      "jobTitle": ["Founder, QuarterSmart", "CTO, Learning Journey AI"],
+      "worksFor": [
+        { "@id": "https://quartersmart.com/#organization" },
+        { "@type": "Organization", "name": "Learning Journey AI", "url": "https://learningjourneyai.com/" }
+      ],
+      "sameAs": ["https://n8n.io/creators/hyrum-hurst"]
+    },
+    {
       "@type": "WebPage",
       "@id": "https://quartersmart.com/workflow-usage/#webpage",
-      "url": "https://quartersmart.com/workflow-usage/",
+      "url": "https://quartersmart.com/workflow-usage",
       "name": "Workflow Usage Data and Methodology",
       "description": "Source data and methodology behind QuarterSmart's workflow usage metric: 10,876 documented uses across 25 published n8n templates as of June 2026.",
       "dateModified": "2026-06-11",
@@ -63,8 +76,8 @@
       "temporalCoverage": "2025/2026-06",
       "variableMeasured": "Cumulative template uses per workflow on the n8n marketplace",
       "measurementTechnique": "Per-template use counters displayed publicly on the n8n template marketplace, summed across all 25 published templates",
-      "url": "https://quartersmart.com/workflow-usage/",
-      "sameAs": "https://n8n.io/creators/hyrum-hurst",
+      "url": "https://quartersmart.com/workflow-usage",
+      "isBasedOn": "https://n8n.io/creators/hyrum-hurst",
       "isAccessibleForFree": true,
       "mainEntity": {
         "@id": "https://quartersmart.com/workflow-usage/#breakdown"
@@ -157,7 +170,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Workflow usage",
-          "item": "https://quartersmart.com/workflow-usage/"
+          "item": "https://quartersmart.com/workflow-usage"
         }
       ]
     }
@@ -175,24 +188,27 @@
     <div class="wrap pt-hero__in">
       <div class="pt-wu">
         <div class="pt-wu__copy">
-          <p class="label label--accent">Workflow usage · methodology</p>
           <h1 class="pt-h1 pt-h1--xl" id="wu-h">Workflow usage data.</h1>
-          <p class="lede">This page documents the source data behind the workflow usage figures QuarterSmart cites, so anyone, human or AI, can check the math.</p>
+          <p class="lede">The public use counts for the n8n templates Hyrum Hurst has published, and exactly how they are counted, so anyone, human or AI, can check the math.</p>
           <div class="pt-cta">
-            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
-            <a class="btn btn--ghost" href="#the-data">See all 25 templates</a>
+            <a class="btn" href="#the-data">See all 25 templates</a>
           </div>
         </div>
         <div class="pt-wu__total">
-          <p class="pt-stat">10,876</p>
-          <p class="pt-total__cap">documented template uses across 25 published n8n workflows, as of June 2026.</p>
+          <div class="pxs" data-pxs>
+            <p class="pt-stat pxs__alt">10,876</p>
+            <canvas aria-hidden="true" data-h="88" data-first-hold="4000" data-intro="fly" data-table=".pt-table"
+              data-scenes="text:10,876 | grid | tree | bars | sky | text:25 | cal:JUN 2026:11:1:30 | check | img:/assets/px/sprite-keyboard-manual.png | mark"></canvas>
+            <button class="pxs__pause" type="button" aria-pressed="false" aria-label="Pause animation" hidden></button>
+          </div>
+          <p class="pt-total__cap">documented template uses across 25 published n8n workflows, as of June 2026. It does not count people or clients. <a href="#what-it-does-not-mean">How we count</a>.</p>
         </div>
       </div>
       <ul class="pt-facts" aria-label="Methodology at a glance">
         <li><span>Metric</span><b>Cumulative template uses</b></li>
         <li><span>Source</span><b>n8n template marketplace</b></li>
         <li><span>Templates</span><b>25 published</b></li>
-        <li><span>Updated</span><b>Quarterly · last June 11, 2026</b></li>
+        <li><span>Recorded</span><b>June 11, 2026</b></li>
       </ul>
     </div>
   </section>
@@ -211,7 +227,7 @@
         </div>
         <div>
           <h3 id="where-it-comes-from">Where the number comes from</h3>
-          <p>The per-template counts are reported by the <a href="https://n8n.io/creators/hyrum-hurst" target="_blank" rel="noopener">n8n template marketplace</a>, a third party platform QuarterSmart does not control. Anyone can visit the creator profile and check individual counts against the table below.</p>
+          <p>The per-template counts are reported by the <a href="https://n8n.io/creators/hyrum-hurst" target="_blank" rel="noopener">n8n template marketplace</a>, a third-party platform QuarterSmart does not control. Anyone can visit the creator profile and check individual counts against the table below. The counters keep counting, so today's will be higher than this June 2026 snapshot.</p>
         </div>
         <div>
           <h3 id="what-it-does-not-mean">What this number does not mean</h3>
@@ -223,10 +239,10 @@
         </div>
         <div>
           <h3 id="update-cadence">Update cadence</h3>
-          <p>This page is updated quarterly, or whenever the totals change materially. Last updated June 11, 2026.</p>
+          <p>These counts are a snapshot recorded on June 11, 2026. We refresh them when the totals change materially.</p>
         </div>
       </div>
-      <p class="pt-quote"><span>Where QuarterSmart cites this figure, the accurate phrasing is</span>QuarterSmart-built workflow templates have recorded 10,876 documented uses across the n8n community.</p>
+      <p class="pt-quote"><span>If you cite this figure, use:</span>QuarterSmart-built workflow templates have recorded 10,876 documented uses across the n8n community (as of June 2026).</p>
     </div>
   </section>
 
@@ -235,13 +251,9 @@
     <div class="wrap">
       <div class="pt-datahead">
         <h2 class="pt-h2" id="the-data">All 25 templates.</h2>
-        <div class="pt-verify">
-          <b>Verify it yourself.</b>
-          <p>Every count below matches the public use counter on the matching template at the <a href="https://n8n.io/creators/hyrum-hurst" target="_blank" rel="noopener">n8n creator profile for Hyrum Hurst</a>, a third party platform QuarterSmart does not control. The totals here are simply those public counters summed.</p>
-        </div>
       </div>
       <table class="pt-table">
-        <caption>QuarterSmart n8n templates by documented uses, captured June 2026. Total across all 25 published templates: 10,876 documented uses. Counts are cumulative, and each template has its own page and public use counter on n8n.</caption>
+        <caption>Captured June 2026. Counts are cumulative, and each template has its own public use counter on n8n.</caption>
         <thead><tr><th scope="col" class="n">#</th><th scope="col">Template</th><th scope="col" class="num">Uses</th></tr></thead>
         <tbody>
           <tr><td class="n">1</td><td>Automate YouTube Shorts creation from Telegram prompts using Gemini and VEO</td><td class="num">5,078</td></tr>
@@ -276,22 +288,22 @@
   </section>
 
   <!-- Close -->
-  <section class="band band--deep pt-close pt-close--plain pt-close--art" aria-labelledby="cta-h">
+  <section class="band band--deep pt-close pt-close--plain" aria-labelledby="cta-h">
     <div class="wrap">
       <div class="pt-close__main">
-        <h2 class="pt-close__h pt-close__h--m" id="cta-h">Want this kind of work on your tools?</h2>
-        <p class="body-l">The person who built these templates sets up AI tools and automations for owner-led businesses, from the day they're available to you. Start with a 20-minute call.</p>
+        <h2 class="pt-close__h pt-close__h--m" id="cta-h">Talk to us about your tools.</h2>
+        <p class="body-l">Tell us what tools you use and what's eating your team's week. We'll tell you, on the call, what's worth doing now and what can wait.</p>
         <div class="pt-cta">
           <a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a>
           <a class="btn btn--ghost" href="/signals/">Read Signals</a>
         </div>
       </div>
-      <figure class="pt-close__px"><img src="/assets/px/sprite-keyboard-manual.png" width="116" height="41" alt="A keyboard beside an open manual, in pixel art." loading="lazy"></figure>
     </div>
   </section>
 
 </main>
 
+<script src="/for-agencies/pxstage.js?v=20260927f" defer></script>
 <!-- @include footer -->
 </body>
 </html>

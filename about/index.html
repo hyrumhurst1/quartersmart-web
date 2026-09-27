@@ -10,19 +10,19 @@
 <link rel="canonical" href="https://quartersmart.com/about">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Who we are | QuarterSmart">
-<meta property="og:description" content="A small team that watches AI so you don't have to. We track what's new, set up what's worth it, and train the people who'll use it.">
+<meta property="og:description" content="We watch AI so you don't have to. We track what's new, set up what's worth it, and train the people who'll use it.">
 <meta property="og:url" content="https://quartersmart.com/about">
 <meta property="og:site_name" content="QuarterSmart">
 <meta property="og:image" content="https://quartersmart.com/assets/og/og-about.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="QuarterSmart. A small team that watches AI so you don't have to.">
+<meta property="og:image:alt" content="QuarterSmart. We watch AI so you don't have to.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Who we are | QuarterSmart">
-<meta name="twitter:description" content="A small team that watches AI so you don't have to.">
+<meta name="twitter:description" content="We watch AI so you don't have to. We track what's new, set up what's worth it, and train the people who'll use it.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-about.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/about.css?v=20260927f">
+<link rel="stylesheet" href="/assets/css/about.css?v=20260927p">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -60,11 +60,6 @@
       ],
       "affiliation": { "@id": "https://quartersmart.com/#organization" },
       "homeLocation": { "@type": "Place", "name": "Mesa, Arizona" },
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "certification",
-        "name": "Google Certified AI Automations Engineer"
-      },
       "knowsAbout": [
         "AI early adoption",
         "applied AI",
@@ -86,16 +81,6 @@
       "subjectOf": "https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/"
     },
     {
-      "@type": "FAQPage",
-      "@id": "https://quartersmart.com/about#faqpage",
-      "mainEntity": [
-        { "@type": "Question", "name": "What is QuarterSmart?", "acceptedAnswer": { "@type": "Answer", "text": "QuarterSmart is an early-adoption AI partner for owner-led businesses. We track new AI launches, tell each business which ones matter to it, then set the tools up in its own accounts and train the team to use them." } },
-        { "@type": "Question", "name": "Who runs QuarterSmart?", "acceptedAnswer": { "@type": "Answer", "text": "Hyrum Hurst, the founder. He builds the systems, writes Signals, and is the person you talk to. No account managers, no hand-offs." } },
-        { "@type": "Question", "name": "Where is QuarterSmart based?", "acceptedAnswer": { "@type": "Answer", "text": "Mesa, Arizona. We work with businesses across the US, mostly on calls and inside the client's own accounts." } },
-        { "@type": "Question", "name": "Is QuarterSmart affiliated with OpenAI, Anthropic or Google?", "acceptedAnswer": { "@type": "Answer", "text": "No. We're independent and set up tools from many vendors." } }
-      ]
-    },
-    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quartersmart.com/" },
@@ -111,22 +96,24 @@
 
 <main id="main">
 
-  <!-- Hero: the headline, and the pixel art changing scenes beside it -->
+  <!-- Hero: the headline, and the pixel stage changing scenes beside it -->
   <section class="ah" aria-labelledby="ab-h">
     <div class="wrap ah__grid">
       <div class="ah__copy">
         <p class="label label--accent">Who we are</p>
-        <h1 class="ah__h" id="ab-h"><span class="ln">A small team</span> <span class="ln">that watches AI</span> <span class="ln">so you don't</span> <span class="ln">have to.</span></h1>
+        <h1 class="ah__h" id="ab-h"><span class="ln">We watch AI</span> <span class="ln">so you don't</span> <span class="ln">have to.</span></h1>
         <p class="lede">QuarterSmart is an early-adoption AI partner for owner-led businesses. We track what's new, set up what's worth it, and train the people who'll use it.</p>
         <div class="ah__cta">
           <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
           <a class="btn btn--ghost" href="#team">Who you'll work with</a>
         </div>
       </div>
-      <figure class="morph ah__art" style="--cw:120px;--iw:54px">
-        <img class="px" src="/assets/px/sprite-radar.png" width="54" height="81" alt="A radar dish on a lattice tower, in pixel art.">
-        <canvas data-morph="mark /assets/px/sprite-radar.png /assets/px/sprite-keyboard-manual.png /assets/px/sprite-assistant.png /assets/px/sprite-arcade.png" data-w="120" data-h="104" data-cell="5" data-hold="2600" data-first="1600" role="img" aria-label="Pixel art that keeps rearranging itself: the QuarterSmart mark breaks apart and re-forms as a radar dish, a keyboard and manual, an assistant device and an arcade cabinet."></canvas>
-      </figure>
+      <div class="pxstage ah__stage" data-pxstage data-first="radar" data-scenes="radar scope verdicts assistant keyboard rocket mail wave tower satellite floppies arcade mark" data-max="4" data-hold="2400">
+        <div class="pxstage__screen">
+          <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art that changes scenes: a radar dish, a radar scope, the four verdicts, an assistant, a keyboard and manual, a launch pad, the Monday email, a voice wave, a broadcast tower, a satellite, five floppy disks, an arcade cabinet and the QuarterSmart mark.">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -141,9 +128,10 @@
         </div>
       </div>
       <ol class="rows rows--big">
-        <li><span class="rows__k">Watch</span><p>Launches, early-access programs, quiet product updates and credible reporting, every day.</p></li>
-        <li><span class="rows__k">Decide</span><p>A plain-English verdict on each one, for a business like yours: act now, prepare, wait or ignore.</p></li>
+        <li><span class="rows__k">Detect</span><p>Launches, early-access programs, quiet product updates and credible reporting, every day.</p></li>
+        <li><span class="rows__k">Decode</span><p>A plain-English verdict on each one, for a business like yours: act now, prepare, wait or ignore.</p></li>
         <li><span class="rows__k">Deploy</span><p>When a tool is worth it, we set it up in your accounts, test it with a few people, then teach it to the team.</p></li>
+        <li><span class="rows__k">Stay current</span><p>Members get Signals filtered to their own tools, with setup time held for launch weeks. When a tool changes, we adjust your setup.</p></li>
       </ol>
       <p class="ab-more"><a class="link" href="/approach/">How we work</a></p>
     </div>
@@ -196,24 +184,8 @@
         <p class="body-l">That's what lets us say "wait" and "ignore" out loud. A vendor's launch email will always tell you to switch the new thing on. We'll tell you when it isn't worth it yet for your business, and why.</p>
         <p class="verds"><span>Act now</span> <span>Prepare</span> <b>Wait</b> <b>Ignore</b></p>
         <p class="body-l">Every setup lives in accounts you own, with the least access the tool needs. If something shouldn't go near client or patient data, we say so before we set it up.</p>
-        <p><a class="link" href="/signals/policy/">How we source Signals</a></p>
+        <p class="ab-links"><a class="link" href="/signals/policy/">How we source Signals</a><a class="link" href="/faq/">All questions</a></p>
       </div>
-    </div>
-  </section>
-
-  <!-- About us, briefly (matches the FAQPage schema above) -->
-  <section class="ab-sec" aria-labelledby="faq-h">
-    <div class="wrap">
-      <div class="ab-lead ab-lead--solo">
-        <h2 class="h-1" id="faq-h">About us, briefly.</h2>
-        <p><a class="link" href="/faq/">All questions</a></p>
-      </div>
-      <dl class="brief">
-        <div><dt>What is QuarterSmart?</dt><dd>QuarterSmart is an early-adoption AI partner for owner-led businesses. We track new AI launches, tell each business which ones matter to it, then set the tools up in its own accounts and train the team to use them.</dd></div>
-        <div><dt>Who runs QuarterSmart?</dt><dd>Hyrum Hurst, the founder. He builds the systems, writes Signals, and is the person you talk to. No account managers, no hand-offs.</dd></div>
-        <div><dt>Where is QuarterSmart based?</dt><dd>Mesa, Arizona. We work with businesses across the US, mostly on calls and inside the client's own accounts.</dd></div>
-        <div><dt>Is QuarterSmart affiliated with OpenAI, Anthropic or Google?</dt><dd>No. We're independent and set up tools from many vendors.</dd></div>
-      </dl>
     </div>
   </section>
 
@@ -235,7 +207,7 @@
   </section>
 
 </main>
-<script src="/about/pxmorph.js?v=20260927f" defer></script>
+<script src="/assets/js/radar.js?v=20260927m" defer></script>
 <!-- @include footer -->
 </body>
 </html>

@@ -23,7 +23,7 @@
   const scoreEl = sec.querySelector('[data-score]');
   const livesEl = sec.querySelector('[data-lives]');
   const replay = sec.querySelector('[data-replay]');
-  const TOTAL = 13000;                                            // ms for the whole story
+  const TOTAL = 8200;                                             // ms for the whole story: brisk, never waiting on itself
   const countTo = count ? +count.dataset.count : 0;
   const css = (v, d) => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || d;
   let K = {};
@@ -96,13 +96,15 @@
   function ufoAt(p) {
     const hy = Math.max(4, OY - 18), ly = Math.max(6, FLOOR - 40);
     const legs = [[0.02, AW + 18, hy - 12], [0.11, OX + 6, hy], [0.23, OX + 6, hy], [0.29, ALX - 3, ly], [0.35, ALX - 3, ly], [0.38, ALX - 3, ly - 5], [0.53, ALX - 3, ly - 5], [0.56, ALX - 3, ly], [0.63, ALX - 3, ly], [0.73, -26, -10]];
-    if (p <= legs[0][0]) return [legs[0][1], legs[0][2]];
-    for (let i = 1; i < legs.length; i++) if (p <= legs[i][0]) { const [t0, x0, y0] = legs[i - 1], [t1, x1, y1] = legs[i]; const t = ease((p - t0) / (t1 - t0)); return [lerp(x0, x1, t), lerp(y0, y1, t)]; }
+    const wob = (xy) => [xy[0] + Math.sin(clock / 520) * 1.2, xy[1] + Math.sin(clock / 310) * 0.8];
+    if (p <= legs[0][0]) return wob([legs[0][1], legs[0][2]]);
+    for (let i = 1; i < legs.length; i++) if (p <= legs[i][0]) { const [t0, x0, y0] = legs[i - 1], [t1, x1, y1] = legs[i]; const t = ease((p - t0) / (t1 - t0)); return wob([lerp(x0, x1, t), lerp(y0, y1, t)]); }
     return null;
   }
 
-  let died = -1e9, deaths = 0, contAt = -1e9;
+  let died = -1e9, deaths = 0, contAt = -1e9, clock = 0;
   function draw(p, now) {
+    clock = now;
     ctx.clearRect(0, 0, cv.width, cv.height);
     // ---- the world: stars only around the rim, a small moon, far hills with a signal tower, the floor
     DUST.forEach(([x, y], i) => { const tw = reduce ? 1 : (Math.sin(now / 1800 + i * 1.7) + 1) / 2; put(x, y, 1, 1, tw > 0.8 ? K.cream : K.dim, 0.5 + tw * 0.4); });
@@ -156,8 +158,9 @@
     const recoil = SHOTS.some((s) => p > s.t && p < s.t + 0.004) ? -1 : 0;
     if (ay !== null) {
       const frame = Math.floor(now / 220) % 2;
-      spr(ALX + recoil, ay, ALIEN[frame], { x: K.rose }, 1, ufo ? ufo[1] + 5 : -1e9);
-      put(ALX + 8 + recoil, ay + 3, 2, 1, K.butter);               // blaster
+      const shuffle = p > 0.345 && p < 0.52 ? Math.round(Math.sin(now / 260) * 1.5) : 0, bob = p > 0.345 && p < 0.52 ? Math.floor(now / 180) % 2 : 0;
+      spr(ALX + recoil + shuffle, ay - bob, ALIEN[frame], { x: K.rose }, 1, ufo ? ufo[1] + 5 : -1e9);
+      put(ALX + 8 + recoil + shuffle, ay + 3 - bob, 2, 1, K.butter);               // blaster
     }
     // ---- the bolts: small, fast, from across the field; a spark where they land
     for (const s of SHOTS) {
@@ -189,7 +192,7 @@
       if (q < 0.97) { put(x + 1, y, 2, 1, K.teal); put(x, y + 1, 4, 1, K.cream); put(x + (Math.floor(now / 300) % 2 ? 0 : 3), y + 2, 1, 1, K.rose); }
     }
 
-    // ---- the light quarter: lifts out and grows; click it to lose a life
+    // ---- the light quarter: lifts out and grows; click it to lose a life (and it glints while it waits)
     const lift = ease(clamp((p - 0.56) / 0.1));
     const G = CS + lift, dx = lift * 7, dy = -lift * 7;
     const qx0 = OX + (c + 0.5) * CS + dx, qy0 = OY + dy;             // top-left of the quarter's box
@@ -210,7 +213,7 @@
       const ccx = qx0 + 3 * G, ccy = qy0 + 3 * G;
       for (const k of quarter) {
         const x = qx0 + (k.x - 6) * G, y = qy0 + k.y * G;
-        const hi = lift > 0.5 && (k.x + k.y) % 4 === 0;
+        const hi = (lift > 0.5 && (k.x + k.y) % 4 === 0) || (!reduce && Math.abs(((k.x - k.y) + 12) - ((now / 90) % 60)) < 1.5);
         put(lerp(ccx, x, pop), lerp(ccy, y, pop), Math.max(1, G * pop), Math.max(1, G * pop), hi ? K.light : K.sage);
       }
     }
@@ -246,8 +249,8 @@
   }
   let visible = true, t0 = -1;
   new IntersectionObserver((es) => {
-    for (const e of es) { visible = e.isIntersecting; if (e.intersectionRatio >= 0.55 && t0 < 0) t0 = performance.now(); }
-  }, { threshold: [0, 0.55] }).observe(sec.querySelector('.qs-win'));
+    for (const e of es) { visible = e.isIntersecting; if (e.intersectionRatio >= 0.35 && t0 < 0) t0 = performance.now(); }
+  }, { threshold: [0, 0.35] }).observe(sec.querySelector('.qs-win'));
   function frame(now) {
     if (visible) draw(t0 < 0 ? 0 : clamp((now - t0) / TOTAL), now);
     requestAnimationFrame(frame);

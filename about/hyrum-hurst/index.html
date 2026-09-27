@@ -24,7 +24,7 @@
 <meta name="twitter:description" content="Sets up AI assistants, agents and automations, and writes QuarterSmart Signals.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-hyrum-hurst.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/about.css?v=20260927f">
+<link rel="stylesheet" href="/assets/css/about.css?v=20260927p">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -114,11 +114,18 @@
 
 <main id="main">
 
-  <!-- Hero: the name, and the mark re-forming as player one -->
-  <section class="ah" aria-labelledby="fh-h">
+  <!-- Hero: a centred character-select screen for player one -->
+  <section class="ah ah--center" aria-labelledby="fh-h">
     <div class="wrap ah__grid">
+      <p class="ah__back"><a href="/about/">Who we are</a></p>
+      <p class="ab-sign neon" aria-hidden="true">player one</p>
+      <div class="pxstage ah__stage" data-pxstage data-first="avatar" data-scenes="avatar assistant keyboard radar scope verdicts mail wave rocket tower satellite floppies arcade mark" data-max="3" data-hold="2400">
+        <div class="pxstage__screen">
+          <img class="pxstage__still" src="/assets/px/avatar-hyrum.png" width="79" height="84" alt="Hyrum Hurst drawn as a pixel-art character: blond hair, a smile, a dark suit." fetchpriority="high">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+      </div>
       <div class="ah__copy">
-        <p class="ah__back"><a href="/about/">Who we are</a></p>
         <h1 class="ah__h ah__h--name" id="fh-h">Hyrum Hurst.</h1>
         <p class="lede">Hyrum Hurst is the founder of QuarterSmart, an early-adoption AI partner for owner-led businesses. He sets up AI assistants, agents and automations for small and mid-sized teams and writes QuarterSmart Signals. He is also CTO of Learning Journey AI, an AI education company.</p>
         <div class="ah__cta">
@@ -126,11 +133,6 @@
           <a class="btn btn--ghost" href="https://www.linkedin.com/in/hyrum-hurst-83a5a537a/" rel="noopener">LinkedIn</a>
         </div>
       </div>
-      <figure class="morph ah__art" style="--cw:96px;--iw:79px">
-        <img class="px" src="/assets/px/avatar-hyrum.png" width="79" height="84" alt="Hyrum Hurst drawn as a pixel-art character: blond hair, a smile, a dark suit." fetchpriority="high">
-        <canvas data-morph="mark /assets/px/avatar-hyrum.png" data-w="96" data-h="92" data-cell="4" data-loop="0" data-hold="1000" data-first="1000" role="img" aria-label="The QuarterSmart mark breaks into pixels that re-form as a pixel-art portrait of Hyrum Hurst: blond hair, a smile, a dark suit."></canvas>
-        <figcaption class="neon" aria-hidden="true">player one</figcaption>
-      </figure>
     </div>
   </section>
 
@@ -142,10 +144,8 @@
         <h2 class="h-1" id="bg-h">A builder who teaches the tool inside the work.</h2>
         <p class="body-l">Hyrum designs AI workflows with large language models, builds automations and internal tools, and helps small organizations put AI into their day-to-day work. He works in Claude, ChatGPT and n8n every day on live client systems. His focus is turning manual, repetitive work into systems a person can check.</p>
         <p class="body-l">He founded QuarterSmart in 2025. Before AI became the whole job, he worked in direct sales and training at Skytech, where he trained and onboarded more than ten new team members. The habit stuck: a tool only counts once people use it in their own work, with their own examples.</p>
-        <p class="body-l">As CTO of Learning Journey AI he runs the technology behind an AI education company, so keeping current on applied AI is part of the day job. At QuarterSmart he writes Signals and builds the setups that follow from them.</p>
       </div>
       <aside class="fh-card" aria-label="Facts about Hyrum Hurst">
-        <img src="/assets/images/team/hyrum-hurst.webp" width="320" height="320" alt="Photo of Hyrum Hurst, founder of QuarterSmart." loading="lazy">
         <dl class="facts">
           <div><dt>role</dt><dd>Founder, QuarterSmart</dd></div>
           <div><dt>also</dt><dd>CTO, Learning Journey AI</dd></div>
@@ -181,14 +181,14 @@
     <div class="wrap">
       <div class="ab-lead">
         <h2 class="ab-big" id="cred-h">What you can check.</h2>
-        <p class="body-l">Each item links to where you can verify it, or says where it came from.</p>
+        <p class="body-l">Where there is a public page for an item, it is linked, so you can check it yourself.</p>
       </div>
       <ul class="rows">
-        <li><span class="rows__k">Press</span><div><p>Quoted in CyberNews in 2026 on which local AI models tech professionals run and why, including how he prototypes automation logic offline before it goes to production.</p><p class="row-links"><a class="link" href="https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/" rel="noopener">Read it on CyberNews</a></p></div></li>
+        <li><span class="rows__k">Press</span><div><p>Quoted in CyberNews in October 2025 on which local AI models tech professionals run and why, including how he prototypes automation logic offline before it goes to production.</p><p class="row-links"><a class="link" href="https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/" rel="noopener">Read it on CyberNews</a></p></div></li>
         <li><span class="rows__k">Expert source</span><div><p>Registered expert source on Qwoted for AI strategy, enterprise adoption, AI procurement and AI governance.</p><p class="row-links"><a class="link" href="https://app.qwoted.com/sources/hyrum-hurst" rel="noopener">Qwoted profile</a></p></div></li>
-        <li id="n8n"><span class="rows__k">n8n</span><div><p>Verified n8n creator, with public workflow templates on the n8n marketplace. Each template has its own public page.</p><p class="row-links"><a class="link" href="https://n8n.io/creators/hyrum-hurst" rel="noopener">n8n creator profile</a><a class="link" href="/workflow-usage/">Workflow usage data</a></p></div></li>
+        <li id="n8n"><span class="rows__k">n8n</span><div><p>Verified n8n creator, with public workflow templates on the n8n marketplace. Each template has its own public page.</p><p class="row-links"><a class="link" href="https://n8n.io/creators/hyrum-hurst" rel="noopener">n8n creator profile</a></p></div></li>
         <li><span class="rows__k">Open source</span><div><p>Open-source AI developer tools on GitHub, including an empirical Big-O complexity analyzer, an AI code reviewer and an API load-testing tool that writes its own health reports.</p><p class="row-links"><a class="link" href="https://github.com/hyrumhurst1" rel="noopener">GitHub</a></p></div></li>
-        <li><span class="rows__k">Certifications</span><div><p>Google Certified AI Automations Engineer, Google Generative AI Leader, Google Prompt Engineering, Google Data Analytics, and the Vanderbilt AI Automation Certification. Listed as provided by Hyrum.</p></div></li>
+        <li><span class="rows__k">Certifications</span><div><p>Google Certified AI Automations Engineer, Google Generative AI Leader, Google Prompt Engineering, Google Data Analytics, and the Vanderbilt AI Automation Certification.</p></div></li>
       </ul>
     </div>
   </section>
@@ -198,7 +198,7 @@
     <div class="wrap">
       <div class="ab-lead">
         <h2 class="ab-big" id="xp-h">Where the work comes from.</h2>
-        <p class="body-l">Learning Journey AI, Dual Logic, Ability Builders and Skytech are Hyrum's own roles and collaborations. They are not QuarterSmart clients.</p>
+        <p class="body-l">These are Hyrum's own roles and collaborations. They are not QuarterSmart clients. We keep QuarterSmart membership small so response times hold.</p>
       </div>
       <ol class="tl">
         <li><p class="tl__when">2025 to present</p><div class="tl__body"><h3>QuarterSmart</h3><p class="tl__role">Founder</p><p>AI agents and multi-step automations with the Claude API, Claude Code, n8n and Zapier. AI-drafted email and SMS outreach, lead routing, CRM and data workflows, and custom web apps on Next.js and Supabase.</p></div></li>
@@ -229,7 +229,7 @@
         <li><a href="/signals/chatgpt-mobile-voice-work">
           <span class="siglist__meta"><span class="chip chip--available">Available · Plus, Pro</span><time datetime="2026-09-27">Sep 27, 2026</time></span>
           <span class="siglist__t">ChatGPT's mobile app can now draft, summarize and build by voice</span>
-          <span class="siglist__v">Verdict: Try it. If your team is on Plus or Pro, test one voice-drafted email this week.</span>
+          <span class="siglist__v">If your team is on Plus or Pro, test one voice-drafted email this week.</span>
         </a></li>
         <li><a href="/signals/sonnet-5-fable-5-same-day">
           <span class="siglist__meta"><span class="chip chip--available">Available</span><time datetime="2026-06-30">Jun 30, 2026</time></span>
@@ -249,6 +249,7 @@
         <div class="ah__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
       </div>
       <div class="ab-close__side">
+        <img class="ab-close__face" src="/assets/images/team/hyrum-hurst.webp" width="320" height="320" alt="Photo of Hyrum Hurst, founder of QuarterSmart." loading="lazy">
         <p class="label">Prefer email?</p>
         <p class="ct-mail"><a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a></p>
         <p>Replies within one business day.</p>
@@ -257,7 +258,7 @@
   </section>
 
 </main>
-<script src="/about/pxmorph.js?v=20260927f" defer></script>
+<script src="/assets/js/radar.js?v=20260927m" defer></script>
 <!-- @include footer -->
 </body>
 </html>

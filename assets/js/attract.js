@@ -466,7 +466,8 @@
   }
 
   // ---------- morph ----------
-  const MORPH = 1600;
+  const MORPH = 1250;
+  const SPEED = 1.25;                                // everything plays a quarter faster than it was drawn
   function snapshot() {
     const d = b.getImageData(0, 0, GW, GH).data, pts = [];
     for (let y = 0; y < GH; y++) for (let x = 0; x < GW; x++) { const i = (y * GW + x) * 4; if (d[i + 3] > 20) pts.push({ x, y, c: [d[i], d[i + 1], d[i + 2]] }); }
@@ -569,9 +570,9 @@
   start(scene); setLabel();
   if (q.get('t')) { const target = +q.get('t'); for (let tt = 16; tt < target; tt += 16) scene.update(tt, 16); t0 -= target; }
   function tick(now) {
-    const dt = Math.min(50, now - last); last = now;
+    const dt = Math.min(50, now - last) * SPEED; last = now;
     if (visible && !document.hidden) {
-      const t = now - t0;
+      const t = (now - t0) * SPEED;
       if (mode === 'play') {
         if (t >= scene.dur) {
           render(scene); const A = snapshot();
@@ -580,11 +581,11 @@
           scene = S[ORDER[idx]]; start(scene); render(scene); const B = snapshot();
           buildMorph(A, B); mode = 'morph'; t0 = now; setLabel(); drawMorph(0);
         } else { scene.update(t, dt); render(scene); }
-      } else if (t >= MORPH) { mode = 'play'; t0 = now; start(scene); scene.update(0, 0); render(scene); }
-      else drawMorph(t);
+      } else if (t >= MORPH * SPEED) { mode = 'play'; t0 = now; start(scene); scene.update(0, 0); render(scene); }
+      else drawMorph(t / SPEED);
       drawSky(now);
       blit();
-    } else { t0 += dt; }
+    } else { t0 += dt / SPEED; }
     requestAnimationFrame(tick);
   }
   let rs = 0;

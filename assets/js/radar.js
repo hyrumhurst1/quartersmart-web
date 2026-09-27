@@ -469,8 +469,21 @@
   let OX = 0, OY = 0, OC = 0, OS = 0, OV = true;
   const put = (x, y, c, s, v = true) => { OX = x; OY = y; OC = c; OS = s; OV = v; };
   const polar = (p) => { p.aa = Math.atan2(p.ay - CY, p.ax - CX); p.ra = Math.hypot(p.ax - CX, p.ay - CY); p.ba = Math.atan2(p.by - CY, p.bx - CX); p.rb = Math.hypot(p.bx - CX, p.by - CY); };
+  // position along a Hilbert curve over the grid: sorting both pictures by it
+  // and pairing by rank sends each patch of one picture to the matching patch
+  // of the next, so filled shapes travel together instead of breaking into grit
+  const hil = (x, y) => {
+    let d = 0;
+    for (let s = 128; s > 0; s >>= 1) {
+      const rx = (x & s) ? 1 : 0, ry = (y & s) ? 1 : 0;
+      d += s * s * ((3 * rx) ^ ry);
+      if (!ry) { if (rx) { x = 255 - x; y = 255 - y; } const t = x; x = y; y = t; }
+    }
+    return d;
+  };
   const KEYS = {
     rand: null,
+    hil: (p) => hil(p.x | 0, p.y | 0),
     x: (p) => p.x * 256 + p.y,
     y: (p) => p.y * 256 + p.x,
     yd: (p) => -p.y * 256 + p.x,
@@ -481,13 +494,14 @@
   // are paired, how long it runs, how staggered it is, and the path one pixel
   // takes (u is that pixel's own progress, 0 to 1).
   const STYLES = [
-    // a loose flock: every pixel takes its own gentle curve and settles in
-    { name: 'swarm', order: 'rand', spread: 0.4, dur: 2300, delay: (p) => p.r1,
-      prep: (p) => { p.mx = (p.ax + p.bx) / 2 + (p.r2 - 0.5) * 70; p.my = (p.ay + p.by) / 2 + (p.r1 - 0.5) * 56 - 10; },
-      pos(p, u) { const e = E.io(u), k = 1 - e; put(k * k * p.ax + 2 * k * e * p.mx + e * e * p.bx, k * k * p.ay + 2 * k * e * p.my + e * e * p.by, e, Math.sin(Math.PI * e) * 0.5); } },
-    // a true morph: neighbours stay neighbours, so one shape bends into the next
-    { name: 'morph', order: 'ang', spread: 0.25, dur: 2300, delay: (p) => Math.min(1, Math.hypot(p.bx - p.ax, p.by - p.ay) / 150) * 0.8 + p.r1 * 0.2,
-      pos(p, u) { const e = E.io(u); put(p.ax + (p.bx - p.ax) * e, p.ay + (p.by - p.ay) * e, e, Math.sin(Math.PI * e) * 0.35); } },
+    // a true morph: neighbours stay neighbours, and the new picture builds in
+    // one diagonal wave from the top left, so one shape bends into the next
+    { name: 'morph', order: 'hil', spread: 0.45, dur: 2400, delay: (p) => (p.bx + p.by * 1.5) / (W + H * 1.5) + p.r1 * 0.04,
+      pos(p, u) { const e = E.io(u); put(p.ax + (p.bx - p.ax) * e, p.ay + (p.by - p.ay) * e - Math.sin(Math.PI * e) * 3, e, Math.sin(Math.PI * e)); } },
+    // a loose flock: each patch of pixels takes its own gentle curve and settles in
+    { name: 'swarm', order: 'hil', spread: 0.4, dur: 2400, delay: (p) => p.r1,
+      prep: (p) => { p.mx = (p.ax + p.bx) / 2 + (p.r2 - 0.5) * 30; p.my = (p.ay + p.by) / 2 + (p.r1 - 0.5) * 24 - 8; },
+      pos(p, u) { const e = E.io(u), k = 1 - e; put(k * k * p.ax + 2 * k * e * p.mx + e * e * p.bx, k * k * p.ay + 2 * k * e * p.my + e * e * p.by, e, Math.sin(Math.PI * e)); } },
     // one slow turn around the centre, drawing in and opening out again
     { name: 'vortex', order: 'ang', spread: 0.35, dur: 2500, delay: (p) => p.r1,
       prep: (p) => { polar(p); let d = p.ba - p.aa; d = ((d % TAU) + TAU) % TAU; p.da = d + TAU; },
@@ -520,7 +534,7 @@
         else { const w = (u - 0.5) / 0.5, v = E.back(w); put(CX + (p.bx - CX) * v, CY + (p.by - CY) * v, 1, 1 - w); }
       } },
     // drain to a fountain below the picture, then spray up into place
-    { name: 'spray', order: 'rand', spread: 0.5, dur: 2400, delay: (p) => p.r1,
+    { name: 'spray', order: 'hil', spread: 0.5, dur: 2400, delay: (p) => p.r1,
       prep: (p) => { p.h = 16 + p.r2 * 40; },
       pos(p, u) {
         const ex = CX, ey = H + 2;
@@ -534,8 +548,8 @@
         else { const v = E.io((u - 0.5) / 0.5); put(p.bx, CY + (p.by - CY) * v, 0.3 + 0.7 * v, (1 - v) * 0.6); }
       } },
     // a soft burst outward, a pause in the air, then everything drifts home
-    { name: 'scatter', order: 'rand', spread: 0.4, dur: 2400, delay: (p) => p.r1,
-      prep: (p) => { const a = Math.atan2(p.ay - CY, p.ax - CX) + (p.r2 - 0.5) * 0.9, r = 22 + p.r1 * 40; p.mx = p.ax + Math.cos(a) * r; p.my = p.ay + Math.sin(a) * r; },
+    { name: 'scatter', order: 'hil', spread: 0.4, dur: 2400, delay: (p) => p.r1,
+      prep: (p) => { const a = Math.atan2(p.ay - CY, p.ax - CX) + (p.r2 - 0.5) * 0.9, r = 6 + p.r1 * 12; p.mx = p.ax + Math.cos(a) * r; p.my = p.ay + Math.sin(a) * r; },
       pos(p, u) {
         if (u < 0.45) { const v = E.o(u / 0.45); put(p.ax + (p.mx - p.ax) * v, p.ay + (p.my - p.ay) * v, v * 0.25, v * 0.5); }
         else { const v = E.io((u - 0.45) / 0.55); put(p.mx + (p.bx - p.mx) * v, p.my + (p.by - p.my) * v, 0.25 + 0.75 * v, (1 - v) * 0.5); }
@@ -574,8 +588,8 @@
     const off = mk(), og = off.getContext('2d', { willReadFrequently: true });
     const nxt = mk(), ng = nxt.getContext('2d', { willReadFrequently: true });
     const buf = mk(), bgc = buf.getContext('2d'), img = bgc.createImageData(W, H);
-    const HOLD = +(el.dataset.hold || 3600);
-    let idx = 0, target = 0, state = 'boot', t0 = 0, clock = 0, last = 0, parts = null, style = null, styleIdx = 1;
+    const HOLD = +(el.dataset.hold || 3200);
+    let idx = 0, target = 0, state = 'boot', t0 = 0, clock = 0, last = 0, parts = null, style = null, styleIdx = 0, holdFor = HOLD;
     let paused = false, visible = true, raf = 0, shown = off;
 
     // pips and a pause button (built here, so there are no dead controls without JS)
@@ -611,8 +625,10 @@
       blit(shown);
     }
     function particles(P) {
-      const d = img.data, sp = RGB.fg0, S = style.spread;
-      for (let i = 3; i < d.length; i += 4) d[i] = d[i] * 0.6;
+      // pixels in flight keep their own colours, warmed a little toward the
+      // accent so the move reads; short trails show the path without smearing
+      const d = img.data, sp = RGB.accent, S = style.spread;
+      for (let i = 3; i < d.length; i += 4) d[i] = d[i] * 0.45;
       for (const p of parts) {
         let u = (P - p.d * S) / (1 - S); u = u < 0 ? 0 : u > 1 ? 1 : u;
         style.pos(p, u);
@@ -621,33 +637,31 @@
         if (x < 0 || y < 0 || x >= W || y >= H) continue;
         const o = (y * W + x) * 4;
         let r = p.ar + (p.br - p.ar) * OC, g = p.ag + (p.bg - p.ag) * OC, b = p.ab + (p.bb - p.ab) * OC;
-        if (OS > 0) { r += (sp[0] - r) * OS; g += (sp[1] - g) * OS; b += (sp[2] - b) * OS; }
+        const k = Math.min(0.22, OS * 0.35);
+        if (k > 0) { r += (sp[0] - r) * k; g += (sp[1] - g) * k; b += (sp[2] - b) * k; }
         d[o] = r; d[o + 1] = g; d[o + 2] = b; d[o + 3] = 255;
       }
       bgc.putImageData(img, 0, 0);
       blit(buf);
     }
-    function begin(intro) {
+    function begin() {
       let n = idx;
-      if (intro) n = 0;
-      else {
-        for (let k = 0; k < order.length; k++) { n = (n + 1) % order.length; if (ready(SCENES[order[n]])) break; }
-        if (n === idx) { t0 = clock; return; }
-      }
-      const A = intro ? [] : sample(og);
+      for (let k = 0; k < order.length; k++) { n = (n + 1) % order.length; if (ready(SCENES[order[n]])) break; }
+      if (n === idx) { t0 = clock; return; }
+      const A = sample(og);
       paint(SCENES[order[n]], 0, ng);
       const B = sample(ng);
       if (!B.length) { idx = n; state = 'hold'; t0 = clock; return; }
-      style = intro ? STYLES[0] : STYLES[styleIdx++ % STYLES.length];
+      style = STYLES[styleIdx++ % STYLES.length];
       parts = build(A, B, style);
-      if (intro) img.data.fill(0); else img.data.set(og.getImageData(0, 0, W, H).data);
+      img.data.set(og.getImageData(0, 0, W, H).data);
       target = n; state = 'trans'; t0 = clock; setPip(n);
     }
     function step() {
       if (state === 'hold') {
         const t = clock - t0;
         paint(SCENES[order[idx]], t, og); blit(off);
-        if (t >= HOLD) begin(false);
+        if (t >= holdFor) { holdFor = HOLD; begin(); }
       } else if (state === 'trans') {
         const P = (clock - t0) / style.dur;
         particles(Math.min(1, P));
@@ -686,7 +700,10 @@
       fit();
       el.classList.add('is-live');
       if (reduce) { still(); return; }
-      state = 'hold'; begin(true); kick();
+      // open on the same picture as the still, then start the first morph
+      // soon, so the motion is seen early without opening on noise
+      idx = 0; paint(SCENES[order[0]], 0, og); blit(off); setPip(0);
+      state = 'hold'; t0 = clock; holdFor = Math.min(HOLD, 1400); kick();
       // the rest of the sprites arrive in the background
       for (const n of order) (SCENES[n].sprites || []).forEach(load);
     });

@@ -10,35 +10,26 @@
 <meta property="og:description" content="That page could not be found.">
 <meta property="og:site_name" content="QuarterSmart">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/partners.css?v=20260927b">
+<link rel="stylesheet" href="/assets/css/partners.css?v=20260927f">
 </head>
 <body>
 <!-- @include nav -->
 
 <main id="main">
   <!-- 404: the page is out of order; the arcade is still open -->
-  <section class="nf" aria-labelledby="nf-h" data-pxw-host>
+  <section class="nf" aria-labelledby="nf-h">
     <img class="pt-close__scene" src="/assets/px/scene-horizon.png" width="128" height="72" alt="" aria-hidden="true">
-    <img class="pt-close__cab" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="" aria-hidden="true">
-    <canvas class="pt-hero__fx" aria-hidden="true"></canvas>
+    <div class="nf__arcade" aria-hidden="true">
+      <p class="nf__sign neon neon--rose">out of order</p>
+      <img class="nf__cab" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="">
+    </div>
     <div class="wrap nf__grid">
-      <div class="pt-hero__in">
-        <p class="pxw" data-pxw="tune" aria-hidden="true">404</p>
-        <p class="nf__sign neon neon--rose" aria-hidden="true">out of order</p>
+      <div class="nf__copy">
         <h1 class="pt-h1" id="nf-h">Nothing lives at this address.</h1>
         <p class="lede">We couldn't find <code data-path>this page</code>. The link may be mistyped, or the page may have moved. Everything else is still running.</p>
         <div class="pt-cta">
           <a class="btn" href="/">Back to home</a>
           <a class="btn btn--ghost" href="/signals/">Read Signals</a>
-        </div>
-      </div>
-      <div class="nf__side">
-        <div class="nf__latest">
-          <p class="label">Latest Signal</p>
-          <a href="/signals/openai-o-assistant-leak">
-            <span class="nf__meta"><span class="chip chip--reported">Reported · unconfirmed</span><time datetime="2026-09-27">Sep 27</time></span>
-            <span class="nf__t">OpenAI "o": an always-on assistant reported in ChatGPT Pro</span>
-          </a>
         </div>
         <div class="nf__book">
           <p>Came here to talk to someone?</p>
@@ -46,153 +37,18 @@
         </div>
         <p class="nf__fix">Followed a broken link on our site? Tell us at <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a> and we'll fix it.</p>
       </div>
+      <div class="pxs nf__stage" data-pxs>
+        <p class="pxw pxs__alt" aria-hidden="true">4O4</p>
+        <canvas aria-hidden="true" data-h="92" data-first-hold="4000" data-intro="tune"
+          data-scenes="text:4O4 | text:? | img:/assets/px/sprite-radar.png | mark | text:&lt;HOME | img:/assets/px/sprite-assistant.png | img:/assets/px/sprite-floppies.png | img:/assets/px/sprite-keyboard-manual.png | text:SIGNALS | img:/assets/px/avatar-hyrum.png"></canvas>
+        <button class="pxs__pause" type="button" aria-pressed="false" aria-label="Pause animation" hidden></button>
+      </div>
     </div>
   </section>
 </main>
 
 <script>(function(){var el=document.querySelector('[data-path]');var p=location.pathname;try{p=decodeURIComponent(p)}catch(e){}if(el&&p&&p!=='/404.html'&&p!=='/404')el.textContent=p;})();</script>
-<!-- pxw:start -->
-<script>
-/* Pixel wordmark: the banded wordmark is drawn from the font's own pixels.
-   "fly": loose pixels stream in and settle into the letters. "tune": static
-   resolves into the letters. One pass, then it holds still. Reduced motion
-   and no-JS keep the plain banded text. */
-(() => {
-  const el = document.querySelector('[data-pxw]');
-  if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches || !document.fonts) return;
-  const host = el.closest('[data-pxw-host]');
-  const cv = host && host.querySelector('canvas');
-  if (!cv || !cv.getContext) return;
-  const ctx = cv.getContext('2d');
-  const mode = el.dataset.pxw || 'fly';
-  const text = el.textContent.trim();
-  const probe = el.cloneNode(true);
-  probe.removeAttribute('data-pxw');
-  probe.textContent = 'x';
-  probe.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none;animation:none;left:0;top:0;white-space:nowrap';
-  el.parentNode.insertBefore(probe, el);
-  el.style.setProperty('--pxh', el.offsetHeight + 'px');
-  el.classList.add('is-px');
-  const giveUp = () => { el.classList.remove('is-px'); probe.remove(); cv.remove(); };
-  const hex = (s) => { s = s.trim(); if (s[0] !== '#') return null; if (s.length === 4) s = '#' + s[1] + s[1] + s[2] + s[2] + s[3] + s[3]; const n = parseInt(s.slice(1, 7), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
-  const mix = (a, b, t) => 'rgb(' + a.map((v, i) => Math.round(v * t + b[i] * (1 - t))).join(',') + ')';
-  let C = {}, G = null, P = [], L = null, t0 = 0, raf = 0, done = false, dpr = 1;
-
-  function palette() {
-    const cs = getComputedStyle(document.documentElement);
-    const v = (n) => hex(cs.getPropertyValue(n)) || [200, 200, 200];
-    const fg = v('--fg-0'), ac = v('--accent'), inf = v('--info'), bg = v('--bg-0'), dim = v('--line-2');
-    C = { band: [mix(fg, fg, 1), mix(ac, ac, 1), mix(inf, inf, 1), mix(ac, bg, .58), mix(ac, bg, .36)], dim: mix(dim, bg, .9), flash: mix(fg, ac, .7), fg, ac, bg };
-  }
-  // Rasterise the text at 11px, where Departure Mono is exactly one pixel per dot.
-  function raster(str) {
-    const o = document.createElement('canvas'), c = o.getContext('2d');
-    c.font = '400 11px Departure';
-    o.width = Math.ceil(c.measureText(str).width) + 4; o.height = 22;
-    c.font = '400 11px Departure'; c.textBaseline = 'alphabetic'; c.fillStyle = '#000';
-    c.fillText(str, 0, 15);
-    const d = c.getImageData(0, 0, o.width, o.height).data, px = [];
-    let minX = 1e9, maxX = -1;
-    for (let y = 0; y < o.height; y++) for (let x = 0; x < o.width; x++) if (d[(y * o.width + x) * 4 + 3] > 127) { px.push([x, y]); minX = Math.min(minX, x); maxX = Math.max(maxX, x); }
-    return { px, w: maxX - minX + 1, minX };
-  }
-  function layout() {
-    const target = parseFloat(getComputedStyle(probe).fontSize) || 110;
-    const avail = el.clientWidth;
-    const kT = Math.max(2, Math.floor(target / 11));
-    let lines = [text], R = lines.map(raster);
-    let k = Math.min(kT, Math.floor(avail / R[0].w));
-    if (k < kT && text.includes(' ')) {
-      const words = text.split(' '), mid = Math.ceil(words.length / 2);
-      const l2 = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')], R2 = l2.map(raster);
-      const k2 = Math.min(kT, Math.floor(avail / Math.max(...R2.map((r) => r.w))));
-      if (k2 > k) { lines = l2; R = R2; k = k2; }
-    }
-    k = Math.max(2, k);
-    let minY = 1e9, maxY = -1;
-    R.forEach((r) => r.px.forEach(([, y]) => { minY = Math.min(minY, y); maxY = Math.max(maxY, y); }));
-    const rows = maxY - minY + 1, gap = 3, capH = 15 - minY;
-    el.style.setProperty('--pxh', (R.length * rows + (R.length - 1) * gap) * k + 'px');
-    const hb = host.getBoundingClientRect(), eb = el.getBoundingClientRect();
-    const ox = eb.left - hb.left, oy = eb.top - hb.top;
-    const T = [];
-    R.forEach((r, i) => r.px.forEach(([x, y]) => {
-      const f = (y - minY) / capH;
-      const b = y >= 15 ? 4 : f < .4 ? 0 : f < .58 ? 1 : f < .72 ? 2 : f < .84 ? 3 : 4;
-      T.push({ tx: Math.round(ox + (x - r.minX) * k), ty: Math.round(oy + (i * (rows + gap) + y - minY) * k), b });
-    }));
-    dpr = Math.min(2, devicePixelRatio || 1);
-    cv.width = Math.round(hb.width * dpr); cv.height = Math.round(hb.height * dpr);
-    L = { k, T, W: hb.width, H: hb.height, ox, oy, w: Math.max(...R.map((r) => r.w)) * k, h: (R.length * rows + (R.length - 1) * gap) * k };
-  }
-  const sq = (x, y, k, col) => { const X = Math.round(x * dpr), Y = Math.round(y * dpr); ctx.fillStyle = col; ctx.fillRect(X, Y, Math.round((x + k) * dpr) - X, Math.round((y + k) * dpr) - Y); };
-  function final() { ctx.clearRect(0, 0, cv.width, cv.height); L.T.forEach((p) => sq(p.tx, p.ty, L.k, C.band[p.b])); }
-  function seed() {
-    const { k, W, H, T, ox, w } = L;
-    P = T.map((p) => {
-      const sx = p.tx + Math.round((Math.random() * W - p.tx) / k) * k;
-      const sy = p.ty + Math.round((Math.random() * H - p.ty) / k) * k;
-      return { ...p, sx, sy, d: 260 + ((p.tx - ox) / Math.max(1, w)) * 620 + Math.random() * 300, dur: 760 + Math.random() * 380, bend: (Math.random() - .5) * 140, r: Math.random() };
-    });
-  }
-  const ease = (t) => 1 - Math.pow(1 - t, 4);
-  function frameFly(t) {
-    const { k } = L;
-    ctx.clearRect(0, 0, cv.width, cv.height);
-    let live = false;
-    for (const p of P) {
-      const u = t - p.d;
-      if (u < 0) { live = true; if (t > 120 * p.r) sq(p.sx, p.sy, k, C.dim); continue; }
-      if (u < p.dur) {
-        live = true;
-        const e = ease(u / p.dur), s = Math.sin(e * Math.PI);
-        const x = p.sx + (p.tx - p.sx) * e + s * p.bend * .35, y = p.sy + (p.ty - p.sy) * e + s * p.bend;
-        sq(p.tx + Math.round((x - p.tx) / k) * k, p.ty + Math.round((y - p.ty) / k) * k, k, e < .7 ? C.dim : C.band[p.b]);
-        continue;
-      }
-      if (u < p.dur + 110) { live = true; sq(p.tx, p.ty, k, C.flash); continue; }
-      sq(p.tx, p.ty, k, C.band[p.b]);
-    }
-    return live;
-  }
-  let lastNoise = -1e9, noise = [];
-  function frameTune(t) {
-    const { k, T, ox, oy, w, h } = L, D = 1500;
-    const q = Math.min(1, t / D);
-    if (t - lastNoise > 70) {
-      lastNoise = t; noise = [];
-      const cols = Math.ceil(w / k) + 6, rws = Math.ceil(h / k) + 4, dens = .3 * (1 - q) * (1 - q);
-      for (let j = 0; j < rws; j++) for (let i = 0; i < cols; i++) if (Math.random() < dens) noise.push([ox + (i - 3) * k, oy + (j - 2) * k, Math.random() < .25 ? C.flash : C.dim]);
-    }
-    ctx.clearRect(0, 0, cv.width, cv.height);
-    noise.forEach(([x, y, c]) => sq(x, y, k, c));
-    const lock = Math.max(0, (q - .12) / .75);
-    for (const p of P) if (p.r < lock) sq(p.tx, p.ty, k, lock - p.r < .06 ? C.flash : C.band[p.b]);
-    return t < D + 80;
-  }
-  function tick(now) {
-    if (!t0) t0 = now;
-    const live = mode === 'tune' ? frameTune(now - t0) : frameFly(now - t0);
-    if (live) raf = requestAnimationFrame(tick); else { done = true; final(); }
-  }
-  function start() {
-    palette(); layout();
-    const inView = host.getBoundingClientRect().top < innerHeight && host.getBoundingClientRect().bottom > 0;
-    if (!inView) { done = true; final(); return; }
-    seed(); raf = requestAnimationFrame(tick);
-  }
-  const timer = setTimeout(giveUp, 3500);
-  document.fonts.load('400 11px Departure').then(() => {
-    if (!cv.isConnected || !document.fonts.check('400 11px Departure')) return;
-    clearTimeout(timer);
-    requestAnimationFrame(start);
-  }).catch(() => {});
-  let rt = 0;
-  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (!L) return; cancelAnimationFrame(raf); done = true; layout(); final(); }, 120); });
-  addEventListener('qs:theme', () => { if (!L) return; palette(); if (done) final(); });
-})();
-</script>
-<!-- pxw:end -->
+<script src="/for-agencies/pxstage.js?v=20260927f" defer></script>
 <!-- @include footer -->
 </body>
 </html>

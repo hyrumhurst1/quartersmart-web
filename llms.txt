@@ -2,7 +2,7 @@
 
 > QuarterSmart is an early-adoption AI partner for owner-led businesses, based in Mesa, Arizona. We track new AI launches, early-access programs, quiet product updates and credible reports, tell each business which ones matter to it, then set the tools up in its own accounts and train the team to use them. Promise: know what changed in AI the day it lands, and have it working in your business while it is still early. Short form: AI early adoption, setup and training.
 
-QuarterSmart works with owner-led and operator-led businesses of roughly 10 to 250 people across the United States. Our approach is "Train your team. Automate the rest.": first we train the team on a new tool inside their own work, then we automate the repetitive work that is left, with agents and workflows the team can see and check.
+QuarterSmart works with owner-led and operator-led businesses of roughly 10 to 250 people across the United States. Our approach has two halves, summed up as "Train your team. Automate the rest." First we train the team on a new tool inside their own work, then we automate the repetitive work that is left, with agents and workflows the team can see and check.
 
 "Day one" always means the first day a tool is available to your account. Rollouts are often staggered by plan, region or company size, so we prepare before that day and start setup as soon as access arrives. We cannot promise early access; vendors control it. We tell clients when a waitlist or beta opens and help them apply.
 
@@ -35,7 +35,7 @@ Sourcing: public information only. No confidential documents, credentials, priva
 ## Ways to work with us
 The services ladder, from free to ongoing:
 1. Signals (free): the public feed and the Signals Weekly email.
-2. Head Start (from $1,500, one time): a review of the software a business already pays for, looking for AI features it has not switched on, with the three most relevant launches or tools, each with a verdict, and a 30-day plan. About a week from kickoff. The fee counts toward the next step.
+2. Head Start (from $1,500, one time): a review of the software a business already pays for, looking for AI features it has not switched on, with the three most relevant launches or tools, each with a verdict, and a 30-day plan. About a week from kickoff. The full fee counts toward a Day One Setup or the first month of First Quarter if the client starts within 30 days.
 3. Day One Setup (from $2,500 per tool): one tool set up properly in the client's accounts with least-access permissions, connected to email, calendar, docs or CRM, tested with a few people first, then taught to the team.
 4. Rollout Session (quoted): live, role-based team training on a tool the team already has, using the team's own work.
 5. First Quarter membership (from $1,500 a month; Pro from $3,500 a month): Client Signals filtered to the member's own tools and delivered the same business day for anything that affects their stack, setup and training time every month, and priority on launch weeks.
@@ -60,23 +60,22 @@ Agencies and IT providers can resell Signals and Day One Setups through the Part
 
 ## Signals posts
 Written by Hyrum Hurst. Full hub at https://quartersmart.com/signals. RSS: https://quartersmart.com/feed.xml
-- [OpenAI's leaked "o" assistant: what business owners should know before Tuesday](https://quartersmart.com/signals/openai-o-assistant-leak): Reported · unconfirmed. What was reported, what is confirmed, and what to do before OpenAI's DevDay keynote. Verdict: Prepare.
-- [ChatGPT's mobile app can now draft, summarize and build by voice](https://quartersmart.com/signals/chatgpt-mobile-voice-work): Available on Plus and Pro. Verdict: Try it.
-- [Sonnet 5 ships and Fable 5 comes back online on the same day](https://quartersmart.com/signals/sonnet-5-fable-5-same-day): Two Anthropic model moves on June 30, 2026 and what they mean for business users.
-- [SOPs were written for humans. Your AI needs AOPs.](https://quartersmart.com/signals/sops-to-aops): What an AOP (Agent Operating Procedure) is and how to write one.
-- [How to stretch your AI budget by offloading the routine to local models](https://quartersmart.com/signals/stretch-ai-budget): Route routine work to local models and cheaper providers, and keep frontier models for the hard minority of tasks.
-- [Why 95% of AI pilots fail to show ROI, and what the 5% do differently](https://quartersmart.com/signals/why-ai-pilots-fail): The pattern behind failed pilots and what the successful minority do differently.
-- [Anthropic's Claude Fable 5: what it is and what to do](https://quartersmart.com/signals/fable-5): The first public Mythos-class model and what changed.
-- [Claude Mythos escaped its test sandbox: what happened and what it means for your team](https://quartersmart.com/signals/mythos): What Anthropic disclosed and why restricted-access frontier models matter for buyers.
-- [Anthropic's Project Glasswing: 40 organizations get Claude Mythos for cyber defense](https://quartersmart.com/signals/glasswing): The organizations given restricted access to Claude Mythos for cyber defense.
-- [Free Claude and GPT access for students: GitHub Copilot Pro and ChatGPT Edu](https://quartersmart.com/signals/free-ai-students): How students get pro-level AI tools at no cost through education programs.
-- [Anthropic cut off third-party Claude resellers: what happened and what to do](https://quartersmart.com/signals/third-party-killed): What changed for third-party Claude services and the alternatives.
-- [OpenAI's 2026 pricing changes: what changed and who pays more](https://quartersmart.com/signals/openai-pricing): A plain breakdown of OpenAI's restructured tiers.
-- [This Week in AI, April 22, 2026](https://quartersmart.com/signals/weekly-advancements-apr-22-2026): A roundup of the releases and shifts that mattered that week.
+- [OpenAI's leaked "o" assistant: what business owners should know before Tuesday](https://quartersmart.com/signals/openai-o-assistant-leak) (Sep 27, 2026): Reported · unconfirmed. What was reported, what is confirmed, and what to do before OpenAI's DevDay keynote. Verdict: Prepare.
+- [ChatGPT's mobile app can now draft, summarize and build by voice](https://quartersmart.com/signals/chatgpt-mobile-voice-work) (Sep 27, 2026): Available on Plus and Pro. Advice: if your team is on Plus or Pro, test one voice-drafted email this week.
+- [Sonnet 5 ships and Fable 5 comes back online on the same day](https://quartersmart.com/signals/sonnet-5-fable-5-same-day) (Jun 30, 2026): Two Anthropic model moves on June 30, 2026 and what they mean for business users.
+- [SOPs were written for humans. Your AI needs AOPs.](https://quartersmart.com/signals/sops-to-aops) (Jun 27, 2026): What an AOP (Agent Operating Procedure) is and how to write one.
+- [How to stretch your AI budget by offloading the routine to local models](https://quartersmart.com/signals/stretch-ai-budget) (Jun 27, 2026): Route routine work to local models and cheaper providers, and keep frontier models for the hard minority of tasks.
+- [Why 95% of AI pilots fail to show ROI, and what the 5% do differently](https://quartersmart.com/signals/why-ai-pilots-fail) (Jun 25, 2026): The pattern behind failed pilots and what the successful minority do differently.
+- [Anthropic's Claude Fable 5: what it is and what to do](https://quartersmart.com/signals/fable-5) (Jun 9, 2026): The first public Mythos-class model and what changed.
+- [Claude Mythos escaped its test sandbox: what happened and what it means for your team](https://quartersmart.com/signals/mythos) (Apr 6, 2026): What Anthropic disclosed and why restricted-access frontier models matter for buyers.
+- [Anthropic's Project Glasswing: 40 organizations get Claude Mythos for cyber defense](https://quartersmart.com/signals/glasswing) (Apr 5, 2026): The organizations given restricted access to Claude Mythos for cyber defense.
+- [Free Claude and GPT access for students: GitHub Copilot Pro and ChatGPT Edu](https://quartersmart.com/signals/free-ai-students) (Apr 4, 2026): How students get pro-level AI tools at no cost through education programs.
+- [Anthropic cut off third-party Claude resellers: what happened and what to do](https://quartersmart.com/signals/third-party-killed) (Apr 3, 2026): What changed for third-party Claude services and the alternatives.
+- [OpenAI's 2026 pricing changes: what changed and who pays more](https://quartersmart.com/signals/openai-pricing) (Apr 2, 2026): A plain breakdown of OpenAI's restructured tiers.
+- [This Week in AI, April 22, 2026](https://quartersmart.com/signals/weekly-advancements-apr-22-2026) (Apr 22, 2026): A roundup of the releases and shifts that mattered that week.
 
 ## Public evidence
 - Signals archive, dated, with an update log on every post: https://quartersmart.com/signals
-- Hyrum Hurst on Learning Journey AI: https://learningjourneyai.com/
 - CyberNews feature quoting Hyrum Hurst on local AI models: https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/
 - Qwoted source profile: https://app.qwoted.com/sources/hyrum-hurst
 - Hyrum Hurst n8n creator profile: https://n8n.io/creators/hyrum-hurst
