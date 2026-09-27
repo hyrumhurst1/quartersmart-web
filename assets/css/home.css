@@ -197,3 +197,11 @@
 .closer__sign { font-size: 22px; color: var(--fg-0); --es: .06em; }
 @media (max-width: 1000px) { .closer__cab { width: 169px; } }
 @media (max-width: 640px) { .closer__cab { display: block; width: 169px; right: 50%; transform: translateX(50%); } .closer { padding-bottom: 150px; } }
+/* phones: the hero text column never grows past the screen; long CTAs wrap */
+.h4__in { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 760px) {
+  .h4 .hx__cta { width: 100%; }
+  .h4 .hx__cta .btn { white-space: normal; text-align: center; justify-content: center; }
+  .h4 .hx__cta .btn--arcade { width: 100%; font-size: 19px; }
+}
+.sigband__intro { top: 24px; }

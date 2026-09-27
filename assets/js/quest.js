@@ -121,7 +121,7 @@
   if (found.size === ALL.length && get(SEEN) !== '1') setTimeout(toast, 900);
 
   // ---- the nav logo pops its quarter on hover (or keyboard focus)
-  if (!reduce) document.querySelectorAll('.hud .brand, .nav .brand, footer .brand').forEach((brand) => {
+  if (!reduce) document.querySelectorAll('.hud .brand, .nav .brand').forEach((brand) => {
     let busy = false;
     const pop = () => {
       if (busy) return;
@@ -130,7 +130,6 @@
     };
     brand.addEventListener('pointerenter', pop);
     brand.addEventListener('focus', pop);
-    if (brand.closest('footer')) setInterval(() => { if (!document.hidden) pop(); }, 7000);
   });
 
   // ---- arcade buttons: a one-frame pixel flash on press

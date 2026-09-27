@@ -444,10 +444,15 @@
   };
   const TAIL = Object.keys(S).filter((k) => k !== 'title');
   let level = 1, loop = 0, ORDER = ['title'];
-  function deal() {                                  // the title, then twelve games in a fresh order each loop
-    let sd = (((loop + 3) * 2654435761) % 2147483646) || 1; const rr = () => { sd = (sd * 16807) % 2147483647; return sd / 2147483647; };
+  // Every page load starts somewhere new: a random opener whose first frame shows the wordmark cleanly
+  // (no outline-only or rotated layouts), then a fresh shuffle; the title screen returns each loop.
+  const SEED = (Math.floor(Math.random() * 2147483645) + 1);
+  const clean = (k) => { const w = S[k].word || {}; return w.style !== 'neon' && w.lay !== 'vert'; };
+  function deal() {
+    let sd = ((SEED + loop * 7919) % 2147483646) || 1; const rr = () => { sd = (sd * 16807) % 2147483647; return sd / 2147483647; };
     const deck = TAIL.slice(); for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(rr() * (i + 1)); [deck[i], deck[j]] = [deck[j], deck[i]]; }
-    ORDER = ['title', ...deck.slice(0, Math.min(12, deck.length))];
+    if (loop === 0) { const opener = deck.find(clean) || deck[0]; ORDER = [opener, ...deck.filter((k) => k !== opener).slice(0, 11), 'title']; }
+    else ORDER = ['title', ...deck.slice(0, Math.min(12, deck.length))];
     loop++;
   }
   deal();
@@ -559,6 +564,7 @@
   let idx = 0, scene = S[ORDER[0]], t0 = performance.now(), last = t0, mode = 'play', visible = true;
   const q = new URLSearchParams(location.search);
   if (q.get('scene') && S[q.get('scene')]) { ORDER.splice(1, 0, q.get('scene')); idx = 1; scene = S[q.get('scene')]; }
+  else if (q.has('title')) { ORDER.unshift('title'); scene = S.title; }
   const start = (s) => { useWord(s.word); s.init(); s.update(0, 0); };
   start(scene); setLabel();
   if (q.get('t')) { const target = +q.get('t'); for (let tt = 16; tt < target; tt += 16) scene.update(tt, 16); t0 -= target; }
@@ -590,7 +596,7 @@
   const relayout = () => { const w = GW, h = GH, p = PH; dims(); if (w !== GW || h !== GH || p !== PH) { cache.clear(); makeStars(); mode = 'play'; t0 = performance.now(); start(scene); render(scene); } drawSky(performance.now()); blit(); };
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
   if (textBox && 'ResizeObserver' in window) new ResizeObserver(() => { clearTimeout(rs); rs = setTimeout(relayout, 120); }).observe(textBox);
-  if (reduce) { render(scene); drawSky(4000); blit(); return; }
+  if (reduce) { scene = S.title; start(scene); render(scene); drawSky(4000); blit(); return; }
   new IntersectionObserver((es) => { visible = es.some((e) => e.isIntersecting); }).observe(cv);
   // click the world: every letter hops once (a tiny bit of play)
   cv.addEventListener('click', () => { if (mode === 'play' && ORDER[idx] !== 'bounce') { ORDER.splice(idx + 1, 0, 'bounce'); t0 = performance.now() - scene.dur; } });

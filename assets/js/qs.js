@@ -5,7 +5,7 @@
   const root = document.documentElement;
   root.classList.add('js');
 
-  // ---- Theme (Omarchy-style: a small set of named, fully designed palettes)
+  // ---- Theme (a small set of named, fully designed palettes)
   const THEMES = ['evergreen', 'obsidian', 'forest', 'midnight', 'rose', 'paper'];
   const read = () => { try { return localStorage.getItem('qs-theme'); } catch { return null; } };
   const save = (t) => { try { localStorage.setItem('qs-theme', t); } catch { /* private mode */ } };

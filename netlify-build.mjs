@@ -111,6 +111,41 @@ console.log(`netlify-build: copied ${n} top-level entries into dist/`);
   }
 }
 
+// --- Cache-bust: /assets/* is served immutable for a year, so every asset link in the built
+// HTML gets ?v=<content hash>. Changing a file changes its URL; unchanged files stay cached. ---
+try {
+  const { createHash } = await import("node:crypto");
+  const { existsSync } = await import("node:fs");
+  const hashes = new Map();
+  const hashOf = (rel) => {
+    if (!hashes.has(rel)) {
+      const f = join("dist", rel);
+      hashes.set(rel, existsSync(f) ? createHash("sha1").update(readFileSync(f)).digest("hex").slice(0, 10) : null);
+    }
+    return hashes.get(rel);
+  };
+  let n = 0;
+  const walkBust = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      if (e.isDirectory()) { if (e.name !== "assets") walkBust(join(dir, e.name)); continue; }
+      if (!e.name.endsWith(".html")) continue;
+      const file = join(dir, e.name);
+      const h = readFileSync(file, "utf8");
+      const out = h.replace(/((?:href|src)=")(\/assets\/[^"?#]+\.(?:css|js|png|webp|jpe?g|svg|gif))(?:\?[^"#]*)?"/g, (m, pre, path) => {
+        const v = hashOf(path.slice(1));
+        if (!v) return m;
+        n++;
+        return `${pre}${path}?v=${v}"`;
+      });
+      if (out !== h) writeFileSync(file, out);
+    }
+  };
+  walkBust("dist");
+  console.log(`netlify-build: cache-bust stamped ${n} asset links`);
+} catch (err) {
+  console.log(`netlify-build: cache-bust skipped (${err.message})`);
+}
+
 // --- Auto sitemap + IndexNow. Wrapped so it can NEVER fail the deploy. ---
 try {
   const BASE = "https://quartersmart.com";

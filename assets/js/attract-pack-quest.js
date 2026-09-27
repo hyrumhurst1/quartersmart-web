@@ -52,7 +52,7 @@
       const minTop = Math.min(...P.map((p) => p.ty));
       const H = A.clamp(minTop - 10, 2, 5), HB = A.clamp(minTop - 10, 3, 11);
       const seg = []; let t = 0;
-      const run = (x0, x1, y) => { if (x1 <= x0) return; seg.push({ k: 'run', t0: t, t1: t + (x1 - x0) / V, x0, x1, y0: y, y1: y }); t += (x1 - x0) / V; };
+      const run = (x0, x1, y, li) => { if (x1 <= x0) return; seg.push({ k: 'run', t0: t, t1: t + (x1 - x0) / V, x0, x1, y0: y, y1: y, li }); t += (x1 - x0) / V; };
       const jump = (x0, y0, x1, y1, h, li, coin) => {
         const top = Math.min(y0, y1) - h, tu = Math.sqrt(2 * (y0 - top) / G_UP), td = Math.sqrt(2 * (y1 - top) / G_UP);
         seg.push({ k: 'jump', t0: t, t1: t + tu + td, x0, x1, y0, y1, top, su: tu / (tu + td), li, coin });
@@ -62,7 +62,7 @@
       let s = -1, wide = -1;
       for (let i = Math.round(n * 0.55); i <= n - 2; i++) if (P[i].b - P[i].a > wide) { wide = P[i].b - P[i].a; s = i; }
       let s1 = s;
-      if (s >= 0 && s + 1 < n - 1 && Math.abs(P[s + 1].ty - P[s].ty) <= 1 && P[s + 1].a - P[s].b <= 4) s1 = s + 1;
+      if (s >= 0 && s + 1 < n - 1 && Math.abs(P[s + 1].ty - P[s].ty) <= 1 && P[s + 1].a - P[s].b <= 6) s1 = s + 1;
       this.slime = s >= 0 ? { a: P[s].a, b: P[s1].b, cx: Math.round((P[s].a + P[s1].b) / 2) - 3 } : null;
       const goal = A.X0 + A.WW + 4 < A.GW - 4;
       this.goal = goal ? { x: A.X0 + A.WW + 4, top: Math.max(2, P[n - 1].ty - 12), base: Math.min(A.PH - 3, A.WY1 + 3) } : null;
@@ -71,7 +71,7 @@
       while (i < n - 1) {
         const p = P[i], q = P[i + 1], yp = p.ty - 1;
         if (this.slime && i + 1 === s) {
-          run(x, p.b - 2, yp);
+          run(x, p.b - 2, yp, p.li);
           const sy = this.groundAt(this.slime.cx + 3) - 5;           // standing on the slime's head
           jump(p.b - 2, yp, this.slime.cx + 3, sy, Math.max(2, H - 1), -1);
           this.stomp = t;
@@ -84,12 +84,12 @@
         }
         const dy = q.ty - p.ty, gap = q.a - p.b - 1;
         const coin = dy < -2 || (dy <= 0 && gap > 4) ? 1 : 0;
-        run(x, p.b - 2, yp);
+        run(x, p.b - 2, yp, p.li);
         jump(p.b - 2, yp, q.a + 3, q.ty - 1, Math.abs(dy) <= 2 && gap <= 3 ? 2 : dy > 2 ? Math.max(2, H - 2) : H, q.li, coin);
         x = q.a + 3; i++;
       }
       const last = P[n - 1];
-      if (this.onSlime === undefined) { run(x, last.b - 2, last.ty - 1); x = Math.max(x, last.b - 2); }
+      if (this.onSlime === undefined) { run(x, last.b - 2, last.ty - 1, last.li); x = Math.max(x, last.b - 2); }
       const fy = this.onSlime !== undefined ? this.onSlime : last.ty - 1;
       if (this.goal) {
         const g = this.goal, gy = Math.min(g.base - 1, Math.max(g.top + 8, fy - 2));
