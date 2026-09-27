@@ -273,11 +273,11 @@
     const kT = Math.max(2, Math.floor(target / 11));
     let lines = [text], R = lines.map(raster);
     let k = Math.min(kT, Math.floor(avail / R[0].w));
-    if (k < kT * 0.62 && text.includes(' ')) {
+    if (k < kT && text.includes(' ')) {
       const words = text.split(' '), mid = Math.ceil(words.length / 2);
-      lines = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
-      R = lines.map(raster);
-      k = Math.min(kT, Math.floor(avail / Math.max(...R.map((r) => r.w))));
+      const l2 = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')], R2 = l2.map(raster);
+      const k2 = Math.min(kT, Math.floor(avail / Math.max(...R2.map((r) => r.w))));
+      if (k2 > k) { lines = l2; R = R2; k = k2; }
     }
     k = Math.max(2, k);
     let minY = 1e9, maxY = -1;

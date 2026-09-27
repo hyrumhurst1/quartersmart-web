@@ -8,8 +8,8 @@
 .pt-hero__fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
 .pt-hero__in { position: relative; z-index: 1; display: grid; gap: 26px; }
 .pt-eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
-.pt-h1 { font: 400 clamp(33px, 3.6vw, 55px)/1.12 var(--pixel); letter-spacing: -.01em; max-width: 21ch; color: var(--fg-0); }
-.pt-h1--xl { font-size: clamp(44px, 6.4vw, 88px); line-height: 1.04; max-width: 15ch; }
+.pt-h1 { font: 400 55px/1.12 var(--pixel); letter-spacing: -.01em; max-width: 21ch; color: var(--fg-0); }
+.pt-h1--xl { font-size: 88px; line-height: 1.04; max-width: 15ch; }
 .pt-cta { display: flex; flex-wrap: wrap; gap: 14px 18px; align-items: center; margin-top: 6px; }
 .pt-hero .lede { max-width: 58ch; }
 
@@ -36,15 +36,15 @@
 .pt-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; align-items: end; margin-bottom: clamp(40px, 5vw, 64px); }
 .pt-head--single { grid-template-columns: 1fr; max-width: 820px; }
 .pt-head .body-l { max-width: 52ch; }
-.pt-h2 { font: 400 clamp(33px, 3.6vw, 44px)/1.14 var(--pixel); letter-spacing: -.01em; max-width: 20ch; }
-.pt-h2--big { font-size: clamp(38.5px, 5.4vw, 77px); line-height: 1.06; max-width: 16ch; }
+.pt-h2 { font: 400 44px/1.14 var(--pixel); letter-spacing: -.01em; max-width: 20ch; }
+.pt-h2--big { font-size: 77px; line-height: 1.06; max-width: 16ch; }
 
 /* ---------- Editorial rows (what you can resell) ---------- */
 .pt-rows { list-style: none; margin: 0; padding: 0; }
 .pt-rows > li { display: grid; grid-template-columns: 5fr 7fr; gap: 20px clamp(32px, 5vw, 80px); padding: clamp(32px, 4vw, 48px) 0; border-top: 1px solid var(--line); }
 .pt-rows > li:last-child { border-bottom: 1px solid var(--line); }
 .pt-rows__tag { font: 400 11px/1.4 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-.pt-rows__t { font: 400 clamp(33px, 3.4vw, 44px)/1.1 var(--pixel); }
+.pt-rows__t { font: 400 44px/1.1 var(--pixel); }
 .pt-rows__body { display: grid; gap: 18px; align-content: start; }
 .pt-rows__body > p { color: var(--fg-1); font-size: 17px; max-width: 60ch; }
 .pt-ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; color: var(--fg-1); font-size: 16px; }
@@ -68,7 +68,7 @@
 .pt-steps li { display: flex; flex-direction: column; gap: 14px; padding: 34px 28px 0 0; position: relative; }
 .pt-steps li::before { content: ""; position: absolute; top: -10px; left: 0; width: 12px; height: 16px; background: var(--accent); }
 .pt-steps__n { font: 400 66px/1 var(--pixel); color: var(--accent); }
-.pt-steps h3 { font: 400 27.5px/1.1 var(--pixel); }
+.pt-steps h3 { font: 400 22px/1.2 var(--pixel); }
 .pt-steps p { color: var(--fg-1); font-size: 16px; }
 .pt-steps__when { margin-top: auto; padding-top: 6px; font-size: 14.5px; color: var(--fg-2); }
 /* With the site script, the rail fills and the stops light in order as it scrolls in. */
@@ -92,7 +92,7 @@
 
 /* ---------- The total (workflow usage) ---------- */
 .pt-total { display: grid; grid-template-columns: 7fr 5fr; gap: 40px clamp(40px, 6vw, 96px); align-items: end; }
-.pt-stat { margin: 0; font: 400 clamp(77px, 11vw, 154px)/.9 var(--pixel); letter-spacing: -.03em; color: var(--accent); }
+.pt-stat { margin: 0; font: 400 154px/.9 var(--pixel); letter-spacing: -.03em; color: var(--accent); }
 .pt-total__cap { margin-top: 22px; font-size: 19px; color: var(--fg-0); max-width: 34ch; }
 .pt-verify { padding-left: 22px; border-left: 2px solid var(--accent); color: var(--fg-1); font-size: 16.5px; display: grid; gap: 14px; }
 .pt-verify b { font: 400 22px/1.2 var(--pixel); color: var(--fg-0); font-weight: 400; }
@@ -111,7 +111,7 @@
 .pt-method ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 .pt-method li { padding-left: 22px; position: relative; }
 .pt-method li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; background: var(--accent); }
-.pt-quote { margin: clamp(36px, 4vw, 56px) 0 0; font: 400 clamp(22px, 2.2vw, 27.5px)/1.4 var(--pixel); color: var(--fg-0); max-width: 44ch; }
+.pt-quote { margin: clamp(36px, 4vw, 56px) 0 0; font: 400 27.5px/1.4 var(--pixel); color: var(--fg-0); max-width: 44ch; }
 .pt-quote span { display: block; margin-bottom: 14px; font: 400 11px/1.4 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 
 /* ---------- The table ---------- */
@@ -130,12 +130,12 @@
 
 /* ---------- Close: an arcade at night ---------- */
 .pt-close { position: relative; overflow: hidden; padding: clamp(96px, 11vw, 160px) 0 clamp(220px, 26vw, 360px); }
-.pt-close__scene { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; min-height: 60%; object-fit: cover; object-position: bottom; image-rendering: pixelated; opacity: .9; pointer-events: none;
+.pt-close__scene { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; min-height: 60%; object-fit: cover; object-position: bottom; image-rendering: pixelated; opacity: .9; pointer-events: none; transform: scaleX(-1);
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 45%); mask-image: linear-gradient(180deg, transparent 0, #000 45%); }
 .pt-close__cab { position: absolute; right: clamp(16px, 8vw, 140px); bottom: clamp(24px, 3vw, 44px); width: 204px; height: auto; image-rendering: pixelated; pointer-events: none; }
 .pt-close .wrap { position: relative; }
 .pt-close__main { display: grid; gap: 24px; max-width: 760px; }
-.pt-close__h { font: 400 clamp(44px, 6.4vw, 99px)/1.02 var(--pixel); letter-spacing: -.01em; max-width: 13ch; }
+.pt-close__h { font: 400 88px/1.02 var(--pixel); letter-spacing: -.01em; max-width: 13ch; }
 .pt-close__alt { color: var(--fg-2); font-size: 15px; }
 .pt-close__alt a { color: var(--fg-1); }
 
@@ -160,6 +160,27 @@
 .nf__book { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 8px; color: var(--fg-1); }
 
 /* ---------- Responsive ---------- */
+/* Departure Mono stays on its 11px grid: sizes step, they don't slide. */
+@media (max-width: 1100px) {
+  .pt-h1 { font-size: 44px; }
+  .pt-h1--xl, .pt-close__h { font-size: 66px; }
+  .pt-h2--big { font-size: 55px; }
+  .pt-stat { font-size: 121px; }
+}
+@media (max-width: 640px) {
+  .pt-h1 { font-size: 33px; }
+  .pt-h1--xl { font-size: 44px; }
+  .pt-close__h, .pt-h2--big { font-size: 44px; }
+  .pt-h2, .pt-rows__t { font-size: 33px; }
+  .pt-stat { font-size: 88px; }
+  .pt-quote { font-size: 22px; }
+  .pt-method h3 { font-size: 22px; }
+  /* the handoff rail turns vertical */
+  .pt-rail { display: none; }
+  .pt-steps { border-left: 4px solid transparent; border-image: repeating-linear-gradient(180deg, var(--line-2) 0 8px, transparent 8px 12px) 4; padding-left: 26px; }
+  .pt-steps li { padding: 0 0 36px; }
+  .pt-steps li::before { top: 6px; left: -34px; width: 12px; height: 12px; }
+}
 @media (max-width: 1000px) {
   .pt-head, .pt-rows > li, .pt-duo, .pt-qa, .pt-total, .pt-method { grid-template-columns: 1fr; }
   .pt-duo > div + div { margin-top: 44px; }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="evergreen">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,9 +24,9 @@
 <meta name="qs:kind" content="confirmed">
 <meta name="qs:label" content="Confirmed · 40 organizations">
 <meta name="qs:verdict" content="Wait">
-<meta name="qs:cover" content="/assets/images/signals/anthropic-project-glasswing-tech-avengers-cover.jpg">
+<meta name="qs:cover" content="/assets/px/sprite-radar.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/signals-post.css">
+<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927a">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -48,7 +48,7 @@
       "description": "Project Glasswing gave Microsoft, Apple, CrowdStrike and 37 other organizations controlled access to Claude Mythos for cyber defense. Who is in it, how it works, and what it means.",
       "image": "https://quartersmart.com/assets/images/signals/anthropic-project-glasswing-tech-avengers-cover.jpg",
       "datePublished": "2026-04-05",
-      "dateModified": "2026-04-05",
+      "dateModified": "2026-09-27",
       "author": {
         "@id": "https://quartersmart.com/about.html#hyrum-hurst"
       },
@@ -90,46 +90,54 @@
 }
 </script>
 </head>
-<body>
+<body class="po">
 <!-- @include nav -->
 <main id="main">
-  <header class="post-head">
+
+  <header class="po-head">
     <div class="wrap">
       <p class="phead__crumbs"><a href="/">home</a> / <a href="/signals/">signals</a> / glasswing</p>
-      <div class="post-head__chips"><span class="chip chip--confirmed">Confirmed · 40 organizations</span><span class="verdict"><b>verdict</b> Wait</span></div>
-      <h1 class="h-1">Anthropic's Project Glasswing: 40 organizations get Claude Mythos for cyber defense</h1>
+      <div class="po-chips"><span class="chip chip--confirmed">Confirmed · 40 organizations</span><span class="verdict"><b>verdict</b> Wait</span></div>
+      <h1 class="po-h">Anthropic's Project Glasswing: 40 organizations get Claude Mythos for cyber defense</h1>
       <p class="lede">Anthropic's answer to the Mythos sandbox escape was Project Glasswing: controlled access to the model for 40 organizations, for defensive security work only. Here is who is in it and how it works.</p>
-      <p class="byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-04-05">Apr 5, 2026</time></span></p>
+      <p class="po-byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-04-05">Apr 5, 2026</time></span><span>Updated <time datetime="2026-09-27">Sep 27, 2026</time></span></p>
+      <div class="po-head__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
     </div>
   </header>
 
-  <div class="wrap">
-    <figure class="pane post-cover" style="margin-left:0;margin-right:0">
-      <div class="shot"><img src="/assets/images/signals/anthropic-project-glasswing-tech-avengers-cover.jpg" width="1200" height="800" alt="A constellation of connected nodes forming a protective dome over a dark landscape, representing a cyber-defense coalition of organizations" fetchpriority="high"></div>
-    </figure>
+  <section class="band band--deep po-band" aria-labelledby="short-h">
+    <div class="wrap po-band__grid">
+      <figure class="po-art" data-po-form>
+        <p class="po-sign"><span class="label">Our verdict</span><span class="po-sign__word neon neon--warm">Wait</span></p>
+        <img src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, listening." style="--w:54px;--s:4;--s-m:3" fetchpriority="high">
+      </figure>
+      <div class="po-sum">
+        <h2 class="po-sum__h" id="short-h">The short version</h2>
+        <ul>
+          <li>Anthropic announced Project Glasswing, a program giving 40 vetted organizations controlled access to Claude Mythos.</li>
+          <li>Named members included Microsoft, Apple, Google, Amazon, CrowdStrike, the NSA and CISA.</li>
+          <li>Each partner got a dedicated Mythos instance in an Anthropic-managed enclave with full audit logging, for defensive security only. Anthropic kept the right to revoke access.</li>
+          <li>For businesses outside the program there was nothing to adopt. The verdict: wait.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <div class="post-grid">
+  <div class="po-body">
+    <div class="wrap po-grid">
       <article class="prose">
-        <div class="shortv">
-          <h2>The short version</h2>
-          <ul>
-            <li>Anthropic announced Project Glasswing, a program giving 40 vetted organizations controlled access to Claude Mythos.</li>
-            <li>Named members included Microsoft, Apple, Google, Amazon, CrowdStrike, the NSA and CISA.</li>
-            <li>Each partner got a dedicated Mythos instance in an Anthropic-managed enclave with full audit logging, for defensive security only. Anthropic kept the right to revoke access.</li>
-            <li>For businesses outside the program there was nothing to adopt. The verdict: wait.</li>
-          </ul>
-        </div>
-        <p>Yesterday we told you about <a href="/signals/mythos">Claude Mythos escaping its sandbox</a>. Today, Anthropic revealed what they're actually doing with it: <strong>Project Glasswing</strong>, a coalition of 40 organizations that now have controlled access to the most powerful AI model ever built.</p>
-        <p>Think of it as the Avengers Initiative, but for cybersecurity. Microsoft, Apple, CrowdStrike, the NSA, all sitting at the same table, all armed with an AI that can find vulnerabilities faster than any human team on the planet.</p>
-        <h2>The Coalition</h2>
-        <p>Here are the organizations Anthropic has confirmed as part of the Glasswing program:</p>
-        <ul class="orglist">
-          <li><strong>Microsoft</strong></li>
-          <li><strong>Apple</strong></li>
-          <li><strong>Google</strong></li>
-          <li><strong>Amazon</strong></li>
-          <li><strong>CrowdStrike</strong></li>
-          <li><strong>Meta</strong></li>
+        <p>Anthropic's answer to the <a href="/signals/mythos">Mythos sandbox escape</a> was <strong>Project Glasswing</strong>: a program that gives 40 organizations controlled access to the model, for defensive security work.</p>
+        <p>It puts Microsoft, Apple, CrowdStrike and the NSA in the same program, each using a model that, in Anthropic's own testing, found vulnerabilities 11 times faster than teams of senior security researchers.</p>
+
+        <h2>Who is in it</h2>
+        <p>The organizations Anthropic has confirmed as part of Glasswing:</p>
+        <ul class="po-orgs">
+          <li>Microsoft</li>
+          <li>Apple</li>
+          <li>Google</li>
+          <li>Amazon</li>
+          <li>CrowdStrike</li>
+          <li>Meta</li>
           <li>Palo Alto Networks</li>
           <li>Mandiant</li>
           <li>NVIDIA</li>
@@ -142,52 +150,53 @@
           <li>SpaceX</li>
           <li>JPMorgan</li>
           <li>Goldman Sachs</li>
-          <li>+ 22 others</li>
+          <li>and 22 others</li>
         </ul>
-        <p>Each organization went through a vetting process that Anthropic describes as "more rigorous than most government security clearances." They signed agreements covering acceptable use, data handling, monitoring, and Anthropic's ability to revoke access at any time.</p>
-        <h2>Why This Matters</h2>
-        <p>The logic is straightforward: if an AI can autonomously discover thousands of vulnerabilities, you want it on your side before someone builds a version that isn't.</p>
+        <p>Each organization went through a vetting process Anthropic describes as "more rigorous than most government security clearances." They signed agreements covering acceptable use, data handling, monitoring, and Anthropic's ability to revoke access at any time.</p>
+
+        <h2>Why Anthropic did it</h2>
+        <p>The reasoning is simple. If a model can find thousands of vulnerabilities on its own, defenders should have it before someone builds a version with no restrictions.</p>
         <figure><blockquote><p>"The vulnerabilities exist whether we deploy Mythos or not. The question is whether the defenders find them first."</p></blockquote><figcaption>Dario Amodei, CEO of Anthropic, April 2026</figcaption></figure>
-        <p>Each Glasswing partner uses Mythos exclusively for <strong>defensive</strong> operations: scanning their own infrastructure, identifying vulnerabilities in their code, and stress-testing their security before attackers can exploit it. Offensive use is explicitly prohibited under the agreement.</p>
-        <h2>The Irony: OpenAI's Free Marketing</h2>
-        <p>Here's the part nobody's talking about. While Anthropic is locking down its most powerful model to 40 vetted organizations, <strong>OpenAI still allows third-party access to its entire model lineup.</strong> Any developer can build on GPT-5.4 through the API. Any wrapper app can integrate it. No vetting. No coalition. No kill switch.</p>
-        <p>Anthropic practically handed OpenAI a marketing campaign on a silver platter. OpenAI's pitch now writes itself: "We trust developers. They don't."</p>
-        <p>Within hours of the Glasswing announcement, OpenAI's developer relations team was already posting comparisons on X. Sam Altman quote-tweeted the announcement with a single word: "Open."</p>
-        <div class="callout callout--info">
-          <p class="label">The Tension</p>
-          <h3>Safety vs. accessibility, who's right?</h3>
-          <p>Anthropic says restricting Mythos is responsible AI deployment. OpenAI says open access drives innovation. Both have a point. But only one of them has a model that escaped its sandbox. The debate isn't theoretical anymore, it's about whether the most dangerous AI tool should be behind a velvet rope or on the open market.</p>
-        </div>
-        <h2>How Glasswing Actually Works</h2>
-        <p>Each partner organization gets a <strong>dedicated Mythos instance</strong> running in an Anthropic-managed secure enclave. The model never leaves Anthropic's infrastructure, partners interact with it through a hardened API with full audit logging.</p>
+        <p>Partners use Mythos only for <strong>defensive</strong> work: scanning their own infrastructure, finding vulnerabilities in their code, and stress-testing their security before attackers can exploit it. Offensive use is prohibited under the agreement.</p>
+
+        <h2>How Glasswing works</h2>
+        <p>Each partner gets a <strong>dedicated Mythos instance</strong> running in an Anthropic-managed secure enclave. The model never leaves Anthropic's infrastructure. Partners reach it through a hardened API with full audit logging.</p>
         <table>
           <thead>
-            <tr><th>Feature</th><th>Glasswing Access</th><th>Standard Claude API</th></tr>
+            <tr><th>Feature</th><th>Glasswing access</th><th>Standard Claude API</th></tr>
           </thead>
           <tbody>
-            <tr><td>Model</td><td style="color:var(--accent)">Mythos (ASL-4)</td><td>Opus 4.6 / Sonnet 4.6</td></tr>
-            <tr><td>Vulnerability Discovery</td><td style="color:var(--accent)">Autonomous</td><td>Manual prompting</td></tr>
+            <tr><td>Model</td><td>Mythos (ASL-4)</td><td>Opus 4.6 / Sonnet 4.6</td></tr>
+            <tr><td>Vulnerability discovery</td><td>Autonomous</td><td>Manual prompting</td></tr>
             <tr><td>Infrastructure</td><td>Dedicated secure enclave</td><td>Shared API</td></tr>
-            <tr><td>Audit Logging</td><td>Full, Anthropic monitored</td><td>Standard</td></tr>
-            <tr><td>Kill Switch</td><td style="color:var(--bad)">Anthropic-controlled</td><td>N/A</td></tr>
+            <tr><td>Audit logging</td><td>Full, monitored by Anthropic</td><td>Standard</td></tr>
+            <tr><td>Kill switch</td><td>Anthropic-controlled</td><td>N/A</td></tr>
             <tr><td>Cost</td><td>Custom contract</td><td>Per-token pricing</td></tr>
-            <tr><td>Use Cases</td><td>Defensive security only</td><td>General purpose</td></tr>
+            <tr><td>Use cases</td><td>Defensive security only</td><td>General purpose</td></tr>
           </tbody>
         </table>
-        <h2>What the Partners Are Saying</h2>
-        <p>Public statements from coalition members have been carefully worded but enthusiastic:</p>
-        <figure><blockquote><p>"In three days of testing, Mythos identified vulnerabilities in our infrastructure that our red team hadn't found in three years."</p></blockquote><figcaption>Senior VP of Security, Fortune 500 tech company (unnamed per NDA)</figcaption></figure>
-        <p>CrowdStrike's CEO George Kurtz was more direct in an earnings call: "This is the single biggest force multiplier we've ever deployed in threat detection. Full stop."</p>
-        <div class="callout callout--info">
-          <h3>What about competitors? Can Google and OpenAI build their own Mythos?</h3>
-          <p>Almost certainly, yes, eventually. Google DeepMind and OpenAI both have advanced cybersecurity research programs. But capability isn't the hard part anymore. The hard part is the safety infrastructure: the monitoring systems, the kill switches, the audit frameworks, the legal agreements. Anthropic spent 18 months building Glasswing's safety layer before giving anyone access. A competitor rushing to match Mythos's capabilities without that infrastructure is exactly the scenario that keeps AI safety researchers up at night.</p>
+
+        <h2>The contrast with OpenAI</h2>
+        <p>While Anthropic limited its most capable model to 40 vetted organizations, <strong>OpenAI kept third-party access open across its model lineup.</strong> Any developer can build on GPT-5.4 through the API, and any app can integrate it, with no vetting program.</p>
+        <p>Within hours of the Glasswing announcement, OpenAI's developer relations team was posting comparisons on X, and Sam Altman quote-posted the announcement with one word: "Open."</p>
+        <div class="po-note">
+          <h3>Safety or access?</h3>
+          <p>Anthropic says restricting Mythos is responsible deployment. OpenAI says open access drives innovation. Both have a point. The debate is no longer theoretical, because one of these models escaped a sandbox in testing.</p>
         </div>
-        <h2>The Bigger Picture</h2>
-        <p>Project Glasswing represents a new model for deploying frontier AI: <strong>not open, not closed, but controlled.</strong> Anthropic is betting that the responsible path isn't to lock Mythos in a vault or release it to the world, it's to put it in the hands of organizations with both the need and the infrastructure to use it safely.</p>
-        <p>Whether that model scales beyond 40 organizations, or whether the competitive pressure from OpenAI's open approach forces Anthropic to loosen restrictions, is the question that will define the next chapter of the AI industry.</p>
-        <p>For now, the tech Avengers have assembled. The question is whether the world is better off with 40 organizations wielding a superhuman hacker, or none.</p>
+
+        <h2>What partners are saying</h2>
+        <p>Public statements from partners have been careful but positive. CrowdStrike CEO George Kurtz put it most directly on an earnings call:</p>
+        <figure><blockquote><p>"This is the single biggest force multiplier we've ever deployed in threat detection. Full stop."</p></blockquote><figcaption>George Kurtz, CrowdStrike, Q1 2026 earnings call</figcaption></figure>
+        <h3>Can Google and OpenAI build their own Mythos?</h3>
+        <p>Likely, eventually. Google DeepMind and OpenAI both run advanced cybersecurity research. The harder part is the safety layer around the model: the monitoring, the kill switches, the audit frameworks and the legal agreements. Anthropic spent 18 months building Glasswing's safety layer before giving anyone access. A competitor matching the capability without that layer is the scenario safety researchers worry about most.</p>
+
+        <h2>The bigger picture</h2>
+        <p>Glasswing is a third way to deploy frontier AI, somewhere between open and closed: controlled access. Anthropic is betting the responsible path is to put the model in the hands of organizations with both the need and the infrastructure to use it safely.</p>
+        <p>Whether that approach scales beyond 40 organizations, or whether pressure from OpenAI's open approach pushes Anthropic to loosen it, is still an open question.</p>
+
         <h2>If you want help</h2>
-        <p>Want this filtered to your tools and set up for you? See <a href="/services/#first-quarter">First Quarter</a>, or <a href="/contact/">book a 20-minute call</a>.</p>
+        <p>Glasswing is closed to most businesses, so there is nothing to set up. Members get launches like this filtered to their tools, each with a verdict. See <a href="/services/#first-quarter">First Quarter</a>, or <a href="/contact/">book a 20-minute call</a>.</p>
+
         <h2 id="sources">Sources</h2>
         <ol class="sources">
           <li>Anthropic. "Announcing Project Glasswing: Responsible Deployment of Frontier Cybersecurity AI." <a href="https://www.anthropic.com/news/project-glasswing" rel="noopener">anthropic.com</a>, April 1, 2026.</li>
@@ -196,39 +205,64 @@
           <li>Knight, W. "Anthropic's AI Defense Coalition: Inside Project Glasswing." <a href="https://www.wired.com/story/anthropic-project-glasswing" rel="noopener">Wired</a>, April 2, 2026.</li>
           <li>Altman, S. (@sama). Post on X, April 1, 2026. <a href="https://x.com/sama" rel="noopener">x.com</a>.</li>
         </ol>
+
         <h2>Update log</h2>
         <ul class="updlog">
-          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Retitled on Sep 27, 2026. Original title: "Anthropic Called in the Tech Avengers, 40 Orgs Now Have Access to Mythos"</span></li>
+          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Retitled and edited for tone. Removed an unattributed partner quote. The reported facts and sources are unchanged. Original title: "Anthropic Called in the Tech Avengers, 40 Orgs Now Have Access to Mythos"</span></li>
           <li><time datetime="2026-04-05">Apr 5, 2026</time><span>First posted.</span></li>
         </ul>
         <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by Anthropic, OpenAI or any organization named here. Product names are trademarks of their owners. This post reflects public information as of April 5, 2026. <a href="/signals/policy/">How we source Signals</a>.</p>
+        <div class="po-author">
+          <img src="/assets/images/team/hyrum-hurst.webp" alt="Hyrum Hurst" width="64" height="64" loading="lazy">
+          <p><b>Hyrum Hurst</b>Founder of QuarterSmart and CTO of Learning Journey AI. He writes Signals and sets up the tools himself. <a href="/about/hyrum-hurst/">More about Hyrum</a></p>
+        </div>
       </article>
 
-      <aside class="post-side" aria-label="Signal summary">
-        <div class="pane pane--active">
-          <span class="pane__t">signal</span>
-          <dl class="card-kv">
-            <div><dt>Status</dt><dd><span class="chip chip--confirmed">Confirmed · 40 organizations</span></dd></div>
-            <div><dt>Verdict</dt><dd>Wait</dd></div>
-            <div><dt>Who it's for</dt><dd>Security teams and anyone tracking frontier AI access</dd></div>
-            <div><dt>Access</dt><dd>40 vetted organizations</dd></div>
-            <div><dt>Posted</dt><dd>Apr 5, 2026</dd></div>
-          </dl>
-        </div>
-        <div class="pane">
-          <span class="pane__t">read next</span>
-          <ul class="readnext">
-            <li><a class="link" href="/signals/sops-to-aops">What an AOP is</a></li>
-            <li><a class="link" href="/signals/stretch-ai-budget">Stretch your AI budget</a></li>
-            <li><a class="link" href="/signals/why-ai-pilots-fail">Why 95% of pilots fail</a></li>
-            <li><a class="link" href="/signals/">All Signals</a></li>
+      <aside class="po-rail" aria-label="Signal summary">
+        <dl class="po-kv">
+          <div><dt>Verdict</dt><dd class="po-kv__big">Wait</dd></div>
+          <div><dt>Who it's for</dt><dd>Security teams and anyone tracking frontier AI access</dd></div>
+          <div><dt>Access</dt><dd>40 vetted organizations</dd></div>
+          <div><dt>Posted</dt><dd>Apr 5, 2026</dd></div>
+        </dl>
+        <nav class="po-next" aria-label="Read next">
+          <h2>Read next</h2>
+          <ul>
+            <li><a href="/signals/mythos">Claude Mythos escaped its test sandbox</a></li>
+            <li><a href="/signals/third-party-killed">Anthropic cut off Claude resellers</a></li>
+            <li><a href="/signals/">All Signals</a></li>
           </ul>
-        </div>
+        </nav>
       </aside>
     </div>
   </div>
-  <!-- @include post-end -->
+
+  <section class="band band--slate po-close" aria-labelledby="close-h">
+    <div class="wrap po-close__grid">
+      <div class="po-close__main">
+        <h2 class="po-close__h" id="close-h">Get in the first quarter.</h2>
+        <p class="body-l">A free 20-minute call. Tell us what your team uses and what's eating the week. We'll tell you what's worth doing now and what can wait.</p>
+        <div class="po-head__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
+      </div>
+      <form class="po-close__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+        <p class="label">Not ready for a call?</p>
+        <h3 class="h-3">Get the next Signal instead.</h3>
+        <p class="muted">The few AI launches worth your attention, every Monday, each with a verdict. Free.</p>
+        <input type="hidden" name="form-name" value="signals-weekly">
+        <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
+        <input type="hidden" name="source" value="post">
+        <label class="sr" for="pe-email">Work email</label>
+        <div class="field">
+          <input class="input" id="pe-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+          <button class="btn" type="submit">Subscribe</button>
+        </div>
+        <p data-form-status aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
 </main>
+<!-- PO-SCRIPT -->
 <!-- @include footer -->
 </body>
 </html>

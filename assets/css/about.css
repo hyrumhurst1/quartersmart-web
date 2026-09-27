@@ -185,7 +185,7 @@
   .ab-sign { font-size: 22px; }
   .morph { --s: 2; }
   .morph figcaption { font-size: 22px; }
-  .ab-big { font-size: 38.5px; }
+  .ab-big, .ab-ind .ab-big { font-size: 38.5px; }
   .rows > li { grid-template-columns: minmax(0, 1fr); padding: 24px 0; }
   .rows--big .rows__k { font-size: 38.5px; }
   .rows__k { font-size: 27.5px; }
