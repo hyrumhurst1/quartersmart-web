@@ -1,355 +1,296 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="evergreen">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuarterSmart | AI Training &amp; Automation for Growing Teams</title>
-<meta name="description" content="QuarterSmart turns your SOPs into AI training your team uses and automations that run the work, built and maintained for you. One client cut onboarding time 65%.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Early Adoption, Setup and Training | QuarterSmart</title>
+<meta name="description" content="QuarterSmart tracks new AI launches, tells you which ones matter to your business, and sets them up for your team from the day they're available.">
 <meta name="author" content="QuarterSmart">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://quartersmart.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="QuarterSmart | Train Your Team. Automate the Rest.">
-<meta property="og:description" content="QuarterSmart turns your SOPs into AI training your team learns from and automations that run the work. Built, hosted, and maintained.">
+<meta property="og:title" content="QuarterSmart | Use new AI while it's still an advantage">
+<meta property="og:description" content="We track AI launches, tell you which ones matter to your business, and set them up for your team from the day they're available.">
 <meta property="og:url" content="https://quartersmart.com/">
 <meta property="og:site_name" content="QuarterSmart">
-<meta property="og:image" content="https://quartersmart.com/assets/qs-og.png">
+<meta property="og:image" content="https://quartersmart.com/assets/og/og-home.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="QuarterSmart. Train your team. Automate the rest.">
+<meta property="og:image:alt" content="QuarterSmart. Use new AI while it's still an advantage.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="QuarterSmart | Train Your Team. Automate the Rest.">
-<meta name="twitter:description" content="QuarterSmart turns your SOPs into AI training your team learns from and automations that run the work.">
-<meta name="twitter:image" content="https://quartersmart.com/assets/qs-og.png">
-<meta name="theme-color" content="#060608">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css">
+<meta name="twitter:title" content="QuarterSmart | Use new AI while it's still an advantage">
+<meta name="twitter:description" content="We track AI launches, tell you which ones matter, and set them up for your team.">
+<meta name="twitter:image" content="https://quartersmart.com/assets/og/og-home.png">
+<!-- @include head -->
+<link rel="stylesheet" href="/assets/css/home.css?v=20260927pc">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://quartersmart.com/#organization",
-      "name": "QuarterSmart",
-      "alternateName": "QuarterSmart AI",
-      "url": "https://quartersmart.com/",
-      "logo": "https://quartersmart.com/assets/qs-mark.png",
-      "image": "https://quartersmart.com/assets/qs-og.png",
-      "description": "QuarterSmart builds AI onboarding, training, and automation systems for growing teams. We turn your SOPs into both a training course your team learns from and an automation that runs the task itself.",
-      "slogan": "Train your team. Automate the rest.",
-      "foundingDate": "2025",
-      "email": "hyrum@quartersmart.com",
-      "founder": [
-        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
-        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
-      ],
-      "employee": [
-        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
-        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
-      ],
-      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" },
-      "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Arizona" },
-        { "@type": "Country", "name": "United States" }
-      ],
-      "knowsAbout": ["AI onboarding and training systems", "SOP automation", "SOP to training", "n8n automation", "Zapier automation", "Power Automate", "AI enablement", "white-label AI implementation", "employee onboarding automation", "AI training for teams"],
-      "contactPoint": { "@type": "ContactPoint", "contactType": "sales", "email": "hyrum@quartersmart.com", "url": "https://quartersmart.com/contact" }
-    },
+    <!-- @include ld-org -->,
     {
       "@type": "WebSite",
       "@id": "https://quartersmart.com/#website",
-      "name": "QuarterSmart",
       "url": "https://quartersmart.com/",
+      "name": "QuarterSmart",
       "publisher": { "@id": "https://quartersmart.com/#organization" }
     },
     {
-      "@type": "FAQPage",
-      "@id": "https://quartersmart.com/#faqpage",
-      "mainEntity": [
-        { "@type": "Question", "name": "What does QuarterSmart actually do?", "acceptedAnswer": { "@type": "Answer", "text": "We turn your SOPs and tribal knowledge into AI-powered systems. Each SOP becomes a training course your team learns from (AI-generated video, quizzes, certification) and an automation that runs the task itself (n8n, Zapier, Power Automate). We build it, host it, maintain it, and coach your team around it." } },
-        { "@type": "Question", "name": "How is this different from a regular AI training workshop?", "acceptedAnswer": { "@type": "Answer", "text": "A workshop teaches people and then ends. QuarterSmart connects the training to real workflows. The same SOP that teaches the job also powers an automation that does the job. You get capability your team uses every day, not a slideshow they forget by Friday." } },
-        { "@type": "Question", "name": "What kind of results can we expect?", "acceptedAnswer": { "@type": "Answer", "text": "For a San Francisco property management client we cut onboarding time and repeat questions by 65% and SOP-related mistakes by 36% across seven operational roles, with automated certification and compliance reporting built in. Results vary by team and process, which is why we start with training to learn your operation before we build." } },
-        { "@type": "Question", "name": "Do you stay involved after the build, or hand it off and leave?", "acceptedAnswer": { "@type": "Answer", "text": "We stay. Every engagement ends at a recurring baseline. We host and maintain the training system and automations, and run regular coaching calls where anyone on your team can get help or request new builds." } },
-        { "@type": "Question", "name": "How do we get started?", "acceptedAnswer": { "@type": "Answer", "text": "Book a call. Tell us what your team does by hand today, and we will show you how your existing SOPs can both teach it and run it. From there we scope a proposal." } }
-      ]
+      "@type": "WebPage",
+      "@id": "https://quartersmart.com/#webpage",
+      "url": "https://quartersmart.com/",
+      "name": "AI Early Adoption, Setup and Training | QuarterSmart",
+      "description": "QuarterSmart tracks new AI launches, tells you which ones matter to your business, and sets them up for your team from the day they're available.",
+      "isPartOf": { "@id": "https://quartersmart.com/#website" },
+      "about": { "@id": "https://quartersmart.com/#organization" }
     }
   ]
 }
 </script>
 </head>
-<body>
-<a class="qs-skip" href="#main">Skip to content</a>
-<header class="qs-nav" data-open="false">
-  <div class="qs-nav__bar">
-    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
-      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
-        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
-        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
-        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
-        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-      </svg>
-      <span class="qs-logo__word">QuarterSmart</span>
-    </a>
-    <nav class="qs-nav__links" aria-label="Primary">
-      <a href="/services/">Services</a>
-      <a href="/case-studies/">Case Studies</a>
-      <a href="/about/">About</a>
-      <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/">Signals</a>
-      <a href="/own-your-ai">Own Your AI</a>
-      <a href="/faq/">FAQ</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-    <div class="qs-nav__cta">
-      <a class="qs-btn qs-btn--primary qs-btn--sm" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-    </div>
-    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
-  </div>
-  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
-    <a href="/services/">Services</a>
-    <a href="/case-studies/">Case Studies</a>
-    <a href="/about/">About</a>
-    <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/">Signals</a>
-    <a href="/own-your-ai">Own Your AI</a>
-    <a href="/faq/">FAQ</a>
-    <a href="/contact/">Contact</a>
-    <a class="qs-btn qs-btn--primary qs-btn--full" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-  </nav>
-</header>
+<body class="home">
+<!-- @include nav -->
 
 <main id="main">
-  <!-- Hero -->
-  <section class="qs-hero">
-    <div class="qs-motif" aria-hidden="true">
-      <svg width="560" height="560" viewBox="0 0 100 100" fill="none">
-        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
-        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
-        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
-        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
-        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-      </svg>
-    </div>
-    <div class="qs-hero__inner">
-      <span class="qs-eyebrow qs-hero__eyebrow">AI onboarding, training, and automation systems</span>
-      <h1 class="qs-display">Train your team. Automate the rest.</h1>
-      <p class="qs-lede qs-hero__lede">Your SOPs already hold everything your team needs to know. QuarterSmart turns each one into two working assets: a training course your people learn from, and an automation that runs the task itself.</p>
-      <p class="qs-hero__sub">Same source, three outputs. We build it, host it, and maintain it. Then we stay on call so your team keeps getting more out of it.</p>
-      <div class="qs-cta-row">
-        <a class="qs-btn qs-btn--primary qs-btn--lg" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-        <a class="qs-btn qs-btn--secondary qs-btn--lg" href="/contact/#request-a-proposal">Request a proposal <span class="qs-ico" aria-hidden="true">&rarr;</span></a>
-      </div>
-      <div class="qs-trust">
-        <span class="qs-badge qs-badge--outline"><span class="qs-dot" aria-hidden="true"></span>Verified top-50 n8n creator</span>
-        <span class="qs-badge qs-badge--outline">Google Certified AI Automations Engineer</span>
-        <span class="qs-badge qs-badge--outline">25 published automation templates</span>
-        <span class="qs-badge qs-badge--outline">Mesa, Arizona</span>
-      </div>
-    </div>
-  </section>
 
-  <!-- The gap -->
-  <section class="qs-section qs-section--lg">
-    <div class="qs-wrap qs-wrap--prose">
-      <div class="qs-prose">
-        <span class="qs-eyebrow">The gap</span>
-        <h2>Most teams train on AI. Then nothing changes.</h2>
-        <p>Companies send people to AI workshops. Leaders read about productivity gains. Employees poke at ChatGPT for an afternoon. Then the excitement fades and the work looks exactly like it did before.</p>
-        <p>The problem is not interest. The problem is the gap between learning AI and actually using it. Training that never reaches a real workflow is just a slideshow. Your SOPs sit in a folder, read once during onboarding and never again.</p>
-        <p>QuarterSmart closes that gap. We take the knowledge you already have and turn it into systems your team uses every day.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Signature move -->
-  <section class="qs-section qs-bordered">
-    <div class="qs-wrap">
-      <div class="qs-section-head">
-        <span class="qs-eyebrow">The signature move</span>
-        <h2 class="qs-h2">Your SOPs do triple duty</h2>
-        <p>Write the SOP once. We turn it into three things from one source: train, automate, operate.</p>
-      </div>
-      <div class="qs-doubleduty">
-        <div class="qs-dd-source">
-          <div class="qs-dd-kicker">One SOP</div>
-          <div class="qs-dd-title">The source</div>
-          <p>Write it once. We turn it into three things from one source.</p>
+  <!-- 1. Hero: the wordmark over an idle arcade -->
+  <section class="h4" aria-labelledby="hero-h">
+    <div class="h4__win">
+      <span class="win__t" aria-hidden="true">attract.exe</span>
+      <span class="win__r" aria-hidden="true" data-scene-label>lv 01<span class="win__nm"> title</span></span>
+      <canvas class="h4__world" data-attract role="img" aria-label="QuarterSmart, in pixel letters under a night sky."></canvas>
+      <div class="h4__in">
+        <h1 class="h4__h" id="hero-h">Use new AI while it's still an advantage.</h1>
+        <p class="lede">For owner-led businesses: we watch AI launches, tell you which ones matter, and set them up for your team the day you get access.</p>
+        <div class="hx__cta">
+          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
+          <a class="btn btn--ghost" href="#levels">See plans and prices</a>
         </div>
-        <div class="qs-dd-arrow" aria-hidden="true"><span class="qs-dd-stem"></span><span class="qs-dd-v1"></span><span class="qs-dd-v2"></span></div>
-        <div class="qs-dd-outs">
-          <div class="qs-dd-out">
-            <span class="qs-dd-pip" aria-hidden="true"></span>
-            <div><div class="qs-dd-out-title">A training course</div><div class="qs-dd-out-sub">video / quizzes / certification</div></div>
+      </div>
+      <button class="win__b" type="button" data-attract-pause hidden><span>pause</span><span class="sr"> animation</span></button>
+    </div>
+  </section>
+
+  <!-- 2. Why QuarterSmart: a pinned scroll story -->
+  <section class="qscroll" data-quarter aria-labelledby="why-h">
+    <div class="qscroll__stage">
+      <div class="qs-win">
+        <span class="win__t" aria-hidden="true">why.exe</span>
+        <span class="win__r qs-hud" aria-hidden="true">score <b data-score>000000</b> <span class="qs-lives" data-lives title="Quarters left"><i></i><i></i><i></i><em>continue?</em></span></span>
+        <div class="qs-art"><canvas aria-hidden="true"></canvas><p class="qs-why" aria-hidden="true">why QuarterSmart?</p></div>
+        <div class="qs-copy">
+          <h2 class="label label--accent" id="why-h">Why QuarterSmart</h2>
+          <p class="qs-big echo">25%</p>
+          <p class="qs-lead">Every AI shift has an early group. We get you in, when it's worth it.</p>
+          <p class="qs-kicker">25%? That's a quarter.</p>
+        </div>
+        <span class="qs-line" aria-hidden="true"></span>
+        <button class="qs-replay" type="button" data-replay hidden>replay</button>
+        <button class="win__b" type="button" data-qs-pause hidden><span>pause</span><span class="sr"> animation</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Signals: the live proof, on a full-bleed slate block -->
+  <section class="band band--slate" aria-labelledby="sig-h">
+    <div class="wrap sigband">
+      <div class="sigband__intro">
+        <p class="sig-sign"><img class="sig-sign__pu" src="/assets/px/pu-radar.png" width="64" height="64" alt=""><span class="echo">Signals</span></p>
+        <h2 class="h-1" id="sig-h">Know what changed. Know what to do.</h2>
+        <p class="body-l">AI launches, each with a verdict: act now, prepare, wait or ignore. Free every Monday.</p>
+        <form class="sigband__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+          <input type="hidden" name="form-name" value="signals-weekly">
+          <p class="sr" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <input type="hidden" name="source" value="home-signals">
+          <label class="sr" for="sig-email">Work email</label>
+          <div class="field">
+            <input class="input" id="sig-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+            <button class="btn" type="submit">Get Signals</button>
           </div>
-          <div class="qs-dd-out qs-dd-out--muted">
-            <span class="qs-dd-pip" aria-hidden="true"></span>
-            <div><div class="qs-dd-out-title">An automation</div><div class="qs-dd-out-sub">n8n / Zapier / Power Automate</div></div>
+          <p data-form-status aria-live="polite"></p>
+        </form>
+        <p class="sigband__more"><a class="link" href="/signals/">Read Signals</a></p>
+      </div>
+      <ol class="sigrows">
+        <li><a href="/signals/openai-o-assistant-leak">
+          <span class="sigrows__meta"><span class="chip chip--reported">Reported · unconfirmed</span><time datetime="2026-09-27">Sep 27</time></span>
+          <span class="sigrows__t">OpenAI "o": an always-on assistant reported in ChatGPT Pro</span>
+          <span class="sigrows__v"><b>Verdict</b> Prepare. Clean up shared inboxes and calendars now.</span>
+        </a></li>
+        <li><a href="/signals/openai-o-assistant-leak#devday">
+          <span class="sigrows__meta"><span class="chip chip--event">Event</span><time datetime="2026-09-29T10:00-07:00">Tue Sep 29 · 10:00 AM PT</time></span>
+          <span class="sigrows__t">OpenAI DevDay keynote</span>
+          <span class="sigrows__v"><b>We'll post</b> a plain-English recap the same afternoon.</span>
+        </a></li>
+        <li><a href="/signals/chatgpt-mobile-voice-work">
+          <span class="sigrows__meta"><span class="chip chip--available">Available · Plus, Pro</span><time datetime="2026-09-23">Sep 23</time></span>
+          <span class="sigrows__t">ChatGPT's mobile app can now draft, summarize and build by voice</span>
+          <span class="sigrows__v"><b>Verdict</b> Act now. Voice-draft one real email this week.</span>
+        </a></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4. How it works: a boot sequence, not a card grid -->
+  <section class="boot" aria-labelledby="how-h" data-boot>
+    <div class="wrap">
+      <div class="boot__head">
+        <h2 class="h-1" id="how-h">From headline to habit.</h2>
+        <p class="body-l">Most launches aren't worth it. We tell you which ones are.</p>
+      </div>
+      <div class="boot__rail" aria-hidden="true"><span class="boot__fill"></span></div>
+      <ol class="boot__steps">
+        <li><span class="boot__n">01</span><h3>Detect</h3><p>Releases, changelogs, waitlists, credible leaks.</p><span class="boot__ok">every day</span></li>
+        <li><span class="boot__n">02</span><h3>Decode</h3><p>Does it matter to you? A verdict, in plain English.</p><span class="boot__ok">same business day for members</span></li>
+        <li><span class="boot__n">03</span><h3>Deploy</h3><p>Set up in your accounts, tested, taught to the team.</p><span class="boot__ok">from the day it's available to you</span></li>
+        <li><span class="boot__n">04</span><h3>Stay current</h3><p>Your setup, adjusted as the tools change.</p><span class="boot__ok">for members</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5. Level select: the offer ladder -->
+  <section class="band band--deep levels" id="levels" aria-labelledby="lv-h" data-levels>
+    <div class="wrap">
+      <div class="levels__head">
+        <div>
+          <p class="label label--accent">Ways to work with us</p>
+          <h2 class="h-1" id="lv-h">Select your level.</h2>
+        </div>
+        <figure class="levels__art pu-shelf" aria-hidden="true">
+          <img class="pu" data-pu="0" src="/assets/px/pu-radar.png" width="32" height="32" alt="">
+          <img class="pu" data-pu="1" src="/assets/px/pu-map.png" width="32" height="32" alt="">
+          <img class="pu" data-pu="2" src="/assets/px/pu-setup.png" width="32" height="32" alt="">
+          <img class="pu" data-pu="3" src="/assets/px/pu-token.png" width="32" height="32" alt="">
+          <img class="pu" data-pu="4" src="/assets/px/pu-robot.png" width="32" height="32" alt="">
+        </figure>
+      </div>
+      <div class="levels__grid">
+        <ol class="levels__list" role="tablist" aria-label="Offers">
+          <li role="presentation"><button type="button" role="tab" id="lv-t0" aria-controls="lv-0" aria-selected="false" data-level="0"><span class="lv__n">0</span><span class="lv__name">Signals</span><span class="lv__price">Free</span></button></li>
+          <li role="presentation"><button type="button" role="tab" id="lv-t1" aria-controls="lv-1" aria-selected="true" data-level="1"><span class="lv__n">1</span><span class="lv__name">Head Start</span><span class="lv__price">from $1,500</span></button></li>
+          <li role="presentation"><button type="button" role="tab" id="lv-t2" aria-controls="lv-2" aria-selected="false" data-level="2"><span class="lv__n">2</span><span class="lv__name">Day One Setup</span><span class="lv__price">from $2,500 per tool</span></button></li>
+          <li role="presentation"><button type="button" role="tab" id="lv-t3" aria-controls="lv-3" aria-selected="false" data-level="3"><span class="lv__n">3</span><span class="lv__name">First Quarter</span><span class="lv__price">from $1,500 a month</span></button></li>
+          <li role="presentation"><button type="button" role="tab" id="lv-t4" aria-controls="lv-4" aria-selected="false" data-level="4"><span class="lv__n">4</span><span class="lv__name">Build</span><span class="lv__price">scoped</span></button></li>
+        </ol>
+        <div class="levels__panels">
+          <div class="lv" role="tabpanel" id="lv-0" aria-labelledby="lv-t0">
+            <p class="lv__tag">level 0 · free</p>
+            <h3>Signals</h3>
+            <p>The feed and a Monday email. What changed, and what to do.</p>
+            <ul><li>How sure we are, on every item</li><li>A verdict on every Signal</li></ul>
+            <a class="btn" href="/signals/#weekly">Get Signals</a>
           </div>
-          <div class="qs-dd-out qs-dd-out--muted">
-            <span class="qs-dd-pip" aria-hidden="true"></span>
-            <div><div class="qs-dd-out-title">An AOP</div><div class="qs-dd-out-sub">run by your AI agent</div></div>
+          <div class="lv" role="tabpanel" id="lv-1" aria-labelledby="lv-t1">
+            <p class="lv__tag">level 1 · start here · from $1,500 one time</p>
+            <h3>Head Start</h3>
+            <p>We find the AI you already pay for and aren't using, then hand you a 30-day plan. The fee counts toward your next step.</p>
+            <ul><li>The three launches that matter to you</li><li>A 30-day plan</li></ul>
+            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a>
+          </div>
+          <div class="lv" role="tabpanel" id="lv-2" aria-labelledby="lv-t2">
+            <p class="lv__tag">level 2 · project · from $2,500 per tool</p>
+            <h3>Day One Setup</h3>
+            <p>One tool, set up for how you work, tested, then taught to your team.</p>
+            <ul><li>Inside accounts you own</li><li>A small test first</li><li>Live training for the team</li></ul>
+            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a>
+          </div>
+          <div class="lv lv--feature" role="tabpanel" id="lv-3" aria-labelledby="lv-t3">
+            <p class="lv__tag">level 3 · membership · from $1,500 a month</p>
+            <h3>First Quarter</h3>
+            <p>Signals for your tools, same business day. Priority on launch weeks.</p>
+            <ul><li>Verdicts written for your business</li><li>Setup hours held every month</li><li>Team training every quarter</li></ul>
+            <div class="lv__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a><a class="link" href="/services/#first-quarter">Compare plans</a></div>
+          </div>
+          <div class="lv" role="tabpanel" id="lv-4" aria-labelledby="lv-t4">
+            <p class="lv__tag">level 4 · custom · scoped</p>
+            <h3>Build</h3>
+            <p>Custom agents and automations for the work that repeats.</p>
+            <ul><li>Built on your tools</li><li>Documented and handed over</li></ul>
+            <a class="link" href="/services/#build">How Build works</a>
           </div>
         </div>
       </div>
-      <div class="qs-twocol qs-mt-7">
+      <p class="levels__more"><a class="link" href="/services/">See all prices</a></p>
+    </div>
+  </section>
+
+  <!-- 6. The approach as one editorial statement -->
+  <section class="approachx" aria-labelledby="ap-h">
+    <div class="wrap">
+      <p class="label label--accent">Our approach</p>
+      <h2 class="approachx__h" id="ap-h"><span>Train your team.</span> <span class="accent">Automate the rest.</span></h2>
+      <div class="approachx__grid">
         <div>
-          <h3 class="qs-h4">A training course your team learns from</h3>
-          <p class="qs-muted" style="font-size:var(--fs-small);line-height:1.65;margin-top:8px">AI-generated video walkthroughs, quizzes, and certification. New hires watch the real process instead of slogging through a document. Owners get a dashboard showing who has completed what and where people get stuck.</p>
+          <h3>01 · Train</h3>
+          <p>Early only pays if people use it. We train your team on their own work.</p>
         </div>
+        <figure class="approachx__art"><img class="px" src="/assets/px/sprite-keyboard-manual.png" width="116" height="41" alt="A keyboard beside an open manual, in pixel art." style="--s:3" loading="lazy"></figure>
         <div>
-          <h3 class="qs-h4">An automation that runs the work</h3>
-          <p class="qs-muted" style="font-size:var(--fs-small);line-height:1.65;margin-top:8px">The long, repetitive, manual tasks buried in that SOP get built into a working automation in n8n, Zapier, or Power Automate. The job still gets done, just without a person doing it by hand.</p>
-        </div>
-        <div>
-          <h3 class="qs-h4">An AOP your AI agent can run</h3>
-          <p class="qs-muted" style="font-size:var(--fs-small);line-height:1.65;margin-top:8px">The agent-era third output: the same procedure written so an AI agent can operate it, not just a person. This is where automation is heading, and the on-ramp to owning your AI. <a href="/signals/sops-to-aops">Read: SOPs to AOPs</a>.</p>
+          <h3>02 · Automate</h3>
+          <p>Then we automate the repetitive work that's left.</p>
         </div>
       </div>
+      <ul class="rules">
+        <li><b>We say "wait" a lot.</b> Most launches don't deserve your time.</li>
+        <li><b>Your accounts, your data.</b> Remove our access any time.</li>
+        <li><b>No tech team needed.</b> We set it up and explain it in plain English.</li>
+      </ul>
+      <p class="approachx__more"><a class="link" href="/approach/">How we work</a></p>
     </div>
   </section>
 
-  <!-- Engagement -->
-  <section class="qs-section qs-bordered">
-    <div class="qs-wrap">
-      <div class="qs-section-head">
-        <span class="qs-eyebrow">Land &middot; build &middot; automate &middot; coach &middot; retain</span>
-        <h2 class="qs-h2">How an engagement works</h2>
-        <p>Every step builds on the last, and every engagement ends at a recurring baseline instead of dropping back to zero.</p>
+  <!-- 7. Player one -->
+  <section class="band band--slate p1" aria-labelledby="p1-h">
+    <div class="wrap p1__grid">
+      <div class="p1__id">
+        <div class="p1__photo"><img class="px" src="/assets/px/avatar-hyrum.png" width="79" height="84" alt="Hyrum Hurst drawn as a pixel-art character: blond hair, a smile, a navy suit." loading="lazy"></div>
+        <p class="p1__tag">player one</p>
       </div>
-      <div class="qs-grid-3">
-        <article class="qs-card"><div class="qs-feature"><div class="qs-feature__top"><span class="qs-numbox">1</span></div><h3 class="qs-h4">AI enablement and training</h3><p>We start by training your team on AI. Low risk, fast value, and the easiest way to see what your operation actually needs. This is the door we walk in through.</p></div></article>
-        <article class="qs-card"><div class="qs-feature"><div class="qs-feature__top"><span class="qs-numbox">2</span></div><h3 class="qs-h4">SOPs to a training system</h3><p>We turn your SOPs into AI-generated courses, quizzes, and certification, plus an owner dashboard that shows completion and trouble spots across every role.</p></div></article>
-        <article class="qs-card"><div class="qs-feature"><div class="qs-feature__top"><span class="qs-numbox">3</span></div><h3 class="qs-h4">SOPs to automations</h3><p>The painful manual tasks get built into automations and bundled into the same system. The work that used to eat your team's day starts running on its own.</p></div></article>
-        <article class="qs-card"><div class="qs-feature"><div class="qs-feature__top"><span class="qs-numbox">4</span></div><h3 class="qs-h4">Coaching and consulting</h3><p>Recurring bi-weekly or monthly calls where anyone on your team hops on for questions, help, and coaching. When something new needs building, we build it.</p></div></article>
-        <article class="qs-card"><div class="qs-feature"><div class="qs-feature__top"><span class="qs-numbox">5</span></div><h3 class="qs-h4">Hosting and maintenance</h3><p>We host and maintain the training system and the automations so they keep working. You own a system that gets looked after, not a handoff you have to babysit.</p></div></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Proof -->
-  <section class="qs-section qs-bordered">
-    <div class="qs-wrap">
-      <div class="qs-section-head">
-        <span class="qs-eyebrow">Proof</span>
-        <h2 class="qs-h2">A San Francisco property management company</h2>
-        <p>For a San Francisco property management firm with a $500M+ portfolio, we replaced rewriting SOPs by hand with a full AI-powered training and onboarding system: a 39-course video library across seven operational roles, AI-automated course creation, and Claude-powered quizzes.</p>
-      </div>
-      <div class="qs-proof">
-        <div class="qs-stat qs-stat--lg"><span class="qs-stat__value">65%</span><span class="qs-stat__label">less onboarding time and fewer repeat questions</span></div>
-        <div class="qs-stat qs-stat--lg"><span class="qs-stat__value">36%</span><span class="qs-stat__label">fewer SOP-related mistakes</span></div>
-        <div class="qs-stat qs-stat--lg"><span class="qs-stat__value">7 roles</span><span class="qs-stat__label">with automated certification and compliance reporting</span></div>
-      </div>
-      <div class="qs-mt-5">
-        <a class="qs-btn qs-btn--secondary" href="/case-studies/sf-property-management/">See how we did it <span class="qs-ico" aria-hidden="true">&rarr;</span></a>
+      <div class="p1__copy">
+        <h2 class="h-1" id="p1-h">You talk to the person who does the work.</h2>
+        <p class="body-l">Hyrum Hurst builds every setup himself. He's also CTO of Learning Journey AI, an AI education company, so staying current on AI is his day job.</p>
+        <dl class="p1__facts">
+          <div><dt>you work with</dt><dd>Hyrum, start to finish</dd></div>
+        </dl>
+        <div class="p1__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free call</a><a class="link" href="/about/hyrum-hurst/">More about Hyrum</a></div>
       </div>
     </div>
   </section>
 
-  <!-- Own Your AI teaser -->
-  <section class="qs-section qs-bordered">
-    <div class="qs-wrap">
-      <div class="qs-section-head">
-        <span class="qs-eyebrow">Early access &middot; we are building this now</span>
-        <h2 class="qs-h2">Own your AI, do not just rent it</h2>
-        <p>Most teams will pay to rent AI through frontier APIs forever. We are building Own Your AI: a private AI system your company owns and runs in-house for the everyday work, with frontier models only when you actually need them. An offset, not a replacement.</p>
+  <!-- 8. Close -->
+  <section class="closer" aria-labelledby="cta-h">
+    <img class="closer__cab" src="/assets/px/cabinet-row.png" width="169" height="88" alt="" aria-hidden="true" loading="lazy">
+    <div class="wrap closer__grid">
+      <div class="closer__main">
+        <p class="closer__sign echo echo--chase" aria-hidden="true">insert coin</p>
+        <h2 class="closer__h" id="cta-h">Get in the first quarter.</h2>
+        <p class="body-l">We'll tell you what's worth doing now.</p>
+        <div class="hx__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a free 20-minute call</a></div>
       </div>
-      <div class="qs-cta-row">
-        <a class="qs-btn qs-btn--primary" href="/own-your-ai">See Own Your AI <span class="qs-ico" aria-hidden="true">&rarr;</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="qs-section qs-bordered">
-    <div class="qs-wrap qs-wrap--prose">
-      <div class="qs-section-head"><h2 class="qs-h2">Frequently asked questions</h2></div>
-      <div class="qs-accordion">
-        <details open><summary>What does QuarterSmart actually do?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">We turn your SOPs and tribal knowledge into AI-powered systems. Each SOP becomes a training course your team learns from (AI-generated video, quizzes, certification) and an automation that runs the task itself (n8n, Zapier, Power Automate). We build it, host it, maintain it, and coach your team around it.</p></details>
-        <details><summary>How is this different from a regular AI training workshop?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">A workshop teaches people and then ends. QuarterSmart connects the training to real workflows. The same SOP that teaches the job also powers an automation that does the job. You get capability your team uses every day, not a slideshow they forget by Friday.</p></details>
-        <details><summary>What kind of results can we expect?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">For a San Francisco property management client we cut onboarding time and repeat questions by 65% and SOP-related mistakes by 36% across seven operational roles, with automated certification and compliance reporting built in. Results vary by team and process, which is why we start with training to learn your operation before we build.</p></details>
-        <details><summary>Do you stay involved after the build, or hand it off and leave?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">We stay. Every engagement ends at a recurring baseline. We host and maintain the training system and automations, and run regular coaching calls where anyone on your team can get help or request new builds.</p></details>
-        <details><summary>How do we get started?<span class="qs-pm" aria-hidden="true"></span></summary><p class="qs-answer">Book a call. Tell us what your team does by hand today, and we will show you how your existing SOPs can both teach it and run it. From there we scope a proposal.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="qs-section qs-section--lg qs-bordered">
-    <div class="qs-wrap">
-      <div class="qs-cta-band">
-        <svg width="64" height="64" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-          <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
-          <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
-          <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
-          <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
-          <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-          <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-        </svg>
-        <h2 class="qs-h1">Ready to put your SOPs to work?</h2>
-        <p>Tell us what your team does by hand today. We will show you how the same SOPs can teach it and run it.</p>
-        <div class="qs-cta-row">
-          <a class="qs-btn qs-btn--primary qs-btn--lg" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-          <a class="qs-btn qs-btn--secondary qs-btn--lg" href="/contact/#request-a-proposal">Request a proposal</a>
+      <form class="closer__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+        <p class="label">Not ready for a call?</p>
+        <h3 class="h-3">Get the next Signal instead.</h3>
+        <p class="muted">One email, Mondays.</p>
+        <input type="hidden" name="form-name" value="signals-weekly">
+        <p class="sr" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <input type="hidden" name="source" value="home">
+        <label class="sr" for="cta-email">Work email</label>
+        <div class="field">
+          <input class="input" id="cta-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+          <button class="btn" type="submit">Subscribe</button>
         </div>
-      </div>
+        <p data-form-status aria-live="polite"></p>
+      </form>
     </div>
   </section>
+
 </main>
-
-<footer class="qs-footer">
-  <div class="qs-footer__inner">
-    <div class="qs-footer__grid">
-      <div class="qs-footer__brand">
-        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
-          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
-            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
-            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
-            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
-            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-          </svg>
-          <span class="qs-logo__word">QuarterSmart</span>
-        </a>
-        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
-        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
-      </div>
-      <div class="qs-footer__col">
-        <h2>Company</h2>
-        <a href="/services/">Services</a>
-        <a href="/case-studies/">Case Studies</a>
-        <a href="/about/">About</a>
-        <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/">Signals</a>
-        <a href="/own-your-ai">Own your AI</a>
-      </div>
-      <div class="qs-footer__col">
-        <h2>Get in touch</h2>
-        <a href="/faq/">FAQ</a>
-        <a href="/contact/">Contact</a>
-        <a href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-        <a href="/workflow-usage/">Workflow usage</a>
-      </div>
-    </div>
-    <div class="qs-footer__meta">
-      <span class="qs-tag-line">Train your team. Automate the rest.</span>
-      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-(function(){var n=document.querySelector('.qs-nav');var t=n&&n.querySelector('.qs-nav__toggle');if(!t)return;t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});})();
-</script>
+<script src="/assets/js/attract-pack-classics.js?v=1" defer></script>
+<script src="/assets/js/attract-pack-floor.js?v=1" defer></script>
+<script src="/assets/js/attract-pack-quest.js?v=1" defer></script>
+<script src="/assets/js/attract.js?v=20260927k" defer></script>
+<script src="/assets/js/quarter.js?v=20260927k" defer></script>
+<script src="/assets/js/home.js?v=20260927pg" defer></script>
+<!-- @include footer -->
 </body>
 </html>

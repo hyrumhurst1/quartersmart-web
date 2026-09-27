@@ -108,7 +108,7 @@ across live client systems. Based in Mesa, Arizona.
   onboarded 10+ team members. (The "I learned to sell, train, and ship door to door" origin story is
   owner-approved personal-brand material.)
 
-**Press / expert status:** quoted as an AI automation expert in CyberNews (2026); registered expert
+**Press / expert status:** quoted as an AI automation expert in CyberNews (October 2025); registered expert
 source on Qwoted (AI strategy, enterprise adoption, AI procurement, AI governance). Published a case
 study in The AI Journal on how high schoolers use AI (three teachers, 100 students; classrooms allowing
 AI openly had the LOWEST plagiarism rates). NOTE: the AI Journal byline says "founder of AI Ed and

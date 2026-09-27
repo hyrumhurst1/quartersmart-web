@@ -1,0 +1,214 @@
+/* Legal and Signals record pages: /privacy/, /terms/, /signals/policy/, /signals/log/.
+   Same hand as the homepage: big pixel headings, hairlines instead of boxes,
+   colour bands for rhythm, flat pixel art only where it earns its place.
+   Tokens only, square corners, so every theme works. */
+
+.px { display: block; height: auto; image-rendering: pixelated; }
+
+/* ---------- Top ---------- */
+.lhead { position: relative; padding: clamp(44px, 5.5vw, 80px) 0 clamp(56px, 6vw, 88px); }
+.lhead__crumbs { margin: 0 0 26px; font: 400 14px/1.4 var(--sans); color: var(--fg-2); }
+.lhead__crumbs a { color: var(--fg-2); text-decoration: none; }
+.lhead__crumbs a:hover { color: var(--fg-0); text-decoration: underline; }
+.lhead__crumbs i { font-style: normal; margin: 0 8px; opacity: .6; }
+.lhead__grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px clamp(32px, 6vw, 96px); align-items: end; }
+.lhead__copy { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; justify-items: start; min-width: 0; }
+.lhead__h { margin: 0; font: 400 77px/1.02 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); max-width: 15ch; }
+.lhead .lede { max-width: 58ch; }
+.lhead__cta { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; }
+/* the header's one action is a quiet link: give it a 44px hit area without moving its underline */
+.lhead__cta .link { position: relative; }
+.lhead__cta .link::before { content: ""; position: absolute; left: -4px; right: -4px; top: 50%; height: 44px; transform: translateY(-50%); }
+.lhead__meta { display: flex; flex-wrap: wrap; gap: 6px 26px; font-size: 15px; color: var(--fg-2); }
+.lhead__meta b { font-weight: 500; color: var(--fg-1); }
+.lhead__meta a { color: var(--fg-1); }
+/* Hero art: the pixel stage (radar.js) inside a terminal window, the
+   homepage's hand: a 2px border with the title, the scene pips and the pause
+   control set into it (btop style), a deep-night fill and faint scanlines. */
+.lhead__art { margin: 0 0 6px; }
+.pxwin { --win-bg: var(--bg-0); position: relative; min-width: 0; padding: 26px 16px 24px; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
+.lhead__art.pxwin { width: 324px; }
+.pxwin::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
+.pxwin .win__t, .pxwin .pxstage__pips, .pxwin .pxstage__pause { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--win-bg); white-space: nowrap; }
+.pxwin .win__t { top: -8px; left: 16px; color: var(--fg-1); }
+.pxwin .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); animation: pulse 2.4s steps(2) infinite; }
+.pxstage { margin: 0; display: grid; justify-items: center; min-width: 0; }
+.pxstage__screen { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 3 / 2; }
+.pxstage__screen > * { grid-area: 1 / 1; }
+/* the screen snaps to the stage grid (whole multiples of its 144 art pixels,
+   as radar.js scales), so a placed still sits at a whole-pixel scale too */
+.pxwin .pxstage__screen { width: 100%; width: min(576px, round(down, 100%, 144px)); }
+@media (min-resolution: 2dppx) { .pxwin .pxstage__screen { width: min(576px, round(down, 100%, 72px)); } }
+@media (min-resolution: 3dppx) { .pxwin .pxstage__screen { width: min(576px, round(down, 100%, 48px)); } }
+.pxstage canvas { display: block; image-rendering: pixelated; opacity: 0; transition: opacity .4s; }
+.pxstage.is-live canvas { opacity: 1; }
+.pxstage__still { width: auto; height: 76%; image-rendering: pixelated; transition: opacity .5s; }
+.pxstage__still[style*="--w"] { position: absolute; left: calc(var(--x) / 144 * 100%); top: calc(var(--y) / 96 * 100%); width: calc(var(--w) / 144 * 100%); height: auto; }
+.pxstage.is-live .pxstage__still { opacity: 0; pointer-events: none; }
+.pxstage__bar { display: contents; }
+.pxwin .pxstage__pips { top: -8px; right: 16px; height: 14px; display: flex; align-items: center; gap: 5px; }
+.pxstage__pips i { display: block; width: 5px; height: 5px; background: var(--line-2); transition: width .3s var(--ease), background .3s; }
+.pxstage__pips i.on { width: 15px; background: var(--accent); }
+.pxwin .pxstage__pause { bottom: -8px; right: 16px; display: block; height: 14px; border: 0; border-radius: 0; color: var(--fg-2); cursor: pointer; }
+.pxwin .pxstage__pause::before { content: "pause"; }
+.pxwin .pxstage__pause[aria-pressed="true"]::before { content: "play"; }
+.pxwin .pxstage__pause::after { content: ""; position: absolute; inset: -15px 0; }
+.pxwin .pxstage__pause:hover, .pxwin .pxstage__pause:focus-visible { color: var(--fg-0); }
+[data-theme="paper"] .pxwin { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line); }
+[data-theme="paper"] .pxwin::after { opacity: .18; }
+@media (prefers-reduced-motion: reduce) { .pxwin .win__t::before { animation: none; } .pxstage canvas, .pxstage__still { transition: none; } }
+
+/* Echo sign used as the eyebrow on a Signals page (one per page): the Signals
+   power-up at 1x beside the homepage's small echo sign, like the Signals hub */
+.lsign { display: flex; align-items: center; gap: 12px; margin: 0 0 6px; font: 400 22px/1 var(--pixel); letter-spacing: .02em; }
+.lsign__pu { display: block; flex: none; width: 32px; height: 32px; image-rendering: pixelated; }
+.lsign .echo { color: var(--fg-0); --es: 1px; }
+
+/* ---------- The short version: big plain statements on a colour band ---------- */
+.tldr { display: grid; gap: clamp(36px, 4vw, 52px); }
+.tldr__head { display: grid; gap: 16px; }
+.tldr__list { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid color-mix(in srgb, var(--fg-0) 16%, transparent); }
+.tldr__list li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px clamp(32px, 6vw, 96px); align-items: baseline; padding: 24px 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 16%, transparent); }
+.tldr__list b { font: 400 27.5px/1.25 var(--pixel); color: var(--fg-0); }
+.tldr__list span { font-size: 17px; color: var(--fg-1); max-width: 56ch; }
+
+/* ---------- Reading surfaces: the night sky stays in the header and the close,
+   long text sits on the plain page colour ---------- */
+.ldoc, .lsec { position: relative; background: var(--bg-0); }
+
+/* ---------- The full document: a quiet rail of contents and long prose ---------- */
+.ldoc { padding: clamp(72px, 8vw, 112px) 0; }
+.ldoc__grid { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 40px clamp(40px, 7vw, 112px); align-items: start; }
+.ldoc__toc { position: sticky; top: 96px; display: grid; gap: 18px; }
+.ldoc__toc ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line-2); }
+.ldoc__toc a { display: block; margin-left: -1px; padding: 7px 0 7px 18px; border-left: 2px solid transparent; font-size: 15px; line-height: 1.35; color: var(--fg-2); text-decoration: none; transition: color .15s, border-color .15s; }
+.ldoc__toc a:hover { color: var(--fg-0); }
+.ldoc__toc a[aria-current="true"] { color: var(--fg-0); border-left-color: var(--accent); }
+.ldoc__body { max-width: 68ch; }
+.ldoc__body > p:first-child { font-size: 20px; line-height: 1.6; color: var(--fg-0); }
+.ldoc__body h2 { font-size: 33px; line-height: 1.2; margin-top: 2.1em; }
+.ldoc__body h2[id], .ldoc__body h3[id] { scroll-margin-top: 96px; }
+.ldoc__body code { background: color-mix(in srgb, var(--fg-0) 8%, transparent); white-space: nowrap; }
+
+/* ---------- Section heads ---------- */
+.lsec { padding: clamp(72px, 8.5vw, 120px) 0; }
+.lsec__head { display: grid; gap: 18px; max-width: 780px; margin-bottom: clamp(40px, 5vw, 64px); }
+
+/* ---------- Signals policy: sourcing ---------- */
+.src { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px clamp(40px, 7vw, 112px); align-items: start; }
+.src__intro { display: grid; gap: 22px; }
+.src__intro h3 { margin-top: 18px; font: 400 22px/1 var(--pixel); color: var(--accent); }
+.look { margin: 0; display: grid; }
+.look div { display: grid; grid-template-columns: 116px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--line); }
+.look div:last-child { border-bottom: 1px solid var(--line); }
+.look dt { font: 500 14px/1.5 var(--sans); color: var(--fg-2); }
+.look dd { margin: 0; font-size: 16px; color: var(--fg-1); }
+.lrules { list-style: none; margin: 0; padding: 0; counter-reset: lr; }
+.lrules li { counter-increment: lr; display: grid; grid-template-columns: 76px 1fr; gap: 6px 20px; padding: 26px 0; border-top: 1px solid var(--line); }
+.lrules li:first-child { border-top: 0; padding-top: 4px; }
+.lrules li::before { content: counter(lr, decimal-leading-zero); grid-row: span 2; font: 400 44px/1 var(--pixel); color: var(--fg-2); transition: color .2s; }
+.lrules li:hover::before { color: var(--accent); }
+.lrules b { font: 400 22px/1.3 var(--pixel); color: var(--fg-0); }
+.lrules span { font-size: 16px; color: var(--fg-1); }
+
+/* ---------- Signals policy: labels and verdicts ---------- */
+.lkey { display: grid; grid-template-columns: 1fr 1fr; }
+.lkey > div { min-width: 0; padding-right: clamp(24px, 4vw, 64px); }
+.lkey > div + div { padding: 0 0 0 clamp(24px, 4vw, 64px); border-left: 1px solid color-mix(in srgb, var(--fg-0) 16%, transparent); }
+.lkey h3 { margin-bottom: 14px; font: 400 22px/1 var(--pixel); color: var(--accent); }
+.lkey dl { margin: 0; display: grid; }
+.lkey dl div { display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: baseline; padding: 16px 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 16%, transparent); }
+.lkey dd { margin: 0; font-size: 16px; color: var(--fg-1); }
+.lkey .vword { font: 400 27.5px/1 var(--pixel); color: var(--fg-0); }
+.lkey__note { margin-top: 26px; font-size: 16px; color: var(--fg-1); }
+.lkey__note + .lkey__note { margin-top: 12px; }
+.lkey__note b { color: var(--fg-0); font-weight: 500; }
+
+/* ---------- Signals policy: corrections and independence ---------- */
+.fixes { display: grid; grid-template-columns: 1fr 1fr; gap: 48px clamp(40px, 7vw, 112px); }
+.fixes > div { display: grid; gap: 18px; align-content: start; padding-top: 28px; border-top: 2px solid var(--line-2); }
+.fixes > div:first-child { border-top-color: var(--accent); }
+.fixes h3 { font: 400 33px/1.15 var(--pixel); color: var(--fg-0); }
+.fixes p { font-size: 17px; color: var(--fg-1); }
+.fixes__cta { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; margin-top: 6px; }
+.fixes__cta .link, .lclose__cta .link { align-self: center; }
+
+/* ---------- Signals Log ---------- */
+.ltable { width: 100%; border-collapse: collapse; }
+.ltable th { padding: 0 20px 14px 0; text-align: left; font: 500 14px/1.4 var(--sans); color: var(--fg-1); border-bottom: 2px solid var(--line-2); white-space: nowrap; }
+.ltable td { padding: 28px 20px 28px 0; vertical-align: baseline; font-size: 16px; color: var(--fg-1); border-bottom: 1px solid var(--line); }
+.ltable td:first-child a { font: 400 22px/1.3 var(--pixel); color: var(--fg-0); text-decoration: none; }
+.ltable td:first-child a:hover { color: var(--accent); }
+.ltable td:first-child a::after { content: " \2192"; color: var(--fg-2); }
+.ltable time { white-space: nowrap; }
+.outcomes__h { margin: clamp(44px, 5vw, 64px) 0 14px; font: 400 22px/1.2 var(--pixel); color: var(--accent); }
+.outcomes { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(32px, 5vw, 72px); }
+.outcomes div { display: grid; grid-template-columns: 168px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 12%, transparent); }
+.outcomes dt { font: 400 22px/1.2 var(--pixel); color: var(--fg-0); }
+.outcomes dd { margin: 0; font-size: 15px; color: var(--fg-1); }
+
+/* ---------- Closing booking CTA ---------- */
+.lclose { position: relative; overflow: hidden; padding-top: clamp(88px, 10vw, 144px); }
+.lclose__grid { display: grid; grid-template-columns: minmax(0, 1fr); }
+.lclose__main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; justify-items: start; padding-bottom: clamp(88px, 10vw, 144px); }
+.lclose__h { margin: 0; font: 400 66px/1.04 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); max-width: 15ch; }
+.lclose__cta { display: flex; flex-wrap: wrap; gap: 16px 26px; align-items: center; margin-top: 6px; }
+.lclose__cta .btn--arcade { max-width: 100%; }
+
+/* ---------- Contrast on the slate band ----------
+   The dark themes all share Evergreen's slate (--block), where their faint
+   ink drops under 4.5:1, and paper's slate is a shade darker than its page.
+   Lift those inks inside the band only. */
+:is([data-theme="midnight"], [data-theme="obsidian"], [data-theme="rose"], [data-theme="paper"]) .band--slate { --fg-2: var(--fg-1); }
+[data-theme="paper"] .band--slate { --accent: var(--accent-2); }
+[data-theme="paper"] .band--slate .chip--reported { color: color-mix(in srgb, var(--warn) 80%, var(--fg-0)); }
+/* paper: the arcade button's lighter hover would drop its label under 4.5:1 */
+[data-theme="paper"] .lclose__cta .btn--arcade:hover { background: var(--accent-2); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1199px) { .lhead__h { font-size: 66px; } }
+@media (max-width: 1000px) {
+  .lhead__h { font-size: 55px; }
+  .lclose__h { font-size: 55px; }
+  .tldr, .src { grid-template-columns: 1fr; }
+  .ldoc__grid { grid-template-columns: 1fr; }
+  .ldoc__toc { position: static; }
+  .ldoc__toc ol { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); column-gap: 24px; border-left: 0; border-bottom: 1px solid var(--line); }
+  .ldoc__toc a { margin: 0; padding: 11px 0; border: 0; border-top: 1px solid var(--line); color: var(--fg-1); }
+  .ldoc__toc a[aria-current="true"] { color: var(--accent); }
+  .lkey, .fixes { grid-template-columns: 1fr; }
+  .lkey > div + div { padding: 40px 0 0; margin-top: 40px; border-left: 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 16%, transparent); }
+  .lkey > div { padding-right: 0; }
+  .outcomes { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .lhead__grid { grid-template-columns: 1fr; }
+  .lhead__art { display: none; }
+  .lhead__h { font-size: 44px; line-height: 1.06; }
+  .tldr__list li { grid-template-columns: 1fr; }
+  .tldr__list b { font-size: 22px; }
+  .ldoc__toc ol { grid-template-columns: 1fr 1fr; column-gap: 16px; }
+  .ldoc__toc a { font-size: 14.5px; }
+  .ldoc__body > p:first-child { font-size: 18px; }
+  .ldoc__body h2 { font-size: 27.5px; }
+  .look div { grid-template-columns: 1fr; gap: 4px; }
+  .lrules li { grid-template-columns: 52px 1fr; gap: 6px 14px; }
+  .lrules li::before { font-size: 33px; }
+  .lkey dl div { grid-template-columns: 1fr; gap: 8px; }
+  .fixes h3 { font-size: 27.5px; }
+  .outcomes div { grid-template-columns: 1fr; gap: 6px; }
+  .ltable thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .ltable, .ltable tbody, .ltable tr, .ltable td { display: block; }
+  .ltable tr { padding: 10px 0 18px; border-bottom: 1px solid var(--line); }
+  .ltable td { display: grid; grid-template-columns: 88px 1fr; gap: 12px; align-items: baseline; padding: 8px 0; border: 0; }
+  .ltable td::before { content: attr(data-label); font: 500 14px/1.4 var(--sans); color: var(--fg-2); }
+  .ltable td:first-child { grid-template-columns: 1fr; gap: 4px; padding-bottom: 12px; }
+  .lclose__h { font-size: 44px; }
+}
+/* the closing button's label is 294px of pixel type: tighten, then let it wrap */
+@media (max-width: 400px) {
+  .lclose__cta .btn--arcade { padding: 0 16px; }
+}
+@media (max-width: 359px) {
+  .lclose__cta .btn--arcade { white-space: normal; text-align: center; line-height: 1.2; padding: 10px 16px; }
+}

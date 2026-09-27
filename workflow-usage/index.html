@@ -1,56 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="evergreen">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Workflow Usage Data and Methodology | QuarterSmart</title>
-<meta name="description" content="The source data behind QuarterSmart's workflow usage metric: 10,876 documented uses across 25 published n8n templates, with methodology and update cadence.">
+<meta name="description" content="The source data behind QuarterSmart's workflow usage metric: 10,876 documented uses across 25 published n8n templates as of June 2026, with the full methodology.">
+<meta name="author" content="QuarterSmart">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://quartersmart.com/workflow-usage">
+<link rel="canonical" href="https://quartersmart.com/workflow-usage/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Workflow Usage Data and Methodology">
-<meta property="og:description" content="10,876 documented uses across 25 published n8n workflow templates. Full per-template data, methodology, and definitions.">
+<meta property="og:description" content="10,876 documented uses across 25 published n8n workflow templates, as of June 2026. Full per-template data, methodology and definitions.">
 <meta property="og:url" content="https://quartersmart.com/workflow-usage/">
-<meta property="og:image" content="https://quartersmart.com/assets/qs-og.png">
+<meta property="og:site_name" content="QuarterSmart">
+<meta property="og:image" content="https://quartersmart.com/assets/og/og-workflow-usage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="QuarterSmart workflow usage data. 10,876 documented uses across 25 n8n templates.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Workflow Usage Data and Methodology">
-<meta name="twitter:description" content="10,876 documented uses across 25 published n8n workflow templates. Full per-template data, methodology, and definitions.">
-<meta name="twitter:image" content="https://quartersmart.com/assets/qs-og.png">
-<meta name="theme-color" content="#060608">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css">
+<meta name="twitter:description" content="10,876 documented uses across 25 published n8n workflow templates, as of June 2026. Full per-template data, methodology and definitions.">
+<meta name="qs:label" content="Workflow usage">
+<meta name="twitter:image" content="https://quartersmart.com/assets/og/og-workflow-usage.png">
+<!-- @include head -->
+<link rel="stylesheet" href="/assets/css/partners.css?v=20260927h">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://quartersmart.com/#organization",
-      "name": "QuarterSmart",
-      "url": "https://quartersmart.com/",
-      "logo": "https://quartersmart.com/assets/qs-mark.png",
-      "slogan": "Train your team. Automate the rest.",
-      "founder": [
-        {
-          "@id": "https://quartersmart.com/about.html#hyrum-hurst"
-        },
-        {
-          "@id": "https://quartersmart.com/about.html#cullen-brown"
-        }
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Mesa",
-        "addressRegion": "AZ",
-        "addressCountry": "US"
-      }
-    },
+    <!-- @include ld-org -->,
     {
       "@type": "WebSite",
       "@id": "https://quartersmart.com/#website",
@@ -59,6 +37,18 @@
       "publisher": {
         "@id": "https://quartersmart.com/#organization"
       }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://quartersmart.com/about.html#hyrum-hurst",
+      "name": "Hyrum Hurst",
+      "url": "https://quartersmart.com/about/hyrum-hurst/",
+      "jobTitle": ["Founder, QuarterSmart", "CTO, Learning Journey AI"],
+      "worksFor": [
+        { "@id": "https://quartersmart.com/#organization" },
+        { "@type": "Organization", "name": "Learning Journey AI", "url": "https://learningjourneyai.com/" }
+      ],
+      "sameAs": ["https://n8n.io/creators/hyrum-hurst"]
     },
     {
       "@type": "WebPage",
@@ -87,7 +77,7 @@
       "variableMeasured": "Cumulative template uses per workflow on the n8n marketplace",
       "measurementTechnique": "Per-template use counters displayed publicly on the n8n template marketplace, summed across all 25 published templates",
       "url": "https://quartersmart.com/workflow-usage/",
-      "sameAs": "https://n8n.io/creators/hyrum-hurst",
+      "isBasedOn": "https://n8n.io/creators/hyrum-hurst",
       "isAccessibleForFree": true,
       "mainEntity": {
         "@id": "https://quartersmart.com/workflow-usage/#breakdown"
@@ -187,208 +177,133 @@
   ]
 }
 </script>
-<style>
-/* Page-scoped data layer on top of site.css (uses the same tokens) */
-.wu-bignum { font-family: var(--font-mono); font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 700; color: var(--accent); letter-spacing: -0.02em; line-height: 1; margin: 0; }
-.wu-bignum-label { font-size: var(--fs-small); color: var(--text-muted); margin: 8px 0 0; max-width: 52ch; }
-.wu-verify { margin: 24px 0 0; padding: 16px 20px; border-radius: var(--radius-md); background: var(--qs-mint-08); border: 1px solid var(--border-mint); font-size: var(--fs-small); line-height: 1.65; color: var(--text-muted); max-width: 64ch; }
-.wu-verify strong { color: var(--accent); }
-.wu-tablewrap { overflow-x: auto; margin-top: var(--sp-5); border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); }
-.wu-table { width: 100%; border-collapse: collapse; font-size: var(--fs-small); min-width: 520px; }
-.wu-table caption { text-align: left; font-family: var(--font-mono); font-size: var(--fs-caption); letter-spacing: 0.04em; color: var(--text-faint); padding: 16px 18px 4px; }
-.wu-table th { text-align: left; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); padding: 12px 18px; border-bottom: 1px solid var(--border-strong, var(--qs-border-strong)); }
-.wu-table td { padding: 11px 18px; border-bottom: 1px solid var(--border-hairline); color: var(--text-muted); }
-.wu-table tbody tr:hover td { background: var(--qs-mint-08); }
-.wu-table .num, .wu-table th.num { text-align: right; font-family: var(--font-mono); color: var(--text-body); white-space: nowrap; }
-.wu-table tr.wu-total td { border-top: 2px solid var(--border-mint); border-bottom: none; font-weight: 700; color: var(--text-strong); }
-.wu-note { font-size: var(--fs-caption); color: var(--text-faint); margin: 12px 0 0; }
-.qs-prose ul { margin: 0 0 1em; padding-left: 1.25em; max-width: 64ch; }
-.qs-prose li { font-size: var(--fs-body); line-height: 1.7; color: var(--text-muted); margin: 0 0 0.4em; }
-</style>
 </head>
 <body>
-<a class="qs-skip" href="#main">Skip to content</a>
-<header class="qs-nav" data-open="false">
-  <div class="qs-nav__bar">
-    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
-      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
-        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
-        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
-        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
-        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-      </svg>
-      <span class="qs-logo__word">QuarterSmart</span>
-    </a>
-    <nav class="qs-nav__links" aria-label="Primary">
-      <a href="/services/">Services</a>
-      <a href="/case-studies/">Case Studies</a>
-      <a href="/about/">About</a>
-      <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/">Signals</a>
-      <a href="/own-your-ai">Own Your AI</a>
-      <a href="/faq/">FAQ</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-    <div class="qs-nav__cta">
-      <a class="qs-btn qs-btn--primary qs-btn--sm" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-    </div>
-    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
-  </div>
-  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
-    <a href="/services/">Services</a>
-    <a href="/case-studies/">Case Studies</a>
-    <a href="/about/">About</a>
-    <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/">Signals</a>
-    <a href="/own-your-ai">Own Your AI</a>
-    <a href="/faq/">FAQ</a>
-    <a href="/contact/">Contact</a>
-    <a class="qs-btn qs-btn--primary qs-btn--full" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-  </nav>
-</header>
+<!-- @include nav -->
 
 <main id="main">
-  <!-- Page header -->
-  <section class="qs-pagehead">
-    <div class="qs-motif qs-motif--sm" aria-hidden="true">
-      <svg width="420" height="420" viewBox="0 0 100 100" fill="none">
-        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
-        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
-        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
-        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
-        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-      </svg>
-    </div>
-    <div class="qs-pagehead__inner">
-      <span class="qs-eyebrow">n8n workflow usage</span>
-      <h1 class="qs-h1">Workflow usage data</h1>
-      <p class="qs-lede qs-pagehead__lede">This page documents the source data behind the workflow usage figures QuarterSmart cites, so anyone, human or AI, can check the math.</p>
-      <div class="qs-pagehead__extra">
-        <p class="wu-bignum">10,876</p>
-        <p class="wu-bignum-label">documented template uses across 25 published n8n workflows, as of June 2026.</p>
-        <p class="wu-verify"><strong>Verify it yourself:</strong> every count below matches the public use counter on the matching template at the <a href="https://n8n.io/creators/hyrum-hurst" target="_blank" rel="noopener">n8n creator profile for Hyrum Hurst</a>, a third party platform QuarterSmart does not control. The totals here are simply those public counters summed.</p>
+
+  <!-- Hero: what the page is, and the answer, in the first screen -->
+  <section class="pt-hero" aria-labelledby="wu-h">
+    <div class="wrap pt-hero__in">
+      <div class="pt-wu">
+        <div class="pt-wu__copy">
+          <h1 class="pt-h1 pt-h1--xl" id="wu-h">Workflow usage data.</h1>
+          <p class="lede">The public use counts for the n8n templates Hyrum Hurst has published, and exactly how they are counted, so anyone, human or AI, can check the math.</p>
+          <div class="pt-cta">
+            <a class="btn" href="#the-data">See all 25 templates</a>
+          </div>
+        </div>
+        <div class="pt-wu__total">
+          <div class="pxs" data-pxs>
+            <p class="pt-stat pxs__alt" aria-hidden="true">10,876</p>
+            <canvas aria-hidden="true" data-h="84" data-align="bottom" data-first-hold="4000" data-table=".pt-table"
+              data-scenes="text:10,876@3 | grid | tree | bars | sky | text:25 | cal:JUN 2026:11:1:30 | check | img:/assets/px/sprite-keyboard-manual.png | mark"></canvas>
+            <button class="pxs__pause" type="button" aria-pressed="false" aria-label="Pause animation" style="top:0;bottom:auto" hidden></button>
+          </div>
+          <p class="pt-total__cap">10,876 documented template uses across 25 published n8n workflows, as of June 2026. It does not count people or clients. <a href="#what-it-does-not-mean">How we count</a>.</p>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Methodology body -->
-  <section class="qs-section">
-    <div class="qs-wrap qs-wrap--prose">
-      <div class="qs-prose">
-        <h2 id="what-this-measures">What this measures</h2>
-        <p>Cumulative uses of the workflow templates published by QuarterSmart founder <a href="/about/#hyrum-hurst">Hyrum Hurst</a> on the n8n template marketplace. Each template displays a public use counter on n8n. The total here is the sum of those counters across all 25 templates.</p>
-
-        <h2 id="where-it-comes-from">Where the number comes from</h2>
-        <p>The per-template counts are reported by the <a href="https://n8n.io/creators/hyrum-hurst" target="_blank" rel="noopener">n8n template marketplace</a>, a third party platform QuarterSmart does not control. Anyone can visit the creator profile and check individual counts against the table below.</p>
-
-        <h2 id="what-it-does-not-mean">What this number does not mean</h2>
-        <ul>
-          <li>It is not a count of unique people. One person can use a template more than once, and one use can serve a whole team.</li>
-          <li>It is not a customer count. Template users are members of the n8n community, not QuarterSmart clients.</li>
-          <li>It is not a count of currently running deployments. The counters are cumulative.</li>
-        </ul>
-        <p>Where QuarterSmart cites this figure, the accurate phrasing is: QuarterSmart-built workflow templates have recorded 10,876 documented uses across the n8n community.</p>
-
-        <h2 id="update-cadence">Update cadence</h2>
-        <p>This page is updated quarterly, or whenever the totals change materially. Last updated June 11, 2026.</p>
-      </div>
+      <ul class="pt-facts" aria-label="Methodology at a glance">
+        <li><span>Metric</span><b>Cumulative template uses</b></li>
+        <li><span>Source</span><b>n8n template marketplace</b></li>
+        <li><span>Templates</span><b>25 published</b></li>
+        <li><span>Recorded</span><b>June 11, 2026</b></li>
+      </ul>
     </div>
   </section>
 
-  <!-- The data table -->
-  <section class="qs-section qs-bordered" aria-labelledby="the-data">
-    <div class="qs-wrap">
-      <div class="qs-section-head">
-        <span class="qs-eyebrow">The data</span>
-        <h2 class="qs-h2" id="the-data">Most used templates</h2>
-        <p>A sample of the most used templates and their cumulative use counts on the n8n marketplace. The full 25-template library is on the <a href="https://n8n.io/creators/hyrum-hurst" target="_blank" rel="noopener">n8n creator profile</a>.</p>
+  <!-- Method: four plain answers on a slate band -->
+  <section class="band band--slate pt-band" aria-labelledby="method-h">
+    <div class="wrap">
+      <div class="pt-head pt-head--single">
+        <h2 class="pt-h2" id="method-h">How we count.</h2>
+        <p class="body-l">Four answers, so the number is never read as more than it is.</p>
       </div>
-      <div class="wu-tablewrap">
-        <table class="wu-table">
-          <caption>Most used QuarterSmart n8n templates, captured June 2026. Total across all 25 published templates: 10,876 documented uses.</caption>
-          <thead><tr><th scope="col">Template</th><th scope="col" class="num">Uses</th></tr></thead>
-          <tbody>
-            <tr><td>Automate YouTube Shorts creation from Telegram prompts using Gemini and VEO</td><td class="num">5,078</td></tr>
-            <tr><td>Capture and schedule HVAC leads with OpenAI, Google Sheets, Slack and SMS</td><td class="num">1,723</td></tr>
-            <tr><td>Create consulting client onboarding tasks with GPT-4, Google Sheets and Slack</td><td class="num">1,085</td></tr>
-            <tr><td>Create a one-minute video from Telegram prompts with Veo 3 and Fal.ai</td><td class="num">941</td></tr>
-            <tr class="wu-total"><td>All 25 published templates</td><td class="num">10,876</td></tr>
-          </tbody>
-        </table>
+      <div class="pt-method">
+        <div>
+          <h3 id="what-this-measures">What this measures</h3>
+          <p>Cumulative uses of the workflow templates published by QuarterSmart founder <a href="/about/#hyrum-hurst">Hyrum Hurst</a> on the n8n template marketplace. Each template displays a public use counter on n8n. The total here is the sum of those counters across all 25 templates.</p>
+        </div>
+        <div>
+          <h3 id="where-it-comes-from">Where the number comes from</h3>
+          <p>The per-template counts are reported by the <a href="https://n8n.io/creators/hyrum-hurst" target="_blank" rel="noopener">n8n template marketplace</a>, a third-party platform QuarterSmart does not control. Anyone can visit the creator profile and check individual counts against the table below. The counters keep counting, so today's will be higher than this June 2026 snapshot.</p>
+        </div>
+        <div>
+          <h3 id="what-it-does-not-mean">What this number does not mean</h3>
+          <ul>
+            <li>It is not a count of unique people. One person can use a template more than once, and one use can serve a whole team.</li>
+            <li>It is not a customer count. Template users are members of the n8n community, not QuarterSmart clients.</li>
+            <li>It is not a count of currently running deployments. The counters are cumulative.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 id="update-cadence">Update cadence</h3>
+          <p>These counts are a snapshot recorded on June 11, 2026. We refresh them when the totals change materially.</p>
+        </div>
       </div>
-      <p class="wu-note">The four shown are the most used. Counts captured June 2026 from the n8n template marketplace and are cumulative. The full 25-template list lives on the <a href="https://n8n.io/creators/hyrum-hurst" target="_blank" rel="noopener">n8n creator profile</a>.</p>
+      <p class="pt-quote"><span>If you cite this figure, use:</span>QuarterSmart-built workflow templates have recorded 10,876 documented uses across the n8n community (as of June 2026).</p>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="qs-section qs-section--lg qs-bordered">
-    <div class="qs-wrap">
-      <div class="qs-cta-band">
-        <svg width="64" height="64" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-          <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340" fill-opacity="0.5"/>
-          <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340" fill-opacity="0.5"/>
-          <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340" fill-opacity="0.5"/>
-          <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)" fill-opacity="0.85"/>
-          <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-          <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-        </svg>
-        <h2 class="qs-h1">Want this kind of automation working for your team?</h2>
-        <p>The same templates that recorded these uses are the engine behind QuarterSmart builds. Tell us the task and we will scope the first one.</p>
-        <div class="qs-cta-row">
-          <a class="qs-btn qs-btn--primary qs-btn--lg" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-          <a class="qs-btn qs-btn--secondary qs-btn--lg" href="/signals/">Read Signals</a>
+  <!-- The data: every template, row by row -->
+  <section class="pt-sec" aria-labelledby="the-data">
+    <div class="wrap">
+      <div class="pt-datahead">
+        <h2 class="pt-h2" id="the-data">All 25 templates.</h2>
+      </div>
+      <table class="pt-table">
+        <caption>Captured June 2026. Counts are cumulative, and each template has its own public use counter on n8n.</caption>
+        <thead><tr><th scope="col" class="n">#</th><th scope="col">Template</th><th scope="col" class="num">Uses</th></tr></thead>
+        <tbody>
+          <tr><td class="n">1</td><td>Automate YouTube Shorts creation from Telegram prompts using Gemini and VEO</td><td class="num">5,078</td></tr>
+          <tr><td class="n">2</td><td>Capture and schedule HVAC leads with OpenAI, Google Sheets, Slack and SMS</td><td class="num">1,723</td></tr>
+          <tr><td class="n">3</td><td>Create consulting client onboarding tasks with GPT-4, Google Sheets and Slack</td><td class="num">1,085</td></tr>
+          <tr><td class="n">4</td><td>Create a one-minute video from Telegram prompts with Veo 3 and Fal.ai</td><td class="num">941</td></tr>
+          <tr><td class="n">5</td><td>Analyze legal contracts with GPT-4.1 and manage cases in Google Sheets and Slack</td><td class="num">541</td></tr>
+          <tr><td class="n">6</td><td>Analyze website SEO and log AI recommendations to Google Sheets with OpenAI</td><td class="num">339</td></tr>
+          <tr><td class="n">7</td><td>Send Stripe invoice reminders with GPT-4.1-mini, Google Sheets and Slack</td><td class="num">290</td></tr>
+          <tr><td class="n">8</td><td>Capture and nurture AI agency leads with Google Gemini, Outlook and Sheets</td><td class="num">117</td></tr>
+          <tr><td class="n">9</td><td>Nurture landscaping leads and book calls with GoHighLevel, OpenAI and Slack</td><td class="num">96</td></tr>
+          <tr><td class="n">10</td><td>Extract data from PDF reports with Gmail, OCR, Google Sheets and OpenAI GPT-4.1-mini</td><td class="num">95</td></tr>
+          <tr><td class="n">11</td><td>Automate property inspections and reporting with OpenAI, Google Sheets and Slack</td><td class="num">86</td></tr>
+          <tr><td class="n">12</td><td>Send package and visitor alerts with Slack, SMS, email, Google Sheets and Claude</td><td class="num">62</td></tr>
+          <tr><td class="n">13</td><td>Send Stripe expired charge recovery reminders with OpenAI</td><td class="num">60</td></tr>
+          <tr><td class="n">14</td><td>Send AI pet grooming reminders and follow-ups with GPT-4o mini, Twilio, email, Google Sheets and Slack</td><td class="num">53</td></tr>
+          <tr><td class="n">15</td><td>Generate AI SOPs from Google Drive with GPT-4o, Google Docs and Sheets</td><td class="num">52</td></tr>
+          <tr><td class="n">16</td><td>Generate proposals with GPT-4o, Google Docs, Gmail and Slack</td><td class="num">50</td></tr>
+          <tr><td class="n">17</td><td>Coordinate move-out cleaning and repair tasks with Sheets, Slack, email and Claude</td><td class="num">44</td></tr>
+          <tr><td class="n">18</td><td>Triage tenant complaints with GPT-4.1, Slack, email and Google Sheets</td><td class="num">43</td></tr>
+          <tr><td class="n">19</td><td>Generate consulting KPI summaries with GPT-4o-mini, Slack and Google Sheets</td><td class="num">27</td></tr>
+          <tr><td class="n">20</td><td>Send AI-prioritized follow-up reminders with GPT-4.1-mini, Gmail and Slack</td><td class="num">18</td></tr>
+          <tr><td class="n">21</td><td>Qualify and route consulting leads with GPT-4.1-mini, Slack and Google Sheets</td><td class="num">17</td></tr>
+          <tr><td class="n">22</td><td>Track tenant document compliance with GPT-4, Drive, Sheets, email and Slack</td><td class="num">17</td></tr>
+          <tr><td class="n">23</td><td>Scrape verified decision-maker emails from Google with GPT-4.1 and Apify</td><td class="num">15</td></tr>
+          <tr><td class="n">24</td><td>Escalate unresolved maintenance requests with GPT-4o, Google Sheets and Slack</td><td class="num">14</td></tr>
+          <tr><td class="n">25</td><td>Generate DraftKings DFS lineups with GPT-4o, Google Sheets, email and Slack</td><td class="num">13</td></tr>
+        </tbody>
+        <tfoot><tr><td class="n"></td><td>All 25 published templates</td><td class="num">10,876</td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <!-- Close -->
+  <section class="band band--deep pt-close pt-close--plain" aria-labelledby="cta-h">
+    <div class="wrap">
+      <div class="pt-close__main">
+        <h2 class="pt-close__h pt-close__h--m" id="cta-h">Talk to us about your tools.</h2>
+        <p class="body-l">Tell us what tools you use and what's eating your team's week. We'll tell you, on the call, what's worth doing now and what can wait.</p>
+        <div class="pt-cta">
+          <a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book" style="font-size:clamp(16.5px,(100vw - 480px) * 1000,22px)">Book a free 20-minute call</a>
+          <a class="btn btn--ghost" href="/signals/">Read Signals</a>
         </div>
       </div>
     </div>
   </section>
+
 </main>
 
-<footer class="qs-footer">
-  <div class="qs-footer__inner">
-    <div class="qs-footer__grid">
-      <div class="qs-footer__brand">
-        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
-          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
-            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
-            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
-            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
-            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-          </svg>
-          <span class="qs-logo__word">QuarterSmart</span>
-        </a>
-        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
-        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
-      </div>
-      <div class="qs-footer__col">
-        <h2>Company</h2>
-        <a href="/services/">Services</a>
-        <a href="/case-studies/">Case Studies</a>
-        <a href="/about/">About</a>
-        <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/">Signals</a>
-        <a href="/own-your-ai">Own your AI</a>
-      </div>
-      <div class="qs-footer__col">
-        <h2>Get in touch</h2>
-        <a href="/faq/">FAQ</a>
-        <a href="/contact/">Contact</a>
-        <a href="/workflow-usage/">Workflow usage</a>
-      </div>
-    </div>
-    <div class="qs-footer__meta">
-      <span class="qs-tag-line">Train your team. Automate the rest.</span>
-      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-(function(){var n=document.querySelector('.qs-nav');var t=n&&n.querySelector('.qs-nav__toggle');if(!t)return;t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});})();
-</script>
+<script src="/for-agencies/pxstage.js?v=20260927j" defer></script>
+<!-- @include footer -->
 </body>
 </html>

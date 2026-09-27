@@ -1,436 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="evergreen">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OpenAI's New Pricing, What It Means for You, QuarterSmart</title>
-<meta name="description" content="OpenAI restructured its pricing tiers in 2026. New Pro tier, API rate changes, and a revamped free tier. We break down who wins and who pays more.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAI's Pricing in Spring 2026: What GPT-5.4 Costs | QuarterSmart</title>
+<meta name="description" content="OpenAI released GPT-5.4 in March 2026. Which ChatGPT plans include it, what it costs on the API, and whether your team needs Pro. Figures from OpenAI's own pages.">
 <meta name="author" content="Hyrum Hurst">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://quartersmart.com/signals/openai-pricing">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenAI Changed Their Pricing, What It Actually Means for You">
-<meta property="og:description" content="New tiers, adjusted API rates, and a free tier shakeup. Here's what changed and what it means.">
+<meta property="og:title" content="OpenAI's pricing in spring 2026: what GPT-5.4 costs and which plan you need">
+<meta property="og:description" content="OpenAI released GPT-5.4 in March 2026. Which ChatGPT plans include it, what it costs on the API, and whether your team needs Pro.">
 <meta property="og:url" content="https://quartersmart.com/signals/openai-pricing">
 <meta property="og:site_name" content="QuarterSmart">
-<meta property="og:image" content="https://quartersmart.com/assets/images/signals/openai-pricing-changes-2026-cover.jpg">
+<meta property="og:image" content="https://quartersmart.com/assets/og/signals-openai-pricing.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="QuarterSmart Signals: OpenAI's pricing in spring 2026: what GPT-5.4 costs and which plan you need">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="OpenAI Changed Their Pricing, What It Actually Means for You">
-<meta name="twitter:description" content="New tiers, adjusted API rates, and a free tier shakeup. Here's what changed and what it means.">
-<meta name="twitter:image" content="https://quartersmart.com/assets/images/signals/openai-pricing-changes-2026-cover.jpg">
-<meta name="theme-color" content="#060608">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css">
+<meta name="twitter:title" content="OpenAI's pricing in spring 2026: what GPT-5.4 costs and which plan you need">
+<meta name="twitter:description" content="Which ChatGPT plans include GPT-5.4, what it costs on the API, and whether your team needs Pro.">
+<meta name="twitter:image" content="https://quartersmart.com/assets/og/signals-openai-pricing.jpg">
+<meta name="qs:kind" content="available">
+<meta name="qs:label" content="Available · pricing">
+<meta name="qs:verdict" content="Wait">
+<meta name="qs:cover" content="/assets/px/sprite-assistant.png">
+<!-- @include head -->
+<link rel="stylesheet" href="/assets/css/signals-post.css?v=20260927m">
+<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927p">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://quartersmart.com/#organization",
-      "name": "QuarterSmart",
-      "url": "https://quartersmart.com/",
-      "logo": "https://quartersmart.com/assets/qs-mark.png",
-      "slogan": "Train your team. Automate the rest.",
-      "founder": [
-        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
-        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
-      ],
-      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" }
-    },
+    <!-- @include ld-org -->,
     {
       "@type": "WebSite",
       "@id": "https://quartersmart.com/#website",
       "name": "QuarterSmart",
       "url": "https://quartersmart.com/",
-      "publisher": { "@id": "https://quartersmart.com/#organization" }
+      "publisher": {
+        "@id": "https://quartersmart.com/#organization"
+      }
     },
     {
       "@type": "Article",
       "@id": "https://quartersmart.com/signals/openai-pricing#article",
-      "headline": "OpenAI Changed Their Pricing, What It Actually Means for You",
-      "description": "OpenAI restructured its pricing tiers in 2026. New Pro tier, API rate changes, and a revamped free tier. We break down who wins and who pays more.",
-      "image": "https://quartersmart.com/assets/images/signals/openai-pricing-changes-2026-cover.jpg",
+      "headline": "OpenAI's pricing in spring 2026: what GPT-5.4 costs and which plan you need",
+      "description": "OpenAI released GPT-5.4 in March 2026. Which ChatGPT plans include it, what it costs on the API, and whether your team needs Pro. Figures from OpenAI's own pages.",
+      "image": "https://quartersmart.com/assets/og/signals-openai-pricing.jpg",
       "datePublished": "2026-04-02",
-      "dateModified": "2026-04-02",
-      "author": { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
-      "publisher": { "@id": "https://quartersmart.com/#organization" },
-      "isPartOf": { "@id": "https://quartersmart.com/#website" },
+      "dateModified": "2026-09-27",
+      "author": {
+        "@type": "Person",
+        "@id": "https://quartersmart.com/about.html#hyrum-hurst",
+        "name": "Hyrum Hurst",
+        "url": "https://quartersmart.com/about/hyrum-hurst/"
+      },
+      "publisher": {
+        "@id": "https://quartersmart.com/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://quartersmart.com/#website"
+      },
       "mainEntityOfPage": "https://quartersmart.com/signals/openai-pricing"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quartersmart.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Signals", "item": "https://quartersmart.com/signals" },
-        { "@type": "ListItem", "position": 3, "name": "OpenAI Changed Their Pricing, What It Actually Means for You", "item": "https://quartersmart.com/signals/openai-pricing" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://quartersmart.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Signals",
+          "item": "https://quartersmart.com/signals/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "OpenAI's pricing in spring 2026",
+          "item": "https://quartersmart.com/signals/openai-pricing"
+        }
       ]
     }
   ]
 }
 </script>
-<style>
-/* Article-specific layer on top of site.css (uses the same tokens) */
-.qs-article-cover { display: block; width: 100%; max-width: var(--container); margin: 0 auto var(--sp-7);
-  height: auto; border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); }
-.qs-article-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); letter-spacing: 0.04em; margin-top: 14px; }
-.qs-article-meta .qs-sep { color: var(--border-strong); }
-.qs-prose ul, .qs-prose ol { margin: 0 0 1em; padding-left: 1.4em; max-width: 64ch; }
-.qs-prose li { font-size: var(--fs-body); line-height: 1.7; color: var(--text-muted); margin: 0 0 0.5em; }
-.qs-prose li strong { color: var(--text-strong); font-weight: 600; }
-.qs-prose em { color: var(--accent); font-style: normal; }
-.qs-prose blockquote { margin: 1.8em 0; padding: 22px 26px; border-left: 3px solid var(--accent);
-  background: var(--qs-mint-08); border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  font-size: var(--fs-body-lg); font-weight: 500; line-height: 1.5; color: var(--text-strong); }
-.qs-prose blockquote cite { display: block; margin-top: 12px; font-size: 12px; font-style: normal;
-  color: var(--text-faint); font-family: var(--font-mono); }
-.qs-tier-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 1.8em 0; }
-.qs-tier-card { padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-hairline);
-  background: var(--surface-card); text-align: center; }
-.qs-tier-card.featured { border-color: var(--border-mint); background: var(--qs-mint-08); }
-.qs-tier-name { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em;
-  text-transform: uppercase; margin-bottom: 8px; }
-.qs-tier-grid .qs-tier-card:nth-child(1) .qs-tier-name { color: var(--text-faint); }
-.qs-tier-grid .qs-tier-card:nth-child(2) .qs-tier-name { color: var(--accent); }
-.qs-tier-grid .qs-tier-card:nth-child(3) .qs-tier-name { color: #ffcc00; }
-.qs-tier-grid .qs-tier-card:nth-child(4) .qs-tier-name { color: #c084fc; }
-.qs-tier-price { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-strong); }
-.qs-tier-sub { font-size: 11px; color: var(--text-faint); font-family: var(--font-mono); margin-bottom: 12px; }
-.qs-tier-card ul { list-style: none; margin: 0; padding: 0; text-align: left; }
-.qs-tier-card li { font-size: 12px; color: var(--text-muted); line-height: 1.6; margin: 0 0 4px;
-  padding-left: 14px; position: relative; }
-.qs-tier-card li::before { content: '\2192'; position: absolute; left: 0; color: var(--accent); font-size: 10px; }
-.qs-prose-table { width: 100%; margin: 1.8em 0; border-collapse: collapse;
-  border: 1px solid var(--border-hairline); border-radius: var(--radius-md); overflow: hidden; }
-.qs-prose-table th { background: var(--qs-mint-08); padding: 12px 16px; text-align: left; font-family: var(--font-mono);
-  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
-  border-bottom: 1px solid var(--border-hairline); }
-.qs-prose-table td { padding: 12px 16px; font-size: 14px; border-bottom: 1px solid var(--border-hairline);
-  color: var(--text-muted); }
-.qs-prose-table tr:last-child td { border-bottom: none; }
-.qs-deep-dive { margin: 1.8em 0; border: 1px solid var(--border-hairline); border-radius: var(--radius-md); overflow: hidden; }
-.qs-deep-dive > summary { padding: 16px 20px; background: var(--surface-card); cursor: pointer; list-style: none;
-  font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-strong);
-  display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-.qs-deep-dive > summary::-webkit-details-marker { display: none; }
-.qs-deep-dive > summary .qs-dd-mark { color: var(--accent); font-family: var(--font-mono); transition: transform var(--dur) var(--ease-out); }
-.qs-deep-dive[open] > summary .qs-dd-mark { transform: rotate(90deg); }
-.qs-deep-dive__body { padding: 0 20px 18px; }
-.qs-deep-dive__body p { font-size: 14px; line-height: 1.7; color: var(--text-muted); margin: 14px 0 0; }
-.qs-info-card { margin: 1.8em 0; padding: 24px; background: var(--qs-mint-08);
-  border: 1px solid var(--border-mint); border-radius: var(--radius-lg); }
-.qs-info-card__label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-.qs-info-card h4 { font-family: var(--font-display); font-size: var(--fs-h4); font-weight: 600;
-  color: var(--text-strong); margin: 0 0 8px; }
-.qs-info-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin: 0; max-width: none; }
-.qs-sources h2 { font-family: var(--font-mono); font-size: 14px; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-.qs-sources ol { list-style: none; margin: 0; padding: 0; counter-reset: src; max-width: none; }
-.qs-sources li { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px;
-  font-size: 13px; color: var(--text-muted); line-height: 1.5; counter-increment: src; }
-.qs-sources li::before { content: '[' counter(src) ']'; font-family: var(--font-mono); font-size: 10px;
-  color: var(--accent); flex-shrink: 0; }
-.qs-article-cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-@media (max-width: 768px) { .qs-tier-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 480px) { .qs-tier-grid { grid-template-columns: 1fr; } }
-</style>
-  <link rel="alternate" type="application/rss+xml" title="QuarterSmart Signals" href="/feed.xml">
 </head>
-<body>
-<a class="qs-skip" href="#main">Skip to content</a>
-
-<header class="qs-nav" data-open="false">
-  <div class="qs-nav__bar">
-    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
-      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
-        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
-        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
-        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
-        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-      </svg>
-      <span class="qs-logo__word">QuarterSmart</span>
-    </a>
-    <nav class="qs-nav__links" aria-label="Primary">
-      <a href="/services/">Services</a>
-      <a href="/case-studies/">Case Studies</a>
-      <a href="/about/">About</a>
-      <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/" aria-current="page">Signals</a>
-      <a href="/own-your-ai">Own Your AI</a>
-      <a href="/faq/">FAQ</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-    <div class="qs-nav__cta">
-      <a class="qs-btn qs-btn--primary qs-btn--sm" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-    </div>
-    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
-  </div>
-  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
-    <a href="/services/">Services</a>
-    <a href="/case-studies/">Case Studies</a>
-    <a href="/about/">About</a>
-    <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/" aria-current="page">Signals</a>
-    <a href="/own-your-ai">Own Your AI</a>
-    <a href="/faq/">FAQ</a>
-    <a href="/contact/">Contact</a>
-    <a class="qs-btn qs-btn--primary qs-btn--full" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-  </nav>
-</header>
-
+<body class="sig-post po">
+<!-- @include nav -->
 <main id="main">
-  <section class="qs-pagehead">
-    <div class="qs-pagehead__inner">
-      <nav class="qs-breadcrumb" aria-label="Breadcrumb"><a href="/signals/">Signals</a> / OpenAI pricing changes</nav>
-      <span class="qs-eyebrow">News &middot; Apr 2, 2026 &middot; By Hyrum Hurst</span>
-      <h1 class="qs-h1">OpenAI Changed Their Pricing, What It Actually Means for You</h1>
-      <div class="qs-article-meta">
-        <span>4 min read</span>
+  <header class="phero">
+    <div class="wrap phero__grid">
+      <div class="phero__copy">
+        <nav class="phero__crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/signals/">Signals</a></nav>
+        <p class="phero__meta"><span class="chip chip--available">Available · pricing</span><span class="phero__verdict">Verdict, Apr 2026<b>Wait</b></span></p>
+        <h1 class="phero__h">OpenAI's pricing in spring 2026: what GPT-5.4 costs and which plan you need</h1>
+        <p class="lede">OpenAI released GPT-5.4 in March. Here is which ChatGPT plans include it, what it costs on the API, and whether your team needs to move up to Pro.</p>
+        <p class="byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-04-02">Apr 2, 2026</time></span><span>Corrected <time datetime="2026-09-27">Sep 27, 2026</time></span></p>
+        <div class="phero__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book" style="font-size:clamp(16.5px,(100vw - 480px) * 1000,22px)">Book a free 20-minute call</a></div>
       </div>
-    </div>
-  </section>
-
-  <section class="qs-section" style="padding-top:var(--sp-7)">
-    <div class="qs-wrap">
-      <img class="qs-article-cover" src="/assets/images/signals/openai-pricing-changes-2026-cover.jpg" alt="Stacked translucent glowing tiers of increasing height in the dark, representing restructured OpenAI pricing" width="1200" height="800" loading="lazy" decoding="async">
-    </div>
-  </section>
-
-  <section class="qs-section" style="padding-top:0">
-    <div class="qs-wrap qs-wrap--prose">
-      <article class="qs-prose">
-
-        <p>OpenAI quietly updated their pricing page last week, and if you blinked you missed it. But the changes are significant, especially if you're on the free tier, a Plus subscriber considering Pro, or a developer using the API.</p>
-
-        <p>Here's what actually changed, who benefits, and who's going to pay more.</p>
-
-        <h2>The New Tier Structure</h2>
-
-        <div class="qs-tier-grid">
-          <div class="qs-tier-card">
-            <div class="qs-tier-name">Free</div>
-            <div class="qs-tier-price">$0</div>
-            <div class="qs-tier-sub">/month</div>
-            <ul>
-              <li>GPT-4o mini</li>
-              <li>Limited messages</li>
-              <li>Basic web browsing</li>
-              <li>No image gen</li>
-            </ul>
-          </div>
-          <div class="qs-tier-card featured">
-            <div class="qs-tier-name">Plus</div>
-            <div class="qs-tier-price">$20</div>
-            <div class="qs-tier-sub">/month</div>
-            <ul>
-              <li>GPT-4o full access</li>
-              <li>DALL-E image gen</li>
-              <li>Advanced analysis</li>
-              <li>Custom GPTs</li>
-            </ul>
-          </div>
-          <div class="qs-tier-card">
-            <div class="qs-tier-name">Pro</div>
-            <div class="qs-tier-price">$200</div>
-            <div class="qs-tier-sub">/month</div>
-            <ul>
-              <li>Unlimited GPT-4o</li>
-              <li>GPT-5.4 access</li>
-              <li>o3-pro reasoning</li>
-              <li>Extended context</li>
-            </ul>
-          </div>
-          <div class="qs-tier-card">
-            <div class="qs-tier-name">Enterprise</div>
-            <div class="qs-tier-price">Custom</div>
-            <div class="qs-tier-sub">/month</div>
-            <ul>
-              <li>All models</li>
-              <li>SSO &amp; admin</li>
-              <li>Dedicated capacity</li>
-              <li>SLA guarantee</li>
-            </ul>
+      <div class="pxwin phero__art">
+        <span class="win__t" aria-hidden="true">signal.exe</span>
+        <div class="pxstage" data-pxstage data-first="assistant" data-scenes="radar satellite scope verdicts tower rocket mail wave assistant keyboard mark" data-max="4">
+          <div class="pxstage__screen">
+            <img class="pxstage__still" src="/assets/px/sprite-assistant.png" width="78" height="45" style="--x:33;--y:41;--w:78" alt="Pixel art of a small desk assistant with a green screen." fetchpriority="high">
+            <canvas aria-hidden="true"></canvas>
           </div>
         </div>
+      </div>
+    </div>
+  </header>
 
-        <h2>What Changed</h2>
+  <div class="wrap post-grid">
+    <article class="prose">
+      <div class="callout"><strong>Corrected on September 27, 2026.</strong> The first version of this post got GPT-5.4's plan and API price wrong. The figures below come from OpenAI's own pages. OpenAI has changed its plans since April, so check the current prices before you buy.</div>
 
-        <h3>Free Tier: More Restrictive</h3>
-
-        <p>The biggest change for casual users: the free tier is now limited to <strong>GPT-4o mini only</strong>. Previously, free users could access GPT-4o with message limits. That's gone. If you want GPT-4o, you need Plus.</p>
-
-        <p>OpenAI says this is about "ensuring quality of service for paying users." Translation: free users were overwhelming GPT-4o's capacity during peak hours.</p>
-
-        <h3>Plus Tier: Unchanged (For Now)</h3>
-
-        <p>The $20/month Plus tier stays the same, GPT-4o access, DALL-E, Advanced Data Analysis, and Custom GPTs. But there's a notable absence: <strong>GPT-5.4 is not included in Plus.</strong> You need Pro for that.</p>
-
-        <h3>Pro Tier: The Real Story</h3>
-
-        <p>The $200/month Pro tier is where things get interesting. Launched in late 2025, it was initially seen as a niche product for power users. But with GPT-5.4 exclusive to Pro and Enterprise, it's now the only way individuals can access OpenAI's most powerful model.</p>
-
-        <blockquote>
-          "We believe the best models should be accessible, but running frontier AI at scale requires sustainable pricing. Pro gives power users the capacity they need while keeping Plus affordable for everyone."
-          <cite>OpenAI Blog, March 2026</cite>
-        </blockquote>
-
-        <h3>API Pricing: The Numbers</h3>
-
-        <table class="qs-prose-table">
-          <thead>
-            <tr><th>Model</th><th>Input (per 1M tokens)</th><th>Output (per 1M tokens)</th><th>Change</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>GPT-4o</td><td>$2.50</td><td>$10.00</td><td style="color:var(--accent)">17% cheaper</td></tr>
-            <tr><td>GPT-4o mini</td><td>$0.15</td><td>$0.60</td><td style="color:var(--accent)">25% cheaper</td></tr>
-            <tr><td>GPT-5.4</td><td>$15.00</td><td>$60.00</td><td style="color:#ffcc00">New model</td></tr>
-            <tr><td>o3-pro</td><td>$20.00</td><td>$80.00</td><td style="color:#ffcc00">New model</td></tr>
-            <tr><td>GPT-4 (legacy)</td><td>$30.00</td><td>$60.00</td><td style="color:#ff6b6b">Deprecated June 2026</td></tr>
-          </tbody>
-        </table>
-
-        <p>The pattern is clear: <strong>older models get cheaper, frontier models carry a premium.</strong> GPT-4o and 4o mini are now the cheapest they've ever been. But if you want the cutting edge, you're paying frontier prices.</p>
-
-        <h2>How It Compares to Anthropic &amp; Google</h2>
-
-        <table class="qs-prose-table">
-          <thead>
-            <tr><th>Provider</th><th>Consumer Plan</th><th>Frontier Model</th><th>API (input/1M)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td style="color:var(--accent)">OpenAI</td><td>$20 Plus / $200 Pro</td><td>GPT-5.4 (Pro only)</td><td>$15.00</td></tr>
-            <tr><td>Anthropic</td><td>$20 Pro</td><td>Claude Opus 4.6</td><td>$15.00</td></tr>
-            <tr><td>Google</td><td>$20 Gemini Advanced</td><td>Gemini 2.0 Ultra</td><td>$12.50</td></tr>
-          </tbody>
-        </table>
-
-        <details class="qs-deep-dive">
-          <summary>Should you switch from Plus to Pro?<span class="qs-dd-mark" aria-hidden="true">&#9656;</span></summary>
-          <div class="qs-deep-dive__body">
-            <p>It depends on what you do. If you primarily use ChatGPT for writing, research, and general tasks, Plus is still plenty, GPT-4o handles those extremely well. Pro makes sense if you: (1) need GPT-5.4 for complex coding or reasoning tasks, (2) hit Plus rate limits regularly, (3) use o3-pro for math, science, or complex logic problems, or (4) need extended context windows for processing long documents. For most users, Plus remains the sweet spot. Pro is for power users who've already maxed out what Plus can do.</p>
-          </div>
-        </details>
-
-        <h2>The Bigger Picture</h2>
-
-        <p>OpenAI's pricing evolution tells a story about where the AI industry is headed: <strong>the base is getting cheaper, the frontier is getting more expensive.</strong></p>
-
-        <p>This makes sense economically. Running GPT-4o has gotten cheaper as inference costs drop and hardware improves. But training and running GPT-5.4, which is estimated to have cost over $500M to train, requires premium pricing to recoup investment.</p>
-
-        <p>For consumers, the practical impact is:</p>
-
+      <div class="shortv">
+        <h2>The short version</h2>
         <ul>
-          <li><strong>Students and casual users:</strong> The free tier is weaker, but Plus at $20/month is still competitive. Get your <a href="/signals/free-ai-students">free student access</a> if eligible.</li>
-          <li><strong>Power users:</strong> You're going to need to decide between Pro ($200/mo) and exploring alternatives like Claude or Gemini for frontier performance at lower cost.</li>
-          <li><strong>Developers:</strong> API costs for standard models are dropping. Frontier API access is expensive but powerful. Multi-provider strategies make more sense than ever.</li>
+          <li>OpenAI released GPT-5.4 on March 5, 2026, with smaller mini and nano versions on March 17.</li>
+          <li>In ChatGPT it came with the paid plans, starting with Plus at $20 a month. Pro, at $200 a month, is for people who hit the Plus limits every week.</li>
+          <li>On the API it listed at $2.50 per million input tokens and $15 per million output tokens. Check OpenAI's pricing page before you budget, because these numbers change.</li>
+          <li>For most teams, Plus is the right starting point. Verdict: Wait on Pro.</li>
         </ul>
-
-        <div class="qs-info-card">
-          <div class="qs-info-card__label">The Takeaway</div>
-          <h4>AI is splitting into two markets</h4>
-          <p>Commodity AI (GPT-4o, Claude Sonnet, Gemini Flash) is getting cheaper by the quarter. Frontier AI (GPT-5.4, Mythos, Gemini Ultra) is getting more expensive and more restricted. Where you sit on that spectrum determines your costs, and your options.</p>
-        </div>
-
-      </article>
-
-      <div class="qs-sources qs-mt-6">
-        <h2>Sources</h2>
-        <ol>
-          <li>OpenAI. "Pricing." <a href="https://openai.com/pricing" target="_blank" rel="noopener">openai.com/pricing</a>. Updated March 2026.</li>
-          <li>OpenAI. "Introducing ChatGPT Pro." <a href="https://openai.com/index/introducing-chatgpt-pro/" target="_blank" rel="noopener">openai.com</a>, December 2025.</li>
-          <li>OpenAI. "API Platform Pricing." <a href="https://platform.openai.com/docs/pricing" target="_blank" rel="noopener">platform.openai.com</a>. Updated March 2026.</li>
-          <li>Anthropic. "Claude API Pricing." <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">anthropic.com/pricing</a>. Accessed April 2026.</li>
-          <li>Google. "Gemini API Pricing." <a href="https://ai.google.dev/pricing" target="_blank" rel="noopener">ai.google.dev/pricing</a>. Accessed April 2026.</li>
-        </ol>
       </div>
-    </div>
-  </section>
 
-  <section class="qs-section qs-section--lg qs-bordered">
-    <div class="qs-wrap">
-      <div class="qs-cta-band">
-        <h2 class="qs-h1">Want AI running, not just priced?</h2>
-        <p>Pricing tiers do not matter much until AI is actually in your team's daily workflow. That is the gap QuarterSmart closes. Book a call and we will talk through where it fits.</p>
-        <div class="qs-article-cta">
-          <a class="qs-btn qs-btn--primary qs-btn--lg" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-          <a href="/signals/">Back to Signals</a>
-        </div>
-      </div>
-    </div>
-  </section>
+      <h2>What GPT-5.4 is</h2>
+      <p>GPT-5.4 is the model OpenAI released on March 5, 2026, in ChatGPT, the API and Codex. In ChatGPT it appears as GPT-5.4 Thinking, meant for work that takes more than one pass: long documents, multi-step reasoning and tasks that use tools. Smaller mini and nano versions followed on March 17.</p>
 
-  <!-- Author byline + read next (E-E-A-T + internal linking) -->
-  <section class="qs-section qs-bordered post-end">
-    <div class="qs-wrap qs-wrap--prose">
-      <div class="post-author">
-        <img class="post-author__img" src="/assets/images/team/hyrum-hurst.webp" alt="Hyrum Hurst" width="64" height="64" loading="lazy">
-        <div>
-          <p class="post-author__name">Hyrum Hurst</p>
-          <p class="post-author__bio">Founder of QuarterSmart and a verified n8n creator. He builds local-model and agent systems for growing teams and writes Signals on how AI adoption actually works in practice. <a href="/about/#hyrum-hurst">More about Hyrum</a>.</p>
-        </div>
-      </div>
-      <p class="post-more"><span class="post-more__label">Read next</span> <a href="/signals/sops-to-aops">What an AOP is</a> &middot; <a href="/signals/stretch-ai-budget">Stretch your AI budget</a> &middot; <a href="/signals/why-ai-pilots-fail">Why 95% of pilots fail</a> &middot; <a href="/signals/">All Signals</a></p>
-    </div>
-  </section>
-</main>
+      <h2>Which ChatGPT plan you need</h2>
+      <p>GPT-5.4 Thinking came with ChatGPT's paid plans from launch: Plus, Pro, Business and Enterprise. It was not on the free plan.</p>
+      <p>Plus, at $20 a month, is where most people should start. Pro, at $200 a month, raises the usage limits and adds GPT-5.4 Pro, a slower and more thorough version. It makes sense for someone who runs into the Plus limits every week, not as a first step.</p>
 
-<footer class="qs-footer">
-  <div class="qs-footer__inner">
-    <div class="qs-footer__grid">
-      <div class="qs-footer__brand">
-        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
-          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
-            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
-            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
-            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
-            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-          </svg>
-          <span class="qs-logo__word">QuarterSmart</span>
-        </a>
-        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
-        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
+      <h2>What it costs on the API</h2>
+      <p>If your team builds on OpenAI's API, GPT-5.4 listed at $2.50 per million input tokens and $15 per million output tokens at launch, with cheaper rates for cached input. The mini and nano versions cost less. Prices change, so check <a href="https://developers.openai.com/api/docs/pricing" rel="noopener">OpenAI's API pricing page</a> before you budget.</p>
+
+      <h2>What to do</h2>
+      <p>Verdict: <strong>Wait.</strong> If your team already pays for Plus, you already have GPT-5.4. Hold off on Pro until someone hits the Plus limits every week, and write down which tasks those are, so you know what the upgrade buys.</p>
+
+      <h2>If you want help</h2>
+      <p>Not sure which plans your team should be paying for? A <a href="/services/#head-start">Head Start</a> reviews the tools you already pay for and finds the AI features you haven't switched on. Or <a href="/contact/">book a free 20-minute call</a>.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ul class="sources">
+        <li><a href="https://openai.com/index/introducing-gpt-5-4/" rel="noopener">OpenAI: Introducing GPT-5.4</a>, March 5, 2026</li>
+        <li><a href="https://help.openai.com/en/articles/9624314-model-release-notes" rel="noopener">OpenAI Help Center: model release notes</a></li>
+        <li><a href="https://developers.openai.com/api/docs/pricing" rel="noopener">OpenAI: API pricing</a></li>
+        <li><a href="https://openai.com/chatgpt/pricing/" rel="noopener">OpenAI: ChatGPT plans and pricing</a></li>
+        <li><a href="https://openai.com/index/introducing-chatgpt-pro/" rel="noopener">OpenAI: Introducing ChatGPT Pro</a>, December 2024</li>
+      </ul>
+
+      <h2>Update log</h2>
+      <ul class="updlog">
+        <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Correction: the original post said GPT-5.4 was limited to Pro and listed API prices of $15 and $60 per million tokens. Both were wrong. Figures now come from OpenAI's pricing pages. We also removed a quote, a training-cost estimate and comparison tables we could not verify, and fixed the date of the Pro launch to December 2024.</span></li>
+        <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Retitled and edited for tone.</span></li>
+        <li><time datetime="2026-04-02">Apr 2, 2026</time><span>First posted.</span></li>
+      </ul>
+
+      <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by OpenAI. Product names are trademarks of their owners. First posted April 2, 2026 and corrected September 27, 2026. Prices change often: check the vendor's page before you buy. Signals is general information about third-party products, not legal, security or financial advice. <a href="/signals/policy/">How we source Signals</a>.</p>
+    </article>
+
+    <aside class="psum" aria-label="Signal summary">
+      <div>
+        <p class="psum__k">Verdict when posted</p>
+        <p class="psum__v">Wait</p>
       </div>
-      <div class="qs-footer__col">
-        <h2>Company</h2>
-        <a href="/services/">Services</a>
-        <a href="/case-studies/">Case Studies</a>
-        <a href="/about/">About</a>
-        <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/" aria-current="page">Signals</a>
-        <a href="/own-your-ai">Own your AI</a>
-      </div>
-      <div class="qs-footer__col">
-        <h2>Get in touch</h2>
-        <a href="/faq/">FAQ</a>
-        <a href="/contact/">Contact</a>
-        <a href="/workflow-usage/">Workflow usage</a>
-      </div>
-    </div>
-    <div class="qs-footer__meta">
-      <span class="qs-tag-line">Train your team. Automate the rest.</span>
-      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
-    </div>
+      <dl class="psum__kv">
+        <div><dt>Status</dt><dd><span class="chip chip--available">Available · pricing</span></dd></div>
+        <div><dt>Who it's for</dt><dd>Plus subscribers weighing Pro, and teams paying for the API</dd></div>
+        <div><dt>Plans in April 2026</dt><dd>Plus $20 a month, Pro $200 a month</dd></div>
+      </dl>
+      <nav aria-label="Read next">
+        <p class="psum__k">Read next</p>
+        <ul class="psum__next">
+          <li><a href="/signals/stretch-ai-budget">How to stretch your AI budget</a></li>
+          <li><a href="/signals/free-ai-students">Free Claude and GPT access for students</a></li>
+          <li><a href="/signals/">All Signals</a></li>
+        </ul>
+      </nav>
+    </aside>
   </div>
-</footer>
-
-<script>
-(function(){
-  /* mobile nav */
-  var n=document.querySelector('.qs-nav'),t=n&&n.querySelector('.qs-nav__toggle');
-  if(t)t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});
-})();
-</script>
+  <!-- @include post-end -->
+</main>
+<script src="/assets/js/radar.js?v=20260927m" defer></script>
+<!-- @include footer -->
 </body>
 </html>

@@ -1,84 +1,90 @@
 # QuarterSmart
 
-> QuarterSmart builds AI onboarding, training, and automation systems for growing teams. We turn each SOP into three things from one source: a training course your team learns from (AI-generated video, quizzes, certification), an automation that runs the task itself (n8n, Zapier, Power Automate), and an AOP, a procedure your AI agent can run. Same source, three outputs: train, automate, operate. Tagline: Train your team. Automate the rest.
+> QuarterSmart is an early-adoption AI partner for owner-led businesses, based in Mesa, Arizona. We track new AI launches, early-access programs, quiet product updates and credible reports, tell each business which ones matter to it, then set the tools up in its own accounts and train the team to use them. Promise: know what changed in AI the day it lands, and have it working in your business while it is still early. Short form: AI early adoption, setup and training.
 
-QuarterSmart is based in Mesa, Arizona and works with clients across the United States. Founders: Hyrum Hurst builds the systems; Cullen Brown manages engagements. Hyrum Hurst is a Google Certified AI Automations Engineer and a verified top-50 n8n creator with templates used more than 10,000 times.
+QuarterSmart works with owner-led and operator-led businesses of roughly 10 to 250 people across the United States. Our approach has two halves, summed up as "Train your team. Automate the rest." First we train the team on a new tool inside their own work, then we automate the repetitive work that is left, with agents and workflows the team can see and check.
 
-We serve growing businesses, franchises, operations and HR and L and D heavy teams, high-turnover teams, nonprofits, and education organizations. We also work as a white-label AI implementation partner for agencies and consultancies: they own the client and sell, we build, document, and hand off.
+"Day one" always means the first day a tool is available to your account. Rollouts are often staggered by plan, region or company size, so we prepare before that day and start setup as soon as access arrives. We cannot promise early access; vendors control it. We tell clients when a waitlist or beta opens and help them apply.
 
-Offer ladder: 1) AI enablement and training, 2) SOPs to a training system with courses, quizzes, certification, and an owner dashboard, 3) SOPs to automations, 4) recurring coaching and consulting calls, 5) hosting and maintenance Care Plan.
+QuarterSmart is independent and is not affiliated with or endorsed by OpenAI, Anthropic, Google, Microsoft or any other AI vendor. Product names are trademarks of their owners.
 
-Flagship proof: For Structure Properties, QuarterSmart built a 39-course AI video training and onboarding library across seven roles with Claude-powered quizzes and an owner reporting dashboard. Onboarding time and repeat questions dropped 65 percent and SOP-related mistakes dropped 36 percent.
+## Founder
+Hyrum Hurst founded QuarterSmart and is the person clients work with directly: he writes every Signal and sets up the assistants, agents and automations himself. There are no account managers or hand-offs.
 
-## Key Pages
-- [Home](https://quartersmart.com/): Train your team, automate the rest. The SOP triple-duty mechanic.
-- [Services](https://quartersmart.com/services): The five-step offer ladder, from training to automation to ongoing care.
-- [Case Studies](https://quartersmart.com/case-studies): Structure Properties, Learning Journey AI, Skytech, and the n8n template library.
-- [About](https://quartersmart.com/about): Who QuarterSmart is, founders, and credentials.
-- [For Agencies](https://quartersmart.com/for-agencies): White-label AI implementation partner for agencies and consultancies.
-- [FAQ](https://quartersmart.com/faq): Plain answers about how QuarterSmart works.
-- [Contact](https://quartersmart.com/contact): Book a call or request a proposal.
-- [Signals](https://quartersmart.com/signals): QuarterSmart's AI insight hub. Operator-focused reads on the models, tools, and shifts that change how teams adopt and run AI.
-- [Own Your AI](https://quartersmart.com/own-your-ai): Early access, in active development. A direction QuarterSmart is building toward: a private local AI system a company finances and owns to handle the routine majority of its AI work (roughly 80 percent), still calling a frontier model for the hard minority. An offset, not a replacement, the way solar offsets a power bill. Not a live product yet. Waitlist open.
+Hyrum Hurst is also CTO of Learning Journey AI (https://learningjourneyai.com/), an AI education company in Washington, DC, where he runs the platform, the website and the course-creation workflows. Staying current on applied AI is part of that job, and QuarterSmart puts the same habit to work for its clients.
+
+- Job titles: Founder, QuarterSmart. CTO, Learning Journey AI.
+- Works in: Claude, ChatGPT and n8n, every day, on live client work.
+- Other roles: AI automation consultant (contract) for Dual Logic, a Washington, DC AI integration consultancy; pro bono AI work for Ability Builders, a Mesa nonprofit. These are his own roles, not QuarterSmart clients.
+- Verified n8n creator. Quoted in CyberNews on local AI models. Registered expert source on Qwoted.
+- Profile page: https://quartersmart.com/about/hyrum-hurst/
+
+## Signals
+Signals is QuarterSmart's free, public coverage of AI launches, published at https://quartersmart.com/signals/ with a Monday email, Signals Weekly. Each Signal says what happened, whether it matters and to whom, and ends in a verdict: Act now, Prepare, Wait or Ignore. Wait and Ignore are common verdicts.
+
+Every Signal carries one status label:
+- Reported: publicly reported, not confirmed by the company. Always shown as "Reported · unconfirmed."
+- Confirmed: announced by the company, not yet available to most accounts.
+- Available: usable now, on the plans listed.
+- Early access: a waitlist, beta or preview is open.
+- Quiet update: a change inside a tool you may already pay for.
+- Event: a launch event we are covering.
+
+Sourcing: public information only. No confidential documents, credentials, private source code or anything obtained by breaking terms of service. Reported items stay labeled unconfirmed until the company confirms or denies them. Sources are cited, other people's screenshots are linked rather than re-hosted, and corrections are logged with timestamps. The accuracy record for reported items, including misses, is the Signals Log. Signals is general information about third-party products, not legal, security or financial advice.
+
+## Ways to work with us
+The services ladder, five levels from 0 (free) to 4:
+- Level 0: Signals (free): the public feed and the Signals Weekly email.
+- Level 1: Head Start (from $1,500, one time): a review of the software a business already pays for, looking for AI features it has not switched on, with the three most relevant launches or tools, each with a verdict, and a 30-day plan. About a week from kickoff. The full fee counts toward a Day One Setup or the first month of First Quarter if the client starts within 30 days.
+- Level 2: Day One Setup (from $2,500 per tool): one tool set up properly in the client's accounts with least-access permissions, connected to email, calendar, docs or CRM, tested with a few people first, then taught to the team.
+- Level 2, team training: Rollout Session (quoted): live, role-based team training on a tool the team already has, using the team's own work.
+- Level 3: First Quarter membership (from $1,500 a month; Pro from $3,500 a month): Client Signals filtered to the member's own tools and delivered the same business day for anything that affects their stack, setup and training time every month, and priority on launch weeks.
+- Level 4: Build (scoped): custom agents and automations for work that repeats, scoped after a Head Start or for members.
+
+Agencies and IT providers can resell Signals and Day One Setups through the Partner Bench (see For Agencies).
+
+## Key pages
+- [Home](https://quartersmart.com/): Use new AI while it's still an advantage. What QuarterSmart does, latest Signals, ways to work with us.
+- [Signals](https://quartersmart.com/signals/): Plain-English coverage of AI launches, early access and quiet updates, each with a verdict.
+- [How we source Signals](https://quartersmart.com/signals/policy/): Sourcing rules, status labels, verdicts, corrections and independence.
+- [Signals Log](https://quartersmart.com/signals/log/): The accuracy record for reported items: what we posted, when, and whether it was confirmed or denied. Misses stay on the list.
+- [Services](https://quartersmart.com/services/): The services ladder, level 0 to 4, with published starting prices: Signals (free), Head Start (from $1,500), Day One Setup (from $2,500 per tool), Rollout Session (quoted), the First Quarter membership (from $1,500 and $3,500 a month) and Build (scoped).
+- [Approach](https://quartersmart.com/approach/): Train your team. Automate the rest. The two halves of every engagement, the Detect, Decode, Deploy, Stay current method, the questions a tool must pass before we recommend it, and the security rules for every setup.
+- [About](https://quartersmart.com/about/): Who we are, why the name "Quarter," who you will work with, and why we stay independent.
+- [Hyrum Hurst](https://quartersmart.com/about/hyrum-hurst/): The founder's page: background, what he builds, credentials you can check, experience and recent Signals.
+- [For Agencies](https://quartersmart.com/for-agencies/): Partner Bench. Resell Signals and Day One Setups under your brand.
+- [FAQ](https://quartersmart.com/faq/): Pricing, membership terms, security, what "day one" means, how Signals is sourced, what we won't do, affiliation.
+- [Contact](https://quartersmart.com/contact/): Book a free 20-minute call, or email.
+- [Workflow usage](https://quartersmart.com/workflow-usage/): Per-template data and method for Hyrum's public n8n workflow templates.
+- [Privacy](https://quartersmart.com/privacy/) and [Terms](https://quartersmart.com/terms/), including the Signals disclaimer.
 
 ## Signals posts
-Operator-focused articles by Hyrum Hurst on how teams adopt and run AI. Full hub at https://quartersmart.com/signals.
-- [SOPs Were Written for Humans. Your AI Needs AOPs.](https://quartersmart.com/signals/sops-to-aops): What an AOP (Agent Operating Procedure) is, how it differs from an SOP, and how to create one for an AI agent.
-- [How to Stretch Your AI Budget: Offload the Routine to Local Models](https://quartersmart.com/signals/stretch-ai-budget): Run routine work on local models (Ollama, LM Studio) and cheaper routes (OpenRouter), and keep frontier models for the hard minority of tasks.
-- [Why 95 Percent of AI Pilots Fail](https://quartersmart.com/signals/why-ai-pilots-fail): The pattern behind failed AI pilots and what the small share that reach measurable results do differently.
-- [Claude Mythos Broke Out of Its Sandbox](https://quartersmart.com/signals/mythos): What Anthropic's sandbox-escape disclosure means and why restricted-access frontier models matter for buyers.
-- [Project Glasswing: Anthropic's Cyber-Defense Coalition](https://quartersmart.com/signals/glasswing): How a small alliance of organizations is forming around frontier cybersecurity AI.
-- [Mythos Is Out. They Named It Fable.](https://quartersmart.com/signals/fable-5): Anthropic renamed its most capable model and what the shift signals.
-- [Free Claude Pro and GPT Codex for Students](https://quartersmart.com/signals/free-ai-students): How students get pro-level AI tools at no cost through the GitHub Student Pack and education programs.
-- [Anthropic Killed Third-Party Claude Access](https://quartersmart.com/signals/third-party-killed): What changed when discounted third-party Claude resale was cut off, and the alternatives.
-- [OpenAI Changed Their Pricing, What It Actually Means for You](https://quartersmart.com/signals/openai-pricing): A plain breakdown of OpenAI's restructured pricing tiers and who pays more.
-- [This Week in AI, April 22, 2026](https://quartersmart.com/signals/weekly-advancements-apr-22-2026): A roundup of the model releases, mandates, and shifts that mattered that week.
+Written by Hyrum Hurst. Full hub at https://quartersmart.com/signals/. RSS: https://quartersmart.com/feed.xml
+- [OpenAI's leaked "o" assistant: what business owners should know before Tuesday](https://quartersmart.com/signals/openai-o-assistant-leak) (Sep 27, 2026): Reported · unconfirmed. What was reported, what is confirmed, and what to do before OpenAI's DevDay keynote. Verdict: Prepare.
+- [ChatGPT's mobile app can now draft, summarize and build by voice](https://quartersmart.com/signals/chatgpt-mobile-voice-work) (Sep 27, 2026): Available on Plus and Pro. Advice: if your team is on Plus or Pro, test one voice-drafted email this week.
+- [Sonnet 5 ships and Fable 5 comes back online on the same day](https://quartersmart.com/signals/sonnet-5-fable-5-same-day) (Jun 30, 2026): Two Anthropic model moves on June 30, 2026 and what they mean for business users.
+- [SOPs were written for humans. Your AI needs AOPs.](https://quartersmart.com/signals/sops-to-aops) (Jun 27, 2026): What an AOP (Agent Operating Procedure) is and how to write one.
+- [How to stretch your AI budget by offloading the routine to local models](https://quartersmart.com/signals/stretch-ai-budget) (Jun 27, 2026): Route routine work to local models and cheaper providers, and keep frontier models for the hard minority of tasks.
+- [Why 95% of AI pilots show no return, and what the ones that work have in common](https://quartersmart.com/signals/why-ai-pilots-fail) (Jun 25, 2026): Why most AI pilots never reach wide use, what the ones that work have in common, and a self-check for your own.
+- [Anthropic's Claude Fable 5: what it is and what to do](https://quartersmart.com/signals/fable-5) (Jun 9, 2026): The first public Mythos-class model and what changed.
+- [Claude Mythos escaped its test sandbox: what happened and what it means for your business](https://quartersmart.com/signals/mythos) (Apr 6, 2026): Anthropic kept Claude Mythos Preview private after it broke out of a test sandbox. What happened, who can use it, and what it means for your business.
+- [Anthropic's Project Glasswing: who can use Claude Mythos Preview, and why it is not public](https://quartersmart.com/signals/glasswing) (Apr 5, 2026): Anthropic kept Claude Mythos Preview private and gave it to a group of software and security companies for defensive work.
+- [Free Claude and GPT access for students: GitHub Copilot Pro and ChatGPT Edu](https://quartersmart.com/signals/free-ai-students) (Apr 4, 2026): How students get pro-level AI tools at no cost through education programs.
+- [Anthropic stopped Claude subscriptions from running third-party agents: what happened and what changed](https://quartersmart.com/signals/third-party-killed) (Apr 3, 2026): Claude subscriptions stopped powering third-party agent tools in April 2026, then were allowed again in May with a separate metered credit.
+- [OpenAI's pricing in spring 2026: what GPT-5.4 costs and which plan you need](https://quartersmart.com/signals/openai-pricing) (Apr 2, 2026): Which ChatGPT plans include GPT-5.4, what it costs on the API, and whether your team needs Pro. Figures from OpenAI's own pages.
+- [This Week in AI, April 22, 2026](https://quartersmart.com/signals/weekly-advancements-apr-22-2026) (Apr 22, 2026): A roundup of the releases and shifts that mattered that week.
 
-## People
-- Hyrum Hurst: Founder of QuarterSmart, AI systems and automation specialist based in Mesa, Arizona. Verified top-50 n8n creator with 25 published workflow templates used more than 10,000 times across the n8n community. Google Certified AI Automations Engineer.
-- Cullen Brown: Operator and outreach manager at QuarterSmart, manages engagements from first conversation to live rollout.
-
-## Public Evidence
-- Hyrum Hurst n8n creator profile: https://n8n.io/creators/hyrum-hurst
-- Workflow usage data and methodology (per-template table): https://quartersmart.com/workflow-usage/
+## Public evidence
+- Signals archive, dated, with an update log on every post: https://quartersmart.com/signals/
 - CyberNews feature quoting Hyrum Hurst on local AI models: https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/
 - Qwoted source profile: https://app.qwoted.com/sources/hyrum-hurst
+- Hyrum Hurst n8n creator profile: https://n8n.io/creators/hyrum-hurst
+- Workflow usage data and method (per-template table): https://quartersmart.com/workflow-usage/. Metric rule: the figure on that page counts documented template uses recorded by n8n. It is not a count of users, people, customers or clients.
 - LinkedIn: https://www.linkedin.com/in/hyrum-hurst-83a5a537a/
 - GitHub: https://github.com/hyrumhurst1
 
-## n8n Templates (full list)
-QuarterSmart founder Hyrum Hurst has published 25 workflow templates on the n8n template marketplace, with 10,876 documented uses total as of June 2026. Each template has its own page and public use counter. Browse and open every template at the creator profile: https://n8n.io/creators/hyrum-hurst
-
-Templates with cumulative uses:
-1. Automate YouTube Shorts creation from Telegram prompts using Gemini and VEO (5,078)
-2. Capture and schedule HVAC leads with OpenAI, Google Sheets, Slack and SMS (1,723)
-3. Create consulting client onboarding tasks with GPT-4, Google Sheets and Slack (1,085)
-4. Create a one-minute video from Telegram prompts with Veo 3 and Fal.ai (941)
-5. Analyze legal contracts with GPT-4.1 and manage cases in Google Sheets and Slack (541)
-6. Analyze website SEO and log AI recommendations to Google Sheets with OpenAI (339)
-7. Send Stripe invoice reminders with GPT-4.1-mini, Google Sheets and Slack (290)
-8. Capture and nurture AI agency leads with Google Gemini, Outlook and Sheets (117)
-9. Nurture landscaping leads and book calls with GoHighLevel, OpenAI and Slack (96)
-10. Extract data from PDF reports with Gmail, OCR, Google Sheets and OpenAI GPT-4.1-mini (95)
-11. Automate property inspections and reporting with OpenAI, Google Sheets and Slack (86)
-12. Send package and visitor alerts with Slack, SMS, email, Google Sheets and Claude (62)
-13. Send Stripe expired charge recovery reminders with OpenAI (60)
-14. Send AI pet grooming reminders and follow-ups with GPT-4o mini, Twilio, email, Google Sheets and Slack (53)
-15. Generate AI SOPs from Google Drive with GPT-4o, Google Docs and Sheets (52)
-16. Generate proposals with GPT-4o, Google Docs, Gmail and Slack (50)
-17. Coordinate move-out cleaning and repair tasks with Sheets, Slack, email and Claude (44)
-18. Triage tenant complaints with GPT-4.1, Slack, email and Google Sheets (43)
-19. Generate consulting KPI summaries with GPT-4o-mini, Slack and Google Sheets (27)
-20. Send AI-prioritized follow-up reminders with GPT-4.1-mini, Gmail and Slack (18)
-21. Qualify and route consulting leads with GPT-4.1-mini, Slack and Google Sheets (17)
-22. Track tenant document compliance with GPT-4, Drive, Sheets, email and Slack (17)
-23. Scrape verified decision-maker emails from Google with GPT-4.1 and Apify (15)
-24. Escalate unresolved maintenance requests with GPT-4o, Google Sheets and Slack (14)
-25. Generate DraftKings DFS lineups with GPT-4o, Google Sheets, email and Slack (13)
-Total: 10,876 documented uses across 25 templates.
-
 ## Contact
-Book a call or request a proposal at https://quartersmart.com/contact. Email hyrum@quartersmart.com.
+Book a free 20-minute call at https://quartersmart.com/contact/ or https://quartersmart.com/book. Email hyrum@quartersmart.com.
 
 ---
-Last updated: 2026-06-28
+Last updated: 2026-09-27

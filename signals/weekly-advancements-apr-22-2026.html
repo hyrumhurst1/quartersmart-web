@@ -1,323 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="evergreen">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>This Week in AI, April 22, 2026, QuarterSmart</title>
-<meta name="description" content="The AI news that actually matters this week: new model releases, AI in classrooms, public-sector deployments, and agent advancements you can use.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>This Week in AI, April 22, 2026 | QuarterSmart</title>
+<meta name="description" content="The week of April 21, 2026: longer context windows, agents showing up in public-sector buying, and data residency becoming the first question.">
 <meta name="author" content="Hyrum Hurst">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#060608">
 <link rel="canonical" href="https://quartersmart.com/signals/weekly-advancements-apr-22-2026">
 <meta property="og:type" content="article">
 <meta property="og:title" content="This Week in AI, April 22, 2026">
-<meta property="og:description" content="New models, AI in classrooms, government rollouts, and agent advancements, the signal from the noise.">
+<meta property="og:description" content="Longer context windows, agents showing up in public-sector buying, and data residency becoming the first question.">
 <meta property="og:url" content="https://quartersmart.com/signals/weekly-advancements-apr-22-2026">
 <meta property="og:site_name" content="QuarterSmart">
-<meta property="og:image" content="https://quartersmart.com/assets/images/signals/weekly-advancements-apr-22-2026-cover.jpg">
-<meta property="og:image:alt" content="This Week in AI, April 22, 2026. Model releases, state AI mandates, government rollouts.">
+<meta property="og:image" content="https://quartersmart.com/assets/og/signals-weekly-advancements-apr-22-2026.jpg">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="800">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="QuarterSmart Signals: This Week in AI, April 22, 2026">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="This Week in AI, April 22, 2026">
-<meta name="twitter:description" content="New models, AI in classrooms, government rollouts, and agent advancements, the signal from the noise.">
-<meta name="twitter:image" content="https://quartersmart.com/assets/images/signals/weekly-advancements-apr-22-2026-cover.jpg">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css">
+<meta name="twitter:description" content="Longer context windows, agents in public-sector buying, and data residency becoming the first question.">
+<meta name="twitter:image" content="https://quartersmart.com/assets/og/signals-weekly-advancements-apr-22-2026.jpg">
+<meta name="qs:kind" content="insight">
+<meta name="qs:label" content="Weekly roundup">
+<meta name="qs:cover" content="/assets/px/sprite-radar.png">
+<!-- @include head -->
+<link rel="stylesheet" href="/assets/css/signals-post.css?v=20260927m">
+<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927p">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://quartersmart.com/#organization",
-      "name": "QuarterSmart",
-      "url": "https://quartersmart.com/",
-      "logo": "https://quartersmart.com/assets/qs-mark.png",
-      "slogan": "Train your team. Automate the rest.",
-      "founder": [
-        { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
-        { "@id": "https://quartersmart.com/about.html#cullen-brown" }
-      ],
-      "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ", "addressCountry": "US" }
-    },
+    <!-- @include ld-org -->,
     {
       "@type": "WebSite",
       "@id": "https://quartersmart.com/#website",
       "name": "QuarterSmart",
       "url": "https://quartersmart.com/",
-      "publisher": { "@id": "https://quartersmart.com/#organization" }
+      "publisher": {
+        "@id": "https://quartersmart.com/#organization"
+      }
     },
     {
       "@type": "Article",
       "@id": "https://quartersmart.com/signals/weekly-advancements-apr-22-2026#article",
       "headline": "This Week in AI, April 22, 2026",
-      "image": "https://quartersmart.com/assets/images/signals/weekly-advancements-apr-22-2026-cover.jpg",
+      "description": "The week of April 21, 2026: longer context windows, agents showing up in public-sector buying, and data residency becoming the first question.",
+      "image": "https://quartersmart.com/assets/og/signals-weekly-advancements-apr-22-2026.jpg",
       "datePublished": "2026-04-22",
-      "dateModified": "2026-04-22",
-      "author": { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
-      "publisher": { "@id": "https://quartersmart.com/#organization" },
-      "mainEntityOfPage": "https://quartersmart.com/signals/weekly-advancements-apr-22-2026",
-      "isPartOf": { "@id": "https://quartersmart.com/#website" }
+      "dateModified": "2026-09-27",
+      "author": {
+        "@type": "Person",
+        "@id": "https://quartersmart.com/about.html#hyrum-hurst",
+        "name": "Hyrum Hurst",
+        "url": "https://quartersmart.com/about/hyrum-hurst/"
+      },
+      "publisher": {
+        "@id": "https://quartersmart.com/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://quartersmart.com/#website"
+      },
+      "mainEntityOfPage": "https://quartersmart.com/signals/weekly-advancements-apr-22-2026"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quartersmart.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Signals", "item": "https://quartersmart.com/signals" },
-        { "@type": "ListItem", "position": 3, "name": "This Week in AI, April 22, 2026", "item": "https://quartersmart.com/signals/weekly-advancements-apr-22-2026" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://quartersmart.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Signals",
+          "item": "https://quartersmart.com/signals/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "This Week in AI, April 22, 2026",
+          "item": "https://quartersmart.com/signals/weekly-advancements-apr-22-2026"
+        }
       ]
     }
   ]
 }
 </script>
-<style>
-/* Signals article layer on top of site.css (uses the same tokens) */
-.sig-banner { max-width: var(--container); margin: var(--sp-6) auto 0; padding: 0 var(--gutter); }
-.sig-banner__inner { border-radius: var(--radius-lg); border: 1px solid var(--border-mint);
-  background: linear-gradient(135deg, var(--qs-mint-20), rgba(6,6,8,0.9)); padding: 56px 32px;
-  text-align: center; display: flex; flex-direction: column; gap: 6px; align-items: center; }
-.sig-banner__k { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); }
-.sig-banner__t { font-family: var(--font-display); font-size: clamp(34px, 6vw, 60px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.04; color: var(--text-strong); }
-.sig-banner__t em { font-style: normal; color: var(--accent); }
-.sig-tldr { margin: 0 0 32px; padding: 24px 28px; background: var(--qs-mint-08); border: 1px solid var(--border-mint); border-radius: var(--radius-lg); }
-.sig-tldr__label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-.sig-tldr ul { list-style: none; padding-left: 0; margin: 0; }
-.sig-tldr li { position: relative; padding-left: 24px; margin-bottom: 10px; line-height: 1.65; }
-.sig-tldr li:last-child { margin-bottom: 0; }
-.sig-tldr li::before { content: '\2192'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
-.sig-callout { margin: 28px 0; padding: 24px 28px; background: var(--surface-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); }
-.sig-callout__tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-.sig-callout h3 { margin-top: 0; margin-bottom: 12px; }
-.sig-callout p { margin-bottom: 14px; }
-.sig-callout ul { margin-bottom: 0; }
-.sig-callout__why { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); padding-top: 14px; margin-top: 4px; border-top: 1px solid var(--border-hairline); letter-spacing: 0.01em; }
-.sig-callout__why strong { color: var(--accent); }
-</style>
-  <link rel="alternate" type="application/rss+xml" title="QuarterSmart Signals" href="/feed.xml">
 </head>
-<body>
-<a class="qs-skip" href="#main">Skip to content</a>
-
-<header class="qs-nav" data-open="false">
-  <div class="qs-nav__bar">
-    <a class="qs-logo" href="/" aria-label="QuarterSmart home">
-      <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
-        <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
-        <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
-        <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
-        <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-        <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-      </svg>
-      <span class="qs-logo__word">QuarterSmart</span>
-    </a>
-    <nav class="qs-nav__links" aria-label="Primary">
-      <a href="/services/">Services</a>
-      <a href="/case-studies/">Case Studies</a>
-      <a href="/about/">About</a>
-      <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/" aria-current="page">Signals</a>
-      <a href="/own-your-ai">Own Your AI</a>
-      <a href="/faq/">FAQ</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-    <div class="qs-nav__cta">
-      <a class="qs-btn qs-btn--primary qs-btn--sm" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-    </div>
-    <button class="qs-nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="qs-drawer"><span></span><span></span></button>
-  </div>
-  <nav class="qs-nav__drawer" id="qs-drawer" aria-label="Mobile">
-    <a href="/services/">Services</a>
-    <a href="/case-studies/">Case Studies</a>
-    <a href="/about/">About</a>
-    <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/" aria-current="page">Signals</a>
-    <a href="/own-your-ai">Own Your AI</a>
-    <a href="/faq/">FAQ</a>
-    <a href="/contact/">Contact</a>
-    <a class="qs-btn qs-btn--primary qs-btn--full" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-  </nav>
-</header>
-
+<body class="sig-post po">
+<!-- @include nav -->
 <main id="main">
-  <!-- Page header -->
-  <section class="qs-section" style="padding-bottom:var(--sp-4)">
-    <div class="qs-wrap qs-wrap--prose">
-      <nav class="qs-breadcrumb" aria-label="Breadcrumb"><a href="/signals/">Signals</a> / This Week in AI, April 22, 2026</nav>
-      <span class="qs-eyebrow">Weekly &middot; Apr 22, 2026 &middot; By Hyrum Hurst</span>
-      <h1 class="qs-h1" style="margin-top:10px">This Week in AI, April 22, 2026</h1>
+  <header class="phero">
+    <div class="wrap phero__grid">
+      <div class="phero__copy">
+        <nav class="phero__crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/signals/">Signals</a></nav>
+        <p class="phero__meta"><span class="chip chip--insight">Weekly roundup</span></p>
+        <h1 class="phero__h">This Week in AI, April 22, 2026</h1>
+        <p class="lede">The week of April 21, 2026: longer context windows, agents showing up in public-sector buying, and data residency becoming the first question.</p>
+        <p class="byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-04-22">Apr 22, 2026</time></span><span>Updated <time datetime="2026-09-27">Sep 27, 2026</time></span></p>
+        <div class="phero__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book" style="font-size:clamp(16.5px,(100vw - 480px) * 1000,22px)">Book a free 20-minute call</a></div>
+      </div>
+      <div class="pxwin phero__art">
+        <span class="win__t" aria-hidden="true">signal.exe</span>
+        <div class="pxstage" data-pxstage data-first="scope" data-scenes="radar satellite scope verdicts tower rocket mail wave assistant keyboard mark" data-max="4">
+          <div class="pxstage__screen">
+            <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" style="--x:45;--y:10;--w:54" alt="Pixel art of a radar dish on a lattice tower, listening." fetchpriority="high">
+            <canvas aria-hidden="true"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </header>
 
-    <!-- Cover -->
-  <div class="qs-wrap" style="margin-bottom:var(--sp-7)">
-    <img src="/assets/images/signals/weekly-advancements-apr-22-2026-cover.jpg" alt="A mint-green radar sweep over a dark grid with a few bright blips, this week in AI" loading="lazy" width="1200" height="800" style="display:block;width:100%;height:auto;border:1px solid var(--border-hairline);border-radius:var(--radius-lg)">
-  </div>
+  <div class="wrap post-grid">
+    <article class="prose">
+      <div class="callout"><strong>From the archive.</strong> Posted April 22, 2026. Some items here have changed since. For current coverage, see <a href="/signals/">the latest Signals</a>.</div>
 
-  <!-- Article body -->
-  <section class="qs-section">
-    <div class="qs-wrap qs-wrap--prose">
-      <article class="qs-prose">
-
-        <p>Every week, something in AI shifts, a new model drops, an agency rolls out a policy, a school district makes a bet. Most of it is noise. Here's the signal from the week of April 21, 2026: what actually moved, and what it means for learners, teachers, and public-sector teams.</p>
-
-        <div class="sig-tldr">
-          <div class="sig-tldr__label">TL;DR, what to know in 30 seconds</div>
-          <ul>
-            <li>Frontier models keep gaining context and tool use, but the gap between "demo-good" and "classroom-good" is widening</li>
-            <li>Three more states announced K-12 AI literacy mandates, total now 14</li>
-            <li>Agents moved from novelty to procurement: public agencies are writing RFPs for "AI workforce assistants"</li>
-            <li>Privacy and data residency are the #1 question in every government pilot conversation</li>
-            <li>Free tier access to frontier models is quietly shrinking, the equity gap is real</li>
-          </ul>
-        </div>
-
-        <h2>1. Model layer: long context gets mainstream, but usability lags</h2>
-
-        <p>Another week, another round of context-window bumps. The top frontier labs keep pushing effective context into the millions of tokens with better recall. On paper this is huge: feed a model a full textbook, a legal filing, or a year of district meeting minutes and it can reason across the whole thing.</p>
-
-        <p>In practice? Most users still copy-paste one paragraph at a time. The capability is outpacing the interface. <strong>The unlock for teachers and public-sector workers isn't a longer context, it's a workflow that actually uses it.</strong> That gap is where adoption is won or lost.</p>
-
-        <div class="sig-callout">
-          <div class="sig-callout__tag">Education Angle</div>
-          <h3>What it means for your classroom or team</h3>
-          <p>A million-token window is wasted on a user who doesn't know they can paste a whole syllabus, rubric, or policy manual at once. The single most underrated AI skill right now is <em>"here is the full context, now help me"</em>, and almost no one teaches it.</p>
-          <div class="sig-callout__why"><strong>Why it matters:</strong> Training that starts with tool-level prompts will always lag the frontier. Training that starts with <em>workflow</em> moves with it.</div>
-        </div>
-
-        <h2>2. K-12 AI literacy: three more state mandates, 14 and counting</h2>
-
-        <p>Three additional US states announced K-12 AI literacy requirements this week, bringing the running total to 14 states with some form of mandate or recommended framework. The pattern is consistent: middle and high school AI literacy by 2027, teacher professional development in the meantime, and an open question about <em>who's actually going to build the curriculum</em>.</p>
-
-        <p>Every district we've talked to is stuck in the same place: <strong>"We're supposed to teach AI, but we have no curriculum and no training budget."</strong> Expect free, openly licensed materials to race in and fill that gap.</p>
-
-        <div class="sig-callout">
-          <div class="sig-callout__tag">Action Items for Districts</div>
-          <h3>If you're a district admin reading this</h3>
-          <ul>
-            <li>Check your state's mandate timeline, most have an implementation year baked in</li>
-            <li>Teacher PD has to lead the student rollout, not follow it</li>
-            <li>Vendor-neutral, openly licensed materials give you leverage in procurement</li>
-          </ul>
-        </div>
-
-        <h2>3. Agents move into procurement</h2>
-
-        <p>"AI agent" was a Twitter hype cycle in 2024, a product category in 2025, and in 2026 it's a line item in government RFPs. Several state and county procurement offices posted solicitations this week for "AI workforce assistants", essentially agents that help public employees draft documents, triage tickets, and compile reports.</p>
-
-        <p>The bar has moved from <em>"can it do the task"</em> to <em>"can it do the task with audit logs, PII handling, data residency, and a training program for the employees using it."</em> The training requirement is increasingly explicit. Buyers are learning the hard way that shipping a tool without training is just shipping frustration.</p>
-
-        <div class="sig-callout">
-          <div class="sig-callout__tag">Public Sector Signal</div>
-          <h3>The unbundling of "AI capability" and "AI adoption"</h3>
-          <p>Agencies are discovering that giving everyone a ChatGPT seat is not a strategy. Adoption requires role-specific workflows, trained users, and systems that respect data boundaries. This is why QuarterSmart leads with deployment options, not model specs.</p>
-          <div class="sig-callout__why"><strong>Why it matters:</strong> The next 18 months of public-sector AI spend will be on <em>integration and training</em>, not raw model access.</div>
-        </div>
-
-        <h2>4. Privacy and data residency: the question everyone is asking</h2>
-
-        <p>Every government, every district, every contractor conversation we've had this quarter starts with some variant of: <strong>"Where does our data live, and who can see it?"</strong></p>
-
-        <p>SaaS AI is getting harder to justify for anyone touching student records, CUI, or regulated data. The trend this week, and all month, is toward <em>private cloud</em>, <em>on-premises</em>, and <em>air-gapped</em> options. A real local-host capability is becoming table stakes, not a premium feature.</p>
-
-        <p>This is why <strong>secure deployment</strong> is the backbone of our government and contractor work: knowledge systems and AI assistants hardened for data residency, with a one-command local deployment that runs fully offline.</p>
-
-        <h2>5. The widening equity gap</h2>
-
-        <p>Quietly, most major AI platforms trimmed free-tier access again this week. More capabilities behind paywalls, tighter message limits, older models on the free side. For professionals and students with budgets, this is a minor inconvenience. For the learners who most need AI literacy, and have the least discretionary income, it compounds.</p>
-
-        <p>Closing this gap isn't a marketing line. It's a direct response to this. <strong>If the frontier is paywalled, at least the fluency shouldn't be.</strong> That's the principle behind QuarterSmart's workforce enablement: every team, every public employee gets the practical AI fluency to do real work, regardless of budget or org size.</p>
-
-        <h2>What to watch next week</h2>
-
+      <div class="shortv">
+        <h2>The short version</h2>
         <ul>
-          <li><strong>State-level AI procurement standards</strong>, expect at least one more state to publish model contract language</li>
-          <li><strong>Agent evaluation benchmarks</strong>, the field still lacks a good "does this actually work in a real job" test</li>
-          <li><strong>Teacher training programs</strong>, which states fund PD will signal which are serious about their mandates</li>
-          <li><strong>Local-host model releases</strong>, the open-weight ecosystem for on-prem deployments keeps getting better</li>
+          <li>Frontier models now take in about a million tokens of context, but most people still paste in one paragraph at a time.</li>
+          <li>Agents are moving from novelty to procurement: public buyers now ask for audit logs, data handling and training, not just a demo.</li>
+          <li>Where the data lives is becoming the first question in any pilot that touches regulated records.</li>
         </ul>
-
-        <p>If you see something we should cover, drop it below. The best signal comes from the people in the room.</p>
-
-      </article>
-
-      <!-- Closing CTA -->
-      <div class="qs-cta-row" style="margin-top:var(--sp-7)">
-        <a class="qs-btn qs-btn--primary" href="https://calendly.com/hyrum-quartersmart/book-a-call" target="_blank" rel="noopener">Book a call</a>
-        <a class="qs-btn qs-btn--secondary" href="/signals/">Back to Signals</a>
       </div>
-    </div>
-  </section>
 
-  <!-- Author byline + read next (E-E-A-T + internal linking) -->
-  <section class="qs-section qs-bordered post-end">
-    <div class="qs-wrap qs-wrap--prose">
-      <div class="post-author">
-        <img class="post-author__img" src="/assets/images/team/hyrum-hurst.webp" alt="Hyrum Hurst" width="64" height="64" loading="lazy">
-        <div>
-          <p class="post-author__name">Hyrum Hurst</p>
-          <p class="post-author__bio">Founder of QuarterSmart and a verified n8n creator. He builds local-model and agent systems for growing teams and writes Signals on how AI adoption actually works in practice. <a href="/about/#hyrum-hurst">More about Hyrum</a>.</p>
-        </div>
-      </div>
-      <p class="post-more"><span class="post-more__label">Read next</span> <a href="/signals/sops-to-aops">What an AOP is</a> &middot; <a href="/signals/stretch-ai-budget">Stretch your AI budget</a> &middot; <a href="/signals/why-ai-pilots-fail">Why 95% of pilots fail</a> &middot; <a href="/signals/">All Signals</a></p>
-    </div>
-  </section>
-</main>
+      <p>Every week something in AI shifts: a new model, a new policy, a new product tier. Most of it is noise. Here is what moved in the week of April 21, 2026, and what it means for a team deciding where AI fits.</p>
 
-<footer class="qs-footer">
-  <div class="qs-footer__inner">
-    <div class="qs-footer__grid">
-      <div class="qs-footer__brand">
-        <a class="qs-logo" href="/" aria-label="QuarterSmart home">
-          <svg class="qs-logo__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <path d="M50 50 L50 7 A43 43 0 0 0 7 50 Z" fill="#0e5340"/>
-            <path d="M50 50 L7 50 A43 43 0 0 0 50 93 Z" fill="#0e5340"/>
-            <path d="M50 50 L50 93 A43 43 0 0 0 93 50 Z" fill="#0e5340"/>
-            <path d="M50 50 L93 50 A43 43 0 0 0 50 7 Z" fill="var(--accent)"/>
-            <rect x="48.4" y="6" width="3.2" height="88" fill="var(--bg-page)"/>
-            <rect x="6" y="48.4" width="88" height="3.2" fill="var(--bg-page)"/>
-          </svg>
-          <span class="qs-logo__word">QuarterSmart</span>
-        </a>
-        <p>QuarterSmart is an AI implementation company in Mesa, Arizona. We build AI onboarding, training, and automation systems for growing teams.</p>
-        <a class="qs-mail" href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>
+      <h2>1. Long context goes mainstream, and usability lags</h2>
+      <p>The top models keep pushing how much they can read at once. OpenAI's GPT-5.4, released in March, takes in about a million tokens through its API. On paper that is a big deal: give a model a full contract, a policy manual or a year of meeting notes, and it can work across all of it.</p>
+      <p>In practice, most people still paste in one paragraph at a time. The capability is ahead of the habit, and that gap is where adoption is won or lost.</p>
+      <div class="po-note">
+        <h3>What it means for your team</h3>
+        <p>A million-token window is wasted on someone who doesn't know they can paste the whole document at once. The most underrated AI habit right now is "here is the full context, now help me."</p>
       </div>
-      <div class="qs-footer__col">
-        <h2>Company</h2>
-        <a href="/services/">Services</a>
-        <a href="/case-studies/">Case Studies</a>
-        <a href="/about/">About</a>
-        <a href="/for-agencies/">For Agencies</a>
-      <a href="/signals/" aria-current="page">Signals</a>
-        <a href="/own-your-ai">Own your AI</a>
-      </div>
-      <div class="qs-footer__col">
-        <h2>Get in touch</h2>
-        <a href="/faq/">FAQ</a>
-        <a href="/contact/">Contact</a>
-        <a href="/workflow-usage/">Workflow usage</a>
-      </div>
-    </div>
-    <div class="qs-footer__meta">
-      <span class="qs-tag-line">Train your team. Automate the rest.</span>
-      <span class="qs-copy"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; &copy; 2026 QuarterSmart &middot; Mesa, AZ</span>
-    </div>
+
+      <h2>2. Agents move into procurement</h2>
+      <p>US federal agencies have been able to buy ChatGPT Enterprise, Claude and Gemini through the General Services Administration since August 2025. The questions have moved on from "can it do the task" to "can it do the task with audit logs, careful handling of personal data, a clear answer on where the data lives, and training for the people using it."</p>
+      <p>That is a useful checklist for any business, not only public agencies. A tool shipped without training mostly ships frustration.</p>
+
+      <h2>3. Where the data lives is the first question</h2>
+      <p>In government, schools and regulated businesses, the first question is usually some version of: <strong>"Where does our data live, and who can see it?"</strong></p>
+      <p>Vendors are answering it. OpenAI, for example, now lets eligible ChatGPT Enterprise, Edu and API customers choose the region where their data is stored. Private cloud and on-premises options are moving from premium extras toward a baseline expectation for anyone handling sensitive records.</p>
+
+      <h2>What we were watching next</h2>
+      <ul>
+        <li><strong>Agent evaluation.</strong> The field still lacks a good "does this work in a real job" test.</li>
+        <li><strong>Procurement language.</strong> Contract terms for AI tools, including data location and audit rights.</li>
+        <li><strong>Local-host model releases.</strong> Open-weight models for on-premises use keep improving.</li>
+      </ul>
+
+      <h2>If you want help</h2>
+      <p>Want this filtered to your tools and set up for you? See <a href="/services/#first-quarter">First Quarter</a>, or <a href="/contact/">book a free 20-minute call</a>.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ul class="sources">
+        <li><a href="https://openai.com/index/introducing-gpt-5-4/" rel="noopener">OpenAI: Introducing GPT-5.4</a>, March 5, 2026</li>
+        <li><a href="https://www.gsa.gov/about-gsa/newsroom/news-releases/gsa-announces-new-partnership-with-openai-delivering-deep-discount-to-chatgpt-08062025" rel="noopener">GSA: new partnership with OpenAI for ChatGPT across government</a>, August 6, 2025</li>
+        <li><a href="https://openai.com/index/expanding-data-residency-access-to-business-customers-worldwide/" rel="noopener">OpenAI: Expanding data residency access to business customers worldwide</a></li>
+      </ul>
+
+      <h2>Update log</h2>
+      <ul class="updlog">
+        <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout and edited. Removed items we could not source, and added sources for the items we kept.</span></li>
+        <li><time datetime="2026-04-22">Apr 22, 2026</time><span>First posted.</span></li>
+      </ul>
+
+      <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by any vendor or agency mentioned here. Product names are trademarks of their owners. This post reflects public information as of April 22, 2026. Signals is general information about third-party products, not legal, security or financial advice. <a href="/signals/policy/">How we source Signals</a>.</p>
+    </article>
+
+    <aside class="psum" aria-label="Signal summary">
+      <dl class="psum__kv">
+        <div><dt>Status</dt><dd><span class="chip chip--insight">Weekly roundup</span></dd></div>
+        <div><dt>Who it's for</dt><dd>Teams deciding where AI fits this quarter</dd></div>
+        <div><dt>Covers</dt><dd>The week of April 21, 2026</dd></div>
+      </dl>
+      <nav aria-label="Read next">
+        <p class="psum__k">Read next</p>
+        <ul class="psum__next">
+          <li><a href="/signals/why-ai-pilots-fail">Why 95% of AI pilots show no return</a></li>
+          <li><a href="/signals/stretch-ai-budget">How to stretch your AI budget</a></li>
+          <li><a href="/signals/">All Signals</a></li>
+        </ul>
+      </nav>
+    </aside>
   </div>
-</footer>
-
-<script>
-(function(){
-  /* mobile nav */
-  var n=document.querySelector('.qs-nav'),t=n&&n.querySelector('.qs-nav__toggle');
-  if(t)t.addEventListener('click',function(){var o=n.getAttribute('data-open')==='true';n.setAttribute('data-open',String(!o));t.setAttribute('aria-expanded',String(!o));});
-})();
-</script>
+  <!-- @include post-end -->
+</main>
+<script src="/assets/js/radar.js?v=20260927m" defer></script>
+<!-- @include footer -->
 </body>
 </html>

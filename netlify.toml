@@ -1,4 +1,4 @@
-# QuarterSmart — Netlify continuous deployment from GitHub.
+# QuarterSmart: Netlify continuous deployment from GitHub.
 # On every push to main, Netlify runs the build (which copies only the
 # publishable site into dist/) and publishes dist/.
 
@@ -9,7 +9,9 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Long-cache the immutable media (frame sequences, video, images, logos)
+# Long-cache the immutable media (frame sequences, video, images, logos).
+# This also covers /assets/img/* (page art) and /assets/og/* (social cards);
+# Netlify sets their Content-Type from the file extension.
 [[headers]]
   for = "/assets/*"
   [headers.values]
@@ -44,31 +46,31 @@
 # 301 redirects from the old AI Ed / pre-rebrand URLs to the new pages
 [[redirects]]
   from = "/about.html"
-  to = "/about"
+  to = "/about/"
   status = 301
 [[redirects]]
   from = "/privacy.html"
-  to = "/privacy"
+  to = "/privacy/"
   status = 301
 [[redirects]]
   from = "/terms.html"
-  to = "/terms"
+  to = "/terms/"
   status = 301
 [[redirects]]
   from = "/ai-implementation/*"
-  to = "/services"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/n8n-automation/*"
-  to = "/services"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/workforce-enablement/*"
-  to = "/services"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/radar.html"
-  to = "/signals"
+  to = "/signals/"
   status = 301
 [[redirects]]
   from = "/rebrand-preview/*"
@@ -78,23 +80,27 @@
 # Stale AI Ed era URLs still indexed by Google/Bing (clean up 404s)
 [[redirects]]
   from = "/blog/*"
-  to = "/signals"
+  to = "/signals/"
   status = 301
 [[redirects]]
   from = "/radar"
-  to = "/signals"
+  to = "/signals/"
   status = 301
 [[redirects]]
   from = "/vs-lms"
-  to = "/services"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/coming-soon"
   to = "/"
   status = 301
 [[redirects]]
+  from = "/coming-soon.html"
+  to = "/"
+  status = 301
+[[redirects]]
   from = "/teams/*"
-  to = "/services"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/schools/*"
@@ -108,9 +114,46 @@
 # Structure Properties case study renamed for client anonymity
 [[redirects]]
   from = "/case-studies/structure-properties"
-  to = "/case-studies/sf-property-management"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/case-studies/structure-properties/*"
-  to = "/case-studies/sf-property-management"
+  to = "/services/"
+  status = 301
+
+# 2026 relaunch: short links and retired page names
+# /book is a clean link for emails and slides. 302 so the target can change.
+[[redirects]]
+  from = "/book"
+  to = "https://calendly.com/hyrum-quartersmart/book-a-call"
+  status = 302
+[[redirects]]
+  from = "/offers"
+  to = "/services/"
+  status = 301
+[[redirects]]
+  from = "/why-us"
+  to = "/approach/"
+  status = 301
+[[redirects]]
+  from = "/team"
+  to = "/about/"
+  status = 301
+
+# Retired in the September 2026 rebrand (source kept in /graveyard, not published)
+[[redirects]]
+  from = "/case-studies"
+  to = "/services/"
+  status = 301
+[[redirects]]
+  from = "/case-studies/*"
+  to = "/services/"
+  status = 301
+[[redirects]]
+  from = "/own-your-ai"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/own-your-ai/*"
+  to = "/"
   status = 301
