@@ -6,6 +6,7 @@
 #main [hidden] { display: none !important; }
 
 /* ---------- Header extras ---------- */
+.nw { white-space: nowrap; }
 .phead .hero__cta { margin-top: 30px; }
 .w-head { align-items: end; }
 .w-head .spec { margin-bottom: 6px; }
@@ -116,9 +117,11 @@
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
   .oya-calc { grid-template-columns: 1fr; }
+  .post-side .w-side-cta { display: none; }
   .w-art .shot { min-height: 0; aspect-ratio: 16 / 10; }
 }
 @media (max-width: 640px) {
+  #main .pane__t--r { display: none; }
   .oya-calc__val { font-size: 44px; }
   .oya-reasons, .oya-out-grid { grid-template-columns: 1fr; }
   .w-table { font-size: 14.5px; }

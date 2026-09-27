@@ -5,11 +5,11 @@
   root.classList.add('js');
 
   // ---- Theme (Omarchy-style: a small set of named, fully designed palettes)
-  const THEMES = ['midnight', 'obsidian', 'rose', 'forest', 'paper'];
+  const THEMES = ['evergreen', 'obsidian', 'forest', 'midnight', 'rose', 'paper'];
   const read = () => { try { return localStorage.getItem('qs-theme'); } catch { return null; } };
   const save = (t) => { try { localStorage.setItem('qs-theme', t); } catch { /* private mode */ } };
   function apply(t) {
-    if (!THEMES.includes(t)) t = 'midnight';
+    if (!THEMES.includes(t)) t = 'evergreen';
     root.dataset.theme = t;
     document.querySelectorAll('[data-theme-name]').forEach((el) => { el.textContent = t; });
     document.querySelectorAll('[data-theme-pick]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.themePick === t)));
@@ -17,7 +17,7 @@
     if (meta) meta.content = getComputedStyle(root).getPropertyValue('--bg-0').trim() || meta.content;
     window.dispatchEvent(new CustomEvent('qs:theme', { detail: t }));
   }
-  apply(read() || 'midnight');
+  apply(read() || 'evergreen');
   document.addEventListener('click', (e) => {
     const pick = e.target.closest('[data-theme-pick]');
     if (pick) { apply(pick.dataset.themePick); save(pick.dataset.themePick); return; }

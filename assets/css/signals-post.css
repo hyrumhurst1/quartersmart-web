@@ -1,12 +1,18 @@
 /* Signals posts: the few pieces the archive posts need on top of qs.css.
    Tokens only, square corners, no shadows. Linked right after the shared head. */
 
+/* Keep the article column inside narrow screens: wide tables scroll, long URLs wrap */
+.post-grid > * { min-width: 0; }
+.prose { overflow-wrap: break-word; }
+
 /* Citation markers: [1] */
 .prose sup.cite { font: 500 .62em/0 var(--mono); margin-left: 1px; }
 
 /* Callouts that carry a label, a heading and text */
 .prose .callout > * + * { margin-top: .6em; }
+.prose .callout > :first-child { margin-top: 0; }
 .prose .callout h3 { font-size: 18px; }
+.prose .callout ul { margin-bottom: 0; }
 
 /* Panes set inside the article column */
 .prose .pane > * + * { margin-top: .6em; }
@@ -18,6 +24,7 @@
 
 /* Stat meters that cite a source */
 .meter__src { display: block; margin-top: 2px; }
+.prose .meter__v { color: var(--fg-0); }
 
 /* Before and after cost panes */
 .costs .stat { font-size: clamp(40px, 4.4vw, 56px); }
@@ -34,6 +41,7 @@
 .prose .orglist li { break-inside: avoid; margin: 0 0 8px; }
 
 /* Self-check */
+.quiz__q { color: var(--fg-0); }
 .quiz__opt { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px dashed var(--line-2); font-size: 16px; line-height: 1.55; cursor: pointer; }
 .quiz__opt:hover { color: var(--fg-0); }
 .quiz__opt input { flex: none; width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); cursor: pointer; }
@@ -42,3 +50,6 @@
 
 /* Read next list in the side column */
 .readnext { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+
+/* Pull quotes: use the full column width */
+.prose figure > blockquote { margin: 0; }

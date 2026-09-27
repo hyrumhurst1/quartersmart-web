@@ -42,7 +42,7 @@
       "@id": "https://quartersmart.com/about/hyrum-hurst#profilepage",
       "url": "https://quartersmart.com/about/hyrum-hurst",
       "name": "Hyrum Hurst, founder of QuarterSmart",
-      "description": "Profile of Hyrum Hurst, founder of QuarterSmart: background, what he builds, credentials and recent Signals.",
+      "description": "Profile of Hyrum Hurst, founder of QuarterSmart and CTO of Learning Journey AI: background, what he builds, credentials and recent Signals.",
       "dateModified": "2026-09-27",
       "isPartOf": { "@id": "https://quartersmart.com/#website" },
       "about": { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
@@ -61,9 +61,12 @@
       "url": "https://quartersmart.com/about/hyrum-hurst",
       "image": "https://quartersmart.com/assets/images/team/hyrum-hurst.webp",
       "alternateName": "@hyrum-hurst",
-      "jobTitle": "Founder and AI Automations Engineer",
-      "description": "Hyrum Hurst is the founder of QuarterSmart, an early-adoption AI partner based in Mesa, Arizona. He builds AI assistants, agents and n8n automations for small and mid-sized businesses and writes QuarterSmart Signals. He is a verified n8n creator with 25 public workflow templates and has been quoted in CyberNews on local AI models.",
-      "worksFor": { "@id": "https://quartersmart.com/#organization" },
+      "jobTitle": ["Founder, QuarterSmart", "CTO, Learning Journey AI"],
+      "description": "Hyrum Hurst is the founder of QuarterSmart, an early-adoption AI partner based in Mesa, Arizona. He builds AI assistants, agents and n8n automations for small and mid-sized businesses and writes QuarterSmart Signals. He is also CTO of Learning Journey AI, an AI education company. He is a verified n8n creator with 25 public workflow templates and has been quoted in CyberNews on local AI models.",
+      "worksFor": [
+        { "@id": "https://quartersmart.com/#organization" },
+        { "@type": "Organization", "name": "Learning Journey AI", "url": "https://learningjourneyai.com/" }
+      ],
       "affiliation": { "@id": "https://quartersmart.com/#organization" },
       "homeLocation": { "@type": "Place", "name": "Mesa, Arizona" },
       "email": "hyrum@quartersmart.com",
@@ -74,11 +77,13 @@
       },
       "knowsAbout": [
         "AI early adoption",
+        "applied AI",
         "AI assistants and agents",
         "ChatGPT, Claude and Gemini business setup",
         "n8n automation",
         "workflow automation",
         "Claude Code",
+        "AI education",
         "AI training for teams"
       ],
       "sameAs": [
@@ -119,16 +124,18 @@
           <a class="btn" href="https://www.linkedin.com/in/hyrum-hurst-83a5a537a/" rel="noopener">LinkedIn</a>
         </div>
       </div>
-      <div class="pane fh-card">
-        <span class="pane__t">profile</span>
-        <div class="fh-card__top">
+      <div class="pane pane--active founder fh-card">
+        <span class="pane__t">player one</span>
+        <div class="founder__id">
           <img src="/assets/images/team/hyrum-hurst.webp" width="320" height="320" alt="Portrait of Hyrum Hurst, founder of QuarterSmart" fetchpriority="high">
-          <div><p class="fh-card__name">Hyrum Hurst</p><p class="fh-card__role">founder · quartersmart</p></div>
+          <div><p class="h-3">Hyrum Hurst</p><p class="role">founder · mesa, arizona</p></div>
         </div>
         <dl class="spec">
+          <p class="spec__h" aria-hidden="true"><span>facts</span></p>
+          <div><dt>role</dt><dd>Founder, QuarterSmart</dd></div>
+          <div><dt>also</dt><dd>CTO, Learning Journey AI</dd></div>
           <div><dt>based in</dt><dd>Mesa, Arizona</dd></div>
           <div><dt>builds</dt><dd>AI assistants, agents and n8n automations</dd></div>
-          <div><dt>works in</dt><dd>Claude, ChatGPT and n8n, every day</dd></div>
           <div><dt>writes</dt><dd><a href="/signals/">QuarterSmart Signals</a></dd></div>
           <div><dt>email</dt><dd><a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a></dd></div>
         </dl>
@@ -174,7 +181,7 @@
       <div class="split fh-cred">
         <article class="pane pane--active" id="n8n" data-reveal>
           <span class="pane__t">n8n creator</span>
-          <p class="fh-rank">10,876<small>documented uses across 25 public workflow templates, as of June 2026</small></p>
+          <p class="fh-num">10,876<small>documented uses across 25 public workflow templates, as of June 2026</small></p>
           <dl class="spec">
             <p class="spec__h" aria-hidden="true"><span>on n8n</span></p>
             <div><dt>status</dt><dd>Verified n8n creator</dd></div>
@@ -188,7 +195,7 @@
         <div class="fh-cred__side">
           <article class="pane" data-reveal>
             <span class="pane__t">press</span>
-            <p>Quoted in CyberNews, 2026, on which local AI models tech professionals run and why. Hyrum described prototyping automation logic offline with local models before moving it to production.</p>
+            <p>Quoted in CyberNews in 2026 on which local AI models tech professionals run and why, including how he prototypes automation logic offline before it goes to production.</p>
             <a class="link" href="https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/" rel="noopener">Read it on CyberNews</a>
           </article>
           <article class="pane" data-reveal>
@@ -197,29 +204,29 @@
             <a class="link" href="https://app.qwoted.com/sources/hyrum-hurst" rel="noopener">Qwoted profile</a>
           </article>
           <article class="pane" data-reveal>
-            <span class="pane__t">certifications</span>
-            <ul class="plus">
-              <li>Google Certified AI Automations Engineer</li>
-              <li>Google Generative AI Leader</li>
-              <li>Google Prompt Engineering</li>
-              <li>Google Data Analytics</li>
-              <li>Vanderbilt AI Automation Certification</li>
-            </ul>
-            <p class="fine">Owner-provided.</p>
-          </article>
-          <article class="pane" data-reveal>
             <span class="pane__t">open source</span>
             <p>Open-source AI developer tools on GitHub, including an empirical Big-O complexity analyzer, an AI code reviewer and an API load-testing tool that writes its own health reports.</p>
             <a class="link" href="https://github.com/hyrumhurst1" rel="noopener">GitHub</a>
           </article>
         </div>
       </div>
+      <article class="pane fh-certs" data-reveal>
+        <span class="pane__t">certifications</span>
+        <ul class="plus">
+          <li>Google Certified AI Automations Engineer</li>
+          <li>Google Generative AI Leader</li>
+          <li>Google Prompt Engineering</li>
+          <li>Google Data Analytics</li>
+          <li>Vanderbilt AI Automation Certification</li>
+        </ul>
+        <p class="fine">Owner-provided.</p>
+      </article>
     </div>
   </section>
 
   <section class="sec sec--deep" id="experience" aria-labelledby="xp-h">
     <div class="wrap split split--57">
-      <div class="sec__head" style="margin:0">
+      <div class="sec__head ab-sticky" style="margin:0">
         <p class="label">Experience</p>
         <h2 class="h-1" id="xp-h">Where the work comes from.</h2>
         <p class="body-l">Learning Journey AI, Dual Logic, Ability Builders and Skytech are Hyrum's own roles and collaborations. They are not QuarterSmart clients.</p>
@@ -232,16 +239,12 @@
             <p>AI agents and multi-step automations with the Claude API, Claude Code, n8n and Zapier. AI-drafted email and SMS outreach, lead routing, CRM and data workflows, and custom web apps on Next.js and Supabase.</p>
           </li>
           <li>
-            <div><p class="xp__org">Learning Journey AI</p><p class="xp__when">AI Associate · 2026 to present</p></div>
-            <p>A Washington, DC AI education consultancy founded by Nicholas Wagner, Ph.D. Hyrum builds and maintains the company's platform and website, develops its course-creation workflows, and was a key designer on an "AI for Nonprofits" course co-created with Dr. Wagner.</p>
+            <div><p class="xp__org">Learning Journey AI</p><p class="xp__when">CTO · 2026 to present</p></div>
+            <p>An AI education company in Washington, DC, founded by Nicholas Wagner, Ph.D. Hyrum runs its technology: the platform, the website and the course-creation workflows. He was also a key designer on an "AI for Nonprofits" course co-created with Dr. Wagner.</p>
           </li>
           <li>
             <div><p class="xp__org">Dual Logic</p><p class="xp__when">AI automation consultant, contract · 2026 to present</p></div>
             <p>A Washington, DC AI integration consultancy. Workflow discovery and mapping, and AI automations and language-model integrations used inside a software company of 500 to 1,000 people.</p>
-          </li>
-          <li>
-            <div><p class="xp__org">SF property management company</p><p class="xp__when">Contract · Nov 2025 to May 2026</p></div>
-            <p>A custom onboarding system across seven roles: 39 training videos, AI-graded quiz gating, automated certification and compliance tracking. <a href="/case-studies/sf-property-management/">Read the case study</a>.</p>
           </li>
           <li>
             <div><p class="xp__org">Ability Builders</p><p class="xp__when">Pro bono · 2026 to present</p></div>

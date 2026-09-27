@@ -156,13 +156,13 @@
     <div class="post-grid">
       <article class="prose">
         <div class="shortv">
-        <h2>The short version</h2>
-        <ul>
-        <li>Most AI work is routine: classifying, extracting, drafting, summarizing. It does not need a frontier model.</li>
-        <li>Open models such as Llama, Qwen, Mistral and Gemma run locally through Ollama or LM Studio, with no per-token cost.</li>
-        <li>When you do call an API, a router like OpenRouter, prompt caching and the smallest model that does the job all cut the bill.</li>
-        <li>Start with your single highest-volume routine task: move it off the frontier API and measure the savings.</li>
-        </ul>
+          <h2>The short version</h2>
+          <ul>
+            <li>Most AI work is routine: classifying, extracting, drafting, summarizing. It does not need a frontier model.</li>
+            <li>Open models such as Llama, Qwen, Mistral and Gemma run locally through Ollama or LM Studio, with no per-token cost.</li>
+            <li>When you do call an API, a router like OpenRouter, prompt caching and the smallest model that does the job all cut the bill.</li>
+            <li>Start with your single highest-volume routine task: move it off the frontier API and measure the savings.</li>
+          </ul>
         </div>
         <h2>The bill that never stops</h2>
         <p>Frontier AI is priced per token, and the bill grows with every request. The trap is sending all of it to the most expensive model, including the easy work that a far cheaper model would handle just as well. You also run into rate limits and session caps at the worst moments, because you are leaning on a metered service you do not control. The fix is not to use less AI. It is to stop overpaying for the parts that do not need the best model.</p>
@@ -178,26 +178,26 @@
         <p>If your team uses AI coding agents, the same logic applies. The <a href="https://education.github.com/pack" rel="noopener">GitHub Student Developer Pack</a> and free tiers cover a lot for students and small teams. Open-source proxies can point a coding agent like Claude Code or Codex at a free or low-cost model provider instead of the default paid one, so the routine edits run cheap and you reserve the premium model for the gnarly problems. The pattern is the same everywhere: route the easy work to the cheap path, and pay for the hard work only when you hit it.</p>
         <h2>A simple rule for what to keep local</h2>
         <div class="callout callout--info">
-        <h3>Keep it local or cheap when the task is</h3>
-        <p><strong>routine and high volume</strong> (classify, extract, draft, summarize, route), <strong>latency tolerant</strong>, or involves <strong>sensitive data you would rather not send out</strong>. Send it to a frontier model when the task is <strong>genuinely hard reasoning</strong>, low volume, or high stakes where the best answer is worth the price.</p>
+          <h3>Keep it local or cheap when the task is</h3>
+          <p><strong>routine and high volume</strong> (classify, extract, draft, summarize, route), <strong>latency tolerant</strong>, or involves <strong>sensitive data you would rather not send out</strong>. Send it to a frontier model when the task is <strong>genuinely hard reasoning</strong>, low volume, or high stakes where the best answer is worth the price.</p>
         </div>
         <p>You do not have to get this perfect on day one. Start by moving your single highest-volume routine task off the frontier API and onto something cheaper, measure the savings, and expand from there.</p>
         <h2>Where this goes</h2>
         <p>Offloading tokens is the practical version of a bigger idea: owning more of your AI instead of renting all of it. The more of your routine you can run on hardware and models you control, the less of your budget is exposed to someone else's pricing and limits. That is the thesis behind <a href="/own-your-ai">Own Your AI</a>, a private system your company owns for the everyday work. And once an agent is running that work, the procedures it follows are <a href="/signals/sops-to-aops">AOPs</a>, the agent-runnable version of your SOPs. The offloading you do this month is the on-ramp to both.</p>
         <h2>Common questions</h2>
         <div class="faq">
-        <details open><summary>How do I save money on AI?</summary><div class="a"><p>Stop sending every request to a top frontier model. Most of your AI work is routine and can run on a small local model or a cheaper provider for a fraction of the cost. Reserve the expensive frontier model for the hard minority that actually needs it. The cheapest token is the one you do not buy at full price.</p></div></details>
-        <details><summary>Can I run AI models locally?</summary><div class="a"><p>Yes. Tools like Ollama and LM Studio let you run open models such as Llama, Qwen, Mistral, and Gemma on your own computer or server, with no per-token cost. A modern laptop runs small models well; a machine with a capable GPU runs larger ones. They are strong at routine tasks like classification, extraction, drafting, and simple question answering.</p></div></details>
-        <details><summary>What is OpenRouter?</summary><div class="a"><p>OpenRouter is a single API that routes your requests across many model providers, so you can pick a cheaper or free model per task and fall back automatically if one is unavailable. It is a simple way to stop paying frontier prices for work a smaller model handles fine.</p></div></details>
-        <details><summary>Is a local AI model good enough?</summary><div class="a"><p>For the routine majority of work, yes. Open models in the 7B to 70B range handle classification, extraction, summaries, drafting, and structured output reliably. They are not the best at the hardest reasoning, which is exactly why you keep a frontier model on call for that small share instead of paying for it on everything.</p></div></details>
-        <details><summary>How do I use AI for cheaper or free?</summary><div class="a"><p>Run open models locally for zero per-token cost, route API calls through a cheaper provider like OpenRouter, use free tiers and student programs such as the GitHub Student Developer Pack, turn on prompt caching, and pick the smallest model that does the job. Open-source proxies can also point a coding agent like Claude Code or Codex at a free or low-cost model provider instead of the default paid one.</p></div></details>
+          <details open><summary>How do I save money on AI?</summary><div class="a"><p>Stop sending every request to a top frontier model. Most of your AI work is routine and can run on a small local model or a cheaper provider for a fraction of the cost. Reserve the expensive frontier model for the hard minority that actually needs it. The cheapest token is the one you do not buy at full price.</p></div></details>
+          <details><summary>Can I run AI models locally?</summary><div class="a"><p>Yes. Tools like Ollama and LM Studio let you run open models such as Llama, Qwen, Mistral, and Gemma on your own computer or server, with no per-token cost. A modern laptop runs small models well; a machine with a capable GPU runs larger ones. They are strong at routine tasks like classification, extraction, drafting, and simple question answering.</p></div></details>
+          <details><summary>What is OpenRouter?</summary><div class="a"><p>OpenRouter is a single API that routes your requests across many model providers, so you can pick a cheaper or free model per task and fall back automatically if one is unavailable. It is a simple way to stop paying frontier prices for work a smaller model handles fine.</p></div></details>
+          <details><summary>Is a local AI model good enough?</summary><div class="a"><p>For the routine majority of work, yes. Open models in the 7B to 70B range handle classification, extraction, summaries, drafting, and structured output reliably. They are not the best at the hardest reasoning, which is exactly why you keep a frontier model on call for that small share instead of paying for it on everything.</p></div></details>
+          <details><summary>How do I use AI for cheaper or free?</summary><div class="a"><p>Run open models locally for zero per-token cost, route API calls through a cheaper provider like OpenRouter, use free tiers and student programs such as the GitHub Student Developer Pack, turn on prompt caching, and pick the smallest model that does the job. Open-source proxies can also point a coding agent like Claude Code or Codex at a free or low-cost model provider instead of the default paid one.</p></div></details>
         </div>
         <h2>If you want help</h2>
         <p>Tell us where your AI spend goes today. We will show you which routine work can run cheaper or local, and what to keep on a frontier model. <a href="/contact/">Book a 20-minute call</a>.</p>
         <h2>Update log</h2>
         <ul class="updlog">
-        <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout. The reporting is unchanged.</span></li>
-        <li><time datetime="2026-06-27">Jun 27, 2026</time><span>First posted.</span></li>
+          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout. The reporting is unchanged.</span></li>
+          <li><time datetime="2026-06-27">Jun 27, 2026</time><span>First posted.</span></li>
         </ul>
         <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by any vendor named on this page. Product names are trademarks of their owners. This post reflects public information as of June 27, 2026. <a href="/signals/policy/">How we source Signals</a>.</p>
       </article>

@@ -1,6 +1,6 @@
 /* About, founder, contact and FAQ pages.
    Small on purpose: layout glue for components that already live in qs.css.
-   Tokens only, square corners, no shadows. */
+   Tokens only, square corners, no shadows. Pixel face only on its 11px grid. */
 
 /* ---------- Page head with a side column ---------- */
 .ab-head { align-items: end; }
@@ -8,29 +8,37 @@
 .ab-head .spec { padding-bottom: 4px; }
 .ab-head .spec div { grid-template-columns: 96px 1fr; }
 
+/* ---------- Helpers ---------- */
+.nowrap { white-space: nowrap; }
+.ab-sticky { position: sticky; top: 112px; align-self: start; }
+
 /* ---------- Stacked copy column ---------- */
 .ab-stack { display: grid; gap: 22px; align-content: start; }
 .ab-stack .pane { margin-top: 8px; }
 
-/* ---------- People (longer bios than the homepage) ---------- */
-.ab-people { align-items: stretch; }
-.ab-people .person > div > p + p { margin-top: 10px; }
-.ab-people .person .link { display: inline-block; margin-top: 18px; }
+/* ---------- Founder card + proof ---------- */
+.ab-team { align-items: stretch; }
+.ab-team .founder .body-l { font-size: 17px; }
+.ab-xp { margin-top: calc(var(--gap) + 22px); }
+.ab-after { display: grid; gap: 18px; margin-top: calc(var(--gap) + 18px); }
+.ab-after .callout { max-width: 76ch; }
+.ab-after .faint { font-size: 15px; }
+.ab-after .faint .link { margin-left: 10px; }
 
 /* ---------- Experience rows ---------- */
 .xp { list-style: none; margin: 0; padding: 0; }
-.xp li { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 6px 28px; padding: 20px 0; border-top: 1px dashed var(--line-2); }
+.xp li { display: grid; grid-template-columns: minmax(0, 230px) minmax(0, 1fr); gap: 6px 28px; padding: 20px 0; border-top: 1px dashed var(--line-2); }
 .xp li:first-child { border-top: 0; padding-top: 4px; }
 .xp li:last-child { padding-bottom: 0; }
-.xp__org { font: 500 15px/1.35 var(--mono); letter-spacing: -.01em; color: var(--fg-0); }
+.xp__org { font: 600 16px/1.35 var(--sans); color: var(--fg-0); }
 .xp__when { margin-top: 5px; font: 400 12.5px/1.5 var(--mono); color: var(--fg-2); }
-.xp li > p { color: var(--fg-1); font-size: 15.5px; }
+.xp li > p { color: var(--fg-1); font-size: 15.5px; max-width: 72ch; }
 .xp a { color: var(--fg-0); text-decoration-color: var(--accent); }
-.ab-note { margin-bottom: 18px; max-width: 62ch; }
+.ab-note { margin-bottom: 20px; max-width: 72ch; }
 
 /* ---------- Link list, one note per link ---------- */
 .plinks { list-style: none; margin: 0; padding: 0; }
-.plinks li { display: grid; gap: 6px; padding: 16px 0; border-top: 1px dashed var(--line-2); }
+.plinks li { display: grid; gap: 6px; padding: 15px 0; border-top: 1px dashed var(--line-2); }
 .plinks li:first-child { border-top: 0; padding-top: 4px; }
 .plinks li:last-child { padding-bottom: 0; }
 .plinks span { font-size: 14.5px; color: var(--fg-1); }
@@ -41,37 +49,37 @@
 .plus li::before { content: "+"; position: absolute; left: 0; font-family: var(--mono); color: var(--accent); }
 .plus b { color: var(--fg-0); font-weight: 600; }
 
-/* ---------- Image pane ---------- */
-.ab-where { align-items: center; }
-.ab-mesa { margin: 0; padding: 10px; }
-.ab-mesa .shot { aspect-ratio: 16 / 9; }
-.ab-callout { margin-top: calc(var(--gap) + 18px); max-width: 76ch; }
+/* ---------- Pixel scene (full width, bottom-anchored crop) ---------- */
+.ab-scene { --h: 460px; margin: calc(var(--gap) + 34px) 0 0; }
+
+/* ---------- The real logo mark (the partial), drawn large on whole pixels (30px per cell) ---------- */
+.ab-gem { width: 300px; max-width: 100%; }
+.ab-gem svg { display: block; width: 100%; height: auto; }
+@media (max-width: 960px) { .ab-scene { height: auto; } }
 
 /* ---------- CTA pane with a button instead of a form ---------- */
 .ab-act { display: grid; gap: 14px; justify-items: start; }
 
 /* ---------- Founder page ---------- */
-.fh-card { display: grid; gap: 24px; }
-.fh-card__top { display: grid; grid-template-columns: 128px 1fr; gap: 20px; align-items: end; }
-.fh-card__top img { width: 128px; height: 128px; object-fit: cover; filter: grayscale(.25) contrast(1.02); }
-.fh-card__name { font: 600 20px/1.25 var(--sans); color: var(--fg-0); }
-.fh-card__role { margin-top: 4px; font: 400 12.5px var(--mono); color: var(--fg-2); }
+.fh-card { display: grid; gap: 24px; align-content: start; }
+.fh-card .founder__id img { width: 112px; height: 112px; }
 .fh-builds .pane { display: grid; gap: 10px; align-content: start; }
 .fh-cred { align-items: stretch; }
 .fh-cred > .pane { display: grid; gap: 22px; align-content: start; }
 .fh-cred__side { display: grid; gap: calc(var(--gap) + 10px); }
 .fh-cred__side .pane { display: grid; gap: 14px; align-content: start; }
-.fh-cred__side p { color: var(--fg-1); font-size: 15.5px; }
-.fh-cred .plus { font-size: 15.5px; gap: 8px; }
-.fh-rank { font: 500 clamp(40px, 5vw, 60px)/1 var(--mono); letter-spacing: -.05em; color: var(--fg-0); }
-.fh-rank small { display: block; margin-top: 10px; font: 400 14px/1.5 var(--sans); letter-spacing: 0; color: var(--fg-1); }
+.fh-cred__side p:not(.fine) { color: var(--fg-1); font-size: 15.5px; }
+.fh-certs { display: grid; gap: 18px; margin-top: calc(var(--gap) + 22px); }
+.fh-certs .plus { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 28px; font-size: 15.5px; }
+.fh-num { font: 400 66px/1 var(--pixel); color: var(--fg-0); }
+.fh-num small { display: block; margin-top: 12px; font: 400 15px/1.5 var(--sans); color: var(--fg-1); }
 .fh-links { display: flex; flex-wrap: wrap; gap: 12px 26px; }
 
 /* ---------- Contact ---------- */
 .ct-grid { align-items: stretch; }
 .ct-book { display: grid; gap: 22px; align-content: start; padding: clamp(28px, 4vw, 48px); }
 .ct-book .spec { margin-top: 6px; }
-.ct-side { display: grid; gap: calc(var(--gap) + 10px); align-content: start; }
+.ct-side { display: grid; grid-template-rows: auto 1fr; gap: calc(var(--gap) + 10px); }
 .ct-side .pane { display: grid; gap: 14px; align-content: start; }
 .ct-side p { color: var(--fg-1); font-size: 15.5px; }
 .ct-mail { font: 500 clamp(17px, 1.7vw, 20px)/1.3 var(--mono); letter-spacing: -.02em; overflow-wrap: anywhere; }
@@ -79,24 +87,28 @@
 
 /* ---------- FAQ page ---------- */
 .fq { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
-.fq__nav { position: sticky; top: 76px; display: grid; gap: 30px; }
-.fq__idx { list-style: none; margin: 10px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.fq__nav { position: sticky; top: 108px; display: grid; gap: 30px; }
+.fq__idx { list-style: none; margin: 12px 0 0; padding: 0; border-top: 1px solid var(--line); }
 .fq__idx a { display: flex; gap: 12px; padding: 12px 2px; border-bottom: 1px solid var(--line); font: 500 14px var(--mono); color: var(--fg-1); text-decoration: none; }
 .fq__idx a span { color: var(--fg-2); }
 .fq__idx a:hover { color: var(--accent); }
 .fq__ask { display: grid; gap: 12px; }
 .fq__ask p { color: var(--fg-1); font-size: 15px; }
-.fq__grp { scroll-margin-top: 72px; }
+.fq__grp { scroll-margin-top: 84px; }
 .fq__grp + .fq__grp { margin-top: clamp(56px, 7vw, 96px); }
 .fq__grp > header { display: grid; gap: 12px; margin-bottom: 26px; }
 
 @media (max-width: 960px) {
+  .ab-sticky { position: static; }
+  .fh-certs .plus { grid-template-columns: 1fr 1fr; }
   .fq { grid-template-columns: 1fr; }
   .fq__nav { position: static; }
   .fq__ask { display: none; }
 }
 @media (max-width: 640px) {
   .xp li { grid-template-columns: 1fr; }
-  .fh-card__top { grid-template-columns: 96px 1fr; }
-  .fh-card__top img { width: 96px; height: 96px; }
+  .fh-certs .plus { grid-template-columns: 1fr; }
+  .fh-num { font-size: 55px; }
+  .ab-gem { width: 200px; }
+  .ab-after .faint .link { display: inline-block; margin: 8px 0 0; }
 }

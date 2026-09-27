@@ -21,7 +21,32 @@
 /* Default: Midnight. A btop / Tokyo Night room: navy-black glass,
    pale blue-grey rules, pastel mint for the brand, yellow and purple as
    the two supporting voices. */
-:root, [data-theme="midnight"] {
+/* Default: Evergreen. The owner's hybrid of Forest and Obsidian: obsidian
+   blacks as the base (Forest's darker greens replaced), Forest's warm cream
+   ink and muted sage, teal, butter and rose as the accents, and Forest's
+   slate used only occasionally as a raised colour block (--block). */
+:root, [data-theme="evergreen"] {
+  --bg-0: #0f1110;   /* page: obsidian with a green undertone */
+  --bg-1: #151816;   /* surface */
+  --bg-2: #1c201d;   /* raised, hover */
+  --bg-3: #252a27;
+  --block: #2b3337;  /* forest slate, for the occasional colour block */
+  --line: #2a2f2b;
+  --line-2: #465048;
+  --fg-0: #e8e0c9;   /* forest cream, 14.9:1 */
+  --fg-1: #c7bfa8;   /* 10.6:1 */
+  --fg-2: #9ea69b;   /* 7.2:1 */
+  --accent: #a7d4a0; /* sage mint: sits between Forest green and the logo greens */
+  --accent-ink: #0f1a10;
+  --accent-2: #8fc28a;
+  --warn: #dbbc7f;   /* butter */
+  --event: #d699b6;  /* rose */
+  --info: #83c0b8;   /* teal */
+  --bad: #e67e80;
+  --grain: .07;
+  color-scheme: dark;
+}
+[data-theme="midnight"] {
   --bg-0: #0b0d15;   /* page */
   --bg-1: #0f121c;   /* pane */
   --bg-2: #151927;   /* raised, hover */
@@ -167,7 +192,7 @@ p { margin: 0; }
 }
 .nav__in { display: flex; align-items: center; gap: 28px; height: 64px; max-width: calc(var(--wrap) + 64px); margin: 0 auto; padding: 0 clamp(16px, 2.4vw, 32px); }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg-0); white-space: nowrap; font: 400 22px/1 var(--pixel); letter-spacing: 0; }
-.brand svg { width: 28px; height: 28px; flex: none; }
+.brand svg { width: 30px; height: 30px; flex: none; }
 .nav__links { display: flex; gap: 6px; margin-left: auto; }
 .nav__links a { position: relative; padding: 10px 12px; font: 500 15px/1 var(--sans); color: var(--fg-1); text-decoration: none; }
 .nav__links a:hover { color: var(--fg-0); }

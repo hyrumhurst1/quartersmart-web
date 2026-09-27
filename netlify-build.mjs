@@ -155,7 +155,7 @@ try {
 
     // RSS feed of Signals posts (discovery + readers + crawlers).
     try {
-      const posts = uniqE.filter((e) => e.url.includes("/signals/") && e.url !== BASE + "/signals" && e.title);
+      const posts = uniqE.filter((e) => e.url.includes("/signals/") && e.url !== BASE + "/signals" && !/\/signals\/(policy|log)$/.test(e.url) && e.title);
       posts.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
       const items = posts.map((p) => `  <item>\n    <title>${p.title}</title>\n    <link>${p.url}</link>\n    <guid isPermaLink="true">${p.url}</guid>\n    <pubDate>${new Date((p.date || today) + "T08:00:00Z").toUTCString()}</pubDate>\n    <description>${p.desc}</description>\n  </item>`).join("\n");
       const rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n  <title>QuarterSmart Signals</title>\n  <link>${BASE}/signals</link>\n  <atom:link href="${BASE}/feed.xml" rel="self" type="application/rss+xml"/>\n  <description>Operator-focused reads on the models, tools, and shifts that change how teams adopt and run AI. By Hyrum Hurst, QuarterSmart.</description>\n  <language>en-us</language>\n  <lastBuildDate>${new Date(today + "T08:00:00Z").toUTCString()}</lastBuildDate>\n${items}\n</channel>\n</rss>\n`;

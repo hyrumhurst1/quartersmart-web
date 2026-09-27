@@ -45,7 +45,7 @@
       "isPartOf": { "@id": "https://quartersmart.com/#website" },
       "about": { "@id": "https://quartersmart.com/#organization" },
       "publisher": { "@id": "https://quartersmart.com/#organization" },
-      "primaryImageOfPage": { "@type": "ImageObject", "url": "https://quartersmart.com/assets/img/approach-manual-keyboard.webp", "width": 1584, "height": 990 },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": "https://quartersmart.com/assets/og/og-approach.png", "width": 1200, "height": 630 },
       "breadcrumb": { "@id": "https://quartersmart.com/approach#breadcrumb" }
     },
     {
@@ -71,7 +71,7 @@
       <p class="label label--accent">Our approach</p>
       <h1 class="h-1" style="margin-top:16px">Train your team. Automate the rest.</h1>
       <p class="lede">How we pick what's worth adopting, how we set it up safely, and how we make it stick.</p>
-      <ul class="toc" aria-label="On this page">
+      <ul class="ap-toc" aria-label="On this page">
         <li><a href="#two-halves"><span>01</span>the two halves</a></li>
         <li><a href="#method"><span>02</span>the method</a></li>
         <li><a href="#principles"><span>03</span>principles</a></li>
@@ -90,40 +90,40 @@
           <p class="body-l">So every engagement has two halves, in this order. First we train your team on the new tool, inside their own work. Then we automate the repetitive work that's left.</p>
           <p class="body-l">Training comes first because an automation is only as good as the people who check it.</p>
         </div>
-        <div class="pane approach__art">
-          <span class="pane__t">the manual and the machine</span>
-          <div class="shot"><img src="/assets/img/approach-manual-keyboard.webp" width="1584" height="990" alt="A vintage mechanical keyboard beside an open spiral-bound manual and a stack of floppy disks on a dark desk." fetchpriority="high"></div>
-        </div>
+        <figure class="stage ap-stage">
+          <img src="/assets/px/sprite-keyboard-manual.png" width="149" height="53" alt="Pixel art of a mechanical keyboard next to an open manual." style="--w:149px;--s:3" fetchpriority="high">
+          <figcaption class="stage__cap">the manual and the machine</figcaption>
+        </figure>
       </div>
-      <div class="split halves">
-        <article class="pane half" data-reveal>
+      <div class="split ap-halves">
+        <article class="pane ap-half" data-reveal>
           <span class="pane__t">first · train</span>
           <h3>Train your team.</h3>
           <p>We train people on the new tool inside their own work, with their own examples, until it's part of the day.</p>
-          <ul class="plus">
+          <ul class="sv-plus">
             <li>Live Rollout Sessions built around each role.</li>
             <li>Only on tools your team can actually use.</li>
             <li>A prompt and workflow sheet everyone keeps.</li>
             <li>A one-page guide to how you use each tool.</li>
           </ul>
-          <div class="evidence">
-            <p class="label">Evidence</p>
-            <p>For a San Francisco property management company, we built an onboarding and enablement system across seven roles. Onboarding time and repeat questions fell 65%. SOP-related mistakes fell 36%, measured against a baseline taken before launch. Results vary with team size and how consistent the process was before.</p>
-            <a class="link" href="/case-studies/sf-property-management/">Read the case study</a>
+          <div class="ap-evidence">
+            <p class="label">Background</p>
+            <p>Our founder, Hyrum Hurst, is also CTO of Learning Journey AI, an AI education company, so keeping current on applied AI is already part of his day job.</p>
+            <a class="link" href="/about/hyrum-hurst/">More about Hyrum</a>
           </div>
         </article>
-        <article class="pane half" data-reveal>
+        <article class="pane ap-half" data-reveal>
           <span class="pane__t">then · automate</span>
           <h3>Automate the rest.</h3>
           <p>Then we take the repetitive work that's left and automate it, with agents and workflows your team can see and check.</p>
-          <ul class="plus">
+          <ul class="sv-plus">
             <li>Agents and automations in n8n, Claude or the tools you already use.</li>
             <li>Your SOPs turned into procedures an agent can run.</li>
             <li>A test period before anything runs on its own.</li>
             <li>Documentation and a handover your team can operate.</li>
           </ul>
-          <div class="evidence">
-            <p class="label">Evidence</p>
+          <div class="ap-evidence">
+            <p class="label">Receipts</p>
             <p>25 public n8n workflow templates by QuarterSmart, with 10,876 documented uses in the n8n community as of June 2026.</p>
             <a class="link" href="/workflow-usage/">See the data</a>
           </div>
@@ -141,10 +141,10 @@
       </div>
       <div class="pane" data-reveal>
         <span class="pane__t">detect · decode · deploy · stay current</span>
-        <ol class="stages">
-          <li class="stage">
-            <div class="stage__k"><span class="step__n">01</span><h3>Detect</h3><span class="stage__when">every day</span></div>
-            <div class="stage__b">
+        <ol class="ap-method">
+          <li class="ap-method__row">
+            <div class="ap-method__k"><span class="step__n">01</span><h3>Detect</h3><span class="ap-method__when">every day</span></div>
+            <div class="ap-method__b">
               <p>We watch model releases, product changelogs, early-access programs and credible reporting across the AI market.</p>
               <p class="label">What we read</p>
               <dl class="spec">
@@ -152,30 +152,30 @@
                 <div><dt>your tools</dt><dd>Google Workspace, Microsoft 365, HubSpot, Slack, Zoom, QuickBooks, Canva, Notion and other common business tools</dd></div>
                 <div><dt>reporting</dt><dd>credible tech press, and public posts from the companies' own staff</dd></div>
               </dl>
-              <p>We only cover information that's already public. A person reads every item and writes every Signal.</p>
+              <p>We only cover information that's already public, and a person writes every Signal.</p>
               <a class="link" href="/signals/policy/">How we source Signals</a>
             </div>
           </li>
-          <li class="stage">
-            <div class="stage__k"><span class="step__n">02</span><h3>Decode</h3><span class="stage__when">same business day for members</span></div>
-            <div class="stage__b">
+          <li class="ap-method__row">
+            <div class="ap-method__k"><span class="step__n">02</span><h3>Decode</h3><span class="ap-method__when">same business day for members</span></div>
+            <div class="ap-method__b">
               <p>Each Signal answers two questions in plain English. Does this matter to a business like yours? What should you do this week?</p>
-              <div class="tags"><span class="label">How sure we are</span><span class="chip chip--reported">Reported · unconfirmed</span><span class="chip chip--confirmed">Confirmed</span><span class="chip chip--available">Available</span><span class="chip chip--early">Early access</span><span class="chip chip--quiet">Quiet update</span><span class="chip chip--event">Event</span></div>
-              <div class="tags"><span class="label">What to do</span><span class="verdict">Act now</span><span class="verdict">Prepare</span><span class="verdict">Wait</span><span class="verdict">Ignore</span></div>
+              <div class="ap-tags"><span class="label">How sure we are</span><span class="chip chip--reported">Reported · unconfirmed</span><span class="chip chip--confirmed">Confirmed</span><span class="chip chip--available">Available</span><span class="chip chip--early">Early access</span><span class="chip chip--quiet">Quiet update</span><span class="chip chip--event">Event</span></div>
+              <div class="ap-tags"><span class="label">What to do</span><span class="verdict">Act now</span><span class="verdict">Prepare</span><span class="verdict">Wait</span><span class="verdict">Ignore</span></div>
               <p>Reported items stay labeled unconfirmed until the company confirms or denies them. We keep score in public on the <a href="/signals/log/">Signals Log</a>, misses included.</p>
             </div>
           </li>
-          <li class="stage">
-            <div class="stage__k"><span class="step__n">03</span><h3>Deploy</h3><span class="stage__when">from the day it's available to you</span></div>
-            <div class="stage__b">
+          <li class="ap-method__row">
+            <div class="ap-method__k"><span class="step__n">03</span><h3>Deploy</h3><span class="ap-method__when">from the day it's available to you</span></div>
+            <div class="ap-method__b">
               <p>When it's worth it, we set it up in your accounts, connect it to the tools you already use, test it with a few people, then train the team.</p>
               <p>Day one means the first day a tool is available to your account. Rollouts are often staggered by plan, region or company size, so we prepare beforehand wherever the vendor has published enough detail.</p>
               <a class="link" href="/services/#day-one-setup">Day One Setup</a>
             </div>
           </li>
-          <li class="stage">
-            <div class="stage__k"><span class="step__n">04</span><h3>Stay current</h3><span class="stage__when">every week</span></div>
-            <div class="stage__b">
+          <li class="ap-method__row">
+            <div class="ap-method__k"><span class="step__n">04</span><h3>Stay current</h3><span class="ap-method__when">every week</span></div>
+            <div class="ap-method__b">
               <p>Members get Signals filtered to their own tools, the same business day for anything that touches their stack, with setup time held for launch weeks. When a tool changes, we adjust your setup.</p>
               <p>Once a quarter we sit down with you for a Stack Review: what you pay for, what the team actually uses, and what to change next.</p>
               <a class="link" href="/services/#first-quarter">First Quarter membership</a>
@@ -192,21 +192,21 @@
         <p class="label">Principles</p>
         <h2 class="h-1" id="principles-h">What we hold to.</h2>
       </div>
-      <div class="principles" style="margin-top:0">
+      <div class="principles ap-principles">
         <div class="pane" data-reveal>
           <h3>We say "wait" more than "go."</h3>
           <p>Most launches don't deserve your time. Wait and Ignore are common verdicts in Signals, and we'll tell you when a popular tool isn't right for you.</p>
-          <p class="inpractice">In practice: nothing gets set up until it passes the six questions below.</p>
+          <p class="ap-inpractice">In practice: we only recommend a tool once it passes the six questions below.</p>
         </div>
         <div class="pane" data-reveal>
           <h3>Your accounts, your data.</h3>
           <p>We set tools up inside accounts you own, with the least access they need. If something shouldn't go near client or patient data, we say so before we set it up.</p>
-          <p class="inpractice">In practice: you hold the logins, and you can remove our access at any time.</p>
+          <p class="ap-inpractice">In practice: you hold the logins, and you can remove our access at any time.</p>
         </div>
         <div class="pane" data-reveal>
           <h3>Plain English.</h3>
           <p>If we can't explain why a launch matters to your business in two sentences, it doesn't go out.</p>
-          <p class="inpractice">In practice: every tool we set up comes with a one-page guide to how you use it.</p>
+          <p class="ap-inpractice">In practice: every tool we set up comes with a one-page guide to how you use it.</p>
         </div>
       </div>
     </div>
@@ -222,7 +222,7 @@
       </div>
       <div class="pane" data-reveal>
         <span class="pane__t">the checklist</span>
-        <ol class="checks">
+        <ol class="ap-checks">
           <li><b>Does it do a job your team does every week?</b><p>If we can't name the job and the person who does it, the answer is no.</p></li>
           <li><b>Can you use it now?</b><p>It has to be available to your account, on the plan you have or one you'd actually pay for.</p></li>
           <li><b>Does it fit the tools you already use?</b><p>Email, calendar, docs, CRM. A tool that can't connect to them rarely becomes part of the day.</p></li>
@@ -242,7 +242,7 @@
         <p class="body-l">Whatever the tool, these four apply from the first day.</p>
       </div>
       <div>
-        <div class="rules">
+        <div class="ap-rules">
           <div class="pane" data-reveal>
             <span class="step__n">01</span>
             <h3>Least access.</h3>
@@ -275,9 +275,9 @@
         <span class="pane__t">next step</span>
         <div class="cta__copy">
           <h2 class="h-1" id="cta-h">Start with what you already pay for.</h2>
-          <p class="body-l">The fastest wins are often in software you already have. On a 20-minute call, tell us what you use and what's eating your team's week. We'll tell you what's worth doing now and what can wait.</p>
+          <p class="body-l">The fastest wins are often in software you already have. On a <span style="white-space:nowrap">20-minute</span> call, tell us what you use and what's eating your team's week. We'll tell you what's worth doing now and what can wait.</p>
         </div>
-        <div class="cta__act">
+        <div class="sv-act">
           <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
           <a class="link" href="/services/">See services and prices</a>
           <p class="fine">Not ready to talk? <a href="/signals/">Read this week's Signals</a> first.</p>

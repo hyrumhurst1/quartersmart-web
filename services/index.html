@@ -128,21 +128,21 @@
 <main id="main">
 
   <header class="phead">
-    <div class="wrap phead__grid">
+    <div class="wrap sv-phead">
       <div>
         <p class="phead__crumbs"><a href="/">home</a> / services</p>
         <p class="label label--accent">Services</p>
         <h1 class="h-1" style="margin-top:16px">Start where you are.</h1>
         <p class="lede">Five ways to work with us, from a free Monday email to a monthly membership that keeps your business early.</p>
-        <div class="phead__cta">
+        <div class="sv-phead__cta">
           <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
           <a class="link" href="#chooser">Which should I start with?</a>
         </div>
       </div>
-      <div class="pane phead__art">
-        <span class="pane__t">five ways to work</span>
-        <div class="shot"><img src="/assets/img/services-cartridges.webp" width="1584" height="990" alt="Five floppy disks standing in a row on a dark shelf, with mint, yellow, lavender, blue and white labels." fetchpriority="high"></div>
-      </div>
+      <figure class="stage">
+        <img src="/assets/px/sprite-floppies.png" width="134" height="31" alt="Pixel art of five floppy disks in a row, with mint, yellow, lavender, cyan and white labels." style="--w:134px;--s:3" fetchpriority="high">
+        <figcaption class="stage__cap">five ways in · level 0 to 4</figcaption>
+      </figure>
     </div>
   </header>
 
@@ -150,19 +150,19 @@
     <div class="wrap">
       <div class="sec__head">
         <p class="label">The ladder</p>
-        <h2 class="h-1" id="ladder-h">Every step works on its own.</h2>
+        <h2 class="h-1" id="ladder-h">Every level works on its own.</h2>
         <p class="body-l">Most businesses begin with Signals or a Head Start, then add a setup or a membership when there's something worth doing.</p>
       </div>
-      <nav class="pane ladder-pane" aria-label="Services on this page">
-        <span class="pane__t">the ladder</span>
+      <nav class="pane sv-ladder-pane" aria-label="Services on this page">
+        <span class="pane__t">level select</span>
         <span class="pane__t pane__t--r">prices in usd</span>
-        <ol class="ladder">
-          <li><a href="#signals"><span class="ladder__n">00</span><span class="ladder__name">Signals</span><span class="ladder__what">The public feed and a Monday email. What changed, whether it matters, what to do.</span><span class="ladder__price"><b>Free</b></span></a></li>
-          <li><a href="#head-start"><span class="ladder__n">01</span><span class="ladder__name">Head Start</span><span class="ladder__what">A review of the tools you already pay for, and a 30-day plan. About a week.</span><span class="ladder__price"><b>From $1,500</b> one time</span></a></li>
-          <li><a href="#day-one-setup"><span class="ladder__n">02</span><span class="ladder__name">Day One Setup</span><span class="ladder__what">One tool set up in your accounts, tested with a few people, then taught to the team.</span><span class="ladder__price"><b>From $2,500</b> per tool</span></a></li>
-          <li><a href="#rollout-session"><span class="ladder__n">02b</span><span class="ladder__name">Rollout Session</span><span class="ladder__what">Live training, role by role, on a tool your team already has.</span><span class="ladder__price"><b>Quoted</b> · in membership</span></a></li>
-          <li><a href="#first-quarter"><span class="ladder__n">03</span><span class="ladder__name">First Quarter</span><span class="ladder__what">The membership. Signals filtered to your tools, plus setup and training time every month.</span><span class="ladder__price"><b>From $1,500</b> a month</span></a></li>
-          <li><a href="#build"><span class="ladder__n">04</span><span class="ladder__name">Build</span><span class="ladder__what">Custom agents and automations for the work that repeats.</span><span class="ladder__price"><b>Scoped</b> after a Head Start</span></a></li>
+        <ol class="sv-ladder">
+          <li><a href="#signals"><span class="sv-ladder__n"><span class="sr">Level </span>0</span><span class="sv-ladder__name">Signals</span><span class="sv-ladder__what">The public feed and a Monday email. What changed, whether it matters, what to do.</span><span class="sv-ladder__price"><b>Free</b></span></a></li>
+          <li><a href="#head-start"><span class="sv-ladder__n"><span class="sr">Level </span>1</span><span class="sv-ladder__name">Head Start</span><span class="sv-ladder__what">A review of the tools you already pay for, and a 30-day plan. About a week.</span><span class="sv-ladder__price"><b>From $1,500</b> one time</span></a></li>
+          <li><a href="#day-one-setup"><span class="sv-ladder__n"><span class="sr">Level </span>2</span><span class="sv-ladder__name">Day One Setup</span><span class="sv-ladder__what">One tool set up in your accounts, tested with a few people, then taught to the team.</span><span class="sv-ladder__price"><b>From $2,500</b> per tool</span></a></li>
+          <li><a href="#rollout-session"><span class="sv-ladder__n"><span class="sr">Level </span>2b</span><span class="sv-ladder__name">Rollout Session</span><span class="sv-ladder__what">Live training, role by role, on a tool your team already has.</span><span class="sv-ladder__price"><b>Quoted</b> · in membership</span></a></li>
+          <li><a href="#first-quarter"><span class="sv-ladder__n"><span class="sr">Level </span>3</span><span class="sv-ladder__name">First Quarter</span><span class="sv-ladder__what">The membership. Signals filtered to your tools, plus setup and training time every month.</span><span class="sv-ladder__price"><b>From $1,500</b> a month</span></a></li>
+          <li><a href="#build"><span class="sv-ladder__n"><span class="sr">Level </span>4</span><span class="sv-ladder__name">Build</span><span class="sv-ladder__what">Custom agents and automations for the work that repeats.</span><span class="sv-ladder__price"><b>Scoped</b> after a Head Start</span></a></li>
         </ol>
       </nav>
     </div>
@@ -175,16 +175,16 @@
         <h2 class="h-1" id="start-h">Start free, or start with a plan.</h2>
         <p class="body-l">Signals shows you how we think, in public and for free. A Head Start applies the same thinking to your business and hands you a plan.</p>
       </div>
-      <div class="svcs">
+      <div class="sv-offers">
 
-        <article class="pane svc" id="signals" aria-labelledby="signals-h" data-reveal>
-          <span class="pane__t">00 · free</span>
+        <article class="pane sv-offer" id="signals" aria-labelledby="signals-h" data-reveal>
+          <span class="pane__t">level 0 · free</span>
           <span class="pane__t pane__t--r">every monday</span>
-          <div class="svc__head">
+          <div class="sv-offer__head">
             <p class="offer__price"><b>Free</b> every Monday</p>
-            <h3 class="svc__name" id="signals-h">Signals</h3>
-            <p class="svc__lead">The public feed on this site, and Signals Weekly in your inbox. We post fast, label how sure we are, and update the post when the facts change.</p>
-            <div class="svc__act">
+            <h3 class="sv-offer__name" id="signals-h">Signals</h3>
+            <p class="sv-offer__lead">The public feed on this site, and Signals Weekly in your inbox. We post fast, label how sure we are, and update the post when the facts change.</p>
+            <div class="sv-offer__act">
               <form name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
                 <input type="hidden" name="form-name" value="signals-weekly">
                 <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
@@ -199,15 +199,15 @@
               <a class="link" href="/signals/">Read the latest Signals</a>
             </div>
           </div>
-          <div class="svc__body">
+          <div class="sv-offer__body">
             <p class="label">What's in it</p>
-            <ul class="plus">
+            <ul class="sv-plus">
               <li>The public Signals feed, with launches, early-access programs, quiet product updates and credible reports.</li>
               <li>Signals Weekly: one email every Monday with the few items worth your attention.</li>
               <li>A short alert in between, only when something needs action that week. Rarely more than two a month outside major events.</li>
             </ul>
             <p class="label">Every Signal ends in a verdict</p>
-            <p class="verdicts verdicts--in"><span class="verdict">Act now</span><span class="verdict">Prepare</span><span class="verdict">Wait</span><span class="verdict">Ignore</span></p>
+            <p class="verdicts sv-verdicts"><span class="verdict">Act now</span><span class="verdict">Prepare</span><span class="verdict">Wait</span><span class="verdict">Ignore</span></p>
             <dl class="spec">
               <div><dt>each one has</dt><dd>a status label, what happened, who it matters to, sources and an update log</dd></div>
               <div><dt>for members</dt><dd>filtered to your own tools, the same business day. <a href="#first-quarter">See First Quarter</a></dd></div>
@@ -215,21 +215,21 @@
           </div>
         </article>
 
-        <article class="pane svc" id="head-start" aria-labelledby="head-start-h" data-reveal>
-          <span class="pane__t">01 · start here</span>
+        <article class="pane sv-offer" id="head-start" aria-labelledby="head-start-h" data-reveal>
+          <span class="pane__t">level 1 · start here</span>
           <span class="pane__t pane__t--r">about a week</span>
-          <div class="svc__head">
+          <div class="sv-offer__head">
             <p class="offer__price"><b>From $1,500</b> one time</p>
-            <h3 class="svc__name" id="head-start-h">Head Start</h3>
-            <p class="svc__lead">For owners who know they should be doing something with AI and want a starting point that costs less than a mistake.</p>
-            <div class="svc__act">
+            <h3 class="sv-offer__name" id="head-start-h">Head Start</h3>
+            <p class="sv-offer__lead">For owners who know they should be doing something with AI and want a starting point that costs less than a mistake.</p>
+            <div class="sv-offer__act">
               <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
               <p class="fine">The call is free. If there's a fit, we schedule your kickoff.</p>
             </div>
           </div>
-          <div class="svc__body">
+          <div class="sv-offer__body">
             <p class="label">How it runs</p>
-            <ol class="plus">
+            <ol class="sv-plus">
               <li>A 45-minute kickoff call about your business and the tools you use.</li>
               <li>A review of the software you already pay for, looking for AI features you haven't switched on. This is usually where the fastest wins are.</li>
               <li>The three launches or tools most relevant to your business right now, each with a verdict.</li>
@@ -254,22 +254,22 @@
         <h2 class="h-1" id="setup-h">Switching it on is the easy part.</h2>
         <p class="body-l">Connecting a new assistant to your inbox takes a minute. Setting it up for how your business works, testing it safely and teaching the team is the rest of the job. That's the part we do.</p>
       </div>
-      <div class="svcs">
+      <div class="sv-offers">
 
-        <article class="pane svc" id="day-one-setup" aria-labelledby="dos-h" data-reveal>
-          <span class="pane__t">02 · project</span>
+        <article class="pane sv-offer" id="day-one-setup" aria-labelledby="dos-h" data-reveal>
+          <span class="pane__t">level 2 · project</span>
           <span class="pane__t pane__t--r">per tool</span>
-          <div class="svc__head">
+          <div class="sv-offer__head">
             <p class="offer__price"><b>From $2,500</b> per tool</p>
-            <h3 class="svc__name" id="dos-h">Day One Setup</h3>
-            <p class="svc__lead">One tool, set up properly. For a team that has already picked what it wants: a new assistant, a Claude or Gemini workspace feature, or an AI feature inside software you already use.</p>
-            <div class="svc__act">
+            <h3 class="sv-offer__name" id="dos-h">Day One Setup</h3>
+            <p class="sv-offer__lead">One tool, set up properly. For a team that has already picked what it wants: a new assistant, a Claude or Gemini workspace feature, or an AI feature inside software you already use.</p>
+            <div class="sv-offer__act">
               <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
             </div>
           </div>
-          <div class="svc__body">
+          <div class="sv-offer__body">
             <p class="label">What's included</p>
-            <ul class="plus">
+            <ul class="sv-plus">
               <li>Accounts and permissions set up with the least access the tool needs.</li>
               <li>Connected to the systems it should touch: email, calendar, docs, CRM.</li>
               <li>Instructions and settings written for how your business works.</li>
@@ -285,26 +285,26 @@
           </div>
         </article>
 
-        <article class="pane svc" id="rollout-session" aria-labelledby="rs-h" data-reveal>
-          <span class="pane__t">02b · training</span>
+        <article class="pane sv-offer" id="rollout-session" aria-labelledby="rs-h" data-reveal>
+          <span class="pane__t">level 2b · training</span>
           <span class="pane__t pane__t--r">90 to 180 min</span>
-          <div class="svc__head">
+          <div class="sv-offer__head">
             <p class="offer__price"><b>Quoted</b> · included in First Quarter</p>
-            <h3 class="svc__name" id="rs-h">Rollout Session</h3>
-            <p class="svc__lead">For teams whose tools are set up but barely used. Live training on your own work, with your own examples.</p>
-            <div class="svc__act">
+            <h3 class="sv-offer__name" id="rs-h">Rollout Session</h3>
+            <p class="sv-offer__lead">For teams whose tools are set up but barely used. Live training on your own work, with your own examples.</p>
+            <div class="sv-offer__act">
               <a class="link" href="/contact/">Ask about a session</a>
             </div>
           </div>
-          <div class="svc__body">
+          <div class="sv-offer__body">
             <p class="label">What's included</p>
-            <ul class="plus">
+            <ul class="sv-plus">
               <li>90 to 180 minutes, live, with your team.</li>
               <li>Built around each role, so people practice the parts of the tool they'll use.</li>
               <li>Real tasks from your business, brought by the team.</li>
               <li>A prompt and workflow sheet everyone keeps.</li>
             </ul>
-            <p class="svc__rule"><b>Our rule:</b> we only train on tools your team can actually use. No generic "Intro to AI" seminars.</p>
+            <p class="sv-rule"><b>Our rule:</b> we only train on tools your team can actually use. No generic "Intro to AI" seminars.</p>
           </div>
         </article>
 
@@ -315,20 +315,20 @@
   <section class="sec sec--deep" id="first-quarter" aria-labelledby="fq-h">
     <div class="wrap">
       <div class="sec__head">
-        <p class="label">03 · Membership</p>
+        <p class="label">Level 3 · Membership</p>
         <h2 class="h-1" id="fq-h">First Quarter membership.</h2>
         <p class="body-l">This is where Signals becomes a paid product. The public feed tells everyone what happened. Members get it filtered to their own tools, faster, and acted on, with setup and training time held every month.</p>
       </div>
-      <div class="pane pane--active fq" data-reveal>
-        <span class="pane__t">03 · membership</span>
+      <div class="pane pane--active sv-fq" data-reveal>
+        <span class="pane__t">level 3 · membership</span>
         <span class="pane__t pane__t--r">3-month minimum</span>
-        <table class="cmp">
+        <table class="sv-cmp">
           <caption class="sr">First Quarter membership: Core and Pro compared</caption>
           <thead>
             <tr>
               <th scope="col"><span class="sr">What you get</span></th>
-              <th scope="col"><span class="cmp__plan">Core</span><span class="cmp__price"><b>From $1,500</b> a&nbsp;month</span><span class="cmp__for">Stay current on the tools you have, with time each month to act on it.</span></th>
-              <th scope="col"><span class="cmp__plan">Pro</span><span class="cmp__price"><b>From $3,500</b> a&nbsp;month</span><span class="cmp__for">More setup time, faster answers, and a recap call after major launches.</span></th>
+              <th scope="col"><span class="sv-cmp__plan">Core</span><span class="sv-cmp__price"><b>From $1,500</b> a&nbsp;month</span><span class="sv-cmp__for">Stay current on the tools you have, with time each month to act on it.</span></th>
+              <th scope="col"><span class="sv-cmp__plan">Pro</span><span class="sv-cmp__price"><b>From $3,500</b> a&nbsp;month</span><span class="sv-cmp__for">More setup time, faster answers, and a recap call after major launches.</span></th>
             </tr>
           </thead>
           <tbody>
@@ -343,7 +343,7 @@
             <tr><th scope="row">Response time</th><td data-plan="Core">Within 1 business day.</td><td data-plan="Pro">Same business day, Monday to Friday, 8 AM to 5 PM Arizona time.</td></tr>
           </tbody>
         </table>
-        <div class="fq__foot">
+        <div class="sv-fq__foot">
           <p class="fine">Three months to start, then month to month. We keep membership small so these response times hold. We can't promise early access to any tool: the vendor controls it.</p>
           <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
         </div>
@@ -354,29 +354,29 @@
   <section class="sec" aria-labelledby="build-h">
     <div class="wrap">
       <div class="sec__head">
-        <p class="label">04 · Custom</p>
+        <p class="label">Level 4 · Custom</p>
         <h2 class="h-1" id="build-h">Automate the work that repeats.</h2>
         <p class="body-l">Once your team is using its tools, the repetitive work that's left is where Build comes in. It's the second half of <a href="/approach/">our approach</a>: train your team, then automate the rest.</p>
       </div>
-      <div class="split split--75 build">
-        <article class="pane" id="build" aria-labelledby="b-h" data-reveal>
-          <span class="pane__t">04 · custom</span>
+      <div class="split split--75 sv-build">
+        <article class="pane sv-build__main" id="build" aria-labelledby="b-h" data-reveal>
+          <span class="pane__t">level 4 · custom</span>
           <span class="pane__t pane__t--r">scoped</span>
-          <div class="svc__head">
+          <div class="sv-offer__head">
             <p class="offer__price"><b>Scoped</b> after a Head Start or for members</p>
-            <h3 class="svc__name" id="b-h">Build</h3>
-            <p class="svc__lead">Custom agents and automations for workflows that repeat, built in n8n, Claude or the tools you already use.</p>
+            <h3 class="sv-offer__name" id="b-h">Build</h3>
+            <p class="sv-offer__lead">Custom agents and automations for workflows that repeat, built in n8n, Claude or the tools you already use.</p>
           </div>
-          <ul class="plus">
+          <ul class="sv-plus">
             <li>Your SOPs turned into procedures an agent can run. <a href="/signals/sops-to-aops">What that means</a></li>
             <li>Documentation your team can read and check.</li>
             <li>A test period before anything runs on its own.</li>
             <li>A handover your team can operate.</li>
           </ul>
-          <p class="svc__rule"><b>Build is never the first thing we sell.</b> We scope it once we know your business, after a Head Start or as part of a membership.</p>
-          <p class="proofline">Built by a verified n8n creator. 25 public workflow templates with 10,876 documented uses in the n8n community, as of June 2026. <a href="/workflow-usage/">How we count</a></p>
+          <p class="sv-rule"><b>Build is never the first thing we sell.</b> We scope it once we know your business, after a Head Start or as part of a membership.</p>
+          <p class="sv-proofline">Built by a verified n8n creator. 25 public workflow templates with 10,876 documented uses in the n8n community, as of June 2026. <a href="/workflow-usage/">How we count</a></p>
         </article>
-        <div class="build__side">
+        <div class="sv-build__side">
           <article class="pane" data-reveal>
             <span class="pane__t">for agencies</span>
             <h3>Partner Bench</h3>
@@ -404,7 +404,7 @@
       </div>
       <div class="pane" data-reveal>
         <span class="pane__t">start here if</span>
-        <table class="choose">
+        <table class="sv-choose">
           <caption class="sr">Which service to start with</caption>
           <thead><tr><th scope="col">If this sounds like you</th><th scope="col">Start with</th></tr></thead>
           <tbody>
@@ -414,7 +414,7 @@
             <tr><th scope="row">"We want someone watching the market for us, every week."</th><td><a href="#first-quarter">First Quarter</a><span class="fine">from $1,500 a month</span></td></tr>
           </tbody>
         </table>
-        <p class="fine choose-note">Still not sure? <a href="/contact/">Book a 20-minute call</a> and we'll tell you which step fits, or whether any of them do.</p>
+        <p class="fine sv-choose-note">Still not sure? <a href="/contact/">Book a 20-minute call</a> and we'll tell you which step fits, or whether any of them do.</p>
       </div>
     </div>
   </section>
@@ -445,7 +445,7 @@
           <h2 class="h-1" id="cta-h">Tell us what's eating your week.</h2>
           <p class="body-l">Bring the list of tools you pay for. In 20 minutes we'll tell you what's worth doing now, what can wait, and which step fits.</p>
         </div>
-        <div class="cta__act">
+        <div class="sv-act">
           <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
           <p class="fine">Free. If there's no fit, we'll say so. Or email <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>.</p>
         </div>
