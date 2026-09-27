@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="We track AI launches, tell you which ones matter, and set them up for your team.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-home.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/home.css?v=20260927d">
+<link rel="stylesheet" href="/assets/css/home.css?v=20260927e">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,46 +50,35 @@
 </head>
 <body class="home">
 <!-- @include nav -->
-<!-- @signals-ticker -->
 
 <main id="main">
 
-  <!-- 1. Why QuarterSmart: the scrolling quarter -->
-  <section class="qscroll qhero" data-quarter aria-label="Why QuarterSmart">
-    <div class="qscroll__stage">
-      <div class="qs-gem">
-        <pre class="qs-gem__body" aria-hidden="true"></pre>
-        <pre class="qs-gem__q" aria-hidden="true"></pre>
-        <span class="qs-line" aria-hidden="true"></span>
+  <!-- 1. Hero: the wordmark over an idle arcade -->
+  <section class="h4" aria-labelledby="hero-h">
+    <canvas class="h4__attract" data-attract aria-hidden="true"></canvas>
+    <div class="wrap h4__in">
+      <p class="wordmark" aria-hidden="true">QuarterSmart</p>
+      <h1 class="h4__h" id="hero-h">Use new AI while it's still an advantage.</h1>
+      <p class="lede">New models, agents and features ship every week. QuarterSmart tracks them, tells you which ones matter to your business, and sets them up for your team, so you can start the day they're available to you.</p>
+      <div class="hx__cta">
+        <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
+        <a class="btn btn--ghost" href="/signals/">Read today's Signals</a>
       </div>
-      <div class="qs-copy">
-        <p class="label label--accent" data-type>The early group</p>
-        <p class="qs-big" data-count="25">25%</p>
-        <p class="body-l" data-type>Every AI shift has an early group: the first 25% of businesses to put the new tool to work while it is still an advantage. We help you be one of them, on purpose.</p>
-        <p class="qs-kicker" data-type>25%? That's a quarter.</p>
-      </div>
-      <p class="qs-why">why QuarterSmart?</p>
-      <p class="qs-hint" aria-hidden="true">scroll</p>
     </div>
   </section>
 
-  <!-- 2. The statement -->
-  <section class="hx" aria-labelledby="hero-h">
-    <div class="wrap hx__grid">
-      <div class="hx__copy">
-        <p class="label label--accent">AI early adoption for owner-led businesses</p>
-        <h1 class="h-display" id="hero-h" data-tte="decrypt">Use new AI while it's still an advantage.</h1>
-        <p class="lede">New models, agents and features ship every week. QuarterSmart tracks them, tells you which ones matter to your business, and sets them up for your team, so you can start the day they're available to you.</p>
-        <div class="hx__cta">
-          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
-          <a class="btn btn--ghost" href="/signals/">Read today's Signals</a>
-        </div>
-        <p class="hx__note">Free call. You talk to the founder. We tell you what's worth doing now and what can wait.</p>
+  <!-- 2. Why QuarterSmart: a pinned scroll story -->
+  <section class="qscroll" data-quarter aria-labelledby="why-h">
+    <div class="qscroll__stage">
+      <div class="qs-art"><canvas aria-hidden="true"></canvas><span class="qs-line" aria-hidden="true"></span></div>
+      <div class="qs-copy">
+        <h2 class="label label--accent" id="why-h">Why QuarterSmart</h2>
+        <p class="qs-big" data-count="25">25%</p>
+        <p class="body-l">Every AI shift has an early group: the first quarter of businesses to put the new tool to work while it's still an advantage. We help you be one of them, on purpose, and only when the move is worth making.</p>
+        <p class="qs-kicker">25%? That's a quarter.</p>
       </div>
-      <figure class="hx__art ansi-frame">
-        <!-- @include ansi-workstation -->
-        <figcaption><span class="led" aria-hidden="true"></span>always watching the launches</figcaption>
-      </figure>
+      <p class="qs-why" aria-hidden="true">why QuarterSmart?</p>
+      <p class="qs-hint" aria-hidden="true"></p>
     </div>
   </section>
 
@@ -97,8 +86,8 @@
   <section class="band band--slate" aria-labelledby="sig-h">
     <div class="wrap sigband">
       <div class="sigband__intro">
-        <p class="label"><span class="led" aria-hidden="true"></span>Signals · live</p>
-        <h2 class="h-1" id="sig-h" data-tte="decrypt">Know what changed. Know what to do.</h2>
+        <p class="sig-sign"><span class="nradar" aria-hidden="true"><svg viewBox="0 0 34 24"><path class="dish" d="M11 21h12M17 21v-5M9 9a8 8 0 0 0 16 0z"/><path class="arc l1" d="M7 5a12 12 0 0 0-3 9"/><path class="arc l2" d="M3 2a17 17 0 0 0-3 13"/><path class="arc r1" d="M27 5a12 12 0 0 1 3 9"/><path class="arc r2" d="M31 2a17 17 0 0 1 3 13"/></svg></span><span class="neon">Signals</span></p>
+        <h2 class="h-1" id="sig-h">Know what changed. Know what to do.</h2>
         <p class="body-l">Launches, early access, quiet updates and credible leaks, each decoded in plain English with a verdict for a working business. Free, every Monday.</p>
         <div class="sigband__cta"><a class="btn" href="/signals/">Read Signals</a></div>
       </div>
@@ -126,15 +115,15 @@
   <section class="boot" aria-labelledby="how-h" data-boot>
     <div class="wrap">
       <div class="boot__head">
-        <h2 class="h-1" id="how-h" data-tte="decrypt">From announcement to in use.</h2>
+        <h2 class="h-1" id="how-h">From announcement to in use.</h2>
         <p class="body-l">Four steps, every time a launch is worth it. Most aren't, and we'll tell you that too.</p>
       </div>
       <div class="boot__rail" aria-hidden="true"><span class="boot__fill"></span></div>
       <ol class="boot__steps">
-        <li><span class="boot__n">01</span><h3>Detect</h3><p>We watch model releases, product changelogs, early-access programs and credible reporting.</p><span class="boot__ok">[ ok ] every day</span></li>
-        <li><span class="boot__n">02</span><h3>Decode</h3><p>Does it matter to a business like yours? What should you do this week? Every Signal ends in a verdict.</p><span class="boot__ok">[ ok ] same business day for members</span></li>
-        <li><span class="boot__n">03</span><h3>Deploy</h3><p>We set it up in your accounts, connect your tools, test it with a few people, then train the team.</p><span class="boot__ok">[ ok ] from the day it's available to you</span></li>
-        <li><span class="boot__n">04</span><h3>Stay current</h3><p>Members get Signals filtered to their own tools, with setup time held for launch weeks.</p><span class="boot__ok">[ ok ] every week</span></li>
+        <li><span class="boot__n">01</span><h3>Detect</h3><p>We watch model releases, product changelogs, early-access programs and credible reporting.</p><span class="boot__ok">every day</span></li>
+        <li><span class="boot__n">02</span><h3>Decode</h3><p>Does it matter to a business like yours? What should you do this week? Every Signal ends in a verdict.</p><span class="boot__ok">same business day for members</span></li>
+        <li><span class="boot__n">03</span><h3>Deploy</h3><p>We set it up in your accounts, connect your tools, test it with a few people, then train the team.</p><span class="boot__ok">from the day it's available to you</span></li>
+        <li><span class="boot__n">04</span><h3>Stay current</h3><p>Members get Signals filtered to their own tools, with setup time held for launch weeks.</p><span class="boot__ok">every week</span></li>
       </ol>
       <p class="boot__verdicts"><span>Verdicts:</span> <b>Act now</b> <b>Prepare</b> <b>Wait</b> <b>Ignore</b> <span class="faint">Wait and Ignore are common. That's the point.</span></p>
     </div>
@@ -146,9 +135,9 @@
       <div class="levels__head">
         <div>
           <p class="label label--accent">Ways to work with us</p>
-          <h2 class="h-1" id="lv-h" data-tte="decrypt">Select your level.</h2>
+          <h2 class="h-1" id="lv-h">Select your level.</h2>
         </div>
-        <figure class="levels__art ansi-frame"><!-- @include ansi-floppies --></figure>
+        <figure class="levels__art"><img class="px" src="/assets/px/sprite-floppies.png" width="134" height="31" alt="Five floppy disks with green, yellow, lavender, cyan and white labels." style="--s:3"></figure>
       </div>
       <div class="levels__grid">
         <ol class="levels__list" role="tablist" aria-label="Offers">
@@ -203,13 +192,13 @@
   <section class="approachx" aria-labelledby="ap-h">
     <div class="wrap">
       <p class="label label--accent">Our approach</p>
-      <h2 class="approachx__h" id="ap-h"><span data-tte="decrypt">Train your team.</span> <span class="accent" data-tte="decrypt">Automate the rest.</span></h2>
+      <h2 class="approachx__h" id="ap-h"><span>Train your team.</span> <span class="accent">Automate the rest.</span></h2>
       <div class="approachx__grid">
         <div>
           <h3>01 · Train</h3>
           <p>Being early only pays if people actually use the thing. We train your team on the new tool inside their own work, with their own examples, until it's part of the day.</p>
         </div>
-        <figure class="approachx__art ansi-frame"><!-- @include ansi-keyboard --></figure>
+        <figure class="approachx__art"><img class="px" src="/assets/px/sprite-keyboard-manual.png" width="116" height="41" alt="A keyboard beside an open manual, in pixel art." style="--s:3" loading="lazy"></figure>
         <div>
           <h3>02 · Automate</h3>
           <p>Then we take the repetitive work that's left and automate it, with agents and workflows your team can see and check.</p>
@@ -228,11 +217,11 @@
   <section class="band band--slate p1" aria-labelledby="p1-h">
     <div class="wrap p1__grid">
       <div class="p1__id">
-        <div class="p1__photo"><img src="/assets/images/team/hyrum-hurst.webp" width="220" height="220" alt="Hyrum Hurst, founder of QuarterSmart" loading="lazy"></div>
+        <div class="p1__photo"><img class="px" src="/assets/px/avatar-hyrum.png" width="79" height="84" alt="Hyrum Hurst drawn as a pixel-art character: blond hair, a smile, a navy suit." loading="lazy"></div>
         <p class="p1__tag">player one</p>
       </div>
       <div class="p1__copy">
-        <h2 class="h-1" id="p1-h" data-tte="decrypt">You talk to the person who does the work.</h2>
+        <h2 class="h-1" id="p1-h">You talk to the person who does the work.</h2>
         <p class="body-l">Hyrum Hurst founded QuarterSmart and builds and sets up the systems himself. He is also CTO of Learning Journey AI, an AI education company, so keeping current on applied AI is already part of his day job. QuarterSmart puts that same habit to work for your business.</p>
         <dl class="p1__facts">
           <div><dt>role</dt><dd>Founder, QuarterSmart · CTO, Learning Journey AI</dd></div>
@@ -246,9 +235,11 @@
 
   <!-- 8. Close -->
   <section class="closer" aria-labelledby="cta-h">
+    <img class="closer__scene" src="/assets/px/scene-horizon.png" width="128" height="72" alt="" aria-hidden="true" loading="lazy">
+    <img class="closer__cab" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="" aria-hidden="true" loading="lazy">
     <div class="wrap closer__grid">
       <div class="closer__main">
-        <p class="closer__coin" aria-hidden="true">press start</p>
+        <p class="closer__sign neon neon--warm" aria-hidden="true">now booking</p>
         <h2 class="closer__h" id="cta-h">Get in the first quarter.</h2>
         <p class="body-l">A free 20-minute call. Tell us what your team uses and what's eating the week. We'll tell you what's worth doing now and what can wait.</p>
         <div class="hx__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
@@ -271,8 +262,9 @@
   </section>
 
 </main>
-<script src="/assets/js/quarter.js?v=20260927d" defer></script>
-<script src="/assets/js/home.js?v=20260927d" defer></script>
+<script src="/assets/js/attract.js?v=20260927e" defer></script>
+<script src="/assets/js/quarter.js?v=20260927e" defer></script>
+<script src="/assets/js/home.js?v=20260927e" defer></script>
 <!-- @include footer -->
 </body>
 </html>

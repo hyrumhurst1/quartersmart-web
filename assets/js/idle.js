@@ -3,32 +3,26 @@
 // through text effects (decrypt, beam sweep, rain). Any input dismisses it.
 const DG = ['#1d7a58', '#135c43', '#2a9a70'];
 const LG = ['#9fe0b8', '#6fc49a', '#d6f7e4'];
-const N = 9, C = 4, S = 4; // 9x9 gem, each art pixel = S columns x S/2 rows of half blocks
+const S = 4; // 9x9 gem, each art pixel = S columns x S/2 rows of half blocks
 const GL = '█▓▒░▄▀#%&@*+=/\\01';
 
 function gemCells() {
-  const out = [];
-  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
-    const dx = x - C, dy = y - C;
-    if (Math.abs(dx) + Math.abs(dy) > C) continue;
-    if (dx >= 1 && dy <= -1) {
-      const edge = Math.abs(dx) + Math.abs(dy) === C;
-      const col = (edge && dy <= -2) ? LG[2] : ((x + y) % 2 === 0 || dx - dy > 3 ? LG[0] : LG[1]);
-      out.push([x + 1, y - 1, col]);
-    } else {
-      const shade = (dx <= 0 && dy <= 0) ? 0 : (dx <= 0 ? 1 : 2);
-      out.push([x, y, (x + y) % 2 === 0 ? [DG[2], DG[0], DG[1]][shade] : [DG[0], DG[1], DG[1]][shade]]);
-    }
+  // the QuarterSmart mark: 12px circle, top-right quarter popped 2px
+  const out = [], n = 12, c = (n - 1) / 2, r2 = (n / 2) ** 2 - 0.25;
+  for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) {
+    if ((x - c) ** 2 + (y - c) ** 2 > r2) continue;
+    if (x - c > 0 && y - c < 0) out.push([x + 2, y - 2, (x + y) % 3 ? LG[0] : LG[2]]);
+    else out.push([x, y, (x + y) % 3 ? DG[0] : DG[2]]);
   }
   return out;
 }
 
 // Build a character grid: W cols x H rows; each cell {ch, color}
 function gemGrid() {
-  const W = 10 * S, H = 10 * S / 2;
+  const W = 15 * S, H = 15 * S / 2;
   const grid = Array.from({ length: H }, () => Array.from({ length: W }, () => null));
   for (const [x, y, col] of gemCells()) {
-    for (let i = 0; i < S; i++) for (let j = 0; j < S / 2; j++) grid[(y + 1) * S / 2 + j][x * S + i] = col;
+    for (let i = 0; i < S; i++) for (let j = 0; j < S / 2; j++) grid[(y + 2) * S / 2 + j][x * S + i] = col;
   }
   return { grid, W, H };
 }

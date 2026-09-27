@@ -1,6 +1,28 @@
 /* Homepage v3: a retro site, not a retro theme. Each section has its own
    composition; boxes are rare; art is terminal output, not photos. */
 
+/* hero: the wordmark over an idle arcade */
+.h4 { position: relative; overflow: hidden; min-height: calc(100vh - 90px); display: grid; align-items: center; padding: clamp(56px, 7vw, 96px) 0; }
+.h4__attract { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .5; image-rendering: pixelated;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0 52%, #000 70%); mask-image: linear-gradient(90deg, transparent 0 52%, #000 70%); }
+.h4__in { position: relative; display: grid; gap: 26px; }
+.wordmark {
+  margin: 0 0 6px; font: 400 clamp(66px, 11.2vw, 176px)/.86 var(--pixel); letter-spacing: -.02em; white-space: nowrap;
+  background: linear-gradient(180deg, var(--fg-0) 0 40%, var(--accent) 40% 58%, var(--info) 58% 72%, #2a9a70 72% 84%, #1d7a58 84% 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: wipe .9s steps(14) both .15s;
+}
+@keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.h4__h { font: 400 clamp(33px, 3.6vw, 55px)/1.12 var(--pixel); max-width: 20ch; color: var(--fg-0); }
+.h4 .lede { max-width: 58ch; }
+.sig-sign { display: flex; align-items: center; gap: 16px; margin: 0 0 6px; font: 400 44px/1 var(--pixel); }
+.closer__sign { margin: 0; font: 400 33px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; }
+.px { image-rendering: pixelated; width: calc(var(--w, attr(width px)) * var(--s, 3)); height: auto; }
+.levels__art .px { width: 402px; max-width: 100%; }
+.approachx__art .px { width: 464px; max-width: 100%; }
+@media (max-width: 640px) { .wordmark { font-size: clamp(44px, 14.5vw, 66px); } .h4 { min-height: 0; } .h4__attract { opacity: .35; -webkit-mask-image: linear-gradient(180deg, transparent 0 40%, #000 80%); mask-image: linear-gradient(180deg, transparent 0 40%, #000 80%); } }
+@media (prefers-reduced-motion: reduce) { .wordmark { animation: none; } }
+
 /* statement */
 .hx { padding: clamp(64px, 8vw, 120px) 0 clamp(72px, 8vw, 120px); border-top: 1px solid var(--line); }
 .hx__grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 5vw, 80px); align-items: center; }
@@ -89,8 +111,8 @@
 
 /* player one */
 .p1__grid { display: grid; grid-template-columns: auto 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
-.p1__photo { width: 220px; height: 220px; padding: 8px; background: var(--bg-0); box-shadow: 0 0 0 4px var(--accent), 10px 10px 0 4px color-mix(in srgb, var(--accent) 30%, transparent); }
-.p1__photo img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.04) saturate(.9); }
+.p1__photo { width: 252px; height: 268px; display: grid; place-items: end center; background: var(--bg-0); box-shadow: 0 0 0 4px var(--accent), 10px 10px 0 4px color-mix(in srgb, var(--accent) 30%, transparent); overflow: hidden; }
+.p1__photo img { width: 237px; height: 252px; image-rendering: pixelated; }
 .p1__tag { margin-top: 26px; font: 400 22px/1 var(--pixel); color: var(--accent); text-align: center; animation: pulse 1.6s steps(2) infinite; }
 .p1__copy { display: grid; gap: 22px; }
 .p1__facts { margin: 0; display: grid; gap: 8px; font: 400 14px/1.5 var(--mono); }
@@ -128,3 +150,12 @@
   .hx__art .ansi { --ansi: 4.4px; }
 }
 @media (prefers-reduced-motion: reduce) { .p1__tag, .closer__coin { animation: none; } }
+
+/* closer: an arcade at night */
+.closer { position: relative; overflow: hidden; padding-bottom: clamp(220px, 26vw, 360px); }
+.closer__scene { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; min-height: 60%; object-fit: cover; object-position: bottom; image-rendering: pixelated; opacity: .9; pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 45%); mask-image: linear-gradient(180deg, transparent 0, #000 45%); }
+.closer__cab { position: absolute; right: clamp(16px, 8vw, 140px); bottom: clamp(24px, 3vw, 44px); width: 204px; height: auto; image-rendering: pixelated; pointer-events: none; }
+.closer .wrap { position: relative; }
+@media (max-width: 1000px) { .closer__cab { width: 120px; } }
+@media (max-width: 640px) { .p1__photo { width: 174px; height: 184px; } .p1__photo img { width: 158px; height: 168px; } .closer__cab { display: none; } }

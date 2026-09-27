@@ -98,12 +98,6 @@ console.log(`netlify-build: copied ${n} top-level entries into dist/`);
   <span class="sig__cell sig__cell--a"><span class="label">status</span><span class="chip chip--${p.kind}">${esc(p.label)}</span></span>
   <span class="sig__cell sig__cell--v"><span class="label">verdict</span><span class="verdict">${esc(p.verdict)}</span></span>
 </a></li>`).join("\n");
-  // Ticker (attract mode): the latest six, doubled so the CSS loop is seamless.
-  const tick = posts.slice(0, 6).map((p) => `<a href="${p.url}"><span class="chip chip--${p.kind}">${esc(p.label.split(" · ")[0])}</span>${esc(p.title)}</a>`).join("");
-  const ticker = `<div class="ticker" role="region" aria-label="Latest Signals"><span class="ticker__lead" aria-hidden="true"><i></i>signals</span><div class="ticker__track">${tick}<span aria-hidden="true" style="display:contents">${tick.replace(/<a /g, '<a tabindex="-1" ')}</span></div></div>`;
-  for (const f of ["dist/index.html", "dist/signals/index.html", "dist/services/index.html", "dist/about/index.html"]) {
-    try { const h = readFileSync(f, "utf8"); if (h.includes("<!-- @signals-ticker -->")) writeFileSync(f, h.replace("<!-- @signals-ticker -->", ticker)); } catch { /* page may not exist */ }
-  }
   const hub = "dist/signals/index.html";
   try {
     let h = readFileSync(hub, "utf8");
