@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="evergreen">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="Public information only, reported items labeled unconfirmed, corrections logged with timestamps.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-signals-policy.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/legal.css">
+<link rel="stylesheet" href="/assets/css/legal.css?v=20260927f">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -56,57 +56,62 @@
 <!-- @include nav -->
 
 <main id="main">
-  <header class="phead">
+
+  <!-- 1. Top: the one neon sign on this page -->
+  <header class="lhead" aria-labelledby="pol-h">
     <div class="wrap">
-      <p class="phead__crumbs"><a href="/">home</a> / <a href="/signals/">signals</a> / policy</p>
-      <p class="label label--accent">Signals policy</p>
-      <h1 class="h-1" style="margin-top:16px">How we source Signals.</h1>
-      <p class="lede">Signals covers AI launches, early-access programs, quiet product updates and credible reports. These are the rules behind every post: where it comes from, how sure we are, and what happens when we get something wrong.</p>
-      <p class="byline"><span>Last updated <b><time datetime="2026-09-27">Sep 27, 2026</time></b></span><span>Corrections: <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a></span></p>
+      <nav class="lhead__crumbs" aria-label="Breadcrumb"><a href="/">Home</a><i aria-hidden="true">/</i><a href="/signals/">Signals</a><i aria-hidden="true">/</i>Policy</nav>
+      <div class="lhead__copy">
+        <p class="lsign"><span class="nradar" aria-hidden="true"><svg viewBox="0 0 34 24"><path class="dish" d="M11 21h12M17 21v-5M9 9a8 8 0 0 0 16 0z"/><path class="arc l1" d="M7 5a12 12 0 0 0-3 9"/><path class="arc l2" d="M3 2a17 17 0 0 0-3 13"/><path class="arc r1" d="M27 5a12 12 0 0 1 3 9"/><path class="arc r2" d="M31 2a17 17 0 0 1 3 13"/></svg></span><span class="neon">Signals</span></p>
+        <h1 class="lhead__h" id="pol-h">How we source Signals.</h1>
+        <p class="lede">Signals covers AI launches, early-access programs, quiet product updates and credible reports. These are the rules behind every post: where it comes from, how sure we are, and what happens when we get something wrong.</p>
+        <div class="lhead__cta">
+          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
+          <a class="link" href="/signals/log/">See the Signals Log</a>
+        </div>
+        <p class="lhead__meta"><span>Last updated <b><time datetime="2026-09-27">Sep 27, 2026</time></b></span><span>Corrections: <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a></span></p>
+      </div>
     </div>
   </header>
 
-  <section class="sec" aria-labelledby="src-h">
-    <div class="wrap split split--57">
-      <div class="sec__head" style="margin:0">
-        <p class="label">Sourcing</p>
+  <!-- 2. Sourcing -->
+  <section class="lsec" aria-labelledby="src-h" style="border-top:1px solid var(--line)">
+    <div class="wrap src">
+      <div class="src__intro">
+        <p class="label label--accent">Sourcing</p>
         <h2 class="h-1" id="src-h">Public information only.</h2>
         <p class="body-l">Everything in Signals was public before we wrote about it. We post as fast as we can verify, label how sure we are, and update the post when the facts change.</p>
-        <div class="pane pane--flat" style="margin-top:14px">
-          <span class="pane__t">where we look</span>
-          <dl class="spec" aria-label="Where we look">
-            <div><dt>vendors</dt><dd>official blogs, changelogs and release notes</dd></div>
-            <div><dt>your tools</dt><dd>changelogs of the business software you already pay for</dd></div>
-            <div><dt>press</dt><dd>credible tech reporting</dd></div>
-            <div><dt>people</dt><dd>public posts from the companies' own staff</dd></div>
-          </dl>
-        </div>
+        <h3>Where we look</h3>
+        <dl class="look">
+          <div><dt>Vendors</dt><dd>Official blogs, changelogs and release notes</dd></div>
+          <div><dt>Your tools</dt><dd>Changelogs of the business software you already pay for</dd></div>
+          <div><dt>Press</dt><dd>Credible tech reporting</dd></div>
+          <div><dt>People</dt><dd>Public posts from the companies' own staff</dd></div>
+        </dl>
       </div>
-      <div class="pane pane--active">
-        <span class="pane__t">sourcing rules</span>
-        <ol class="rules">
-          <li><b>Public sources only.</b><span>Published reporting, public product screens and public posts. If it isn't public, we don't cover it.</span></li>
-          <li><b>Nothing confidential.</b><span>We don't solicit, accept or publish confidential documents, credentials, private source code, or anything obtained by breaking a terms of service.</span></li>
-          <li><b>Unconfirmed until confirmed.</b><span>A reported item keeps the label "Reported · unconfirmed" until the company confirms or denies it.</span></li>
-          <li><b>Sources on every post.</b><span>Primary sources first, meaning the company's own post or the original author, then the reporting.</span></li>
-          <li><b>Links to the original.</b><span>We link to screenshots and posts where they were first published. We don't copy other people's screenshots onto our site.</span></li>
-          <li><b>Corrections with timestamps.</b><span>Every correction is logged at the bottom of the post with the time, marked "Correction."</span></li>
-        </ol>
-      </div>
+      <ol class="lrules" aria-label="Sourcing rules">
+        <li><b>Public sources only.</b><span>Published reporting, public product screens and public posts. If it isn't public, we don't cover it.</span></li>
+        <li><b>Nothing confidential.</b><span>We don't solicit, accept or publish confidential documents, credentials, private source code, or anything obtained by breaking a terms of service.</span></li>
+        <li><b>Unconfirmed until confirmed.</b><span>A reported item keeps the label "Reported · unconfirmed" until the company confirms or denies it.</span></li>
+        <li><b>Sources on every post.</b><span>Primary sources first, meaning the company's own post or the original author, then the reporting.</span></li>
+        <li><b>Links to the original.</b><span>We link to screenshots and posts where they were first published. We don't copy other people's screenshots onto our site.</span></li>
+        <li><b>Corrections with timestamps.</b><span>Every correction is logged at the bottom of the post with the time, marked "Correction."</span></li>
+      </ol>
     </div>
   </section>
 
-  <section class="sec sec--deep" aria-labelledby="labels-h">
+  <!-- 3. Labels and verdicts, on a colour band -->
+  <section class="band band--slate" aria-labelledby="labels-h">
     <div class="wrap">
-      <div class="sec__head">
-        <p class="label">Labels and verdicts</p>
+      <div class="lsec__head">
+        <p class="label label--accent">Labels and verdicts</p>
         <h2 class="h-1" id="labels-h">How sure we are. What to do about it.</h2>
         <p class="body-l">Every Signal carries one status label and ends in one verdict. The label says how sure we are. The verdict says what a typical business should do this week.</p>
       </div>
-      <div class="split">
-        <div class="pane">
-          <span class="pane__t">status labels</span>
-          <dl class="legend">
+      <div class="lkey">
+        <div>
+          <h3>Status labels</h3>
+          <dl>
             <div><dt><span class="chip chip--reported">Reported</span></dt><dd>Publicly reported, not confirmed by the company. Always marked "Reported · unconfirmed."</dd></div>
             <div><dt><span class="chip chip--confirmed">Confirmed</span></dt><dd>Announced by the company, not yet available to most accounts.</dd></div>
             <div><dt><span class="chip chip--available">Available</span></dt><dd>You can use it now, on the plans listed.</dd></div>
@@ -115,39 +120,38 @@
             <div><dt><span class="chip chip--event">Event</span></dt><dd>A launch event we're covering.</dd></div>
           </dl>
         </div>
-        <div class="pane">
-          <span class="pane__t">verdicts</span>
-          <dl class="legend">
-            <div><dt><span class="verdict">Act now</span></dt><dd>Worth doing this week for most businesses it applies to.</dd></div>
-            <div><dt><span class="verdict">Prepare</span></dt><dd>Not ready yet, but a little groundwork now saves time later.</dd></div>
-            <div><dt><span class="verdict">Wait</span></dt><dd>Promising, not ready. We'll tell you when that changes.</dd></div>
-            <div><dt><span class="verdict">Ignore</span></dt><dd>Noise for a working business. Skip it.</dd></div>
+        <div>
+          <h3>Verdicts</h3>
+          <dl>
+            <div><dt class="vword">Act now</dt><dd>Worth doing this week for most businesses it applies to.</dd></div>
+            <div><dt class="vword">Prepare</dt><dd>Not ready yet, but a little groundwork now saves time later.</dd></div>
+            <div><dt class="vword">Wait</dt><dd>Promising, not ready. We'll tell you when that changes.</dd></div>
+            <div><dt class="vword">Ignore</dt><dd>Noise for a working business. Skip it.</dd></div>
           </dl>
-          <p class="fine" style="margin-top:18px">Wait and Ignore are common verdicts. That's the point.</p>
+          <p class="lkey__note"><b>Wait and Ignore are common verdicts.</b> That's the point.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="fix-h">
+  <!-- 4. Corrections and independence -->
+  <section class="lsec" aria-labelledby="fix-h">
     <div class="wrap">
-      <div class="sec__head">
-        <p class="label">Corrections and independence</p>
+      <div class="lsec__head">
+        <p class="label label--accent">Corrections and independence</p>
         <h2 class="h-1" id="fix-h">When we're wrong, and who pays us.</h2>
       </div>
-      <div class="split">
-        <div class="pane pane--active card">
-          <span class="pane__t">corrections</span>
+      <div class="fixes">
+        <div>
           <h3>Spotted a mistake?</h3>
           <p>Email <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a> with the link and what you think is wrong. If we got it wrong, we fix the post, add a timestamped correction to its update log, and record the outcome on the Signals Log.</p>
           <p>Reported items stay on the Log whether they turn out right or wrong, so you can check our record.</p>
-          <div class="card__go">
-            <a class="btn btn--primary" href="mailto:hyrum@quartersmart.com?subject=Signals%20correction">Email a correction</a>
+          <div class="fixes__cta">
+            <a class="btn" href="mailto:hyrum@quartersmart.com?subject=Signals%20correction">Email a correction</a>
             <a class="link" href="/signals/log/">See the Signals Log</a>
           </div>
         </div>
-        <div class="pane card">
-          <span class="pane__t">independence</span>
+        <div>
           <h3>Who pays us.</h3>
           <!-- [CONFIRM: QuarterSmart takes no referral or affiliate income from vendors it covers. If that is not true, cut "and we don't take referral fees from vendors we write about" below.] -->
           <p>Clients pay us for setup, training and membership. The companies we cover don't: there are no paid placements in Signals, and we don't take referral fees from vendors we write about.</p>
@@ -155,9 +159,21 @@
           <p>Signals is general information about third-party products. It is not legal, security or financial advice. <a href="/terms/#signals">Read the terms</a>.</p>
         </div>
       </div>
-      <div class="go-row">
-        <a class="link" href="/signals/">Read the latest Signals</a>
+    </div>
+  </section>
+
+  <!-- 5. Close -->
+  <section class="lclose band--deep" aria-labelledby="close-h">
+    <div class="wrap lclose__grid">
+      <div class="lclose__main">
+        <h2 class="lclose__h" id="close-h">Want Signals for your tools?</h2>
+        <p class="body-l">First Quarter members get Signals filtered to their own tools, delivered the same business day, with setup time held for launch weeks. Start with a free 20-minute call.</p>
+        <div class="lclose__cta">
+          <a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a>
+          <a class="link" href="/signals/">Read the latest Signals</a>
+        </div>
       </div>
+      <figure class="lclose__art"><img class="px" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="" aria-hidden="true" loading="lazy"></figure>
     </div>
   </section>
 </main>

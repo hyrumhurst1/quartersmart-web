@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="evergreen">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="How QuarterSmart handles information on quartersmart.com and Signals Weekly.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-privacy.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/legal.css">
+<link rel="stylesheet" href="/assets/css/legal.css?v=20260927f">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,101 +63,139 @@
 
 <main id="main">
   <!-- [CONFIRM: legal review of this privacy policy before launch.] -->
-  <header class="phead">
-    <div class="wrap split split--75 phead__grid">
-      <div>
-        <p class="phead__crumbs"><a href="/">home</a> / privacy</p>
+
+  <!-- 1. Top -->
+  <header class="lhead" aria-labelledby="pp-h">
+    <div class="wrap">
+      <nav class="lhead__crumbs" aria-label="Breadcrumb"><a href="/">Home</a><i aria-hidden="true">/</i>Privacy</nav>
+      <div class="lhead__copy">
         <p class="label label--accent">Legal</p>
-        <h1 class="h-1" style="margin-top:16px">Privacy policy.</h1>
+        <h1 class="lhead__h" id="pp-h">Privacy policy.</h1>
         <p class="lede">What we collect when you visit quartersmart.com, join Signals Weekly or get in touch, and what we do with it. The short version: very little, and we never sell it.</p>
-        <p class="byline"><span>Last updated <b><time datetime="2026-09-27">Sep 27, 2026</time></b></span><span>Questions: <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a></span></p>
-      </div>
-      <div class="pane pane--active">
-        <span class="pane__t">at a glance</span>
-        <dl class="spec" aria-label="Privacy at a glance">
-          <div><dt>ad cookies</dt><dd>none</dd></div>
-          <div><dt>trackers</dt><dd>no analytics or tracking scripts</dd></div>
-          <div><dt>email list</dt><dd>Signals Weekly: your email and the page you signed up on</dd></div>
-          <div><dt>stored with</dt><dd>Netlify Forms, then our email provider</dd></div>
-          <div><dt>theme</dt><dd>saved in your browser only</dd></div>
-          <div><dt>selling data</dt><dd>never</dd></div>
-          <div><dt>unsubscribe</dt><dd>reply "unsubscribe" to any issue</dd></div>
-        </dl>
+        <div class="lhead__cta">
+          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
+          <a class="link" href="#policy">Read the full policy</a>
+        </div>
+        <p class="lhead__meta"><span>Last updated <b><time datetime="2026-09-27">Sep 27, 2026</time></b></span><span>Questions: <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a></span></p>
       </div>
     </div>
   </header>
 
-  <div class="wrap doc">
-    <nav class="doc__side pane" aria-label="On this page">
-      <span class="pane__t">contents</span>
-      <ol class="toc">
-        <li><a href="#who-we-are">Who we are</a></li>
-        <li><a href="#what-we-collect">What we collect</a></li>
-        <li><a href="#signals-weekly">Signals Weekly</a></li>
-        <li><a href="#other-forms">Other forms</a></li>
-        <li><a href="#email-and-calls">Email and booked calls</a></li>
-        <li><a href="#theme">Your theme setting</a></li>
-        <li><a href="#hosting">Hosting and fonts</a></li>
-        <li><a href="#no-selling">We don't sell data</a></li>
-        <li><a href="#your-choices">Your choices</a></li>
-        <li><a href="#children">Children</a></li>
-        <li><a href="#changes">Changes</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ol>
-    </nav>
+  <!-- 2. The short version -->
+  <section class="band band--slate" aria-labelledby="short-h">
+    <div class="wrap tldr">
+      <div class="tldr__head">
+        <h2 class="h-1" id="short-h">The short version.</h2>
+        <p class="body-l">Six things worth knowing before the details.</p>
+      </div>
+      <ul class="tldr__list">
+        <li><b>No ad cookies.</b><span>We run no advertising cookies and set no tracking cookies of our own.</span></li>
+        <li><b>No tracking scripts.</b><span>No third-party analytics, advertising or tracking scripts, and no account to create.</span></li>
+        <li><b>Two things on the list.</b><span>Signals Weekly keeps your email address and the page you signed up on. Netlify Forms stores it, then our email provider.</span></li>
+        <li><b>Your theme stays with you.</b><span>Your color theme is saved in your browser only. It is never sent to us.</span></li>
+        <li><b>Never sold.</b><span>We do not sell, rent or trade your information, and we don't share it for advertising.</span></li>
+        <li><b>Leave any time.</b><span>Reply "unsubscribe" to any issue and we take you off the list.</span></li>
+      </ul>
+    </div>
+  </section>
 
-    <article class="doc__main prose">
-      <p>QuarterSmart keeps this simple, the same way we try to keep our work simple. This page explains what happens to information when you visit quartersmart.com, sign up for Signals Weekly, or get in touch with us.</p>
+  <!-- 3. The full policy -->
+  <section class="ldoc" id="policy" aria-label="Full privacy policy">
+    <div class="wrap ldoc__grid">
+      <nav class="ldoc__toc" aria-label="On this page">
+        <p class="label">Contents</p>
+        <ol>
+          <li><a href="#who-we-are">Who we are</a></li>
+          <li><a href="#what-we-collect">What we collect</a></li>
+          <li><a href="#signals-weekly">Signals Weekly</a></li>
+          <li><a href="#email-and-calls">Email and booked calls</a></li>
+          <li><a href="#theme">Your theme setting</a></li>
+          <li><a href="#hosting">Hosting and fonts</a></li>
+          <li><a href="#no-selling">We don't sell data</a></li>
+          <li><a href="#your-choices">Your choices</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#changes">Changes</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </nav>
 
-      <h2 id="who-we-are">Who we are</h2>
-      <p>QuarterSmart is an early-adoption AI partner based in Mesa, Arizona. You can reach us at <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a> with any question about this policy or the information we hold.</p>
+      <article class="ldoc__body prose">
+        <p>QuarterSmart keeps this simple, the same way we try to keep our work simple. This page explains what happens to information when you visit quartersmart.com, sign up for Signals Weekly, or get in touch with us.</p>
 
-      <h2 id="what-we-collect">What this site collects</h2>
-      <p>This is a static website. We do not run advertising cookies, we do not run analytics that profile you, and we do not ask you to create an account. We do not set tracking cookies of our own.</p>
-      <p>Apart from the standard server logs our host keeps (see <a href="#hosting">Hosting and fonts</a>), we only receive what you choose to send us: a form you fill in, or an email you write.</p>
+        <h2 id="who-we-are">Who we are</h2>
+        <p>QuarterSmart is an early-adoption AI partner based in Mesa, Arizona. You can reach us at <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a> with any question about this policy or the information we hold.</p>
 
-      <h2 id="signals-weekly">Signals Weekly</h2>
-      <p>Signals Weekly is our free email: one issue on Mondays, and a short alert in between only when something needs action that week.</p>
-      <p><strong>What we collect.</strong> The signup form sends us two things: your email address, and a note of which page you signed up on, such as the home page or a Signals post. Nothing else is asked for.</p>
-      <p><strong>How it is collected.</strong> The form runs on Netlify Forms, a feature of Netlify, the company that hosts this site. Netlify stores each signup for us along with standard technical details such as the time, your IP address and your browser type, and may check submissions with automated spam filtering.</p>
-      <p><strong>What we use it for.</strong> Sending you Signals Weekly and the occasional alert, and replying if you write back. We use the signup page only to learn which pages bring readers in.</p>
-      <!-- [CONFIRM: which email provider will send Signals Weekly. Name it in the paragraph below once chosen, and confirm whether open or click tracking is on.] -->
-      <p><strong>How it is sent.</strong> Issues are delivered through an email service provider that stores your address and sends the email for us. We give it your address only so it can deliver Signals Weekly. If that service records opens or link clicks, we look only at the totals, to learn which topics are useful. We do not use them to profile individual readers.</p>
-      <p><strong>How to unsubscribe.</strong> Reply "unsubscribe" to any issue, or email <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a> and tell us the address to remove. We take you off the list promptly, and always within 10 business days.</p>
-      <p><strong>How long we keep it.</strong> Until you unsubscribe. After that we remove you from the list, though we may keep a note that you unsubscribed so you are not added back by mistake.</p>
-      <p><strong>What we don't do.</strong> We do not sell, rent or trade your email address. We don't share it with the AI companies we write about, and we don't add you to any other list without asking.</p>
+        <h2 id="what-we-collect">What this site collects</h2>
+        <p>This is a static website. We do not run advertising cookies, we do not run analytics that profile you, and we do not ask you to create an account. We do not set tracking cookies of our own.</p>
+        <p>Apart from the standard server logs our host keeps (see <a href="#hosting">Hosting and fonts</a>), we only receive what you choose to send us: a form you fill in, or an email you write.</p>
 
-      <h2 id="other-forms">Other forms</h2>
-      <p>The <a href="/own-your-ai/">Own Your AI</a> waitlist works the same way. It records your email address and the monthly AI spend and term you picked in the calculator. Netlify stores the submission for us, and we use it only to contact you about private assessments when they open.</p>
+        <h2 id="signals-weekly">Signals Weekly</h2>
+        <p>Signals Weekly is our free email: one issue on Mondays, and a short alert in between only when something needs action that week.</p>
+        <p><strong>What we collect.</strong> The signup form sends us two things: your email address, and a note of which page you signed up on, such as the home page or a Signals post. Nothing else is asked for.</p>
+        <p><strong>How it is collected.</strong> The form runs on Netlify Forms, a feature of Netlify, the company that hosts this site. Netlify stores each signup for us along with standard technical details such as the time, your IP address and your browser type, and may check submissions with automated spam filtering.</p>
+        <p><strong>What we use it for.</strong> Sending you Signals Weekly and the occasional alert, and replying if you write back. We use the signup page only to learn which pages bring readers in.</p>
+        <!-- [CONFIRM: which email provider will send Signals Weekly. Name it in the paragraph below once chosen, and confirm whether open or click tracking is on.] -->
+        <p><strong>How it is sent.</strong> Issues are delivered through an email service provider that stores your address and sends the email for us. We give it your address only so it can deliver Signals Weekly. If that service records opens or link clicks, we look only at the totals, to learn which topics are useful. We do not use them to profile individual readers.</p>
+        <p><strong>How to unsubscribe.</strong> Reply "unsubscribe" to any issue, or email <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a> and tell us the address to remove. We take you off the list promptly, and always within 10 business days.</p>
+        <p><strong>How long we keep it.</strong> Until you unsubscribe. After that we remove you from the list, though we may keep a note that you unsubscribed so you are not added back by mistake.</p>
+        <p><strong>What we don't do.</strong> We do not sell, rent or trade your email address. We don't share it with the AI companies we write about, and we don't add you to any other list without asking.</p>
 
-      <h2 id="email-and-calls">Email and booked calls</h2>
-      <p>If you email us, we receive whatever you choose to share: your name, your email address, and what you tell us about your business. We use it only to reply to you and to scope possible work. We do not sell it, and we do not share it with anyone who is not helping us respond to you.</p>
-      <p>If you book a call, you do it through Calendly, our scheduling service. Calendly handles the details you enter under its own privacy policy and passes them to us so we can hold the call.</p>
+        <h2 id="email-and-calls">Email and booked calls</h2>
+        <p>If you email us, we receive whatever you choose to share: your name, your email address, and what you tell us about your business. We use it only to reply to you and to scope possible work. We do not sell it, and we do not share it with anyone who is not helping us respond to you.</p>
+        <p>If you book a call, you do it through Calendly, our scheduling service. Calendly handles the details you enter under its own privacy policy and passes them to us so we can hold the call.</p>
 
-      <h2 id="theme">Your theme setting</h2>
-      <p>The theme switcher (midnight, obsidian, rose, forest or paper) remembers your choice in your browser's localStorage, under the key <code>qs-theme</code>. It holds only the theme name. It stays on your device and is never sent to us or to anyone else. It is not a cookie. To reset it, clear this site's data in your browser settings.</p>
+        <h2 id="theme">Your theme setting</h2>
+        <p>The theme switcher (evergreen, midnight, obsidian, rose, forest or paper) remembers your choice in your browser's localStorage, under the key <code>qs-theme</code>. It holds only the theme name. It stays on your device and is never sent to us or to anyone else. It is not a cookie. To reset it, clear this site's data in your browser settings.</p>
 
-      <h2 id="hosting">Hosting and fonts</h2>
-      <p>The site is hosted by Netlify, which may log standard request data such as IP address and browser type for security and reliability. Our typefaces are self-hosted on our own domain, so loading them does not send your information to any third party. Apart from Calendly when you choose to book a call, we use no third-party analytics, advertising or tracking scripts.</p>
+        <h2 id="hosting">Hosting and fonts</h2>
+        <p>The site is hosted by Netlify, which may log standard request data such as IP address and browser type for security and reliability. Our typefaces are self-hosted on our own domain, so loading them does not send your information to any third party. Apart from Calendly when you choose to book a call, we use no third-party analytics, advertising or tracking scripts.</p>
 
-      <h2 id="no-selling">We don't sell data</h2>
-      <p>We do not sell, rent or trade personal information, and we do not share it for advertising. We share it only with the services that help us run this site, send Signals Weekly and book calls, and only so they can do that job. We may also disclose it when the law requires it.</p>
+        <h2 id="no-selling">We don't sell data</h2>
+        <p>We do not sell, rent or trade personal information, and we do not share it for advertising. We share it only with the services that help us run this site, send Signals Weekly and book calls, and only so they can do that job. We may also disclose it when the law requires it.</p>
 
-      <h2 id="your-choices">Your choices</h2>
-      <p>You can email <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a> at any time to ask what information we hold about you, to correct it, or to ask us to delete it. We will do our best to honor reasonable requests promptly.</p>
+        <h2 id="your-choices">Your choices</h2>
+        <p>You can email <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a> at any time to ask what information we hold about you, to correct it, or to ask us to delete it. We will do our best to honor reasonable requests promptly.</p>
 
-      <h2 id="children">Children</h2>
-      <p>This site is meant for businesses and is not directed at children under 13. We do not knowingly collect information from children.</p>
+        <h2 id="children">Children</h2>
+        <p>This site is meant for businesses and is not directed at children under 13. We do not knowingly collect information from children.</p>
 
-      <h2 id="changes">Changes to this policy</h2>
-      <p>We may update this policy as the site or our practices change. The date at the top shows the most recent revision.</p>
+        <h2 id="changes">Changes to this policy</h2>
+        <p>We may update this policy as the site or our practices change. The date at the top shows the most recent revision.</p>
 
-      <h2 id="contact">Contact</h2>
-      <p>Questions about privacy go to <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>.</p>
-    </article>
-  </div>
+        <h2 id="contact">Contact</h2>
+        <p>Questions about privacy go to <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>. The rules for using the site are in our <a href="/terms/">terms of use</a>.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 4. Close -->
+  <section class="lclose band--deep" aria-labelledby="close-h">
+    <div class="wrap lclose__grid">
+      <div class="lclose__main">
+        <h2 class="lclose__h" id="close-h">That's the fine print.</h2>
+        <p class="body-l">Now the useful part. A free 20-minute call: tell us what your team uses and what's eating the week. We'll tell you what's worth doing now and what can wait.</p>
+        <div class="lclose__cta">
+          <a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a>
+          <a class="link" href="/signals/">Read Signals first</a>
+        </div>
+      </div>
+      <figure class="lclose__art"><img class="px" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="" aria-hidden="true" loading="lazy"></figure>
+    </div>
+  </section>
 </main>
 
+<script>
+/* Contents rail: mark the section you're reading. Colour only, no motion. */
+(() => {
+  const links = [...document.querySelectorAll('.ldoc__toc a')];
+  if (!('IntersectionObserver' in window) || !links.length) return;
+  const byId = new Map(links.map((a) => [a.hash.slice(1), a]));
+  const io = new IntersectionObserver((es) => {
+    es.forEach((e) => { if (e.isIntersecting && byId.has(e.target.id)) { links.forEach((a) => a.removeAttribute('aria-current')); byId.get(e.target.id).setAttribute('aria-current', 'true'); } });
+  }, { rootMargin: '-15% 0px -70% 0px' });
+  byId.forEach((_, id) => { const h = document.getElementById(id); if (h) io.observe(h); });
+})();
+</script>
 <!-- @include footer -->
 </body>
 </html>
