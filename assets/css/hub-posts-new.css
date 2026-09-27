@@ -1,0 +1,105 @@
+/* Signals hub. A retro site, not a retro theme: one stage of pixel scenes
+   in the hero, one neon sign, the feed as typographic rows, one colour band,
+   and a close that books the call. Tokens only. */
+
+/* ---------- 1. Hero ---------- */
+/* the stage runs past the text column into the right margin, so it can be
+   drawn one pixel size larger; a faint wash keeps the site sky calm behind the copy */
+.shero { padding: clamp(40px, 5vw, 64px) 0 clamp(48px, 6vw, 80px); background: color-mix(in srgb, var(--bg-0) 80%, transparent); }
+.shero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 600px); gap: clamp(32px, 4vw, 56px); align-items: center; }
+@media (min-width: 1001px) {
+  .shero__grid.wrap { max-width: none; padding-left: max(clamp(16px, 3vw, 32px), calc((100% - var(--wrap)) / 2 + clamp(16px, 3vw, 32px))); padding-right: clamp(16px, 2vw, 24px); grid-template-columns: minmax(0, 1fr) minmax(0, 720px); }
+}
+.shero__copy { display: grid; gap: 26px; justify-items: start; }
+.shero__sign { display: flex; align-items: center; gap: 12px; margin: 0; font: 400 33px/1 var(--pixel); }
+.shero__sign .nradar svg { width: 46px; height: 32px; }
+.shero__h { font: 400 55px/1.1 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); max-width: 14ch; }
+.shero .lede { max-width: 52ch; }
+.shero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 4px; }
+.shero__cta .link, .scloser__cta .link { align-self: center; }
+.shero__fine { font-size: 15px; color: var(--fg-2); max-width: 52ch; }
+.shero__fine a { color: var(--fg-1); }
+.shero__fine a:hover { color: var(--accent); }
+
+/* ---------- 2. The feed ---------- */
+.slist { padding: clamp(72px, 8vw, 120px) 0; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--bg-0) 90%, transparent); }
+.slist__head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px 32px; margin-bottom: 36px; }
+.slist__tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.sig-hub .sig-q { flex: 0 1 220px; }
+.sig-hub .sigtable { border-top: 1px solid var(--line-2); }
+.sig-hub .sigtable > li { border-bottom: 1px solid var(--line); }
+.sig-hub .sigtable a { position: relative; grid-template-columns: 116px minmax(0, 1fr) 190px 120px; gap: 28px; padding: 30px 44px 30px 0; transition: background .15s; }
+.sig-hub .sigtable a:hover { background: none; }
+.sig-hub .sigtable a::after { content: "\2192"; position: absolute; right: 4px; top: 28px; font: 400 22px var(--pixel); color: var(--fg-2); transition: transform .2s, color .2s; }
+.sig-hub .sigtable a:hover::after { transform: translateX(6px); color: var(--accent); }
+.sig-hub .sig__date { padding-top: 4px; }
+.sig-hub .sig__t { font: 400 22px/1.3 var(--pixel); letter-spacing: 0; color: var(--fg-0); max-width: 44ch; }
+.sig-hub .sigtable a:hover .sig__t { color: var(--accent); }
+.sig-hub .sig__d { margin-top: 10px; font-size: 16px; max-width: 64ch; }
+/* the latest few carry their summary; the archive below reads as a clean index */
+.sig-hub .sigtable > li:nth-child(n+5) .sig__d { display: none; }
+.sig-hub .sigtable > li:nth-child(n+5) a { padding-block: 22px; }
+.sig-hub .sig__cell { padding-top: 6px; min-width: 0; }
+.sig-hub .sig__cell .label { display: none; }
+.sig-hub .sig__cell .chip { white-space: normal; line-height: 1.5; align-items: baseline; }
+.sig-hub .sigtable .verdict { border: 0; padding: 0; font: 400 22px/1 var(--pixel); color: var(--fg-0); white-space: normal; }
+.slist__empty { padding: 28px 0; color: var(--fg-2); }
+
+/* ---------- 3. Reading a Signal ---------- */
+.slegend { padding-bottom: clamp(64px, 7vw, 96px); }
+.slegend__h { font: 400 clamp(33px, 3.4vw, 44px)/1.14 var(--pixel); letter-spacing: -.01em; max-width: 30ch; }
+.slegend__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); margin-top: clamp(40px, 5vw, 64px); }
+.slegend__k { font: 400 11px/1.4 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-1); margin-bottom: 18px; }
+.slegend__labels, .slegend__verdicts { margin: 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 14%, transparent); }
+.slegend__labels div, .slegend__verdicts div { display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid color-mix(in srgb, var(--fg-0) 14%, transparent); }
+.slegend__labels dd, .slegend__verdicts dd { margin: 0; color: var(--fg-1); font-size: 16px; }
+.slegend__verdicts div { grid-template-columns: 170px 1fr; padding: 14px 0; }
+.slegend__verdicts dt { font: 400 27.5px/1.1 var(--pixel); }
+.v-act { color: var(--accent); }
+.v-prep { color: var(--warn); }
+.v-wait { color: var(--info); }
+.v-ign { color: var(--fg-1); }
+.slegend__note { margin-top: 20px; color: var(--fg-1); font-size: 16px; }
+
+/* ---------- 4. Close ---------- */
+.scloser { padding: clamp(88px, 10vw, 148px) 0; }
+.scloser__grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(32px, 6vw, 96px); align-items: end; }
+.scloser__main { display: grid; gap: 24px; justify-items: start; }
+.scloser__h { font: 400 clamp(44px, 5vw, 66px)/1.08 var(--pixel); letter-spacing: -.01em; max-width: 16ch; }
+.scloser__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 6px; }
+.scloser__form { display: grid; gap: 12px; padding-left: clamp(0px, 3vw, 40px); border-left: 1px solid var(--line); scroll-margin-top: 100px; }
+.scloser__fh { font: 400 22px/1.25 var(--pixel); color: var(--fg-0); }
+.scloser__form .muted { font-size: 15px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .sig-hub .sigtable a { grid-template-columns: 104px minmax(0, 1fr) 150px; }
+  .sig-hub .sigtable .sig__cell--a { display: none; }
+}
+@media (max-width: 1000px) {
+  .shero__grid { grid-template-columns: 1fr; }
+  .shero__art { width: 100%; max-width: 620px; justify-self: center; }
+  .slegend__grid, .scloser__grid { grid-template-columns: 1fr; }
+  .scloser__form { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 28px; }
+}
+@media (max-width: 640px) {
+  .shero { padding-top: 40px; }
+  .shero__grid { gap: 20px; }
+  .shero__sign { font-size: 27.5px; }
+  .shero__sign .nradar svg { width: 40px; height: 28px; }
+  .shero__h { font-size: 33px; }
+  .shero__copy { gap: 20px; }
+  .shero__art { order: -1; }
+  .slist__head { align-items: start; flex-direction: column; }
+  .slist__tools { width: 100%; }
+  .sig-hub .sig-q { flex: 1 1 100%; }
+  .sig-hub .sigtable a { grid-template-columns: minmax(0, 1fr) auto; gap: 12px 16px; padding: 24px 0; }
+  .sig-hub .sigtable a::after { top: 20px; }
+  .sig-hub .sigtable a > span:nth-child(-n+2) { grid-column: 1 / -1; }
+  .sig-hub .sigtable .sig__cell--a { display: flex; grid-column: 1; align-self: center; }
+  .sig-hub .sigtable .sig__cell--v { grid-column: 2; align-self: center; }
+  .sig-hub .sig__cell { padding-top: 0; }
+  .sig-hub .sig__t { font-size: 22px; }
+  .slegend__labels div, .slegend__verdicts div { grid-template-columns: 1fr; gap: 6px; }
+  .scloser__h { font-size: 38.5px; }
+}

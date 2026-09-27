@@ -26,7 +26,7 @@
 <meta name="qs:verdict" content="Wait">
 <meta name="qs:cover" content="/assets/px/sprite-radar.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927a">
+<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -109,7 +109,7 @@
     <div class="wrap po-band__grid">
       <figure class="po-art" data-po-form>
         <p class="po-sign"><span class="label">Our verdict</span><span class="po-sign__word neon neon--warm">Wait</span></p>
-        <img src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, listening." style="--w:54px;--s:4;--s-m:3" fetchpriority="high">
+        <img src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, listening." style="--w:54px;--s:3;--s-m:2" fetchpriority="high">
       </figure>
       <div class="po-sum">
         <h2 class="po-sum__h" id="short-h">The short version</h2>
@@ -264,7 +264,7 @@ for(var j=0;j<P.length;j++){var p=P[j],t=(el-p[4])/T;if(t<1)done=0;t=t<0?0:t>1?1
 x.globalAlpha=.28+.72*t;x.fillStyle=p[5];x.fillRect(Math.round(p[0]+(p[2]-p[0])*e),Math.round(p[1]+(p[3]-p[1])*e),s,s)}
 if(!done)requestAnimationFrame(tick);else{c.remove();lit()}}
 requestAnimationFrame(tick)}
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();(m.complete?Promise.resolve():m.decode()).then(go,go)}})},{threshold:.3});io.observe(f)})();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();(m.complete?Promise.resolve():m.decode()).then(go,go)}})},{threshold:.2});io.observe(f)})();
 </script>
 <!-- po-form:end -->
 <!-- @include footer -->

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="evergreen">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,9 +24,9 @@
 <meta name="qs:kind" content="insight">
 <meta name="qs:label" content="Insight">
 <meta name="qs:verdict" content="Read">
-<meta name="qs:cover" content="/assets/images/signals/why-ai-pilots-fail-cover.jpg">
+<meta name="qs:cover" content="/assets/px/sprite-keyboard-manual.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/signals-post.css">
+<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -48,7 +48,7 @@
       "description": "MIT found 95% of AI pilots deliver zero measurable P&L impact and 88% never reach production. The reason is almost never the model. Here is what the 5% do differently, with an interactive check for your own pilot.",
       "image": "https://quartersmart.com/assets/images/signals/why-ai-pilots-fail-cover.jpg",
       "datePublished": "2026-06-25",
-      "dateModified": "2026-06-25",
+      "dateModified": "2026-09-27",
       "author": {
         "@id": "https://quartersmart.com/about.html#hyrum-hurst"
       },
@@ -128,99 +128,112 @@
 }
 </script>
 </head>
-<body>
+<body class="po">
 <!-- @include nav -->
 <main id="main">
-  <header class="post-head">
+
+  <header class="po-head">
     <div class="wrap">
       <p class="phead__crumbs"><a href="/">home</a> / <a href="/signals/">signals</a> / why-ai-pilots-fail</p>
-      <div class="post-head__chips"><span class="chip">Insight</span><span class="verdict"><b>verdict</b> Read</span></div>
-      <h1 class="h-1">Why 95% of AI pilots fail to show ROI, and what the 5% do differently</h1>
+      <div class="po-chips"><span class="chip chip--insight">Insight</span><span class="verdict"><b>verdict</b> Read</span></div>
+      <h1 class="po-h">Why 95% of AI pilots fail to show ROI, and what the 5% do differently</h1>
       <p class="lede">Roughly 95 percent of corporate AI pilots produce no measurable financial return. The uncomfortable part is that the model is almost never the reason.</p>
-      <p class="byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-06-25">Jun 25, 2026</time></span></p>
+      <p class="po-byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-06-25">Jun 25, 2026</time></span><span>Updated <time datetime="2026-09-27">Sep 27, 2026</time></span></p>
+      <div class="po-head__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
     </div>
   </header>
 
-  <div class="wrap">
-    <figure class="pane post-cover" style="margin-left:0;margin-right:0">
-      <div class="shot"><img src="/assets/images/signals/why-ai-pilots-fail-cover.jpg" width="1200" height="800" alt="A grid of one hundred nodes, ninety-five dim and five glowing mint, representing the small share of AI pilots that reach measurable results." fetchpriority="high"></div>
-    </figure>
+  <section class="band band--deep po-band" aria-labelledby="short-h">
+    <div class="wrap po-band__grid">
+      <figure class="po-art" data-po-form>
+        <p class="po-sign"><span class="label">Our verdict</span><span class="po-sign__word neon">Read</span></p>
+        <img src="/assets/px/sprite-keyboard-manual.png" width="116" height="41" alt="Pixel art of a keyboard beside an open manual." style="--w:116px;--s:3;--s-m:2" fetchpriority="high">
+      </figure>
+      <div class="po-sum">
+        <h2 class="po-sum__h" id="short-h">The short version</h2>
+        <ul>
+          <li>A widely cited 2025 MIT study found 95 percent of enterprise AI pilots had no measurable effect on profit and loss. IDC found 88 percent never reach production.</li>
+          <li>The failures cluster on governance, data readiness, workflow integration and measurement, not on model quality.</li>
+          <li>The pilots that survive plug into a real workflow, train the people who do the work, name an owner, measure against a baseline, and stay maintained.</li>
+          <li>The six-statement check in this post shows where your own pilot stands.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <div class="post-grid">
+  <div class="po-body">
+    <div class="wrap po-grid">
       <article class="prose">
-        <div class="shortv">
-          <h2>The short version</h2>
-          <ul>
-            <li>A widely cited 2025 MIT study found 95 percent of enterprise AI pilots had no measurable effect on profit and loss. IDC found 88 percent never reach production.</li>
-            <li>The failures cluster on governance, data readiness, workflow integration and measurement, not on model quality.</li>
-            <li>The pilots that survive plug into a real workflow, train the people who do the work, name an owner, measure against a baseline, and stay maintained.</li>
-            <li>The six-statement check in this post shows where your own pilot stands.</li>
-          </ul>
-        </div>
-        <p>Every team you talk to is running an AI pilot. Almost none of them can point to a number it moved. That is not a vibe, it is the data, and the gap between the two is the most important thing happening in enterprise AI right now.</p>
-        <h2>The numbers are brutal</h2>
+        <p>Every team seems to be running an AI pilot. Very few can point to a number it moved. The research backs that up, and the gap between the two is the most important thing happening in enterprise AI right now.</p>
+
+        <h2>The numbers</h2>
         <p>In 2025, a widely cited MIT study found that <strong>95 percent of enterprise AI pilots delivered zero measurable impact</strong> on profit and loss. IDC measured the same wall from a different angle: <strong>88 percent of AI pilots never reach production</strong>. S&amp;P Global found that <strong>42 percent of companies abandoned most of their AI initiatives</strong> that year, a sharp jump from the year before. And IBM, looking at the return side, put the share of AI initiatives that delivered their expected ROI at about <strong>25 percent</strong>.</p>
-        <div class="pane"><span class="pane__t">the numbers</span>
-          <div class="meters" role="list">
-            <div class="meter" role="listitem"><span class="meter__k">AI pilots with zero measurable P&amp;L impact<span class="meter__src fine">MIT, State of AI in Business, 2025</span></span><span class="meter__bar" style="--v:95" aria-hidden="true"></span><span class="meter__v">95%</span></div>
-            <div class="meter" role="listitem"><span class="meter__k">AI pilots that never reach production<span class="meter__src fine">IDC</span></span><span class="meter__bar" style="--v:88" aria-hidden="true"></span><span class="meter__v">88%</span></div>
-            <div class="meter" role="listitem"><span class="meter__k">Companies that abandoned most AI initiatives in 2025<span class="meter__src fine">S&amp;P Global</span></span><span class="meter__bar" style="--v:42" aria-hidden="true"></span><span class="meter__v">42%</span></div>
-            <div class="meter" role="listitem"><span class="meter__k">AI initiatives that delivered the expected ROI<span class="meter__src fine">IBM</span></span><span class="meter__bar" style="--v:25" aria-hidden="true"></span><span class="meter__v">25%</span></div>
-          </div>
+        <div class="po-stats" role="list">
+          <div class="po-stat" role="listitem"><span class="po-stat__v">95%</span><span class="po-stat__bar" style="--v:95" aria-hidden="true"></span><span class="po-stat__k">of AI pilots had zero measurable P&amp;L impact</span><span class="po-stat__src">MIT, State of AI in Business, 2025</span></div>
+          <div class="po-stat" role="listitem"><span class="po-stat__v">88%</span><span class="po-stat__bar" style="--v:88" aria-hidden="true"></span><span class="po-stat__k">of AI pilots never reach production</span><span class="po-stat__src">IDC</span></div>
+          <div class="po-stat" role="listitem"><span class="po-stat__v">42%</span><span class="po-stat__bar" style="--v:42" aria-hidden="true"></span><span class="po-stat__k">of companies abandoned most AI initiatives in 2025</span><span class="po-stat__src">S&amp;P Global</span></div>
+          <div class="po-stat" role="listitem"><span class="po-stat__v">25%</span><span class="po-stat__bar" style="--v:25" aria-hidden="true"></span><span class="po-stat__k">of AI initiatives delivered the expected ROI</span><span class="po-stat__src">IBM</span></div>
         </div>
         <p>Spending is not the problem. <strong>59 percent of companies now invest more than a million dollars a year in AI</strong>, and by McKinsey's count <strong>72 percent of enterprises have at least one AI workload in production</strong>. The money is flowing. The returns are not.</p>
+
         <h2>It is almost never the model</h2>
-        <p>When a pilot dies, the post-mortem rarely blames the model. IDC's research found that failures cluster on governance, data readiness, workflow integration, and measurement, not on model quality. Industry estimates put roughly <strong>80 percent of the work to move from a pilot to production</strong> in exactly those areas: data engineering, integration, governance, and the measurement infrastructure that proves it worked.</p>
-        <p>Put plainly: the demo works. The model is good enough. What is missing is everything that turns a good demo into a system someone actually uses on a Tuesday. Gartner found that only <strong>27 percent of executives have a comprehensive AI strategy</strong> and just <strong>20 percent believe their workforce is AI ready</strong>. The technology arrived years before the operating model did.</p>
+        <p>When a pilot dies, the post-mortem rarely blames the model. IDC's research found that failures cluster on governance, data readiness, workflow integration and measurement. Industry estimates put roughly <strong>80 percent of the work to move from a pilot to production</strong> in exactly those areas: data engineering, integration, governance, and the measurement that proves it worked.</p>
+        <p>Put plainly: the demo works, and the model is good enough. What is missing is everything that turns a good demo into a system someone actually uses on a Tuesday. Gartner found that only <strong>27 percent of executives have a comprehensive AI strategy</strong> and just <strong>20 percent believe their workforce is AI ready</strong>. The technology arrived years before the operating model did.</p>
+
         <h2>What the 5% do differently</h2>
-        <p>The pilots that survive share a short and unglamorous list. None of it is about a smarter model. All of it is about delivery.</p>
+        <p>The pilots that survive share a short and unglamorous list. All of it is about delivery.</p>
         <ul>
-          <li><strong>They plug into a real workflow.</strong> Not a sandbox, not a side project. The AI does a task the team already does every week.</li>
+          <li><strong>They plug into a real workflow.</strong> The AI does a task the team already does every week, inside the tools they already use.</li>
           <li><strong>They train the people who do the work.</strong> A tool nobody is taught to use is a tool nobody uses. AI super-users can deliver up to 5x the productivity, but only when the rest of the team is brought along.</li>
-          <li><strong>They name an owner.</strong> Someone is accountable for the outcome, not just for the launch announcement.</li>
+          <li><strong>They name an owner.</strong> Someone is accountable for the outcome, beyond the launch announcement.</li>
           <li><strong>They measure against a baseline.</strong> They wrote down the before number, so the after number means something.</li>
-          <li><strong>They get hosted and maintained.</strong> The integration that breaks on a Friday gets fixed, so the system is still alive in six months instead of quietly rotting.</li>
+          <li><strong>They get hosted and maintained.</strong> The integration that breaks on a Friday gets fixed, so the system is still alive in six months.</li>
         </ul>
-        <h2>Where does your pilot stand?</h2>
-        <p>Run your own AI effort through the same checklist the survivors pass. Check what is genuinely true today, not what is on a roadmap.</p>
-        <div class="pane quiz" id="pf-quiz"><span class="pane__t">self-check</span>
-          <p class="h-3 quiz__q">Will your AI pilot survive?</p>
+
+        <h2 id="self-check">Where does your pilot stand?</h2>
+        <p>Run your own AI effort through the same checklist the survivors pass. Check what is true today, not what is on a roadmap.</p>
+        <div class="po-quiz" id="pf-quiz">
+          <p class="po-quiz__q">Will your AI pilot survive?</p>
           <p>Check every statement that is true of your current AI effort right now.</p>
           <div>
-            <label class="quiz__opt"><input type="checkbox"> <span>It is wired into a real, recurring workflow your team already runs, not a standalone demo.</span></label>
+            <label class="quiz__opt"><input type="checkbox"> <span>It is wired into a real, recurring workflow your team already runs, instead of a standalone demo.</span></label>
             <label class="quiz__opt"><input type="checkbox"> <span>The people who do the work were trained on it and actually use it day to day.</span></label>
             <label class="quiz__opt"><input type="checkbox"> <span>One named person owns the outcome and is accountable for it.</span></label>
             <label class="quiz__opt"><input type="checkbox"> <span>You wrote down a baseline metric before launch and measure against it.</span></label>
-            <label class="quiz__opt"><input type="checkbox"> <span>It is hosted and maintained, not a one-off you have to babysit.</span></label>
+            <label class="quiz__opt"><input type="checkbox"> <span>It is hosted and maintained, so nobody has to babysit it.</span></label>
             <label class="quiz__opt"><input type="checkbox"> <span>The data it depends on is clean and connected to the system.</span></label>
           </div>
-          <div class="quiz__result" aria-live="polite"><p class="label label--accent" id="pf-score">0 of 6 in place</p><p class="quiz__verdict" id="pf-verdict">Check the boxes above</p><p id="pf-detail">The more of these are true, the closer you are to the 5 percent. The gaps are exactly where pilots quietly die.</p></div>
+          <div class="po-quiz__result" aria-live="polite"><p class="po-quiz__score" id="pf-score">0 of 6 in place</p><p class="po-quiz__verdict" id="pf-verdict">Check the boxes above</p><p id="pf-detail">The more of these are true, the closer you are to the 5 percent. The gaps are exactly where pilots quietly die.</p></div>
         </div>
         <script>
           (function(){
           var quiz=document.getElementById('pf-quiz');if(!quiz)return;
           var boxes=quiz.querySelectorAll('input[type=checkbox]'),score=document.getElementById('pf-score'),verdict=document.getElementById('pf-verdict'),detail=document.getElementById('pf-detail');
           function upd(){var c=0;boxes.forEach(function(b){if(b.checked)c++;});var v,d;
-          if(c>=5){v="On the 5% track.";d="You have the wrap-around most pilots are missing. Keep the owner and the baseline number honest, and this one survives.";}
+          if(c>=5){v="On the 5% track.";d="You have the layer most pilots are missing. Keep the owner and the baseline number honest, and this one survives.";}
           else if(c>=3){v="At risk.";d="The model is fine. The layer around it is half-built, and the missing pieces are exactly where pilots quietly die.";}
-          else if(c>=1){v="Headed for the graveyard.";d="This is a demo, not a system yet. The fix is the boring 80 percent: a real workflow, trained people, an owner, and a number.";}
+          else if(c>=1){v="Still a demo.";d="It is not a system yet. The fix is the unglamorous 80 percent: a real workflow, trained people, an owner, and a number.";}
           else{v="Check the boxes above";d="The more of these are true, the closer you are to the 5 percent. The gaps are exactly where pilots quietly die.";}
           score.textContent=c+" of "+boxes.length+" in place";verdict.textContent=v;detail.textContent=d;}
           boxes.forEach(function(b){b.addEventListener('change',upd);});upd();
           })();
         </script>
+
         <h2>What this means for your team</h2>
-        <p>If your AI is stuck at the demo stage, you are not behind on technology. You are missing the layer between the model and the work. That layer is training that reaches a real workflow, an automation that runs the task, an owner who is accountable, and a number you measure against.</p>
-        <p>That gap is the entire reason QuarterSmart exists. We train your team, turn the SOPs they already follow into both a course they learn from and an automation that runs the work, then host and maintain it and measure the result. Same source, two outputs, one number you can point to. If you want to see how it works, look at the results from real builds or <a href="/services/">the way an engagement actually moves</a>.</p>
-        <h2>Frequently asked questions</h2>
-        <div class="faq">
-          <details open><summary>Why do most AI pilots fail?</summary><div class="a"><p>Most AI pilots fail on execution, not model quality. MIT found 95% deliver no measurable P&amp;L impact and IDC found 88% never reach production, with failures clustering on data readiness, workflow integration, governance, and measurement rather than the model itself.</p></div></details>
-          <details><summary>What percentage of AI projects deliver ROI?</summary><div class="a"><p>Roughly 25% of AI initiatives deliver the expected return according to IBM, and only about 29% of organizations see significant ROI from generative AI. The gap is execution, not the technology.</p></div></details>
-          <details><summary>How do you move an AI pilot to production?</summary><div class="a"><p>Plug it into a real recurring workflow, train the people who do the work, name an accountable owner, baseline a metric before launch, and host and maintain the system afterward. Industry estimates put about 80% of the pilot-to-production work in integration, governance, and measurement.</p></div></details>
-          <details><summary>Is the AI model usually at fault when a pilot fails?</summary><div class="a"><p>Rarely. The model is usually good enough. What is missing is the layer around it: training, workflow integration, ownership, and measurement. That is where most pilots quietly die.</p></div></details>
+        <p>If your AI is stuck at the demo stage, you are not behind on technology. You are missing the layer between the model and the work: training that reaches a real workflow, an automation that runs the task, an owner who is accountable, and a number you measure against.</p>
+        <p>That layer is most of what we do. We set new tools up inside the work your team already does, train the people who use them, and automate the repetitive part that's left, with agents and workflows your team can see and check. <a href="/approach/">How we work</a>.</p>
+
+        <h2>Common questions</h2>
+        <div class="po-faq">
+          <div><h3>Why do most AI pilots fail?</h3><p>Most AI pilots fail on execution, not model quality. MIT found 95% deliver no measurable P&amp;L impact and IDC found 88% never reach production, with failures clustering on data readiness, workflow integration, governance, and measurement rather than the model itself.</p></div>
+          <div><h3>What percentage of AI projects deliver ROI?</h3><p>Roughly 25% of AI initiatives deliver the expected return according to IBM, and only about 29% of organizations see significant ROI from generative AI. The gap is execution, not the technology.</p></div>
+          <div><h3>How do you move an AI pilot to production?</h3><p>Plug it into a real recurring workflow, train the people who do the work, name an accountable owner, baseline a metric before launch, and host and maintain the system afterward. Industry estimates put about 80% of the pilot-to-production work in integration, governance, and measurement.</p></div>
+          <div><h3>Is the AI model usually at fault when a pilot fails?</h3><p>Rarely. The model is usually good enough. What is missing is the layer around it: training, workflow integration, ownership, and measurement. That is where most pilots quietly die.</p></div>
         </div>
+
         <h2>If you want help</h2>
         <p>If your AI is stuck at the demo stage, <a href="/contact/">book a 20-minute call</a>. Most businesses start with a <a href="/services/#head-start">Head Start</a>: a fixed-fee review of the tools you already pay for and a 30-day plan.</p>
+
         <h2 id="sources">Sources</h2>
         <ul class="sources">
           <li>MIT NANDA, State of AI in Business 2025 (the 95% no-measurable-impact figure)</li>
@@ -231,38 +244,87 @@
           <li>Gartner, on AI strategy maturity, workforce readiness, and task-specific agents in enterprise apps</li>
         </ul>
         <p class="fine">Figures are drawn from public 2025 and 2026 industry research and are reported as ranges where sources differ. Results vary by organization.</p>
+
         <h2>Update log</h2>
         <ul class="updlog">
-          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout. The reporting is unchanged.</span></li>
+          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout and edited for tone. Replaced an outdated description of our services. The research figures and sources are unchanged.</span></li>
           <li><time datetime="2026-06-25">Jun 25, 2026</time><span>First posted.</span></li>
         </ul>
         <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by any company or research firm cited here. Product names are trademarks of their owners. This post reflects public information as of June 25, 2026. <a href="/signals/policy/">How we source Signals</a>.</p>
+        <div class="po-author">
+          <img src="/assets/images/team/hyrum-hurst.webp" alt="Hyrum Hurst" width="64" height="64" loading="lazy">
+          <p><b>Hyrum Hurst</b>Founder of QuarterSmart and CTO of Learning Journey AI. He writes Signals and sets up the tools himself. <a href="/about/hyrum-hurst/">More about Hyrum</a></p>
+        </div>
       </article>
 
-      <aside class="post-side" aria-label="Signal summary">
-        <div class="pane pane--active">
-          <span class="pane__t">signal</span>
-          <dl class="card-kv">
-            <div><dt>Status</dt><dd><span class="chip">Insight</span></dd></div>
-            <div><dt>Verdict</dt><dd>Read</dd></div>
-            <div><dt>Who it's for</dt><dd>Teams with an AI pilot that has not moved a number yet</dd></div>
-            <div><dt>Self-check</dt><dd>Six statements, in the post</dd></div>
-            <div><dt>Posted</dt><dd>Jun 25, 2026</dd></div>
-          </dl>
-        </div>
-        <div class="pane">
-          <span class="pane__t">read next</span>
-          <ul class="readnext">
-            <li><a class="link" href="/signals/sops-to-aops">What an AOP is</a></li>
-            <li><a class="link" href="/signals/stretch-ai-budget">Stretch your AI budget</a></li>
-            <li><a class="link" href="/signals/">All Signals</a></li>
+      <aside class="po-rail" aria-label="Signal summary">
+        <dl class="po-kv">
+          <div><dt>Verdict</dt><dd class="po-kv__big">Read</dd></div>
+          <div><dt>Who it's for</dt><dd>Teams with an AI pilot that has not moved a number yet</dd></div>
+          <div><dt>Self-check</dt><dd><a href="#self-check">Six statements, in the post</a></dd></div>
+          <div><dt>Posted</dt><dd>Jun 25, 2026</dd></div>
+        </dl>
+        <nav class="po-next" aria-label="Read next">
+          <h2>Read next</h2>
+          <ul>
+            <li><a href="/signals/sops-to-aops">What an AOP is</a></li>
+            <li><a href="/signals/stretch-ai-budget">Stretch your AI budget</a></li>
+            <li><a href="/signals/">All Signals</a></li>
           </ul>
-        </div>
+        </nav>
       </aside>
     </div>
   </div>
-  <!-- @include post-end -->
+
+  <section class="band band--slate po-close" aria-labelledby="close-h">
+    <div class="wrap po-close__grid">
+      <div class="po-close__main">
+        <h2 class="po-close__h" id="close-h">Get in the first quarter.</h2>
+        <p class="body-l">A free 20-minute call. Tell us what your team uses and what's eating the week. We'll tell you what's worth doing now and what can wait.</p>
+        <div class="po-head__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
+      </div>
+      <form class="po-close__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+        <p class="label">Not ready for a call?</p>
+        <h3 class="h-3">Get the next Signal instead.</h3>
+        <p class="muted">The few AI launches worth your attention, every Monday, each with a verdict. Free.</p>
+        <input type="hidden" name="form-name" value="signals-weekly">
+        <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
+        <input type="hidden" name="source" value="post">
+        <label class="sr" for="pe-email">Work email</label>
+        <div class="field">
+          <input class="input" id="pe-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+          <button class="btn" type="submit">Subscribe</button>
+        </div>
+        <p data-form-status aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
 </main>
+<!-- po-form:start -->
+<script>
+/* The band's sprite assembles from its own pixels once, then the verdict sign lights. Skipped for reduced motion. */
+(function(){var f=document.querySelector('[data-po-form]');if(!f)return;var b=f.closest('.po-band'),m=f.querySelector('img');
+if(!m||!b||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+b.classList.add('po-arm');var ran=0;
+function lit(){f.classList.remove('is-forming');b.classList.add('is-lit');}
+function go(){if(ran)return;ran=1;var w=m.naturalWidth,h=m.naturalHeight,r=m.getBoundingClientRect(),fr=f.getBoundingClientRect();if(!w||!r.width)return lit();
+var sc=r.width/w,o=document.createElement('canvas');o.width=w;o.height=h;var ox=o.getContext('2d'),d;ox.drawImage(m,0,0);
+try{d=ox.getImageData(0,0,w,h).data}catch(e){return lit()}
+var pad=Math.round(Math.max(r.width,r.height)*.55),cw=Math.round(r.width+pad*2),ch=Math.round(r.height+pad*2),c=document.createElement('canvas');
+c.width=cw;c.height=ch;c.style.width=cw+'px';c.style.height=ch+'px';c.style.left=Math.round(r.left-fr.left-pad)+'px';c.style.top=Math.round(r.top-fr.top-pad)+'px';
+var x=c.getContext('2d'),P=[],s=Math.ceil(sc);
+for(var y=0;y<h;y++)for(var i=0;i<w;i++){var k=(y*w+i)*4;if(d[k+3]<60)continue;var a=Math.random()*6.2832,q=(.3+Math.random()*.7)*pad;
+P.push([pad+r.width/2+Math.cos(a)*q*1.5,pad+r.height/2+Math.sin(a)*q,pad+i*sc,pad+y*sc,Math.random()*320+(1-y/h)*240,'rgb('+d[k]+','+d[k+1]+','+d[k+2]+')'])}
+f.appendChild(c);f.classList.add('is-forming');var T=820,t0=performance.now();
+function tick(now){var el=now-t0,done=1;x.clearRect(0,0,cw,ch);
+for(var j=0;j<P.length;j++){var p=P[j],t=(el-p[4])/T;if(t<1)done=0;t=t<0?0:t>1?1:t;var e=Math.round((1-Math.pow(1-t,3))*16)/16;
+x.globalAlpha=.28+.72*t;x.fillStyle=p[5];x.fillRect(Math.round(p[0]+(p[2]-p[0])*e),Math.round(p[1]+(p[3]-p[1])*e),s,s)}
+if(!done)requestAnimationFrame(tick);else{c.remove();lit()}}
+requestAnimationFrame(tick)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();(m.complete?Promise.resolve():m.decode()).then(go,go)}})},{threshold:.2});io.observe(f)})();
+</script>
+<!-- po-form:end -->
 <!-- @include footer -->
 </body>
 </html>

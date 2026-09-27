@@ -46,35 +46,38 @@
   }
 
   const load = (src) => new Promise((res) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src; });
-  const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); // in-out cubic
 
-  // Pair two point sets along a diagonal sweep, so the art flows across
-  // in a wave instead of swapping in place. Each pixel arcs on its own curve.
-  function pair(A, B, W, H) {
-    const k = (p) => p.x * 0.72 + p.y * 0.38 + Math.random() * 9;
-    const a = A.map((p) => [k(p), p]).sort((m, n) => m[0] - n[0]).map((m) => m[1]);
-    const b = B.map((p) => [k(p), p]).sort((m, n) => m[0] - n[0]).map((m) => m[1]);
+  // Choreographies, used in turn: a sweep to the right, a pour from the top,
+  // a spiral out of the middle, a sweep to the left. Both pictures are ranked
+  // along the same path and matched rank to rank, so neighbouring pixels
+  // travel together and the art flows across as one sheet instead of dust.
+  const MODES = [
+    { k: (p) => p.x + p.y * 0.35, bend: 0.2, lift: 0.14 },
+    { k: (p, W) => p.y * 1.6 + Math.abs(p.x - W / 2) * 0.3, bend: -0.16, lift: 0 },
+    { k: (p, W, H) => Math.hypot(p.x - W / 2, (p.y - H / 2) * 1.2), bend: 0.42, lift: 0 },
+    { k: (p) => -p.x + p.y * 0.35, bend: -0.2, lift: 0.14 },
+  ];
+  function pair(A, B, W, H, mode) {
+    const rank = (P) => P.map((p) => [mode.k(p, W, H) + Math.random() * 1.6, p]).sort((m, n) => m[0] - n[0]).map((m) => m[1]);
+    const a = rank(A), b = rank(B);
     const n = Math.max(a.length, b.length), out = new Array(n);
     for (let i = 0; i < n; i++) {
       const s = a[Math.floor((i * a.length) / n)], t = b[Math.floor((i * b.length) / n)];
-      const dx = t.x - s.x, dy = t.y - s.y, bend = (Math.random() - 0.5) * 0.9;
+      const dx = t.x - s.x, dy = t.y - s.y, bend = mode.bend * (0.75 + Math.random() * 0.5);
       out[i] = {
         sx: s.x, sy: s.y, tx: t.x, ty: t.y, sc: s.c, tc: t.c,
-        cx: (s.x + t.x) / 2 - dy * bend, cy: (s.y + t.y) / 2 + dx * bend - Math.abs(dx) * 0.12,
-        at: 0.34 * ((t.x / W) * 0.75 + (t.y / H) * 0.25) + Math.random() * 0.08,
+        cx: (s.x + t.x) / 2 - dy * bend, cy: (s.y + t.y) / 2 + dx * bend - Math.abs(dx) * mode.lift,
+        at: 0.4 * (i / n) + Math.random() * 0.03,
       };
     }
     return out;
   }
 
-  function scatter(B, W, H) {
-    return B.map((p) => ({ x: Math.random() * W, y: H * (0.2 + Math.random() * 0.8), c: [p.c[0] * 0.4, p.c[1] * 0.4, p.c[2] * 0.4] }));
-  }
-
   els.forEach(async (cv) => {
     const W = +cv.dataset.w || 144, H = +cv.dataset.h || 104;
     const loop = cv.dataset.loop !== '0';
-    const HOLD = +cv.dataset.hold || 2600, MORPH = +cv.dataset.morphMs || 1800, SPAN = 0.58;
+    const HOLD = +cv.dataset.hold || 2600, MORPH = +cv.dataset.morphMs || 1500, SPAN = 0.56;
     cv.width = W; cv.height = H;
     const g = cv.getContext('2d');
     const frame = g.createImageData(W, H);
@@ -102,12 +105,14 @@
       return;
     }
 
-    let idx = 0, parts = pair(scatter(scenes[0], W, H), scenes[0], W, H);
-    let phase = 'morph', clock = 0, last = performance.now(), visible = true;
-    const first = +cv.dataset.first || 0;
-    clock = -first;
+    // Open on a complete picture, then start changing scenes.
+    let idx = 0, parts = null, turn = 0;
+    let phase = 'hold', last = performance.now(), visible = true;
+    let clock = HOLD - (+cv.dataset.first || HOLD);
+    drawStill(scenes[0]);
     new IntersectionObserver((es) => { visible = es.some((e) => e.isIntersecting); }).observe(cv);
     live();
+    if (scenes.length < 2) return;
 
     const col = [0, 0, 0];
     function tick(now) {
@@ -134,7 +139,7 @@
         }
       } else if (clock >= HOLD) {
         const next = (idx + 1) % scenes.length;
-        parts = pair(scenes[idx], scenes[next], W, H);
+        parts = pair(scenes[idx], scenes[next], W, H, MODES[turn++ % MODES.length]);
         idx = next; phase = 'morph'; clock = 0;
       }
       requestAnimationFrame(tick);

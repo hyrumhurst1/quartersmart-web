@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="evergreen">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,9 +24,9 @@
 <meta name="qs:kind" content="insight">
 <meta name="qs:label" content="Weekly roundup">
 <meta name="qs:verdict" content="Read">
-<meta name="qs:cover" content="/assets/images/signals/weekly-advancements-apr-22-2026-cover.jpg">
+<meta name="qs:cover" content="/assets/px/sprite-radar.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/signals-post.css">
+<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -48,7 +48,7 @@
       "description": "The AI news that actually matters this week: new model releases, AI in classrooms, public-sector deployments, and agent advancements you can use.",
       "image": "https://quartersmart.com/assets/images/signals/weekly-advancements-apr-22-2026-cover.jpg",
       "datePublished": "2026-04-22",
-      "dateModified": "2026-04-22",
+      "dateModified": "2026-09-27",
       "author": {
         "@id": "https://quartersmart.com/about.html#hyrum-hurst"
       },
@@ -87,117 +87,174 @@
 }
 </script>
 </head>
-<body>
+<body class="po">
 <!-- @include nav -->
 <main id="main">
-  <header class="post-head">
+
+  <header class="po-head">
     <div class="wrap">
       <p class="phead__crumbs"><a href="/">home</a> / <a href="/signals/">signals</a> / weekly-advancements-apr-22-2026</p>
-      <div class="post-head__chips"><span class="chip">Weekly roundup</span><span class="verdict"><b>verdict</b> Read</span></div>
-      <h1 class="h-1">This Week in AI, April 22, 2026</h1>
+      <div class="po-chips"><span class="chip chip--insight">Weekly roundup</span><span class="verdict"><b>verdict</b> Read</span></div>
+      <h1 class="po-h">This Week in AI, April 22, 2026</h1>
       <p class="lede">The week of April 21, 2026: longer context windows, three more state K-12 AI literacy mandates, agents in public-sector procurement, data residency questions, and shrinking free tiers.</p>
-      <p class="byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-04-22">Apr 22, 2026</time></span></p>
+      <p class="po-byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-04-22">Apr 22, 2026</time></span><span>Updated <time datetime="2026-09-27">Sep 27, 2026</time></span></p>
+      <div class="po-head__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
     </div>
   </header>
 
-  <div class="wrap">
-    <figure class="pane post-cover" style="margin-left:0;margin-right:0">
-      <div class="shot"><img src="/assets/images/signals/weekly-advancements-apr-22-2026-cover.jpg" width="1200" height="800" alt="A mint-green radar sweep over a dark grid with a few bright blips, this week in AI" fetchpriority="high"></div>
-    </figure>
+  <section class="band band--deep po-band" aria-labelledby="short-h">
+    <div class="wrap po-band__grid">
+      <figure class="po-art" data-po-form>
+        <p class="po-sign"><span class="label">Our verdict</span><span class="po-sign__word neon">Read</span></p>
+        <img src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, listening." style="--w:54px;--s:3;--s-m:2" fetchpriority="high">
+      </figure>
+      <div class="po-sum">
+        <h2 class="po-sum__h" id="short-h">The short version</h2>
+        <ul>
+          <li>Frontier models keep gaining context and tool use, but the gap between "demo-good" and "classroom-good" is widening.</li>
+          <li>Three more states announced K-12 AI literacy mandates, for a total of 14.</li>
+          <li>Agents moved from novelty to procurement: public agencies are writing RFPs for "AI workforce assistants."</li>
+          <li>Privacy and data residency are the first question in every government pilot conversation.</li>
+          <li>Free-tier access to frontier models is quietly shrinking, and the equity gap is real.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <div class="post-grid">
+  <div class="po-body">
+    <div class="wrap po-grid">
       <article class="prose">
-        <div class="shortv">
-          <h2>The short version</h2>
-          <ul>
-            <li>Frontier models keep gaining context and tool use, but the gap between "demo-good" and "classroom-good" is widening</li>
-            <li>Three more states announced K-12 AI literacy mandates, total now 14</li>
-            <li>Agents moved from novelty to procurement: public agencies are writing RFPs for "AI workforce assistants"</li>
-            <li>Privacy and data residency are the #1 question in every government pilot conversation</li>
-            <li>Free tier access to frontier models is quietly shrinking, the equity gap is real</li>
-          </ul>
-        </div>
-        <p>Every week, something in AI shifts, a new model drops, an agency rolls out a policy, a school district makes a bet. Most of it is noise. Here's the signal from the week of April 21, 2026: what actually moved, and what it means for learners, teachers, and public-sector teams.</p>
-        <h2>1. Model layer: long context gets mainstream, but usability lags</h2>
-        <p>Another week, another round of context-window bumps. The top frontier labs keep pushing effective context into the millions of tokens with better recall. On paper this is huge: feed a model a full textbook, a legal filing, or a year of district meeting minutes and it can reason across the whole thing.</p>
-        <p>In practice? Most users still copy-paste one paragraph at a time. The capability is outpacing the interface. <strong>The real gain for teachers and public-sector workers isn't a longer context, it's a workflow that actually uses it.</strong> That gap is where adoption is won or lost.</p>
-        <div class="callout callout--info">
-          <p class="label">Education Angle</p>
+        <p>Every week something in AI shifts: a new model, a new policy, a school district making a bet. Most of it is noise. Here is what moved in the week of April 21, 2026, and what it means for learners, teachers and public-sector teams.</p>
+
+        <h2>1. Model layer: long context goes mainstream, usability lags</h2>
+        <p>Another week, another round of context-window increases. The top frontier labs keep pushing effective context into the millions of tokens, with better recall. On paper that is a big deal: give a model a full textbook, a legal filing or a year of district meeting minutes, and it can reason across all of it.</p>
+        <p>In practice, most users still paste in one paragraph at a time. The capability is ahead of the interface. <strong>The real gain for teachers and public-sector workers comes from a workflow that uses the longer context.</strong> That gap is where adoption is won or lost.</p>
+        <div class="po-note">
           <h3>What it means for your classroom or team</h3>
-          <p>A million-token window is wasted on a user who doesn't know they can paste a whole syllabus, rubric, or policy manual at once. The single most underrated AI skill right now is <em>"here is the full context, now help me"</em>, and almost no one teaches it.</p>
-          <p><strong>Why it matters:</strong> Training that starts with tool-level prompts will always lag the frontier. Training that starts with <em>workflow</em> moves with it.</p>
+          <p>A million-token window is wasted on someone who doesn't know they can paste a whole syllabus, rubric or policy manual at once. The most underrated AI skill right now is <em>"here is the full context, now help me,"</em> and almost nobody teaches it.</p>
+          <p><strong>Why it matters:</strong> training that starts with tool-level prompts will always lag the frontier. Training that starts with the workflow keeps up with it.</p>
         </div>
-        <h2>2. K-12 AI literacy: three more state mandates, 14 and counting</h2>
-        <p>Three additional US states announced K-12 AI literacy requirements this week, bringing the running total to 14 states with some form of mandate or recommended framework. The pattern is consistent: middle and high school AI literacy by 2027, teacher professional development in the meantime, and an open question about <em>who's actually going to build the curriculum</em>.</p>
-        <p>Every district we've talked to is stuck in the same place: <strong>"We're supposed to teach AI, but we have no curriculum and no training budget."</strong> Expect free, openly licensed materials to race in and fill that gap.</p>
-        <div class="callout callout--info">
-          <p class="label">Action Items for Districts</p>
-          <h3>If you're a district admin reading this</h3>
+
+        <h2>2. K-12 AI literacy: three more state mandates, 14 in total</h2>
+        <p>Three more US states announced K-12 AI literacy requirements this week, bringing the total to 14 states with some form of mandate or recommended framework. The pattern is consistent: middle and high school AI literacy by 2027, teacher professional development in the meantime, and an open question about <em>who will build the curriculum</em>.</p>
+        <p>For most districts the gap is the same: a mandate to teach AI, with no curriculum and no training budget. Expect free, openly licensed materials to move in quickly to fill it.</p>
+        <div class="po-note">
+          <h3>If you're a district administrator</h3>
           <ul>
-            <li>Check your state's mandate timeline, most have an implementation year baked in</li>
-            <li>Teacher PD has to lead the student rollout, not follow it</li>
-            <li>Vendor-neutral, openly licensed materials give you leverage in procurement</li>
+            <li>Check your state's mandate timeline. Most have an implementation year built in.</li>
+            <li>Teacher professional development has to lead the student rollout, not follow it.</li>
+            <li>Vendor-neutral, openly licensed materials give you leverage in procurement.</li>
           </ul>
         </div>
+
         <h2>3. Agents move into procurement</h2>
-        <p>"AI agent" was a Twitter hype cycle in 2024, a product category in 2025, and in 2026 it's a line item in government RFPs. Several state and county procurement offices posted solicitations this week for "AI workforce assistants", essentially agents that help public employees draft documents, triage tickets, and compile reports.</p>
-        <p>The bar has moved from <em>"can it do the task"</em> to <em>"can it do the task with audit logs, PII handling, data residency, and a training program for the employees using it."</em> The training requirement is increasingly explicit. Buyers are learning the hard way that shipping a tool without training is just shipping frustration.</p>
-        <div class="callout callout--info">
-          <p class="label">Public Sector Signal</p>
-          <h3>The unbundling of "AI capability" and "AI adoption"</h3>
-          <p>Agencies are discovering that giving everyone a ChatGPT seat is not a strategy. Adoption requires role-specific workflows, trained users, and systems that respect data boundaries. This is why QuarterSmart leads with deployment options, not model specs.</p>
-          <p><strong>Why it matters:</strong> The next 18 months of public-sector AI spend will be on <em>integration and training</em>, not raw model access.</p>
+        <p>"AI agent" was a hype cycle in 2024, a product category in 2025, and in 2026 it is a line item in government RFPs. Several state and county procurement offices posted solicitations this week for "AI workforce assistants": agents that help public employees draft documents, triage tickets and compile reports.</p>
+        <p>The bar has moved from <em>"can it do the task"</em> to <em>"can it do the task with audit logs, PII handling, data residency, and a training program for the employees using it."</em> The training requirement is increasingly explicit. Buyers are learning that a tool shipped without training mostly ships frustration.</p>
+        <div class="po-note">
+          <h3>Capability and adoption are separating</h3>
+          <p>Agencies are finding that giving everyone a ChatGPT seat is not a strategy. Adoption takes role-specific workflows, trained users and systems that respect data boundaries.</p>
+          <p><strong>Why it matters:</strong> expect the next 18 months of public-sector AI spending to go mostly to integration and training rather than raw model access.</p>
         </div>
-        <h2>4. Privacy and data residency: the question everyone is asking</h2>
-        <p>Every government, every district, every contractor conversation we've had this quarter starts with some variant of: <strong>"Where does our data live, and who can see it?"</strong></p>
-        <p>SaaS AI is getting harder to justify for anyone touching student records, CUI, or regulated data. The trend this week, and all month, is toward <em>private cloud</em>, <em>on-premises</em>, and <em>air-gapped</em> options. A real local-host capability is becoming table stakes, not a premium feature.</p>
-        <p>This is why <strong>secure deployment</strong> is the backbone of our government and contractor work: knowledge systems and AI assistants hardened for data residency, with a one-command local deployment that runs fully offline.</p>
+
+        <h2>4. Privacy and data residency: the first question</h2>
+        <p>In government, school district and contractor settings, the first question is usually some version of: <strong>"Where does our data live, and who can see it?"</strong></p>
+        <p>SaaS AI is getting harder to justify for anyone handling student records, CUI or regulated data. The trend this week, and all month, is toward <em>private cloud</em>, <em>on-premises</em> and <em>air-gapped</em> options. A real local-hosting option is becoming a baseline requirement rather than a premium feature.</p>
+
         <h2>5. The widening equity gap</h2>
-        <p>Quietly, most major AI platforms trimmed free-tier access again this week. More capabilities behind paywalls, tighter message limits, older models on the free side. For professionals and students with budgets, this is a minor inconvenience. For the learners who most need AI literacy, and have the least discretionary income, it compounds.</p>
-        <p>Closing this gap isn't a marketing line. It's a direct response to this. <strong>If the frontier is paywalled, at least the fluency shouldn't be.</strong> That's the principle behind QuarterSmart's workforce enablement: every team, every public employee gets the practical AI fluency to do real work, regardless of budget or org size.</p>
+        <p>Most major AI platforms quietly trimmed free-tier access again this week: more capabilities behind paywalls, tighter message limits, older models on the free side. For professionals and students with budgets, that is a minor inconvenience. For the learners who most need AI literacy, and have the least money to spend, it compounds.</p>
+        <p><strong>If the frontier is paywalled, the fluency to use AI well should not be.</strong></p>
+
         <h2>What to watch next week</h2>
         <ul>
-          <li><strong>State-level AI procurement standards</strong>, expect at least one more state to publish model contract language</li>
-          <li><strong>Agent evaluation benchmarks</strong>, the field still lacks a good "does this actually work in a real job" test</li>
-          <li><strong>Teacher training programs</strong>, which states fund PD will signal which are serious about their mandates</li>
-          <li><strong>Local-host model releases</strong>, the open-weight ecosystem for on-prem deployments keeps getting better</li>
+          <li><strong>State-level AI procurement standards.</strong> Expect at least one more state to publish model contract language.</li>
+          <li><strong>Agent evaluation benchmarks.</strong> The field still lacks a good "does this work in a real job" test.</li>
+          <li><strong>Teacher training programs.</strong> Which states fund professional development will show which are serious about their mandates.</li>
+          <li><strong>Local-host model releases.</strong> The open-weight ecosystem for on-premises deployments keeps improving.</li>
         </ul>
-        <p>If you see something we should cover, drop it below. The best signal comes from the people in the room.</p>
+
         <h2>If you want help</h2>
         <p>Want this filtered to your tools and set up for you? See <a href="/services/#first-quarter">First Quarter</a>, or <a href="/contact/">book a 20-minute call</a>.</p>
+
         <h2>Update log</h2>
         <ul class="updlog">
-          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout. The reporting is unchanged.</span></li>
+          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout and edited for tone. Removed lines about services QuarterSmart no longer offers. The reported facts are unchanged.</span></li>
           <li><time datetime="2026-04-22">Apr 22, 2026</time><span>First posted.</span></li>
         </ul>
         <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by any vendor mentioned here. Product names are trademarks of their owners. This post reflects public information as of April 22, 2026. <a href="/signals/policy/">How we source Signals</a>.</p>
+        <div class="po-author">
+          <img src="/assets/images/team/hyrum-hurst.webp" alt="Hyrum Hurst" width="64" height="64" loading="lazy">
+          <p><b>Hyrum Hurst</b>Founder of QuarterSmart and CTO of Learning Journey AI. He writes Signals and sets up the tools himself. <a href="/about/hyrum-hurst/">More about Hyrum</a></p>
+        </div>
       </article>
 
-      <aside class="post-side" aria-label="Signal summary">
-        <div class="pane pane--active">
-          <span class="pane__t">signal</span>
-          <dl class="card-kv">
-            <div><dt>Status</dt><dd><span class="chip">Weekly roundup</span></dd></div>
-            <div><dt>Verdict</dt><dd>Read</dd></div>
-            <div><dt>Who it's for</dt><dd>Educators, districts and public-sector teams</dd></div>
-            <div><dt>Covers</dt><dd>The week of April 21, 2026</dd></div>
-            <div><dt>Posted</dt><dd>Apr 22, 2026</dd></div>
-          </dl>
-        </div>
-        <div class="pane">
-          <span class="pane__t">read next</span>
-          <ul class="readnext">
-            <li><a class="link" href="/signals/sops-to-aops">What an AOP is</a></li>
-            <li><a class="link" href="/signals/stretch-ai-budget">Stretch your AI budget</a></li>
-            <li><a class="link" href="/signals/why-ai-pilots-fail">Why 95% of pilots fail</a></li>
-            <li><a class="link" href="/signals/">All Signals</a></li>
+      <aside class="po-rail" aria-label="Signal summary">
+        <dl class="po-kv">
+          <div><dt>Verdict</dt><dd class="po-kv__big">Read</dd></div>
+          <div><dt>Who it's for</dt><dd>Educators, districts and public-sector teams</dd></div>
+          <div><dt>Covers</dt><dd>The week of April 21, 2026</dd></div>
+          <div><dt>Posted</dt><dd>Apr 22, 2026</dd></div>
+        </dl>
+        <nav class="po-next" aria-label="Read next">
+          <h2>Read next</h2>
+          <ul>
+            <li><a href="/signals/why-ai-pilots-fail">Why 95% of AI pilots fail</a></li>
+            <li><a href="/signals/free-ai-students">Free Claude and GPT for students</a></li>
+            <li><a href="/signals/">All Signals</a></li>
           </ul>
-        </div>
+        </nav>
       </aside>
     </div>
   </div>
-  <!-- @include post-end -->
+
+  <section class="band band--slate po-close" aria-labelledby="close-h">
+    <div class="wrap po-close__grid">
+      <div class="po-close__main">
+        <h2 class="po-close__h" id="close-h">Get in the first quarter.</h2>
+        <p class="body-l">A free 20-minute call. Tell us what your team uses and what's eating the week. We'll tell you what's worth doing now and what can wait.</p>
+        <div class="po-head__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
+      </div>
+      <form class="po-close__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+        <p class="label">Not ready for a call?</p>
+        <h3 class="h-3">Get the next Signal instead.</h3>
+        <p class="muted">The few AI launches worth your attention, every Monday, each with a verdict. Free.</p>
+        <input type="hidden" name="form-name" value="signals-weekly">
+        <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
+        <input type="hidden" name="source" value="post">
+        <label class="sr" for="pe-email">Work email</label>
+        <div class="field">
+          <input class="input" id="pe-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+          <button class="btn" type="submit">Subscribe</button>
+        </div>
+        <p data-form-status aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
 </main>
+<!-- po-form:start -->
+<script>
+/* The band's sprite assembles from its own pixels once, then the verdict sign lights. Skipped for reduced motion. */
+(function(){var f=document.querySelector('[data-po-form]');if(!f)return;var b=f.closest('.po-band'),m=f.querySelector('img');
+if(!m||!b||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+b.classList.add('po-arm');var ran=0;
+function lit(){f.classList.remove('is-forming');b.classList.add('is-lit');}
+function go(){if(ran)return;ran=1;var w=m.naturalWidth,h=m.naturalHeight,r=m.getBoundingClientRect(),fr=f.getBoundingClientRect();if(!w||!r.width)return lit();
+var sc=r.width/w,o=document.createElement('canvas');o.width=w;o.height=h;var ox=o.getContext('2d'),d;ox.drawImage(m,0,0);
+try{d=ox.getImageData(0,0,w,h).data}catch(e){return lit()}
+var pad=Math.round(Math.max(r.width,r.height)*.55),cw=Math.round(r.width+pad*2),ch=Math.round(r.height+pad*2),c=document.createElement('canvas');
+c.width=cw;c.height=ch;c.style.width=cw+'px';c.style.height=ch+'px';c.style.left=Math.round(r.left-fr.left-pad)+'px';c.style.top=Math.round(r.top-fr.top-pad)+'px';
+var x=c.getContext('2d'),P=[],s=Math.ceil(sc);
+for(var y=0;y<h;y++)for(var i=0;i<w;i++){var k=(y*w+i)*4;if(d[k+3]<60)continue;var a=Math.random()*6.2832,q=(.3+Math.random()*.7)*pad;
+P.push([pad+r.width/2+Math.cos(a)*q*1.5,pad+r.height/2+Math.sin(a)*q,pad+i*sc,pad+y*sc,Math.random()*320+(1-y/h)*240,'rgb('+d[k]+','+d[k+1]+','+d[k+2]+')'])}
+f.appendChild(c);f.classList.add('is-forming');var T=820,t0=performance.now();
+function tick(now){var el=now-t0,done=1;x.clearRect(0,0,cw,ch);
+for(var j=0;j<P.length;j++){var p=P[j],t=(el-p[4])/T;if(t<1)done=0;t=t<0?0:t>1?1:t;var e=Math.round((1-Math.pow(1-t,3))*16)/16;
+x.globalAlpha=.28+.72*t;x.fillStyle=p[5];x.fillRect(Math.round(p[0]+(p[2]-p[0])*e),Math.round(p[1]+(p[3]-p[1])*e),s,s)}
+if(!done)requestAnimationFrame(tick);else{c.remove();lit()}}
+requestAnimationFrame(tick)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();(m.complete?Promise.resolve():m.decode()).then(go,go)}})},{threshold:.2});io.observe(f)})();
+</script>
+<!-- po-form:end -->
 <!-- @include footer -->
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="evergreen">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,9 +24,9 @@
 <meta name="qs:kind" content="insight">
 <meta name="qs:label" content="Insight">
 <meta name="qs:verdict" content="Read">
-<meta name="qs:cover" content="/assets/images/signals/stretch-ai-budget-cover.jpg">
+<meta name="qs:cover" content="/assets/px/sprite-keyboard-manual.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/signals-post.css">
+<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -48,7 +48,7 @@
       "description": "A practical, vendor-neutral guide to cutting AI costs: route the routine majority of your work to local models and cheaper providers, and pay for a frontier model only on the hard part.",
       "image": "https://quartersmart.com/assets/images/signals/stretch-ai-budget-cover.jpg",
       "datePublished": "2026-06-27",
-      "dateModified": "2026-06-27",
+      "dateModified": "2026-09-27",
       "author": {
         "@id": "https://quartersmart.com/about.html#hyrum-hurst"
       },
@@ -135,97 +135,161 @@
 }
 </script>
 </head>
-<body>
+<body class="po">
 <!-- @include nav -->
 <main id="main">
-  <header class="post-head">
+
+  <header class="po-head">
     <div class="wrap">
       <p class="phead__crumbs"><a href="/">home</a> / <a href="/signals/">signals</a> / stretch-ai-budget</p>
-      <div class="post-head__chips"><span class="chip">Insight</span><span class="verdict"><b>verdict</b> Read</span></div>
-      <h1 class="h-1">How to stretch your AI budget by offloading the routine to local models</h1>
+      <div class="po-chips"><span class="chip chip--insight">Insight</span><span class="verdict"><b>verdict</b> Read</span></div>
+      <h1 class="po-h">How to stretch your AI budget by offloading the routine to local models</h1>
       <p class="lede">Most teams send every request to a top frontier model and pay for it. You do not have to. The cheapest way to scale AI is to run the routine majority on something cheaper or local, and save the expensive model for the part that actually needs it.</p>
-      <p class="byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-06-27">Jun 27, 2026</time></span></p>
+      <p class="po-byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-06-27">Jun 27, 2026</time></span><span>Updated <time datetime="2026-09-27">Sep 27, 2026</time></span></p>
+      <div class="po-head__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
     </div>
   </header>
 
-  <div class="wrap">
-    <figure class="pane post-cover" style="margin-left:0;margin-right:0">
-      <div class="shot"><img src="/assets/images/signals/stretch-ai-budget-cover.jpg" width="1200" height="800" alt="A glowing local AI server pulling in a dense stream of work particles, with one thin stream branching to a faint distant cloud" fetchpriority="high"></div>
-    </figure>
+  <section class="band band--deep po-band" aria-labelledby="short-h">
+    <div class="wrap po-band__grid">
+      <figure class="po-art" data-po-form>
+        <p class="po-sign"><span class="label">Our verdict</span><span class="po-sign__word neon">Read</span></p>
+        <img src="/assets/px/sprite-keyboard-manual.png" width="116" height="41" alt="Pixel art of a keyboard beside an open manual." style="--w:116px;--s:3;--s-m:2" fetchpriority="high">
+      </figure>
+      <div class="po-sum">
+        <h2 class="po-sum__h" id="short-h">The short version</h2>
+        <ul>
+          <li>Most AI work is routine: classifying, extracting, drafting, summarizing. It does not need a frontier model.</li>
+          <li>Open models such as Llama, Qwen, Mistral and Gemma run locally through Ollama or LM Studio, with no per-token cost.</li>
+          <li>When you do call an API, a router like OpenRouter, prompt caching and the smallest model that does the job all cut the bill.</li>
+          <li>Start with your single highest-volume routine task: move it off the frontier API and measure the savings.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <div class="post-grid">
+  <div class="po-body">
+    <div class="wrap po-grid">
       <article class="prose">
-        <div class="shortv">
-          <h2>The short version</h2>
-          <ul>
-            <li>Most AI work is routine: classifying, extracting, drafting, summarizing. It does not need a frontier model.</li>
-            <li>Open models such as Llama, Qwen, Mistral and Gemma run locally through Ollama or LM Studio, with no per-token cost.</li>
-            <li>When you do call an API, a router like OpenRouter, prompt caching and the smallest model that does the job all cut the bill.</li>
-            <li>Start with your single highest-volume routine task: move it off the frontier API and measure the savings.</li>
-          </ul>
-        </div>
         <h2>The bill that never stops</h2>
         <p>Frontier AI is priced per token, and the bill grows with every request. The trap is sending all of it to the most expensive model, including the easy work that a far cheaper model would handle just as well. You also run into rate limits and session caps at the worst moments, because you are leaning on a metered service you do not control. The fix is not to use less AI. It is to stop overpaying for the parts that do not need the best model.</p>
+
         <h2>Most of your AI work does not need a frontier model</h2>
-        <p>Look at what your AI actually does all day. Classifying tickets. Pulling fields out of a document. Drafting a first version. Answering a simple question from a known source. Tagging, routing, summarizing. This is the routine majority, and it is not hard reasoning. A small, cheap model handles it reliably. The hard minority, the genuinely tricky reasoning, the high-stakes call, is where a frontier model earns its price. Treating every request the same is what makes AI expensive.</p>
+        <p>Look at what your AI actually does all day. Classifying tickets. Pulling fields out of a document. Drafting a first version. Answering a simple question from a known source. Tagging, routing, summarizing. This is the routine majority, and it is not hard reasoning. A small, cheap model handles it reliably. The hard minority, the genuinely tricky reasoning and the high-stakes call, is where a frontier model earns its price. Treating every request the same is what makes AI expensive.</p>
         <p>A useful rule of thumb mirrors how power and water bills work: most of the load is steady and predictable, and only a little is peak. You do not buy peak-rate power for your whole house. You should not buy frontier tokens for your whole workload.</p>
+
         <h2>Run the routine on a model you control</h2>
-        <p>You can run capable open models on your own hardware with no per-token cost. <a href="https://ollama.com" rel="noopener">Ollama</a> and <a href="https://lmstudio.ai" rel="noopener">LM Studio</a> make it a few clicks to download and run models like Llama, Qwen, Mistral, and Gemma locally. A modern laptop runs the small ones well. A machine with a capable GPU runs the larger ones and serves a whole team. Once it is running, every routine request that hits it costs you nothing per token and never counts against a vendor rate limit.</p>
-        <p>Local models are strong at exactly the routine work above. They are not the best at the hardest reasoning, which is the point. You keep a frontier model on call for that small share rather than paying for it on everything.</p>
+        <p>You can run capable open models on your own hardware with no per-token cost. <a href="https://ollama.com" rel="noopener">Ollama</a> and <a href="https://lmstudio.ai" rel="noopener">LM Studio</a> make it a few clicks to download and run models like Llama, Qwen, Mistral and Gemma locally. A modern laptop runs the small ones well. A machine with a capable GPU runs the larger ones and serves a whole team. Once it is running, every routine request that hits it costs nothing per token and never counts against a vendor rate limit.</p>
+        <p>Local models are strong at exactly the routine work above. They are not the best at the hardest reasoning, and that is the point. You keep a frontier model on call for that small share rather than paying for it on everything.</p>
+
         <h2>Cheaper routes when you do call an API</h2>
-        <p>Some work still belongs in the cloud. When it does, you do not have to pay top-of-menu prices. <a href="https://openrouter.ai" rel="noopener">OpenRouter</a> gives you one API that routes across many providers, so you can pick a cheaper or free model per task and fall back automatically if one is down. Beyond that, the basics add up: turn on prompt caching so you stop re-paying for the same context, pick the smallest model that does the job, and batch where you can. None of this is exotic. It is just refusing to pay frontier rates by default.</p>
+        <p>Some work still belongs in the cloud. When it does, you do not have to pay top-of-menu prices. <a href="https://openrouter.ai" rel="noopener">OpenRouter</a> gives you one API that routes across many providers, so you can pick a cheaper or free model per task and fall back automatically if one is down. Beyond that, the basics add up: turn on prompt caching so you stop paying again for the same context, pick the smallest model that does the job, and batch where you can. None of this is exotic. It is just refusing to pay frontier rates by default.</p>
+
         <h2>Cheaper and free coding-agent access</h2>
-        <p>If your team uses AI coding agents, the same logic applies. The <a href="https://education.github.com/pack" rel="noopener">GitHub Student Developer Pack</a> and free tiers cover a lot for students and small teams. Open-source proxies can point a coding agent like Claude Code or Codex at a free or low-cost model provider instead of the default paid one, so the routine edits run cheap and you reserve the premium model for the gnarly problems. The pattern is the same everywhere: route the easy work to the cheap path, and pay for the hard work only when you hit it.</p>
+        <p>If your team uses AI coding agents, the same logic applies. The <a href="https://education.github.com/pack" rel="noopener">GitHub Student Developer Pack</a> and free tiers cover a lot for students and small teams. Open-source proxies can point a coding agent like Claude Code or Codex at a free or low-cost model provider instead of the default paid one, so the routine edits run cheap and the premium model is saved for the hard problems. The pattern is the same everywhere: route the easy work to the cheap path, and pay for the hard work only when you hit it.</p>
+
         <h2>A simple rule for what to keep local</h2>
-        <div class="callout callout--info">
+        <div class="po-note">
           <h3>Keep it local or cheap when the task is</h3>
           <p><strong>routine and high volume</strong> (classify, extract, draft, summarize, route), <strong>latency tolerant</strong>, or involves <strong>sensitive data you would rather not send out</strong>. Send it to a frontier model when the task is <strong>genuinely hard reasoning</strong>, low volume, or high stakes where the best answer is worth the price.</p>
         </div>
         <p>You do not have to get this perfect on day one. Start by moving your single highest-volume routine task off the frontier API and onto something cheaper, measure the savings, and expand from there.</p>
+
         <h2>Where this goes</h2>
-        <p>Offloading tokens is the practical version of a bigger idea: owning more of your AI instead of renting all of it. The more of your routine you can run on hardware and models you control, the less of your budget is exposed to someone else's pricing and limits. That is the thesis behind Own Your AI, a private system your company owns for the everyday work. And once an agent is running that work, the procedures it follows are <a href="/signals/sops-to-aops">AOPs</a>, the agent-runnable version of your SOPs. The offloading you do this month is the on-ramp to both.</p>
+        <p>The more of your routine you can run on models you control, the less of your budget is exposed to someone else's pricing and limits. And once an agent is running that routine work, the procedures it follows are <a href="/signals/sops-to-aops">AOPs</a>, the agent-runnable version of your SOPs.</p>
+
         <h2>Common questions</h2>
-        <div class="faq">
-          <details open><summary>How do I save money on AI?</summary><div class="a"><p>Stop sending every request to a top frontier model. Most of your AI work is routine and can run on a small local model or a cheaper provider for a fraction of the cost. Reserve the expensive frontier model for the hard minority that actually needs it. The cheapest token is the one you do not buy at full price.</p></div></details>
-          <details><summary>Can I run AI models locally?</summary><div class="a"><p>Yes. Tools like Ollama and LM Studio let you run open models such as Llama, Qwen, Mistral, and Gemma on your own computer or server, with no per-token cost. A modern laptop runs small models well; a machine with a capable GPU runs larger ones. They are strong at routine tasks like classification, extraction, drafting, and simple question answering.</p></div></details>
-          <details><summary>What is OpenRouter?</summary><div class="a"><p>OpenRouter is a single API that routes your requests across many model providers, so you can pick a cheaper or free model per task and fall back automatically if one is unavailable. It is a simple way to stop paying frontier prices for work a smaller model handles fine.</p></div></details>
-          <details><summary>Is a local AI model good enough?</summary><div class="a"><p>For the routine majority of work, yes. Open models in the 7B to 70B range handle classification, extraction, summaries, drafting, and structured output reliably. They are not the best at the hardest reasoning, which is exactly why you keep a frontier model on call for that small share instead of paying for it on everything.</p></div></details>
-          <details><summary>How do I use AI for cheaper or free?</summary><div class="a"><p>Run open models locally for zero per-token cost, route API calls through a cheaper provider like OpenRouter, use free tiers and student programs such as the GitHub Student Developer Pack, turn on prompt caching, and pick the smallest model that does the job. Open-source proxies can also point a coding agent like Claude Code or Codex at a free or low-cost model provider instead of the default paid one.</p></div></details>
+        <div class="po-faq">
+          <div><h3>How do I save money on AI?</h3><p>Stop sending every request to a top frontier model. Most of your AI work is routine and can run on a small local model or a cheaper provider for a fraction of the cost. Reserve the expensive frontier model for the hard minority that actually needs it. The cheapest token is the one you do not buy at full price.</p></div>
+          <div><h3>Can I run AI models locally?</h3><p>Yes. Tools like Ollama and LM Studio let you run open models such as Llama, Qwen, Mistral, and Gemma on your own computer or server, with no per-token cost. A modern laptop runs small models well; a machine with a capable GPU runs larger ones. They are strong at routine tasks like classification, extraction, drafting, and simple question answering.</p></div>
+          <div><h3>What is OpenRouter?</h3><p>OpenRouter is a single API that routes your requests across many model providers, so you can pick a cheaper or free model per task and fall back automatically if one is unavailable. It is a simple way to stop paying frontier prices for work a smaller model handles fine.</p></div>
+          <div><h3>Is a local AI model good enough?</h3><p>For the routine majority of work, yes. Open models in the 7B to 70B range handle classification, extraction, summaries, drafting, and structured output reliably. They are not the best at the hardest reasoning, which is exactly why you keep a frontier model on call for that small share instead of paying for it on everything.</p></div>
+          <div><h3>How do I use AI for cheaper or free?</h3><p>Run open models locally for zero per-token cost, route API calls through a cheaper provider like OpenRouter, use free tiers and student programs such as the GitHub Student Developer Pack, turn on prompt caching, and pick the smallest model that does the job. Open-source proxies can also point a coding agent like Claude Code or Codex at a free or low-cost model provider instead of the default paid one.</p></div>
         </div>
+
         <h2>If you want help</h2>
         <p>Tell us where your AI spend goes today. We will show you which routine work can run cheaper or local, and what to keep on a frontier model. <a href="/contact/">Book a 20-minute call</a>.</p>
+
         <h2>Update log</h2>
         <ul class="updlog">
-          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout. The reporting is unchanged.</span></li>
+          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout. Removed a paragraph about a product QuarterSmart no longer offers. The guidance is unchanged.</span></li>
           <li><time datetime="2026-06-27">Jun 27, 2026</time><span>First posted.</span></li>
         </ul>
         <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by any vendor named on this page. Product names are trademarks of their owners. This post reflects public information as of June 27, 2026. <a href="/signals/policy/">How we source Signals</a>.</p>
+        <div class="po-author">
+          <img src="/assets/images/team/hyrum-hurst.webp" alt="Hyrum Hurst" width="64" height="64" loading="lazy">
+          <p><b>Hyrum Hurst</b>Founder of QuarterSmart and CTO of Learning Journey AI. He writes Signals and sets up the tools himself. <a href="/about/hyrum-hurst/">More about Hyrum</a></p>
+        </div>
       </article>
 
-      <aside class="post-side" aria-label="Signal summary">
-        <div class="pane pane--active">
-          <span class="pane__t">signal</span>
-          <dl class="card-kv">
-            <div><dt>Status</dt><dd><span class="chip">Insight</span></dd></div>
-            <div><dt>Verdict</dt><dd>Read</dd></div>
-            <div><dt>Who it's for</dt><dd>Teams whose AI bill grows with every request</dd></div>
-            <div><dt>Start with</dt><dd>One high-volume routine task</dd></div>
-            <div><dt>Posted</dt><dd>Jun 27, 2026</dd></div>
-          </dl>
-        </div>
-        <div class="pane">
-          <span class="pane__t">read next</span>
-          <ul class="readnext">
-            <li><a class="link" href="/signals/sops-to-aops">What an AOP is</a></li>
-            <li><a class="link" href="/signals/why-ai-pilots-fail">Why 95% of pilots fail</a></li>
-            <li><a class="link" href="/signals/">All Signals</a></li>
+      <aside class="po-rail" aria-label="Signal summary">
+        <dl class="po-kv">
+          <div><dt>Verdict</dt><dd class="po-kv__big">Read</dd></div>
+          <div><dt>Who it's for</dt><dd>Teams whose AI bill grows with every request</dd></div>
+          <div><dt>Start with</dt><dd>One high-volume routine task</dd></div>
+          <div><dt>Posted</dt><dd>Jun 27, 2026</dd></div>
+        </dl>
+        <nav class="po-next" aria-label="Read next">
+          <h2>Read next</h2>
+          <ul>
+            <li><a href="/signals/sops-to-aops">What an AOP is</a></li>
+            <li><a href="/signals/openai-pricing">OpenAI's 2026 pricing changes</a></li>
+            <li><a href="/signals/">All Signals</a></li>
           </ul>
-        </div>
+        </nav>
       </aside>
     </div>
   </div>
-  <!-- @include post-end -->
+
+  <section class="band band--slate po-close" aria-labelledby="close-h">
+    <div class="wrap po-close__grid">
+      <div class="po-close__main">
+        <h2 class="po-close__h" id="close-h">Get in the first quarter.</h2>
+        <p class="body-l">A free 20-minute call. Tell us what your team uses and what's eating the week. We'll tell you what's worth doing now and what can wait.</p>
+        <div class="po-head__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
+      </div>
+      <form class="po-close__form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+        <p class="label">Not ready for a call?</p>
+        <h3 class="h-3">Get the next Signal instead.</h3>
+        <p class="muted">The few AI launches worth your attention, every Monday, each with a verdict. Free.</p>
+        <input type="hidden" name="form-name" value="signals-weekly">
+        <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
+        <input type="hidden" name="source" value="post">
+        <label class="sr" for="pe-email">Work email</label>
+        <div class="field">
+          <input class="input" id="pe-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+          <button class="btn" type="submit">Subscribe</button>
+        </div>
+        <p data-form-status aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
 </main>
+<!-- po-form:start -->
+<script>
+/* The band's sprite assembles from its own pixels once, then the verdict sign lights. Skipped for reduced motion. */
+(function(){var f=document.querySelector('[data-po-form]');if(!f)return;var b=f.closest('.po-band'),m=f.querySelector('img');
+if(!m||!b||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+b.classList.add('po-arm');var ran=0;
+function lit(){f.classList.remove('is-forming');b.classList.add('is-lit');}
+function go(){if(ran)return;ran=1;var w=m.naturalWidth,h=m.naturalHeight,r=m.getBoundingClientRect(),fr=f.getBoundingClientRect();if(!w||!r.width)return lit();
+var sc=r.width/w,o=document.createElement('canvas');o.width=w;o.height=h;var ox=o.getContext('2d'),d;ox.drawImage(m,0,0);
+try{d=ox.getImageData(0,0,w,h).data}catch(e){return lit()}
+var pad=Math.round(Math.max(r.width,r.height)*.55),cw=Math.round(r.width+pad*2),ch=Math.round(r.height+pad*2),c=document.createElement('canvas');
+c.width=cw;c.height=ch;c.style.width=cw+'px';c.style.height=ch+'px';c.style.left=Math.round(r.left-fr.left-pad)+'px';c.style.top=Math.round(r.top-fr.top-pad)+'px';
+var x=c.getContext('2d'),P=[],s=Math.ceil(sc);
+for(var y=0;y<h;y++)for(var i=0;i<w;i++){var k=(y*w+i)*4;if(d[k+3]<60)continue;var a=Math.random()*6.2832,q=(.3+Math.random()*.7)*pad;
+P.push([pad+r.width/2+Math.cos(a)*q*1.5,pad+r.height/2+Math.sin(a)*q,pad+i*sc,pad+y*sc,Math.random()*320+(1-y/h)*240,'rgb('+d[k]+','+d[k+1]+','+d[k+2]+')'])}
+f.appendChild(c);f.classList.add('is-forming');var T=820,t0=performance.now();
+function tick(now){var el=now-t0,done=1;x.clearRect(0,0,cw,ch);
+for(var j=0;j<P.length;j++){var p=P[j],t=(el-p[4])/T;if(t<1)done=0;t=t<0?0:t>1?1:t;var e=Math.round((1-Math.pow(1-t,3))*16)/16;
+x.globalAlpha=.28+.72*t;x.fillStyle=p[5];x.fillRect(Math.round(p[0]+(p[2]-p[0])*e),Math.round(p[1]+(p[3]-p[1])*e),s,s)}
+if(!done)requestAnimationFrame(tick);else{c.remove();lit()}}
+requestAnimationFrame(tick)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();(m.complete?Promise.resolve():m.decode()).then(go,go)}})},{threshold:.2});io.observe(f)})();
+</script>
+<!-- po-form:end -->
 <!-- @include footer -->
 </body>
 </html>

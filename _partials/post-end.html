@@ -1,23 +1,31 @@
-<aside class="wrap" style="padding-bottom:clamp(56px,7vw,96px)" aria-label="About the author and Signals Weekly">
-  <div class="split">
-    <div class="pane">
-      <span class="pane__t">written by</span>
-      <div class="author">
-        <img src="/assets/images/team/hyrum-hurst.webp" alt="Hyrum Hurst" width="64" height="64" loading="lazy">
-        <p><b>Hyrum Hurst</b>Founder of QuarterSmart in Mesa, Arizona. A verified n8n creator who sets up AI assistants, agents and automations for small and mid-sized businesses. <a href="/about/#hyrum-hurst">More about Hyrum</a></p>
+<section class="pend" aria-label="About the author and Signals Weekly">
+  <div class="wrap pend__grid">
+    <div class="pend__author">
+      <img src="/assets/images/team/hyrum-hurst.webp" alt="Hyrum Hurst" width="72" height="72" loading="lazy">
+      <div>
+        <p class="pend__by">Written by <b>Hyrum Hurst</b></p>
+        <p>Hyrum founded QuarterSmart and sets up new AI tools for owner-led businesses himself. He is also CTO of Learning Journey AI, an AI education company. <a href="/about/hyrum-hurst/">More about Hyrum</a></p>
       </div>
     </div>
-    <div class="pane pane--active">
-      <span class="pane__t">signals weekly</span>
-      <form name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
-        <input type="hidden" name="form-name" value="signals-weekly">
-        <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
-        <input type="hidden" name="source" value="post">
-        <p class="muted" style="font-size:15.5px;margin-bottom:14px">The few AI launches worth your attention, every Monday, each with a verdict. Free.</p>
-        <label class="sr" for="pe-email">Work email</label>
-        <div class="field"><input class="input" id="pe-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required><button class="btn btn--primary" type="submit">Subscribe</button></div>
-        <p data-form-status aria-live="polite"></p>
-      </form>
-    </div>
+    <form class="pend__form" id="weekly" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+      <h2 class="pend__h">Get the next Signal.</h2>
+      <p class="muted">One email on Mondays with the few launches worth your attention, each with a verdict. Free. Unsubscribe any time.</p>
+      <input type="hidden" name="form-name" value="signals-weekly">
+      <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
+      <input type="hidden" name="source" value="post">
+      <label class="sr" for="pe-email">Work email</label>
+      <div class="field"><input class="input" id="pe-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required><button class="btn" type="submit">Subscribe</button></div>
+      <p data-form-status aria-live="polite"></p>
+    </form>
   </div>
-</aside>
+</section>
+<section class="pclose" aria-labelledby="pclose-h">
+  <div class="wrap pclose__grid">
+    <div class="pclose__in">
+      <h2 class="pclose__h" id="pclose-h">Have it working while it's still early.</h2>
+      <p class="body-l">A free 20-minute call. Tell us what your team uses and what's eating the week. We'll tell you what's worth doing now and what can wait.</p>
+      <a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a>
+    </div>
+    <img class="pclose__cab" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="" loading="lazy">
+  </div>
+</section>

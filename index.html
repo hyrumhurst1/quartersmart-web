@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="We track AI launches, tell you which ones matter, and set them up for your team.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-home.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/home.css?v=20260927e">
+<link rel="stylesheet" href="/assets/css/home.css?v=20260927i">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -55,29 +55,38 @@
 
   <!-- 1. Hero: the wordmark over an idle arcade -->
   <section class="h4" aria-labelledby="hero-h">
-    <canvas class="h4__world" data-attract role="img" aria-label="QuarterSmart, drawn in pixels, being played with by a series of small retro arcade games. Click it to make the letters jump."></canvas>
-    <div class="wrap h4__in">
-      <h1 class="h4__h" id="hero-h">Use new AI while it's still an advantage.</h1>
-      <p class="lede">We track every AI launch, tell you which ones matter, and set them up for your team the day they land.</p>
-      <div class="hx__cta">
-        <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
-        <a class="btn btn--ghost" href="/signals/">Read today's Signals</a>
+    <div class="h4__win">
+      <span class="win__t" aria-hidden="true">attract.exe</span>
+      <span class="win__r" aria-hidden="true" data-scene-label>01/21 title</span>
+      <canvas class="h4__world" data-attract role="img" aria-label="QuarterSmart, drawn in pixels under a starry night sky, being played with by a run of small retro arcade games. Click it to make the letters jump."></canvas>
+      <div class="h4__in">
+        <h1 class="h4__h" id="hero-h">Use new AI while it's still an advantage.</h1>
+        <p class="lede">We track every AI launch, tell you which ones matter, and set them up for your team the day they land.</p>
+        <div class="hx__cta">
+          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
+          <a class="btn btn--ghost" href="/signals/">Read today's Signals</a>
+        </div>
       </div>
+      <span class="win__b" aria-hidden="true">click the world to play</span>
     </div>
   </section>
 
   <!-- 2. Why QuarterSmart: a pinned scroll story -->
   <section class="qscroll" data-quarter aria-labelledby="why-h">
     <div class="qscroll__stage">
-      <div class="qs-art"><canvas aria-hidden="true"></canvas><span class="qs-line" aria-hidden="true"></span></div>
-      <div class="qs-copy">
-        <h2 class="label label--accent" id="why-h">Why QuarterSmart</h2>
-        <p class="qs-big" data-count="25">25%</p>
-        <p class="body-l">Every AI shift has an early group. We get you into it.</p>
-        <p class="qs-kicker">25%? That's a quarter.</p>
+      <div class="qs-win">
+        <span class="win__t" aria-hidden="true">why.exe</span>
+        <span class="win__r qs-hud" aria-hidden="true">score <b data-score>000000</b> <span class="qs-lives" data-lives title="Quarters left"><i></i><i></i><i></i><em>continue?</em></span></span>
+        <div class="qs-art"><canvas aria-hidden="true"></canvas><p class="qs-why" aria-hidden="true">why QuarterSmart?</p></div>
+        <div class="qs-copy">
+          <h2 class="label label--accent" id="why-h">Why QuarterSmart</h2>
+          <p class="qs-big echo echo--chase" data-count="25">25%</p>
+          <p class="qs-lead">Every AI shift has an early group. We get you into it.</p>
+          <p class="qs-kicker">25%? That's a quarter.</p>
+        </div>
+        <span class="qs-line" aria-hidden="true"></span>
+        <button class="qs-replay" type="button" data-replay hidden>replay</button>
       </div>
-      <p class="qs-why" aria-hidden="true">why QuarterSmart?</p>
-      <p class="qs-hint" aria-hidden="true"></p>
     </div>
   </section>
 
@@ -136,7 +145,13 @@
           <p class="label label--accent">Ways to work with us</p>
           <h2 class="h-1" id="lv-h">Select your level.</h2>
         </div>
-        <figure class="levels__art"><img class="px" src="/assets/px/sprite-floppies.png" width="134" height="31" alt="Five floppy disks with green, yellow, lavender, cyan and white labels." style="--s:3"></figure>
+        <figure class="levels__art pu-shelf" aria-hidden="true">
+          <img class="pu" data-pu="0" src="/assets/px/pu-radar.png" width="32" height="32" alt="">
+          <img class="pu" data-pu="1" src="/assets/px/pu-map.png" width="32" height="32" alt="">
+          <img class="pu" data-pu="2" src="/assets/px/pu-setup.png" width="32" height="32" alt="">
+          <img class="pu" data-pu="3" src="/assets/px/pu-token.png" width="32" height="32" alt="">
+          <img class="pu" data-pu="4" src="/assets/px/pu-robot.png" width="32" height="32" alt="">
+        </figure>
       </div>
       <div class="levels__grid">
         <ol class="levels__list" role="tablist" aria-label="Offers">
@@ -233,11 +248,10 @@
 
   <!-- 8. Close -->
   <section class="closer" aria-labelledby="cta-h">
-    <img class="closer__scene" src="/assets/px/scene-horizon.png" width="128" height="72" alt="" aria-hidden="true" loading="lazy">
-    <img class="closer__cab" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="" aria-hidden="true" loading="lazy">
+    <img class="closer__cab" src="/assets/px/cabinet-row.png" width="169" height="88" alt="" aria-hidden="true" loading="lazy">
     <div class="wrap closer__grid">
       <div class="closer__main">
-        <p class="closer__sign neon neon--warm" aria-hidden="true">now booking</p>
+        <p class="closer__sign echo echo--chase" aria-hidden="true">now booking</p>
         <h2 class="closer__h" id="cta-h">Get in the first quarter.</h2>
         <p class="body-l">Free, 20 minutes. We'll tell you what's worth doing now.</p>
         <div class="hx__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
@@ -260,9 +274,12 @@
   </section>
 
 </main>
-<script src="/assets/js/attract.js?v=20260927e" defer></script>
-<script src="/assets/js/quarter.js?v=20260927e" defer></script>
-<script src="/assets/js/home.js?v=20260927e" defer></script>
+<script src="/assets/js/attract-pack-classics.js?v=1" defer></script>
+<script src="/assets/js/attract-pack-floor.js?v=1" defer></script>
+<script src="/assets/js/attract-pack-quest.js?v=1" defer></script>
+<script src="/assets/js/attract.js?v=20260927j" defer></script>
+<script src="/assets/js/quarter.js?v=20260927k" defer></script>
+<script src="/assets/js/home.js?v=20260927i" defer></script>
 <!-- @include footer -->
 </body>
 </html>

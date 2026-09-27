@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="evergreen">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="How we pick what's worth adopting, how we set it up safely, and how we make it stick.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-approach.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/services.css">
+<link rel="stylesheet" href="/assets/css/services.css?v=20260927s">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -60,234 +60,209 @@
 }
 </script>
 </head>
-<body>
+<body class="pg pg--approach">
 <!-- @include nav -->
 
 <main id="main">
 
-  <header class="phead">
-    <div class="wrap">
-      <p class="phead__crumbs"><a href="/">home</a> / approach</p>
-      <p class="label label--accent">Our approach</p>
-      <h1 class="h-1" style="margin-top:16px">Train your team. Automate the rest.</h1>
-      <p class="lede">How we pick what's worth adopting, how we set it up safely, and how we make it stick.</p>
-      <ul class="ap-toc" aria-label="On this page">
-        <li><a href="#two-halves"><span>01</span>the two halves</a></li>
-        <li><a href="#method"><span>02</span>the method</a></li>
-        <li><a href="#principles"><span>03</span>principles</a></li>
-        <li><a href="#picking-tools"><span>04</span>how we pick tools</a></li>
-        <li><a href="#security"><span>05</span>security basics</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <section class="sec" id="two-halves" aria-labelledby="halves-h">
-    <div class="wrap">
-      <div class="split split--57 approach">
-        <div class="approach__copy">
-          <p class="label">The two halves</p>
-          <h2 class="h-1" id="halves-h">Being early only pays if people use it.</h2>
-          <p class="body-l">So every engagement has two halves, in this order. First we train your team on the new tool, inside their own work. Then we automate the repetitive work that's left.</p>
-          <p class="body-l">Training comes first because an automation is only as good as the people who check it.</p>
-        </div>
-        <figure class="stage ap-stage">
-          <img src="/assets/px/sprite-keyboard-manual.png" width="149" height="53" alt="Pixel art of a mechanical keyboard next to an open manual." style="--w:149px;--s:3" fetchpriority="high">
-          <figcaption class="stage__cap">the manual and the machine</figcaption>
-        </figure>
+  <!-- Top: the headline, and a two-sided rally: one half trains, the other automates -->
+  <section class="ap-hero" aria-labelledby="hero-h">
+    <div class="wrap ap-hero__grid">
+      <div class="ap-hero__h">
+        <p class="label label--accent">Our approach</p>
+        <h1 class="pg-hero__h pg-hero__h--wide" id="hero-h"><span>Train your team.</span> <span class="accent">Automate the rest.</span></h1>
       </div>
-      <div class="split ap-halves">
-        <article class="pane ap-half" data-reveal>
-          <span class="pane__t">first · train</span>
-          <h3>Train your team.</h3>
+      <div class="ap-hero__copy">
+        <p class="lede">How we pick what's worth adopting, how we set it up safely, and how we make it stick.</p>
+        <div class="pg-hero__cta">
+          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
+          <a class="link" href="#method">See the method</a>
+        </div>
+      </div>
+      <div class="ap-pong" aria-hidden="true"><i class="ap-pong__net"></i><i class="ap-pong__pad ap-pong__pad--l"></i><i class="ap-pong__pad ap-pong__pad--r"></i><i class="ap-pong__ball"></i></div>
+    </div>
+  </section>
+
+  <!-- 1. The two halves, on a two-sided court -->
+  <section class="ap-halves" id="two-halves" aria-labelledby="halves-h">
+    <div class="wrap ap-intro">
+      <div class="ap-intro__copy">
+        <p class="label label--accent">The two halves</p>
+        <h2 class="h-1" id="halves-h">Being early only pays if people use it.</h2>
+        <p class="body-l">So every engagement has two halves, in this order. First we train your team on the new tool, inside their own work. Then we automate the repetitive work that's left.</p>
+        <p class="body-l">Training comes first because an automation is only as good as the people who check it.</p>
+      </div>
+      <figure class="ap-intro__art"><img class="px" src="/assets/px/sprite-keyboard-manual.png" width="116" height="41" alt="A keyboard beside an open manual, in pixel art." loading="lazy"></figure>
+    </div>
+    <div class="ap-court">
+      <div class="wrap ap-court__in">
+        <article class="ap-half" aria-labelledby="train-h">
+          <p class="ap-half__n" aria-hidden="true">01</p>
+          <h3 id="train-h">Train your team.</h3>
           <p>We train people on the new tool inside their own work, with their own examples, until it's part of the day.</p>
-          <ul class="sv-plus">
+          <ul class="sv-list">
             <li>Live Rollout Sessions built around each role.</li>
             <li>Only on tools your team can actually use.</li>
             <li>A prompt and workflow sheet everyone keeps.</li>
             <li>A one-page guide to how you use each tool.</li>
           </ul>
-          <div class="ap-evidence">
-            <p class="label">Background</p>
-            <p>Our founder, Hyrum Hurst, is also CTO of Learning Journey AI, an AI education company, so keeping current on applied AI is already part of his day job.</p>
-            <a class="link" href="/about/hyrum-hurst/">More about Hyrum</a>
-          </div>
+          <p class="ap-half__note">Our founder, Hyrum Hurst, is also CTO of Learning Journey AI, an AI education company, so keeping current on applied AI is already part of his day job. <a class="link" href="/about/hyrum-hurst/">More about Hyrum</a></p>
         </article>
-        <article class="pane ap-half" data-reveal>
-          <span class="pane__t">then · automate</span>
-          <h3>Automate the rest.</h3>
+        <article class="ap-half" aria-labelledby="auto-h">
+          <p class="ap-half__n" aria-hidden="true">02</p>
+          <h3 id="auto-h">Automate the rest.</h3>
           <p>Then we take the repetitive work that's left and automate it, with agents and workflows your team can see and check.</p>
-          <ul class="sv-plus">
+          <ul class="sv-list">
             <li>Agents and automations in n8n, Claude or the tools you already use.</li>
-            <li>Your SOPs turned into procedures an agent can run.</li>
+            <li>The steps your team already follows, written as procedures an agent can run.</li>
             <li>A test period before anything runs on its own.</li>
             <li>Documentation and a handover your team can operate.</li>
           </ul>
-          <div class="ap-evidence">
-            <p class="label">Receipts</p>
-            <p>25 public n8n workflow templates by QuarterSmart, with 10,876 documented uses in the n8n community as of June 2026.</p>
-            <a class="link" href="/workflow-usage/">See the data</a>
-          </div>
+          <p class="ap-half__note">Build is scoped after a Head Start or for members, once we know how your business runs. <a class="link" href="/services/#build">How Build works</a></p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="sec sec--deep" id="method" aria-labelledby="method-h">
+  <!-- 2. The method, down a rail -->
+  <section class="ap-method" id="method" aria-labelledby="method-h">
     <div class="wrap">
-      <div class="sec__head">
-        <p class="label">The method</p>
-        <h2 class="h-1" id="method-h">From announcement to in use.</h2>
+      <div class="sv-head">
+        <div>
+          <p class="label label--accent">The method</p>
+          <h2 class="h-1" id="method-h">From announcement to in use.</h2>
+        </div>
         <p class="body-l">Four steps, every week. The first two happen in public, in Signals. The last two happen in your accounts.</p>
       </div>
-      <div class="pane" data-reveal>
-        <span class="pane__t">detect · decode · deploy · stay current</span>
-        <ol class="ap-method">
-          <li class="ap-method__row">
-            <div class="ap-method__k"><span class="step__n">01</span><h3>Detect</h3><span class="ap-method__when">every day</span></div>
-            <div class="ap-method__b">
-              <p>We watch model releases, product changelogs, early-access programs and credible reporting across the AI market.</p>
-              <p class="label">What we read</p>
-              <dl class="spec">
-                <div><dt>vendors</dt><dd>official blogs, changelogs and release notes from OpenAI, Anthropic, Google, Microsoft and Meta</dd></div>
-                <div><dt>your tools</dt><dd>Google Workspace, Microsoft 365, HubSpot, Slack, Zoom, QuickBooks, Canva, Notion and other common business tools</dd></div>
-                <div><dt>reporting</dt><dd>credible tech press, and public posts from the companies' own staff</dd></div>
-              </dl>
-              <p>We only cover information that's already public, and a person writes every Signal.</p>
-              <a class="link" href="/signals/policy/">How we source Signals</a>
-            </div>
-          </li>
-          <li class="ap-method__row">
-            <div class="ap-method__k"><span class="step__n">02</span><h3>Decode</h3><span class="ap-method__when">same business day for members</span></div>
-            <div class="ap-method__b">
-              <p>Each Signal answers two questions in plain English. Does this matter to a business like yours? What should you do this week?</p>
-              <div class="ap-tags"><span class="label">How sure we are</span><span class="chip chip--reported">Reported · unconfirmed</span><span class="chip chip--confirmed">Confirmed</span><span class="chip chip--available">Available</span><span class="chip chip--early">Early access</span><span class="chip chip--quiet">Quiet update</span><span class="chip chip--event">Event</span></div>
-              <div class="ap-tags"><span class="label">What to do</span><span class="verdict">Act now</span><span class="verdict">Prepare</span><span class="verdict">Wait</span><span class="verdict">Ignore</span></div>
-              <p>Reported items stay labeled unconfirmed until the company confirms or denies them. We keep score in public on the <a href="/signals/log/">Signals Log</a>, misses included.</p>
-            </div>
-          </li>
-          <li class="ap-method__row">
-            <div class="ap-method__k"><span class="step__n">03</span><h3>Deploy</h3><span class="ap-method__when">from the day it's available to you</span></div>
-            <div class="ap-method__b">
-              <p>When it's worth it, we set it up in your accounts, connect it to the tools you already use, test it with a few people, then train the team.</p>
-              <p>Day one means the first day a tool is available to your account. Rollouts are often staggered by plan, region or company size, so we prepare beforehand wherever the vendor has published enough detail.</p>
-              <a class="link" href="/services/#day-one-setup">Day One Setup</a>
-            </div>
-          </li>
-          <li class="ap-method__row">
-            <div class="ap-method__k"><span class="step__n">04</span><h3>Stay current</h3><span class="ap-method__when">every week</span></div>
-            <div class="ap-method__b">
-              <p>Members get Signals filtered to their own tools, the same business day for anything that touches their stack, with setup time held for launch weeks. When a tool changes, we adjust your setup.</p>
-              <p>Once a quarter we sit down with you for a Stack Review: what you pay for, what the team actually uses, and what to change next.</p>
-              <a class="link" href="/services/#first-quarter">First Quarter membership</a>
-            </div>
-          </li>
-        </ol>
-      </div>
+      <ol class="ap-steps">
+        <li class="ap-step" data-reveal>
+          <div class="ap-step__k"><span class="ap-step__n">01</span><h3>Detect</h3><p class="ap-step__when">every day</p></div>
+          <div class="ap-step__b">
+            <p>We watch model releases, product changelogs, early-access programs and credible reporting across the AI market.</p>
+            <dl class="sv-facts">
+              <div><dt>vendors</dt><dd>official blogs, changelogs and release notes from OpenAI, Anthropic, Google, Microsoft and Meta</dd></div>
+              <div><dt>your tools</dt><dd>Google Workspace, Microsoft 365, HubSpot, Slack, Zoom, QuickBooks, Canva, Notion and other common business tools</dd></div>
+              <div><dt>reporting</dt><dd>credible tech press, and public posts from the companies' own staff</dd></div>
+            </dl>
+            <p>We only cover information that's already public, and a person writes every Signal. <a href="/signals/policy/">How we source Signals</a></p>
+          </div>
+        </li>
+        <li class="ap-step" data-reveal>
+          <div class="ap-step__k"><span class="ap-step__n">02</span><h3>Decode</h3><p class="ap-step__when">same business day for members</p></div>
+          <div class="ap-step__b">
+            <p>Each Signal answers two questions in plain English. Does this matter to a business like yours? What should you do this week?</p>
+            <div class="ap-tags"><span class="ap-tags__k">How sure we are</span><span class="chip chip--reported">Reported · unconfirmed</span><span class="chip chip--confirmed">Confirmed</span><span class="chip chip--available">Available</span><span class="chip chip--early">Early access</span><span class="chip chip--quiet">Quiet update</span><span class="chip chip--event">Event</span></div>
+            <p class="sv-verdicts"><span>What to do</span> <b>Act now</b> <b>Prepare</b> <b>Wait</b> <b>Ignore</b></p>
+            <p>Reported items stay labeled unconfirmed until the company confirms or denies them. We keep score in public on the <a href="/signals/log/">Signals Log</a>, misses included.</p>
+          </div>
+        </li>
+        <li class="ap-step" data-reveal>
+          <div class="ap-step__k"><span class="ap-step__n">03</span><h3>Deploy</h3><p class="ap-step__when">from the day it's available to you</p></div>
+          <div class="ap-step__b">
+            <p>When it's worth it, we set it up in your accounts, connect it to the tools you already use, test it with a few people, then train the team.</p>
+            <p>Day one means the first day a tool is available to your account. Rollouts are often staggered by plan, region or company size, so we prepare beforehand wherever the vendor has published enough detail.</p>
+            <a class="link" href="/services/#day-one-setup">Day One Setup</a>
+          </div>
+        </li>
+        <li class="ap-step" data-reveal>
+          <div class="ap-step__k"><span class="ap-step__n">04</span><h3>Stay current</h3><p class="ap-step__when">every week</p></div>
+          <div class="ap-step__b">
+            <p>Members get Signals filtered to their own tools, the same business day for anything that touches their stack, with setup time held for launch weeks. When a tool changes, we adjust your setup.</p>
+            <p>Once a quarter we sit down with you for a Stack Review: what you pay for, what the team actually uses, and what to change next.</p>
+            <a class="link" href="/services/#first-quarter">First Quarter membership</a>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <section class="sec" id="principles" aria-labelledby="principles-h">
-    <div class="wrap">
-      <div class="sec__head">
-        <p class="label">Principles</p>
+  <!-- 3. Principles, under the one sign on this page -->
+  <section class="band band--deep ap-princ" id="principles" aria-labelledby="principles-h">
+    <div class="wrap ap-princ__grid">
+      <div class="ap-sign" aria-hidden="true">
+        <span class="ap-sign__go">go</span>
+        <span class="ap-sign__wait neon neon--warm">wait</span>
+      </div>
+      <div>
+        <p class="label label--accent">Principles</p>
         <h2 class="h-1" id="principles-h">What we hold to.</h2>
-      </div>
-      <div class="principles ap-principles">
-        <div class="pane" data-reveal>
-          <h3>We say "wait" more than "go."</h3>
-          <p>Most launches don't deserve your time. Wait and Ignore are common verdicts in Signals, and we'll tell you when a popular tool isn't right for you.</p>
-          <p class="ap-inpractice">In practice: we only recommend a tool once it passes the six questions below.</p>
-        </div>
-        <div class="pane" data-reveal>
-          <h3>Your accounts, your data.</h3>
-          <p>We set tools up inside accounts you own, with the least access they need. If something shouldn't go near client or patient data, we say so before we set it up.</p>
-          <p class="ap-inpractice">In practice: you hold the logins, and you can remove our access at any time.</p>
-        </div>
-        <div class="pane" data-reveal>
-          <h3>Plain English.</h3>
-          <p>If we can't explain why a launch matters to your business in two sentences, it doesn't go out.</p>
-          <p class="ap-inpractice">In practice: every tool we set up comes with a one-page guide to how you use it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--deep" id="picking-tools" aria-labelledby="picking-h">
-    <div class="wrap split split--57">
-      <div class="sec__head" style="margin:0">
-        <p class="label">How we pick tools</p>
-        <h2 class="h-1" id="picking-h">Six questions before anything gets a go.</h2>
-        <p class="body-l">A new tool has to pass all six before we recommend setting it up. Plenty of launches fail one. That's usually a wait.</p>
-        <p class="fine">Where we can, we try a tool ourselves before we recommend it.</p>
-      </div>
-      <div class="pane" data-reveal>
-        <span class="pane__t">the checklist</span>
-        <ol class="ap-checks">
-          <li><b>Does it do a job your team does every week?</b><p>If we can't name the job and the person who does it, the answer is no.</p></li>
-          <li><b>Can you use it now?</b><p>It has to be available to your account, on the plan you have or one you'd actually pay for.</p></li>
-          <li><b>Does it fit the tools you already use?</b><p>Email, calendar, docs, CRM. A tool that can't connect to them rarely becomes part of the day.</p></li>
-          <li><b>Is it safe for your data?</b><p>Who can see what, where the data goes, and whether it needs to touch client data at all.</p></li>
-          <li><b>Is it worth the cost and the learning time?</b><p>The price per seat plus the hours to learn it, weighed against the time it gives back.</p></li>
-          <li><b>Can you leave?</b><p>You should be able to export your work and switch it off without losing anything.</p></li>
-        </ol>
+        <ul class="ap-rows">
+          <li>
+            <h3>We say "wait" more than "go."</h3>
+            <p>Most launches don't deserve your time. Wait and Ignore are common verdicts in Signals, and we'll tell you when a popular tool isn't right for you.</p>
+            <p class="ap-rows__in"><b>In practice:</b> we only recommend a tool once it passes the six questions below.</p>
+          </li>
+          <li>
+            <h3>Your accounts, your data.</h3>
+            <p>We set tools up inside accounts you own, with the least access they need. If something shouldn't go near client or patient data, we say so before we set it up.</p>
+            <p class="ap-rows__in"><b>In practice:</b> you hold the logins, and you can remove our access at any time.</p>
+          </li>
+          <li>
+            <h3>Plain English.</h3>
+            <p>If we can't explain why a launch matters to your business in two sentences, it doesn't go out.</p>
+            <p class="ap-rows__in"><b>In practice:</b> every tool we set up comes with a one-page guide to how you use it.</p>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="security" aria-labelledby="security-h">
-    <div class="wrap split split--57">
-      <div class="sec__head" style="margin:0">
+  <!-- 4. How we pick tools: a checklist that ticks itself off -->
+  <section class="ap-pick" id="picking-tools" aria-labelledby="picking-h">
+    <div class="wrap">
+      <div class="sv-head">
+        <div>
+          <p class="label label--accent">How we pick tools</p>
+          <h2 class="h-1" id="picking-h">Six questions before anything gets a go.</h2>
+        </div>
+        <div class="ap-pick__lede">
+          <p class="body-l">A new tool has to pass all six before we recommend setting it up. Plenty of launches fail one. That's usually a wait.</p>
+          <p class="ap-pick__fine">Where we can, we try a tool ourselves before we recommend it.</p>
+        </div>
+      </div>
+      <ol class="ap-checks">
+        <li data-reveal style="--i:0"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span><h3>Does it do a job your team does every week?</h3><p>If we can't name the job and the person who does it, the answer is no.</p></li>
+        <li data-reveal style="--i:1"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span><h3>Can you use it now?</h3><p>It has to be available to your account, on the plan you have or one you'd actually pay for.</p></li>
+        <li data-reveal style="--i:2"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span><h3>Does it fit the tools you already use?</h3><p>Email, calendar, docs, CRM. A tool that can't connect to them rarely becomes part of the day.</p></li>
+        <li data-reveal style="--i:3"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span><h3>Is it safe for your data?</h3><p>Who can see what, where the data goes, and whether it needs to touch client data at all.</p></li>
+        <li data-reveal style="--i:4"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span><h3>Is it worth the cost and the learning time?</h3><p>The price per seat plus the hours to learn it, weighed against the time it gives back.</p></li>
+        <li data-reveal style="--i:5"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span><h3>Can you leave?</h3><p>You should be able to export your work and switch it off without losing anything.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5. Security basics -->
+  <section class="band band--slate ap-secure" id="security" aria-labelledby="security-h">
+    <div class="wrap ap-secure__grid">
+      <div class="ap-secure__head">
         <p class="label">Security basics</p>
         <h2 class="h-1" id="security-h">The rules for every setup.</h2>
         <p class="body-l">Whatever the tool, these four apply from the first day.</p>
       </div>
       <div>
-        <div class="ap-rules">
-          <div class="pane" data-reveal>
-            <span class="step__n">01</span>
-            <h3>Least access.</h3>
-            <p>Every tool gets the smallest set of permissions it needs to do its job. If it only needs your calendar, it doesn't get your inbox.</p>
-          </div>
-          <div class="pane" data-reveal>
-            <span class="step__n">02</span>
-            <h3>You own the accounts.</h3>
-            <p>Tools are set up in accounts your business owns and pays for. We work with the access you give us, and you can remove it at any time.</p>
-          </div>
-          <div class="pane" data-reveal>
-            <span class="step__n">03</span>
-            <h3>A small, supervised test first.</h3>
-            <p>Every setup starts with 1 to 3 people before the whole team uses it. We fix what the test turns up, then roll it out.</p>
-          </div>
-          <div class="pane" data-reveal>
-            <span class="step__n">04</span>
-            <h3>Nothing sends without your rules.</h3>
-            <p>You decide what an assistant must never send without a person approving it. During the test, a person approves every outgoing message.</p>
-          </div>
-        </div>
-        <div class="callout callout--info"><strong>Client and patient data.</strong> If something shouldn't go near it, we say so before we set it up. We don't connect a tool to protected health information unless the tool supports a business associate agreement (BAA) and you have one in place.</div>
+        <ol class="ap-rules">
+          <li><span class="ap-rules__n" aria-hidden="true">01</span><h3>Least access.</h3><p>Every tool gets the smallest set of permissions it needs to do its job. If it only needs your calendar, it doesn't get your inbox.</p></li>
+          <li><span class="ap-rules__n" aria-hidden="true">02</span><h3>You own the accounts.</h3><p>Tools are set up in accounts your business owns and pays for. We work with the access you give us, and you can remove it at any time.</p></li>
+          <li><span class="ap-rules__n" aria-hidden="true">03</span><h3>A small, supervised test first.</h3><p>Every setup starts with 1 to 3 people before the whole team uses it. We fix what the test turns up, then roll it out.</p></li>
+          <li><span class="ap-rules__n" aria-hidden="true">04</span><h3>Nothing sends without your rules.</h3><p>You decide what an assistant must never send without a person approving it. During the test, a person approves every outgoing message.</p></li>
+        </ol>
+        <p class="ap-data"><strong>Client and patient data.</strong> If something shouldn't go near it, we say so before we set it up. We don't connect a tool to protected health information unless the tool supports a business associate agreement (BAA) and you have one in place.</p>
       </div>
     </div>
   </section>
 
-  <section class="sec sec--deep" aria-labelledby="cta-h">
-    <div class="wrap">
-      <div class="pane pane--active cta">
-        <span class="pane__t">next step</span>
-        <div class="cta__copy">
-          <h2 class="h-1" id="cta-h">Start with what you already pay for.</h2>
-          <p class="body-l">The fastest wins are often in software you already have. On a <span style="white-space:nowrap">20-minute</span> call, tell us what you use and what's eating your team's week. We'll tell you what's worth doing now and what can wait.</p>
-        </div>
-        <div class="sv-act">
-          <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
-          <a class="link" href="/services/">See services and prices</a>
-          <p class="fine">Not ready to talk? <a href="/signals/">Read this week's Signals</a> first.</p>
-        </div>
-      </div>
+  <!-- Close: the booking call, by an arcade cabinet -->
+  <section class="pg-close" aria-labelledby="cta-h">
+    <div class="wrap pg-close__in">
+      <h2 class="pg-close__h" id="cta-h">Start with what you already pay for.</h2>
+      <p class="body-l">The fastest wins are often in software you already have. On a <span class="nw">20-minute</span> call, tell us what you use and what's eating your team's week. We'll tell you what's worth doing now and what can wait.</p>
+      <div class="pg-close__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a><a class="link" href="/services/">See services and prices</a></div>
+      <p class="pg-close__fine">Not ready to talk? <a href="/signals/">Read this week's Signals</a> first.</p>
     </div>
+    <img class="pg-close__cab" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="" aria-hidden="true" loading="lazy">
   </section>
 
 </main>
-
 <!-- @include footer -->
 </body>
 </html>

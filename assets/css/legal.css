@@ -6,8 +6,8 @@
 .px { display: block; height: auto; image-rendering: pixelated; }
 
 /* ---------- Top ---------- */
-.lhead { position: relative; padding: clamp(48px, 7vw, 104px) 0 clamp(56px, 7vw, 96px); }
-.lhead__crumbs { margin: 0 0 30px; font: 400 14px/1.4 var(--sans); color: var(--fg-2); }
+.lhead { position: relative; padding: clamp(44px, 5.5vw, 80px) 0 clamp(56px, 6vw, 88px); }
+.lhead__crumbs { margin: 0 0 26px; font: 400 14px/1.4 var(--sans); color: var(--fg-2); }
 .lhead__crumbs a { color: var(--fg-2); text-decoration: none; }
 .lhead__crumbs a:hover { color: var(--fg-0); text-decoration: underline; }
 .lhead__crumbs i { font-style: normal; margin: 0 8px; opacity: .6; }
@@ -26,19 +26,20 @@
 .lhead__art::after { content: ""; width: 124%; height: 2px; margin-top: 2px; background: color-mix(in srgb, var(--fg-0) 16%, transparent); }
 
 /* Neon sign used as the eyebrow on a Signals page (one per page) */
-.lsign { display: flex; align-items: center; gap: 14px; margin: 0; font: 400 33px/1 var(--pixel); }
+.lsign { display: flex; align-items: center; gap: 12px; margin: 0; font: 400 27.5px/1 var(--pixel); }
+.lsign .nradar svg { width: 48px; height: 33px; }
 
 /* ---------- The short version: big plain statements on a colour band ---------- */
-.tldr { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 40px clamp(32px, 6vw, 96px); align-items: start; }
-.tldr__head { display: grid; gap: 18px; }
-.tldr__head .body-l { font-size: 17px; }
-.tldr__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(24px, 4vw, 56px); }
-.tldr__list li { display: grid; gap: 8px; align-content: start; padding: 24px 0 28px; border-top: 1px solid color-mix(in srgb, var(--fg-0) 16%, transparent); }
-.tldr__list b { font: 400 22px/1.3 var(--pixel); color: var(--fg-0); }
-.tldr__list span { font-size: 16px; color: var(--fg-1); }
+.tldr { display: grid; gap: clamp(36px, 4vw, 52px); }
+.tldr__head { display: grid; gap: 16px; }
+.tldr__list { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid color-mix(in srgb, var(--fg-0) 16%, transparent); }
+.tldr__list li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px clamp(32px, 6vw, 96px); align-items: baseline; padding: 24px 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 16%, transparent); }
+.tldr__list b { font: 400 27.5px/1.25 var(--pixel); color: var(--fg-0); }
+.tldr__list li:hover b { color: var(--accent); }
+.tldr__list span { font-size: 17px; color: var(--fg-1); max-width: 56ch; }
 
 /* ---------- The full document: a quiet rail of contents and long prose ---------- */
-.ldoc { padding: clamp(72px, 9vw, 128px) 0; }
+.ldoc { padding: clamp(72px, 8vw, 112px) 0; }
 .ldoc__grid { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 40px clamp(40px, 7vw, 112px); align-items: start; }
 .ldoc__toc { position: sticky; top: 96px; display: grid; gap: 18px; }
 .ldoc__toc ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line-2); }
@@ -52,7 +53,7 @@
 .ldoc__body code { background: color-mix(in srgb, var(--fg-0) 8%, transparent); }
 
 /* ---------- Section heads ---------- */
-.lsec { padding: clamp(80px, 10vw, 136px) 0; }
+.lsec { padding: clamp(72px, 8.5vw, 120px) 0; }
 .lsec__head { display: grid; gap: 18px; max-width: 780px; margin-bottom: clamp(40px, 5vw, 64px); }
 
 /* ---------- Signals policy: sourcing ---------- */
@@ -93,27 +94,28 @@
 .fixes__cta { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; margin-top: 6px; }
 
 /* ---------- Signals Log ---------- */
-.tally { margin: clamp(48px, 6vw, 80px) 0 0; padding-top: 30px; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px 40px; align-items: end; }
-.tally dl { margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px 24px; }
-.tally dl > div { display: grid; gap: 12px; }
-.tally dd { order: -1; margin: 0; font: 400 66px/1 var(--pixel); color: var(--fg-2); }
+.tally { margin: clamp(40px, 5vw, 56px) 0 0; padding-top: 26px; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px 40px; align-items: end; }
+.tally dl { margin: 0; display: flex; flex-wrap: wrap; gap: 24px clamp(32px, 5vw, 64px); }
+.tally dl > div { display: grid; gap: 10px; }
+.tally dd { order: -1; margin: 0; font: 400 44px/1 var(--pixel); color: var(--fg-2); }
 .tally .is-live dd { color: var(--accent); }
 .tally dt { font: 400 11px/1.3 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
 .tally .is-live dt { color: var(--fg-0); }
 .tally__upd { justify-self: end; font-size: 15px; color: var(--fg-2); }
 .tally__upd b { font-weight: 500; color: var(--fg-1); }
 .ltable { width: 100%; border-collapse: collapse; }
-.ltable th { padding: 0 20px 14px 0; text-align: left; font: 400 11px/1.3 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); border-bottom: 2px solid var(--line-2); white-space: nowrap; }
+.ltable th { padding: 0 20px 14px 0; text-align: left; font: 400 11px/1.3 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-1); border-bottom: 2px solid var(--line-2); white-space: nowrap; }
 .ltable td { padding: 28px 20px 28px 0; vertical-align: baseline; font-size: 16px; color: var(--fg-1); border-bottom: 1px solid var(--line); }
 .ltable td:first-child a { font: 400 22px/1.3 var(--pixel); color: var(--fg-0); text-decoration: none; }
 .ltable td:first-child a:hover { color: var(--accent); }
 .ltable td:first-child a::after { content: " \2192"; color: var(--fg-2); }
 .ltable time { white-space: nowrap; }
 .ltable .open { font: 400 11px/1 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--warn); white-space: nowrap; }
-.outcomes { margin: clamp(48px, 6vw, 72px) 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px clamp(20px, 3vw, 40px); }
-.outcomes div { display: grid; gap: 8px; align-content: start; }
-.outcomes dt { font: 400 22px/1.2 var(--pixel); color: var(--fg-0); }
-.outcomes dd { margin: 0; font-size: 16px; color: var(--fg-1); }
+.outcomes__h { margin: clamp(44px, 5vw, 64px) 0 14px; }
+.outcomes { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(32px, 5vw, 72px); max-width: 1040px; }
+.outcomes div { display: grid; grid-template-columns: 124px 1fr; gap: 16px; align-items: baseline; padding: 12px 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 12%, transparent); }
+.outcomes dt { font: 400 11px/1.6 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-0); }
+.outcomes dd { margin: 0; font-size: 15px; color: var(--fg-1); }
 .lgo { display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 48px; }
 
 /* ---------- Closing booking CTA: a cabinet standing on the footer line ---------- */
@@ -144,16 +146,16 @@
   .lkey > div + div { padding: 40px 0 0; margin-top: 40px; border-left: 0; border-top: 1px solid color-mix(in srgb, var(--fg-0) 16%, transparent); }
   .lkey > div { padding-right: 0; }
   .tally { grid-template-columns: 1fr; }
-  .tally dl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .tally__upd { justify-self: start; }
-  .outcomes { grid-template-columns: 1fr 1fr; }
+  .outcomes { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .lhead__grid { grid-template-columns: 1fr; }
   .lhead__art { display: none; }
   .lhead__h { font-size: 44px; line-height: 1.06; }
   .lsign { font-size: 27.5px; }
-  .tldr__list { grid-template-columns: 1fr; }
+  .tldr__list li { grid-template-columns: 1fr; }
+  .tldr__list b { font-size: 22px; }
   .ldoc__toc ol { grid-template-columns: 1fr 1fr; column-gap: 16px; }
   .ldoc__toc a { font-size: 14.5px; }
   .ldoc__body > p:first-child { font-size: 18px; }
@@ -163,8 +165,9 @@
   .lrules li::before { font-size: 33px; }
   .lkey dl div { grid-template-columns: 1fr; gap: 8px; }
   .fixes h3 { font-size: 27.5px; }
-  .tally dd { font-size: 44px; }
-  .outcomes { grid-template-columns: 1fr; }
+  .tally dl { gap: 20px 28px; }
+  .tally dd { font-size: 33px; }
+  .outcomes div { grid-template-columns: 1fr; gap: 4px; }
   .ltable thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .ltable, .ltable tbody, .ltable tr, .ltable td { display: block; }
   .ltable tr { padding: 10px 0 18px; border-bottom: 1px solid var(--line); }

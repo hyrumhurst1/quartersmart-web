@@ -1,5 +1,9 @@
 <footer class="foot">
   <div class="wrap">
+    <div class="arena" data-arena>
+      <canvas aria-hidden="true"></canvas>
+      <button class="arena__coin" type="button" aria-label="Spin the QuarterSmart coin"></button>
+    </div>
     <div class="foot__grid">
       <div>
         <a class="brand" href="/" aria-label="QuarterSmart home"><svg viewBox="0 0 14 14" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="#1d7a58" d="M4 2h2v1h-2zM2 3h4v1h-4zM1 4h5v1h-5zM1 5h5v1h-5zM0 6h6v1h-6zM0 7h6v1h-6zM0 8h12v1h-12zM0 9h12v1h-12zM1 10h10v1h-10zM1 11h10v1h-10zM2 12h8v1h-8zM4 13h4v1h-4z"/><path fill="#a9d99f" d="M8 0h2v1h-2zM8 1h4v1h-4zM8 2h5v1h-5zM8 3h5v1h-5zM8 4h6v1h-6zM8 5h6v1h-6z"/></svg>QuarterSmart</a>
@@ -12,6 +16,7 @@
           <button type="button" data-theme-pick="rose"><i style="background:#1f1d2e;box-shadow:inset 0 0 0 1px #ebbcba"></i>rose</button>
           <button type="button" data-theme-pick="forest"><i style="background:#2a3237;box-shadow:inset 0 0 0 1px #a7c080"></i>forest</button>
           <button type="button" data-theme-pick="paper"><i style="background:#efebe2;box-shadow:inset 0 0 0 1px #b9b2a3"></i>paper</button>
+          <span class="qq-slot" data-qq-slot="theme"></span>
         </div>
       </div>
       <div>
@@ -43,10 +48,12 @@
       </div>
     </div>
     <div class="foot__base">
-      <span>&copy; 2026 QuarterSmart &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <button class="tty-cue" type="button" data-tty aria-label="Open the terminal">qsh</button></span>
+      <span>&copy; 2026 QuarterSmart<span class="qq-slot" data-qq-slot="copy"></span> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <button class="tty-cue" type="button" data-tty aria-label="Open the terminal">qsh</button></span>
       <span>Independent. Not affiliated with or endorsed by OpenAI, Anthropic, Google, Microsoft or any AI vendor.</span>
     </div>
   </div>
 </footer>
 <script src="/assets/js/qs.js" defer></script>
 <script src="/assets/js/term.js" defer></script>
+<script src="/assets/js/arena.js?v=20260927a" defer></script>
+<script src="/assets/js/quest.js?v=20260927a" defer></script>

@@ -26,7 +26,7 @@
 <meta name="qs:verdict" content="Wait">
 <meta name="qs:cover" content="/assets/px/sprite-radar.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927a">
+<link rel="stylesheet" href="/assets/css/posts-old.css?v=20260927b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -109,7 +109,7 @@
     <div class="wrap po-band__grid">
       <figure class="po-art" data-po-form>
         <p class="po-sign"><span class="label">Our verdict</span><span class="po-sign__word neon neon--warm">Wait</span></p>
-        <img src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, listening." style="--w:54px;--s:4;--s-m:3" fetchpriority="high">
+        <img src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, listening." style="--w:54px;--s:3;--s-m:2" fetchpriority="high">
       </figure>
       <div class="po-sum">
         <h2 class="po-sum__h" id="short-h">The short version</h2>
@@ -262,7 +262,30 @@
   </section>
 
 </main>
-<!-- PO-SCRIPT -->
+<!-- po-form:start -->
+<script>
+/* The band's sprite assembles from its own pixels once, then the verdict sign lights. Skipped for reduced motion. */
+(function(){var f=document.querySelector('[data-po-form]');if(!f)return;var b=f.closest('.po-band'),m=f.querySelector('img');
+if(!m||!b||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+b.classList.add('po-arm');var ran=0;
+function lit(){f.classList.remove('is-forming');b.classList.add('is-lit');}
+function go(){if(ran)return;ran=1;var w=m.naturalWidth,h=m.naturalHeight,r=m.getBoundingClientRect(),fr=f.getBoundingClientRect();if(!w||!r.width)return lit();
+var sc=r.width/w,o=document.createElement('canvas');o.width=w;o.height=h;var ox=o.getContext('2d'),d;ox.drawImage(m,0,0);
+try{d=ox.getImageData(0,0,w,h).data}catch(e){return lit()}
+var pad=Math.round(Math.max(r.width,r.height)*.55),cw=Math.round(r.width+pad*2),ch=Math.round(r.height+pad*2),c=document.createElement('canvas');
+c.width=cw;c.height=ch;c.style.width=cw+'px';c.style.height=ch+'px';c.style.left=Math.round(r.left-fr.left-pad)+'px';c.style.top=Math.round(r.top-fr.top-pad)+'px';
+var x=c.getContext('2d'),P=[],s=Math.ceil(sc);
+for(var y=0;y<h;y++)for(var i=0;i<w;i++){var k=(y*w+i)*4;if(d[k+3]<60)continue;var a=Math.random()*6.2832,q=(.3+Math.random()*.7)*pad;
+P.push([pad+r.width/2+Math.cos(a)*q*1.5,pad+r.height/2+Math.sin(a)*q,pad+i*sc,pad+y*sc,Math.random()*320+(1-y/h)*240,'rgb('+d[k]+','+d[k+1]+','+d[k+2]+')'])}
+f.appendChild(c);f.classList.add('is-forming');var T=820,t0=performance.now();
+function tick(now){var el=now-t0,done=1;x.clearRect(0,0,cw,ch);
+for(var j=0;j<P.length;j++){var p=P[j],t=(el-p[4])/T;if(t<1)done=0;t=t<0?0:t>1?1:t;var e=Math.round((1-Math.pow(1-t,3))*16)/16;
+x.globalAlpha=.28+.72*t;x.fillStyle=p[5];x.fillRect(Math.round(p[0]+(p[2]-p[0])*e),Math.round(p[1]+(p[3]-p[1])*e),s,s)}
+if(!done)requestAnimationFrame(tick);else{c.remove();lit()}}
+requestAnimationFrame(tick)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();(m.complete?Promise.resolve():m.decode()).then(go,go)}})},{threshold:.2});io.observe(f)})();
+</script>
+<!-- po-form:end -->
 <!-- @include footer -->
 </body>
 </html>

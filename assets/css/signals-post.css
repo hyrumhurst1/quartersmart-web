@@ -1,55 +1,152 @@
-/* Signals posts: the few pieces the archive posts need on top of qs.css.
-   Tokens only, square corners, no shadows. Linked right after the shared head. */
+/* Signals posts: the post template on top of qs.css, plus the pixel stage
+   (assets/js/radar.js) and the post ending (_partials/post-end.html).
+   Tokens only, square corners. Linked right after the shared head. */
 
-/* Keep the article column inside narrow screens: wide tables scroll, long URLs wrap */
+/* ==========================================================================
+   Article body helpers (used by every post, old and new)
+   ========================================================================== */
 .post-grid > * { min-width: 0; }
 .prose { overflow-wrap: break-word; }
-
-/* Citation markers: [1] */
 .prose sup.cite { font: 500 .62em/0 var(--mono); margin-left: 1px; }
-
-/* Callouts that carry a label, a heading and text */
 .prose .callout > * + * { margin-top: .6em; }
 .prose .callout > :first-child { margin-top: 0; }
 .prose .callout h3 { font-size: 18px; }
 .prose .callout ul { margin-bottom: 0; }
-
-/* Panes set inside the article column */
 .prose .pane > * + * { margin-top: .6em; }
 .prose .pane > .pane__t + * { margin-top: 0; }
-
-/* Gauge: one block meter with a labelled scale under it */
 .gauge .meter__bar { display: block; margin: 14px 0 8px; }
 .gauge__scale { display: flex; justify-content: space-between; gap: 8px; }
-
-/* Stat meters that cite a source */
 .meter__src { display: block; margin-top: 2px; }
 .prose .meter__v { color: var(--fg-0); }
-
-/* Before and after cost panes */
 .costs .stat { font-size: clamp(40px, 4.4vw, 56px); }
 .costs .stat small { display: block; margin-top: 8px; font-size: 13px; letter-spacing: 0; font-family: var(--mono); }
-
-/* Timeline inside prose */
 .prose .timeline li + li { margin-top: 0; }
-
-/* Collapsible explainers and FAQs inside prose */
 .prose .faq summary { color: var(--fg-0); }
-
-/* Name list in columns */
 .prose .orglist { list-style: none; padding-left: 0; columns: 3 150px; column-gap: 24px; font: 400 14.5px/1.5 var(--mono); }
 .prose .orglist li { break-inside: avoid; margin: 0 0 8px; }
-
-/* Self-check */
 .quiz__q { color: var(--fg-0); }
-.quiz__opt { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px dashed var(--line-2); font-size: 16px; line-height: 1.55; cursor: pointer; }
+.quiz__opt { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--line); font-size: 16px; line-height: 1.55; cursor: pointer; }
 .quiz__opt:hover { color: var(--fg-0); }
 .quiz__opt input { flex: none; width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); cursor: pointer; }
 .quiz__result { padding-top: 16px; border-top: 1px solid var(--line-2); }
 .quiz__verdict { font: 500 22px/1.25 var(--mono); letter-spacing: -.03em; color: var(--fg-0); margin: 6px 0; }
-
-/* Read next list in the side column */
 .readnext { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-
-/* Pull quotes: use the full column width */
 .prose figure > blockquote { margin: 0; }
+
+/* ==========================================================================
+   Pixel stage: art that flows from one scene into the next (radar.js)
+   ========================================================================== */
+.px { image-rendering: pixelated; }
+.pxstage { margin: 0; display: grid; justify-items: center; gap: 12px; min-width: 0; }
+.pxstage__screen { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 3 / 2; }
+.pxstage__screen > * { grid-area: 1 / 1; }
+.pxstage canvas { display: block; image-rendering: pixelated; opacity: 0; transition: opacity .4s; }
+.pxstage.is-live canvas { opacity: 1; }
+.pxstage__still { width: auto; height: 76%; max-width: 92%; image-rendering: pixelated; }
+.pxstage.is-live .pxstage__still { opacity: 0; pointer-events: none; }
+.pxstage__bar { display: flex; align-items: center; justify-content: center; gap: 18px; min-height: 30px; }
+.pxstage__pips { display: flex; align-items: center; gap: 5px; }
+.pxstage__pips i { display: block; width: 6px; height: 6px; background: var(--line-2); transition: width .3s var(--ease), background .3s; }
+.pxstage__pips i.on { width: 20px; background: var(--accent); }
+.pxstage__pause { flex: none; display: grid; place-items: center; width: 30px; height: 30px; padding: 0; color: var(--fg-2); background: none; border: 1px solid var(--line-2); border-radius: 0; cursor: pointer; }
+.pxstage__pause::before { content: ""; width: 8px; height: 10px; background: linear-gradient(90deg, currentColor 0 3px, transparent 3px 5px, currentColor 5px 8px); }
+.pxstage__pause[aria-pressed="true"]::before { width: 0; height: 0; background: none; border-left: 8px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; margin-left: 2px; }
+.pxstage__pause:hover { color: var(--accent); border-color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { .pxstage canvas { transition: none; } }
+
+/* ==========================================================================
+   Post header: a bold pixel headline beside the stage, on a calm deep band
+   ========================================================================== */
+.sig-post { --deep: color-mix(in srgb, var(--bg-0) 62%, #000); }
+[data-theme="paper"] .sig-post { --deep: var(--bg-2); }
+.phero { background: var(--deep); border-bottom: 1px solid var(--line); padding: clamp(40px, 5vw, 72px) 0 clamp(44px, 5vw, 72px); }
+.phero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.phero__copy { display: grid; gap: 22px; justify-items: start; }
+.phero__crumbs { font: 400 12.5px var(--mono); color: var(--fg-2); }
+.phero__crumbs a { color: var(--fg-2); text-decoration: none; }
+.phero__crumbs a:hover { color: var(--fg-0); }
+.phero__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; }
+.phero__verdict { font: 400 11px/1 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
+.phero__verdict b { font-weight: 400; color: var(--fg-0); margin-left: 6px; }
+.phero__h { font: 400 44px/1.14 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); max-width: 22ch; }
+.phero .lede { max-width: 58ch; }
+.phero .byline { margin: 0; }
+.phero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 4px; }
+.phero__cta .link { align-self: center; }
+.phero__art .pxstage__bar { margin-top: 2px; }
+
+/* ==========================================================================
+   Body and side column
+   ========================================================================== */
+.sig-post .post-grid { padding-top: clamp(48px, 6vw, 88px); }
+/* long reading: keep the site-wide night sky (night.js) faint behind the text */
+.sig-post .post-grid, .sig-post .pend { background: color-mix(in srgb, var(--bg-0) 90%, transparent); box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--bg-0) 90%, transparent); clip-path: inset(0 -100vmax); }
+.sig-post .shortv { border: 0; border-left: 2px solid var(--accent); background: none; padding: 2px 0 2px 22px; }
+.sig-post .shortv h2 { font: 400 11px/1.4 var(--pixel) !important; letter-spacing: .08em !important; }
+.sig-post .shortv ul { color: var(--fg-0); }
+.sig-post .prose .callout { border: 0; border-left: 2px solid var(--warn); background: var(--bg-1); padding: 18px 20px; }
+.sig-post .prose .callout--info { border-left-color: var(--info); }
+.sig-post .prose .callout--accent { border-left-color: var(--accent); }
+.sig-post .prose .callout .label { color: var(--fg-2); }
+.sig-post .updlog li { border-top: 1px solid var(--line); }
+.sig-post .prose h2 { scroll-margin-top: 90px; }
+
+/* questions answered in the open (FAQ schema mirrors this text exactly) */
+.pfaq { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.pfaq > div { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.prose .pfaq h3 { margin: 0 0 8px; font: 600 18px/1.4 var(--sans); color: var(--fg-0); }
+.prose .pfaq p { margin: 0; }
+
+/* the side column: the verdict first, then the facts */
+.psum { position: sticky; top: 90px; display: grid; gap: 26px; padding-left: clamp(0px, 2vw, 28px); border-left: 1px solid var(--line); }
+.psum__k { font: 400 11px/1.4 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
+.psum__v { margin-top: 8px; font: 400 44px/1 var(--pixel); color: var(--accent); }
+.psum__kv { margin: 0; display: grid; gap: 18px; font-size: 15px; }
+.psum__kv div { display: grid; gap: 6px; }
+.psum__kv dt { font: 400 11px/1.4 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
+.psum__kv dd { margin: 0; color: var(--fg-0); line-height: 1.5; }
+.psum__next { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 12px; }
+.psum__next a { font-size: 15px; color: var(--fg-0); text-decoration-color: var(--accent); }
+.psum__next a:hover { color: var(--accent); }
+
+/* ==========================================================================
+   Post ending (_partials/post-end.html): the author, the Monday email, the call
+   ========================================================================== */
+.pend { border-top: 1px solid var(--line); padding: clamp(56px, 7vw, 96px) 0; }
+.pend__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.pend__author { display: grid; grid-template-columns: 72px 1fr; gap: 20px; align-items: start; }
+.pend__author img { width: 72px; height: 72px; object-fit: cover; filter: grayscale(.2) contrast(1.03); }
+.pend__by { font: 400 11px/1.4 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); margin-bottom: 8px; }
+.pend__by b { font-weight: 400; color: var(--fg-0); }
+.pend__author p:not(.pend__by) { color: var(--fg-1); font-size: 16px; }
+.pend__form { display: grid; gap: 12px; }
+.pend__h { font: 400 27.5px/1.2 var(--pixel); color: var(--fg-0); }
+.pend__form .muted { font-size: 15.5px; margin-bottom: 4px; }
+.pclose { position: relative; overflow: hidden; background: var(--deep, color-mix(in srgb, var(--bg-0) 62%, #000)); border-top: 1px solid var(--line); padding: clamp(80px, 10vw, 140px) 0; }
+[data-theme="paper"] .pclose { background: var(--bg-2); }
+.pclose__grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(32px, 6vw, 96px); align-items: end; }
+.pclose__in { display: grid; gap: 24px; justify-items: start; }
+.pclose__h { font: 400 clamp(44px, 5vw, 66px)/1.08 var(--pixel); letter-spacing: -.01em; max-width: 16ch; color: var(--fg-0); }
+.pclose .body-l { max-width: 56ch; }
+.pclose__cab { width: 153px; height: auto; image-rendering: pixelated; margin-right: clamp(0px, 4vw, 64px); }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1000px) {
+  .phero__grid { grid-template-columns: 1fr; }
+  .phero__art { width: 100%; max-width: 520px; justify-self: center; }
+  .psum { position: static; border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 28px; }
+  .pend__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .phero__h { font-size: 33px; }
+  .psum__v { font-size: 33px; }
+  .pend__author { grid-template-columns: 56px 1fr; gap: 16px; }
+  .pend__author img { width: 56px; height: 56px; }
+  .pend__h { font-size: 22px; }
+  .pclose__h { font-size: 38.5px; }
+  .pclose__grid { grid-template-columns: 1fr; }
+  .pclose__cab { display: none; }
+  .pfaq > div { padding: 18px 0; }
+}

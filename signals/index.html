@@ -21,7 +21,8 @@
 <meta name="twitter:description" content="What changed in AI, and what to do about it. Each Signal ends in a verdict.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-signals.png">
 <!-- @include head -->
-<link rel="preload" href="/assets/images/radar-frames/frame_0060.jpg" as="image">
+<link rel="stylesheet" href="/assets/css/signals-post.css?v=20260927m">
+<link rel="stylesheet" href="/assets/css/hub-posts-new.css?v=20260927m">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,7 +33,7 @@
       "@id": "https://quartersmart.com/signals#page",
       "url": "https://quartersmart.com/signals",
       "name": "QuarterSmart Signals",
-      "description": "Plain-English coverage of AI launches, early access and quiet updates, each with a verdict for working businesses.",
+      "description": "Plain-English coverage of AI launches, early access and quiet updates, each with a verdict for working businesses: act now, prepare, wait or ignore.",
       "isPartOf": { "@id": "https://quartersmart.com/#website" },
       "publisher": { "@id": "https://quartersmart.com/#organization" },
       "author": { "@id": "https://quartersmart.com/about.html#hyrum-hurst" }
@@ -48,68 +49,65 @@
 }
 </script>
 </head>
-<body>
+<body class="sig-hub">
 <!-- @include nav -->
 <main id="main">
 
-  <section class="sighero" aria-labelledby="sig-h">
-    <div class="wrap">
-      <div class="sighero__grid">
-        <div class="pane pane--active sighero__plate">
-          <span class="pane__t">radar · move to sweep</span>
-          <span class="pane__t pane__t--r" data-radar-frame aria-hidden="true">frame 060/120</span>
-          <canvas id="radar-plate" aria-hidden="true"></canvas>
+  <!-- 1. Hero: the headline beside a stage of pixel scenes that flow into each other -->
+  <section class="shero" aria-labelledby="sig-h">
+    <div class="wrap shero__grid">
+      <div class="shero__copy">
+        <p class="shero__sign"><span class="nradar" aria-hidden="true"><svg viewBox="0 0 34 24"><path class="dish" d="M11 21h12M17 21v-5M9 9a8 8 0 0 0 16 0z"/><path class="arc l1" d="M7 5a12 12 0 0 0-3 9"/><path class="arc l2" d="M3 2a17 17 0 0 0-3 13"/><path class="arc r1" d="M27 5a12 12 0 0 1 3 9"/><path class="arc r2" d="M31 2a17 17 0 0 1 3 13"/></svg></span><span class="neon">Signals</span></p>
+        <h1 class="shero__h" id="sig-h">What changed in AI, and what to do about it.</h1>
+        <p class="lede">Launches, early-access programs, quiet product updates and credible leaks. Each one gets a plain-English read on whether it matters to a working business, and a verdict: act now, prepare, wait or ignore.</p>
+        <div class="shero__cta">
+          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
+          <a class="link" href="#latest">Read the latest</a>
+          <a class="link" href="#weekly">Get Signals Weekly</a>
         </div>
-        <div class="sighero__side">
-          <div class="pane sighero__intro">
-            <span class="pane__t">quartersmart signals</span>
-            <h1 class="h-1" id="sig-h">What changed in AI, and what to do about it.</h1>
-            <p class="body-l">Launches, early-access programs, quiet product updates and credible leaks. Each one gets a plain-English read on whether it matters to a working business, and a verdict.</p>
-            <p class="fine">We post fast, label how sure we are, and update the post when the facts change. <a href="/signals/policy/">How we source</a> · <a href="/signals/log/">Signals Log</a></p>
-          </div>
-          <div class="pane scope">
-            <span class="pane__t">scope · <!-- @signals-count --> signals</span>
-            <div class="scope__grid">
-              <canvas id="radar-scope" aria-label="Radar scope. Each blip is a Signal. Newer Signals sit closer to the centre."></canvas>
-              <p id="scope-read" class="scope__read" aria-live="polite"></p>
-            </div>
-          </div>
+        <p class="shero__fine">We post fast, label how sure we are, and update the post when the facts change. <a href="/signals/policy/">How we source</a> · <a href="/signals/log/">Signals Log</a></p>
+      </div>
+      <div class="pxstage shero__art" data-pxstage data-first="radar" data-max="5">
+        <div class="pxstage__screen">
+          <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, listening for new launches." fetchpriority="high">
+          <canvas aria-hidden="true"></canvas>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="all-h">
+  <!-- 2. The feed -->
+  <section class="slist" id="latest" aria-labelledby="all-h">
     <div class="wrap">
-      <div class="sig-tools">
-        <h2 class="h-2" id="all-h">All Signals</h2>
-        <div class="sig-filter" role="group" aria-label="Filter by status">
-          <button type="button" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" data-filter="reported">Reported</button>
-          <button type="button" data-filter="available">Available</button>
-          <button type="button" data-filter="event">Event</button>
-          <button type="button" data-filter="insight">Insight</button>
+      <div class="slist__head">
+        <h2 class="h-1" id="all-h">All Signals</h2>
+        <div class="slist__tools">
+          <div class="sig-filter" role="group" aria-label="Filter by status">
+            <button type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="reported">Reported</button>
+            <button type="button" data-filter="available">Available</button>
+            <button type="button" data-filter="event">Event</button>
+            <button type="button" data-filter="insight">Insight</button>
+          </div>
+          <label class="sr" for="sig-q">Search Signals</label>
+          <input class="input sig-q" id="sig-q" type="search" placeholder="Search Signals" autocomplete="off">
         </div>
-        <label class="sr" for="sig-q">Search Signals</label>
-        <input class="input sig-q" id="sig-q" type="search" placeholder="search signals" autocomplete="off">
       </div>
       <ul class="sigtable" id="sig-list">
 <!-- @signals-list -->
       </ul>
-      <p class="fine sig-empty" hidden>No Signals match that yet.</p>
+      <p class="slist__empty" hidden>No Signals match that yet.</p>
     </div>
   </section>
 
-  <section class="sec sec--deep" aria-labelledby="legend-h">
+  <!-- 3. How to read one: a full-bleed band, two typographic columns -->
+  <section class="band band--slate slegend" aria-labelledby="legend-h">
     <div class="wrap">
-      <div class="sec__head">
-        <p class="label">Reading a Signal</p>
-        <h2 class="h-1" id="legend-h">Every Signal says how sure we are, and what to do.</h2>
-      </div>
-      <div class="split">
-        <div class="pane">
-          <span class="pane__t">status labels</span>
-          <dl class="legend">
+      <h2 class="slegend__h" id="legend-h">Every Signal says how sure we are, and what to do.</h2>
+      <div class="slegend__grid">
+        <div>
+          <h3 class="slegend__k">How sure we are</h3>
+          <dl class="slegend__labels">
             <div><dt><span class="chip chip--reported">Reported</span></dt><dd>Publicly reported, not confirmed by the company. Always marked unconfirmed.</dd></div>
             <div><dt><span class="chip chip--confirmed">Confirmed</span></dt><dd>Announced, not yet available to most accounts.</dd></div>
             <div><dt><span class="chip chip--available">Available</span></dt><dd>You can use it now, on the plans listed.</dd></div>
@@ -118,57 +116,56 @@
             <div><dt><span class="chip chip--event">Event</span></dt><dd>A launch event we're covering.</dd></div>
           </dl>
         </div>
-        <div class="pane">
-          <span class="pane__t">verdicts</span>
-          <dl class="legend">
-            <div><dt><span class="verdict">Act now</span></dt><dd>Worth doing this week for most businesses it applies to.</dd></div>
-            <div><dt><span class="verdict">Prepare</span></dt><dd>Not ready yet, but a little groundwork now saves time later.</dd></div>
-            <div><dt><span class="verdict">Wait</span></dt><dd>Promising, not ready. We'll tell you when that changes.</dd></div>
-            <div><dt><span class="verdict">Ignore</span></dt><dd>Noise for a working business. Skip it.</dd></div>
+        <div>
+          <h3 class="slegend__k">What to do</h3>
+          <dl class="slegend__verdicts">
+            <div><dt class="v-act">Act now</dt><dd>Worth doing this week for most businesses it applies to.</dd></div>
+            <div><dt class="v-prep">Prepare</dt><dd>Not ready yet, but a little groundwork now saves time later.</dd></div>
+            <div><dt class="v-wait">Wait</dt><dd>Promising, not ready. We'll tell you when that changes.</dd></div>
+            <div><dt class="v-ign">Ignore</dt><dd>Noise for a working business. Skip it.</dd></div>
           </dl>
-          <p class="fine" style="margin-top:18px">Wait and Ignore are common verdicts. That's the point.</p>
+          <p class="slegend__note">Wait and Ignore are common verdicts. That's the point.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="weekly-h">
-    <div class="wrap split split--75">
-      <div class="pane pane--active cta__form">
-        <span class="pane__t">signals weekly</span>
-        <h2 class="h-2" id="weekly-h">Get the few that matter, every Monday.</h2>
-        <p class="body-l" style="margin:14px 0 22px">Each item with a verdict. A short alert in between only when something needs action that week. Free.</p>
-        <form name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
-          <input type="hidden" name="form-name" value="signals-weekly">
-          <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
-          <input type="hidden" name="source" value="signals-hub">
-          <label class="sr" for="hub-email">Work email</label>
-          <div class="field"><input class="input" id="hub-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required><button class="btn btn--primary" type="submit">Subscribe</button></div>
-          <p data-form-status aria-live="polite"></p>
-        </form>
+  <!-- 4. Close: members and the call, with the Monday email beside it -->
+  <section class="scloser" aria-labelledby="close-h">
+    <div class="wrap scloser__grid">
+      <div class="scloser__main">
+        <p class="label label--accent">For members</p>
+        <h2 class="scloser__h" id="close-h">Filtered to your tools, the same business day.</h2>
+        <p class="body-l">First Quarter members get Signals filtered to the tools they actually use, with setup time already held for launch weeks. Start with a free 20-minute call.</p>
+        <div class="scloser__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a><a class="link" href="/services/#first-quarter">See First Quarter</a></div>
       </div>
-      <div class="pane">
-        <span class="pane__t">for members</span>
-        <h3 class="h-3">Filtered to your tools, the same business day.</h3>
-        <p class="muted" style="margin:12px 0 18px;font-size:15.5px">First Quarter members get Signals filtered to the tools they actually use, with setup time already held for launch weeks.</p>
-        <a class="link" href="/services/#first-quarter">See First Quarter</a>
-      </div>
+      <form class="scloser__form" id="weekly" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+        <p class="label">Signals Weekly</p>
+        <h3 class="scloser__fh" id="weekly-h">Get the few that matter, every Monday.</h3>
+        <p class="muted">Each item with a verdict. A short alert in between only when something needs action that week. Free.</p>
+        <input type="hidden" name="form-name" value="signals-weekly">
+        <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
+        <input type="hidden" name="source" value="signals-hub">
+        <label class="sr" for="hub-email">Work email</label>
+        <div class="field"><input class="input" id="hub-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required><button class="btn" type="submit">Subscribe</button></div>
+        <p data-form-status aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
 </main>
 <!-- @signals-json -->
-<script src="/assets/js/radar.js" defer></script>
+<script src="/assets/js/radar.js?v=20260927m" defer></script>
 <script>
 (() => {
   const list = document.getElementById('sig-list'); if (!list) return;
-  const items = [...list.children], q = document.getElementById('sig-q'), empty = document.querySelector('.sig-empty');
+  const items = [...list.children], q = document.getElementById('sig-q'), empty = document.querySelector('.slist__empty');
   let kind = 'all';
   const run = () => {
     const t = (q.value || '').trim().toLowerCase(); let n = 0;
     items.forEach((li) => {
       const k = li.dataset.kind, okK = kind === 'all' || k === kind || (kind === 'available' && (k === 'confirmed' || k === 'early' || k === 'quiet'));
-      const ok = okK && (!t || li.dataset.text.includes(t));
+      const ok = okK && (!t || (li.dataset.text || '').includes(t));
       li.hidden = !ok; if (ok) n++;
     });
     empty.hidden = n > 0;

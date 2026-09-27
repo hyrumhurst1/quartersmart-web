@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="evergreen">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,9 +24,9 @@
 <meta name="qs:kind" content="available">
 <meta name="qs:label" content="Available · Jun 2026">
 <meta name="qs:verdict" content="Try it">
-<meta name="qs:cover" content="/assets/images/signals/sonnet-5-fable-5-same-day-cover.jpg">
+<meta name="qs:cover" content="/assets/px/sprite-radar.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/signals-post.css">
+<link rel="stylesheet" href="/assets/css/signals-post.css?v=20260927m">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -48,7 +48,7 @@
       "description": "On June 30, 2026 Anthropic shipped Claude Sonnet 5, a cheaper agentic model, and Fable 5 returned after a two-week US government ban. What the two moves on one day mean for your team.",
       "image": "https://quartersmart.com/assets/images/signals/sonnet-5-fable-5-same-day-cover.jpg",
       "datePublished": "2026-06-30",
-      "dateModified": "2026-06-30",
+      "dateModified": "2026-09-27",
       "author": {
         "@id": "https://quartersmart.com/about.html#hyrum-hurst"
       },
@@ -143,107 +143,126 @@
 }
 </script>
 </head>
-<body>
+<body class="sig-post">
 <!-- @include nav -->
 <main id="main">
-  <header class="post-head">
-    <div class="wrap">
-      <p class="phead__crumbs"><a href="/">home</a> / <a href="/signals/">signals</a> / sonnet-5-fable-5-same-day</p>
-      <div class="post-head__chips"><span class="chip chip--available">Available · Jun 2026</span><span class="verdict"><b>verdict</b> Try it</span></div>
-      <h1 class="h-1">Sonnet 5 ships and Fable 5 comes back online on the same day</h1>
-      <p class="lede">Two things happened to Anthropic's lineup today. Sonnet 5 shipped as a cheaper, more agentic workhorse, and Fable 5 returned to availability after a two-week US government ban. Most coverage is treating these as separate stories. For an operator, the fact that they landed on the same day is the story.</p>
-      <p class="byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-06-30">Jun 30, 2026</time></span></p>
+  <header class="phero">
+    <div class="wrap phero__grid">
+      <div class="phero__copy">
+        <nav class="phero__crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/signals/">Signals</a></nav>
+        <p class="phero__meta"><span class="chip chip--available">Available · Jun 2026</span><span class="phero__verdict">Verdict<b>Try it</b></span></p>
+        <h1 class="phero__h">Sonnet 5 ships and Fable 5 comes back online on the same day</h1>
+        <p class="lede">Two things happened to Anthropic's lineup on June 30. Sonnet 5 shipped as a cheaper, more agentic workhorse, and Fable 5 returned to availability after a two-week US government ban. Most coverage treated these as separate stories. For an operator, the fact that they landed on the same day is the story.</p>
+        <p class="byline"><span>By <b>Hyrum Hurst</b></span><span>Posted <time datetime="2026-06-30">Jun 30, 2026</time></span></p>
+        <div class="phero__cta"><a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a><a class="link" href="#this-week">What to do this week</a></div>
+      </div>
+      <div class="pxstage phero__art" data-pxstage data-first="radar" data-scenes="radar rocket scope verdicts word satellite tower mail wave assistant keyboard mark arcade floppies" data-max="3">
+        <div class="pxstage__screen">
+          <img class="pxstage__still" src="/assets/px/sprite-radar.png" width="54" height="81" alt="Pixel art of a radar dish on a lattice tower, tracking two model releases." fetchpriority="high">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+      </div>
     </div>
   </header>
 
-  <div class="wrap">
-    <figure class="pane post-cover" style="margin-left:0;margin-right:0">
-      <div class="shot"><img src="/assets/images/signals/sonnet-5-fable-5-same-day-cover.jpg" width="1200" height="800" alt="Two glowing mint-green gateways opening at once in the dark, representing two Claude model releases on the same day" fetchpriority="high"></div>
-    </figure>
-
-    <div class="post-grid">
-      <article class="prose">
-        <div class="shortv">
-          <h2>The short version</h2>
-          <ul>
-            <li>On June 30, 2026, Anthropic released Claude Sonnet 5, its most agentic Sonnet, and made it the default model on the Free and Pro plans.</li>
-            <li>Launch API price: $2 in and $10 out per million tokens through August 31, 2026, then $3 and $15.</li>
-            <li>The same day, Fable 5 began returning to general availability after a US government directive suspended it on June 12.</li>
-            <li>The advice: test Sonnet 5 on your highest-volume AI task, and keep a fallback for anything mission-critical.</li>
-          </ul>
-        </div>
-        <h2>What actually happened today</h2>
-        <p>On June 30, 2026, Anthropic released <strong>Claude Sonnet 5</strong>, its most agentic Sonnet so far. It can plan, use tools like browsers and terminals, and run tasks autonomously at a level that used to require larger, pricier models, and Anthropic puts its performance close to Opus 4.8. It is now the default model on the Free and Pro plans and is available to Max, Team, and Enterprise users.<sup class="cite"><a href="#sources">[1]</a></sup><sup class="cite"><a href="#sources">[2]</a></sup></p>
-        <p>The same day, <strong>Claude Fable 5</strong> began returning to general availability after a two-week ban. The US government had ordered Anthropic to suspend Fable 5 and the stronger Mythos 5 on June 12, after a method of jailbreaking the models surfaced. With the security concern resolved, the directive was lifted. Mythos 5 is being redeployed first to a set of US organizations that defend critical infrastructure, while Fable 5 moves back toward general use.<sup class="cite"><a href="#sources">[4]</a></sup><sup class="cite"><a href="#sources">[5]</a></sup></p>
-        <p>So in one day, the cheap end of the lineup got more capable, and the restricted top end came back from a government shutoff. Those two facts point in the same direction for anyone running real work on this.</p>
-        <h2>Sonnet 5 is about cheaper agents, not a smarter chatbot</h2>
-        <p>The headline number is price. Sonnet 5 launches at an introductory <strong>$2 per million input tokens and $10 per million output</strong> through August 31, then settles at $3 and $15.<sup class="cite"><a href="#sources">[3]</a></sup> The headline capability is agentic: this is a model built to run tools and multi-step tasks on its own, not just answer a prompt. Near-Opus quality at a fraction of Opus pricing changes the math on what you can afford to automate.</p>
-        <p>That is the same point we made in <a href="/signals/stretch-ai-budget">how to stretch your AI budget</a>. Most of your AI work is routine, and routine work does not need your most expensive model. Every time a capable agentic model gets cheaper, more of your routine becomes worth automating, because the per-task cost drops below the cost of a person doing it by hand. Sonnet 5 moves that line. The practical move this week is to take your highest-volume AI task and see how much of it Sonnet 5 absorbs before you ever reach for a frontier model.</p>
-        <h2>The Fable 5 ban is the part operators should not skip</h2>
-        <p>It is easy to read the Fable 5 story as drama and move on. Do not. A frontier model your team might have been depending on was switched off for two weeks by a directive that had nothing to do with you, and there was no warning and no migration period. Access came back, but only because a government and a vendor worked it out. You were a spectator.</p>
-        <p>The most useful detail came from the coverage of the outage itself: while Fable 5 was dark, teams that needed that capability reached for open-weight models to fill the gap.<sup class="cite"><a href="#sources">[6]</a></sup> The ones who had a fallback kept working. The ones who had wired their operation to a single hosted model waited.</p>
-        <div class="callout callout--accent">
-          <h3>The lesson in one line</h3>
-          <p>A cheaper, more capable model just shipped that you can run more of yourself, and on the same day a top model proved that hosted access can vanish overnight. <strong>Lean on the cheap, controllable models for the routine majority, and treat frontier access as a privilege that can be revoked, not a guarantee you can build on.</strong></p>
-        </div>
-        <h2>Why the two on one day matter together</h2>
-        <p>One end of the lineup got cheaper and more capable. The other end proved fragile. Put together, they make the same argument: own more of your stack. The more of your everyday work runs on models you control or can swap, the less of your operation is exposed to someone else's pricing, rate limits, and policy directives. That is the whole thesis behind Own Your AI, a private system your company runs for the routine majority, with frontier models on call only for the hard minority. And once an agent is running that work, the procedures it follows are <a href="/signals/sops-to-aops">AOPs</a>, the agent-runnable version of your SOPs.</p>
-        <p>None of this means avoid Anthropic, or any single vendor. Sonnet 5 looks like a genuinely good deal, and we will use it. It means do not architect anything you cannot afford to lose around one model staying available at one price. Keep a fallback. The teams that came through the Fable 5 ban without missing a beat already had one.</p>
-        <h2>What to do this week</h2>
-        <p>Three concrete moves. First, test Sonnet 5 on your single highest-volume AI task and measure the cost difference against whatever you run now. Second, for anything mission-critical, make sure you have a second path: a cheaper or open model, or a second provider, that can take over if your primary is banned, throttled, or repriced. Third, if you do not have a clear picture of where your AI spend goes and which parts could run cheaper or local, that is the place to start. The day a model gets cheaper and another gets switched off is a good day to stop renting all of it.</p>
-        <h2>Common questions</h2>
-        <div class="faq">
-          <details open><summary>What is Claude Sonnet 5?</summary><div class="a"><p>Claude Sonnet 5 is Anthropic's mid-tier model, released on June 30, 2026. It is the most agentic Sonnet yet, able to plan, use tools like browsers and terminals, and run tasks autonomously at a level that used to require larger models. Anthropic positions it as a cheaper way to run agents, with performance close to Opus 4.8 at a lower price.</p></div></details>
-          <details><summary>How much does Claude Sonnet 5 cost?</summary><div class="a"><p>At launch, Sonnet 5 has an introductory price of $2 per million input tokens and $10 per million output tokens through August 31, 2026. After that it moves to $3 per million input and $15 per million output. It is the default model on Anthropic's Free and Pro plans and is available to Max, Team, and Enterprise users.</p></div></details>
-          <details><summary>Why was Claude Fable 5 banned?</summary><div class="a"><p>On June 12, 2026 the US government directed Anthropic to suspend access to Fable 5 and Mythos 5 for foreign nationals after a method of jailbreaking the models came to light. Anthropic complied and pulled access while it worked with the government to resolve the security concern.</p></div></details>
-          <details><summary>Is Claude Fable 5 available again?</summary><div class="a"><p>Yes. After about two weeks the US government lifted the directive, and Fable 5 is returning to general availability. Mythos 5, the stronger cybersecurity model, is being redeployed first to a set of US organizations that operate and defend critical infrastructure, while Fable 5 moves back toward general use.</p></div></details>
-          <details><summary>What does the Sonnet 5 release mean for my team?</summary><div class="a"><p>A more capable agentic model at a lower price means more of your routine work can run on automation without paying frontier rates. It is a good moment to test Sonnet 5 on your highest-volume AI tasks and measure how much of your current spend it can absorb before you reach for a more expensive model.</p></div></details>
-          <details><summary>Should my business depend on a single AI model?</summary><div class="a"><p>No. The Fable 5 ban showed that access to a frontier model can be switched off overnight by a policy change or a security incident. Keep a fallback, a cheaper or open model and ideally a second provider, so a single ban, outage, or price change cannot stop your operation.</p></div></details>
-        </div>
-        <h2>If you want help</h2>
-        <p>Tell us where your AI runs today. We will show you which work can move to a cheaper or controllable model, and where a single vendor is a single point of failure. <a href="/contact/">Book a 20-minute call</a>.</p>
-        <h2 id="sources">Sources</h2>
-        <ol class="sources">
-          <li>Anthropic. "Introducing Claude Sonnet 5." <a href="https://www.anthropic.com/news/claude-sonnet-5" rel="noopener">anthropic.com</a>, June 30, 2026.</li>
-          <li>Wiggers, K. "Anthropic launches Claude Sonnet 5 as a cheaper way to run agents." <a href="https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/" rel="noopener">TechCrunch</a>, June 30, 2026.</li>
-          <li>"Anthropic Launches Claude Sonnet 5 With Near-Opus Performance at a Lower Price." <a href="https://www.macrumors.com/2026/06/30/anthropic-claude-sonnet-5/" rel="noopener">MacRumors</a>, June 30, 2026.</li>
-          <li>Anthropic. "Statement on the US government directive to suspend access to Fable 5 and Mythos 5." <a href="https://www.anthropic.com/news/fable-mythos-access" rel="noopener">anthropic.com</a>, June 2026.</li>
-          <li>"US lifts ban on Anthropic's AI model Claude Fable 5 after security concerns." <a href="https://cryptobriefing.com/us-lifts-ban-on-anthropics-ai-model-claude-fable-5-after-security-concerns/" rel="noopener">Crypto Briefing</a>, June 2026.</li>
-          <li>"Fable 5 ban: 4 open models responded before Anthropic could restore access." <a href="https://thenewstack.io/fable-ban-open-weights/" rel="noopener">The New Stack</a>, June 2026.</li>
-        </ol>
-        <h2>Update log</h2>
-        <ul class="updlog">
-          <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout. The reporting is unchanged.</span></li>
-          <li><time datetime="2026-06-30">Jun 30, 2026</time><span>First posted.</span></li>
+  <div class="wrap post-grid">
+    <article class="prose">
+      <div class="shortv">
+        <h2>The short version</h2>
+        <ul>
+          <li>On June 30, 2026, Anthropic released Claude Sonnet 5, its most agentic Sonnet, and made it the default model on the Free and Pro plans.</li>
+          <li>Launch API price: $2 in and $10 out per million tokens through August 31, 2026, then $3 and $15.</li>
+          <li>The same day, Fable 5 began returning to general availability after a US government directive suspended it on June 12.</li>
+          <li>The advice: test Sonnet 5 on your highest-volume AI task, and keep a fallback for anything mission-critical.</li>
         </ul>
-        <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by Anthropic. Product names are trademarks of their owners. This post reflects public information as of June 30, 2026. <a href="/signals/policy/">How we source Signals</a>.</p>
-      </article>
+      </div>
 
-      <aside class="post-side" aria-label="Signal summary">
-        <div class="pane pane--active">
-          <span class="pane__t">signal</span>
-          <dl class="card-kv">
-            <div><dt>Status</dt><dd><span class="chip chip--available">Available · Jun 2026</span></dd></div>
-            <div><dt>Verdict</dt><dd>Try it</dd></div>
-            <div><dt>Who it's for</dt><dd>Teams running high-volume AI tasks or agents on one hosted model</dd></div>
-            <div><dt>Next step</dt><dd>Test Sonnet 5 on one high-volume task. Keep a fallback.</dd></div>
-            <div><dt>Posted</dt><dd>Jun 30, 2026</dd></div>
-          </dl>
-        </div>
-        <div class="pane">
-          <span class="pane__t">read next</span>
-          <ul class="readnext">
-            <li><a class="link" href="/signals/stretch-ai-budget">Stretch your AI budget</a></li>
-            <li><a class="link" href="/signals/fable-5">The Fable 5 backstory</a></li>
-            <li><a class="link" href="/signals/sops-to-aops">What an AOP is</a></li>
-            <li><a class="link" href="/signals/">All Signals</a></li>
-          </ul>
-        </div>
-      </aside>
-    </div>
+      <h2>What actually happened</h2>
+      <p>On June 30, 2026, Anthropic released <strong>Claude Sonnet 5</strong>, its most agentic Sonnet so far. It can plan, use tools like browsers and terminals, and run tasks autonomously at a level that used to require larger, pricier models, and Anthropic puts its performance close to Opus 4.8. It is now the default model on the Free and Pro plans and is available to Max, Team, and Enterprise users.<sup class="cite"><a href="#sources">[1]</a></sup><sup class="cite"><a href="#sources">[2]</a></sup></p>
+      <p>The same day, <strong>Claude Fable 5</strong> began returning to general availability after a two-week ban. The US government had ordered Anthropic to suspend Fable 5 and the stronger Mythos 5 on June 12, after a method of jailbreaking the models surfaced. With the security concern resolved, the directive was lifted. Mythos 5 is being redeployed first to a set of US organizations that defend critical infrastructure, while Fable 5 moves back toward general use.<sup class="cite"><a href="#sources">[4]</a></sup><sup class="cite"><a href="#sources">[5]</a></sup></p>
+      <p>So in one day, the cheap end of the lineup got more capable, and the restricted top end came back from a government shutoff. Those two facts point in the same direction for anyone running real work on these models.</p>
+
+      <h2>Sonnet 5 is about cheaper agents, not a smarter chatbot</h2>
+      <p>The headline number is price. Sonnet 5 launches at an introductory <strong>$2 per million input tokens and $10 per million output</strong> through August 31, then settles at $3 and $15.<sup class="cite"><a href="#sources">[3]</a></sup> The headline capability is agentic: this is a model built to run tools and multi-step tasks on its own, not just answer a prompt. Near-Opus quality at a fraction of Opus pricing changes the math on what you can afford to automate.</p>
+      <p>Most of a business's AI work is routine, and routine work does not need the most expensive model. Every time a capable agentic model gets cheaper, more of that routine becomes worth automating, because the cost per task drops below the cost of a person doing it by hand. Sonnet 5 moves that line. The practical move is to take your highest-volume AI task and see how much of it Sonnet 5 handles well before you reach for a pricier model.</p>
+
+      <h2>The Fable 5 ban is the part operators should not skip</h2>
+      <p>It is easy to read the Fable 5 story as drama and move on. Do not. A frontier model your team might have been depending on was switched off for two weeks by a directive that had nothing to do with you, with no warning and no migration period. Access came back, but only because a government and a vendor worked it out.</p>
+      <p>The most useful detail came from the coverage of the outage itself: while Fable 5 was dark, teams that needed that capability reached for open-weight models to fill the gap.<sup class="cite"><a href="#sources">[6]</a></sup> The ones who had a fallback kept working. The ones who had wired their operation to a single hosted model waited.</p>
+
+      <div class="callout callout--accent">
+        <h3>The lesson in one line</h3>
+        <p>A cheaper, more capable model shipped on the same day a top model proved that access can be switched off overnight. <strong>Put the routine work on the model that does it well for less, and keep a second path for anything that must not stop.</strong></p>
+      </div>
+
+      <h2>Why the two on one day matter together</h2>
+      <p>One end of the lineup got cheaper and more capable. The other end proved fragile. Together they make the same argument: do not architect anything you cannot afford to lose around one model staying available at one price.</p>
+      <p>None of this means avoid Anthropic, or any single vendor. Sonnet 5 looks like a good deal for high-volume work. It means keep a fallback. The teams that came through the Fable 5 ban without missing a beat already had one.</p>
+
+      <h2 id="this-week">What to do this week</h2>
+      <p>Three concrete moves:</p>
+      <ul>
+        <li><strong>Test Sonnet 5 on your single highest-volume AI task</strong> and measure the cost difference against whatever you run now.</li>
+        <li><strong>Give anything mission-critical a second path:</strong> a cheaper or open model, or a second provider, that can take over if your primary is banned, throttled or repriced.</li>
+        <li><strong>Write down where your AI spend goes today,</strong> so the next price change is a decision rather than a surprise.</li>
+      </ul>
+
+      <h2>Common questions</h2>
+      <div class="pfaq">
+        <div><h3>What is Claude Sonnet 5?</h3><p>Claude Sonnet 5 is Anthropic's mid-tier model, released on June 30, 2026. It is the most agentic Sonnet yet, able to plan, use tools like browsers and terminals, and run tasks autonomously at a level that used to require larger models. Anthropic positions it as a cheaper way to run agents, with performance close to Opus 4.8 at a lower price.</p></div>
+        <div><h3>How much does Claude Sonnet 5 cost?</h3><p>At launch, Sonnet 5 has an introductory price of $2 per million input tokens and $10 per million output tokens through August 31, 2026. After that it moves to $3 per million input and $15 per million output. It is the default model on Anthropic's Free and Pro plans and is available to Max, Team, and Enterprise users.</p></div>
+        <div><h3>Why was Claude Fable 5 banned?</h3><p>On June 12, 2026 the US government directed Anthropic to suspend access to Fable 5 and Mythos 5 for foreign nationals after a method of jailbreaking the models came to light. Anthropic complied and pulled access while it worked with the government to resolve the security concern.</p></div>
+        <div><h3>Is Claude Fable 5 available again?</h3><p>Yes. After about two weeks the US government lifted the directive, and Fable 5 is returning to general availability. Mythos 5, the stronger cybersecurity model, is being redeployed first to a set of US organizations that operate and defend critical infrastructure, while Fable 5 moves back toward general use.</p></div>
+        <div><h3>What does the Sonnet 5 release mean for my team?</h3><p>A more capable agentic model at a lower price means more of your routine work can run on automation without paying frontier rates. It is a good moment to test Sonnet 5 on your highest-volume AI tasks and measure how much of your current spend it can absorb before you reach for a more expensive model.</p></div>
+        <div><h3>Should my business depend on a single AI model?</h3><p>No. The Fable 5 ban showed that access to a frontier model can be switched off overnight by a policy change or a security incident. Keep a fallback, a cheaper or open model and ideally a second provider, so a single ban, outage, or price change cannot stop your operation.</p></div>
+      </div>
+
+      <h2>If you want help</h2>
+      <p>Tell us where your AI runs today. We will show you which work can move to a cheaper model, and where a single vendor is a single point of failure. Members of <a href="/services/#first-quarter">First Quarter</a> get launches like this filtered to their own tools.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ol class="sources">
+        <li>Anthropic. "Introducing Claude Sonnet 5." <a href="https://www.anthropic.com/news/claude-sonnet-5" rel="noopener">anthropic.com</a>, June 30, 2026.</li>
+        <li>Wiggers, K. "Anthropic launches Claude Sonnet 5 as a cheaper way to run agents." <a href="https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/" rel="noopener">TechCrunch</a>, June 30, 2026.</li>
+        <li>"Anthropic Launches Claude Sonnet 5 With Near-Opus Performance at a Lower Price." <a href="https://www.macrumors.com/2026/06/30/anthropic-claude-sonnet-5/" rel="noopener">MacRumors</a>, June 30, 2026.</li>
+        <li>Anthropic. "Statement on the US government directive to suspend access to Fable 5 and Mythos 5." <a href="https://www.anthropic.com/news/fable-mythos-access" rel="noopener">anthropic.com</a>, June 2026.</li>
+        <li>"US lifts ban on Anthropic's AI model Claude Fable 5 after security concerns." <a href="https://cryptobriefing.com/us-lifts-ban-on-anthropics-ai-model-claude-fable-5-after-security-concerns/" rel="noopener">Crypto Briefing</a>, June 2026.</li>
+        <li>"Fable 5 ban: 4 open models responded before Anthropic could restore access." <a href="https://thenewstack.io/fable-ban-open-weights/" rel="noopener">The New Stack</a>, June 2026.</li>
+      </ol>
+
+      <h2>Update log</h2>
+      <ul class="updlog">
+        <li><time datetime="2026-09-27">Sep 27, 2026</time><span>Moved to the new Signals layout and trimmed our own commentary. The reporting, prices and dates are unchanged.</span></li>
+        <li><time datetime="2026-06-30">Jun 30, 2026</time><span>First posted.</span></li>
+      </ul>
+
+      <p class="disclaim">QuarterSmart is independent and not affiliated with or endorsed by Anthropic. Product names are trademarks of their owners. This post reflects public information as of June 30, 2026. Signals is general information about third-party products, not legal, security or financial advice. <a href="/signals/policy/">How we source Signals</a>.</p>
+    </article>
+
+    <aside class="psum" aria-label="Signal summary">
+      <div>
+        <p class="psum__k">Verdict</p>
+        <p class="psum__v">Try it</p>
+      </div>
+      <dl class="psum__kv">
+        <div><dt>Status</dt><dd><span class="chip chip--available">Available · Jun 2026</span></dd></div>
+        <div><dt>Who it's for</dt><dd>Teams running high-volume AI tasks or agents on one hosted model</dd></div>
+        <div><dt>Next step</dt><dd>Test Sonnet 5 on one high-volume task. Keep a fallback.</dd></div>
+        <div><dt>Posted</dt><dd>Jun 30, 2026</dd></div>
+      </dl>
+      <nav aria-label="Read next">
+        <p class="psum__k">Read next</p>
+        <ul class="psum__next">
+          <li><a href="/signals/fable-5">The Fable 5 backstory</a></li>
+          <li><a href="/signals/stretch-ai-budget">Stretch your AI budget</a></li>
+          <li><a href="/signals/">All Signals</a></li>
+        </ul>
+      </nav>
+    </aside>
   </div>
   <!-- @include post-end -->
 </main>
+<script src="/assets/js/radar.js?v=20260927m" defer></script>
 <!-- @include footer -->
 </body>
 </html>

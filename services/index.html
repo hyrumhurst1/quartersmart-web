@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="evergreen">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="Five ways to work with us, from a free Monday email to a monthly membership that keeps your business early.">
 <meta name="twitter:image" content="https://quartersmart.com/assets/og/og-services.png">
 <!-- @include head -->
-<link rel="stylesheet" href="/assets/css/services.css">
+<link rel="stylesheet" href="/assets/css/services.css?v=20260927s">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -122,339 +122,289 @@
 }
 </script>
 </head>
-<body>
+<body class="pg pg--services">
 <!-- @include nav -->
 
 <main id="main">
 
-  <header class="phead">
-    <div class="wrap sv-phead">
-      <div>
-        <p class="phead__crumbs"><a href="/">home</a> / services</p>
-        <p class="label label--accent">Services</p>
-        <h1 class="h-1" style="margin-top:16px">Start where you are.</h1>
-        <p class="lede">Five ways to work with us, from a free Monday email to a monthly membership that keeps your business early.</p>
-        <div class="sv-phead__cta">
-          <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
-          <a class="link" href="#chooser">Which should I start with?</a>
+  <!-- Top: the headline, then the five levels as a staircase you can step onto anywhere -->
+  <section class="sv-hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="sv-hero__top">
+        <div>
+          <p class="label label--accent">Services</p>
+          <h1 class="pg-hero__h" id="hero-h">Start where you are.</h1>
+        </div>
+        <div class="sv-hero__side">
+          <p class="lede">Five ways to work with us, from a free Monday email to a monthly membership that keeps your business early.</p>
+          <div class="pg-hero__cta">
+            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a 20-minute call</a>
+            <a class="link" href="#first-quarter">Compare membership plans</a>
+          </div>
         </div>
       </div>
-      <figure class="stage">
-        <img src="/assets/px/sprite-floppies.png" width="134" height="31" alt="Pixel art of five floppy disks in a row, with mint, yellow, lavender, cyan and white labels." style="--w:134px;--s:3" fetchpriority="high">
-        <figcaption class="stage__cap">five ways in · level 0 to 4</figcaption>
-      </figure>
-    </div>
-  </header>
-
-  <section class="sec" aria-labelledby="ladder-h">
-    <div class="wrap">
-      <div class="sec__head">
-        <p class="label">The ladder</p>
-        <h2 class="h-1" id="ladder-h">Every level works on its own.</h2>
-        <p class="body-l">Most businesses begin with Signals or a Head Start, then add a setup or a membership when there's something worth doing.</p>
+      <ol class="sv-steps" id="chooser" aria-label="The five levels, and who each one is for">
+        <li class="sv-step" style="--i:0">
+          <div class="sv-step__art" aria-hidden="true"><span class="sv-step__disk"></span><span class="sv-step__block"></span></div>
+          <div class="sv-step__txt">
+            <p class="sv-step__n">Level 0</p>
+            <p class="sv-step__name"><a href="#signals">Signals</a></p>
+            <p class="sv-step__price"><b>Free</b> every Monday</p>
+            <p class="sv-step__for">None of these sound like you yet? Start here.</p>
+          </div>
+        </li>
+        <li class="sv-step" style="--i:1">
+          <div class="sv-step__art" aria-hidden="true"><span class="sv-step__disk"></span><span class="sv-step__block"></span></div>
+          <div class="sv-step__txt">
+            <p class="sv-step__n">Level 1 · start here</p>
+            <p class="sv-step__name"><a href="#head-start">Head Start</a></p>
+            <p class="sv-step__price"><b>From $1,500</b> one time</p>
+            <p class="sv-step__for">"We know we should be doing something with AI. We don't know what."</p>
+          </div>
+        </li>
+        <li class="sv-step" style="--i:2">
+          <div class="sv-step__art" aria-hidden="true"><span class="sv-step__disk"></span><span class="sv-step__block"></span></div>
+          <div class="sv-step__txt">
+            <p class="sv-step__n">Level 2</p>
+            <p class="sv-step__name"><a href="#day-one-setup">Day One Setup</a></p>
+            <p class="sv-step__price"><b>From $2,500</b> per tool</p>
+            <p class="sv-step__for">"We've picked a tool. We want it working properly."</p>
+            <p class="sv-step__also"><a href="#rollout-session">Rollout Session</a> <span>quoted</span></p>
+            <p class="sv-step__for">"Our tools are set up. The team barely uses them."</p>
+          </div>
+        </li>
+        <li class="sv-step" style="--i:3">
+          <div class="sv-step__art" aria-hidden="true"><span class="sv-step__disk"></span><span class="sv-step__block"></span></div>
+          <div class="sv-step__txt">
+            <p class="sv-step__n">Level 3 · membership</p>
+            <p class="sv-step__name"><a href="#first-quarter">First Quarter</a></p>
+            <p class="sv-step__price"><b>From $1,500</b> a month</p>
+            <p class="sv-step__for">"We want someone watching the market for us, every week."</p>
+          </div>
+        </li>
+        <li class="sv-step" style="--i:4">
+          <div class="sv-step__art" aria-hidden="true"><span class="sv-step__disk"></span><span class="sv-step__block"></span></div>
+          <div class="sv-step__txt">
+            <p class="sv-step__n">Level 4 · custom</p>
+            <p class="sv-step__name"><a href="#build">Build</a></p>
+            <p class="sv-step__price"><b>Scoped</b></p>
+            <p class="sv-step__for">Not a starting point, on purpose. It comes after a Head Start or with a membership.</p>
+          </div>
+        </li>
+      </ol>
+      <div class="sv-hero__foot">
+        <p class="sv-hero__say">Every level works on its own.</p>
+        <p>Most businesses begin with Signals or a Head Start, then add a setup or a membership when there's something worth doing. Still not sure? <a href="/contact/">Book a 20-minute call</a> and we'll tell you which step fits, or whether any of them do.</p>
       </div>
-      <nav class="pane sv-ladder-pane" aria-label="Services on this page">
-        <span class="pane__t">level select</span>
-        <span class="pane__t pane__t--r">prices in usd</span>
-        <ol class="sv-ladder">
-          <li><a href="#signals"><span class="sv-ladder__n"><span class="sr">Level </span>0</span><span class="sv-ladder__name">Signals</span><span class="sv-ladder__what">The public feed and a Monday email. What changed, whether it matters, what to do.</span><span class="sv-ladder__price"><b>Free</b></span></a></li>
-          <li><a href="#head-start"><span class="sv-ladder__n"><span class="sr">Level </span>1</span><span class="sv-ladder__name">Head Start</span><span class="sv-ladder__what">A review of the tools you already pay for, and a 30-day plan. About a week.</span><span class="sv-ladder__price"><b>From $1,500</b> one time</span></a></li>
-          <li><a href="#day-one-setup"><span class="sv-ladder__n"><span class="sr">Level </span>2</span><span class="sv-ladder__name">Day One Setup</span><span class="sv-ladder__what">One tool set up in your accounts, tested with a few people, then taught to the team.</span><span class="sv-ladder__price"><b>From $2,500</b> per tool</span></a></li>
-          <li><a href="#rollout-session"><span class="sv-ladder__n"><span class="sr">Level </span>2b</span><span class="sv-ladder__name">Rollout Session</span><span class="sv-ladder__what">Live training, role by role, on a tool your team already has.</span><span class="sv-ladder__price"><b>Quoted</b> · in membership</span></a></li>
-          <li><a href="#first-quarter"><span class="sv-ladder__n"><span class="sr">Level </span>3</span><span class="sv-ladder__name">First Quarter</span><span class="sv-ladder__what">The membership. Signals filtered to your tools, plus setup and training time every month.</span><span class="sv-ladder__price"><b>From $1,500</b> a month</span></a></li>
-          <li><a href="#build"><span class="sv-ladder__n"><span class="sr">Level </span>4</span><span class="sv-ladder__name">Build</span><span class="sv-ladder__what">Custom agents and automations for the work that repeats.</span><span class="sv-ladder__price"><b>Scoped</b> after a Head Start</span></a></li>
-        </ol>
-      </nav>
     </div>
   </section>
 
-  <section class="sec sec--deep" aria-labelledby="start-h">
+  <!-- 1. Levels 0 to 2, one spread each -->
+  <section class="band band--deep sv-levels" aria-labelledby="start-h">
     <div class="wrap">
-      <div class="sec__head">
-        <p class="label">Start here</p>
+      <div class="sv-head">
         <h2 class="h-1" id="start-h">Start free, or start with a plan.</h2>
-        <p class="body-l">Signals shows you how we think, in public and for free. A Head Start applies the same thinking to your business and hands you a plan.</p>
+        <p class="body-l">Signals shows you how we think, in public and for free. A Head Start applies the same thinking to your business and hands you a plan. When you know what you want, we set it up and teach it.</p>
       </div>
-      <div class="sv-offers">
 
-        <article class="pane sv-offer" id="signals" aria-labelledby="signals-h" data-reveal>
-          <span class="pane__t">level 0 · free</span>
-          <span class="pane__t pane__t--r">every monday</span>
-          <div class="sv-offer__head">
-            <p class="offer__price"><b>Free</b> every Monday</p>
-            <h3 class="sv-offer__name" id="signals-h">Signals</h3>
-            <p class="sv-offer__lead">The public feed on this site, and Signals Weekly in your inbox. We post fast, label how sure we are, and update the post when the facts change.</p>
-            <div class="sv-offer__act">
-              <form name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
-                <input type="hidden" name="form-name" value="signals-weekly">
-                <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
-                <input type="hidden" name="source" value="services">
-                <label class="sr" for="svc-email">Work email</label>
-                <div class="field">
-                  <input class="input" id="svc-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
-                  <button class="btn" type="submit">Get Signals</button>
-                </div>
-                <p data-form-status aria-live="polite"></p>
-              </form>
-              <a class="link" href="/signals/">Read the latest Signals</a>
+      <article class="sv-lvl" id="signals" aria-labelledby="signals-h">
+        <div class="sv-lvl__id">
+          <p class="sv-lvl__tag">Level 0 · free</p>
+          <h3 class="sv-lvl__name" id="signals-h">Signals</h3>
+          <p class="sv-lvl__price"><b>Free</b> every Monday</p>
+          <p class="sv-lvl__lead">The public feed on this site, and Signals Weekly in your inbox. We post fast, label how sure we are, and update the post when the facts change.</p>
+          <a class="link" href="/signals/">Read the latest Signals</a>
+        </div>
+        <div class="sv-lvl__body">
+          <ul class="sv-list">
+            <li>The public Signals feed, with launches, early-access programs, quiet product updates and credible reports.</li>
+            <li>Signals Weekly: one email every Monday with the few items worth your attention.</li>
+            <li>A short alert in between, only when something needs action that week. Rarely more than two a month outside major events.</li>
+          </ul>
+          <p class="sv-verdicts"><span>Every Signal ends in a verdict</span> <b>Act now</b> <b>Prepare</b> <b>Wait</b> <b>Ignore</b></p>
+          <dl class="sv-facts">
+            <div><dt>each one has</dt><dd>a status label, what happened, who it matters to, sources and an update log</dd></div>
+            <div><dt>for members</dt><dd>filtered to your own tools, the same business day. <a href="#first-quarter">See First Quarter</a></dd></div>
+          </dl>
+          <form class="sv-form" name="signals-weekly" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline>
+            <p class="sv-form__t">Get the next Signal. One email on Mondays. Unsubscribe any time.</p>
+            <input type="hidden" name="form-name" value="signals-weekly">
+            <p class="sr"><label>Leave this empty <input name="bot-field"></label></p>
+            <input type="hidden" name="source" value="services">
+            <label class="sr" for="svc-email">Work email</label>
+            <div class="field">
+              <input class="input" id="svc-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+              <button class="btn" type="submit">Get Signals</button>
             </div>
-          </div>
-          <div class="sv-offer__body">
-            <p class="label">What's in it</p>
-            <ul class="sv-plus">
-              <li>The public Signals feed, with launches, early-access programs, quiet product updates and credible reports.</li>
-              <li>Signals Weekly: one email every Monday with the few items worth your attention.</li>
-              <li>A short alert in between, only when something needs action that week. Rarely more than two a month outside major events.</li>
-            </ul>
-            <p class="label">Every Signal ends in a verdict</p>
-            <p class="verdicts sv-verdicts"><span class="verdict">Act now</span><span class="verdict">Prepare</span><span class="verdict">Wait</span><span class="verdict">Ignore</span></p>
-            <dl class="spec">
-              <div><dt>each one has</dt><dd>a status label, what happened, who it matters to, sources and an update log</dd></div>
-              <div><dt>for members</dt><dd>filtered to your own tools, the same business day. <a href="#first-quarter">See First Quarter</a></dd></div>
-            </dl>
-          </div>
-        </article>
+            <p data-form-status aria-live="polite"></p>
+          </form>
+        </div>
+      </article>
 
-        <article class="pane sv-offer" id="head-start" aria-labelledby="head-start-h" data-reveal>
-          <span class="pane__t">level 1 · start here</span>
-          <span class="pane__t pane__t--r">about a week</span>
-          <div class="sv-offer__head">
-            <p class="offer__price"><b>From $1,500</b> one time</p>
-            <h3 class="sv-offer__name" id="head-start-h">Head Start</h3>
-            <p class="sv-offer__lead">For owners who know they should be doing something with AI and want a starting point that costs less than a mistake.</p>
-            <div class="sv-offer__act">
-              <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
-              <p class="fine">The call is free. If there's a fit, we schedule your kickoff.</p>
-            </div>
-          </div>
-          <div class="sv-offer__body">
-            <p class="label">How it runs</p>
-            <ol class="sv-plus">
-              <li>A 45-minute kickoff call about your business and the tools you use.</li>
-              <li>A review of the software you already pay for, looking for AI features you haven't switched on. This is usually where the fastest wins are.</li>
-              <li>The three launches or tools most relevant to your business right now, each with a verdict.</li>
-              <li>A 30-day plan: what to turn on, what to train, what to ignore.</li>
-              <li>A 30-minute readout call to walk through it.</li>
-            </ol>
-            <dl class="spec">
-              <div><dt>delivered in</dt><dd>about 5 business days from kickoff</dd></div>
-              <div><dt>credit</dt><dd>the full fee counts toward a Day One Setup or your first month of First Quarter, if you start within 30 days</dd></div>
-            </dl>
-          </div>
-        </article>
+      <article class="sv-lvl" id="head-start" aria-labelledby="head-start-h">
+        <div class="sv-lvl__id">
+          <p class="sv-lvl__tag">Level 1 · start here</p>
+          <h3 class="sv-lvl__name" id="head-start-h">Head Start</h3>
+          <p class="sv-lvl__price"><b>From $1,500</b> one time · about a week</p>
+          <p class="sv-lvl__lead">For owners who know they should be doing something with AI and want a starting point that costs less than a mistake.</p>
+          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a Head Start call</a>
+          <p class="sv-lvl__fine">The call is free. If there's a fit, we schedule your kickoff.</p>
+        </div>
+        <div class="sv-lvl__body">
+          <p class="sv-lvl__h">How it runs</p>
+          <ol class="sv-list sv-list--n">
+            <li>A 45-minute kickoff call about your business and the tools you use.</li>
+            <li>A review of the software you already pay for, looking for AI features you haven't switched on. This is usually where the fastest wins are.</li>
+            <li>The three launches or tools most relevant to your business right now, each with a verdict.</li>
+            <li>A 30-day plan: what to turn on, what to train, what to ignore.</li>
+            <li>A 30-minute readout call to walk through it.</li>
+          </ol>
+          <dl class="sv-facts">
+            <div><dt>delivered in</dt><dd>about 5 business days from kickoff</dd></div>
+            <div><dt>credit</dt><dd>the full fee counts toward a Day One Setup or your first month of First Quarter, if you start within 30 days</dd></div>
+          </dl>
+        </div>
+      </article>
 
-      </div>
+      <article class="sv-lvl" id="day-one-setup" aria-labelledby="dos-h">
+        <div class="sv-lvl__id">
+          <p class="sv-lvl__tag">Level 2 · project</p>
+          <h3 class="sv-lvl__name" id="dos-h">Day One Setup</h3>
+          <p class="sv-lvl__price"><b>From $2,500</b> per tool</p>
+          <p class="sv-lvl__lead">One tool, set up properly. For a team that has already picked what it wants: a new assistant, a Claude or Gemini workspace feature, or an AI feature inside software you already use.</p>
+          <a class="btn" href="/contact/" data-cta="book">Book a setup call</a>
+        </div>
+        <div class="sv-lvl__body">
+          <p class="sv-lvl__big">Switching it on is the easy part.</p>
+          <p>Connecting a new assistant to your inbox takes a minute. Setting it up for how your business works, testing it safely and teaching the team is the rest of the job. That's the part we do.</p>
+          <ul class="sv-checks">
+            <li data-reveal style="--i:0"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span>Accounts and permissions set up with the least access the tool needs.</li>
+            <li data-reveal style="--i:1"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span>Connected to the systems it should touch: email, calendar, docs, CRM.</li>
+            <li data-reveal style="--i:2"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span>Instructions and settings written for how your business works.</li>
+            <li data-reveal style="--i:3"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span>Approval rules you set: what it must never send without a person checking.</li>
+            <li data-reveal style="--i:4"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span>A limited test with 1 to 3 people before anyone else uses it.</li>
+            <li data-reveal style="--i:5"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span>One live training session for the team.</li>
+            <li data-reveal style="--i:6"><span class="qbox" aria-hidden="true"><svg viewBox="0 0 8 7" shape-rendering="crispEdges"><path d="M6 1h2v1h-2zM5 2h2v1h-2zM0 3h2v1h-2zM4 3h2v1h-2zM1 4h4v1h-4zM2 5h2v1h-2z"/></svg></span>A one-page "how we use this here" guide.</li>
+          </ul>
+          <dl class="sv-facts">
+            <div><dt>when</dt><dd>from the first day the tool is available to your account. We prepare beforehand wherever the vendor has published enough detail.</dd></div>
+            <div><dt>launch weeks</dt><dd>setups are limited and scheduled in the order they're booked. Members go first.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="sv-lvl" id="rollout-session" aria-labelledby="rs-h">
+        <div class="sv-lvl__id">
+          <p class="sv-lvl__tag">Level 2b · training</p>
+          <h3 class="sv-lvl__name" id="rs-h">Rollout Session</h3>
+          <p class="sv-lvl__price"><b>Quoted</b> · included in First Quarter</p>
+          <p class="sv-lvl__lead">For teams whose tools are set up but barely used. Live training on your own work, with your own examples.</p>
+          <a class="link" href="/contact/">Ask about a session</a>
+        </div>
+        <div class="sv-lvl__body">
+          <ul class="sv-list">
+            <li>90 to 180 minutes, live, with your team.</li>
+            <li>Built around each role, so people practice the parts of the tool they'll use.</li>
+            <li>Real tasks from your business, brought by the team.</li>
+            <li>A prompt and workflow sheet everyone keeps.</li>
+          </ul>
+          <p class="sv-rule"><b>Our rule:</b> we only train on tools your team can actually use. No generic "Intro to AI" seminars.</p>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="setup-h">
+  <!-- 2. The membership, under its sign -->
+  <section class="band band--slate sv-fq" id="first-quarter" aria-labelledby="fq-h">
     <div class="wrap">
-      <div class="sec__head">
-        <p class="label">Setup and training</p>
-        <h2 class="h-1" id="setup-h">Switching it on is the easy part.</h2>
-        <p class="body-l">Connecting a new assistant to your inbox takes a minute. Setting it up for how your business works, testing it safely and teaching the team is the rest of the job. That's the part we do.</p>
-      </div>
-      <div class="sv-offers">
-
-        <article class="pane sv-offer" id="day-one-setup" aria-labelledby="dos-h" data-reveal>
-          <span class="pane__t">level 2 · project</span>
-          <span class="pane__t pane__t--r">per tool</span>
-          <div class="sv-offer__head">
-            <p class="offer__price"><b>From $2,500</b> per tool</p>
-            <h3 class="sv-offer__name" id="dos-h">Day One Setup</h3>
-            <p class="sv-offer__lead">One tool, set up properly. For a team that has already picked what it wants: a new assistant, a Claude or Gemini workspace feature, or an AI feature inside software you already use.</p>
-            <div class="sv-offer__act">
-              <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
-            </div>
-          </div>
-          <div class="sv-offer__body">
-            <p class="label">What's included</p>
-            <ul class="sv-plus">
-              <li>Accounts and permissions set up with the least access the tool needs.</li>
-              <li>Connected to the systems it should touch: email, calendar, docs, CRM.</li>
-              <li>Instructions and settings written for how your business works.</li>
-              <li>Approval rules you set: what it must never send without a person checking.</li>
-              <li>A limited test with 1 to 3 people before anyone else uses it.</li>
-              <li>One live training session for the team.</li>
-              <li>A one-page "how we use this here" guide.</li>
-            </ul>
-            <dl class="spec">
-              <div><dt>when</dt><dd>from the first day the tool is available to your account. We prepare beforehand wherever the vendor has published enough detail.</dd></div>
-              <div><dt>launch weeks</dt><dd>setups are limited and scheduled in the order they're booked. Members go first.</dd></div>
-            </dl>
-          </div>
-        </article>
-
-        <article class="pane sv-offer" id="rollout-session" aria-labelledby="rs-h" data-reveal>
-          <span class="pane__t">level 2b · training</span>
-          <span class="pane__t pane__t--r">90 to 180 min</span>
-          <div class="sv-offer__head">
-            <p class="offer__price"><b>Quoted</b> · included in First Quarter</p>
-            <h3 class="sv-offer__name" id="rs-h">Rollout Session</h3>
-            <p class="sv-offer__lead">For teams whose tools are set up but barely used. Live training on your own work, with your own examples.</p>
-            <div class="sv-offer__act">
-              <a class="link" href="/contact/">Ask about a session</a>
-            </div>
-          </div>
-          <div class="sv-offer__body">
-            <p class="label">What's included</p>
-            <ul class="sv-plus">
-              <li>90 to 180 minutes, live, with your team.</li>
-              <li>Built around each role, so people practice the parts of the tool they'll use.</li>
-              <li>Real tasks from your business, brought by the team.</li>
-              <li>A prompt and workflow sheet everyone keeps.</li>
-            </ul>
-            <p class="sv-rule"><b>Our rule:</b> we only train on tools your team can actually use. No generic "Intro to AI" seminars.</p>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--deep" id="first-quarter" aria-labelledby="fq-h">
-    <div class="wrap">
-      <div class="sec__head">
-        <p class="label">Level 3 · Membership</p>
-        <h2 class="h-1" id="fq-h">First Quarter membership.</h2>
+      <div class="sv-fq__head">
+        <div>
+          <p class="label">Level 3 · membership</p>
+          <h2 class="sv-fq__sign neon" id="fq-h">First Quarter</h2>
+        </div>
         <p class="body-l">This is where Signals becomes a paid product. The public feed tells everyone what happened. Members get it filtered to their own tools, faster, and acted on, with setup and training time held every month.</p>
       </div>
-      <div class="pane pane--active sv-fq" data-reveal>
-        <span class="pane__t">level 3 · membership</span>
-        <span class="pane__t pane__t--r">3-month minimum</span>
-        <table class="sv-cmp">
-          <caption class="sr">First Quarter membership: Core and Pro compared</caption>
-          <thead>
-            <tr>
-              <th scope="col"><span class="sr">What you get</span></th>
-              <th scope="col"><span class="sv-cmp__plan">Core</span><span class="sv-cmp__price"><b>From $1,500</b> a&nbsp;month</span><span class="sv-cmp__for">Stay current on the tools you have, with time each month to act on it.</span></th>
-              <th scope="col"><span class="sv-cmp__plan">Pro</span><span class="sv-cmp__price"><b>From $3,500</b> a&nbsp;month</span><span class="sv-cmp__for">More setup time, faster answers, and a recap call after major launches.</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">Client Signals</th><td data-plan="Core">Filtered to your tools and industry. Same business day for anything that affects your stack.</td><td data-plan="Pro">Same, plus a live recap call within one business day of major events, such as DevDay.</td></tr>
-            <tr><th scope="row">Verdicts</th><td data-plan="Core">Act now, Prepare, Wait or Ignore on every item, written for your business.</td><td data-plan="Pro">Same.</td></tr>
-            <tr><th scope="row">Setup and build time</th><td data-plan="Core">4 hours a month. Unused hours roll over one month.</td><td data-plan="Pro">12 hours a month. Unused hours roll over one month.</td></tr>
-            <tr><th scope="row">Launch weeks</th><td data-plan="Core">Priority in the setup queue.</td><td data-plan="Pro">First in the setup queue.</td></tr>
-            <tr><th scope="row">Early access</th><td data-plan="Core">We tell you when a waitlist or beta opens and help you apply.</td><td data-plan="Pro">Same, plus a setup plan drafted before you get access.</td></tr>
-            <tr><th scope="row">Training</th><td data-plan="Core">One Rollout Session a quarter.</td><td data-plan="Pro">One Rollout Session a month.</td></tr>
-            <tr><th scope="row">Calls</th><td data-plan="Core">A 45-minute call every month.</td><td data-plan="Pro">A call every two weeks.</td></tr>
-            <tr><th scope="row">Stack Review</th><td data-plan="Core">Quarterly.</td><td data-plan="Pro">Quarterly, with a written roadmap.</td></tr>
-            <tr><th scope="row">Response time</th><td data-plan="Core">Within 1 business day.</td><td data-plan="Pro">Same business day, Monday to Friday, 8 AM to 5 PM Arizona time.</td></tr>
-          </tbody>
-        </table>
-        <div class="sv-fq__foot">
-          <p class="fine">Three months to start, then month to month. We keep membership small so these response times hold. We can't promise early access to any tool: the vendor controls it.</p>
-          <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
-        </div>
+      <table class="sv-cmp">
+        <caption class="sr">First Quarter membership: Core and Pro compared</caption>
+        <thead>
+          <tr>
+            <th scope="col"><span class="sr">What you get</span></th>
+            <th scope="col"><span class="sv-cmp__plan">Core</span><span class="sv-cmp__price"><b>From $1,500</b> a&nbsp;month</span><span class="sv-cmp__for">Stay current on the tools you have, with time each month to act on it.</span></th>
+            <th scope="col"><span class="sv-cmp__plan">Pro</span><span class="sv-cmp__price"><b>From $3,500</b> a&nbsp;month</span><span class="sv-cmp__for">More setup time, faster answers, and a recap call after major launches.</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Client Signals</th><td data-plan="Core">Filtered to your tools and industry. Same business day for anything that affects your stack.</td><td data-plan="Pro">Same, plus a live recap call within one business day of major events, such as DevDay.</td></tr>
+          <tr><th scope="row">Verdicts</th><td data-plan="Core">Act now, Prepare, Wait or Ignore on every item, written for your business.</td><td data-plan="Pro">Same.</td></tr>
+          <tr><th scope="row">Setup and build time</th><td data-plan="Core">4 hours a month. Unused hours roll over one month.</td><td data-plan="Pro">12 hours a month. Unused hours roll over one month.</td></tr>
+          <tr><th scope="row">Launch weeks</th><td data-plan="Core">Priority in the setup queue.</td><td data-plan="Pro">First in the setup queue.</td></tr>
+          <tr><th scope="row">Early access</th><td data-plan="Core">We tell you when a waitlist or beta opens and help you apply.</td><td data-plan="Pro">Same, plus a setup plan drafted before you get access.</td></tr>
+          <tr><th scope="row">Training</th><td data-plan="Core">One Rollout Session a quarter.</td><td data-plan="Pro">One Rollout Session a month.</td></tr>
+          <tr><th scope="row">Calls</th><td data-plan="Core">A 45-minute call every month.</td><td data-plan="Pro">A call every two weeks.</td></tr>
+          <tr><th scope="row">Stack Review</th><td data-plan="Core">Quarterly.</td><td data-plan="Pro">Quarterly, with a written roadmap.</td></tr>
+          <tr><th scope="row">Response time</th><td data-plan="Core">Within 1 business day.</td><td data-plan="Pro">Same business day, Monday to Friday, 8 AM to 5 PM Arizona time.</td></tr>
+        </tbody>
+      </table>
+      <div class="sv-fq__foot">
+        <p>Three months to start, then month to month. We keep membership small so these response times hold. We can't promise early access to any tool: the vendor controls it.</p>
+        <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a membership call</a>
       </div>
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="build-h">
+  <!-- 3. Build: one editorial statement -->
+  <section class="sv-build" id="build" aria-labelledby="build-h">
     <div class="wrap">
-      <div class="sec__head">
-        <p class="label">Level 4 · Custom</p>
-        <h2 class="h-1" id="build-h">Automate the work that repeats.</h2>
-        <p class="body-l">Once your team is using its tools, the repetitive work that's left is where Build comes in. It's the second half of <a href="/approach/">our approach</a>: train your team, then automate the rest.</p>
-      </div>
-      <div class="split split--75 sv-build">
-        <article class="pane sv-build__main" id="build" aria-labelledby="b-h" data-reveal>
-          <span class="pane__t">level 4 · custom</span>
-          <span class="pane__t pane__t--r">scoped</span>
-          <div class="sv-offer__head">
-            <p class="offer__price"><b>Scoped</b> after a Head Start or for members</p>
-            <h3 class="sv-offer__name" id="b-h">Build</h3>
-            <p class="sv-offer__lead">Custom agents and automations for workflows that repeat, built in n8n, Claude or the tools you already use.</p>
-          </div>
-          <ul class="sv-plus">
-            <li>Your SOPs turned into procedures an agent can run. <a href="/signals/sops-to-aops">What that means</a></li>
-            <li>Documentation your team can read and check.</li>
-            <li>A test period before anything runs on its own.</li>
-            <li>A handover your team can operate.</li>
-          </ul>
+      <p class="label label--accent">Level 4 · Build · scoped</p>
+      <h2 class="sv-build__h" id="build-h">Automate the work that repeats.</h2>
+      <div class="sv-build__grid">
+        <div class="sv-build__copy">
+          <p class="body-l">Once your team is using its tools, the repetitive work that's left is where Build comes in. It's the second half of <a href="/approach/">our approach</a>: train your team, then automate the rest.</p>
+          <p class="body-l">Custom agents and automations for workflows that repeat, built in n8n, Claude or the tools you already use.</p>
           <p class="sv-rule"><b>Build is never the first thing we sell.</b> We scope it once we know your business, after a Head Start or as part of a membership.</p>
-          <p class="sv-proofline">Built by a verified n8n creator. 25 public workflow templates with 10,876 documented uses in the n8n community, as of June 2026. <a href="/workflow-usage/">How we count</a></p>
-        </article>
-        <div class="sv-build__side">
-          <article class="pane" data-reveal>
-            <span class="pane__t">for agencies</span>
-            <h3>Partner Bench</h3>
-            <p>Agencies and IT providers can resell Signals and Day One Setups under their own brand. We do the watching and the setup. You keep the client.</p>
-            <a class="link" href="/for-agencies/">About Partner Bench</a>
-          </article>
-          <article class="pane" data-reveal>
-            <span class="pane__t">lab</span>
-            <h3>Own Your AI</h3>
-            <p>A private AI system your business owns, for heavy, routine AI work. It's in development, with an early-access waitlist open.</p>
-            <a class="link" href="/own-your-ai/">See the Lab page</a>
-          </article>
+          <a class="link" href="#head-start">Start with a Head Start</a>
         </div>
+        <ul class="sv-list sv-list--rows">
+          <li>The steps your team already follows, written as procedures an agent can run.</li>
+          <li>Documentation your team can read and check.</li>
+          <li>A test period before anything runs on its own.</li>
+          <li>A handover your team can operate.</li>
+        </ul>
       </div>
+      <p class="sv-agencies">Agencies and IT providers can resell Signals and Day One Setups under their own brand. We do the watching and the setup. You keep the client. <a class="link" href="/for-agencies/">For agencies</a></p>
     </div>
   </section>
 
-  <section class="sec sec--deep" id="chooser" aria-labelledby="chooser-h">
-    <div class="wrap split split--57">
-      <div class="sec__head" style="margin:0">
-        <p class="label">Choosing</p>
-        <h2 class="h-1" id="chooser-h">Which should I start with?</h2>
-        <p class="body-l">Pick the line that sounds most like you. If none of them fit yet, start with <a href="#signals">Signals</a>. It's free.</p>
-        <p class="fine">Build isn't on this list on purpose. It comes after a Head Start, or as part of a membership, once we know how your business runs.</p>
-      </div>
-      <div class="pane" data-reveal>
-        <span class="pane__t">start here if</span>
-        <table class="sv-choose">
-          <caption class="sr">Which service to start with</caption>
-          <thead><tr><th scope="col">If this sounds like you</th><th scope="col">Start with</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">"We know we should be doing something with AI. We don't know what."</th><td><a href="#head-start">Head Start</a><span class="fine">from $1,500 one time</span></td></tr>
-            <tr><th scope="row">"We've picked a tool. We want it working properly."</th><td><a href="#day-one-setup">Day One Setup</a><span class="fine">from $2,500 per tool</span></td></tr>
-            <tr><th scope="row">"Our tools are set up. The team barely uses them."</th><td><a href="#rollout-session">Rollout Session</a><span class="fine">quoted</span></td></tr>
-            <tr><th scope="row">"We want someone watching the market for us, every week."</th><td><a href="#first-quarter">First Quarter</a><span class="fine">from $1,500 a month</span></td></tr>
-          </tbody>
-        </table>
-        <p class="fine sv-choose-note">Still not sure? <a href="/contact/">Book a 20-minute call</a> and we'll tell you which step fits, or whether any of them do.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" aria-labelledby="faq-h">
-    <div class="wrap split split--57">
-      <div class="sec__head" style="margin:0">
-        <p class="label">Questions</p>
-        <h2 class="h-1" id="faq-h">Before you book.</h2>
-        <p><a class="link" href="/faq/">All questions</a></p>
-      </div>
-      <div class="faq">
-        <details><summary>Do we have to become members?</summary><div class="a"><p>No. Every step works on its own. Most businesses start with a Head Start, then decide what's next once they have the plan.</p></div></details>
-        <details><summary>Why do the prices say "from"?</summary><div class="a"><p>The final price depends on the size of your team and how many systems a tool needs to connect to. We confirm the price in writing before any work starts.</p></div></details>
-        <details><summary>Why pay for setup if the tool is self-serve?</summary><div class="a"><p>Switching a tool on is the easy part. We set it up for how your business works, with the least access it needs, test it with a few people first, and train the team. You also keep a one-page guide to how you use it.</p></div></details>
-        <details><summary>What does "day one" mean?</summary><div class="a"><p>The first day a tool is available to your account. Rollouts are often staggered by plan, region or company size. We prepare before that day so setup can start right away.</p></div></details>
-        <details><summary>Is there a minimum commitment?</summary><div class="a"><p>Only for the membership. First Quarter has a three-month minimum, then runs month to month. Head Start, Day One Setup and Rollout Sessions are one-time.</p></div></details>
-        <details><summary>What won't you do?</summary><div class="a"><p>We won't train your team on tools they can't access, run generic "Intro to AI" seminars, or recommend a tool just because it's new.</p></div></details>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--deep" aria-labelledby="cta-h">
+  <!-- 4. Questions, answered in the open -->
+  <section class="band band--deep sv-faq" id="faq" aria-labelledby="faq-h">
     <div class="wrap">
-      <div class="pane cta">
-        <span class="pane__t">book a call</span>
-        <div class="cta__copy">
-          <h2 class="h-1" id="cta-h">Tell us what's eating your week.</h2>
-          <p class="body-l">Bring the list of tools you pay for. In 20 minutes we'll tell you what's worth doing now, what can wait, and which step fits.</p>
-        </div>
-        <div class="sv-act">
-          <a class="btn btn--primary" href="/contact/">Book a 20-minute call</a>
-          <p class="fine">Free. If there's no fit, we'll say so. Or email <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>.</p>
-        </div>
+      <div class="sv-faq__head">
+        <h2 class="h-1" id="faq-h">Before you book.</h2>
+        <a class="link" href="/faq/">All questions</a>
       </div>
+      <dl class="sv-qa">
+        <div><dt>Do we have to become members?</dt><dd>No. Every step works on its own. Most businesses start with a Head Start, then decide what's next once they have the plan.</dd></div>
+        <div><dt>Why do the prices say "from"?</dt><dd>The final price depends on the size of your team and how many systems a tool needs to connect to. We confirm the price in writing before any work starts.</dd></div>
+        <div><dt>Why pay for setup if the tool is <span class="nw">self-serve?</span></dt><dd>Switching a tool on is the easy part. We set it up for how your business works, with the least access it needs, test it with a few people first, and train the team. You also keep a one-page guide to how you use it.</dd></div>
+        <div><dt>What does "day one" mean?</dt><dd>The first day a tool is available to your account. Rollouts are often staggered by plan, region or company size. We prepare before that day so setup can start right away.</dd></div>
+        <div><dt>Is there a minimum commitment?</dt><dd>Only for the membership. First Quarter has a three-month minimum, then runs month to month. Head Start, Day One Setup and Rollout Sessions are one-time.</dd></div>
+        <div><dt>What won't you do?</dt><dd>We won't train your team on tools they can't access, run generic "Intro to AI" seminars, or recommend a tool just because it's new.</dd></div>
+      </dl>
     </div>
+  </section>
+
+  <!-- Close: the booking call, by an arcade cabinet -->
+  <section class="pg-close" aria-labelledby="cta-h">
+    <div class="wrap pg-close__in">
+      <h2 class="pg-close__h" id="cta-h">Tell us what's eating your week.</h2>
+      <p class="body-l">Bring the list of tools you pay for. In 20 minutes we'll tell you what's worth doing now, what can wait, and which step fits.</p>
+      <div class="pg-close__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a 20-minute call</a></div>
+      <p class="pg-close__fine">Free. If there's no fit, we'll say so. Or email <a href="mailto:hyrum@quartersmart.com">hyrum@quartersmart.com</a>.</p>
+    </div>
+    <img class="pg-close__cab" src="/assets/px/sprite-arcade.png" width="51" height="95" alt="" aria-hidden="true" loading="lazy">
   </section>
 
 </main>
-
 <!-- @include footer -->
 </body>
 </html>
