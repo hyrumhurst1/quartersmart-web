@@ -26,24 +26,24 @@
    ink and muted sage, teal, butter and rose as the accents, and Forest's
    slate used only occasionally as a raised colour block (--block). */
 :root, [data-theme="evergreen"] {
-  --bg-0: #0f1110;   /* page: obsidian with a green undertone */
-  --bg-1: #151816;   /* surface */
-  --bg-2: #1c201d;   /* raised, hover */
-  --bg-3: #252a27;
-  --block: #2b3337;  /* forest slate, for the occasional colour block */
-  --line: #2a2f2b;
-  --line-2: #465048;
-  --fg-0: #e8e0c9;   /* forest cream, 14.9:1 */
-  --fg-1: #c7bfa8;   /* 10.6:1 */
-  --fg-2: #9ea69b;   /* 7.2:1 */
-  --accent: #a7d4a0; /* sage mint: sits between Forest green and the logo greens */
+  --bg-0: #121814;   /* page: obsidian lifted toward forest */
+  --bg-1: #18201b;   /* surface */
+  --bg-2: #1f2822;   /* raised, hover */
+  --bg-3: #28332c;
+  --block: #2d3a36;  /* forest slate, for the occasional colour block */
+  --line: #2c3730;
+  --line-2: #4a5a4f;
+  --fg-0: #ece4cc;   /* forest cream, 14.1:1 */
+  --fg-1: #cbc3ab;   /* 10.2:1 */
+  --fg-2: #a1a99d;   /* 6.9:1 */
+  --accent: #a9d99f; /* forest sage-mint */
   --accent-ink: #0f1a10;
-  --accent-2: #8fc28a;
-  --warn: #dbbc7f;   /* butter */
-  --event: #d699b6;  /* rose */
-  --info: #83c0b8;   /* teal */
-  --bad: #e67e80;
-  --grain: .07;
+  --accent-2: #92c689;
+  --warn: #dfc07f;   /* butter */
+  --event: #d99bb8;  /* rose */
+  --info: #86c3ba;   /* teal */
+  --bad: #e88183;
+  --grain: .11;      /* faint film grain over the obsidian */
   color-scheme: dark;
 }
 [data-theme="midnight"] {

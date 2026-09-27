@@ -1,0 +1,68 @@
+/* Terminal layer: ANSI art, the scrolling quarter, the idle screen, the ticker.
+   Loaded on every page after qs.css. Everything is readable without motion. */
+
+/* ANSI art: one character = one pixel wide, two pixels tall (upper-half block) */
+.ansi {
+  --ansi: clamp(5.5px, .72vw, 9px);
+  margin: 0; font: 400 var(--ansi)/1.2 'JB Mono', ui-monospace, monospace; letter-spacing: 0;
+  white-space: pre; overflow: hidden; background: transparent; color: var(--fg-2);
+  font-variant-ligatures: none; -webkit-font-smoothing: none;
+}
+.ansi span { display: inline; }
+.ansi-frame { position: relative; display: grid; place-items: center; }
+.ansi-frame figcaption { margin-top: 12px; font: 400 11px/1 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
+
+/* Live ticker of Signals headlines (attract mode) */
+.ticker { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg-1) 70%, var(--bg-0)); }
+.ticker__track { display: flex; width: max-content; gap: 48px; padding: 10px 0; animation: ticker 60s linear infinite; }
+.ticker:hover .ticker__track { animation-play-state: paused; }
+.ticker a { display: inline-flex; gap: 10px; align-items: center; white-space: nowrap; text-decoration: none; font: 500 14px var(--sans); color: var(--fg-1); }
+.ticker a:hover { color: var(--fg-0); }
+.ticker a .chip { font-size: 11px; }
+.ticker__lead { position: absolute; left: 0; top: 0; bottom: 0; z-index: 1; display: flex; align-items: center; gap: 8px; padding: 0 14px 0 clamp(16px, 2.4vw, 32px); background: linear-gradient(90deg, var(--bg-0) 70%, transparent); font: 400 11px/1 var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.ticker__lead i { width: 6px; height: 6px; background: var(--accent); animation: pulse 1.6s steps(2) infinite; }
+@keyframes ticker { to { transform: translateX(-50%); } }
+
+/* The scrolling quarter */
+.qscroll { position: relative; height: 320vh; }
+.qscroll__stage { position: sticky; top: 64px; height: calc(100vh - 64px); display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 40px; max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(16px, 3vw, 32px); overflow: hidden; }
+.qs-gem { position: relative; justify-self: center; font: 400 clamp(9px, 1.15vw, 15px)/1.2 'JB Mono', ui-monospace, monospace; }
+.qs-gem pre { margin: 0; font: inherit; white-space: pre; letter-spacing: 0; }
+.qs-gem__q { position: absolute; inset: 0; transition: filter .3s; will-change: transform; }
+.qs-gem__q.is-lit { filter: brightness(1.15) saturate(1.1); }
+.qs-line { --p: 0; position: absolute; left: 62%; top: 12%; width: 55%; height: 2px; background: var(--accent); transform-origin: left center; transform: scaleX(var(--p)); }
+.qs-line::after { content: ""; position: absolute; right: -4px; top: -4px; width: 10px; height: 10px; background: var(--accent); opacity: calc(var(--p) * var(--p)); }
+.qs-copy { display: grid; gap: 20px; transition: opacity .2s; }
+.qs-copy .h-1 { min-height: 3.4em; }
+.qscroll:not(.is-live) .qs-copy { opacity: 1; }
+@media (max-width: 900px) {
+  .qscroll { height: 260vh; }
+  .qscroll__stage { grid-template-columns: 1fr; align-content: center; gap: 24px; }
+  .qs-line { display: none; }
+  .qs-copy .h-1 { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qscroll { height: auto; }
+  .qscroll__stage { position: static; height: auto; padding-block: 80px; }
+  .ticker__track { animation: none; flex-wrap: wrap; width: auto; padding-left: 140px; }
+}
+
+/* Idle screen */
+.idle { position: fixed; inset: 0; z-index: 300; display: grid; place-content: center; justify-items: center; gap: 14px; background: color-mix(in srgb, var(--bg-0) 96%, #000); opacity: 0; transition: opacity .3s; }
+.idle.is-on { opacity: 1; }
+.idle::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, rgba(0,0,0,.18) 0 1px, transparent 1px 3px); }
+.idle__art { margin: 0; font: 400 clamp(9px, 1.6vw, 18px)/1.2 'JB Mono', monospace; white-space: pre; }
+.idle__word { font: 400 44px/1 var(--pixel); color: var(--fg-0); margin-top: 18px; }
+.idle__line { font: 400 22px/1 var(--pixel); color: var(--accent); }
+.idle__hint { font: 400 11px/1 var(--pixel); letter-spacing: .1em; text-transform: uppercase; color: var(--fg-2); margin-top: 26px; animation: pulse 1.6s steps(2) infinite; }
+
+/* Quarter hero: the scrolling quarter as the top of the homepage */
+.qhero .qscroll__stage { top: 64px; }
+.qs-why { position: absolute; left: 50%; bottom: 8.5%; transform: translateX(-50%); margin: 0; font: 400 22px/1 var(--pixel); color: var(--fg-2); letter-spacing: .02em; white-space: nowrap; }
+.qs-hint { position: absolute; left: 50%; bottom: 2.2%; transform: translateX(-50%); margin: 0; font: 400 11px/1 var(--pixel); letter-spacing: .12em; text-transform: uppercase; color: var(--fg-2); display: grid; justify-items: center; gap: 8px; }
+.qs-hint::after { content: ""; width: 2px; height: 22px; background: var(--fg-2); animation: pulse 1.4s steps(2) infinite; }
+.qs-big { margin: 0; font: 400 132px/.9 var(--pixel); color: var(--accent); letter-spacing: -.02em; }
+.qs-kicker { margin: 0; font: 400 33px/1.2 var(--pixel); color: var(--fg-0); }
+.qs-kicker b { color: var(--accent); font-weight: 400; }
+@media (max-width: 900px) { .qs-big { font-size: 88px; } .qs-kicker { font-size: 22px; } .qs-why { bottom: 20%; } }
+@media (prefers-reduced-motion: reduce) { .qs-why, .qs-hint { display: none; } }

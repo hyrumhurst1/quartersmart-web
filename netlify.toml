@@ -110,11 +110,11 @@
 # Structure Properties case study renamed for client anonymity
 [[redirects]]
   from = "/case-studies/structure-properties"
-  to = "/case-studies/sf-property-management"
+  to = "/services/"
   status = 301
 [[redirects]]
   from = "/case-studies/structure-properties/*"
-  to = "/case-studies/sf-property-management"
+  to = "/services/"
   status = 301
 
 # 2026 relaunch: short links and retired page names
@@ -134,4 +134,22 @@
 [[redirects]]
   from = "/team"
   to = "/about/"
+  status = 301
+
+# Retired in the September 2026 rebrand (source kept in /graveyard, not published)
+[[redirects]]
+  from = "/case-studies"
+  to = "/services/"
+  status = 301
+[[redirects]]
+  from = "/case-studies/*"
+  to = "/services/"
+  status = 301
+[[redirects]]
+  from = "/own-your-ai"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/own-your-ai/*"
+  to = "/"
   status = 301

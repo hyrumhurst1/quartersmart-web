@@ -39,15 +39,12 @@ Agencies and IT providers can resell Signals and Day One Setups through the Part
 - [Signals Log](https://quartersmart.com/signals/log): The accuracy record for reported items: what we posted, when, and whether it was confirmed or denied. Misses stay on the list.
 - [Services](https://quartersmart.com/services): The services ladder, level 0 to 4, with published starting prices: Signals (free), Head Start (from $1,500), Day One Setup (from $2,500 per tool), Rollout Session (quoted), the First Quarter membership with a Core vs Pro comparison (from $1,500 and $3,500 a month) and Build (scoped). Includes a "which should I start with?" guide and a services FAQ.
 - [Approach](https://quartersmart.com/approach): Train your team. Automate the rest. The two halves of every engagement, the Detect, Decode, Deploy, Stay current method, our principles, the six questions a tool must pass before we recommend it, and the security rules for every setup (least access, client-owned accounts, a small supervised test first, and approval rules before anything sends).
-- [Case Studies](https://quartersmart.com/case-studies): Dated, verifiable work, including the San Francisco property management onboarding system and the n8n template data.
-- [SF property management case study](https://quartersmart.com/case-studies/sf-property-management): An onboarding and enablement system built for a San Francisco property management company.
 - [About](https://quartersmart.com/about): Who we are, the team, why the name "Quarter," and our independence.
 - [Hyrum Hurst](https://quartersmart.com/about/hyrum-hurst): The founder's page: background, what he builds, credentials and press.
 - [For Agencies](https://quartersmart.com/for-agencies): Partner Bench. Resell Signals and Day One Setups under your brand.
 - [FAQ](https://quartersmart.com/faq): Pricing, security, what "day one" means, how Signals is sourced, affiliation.
 - [Contact](https://quartersmart.com/contact): Book a 20-minute call.
 - [Workflow usage](https://quartersmart.com/workflow-usage): Per-template data and methodology behind the 10,876 documented uses.
-- [Own Your AI](https://quartersmart.com/own-your-ai): Lab project. A private, locally owned AI system for routine AI work, with a waitlist. Not a live product.
 - [Privacy](https://quartersmart.com/privacy) and [Terms](https://quartersmart.com/terms), including the Signals disclaimer.
 
 ## Signals posts
