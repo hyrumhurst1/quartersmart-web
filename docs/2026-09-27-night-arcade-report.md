@@ -4,6 +4,11 @@ Date: 2026-09-27 (overnight session, about 22:00 to 06:00 Arizona time). Author:
 Claude desktop app, working with Codex CLI (gpt-6-astra) for image generation and critique, and many
 background agents and workflows. Owner: Hyrum Hurst (QuarterSmart founder).
 
+## 0. Status: LIVE
+- quartersmart.com has served the Night Arcade site since 2026-09-27 07:57 Arizona time. PR hyrumhurst1/quartersmart-web#7 was merged at commit 227a37e.
+- Post-launch checks passed on production: 6 key pages, overflow 0, no console errors; the retired URLs 301 correctly.
+- Continued development: branch `night-arcade-polish`, draft PR #8. Previews go to deploy-preview-8--capable-speculoos-78ab6e.netlify.app, and verified checkpoints get merged to main.
+
 ## 1. What QuarterSmart is now (the positioning)
 - **Early AI adoption partner for owner-led businesses (20 to 80 staff).** Promise: know the second AI news drops and
   put it to work from day one, but only when it's worth it ("we say wait a lot").
