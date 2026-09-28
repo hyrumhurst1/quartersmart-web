@@ -143,6 +143,30 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-09-27 night (LIVE: PRs #15, #16, #17)** - Everything below is in production (main c42a5f1).
+  - **Booking:** quartersmart.com/insert-coin is our own page (book.exe, INSERT COIN, day/time
+    picker, GAME ON) on `netlify/functions/insert-coin.mjs`, which talks to self-hosted Cal.com via
+    https://book.quartersmart.com (a proxy we own). The function defaults its origin to that domain and
+    the event type to 3, so production needs NO environment variables (the project has none; the
+    Netlify MCP env tool reported "upserted" but never saved them). Fallback: "Open the calendar"
+    (book.quartersmart.com/hyrum/ai-game-plan) plus email. Every book CTA, the dock and menu coins,
+    the footer and contact point at /insert-coin/. Tests: `node ../tools/test-insert-coin.mjs` (80).
+    One real test booking was made through the preview and cancelled right away (Cal booking id 1).
+  - **Owner calls:** no pixel avatar or figure of Hyrum anywhere; his real photo only on the founder
+    page and /insert-coin/. The founder page is a business profile: no employment timeline and no
+    employer names (never list Dual Logic, Ability Builders or Skytech); it leads with "Proof you can
+    check." (n8n 25 templates / 10,876 documented uses, press, Qwoted, open source, certifications).
+    No LV/scene label in the hero corner (pause shows only on keyboard focus).
+  - **Sky:** a bit more than half the stars twinkle (9 to 25 s breaths); meteors every 5 to 11 s on
+    pages, 3.5 to 7 s in the hero (`QSSky.meteor`).
+  - **Round 3 audit** (art + Codex, conversion, UX/a11y, speed; 27 verified fixes): dock stays tucked at
+    a page's end on phones, 44px footer targets, no one-word heading lines, booking button says free,
+    fewer "day job" lines, font swap without layout shift.
+  - **Cache-bust:** the build now stamps ?v=<hash> on url() in CSS and inline styles, woff2 links and
+    script imports too. All flat sprites share one set hash; scripts that build sprite URLs append
+    `?v=__PXV__` (the build fills it in). Never hand-version /assets links.
+  - Smoke on live: 58/58. Request tracker: `../work/REQUESTS.md`. Kit refreshed.
+
 - **2026-09-27 evening (art director pass on the seamless night, local only, not committed)** - One system
   everywhere: home sections now use `--sec-y` and the shared 2px-dot horizon (`.hs` joined the qs.css
   horizon rule); the night sky clears the text column on home too (term.css); why.exe spans the column.

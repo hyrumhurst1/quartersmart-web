@@ -517,14 +517,12 @@
     b.globalAlpha = 1;
   }
 
-  // ---------- the sky: pixel stars, a crescent moon and the odd comet (never morphed) ----------
+  // ---------- the sky: pixel stars, a crescent moon and falling stars (never morphed) ----------
   const SKY = window.QSSky;
   let stars = [], P = SKY ? SKY.pal() : null, comet = null, nextComet = 3500;
-  function makeStars() { if (SKY) stars = SKY.field(GW, Math.max(10, PH - 4), Math.round(GW * PH / (small ? 120 : 170)), 99, { noBig: true, calm: 0.75 }); }
-  let walkAt = 0;
+  function makeStars() { if (SKY) stars = SKY.field(GW, Math.max(10, PH - 4), Math.round(GW * PH / (small ? 120 : 170)), 99, { noBig: true, calm: 0.62 }); }
   function drawSky(now) {
     k2.clearRect(0, 0, GW, GH);
-    const walk = walkAt ? clamp((now - walkAt) / (1000 / 60), 0, 3) : 1; walkAt = now;   // the parade walks by the clock (60fps steps), whatever the paint rate
     const put = (x, y, c, a = 1) => { if (y >= PH - 1) return; k2.globalAlpha = a; k2.fillStyle = c; k2.fillRect(Math.round(x), Math.round(y), 1, 1); };
     if (SKY) {
       for (const st of stars) { if (st.x > X0 - 4 && st.x < X0 + WW + 4 && st.y > Y0 - 4 && st.y < WY1 + 4) continue; if (st.y < CLEAR_Y && (st.x < CLEAR_L || st.x > GW - CLEAR_R)) continue; SKY.drawStar(put, st, now, P); }
@@ -532,8 +530,8 @@
       const mr = small ? 4 : 5;
       SKY.crescent(put, Math.round(Math.min(GW * (small ? 0.8 : 0.84), GW - CLEAR_R - mr - 2)), small ? 12 : 10, mr, P);
       if (!reduce) {
-        if (!comet && now > nextComet) { const r = ((now * 9301) % 1000) / 1000; comet = { t0: now, dur: 1000 + r * 400, x0: GW * (0.45 + r * 0.5), y0: 2 + r * 6, len: 10 + Math.round(r * 5) }; comet.x1 = comet.x0 - GW * 0.3; comet.y1 = comet.y0 + PH * 0.35; }
-        if (comet) { const q = (now - comet.t0) / comet.dur; if (q >= 1) { comet = null; nextComet = now + 7000 + (now % 5000); } else SKY.drawComet(put, comet, q, P); }
+        if (!comet && now > nextComet) comet = SKY.meteor ? SKY.meteor(now, GW, PH, ((now * 9301) % 1000) / 1000, 0.2) : null;
+        if (comet) { const q = (now - comet.t0) / comet.dur; if (q >= 1) { comet = null; nextComet = now + 3500 + (now % 3500); } else SKY.drawComet(put, comet, q, P); }
       }
     }
     // the horizon: one quiet dotted line where the game ends and the headline begins, one art pixel
@@ -573,7 +571,7 @@
   }
   // re-lay the current scene from its start (the world changed size or colour)
   function restart() {
-    cache.clear(); makeStars(); mode = 'play'; t0 = paused ? pausedAt : performance.now(); start(scene);
+    cache.clear(); makeStars(); mode = 'play'; t0 = paused ? pausedAt : performance.now(); offAt = t0; start(scene);
     if (reduce) scene.update(scene.dur, 0);          // the title's finished frame: extruded, glint gone
   }
   // A game paints at about 30fps: its motion snaps to art pixels several device pixels wide, so faster
@@ -581,16 +579,18 @@
   // every Nth display frame (N from the measured refresh interval) so the pacing stays even on 60, 120 and
   // 144Hz screens; the clocks are absolute, so nothing plays faster or slower.
   let vsync = 1000 / 60, prevNow = 0, skip = 0;
+  let offAt = 0;                                     // when the hero left the screen (off screen it asks for no frames)
   function tick(now) {
     raf = 0;
     if (paused) return;
+    if (!visible) return;
     const gap = now - prevNow; prevNow = now;
     // a long gap (tab switch, slow phone) counts as 40ms, so a device that can't reach 30fps paints every frame it gets
     if (gap > 2) vsync += (Math.min(gap, 40) - vsync) * 0.1;
     if (++skip < Math.max(1, Math.round((mode === 'morph' ? 16 : 32) / vsync))) { raf = requestAnimationFrame(tick); return; }
     skip = 0;
     const dt = Math.min(50, now - last) * SPEED; last = now;
-    if (visible && !document.hidden) {
+    if (!document.hidden) {
       const t = (now - t0) * SPEED;
       if (mode === 'play') {
         if (t >= scene.dur) {
@@ -604,7 +604,7 @@
       else { mt = t / SPEED; drawMorph(mt); }
       drawSky(now);
       blit();
-    } else { t0 += dt / SPEED; }
+    }
     raf = requestAnimationFrame(tick);
   }
   let rs = 0;
@@ -620,14 +620,21 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
   if (textBox && 'ResizeObserver' in window) new ResizeObserver(() => { clearTimeout(rs); rs = setTimeout(relayout, 120); }).observe(textBox);
   if (reduce) { scene = S.title; start(scene); scene.update(scene.dur, 0); setLabel(); paint(); return; }
-  new IntersectionObserver((es) => { visible = es.some((e) => e.isIntersecting); }).observe(cv);
+  new IntersectionObserver((es) => {
+    const v = es.some((e) => e.isIntersecting);
+    if (v === visible) return;
+    visible = v;
+    const n = performance.now();
+    if (!v) { cancelAnimationFrame(raf); raf = 0; offAt = n; }
+    else if (!paused && !raf) { t0 += n - offAt; last = prevNow = n; raf = requestAnimationFrame(tick); }
+  }).observe(cv);
   // pause / play on the window's bottom border (hidden until here, so it never shows without the loop)
   const pb = document.querySelector('[data-attract-pause]');
   const setPaused = (v) => {
     if (v === paused) return;
     const now = performance.now();
-    if (v) { paused = true; pausedAt = now; cancelAnimationFrame(raf); raf = 0; }
-    else { paused = false; t0 += now - pausedAt; last = now; walkAt = 0; if (!raf) raf = requestAnimationFrame(tick); }
+    if (v) { if (!visible) t0 += now - offAt; paused = true; pausedAt = now; cancelAnimationFrame(raf); raf = 0; }
+    else { paused = false; t0 += now - pausedAt; last = now; if (!visible) offAt = now; else if (!raf) raf = requestAnimationFrame(tick); }
     if (pb) (pb.firstElementChild || pb).textContent = paused ? 'play' : 'pause';
     const w = cv.closest('.h4'); if (w) w.classList.toggle('is-paused', paused);   // the title light holds too
   };
