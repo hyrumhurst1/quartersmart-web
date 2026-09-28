@@ -84,7 +84,7 @@
         s.ok = true; res(s);
       };
       img.onerror = () => res(s);
-      img.src = '/assets/px/flat/' + name + '.png';
+      img.src = '/assets/px/flat/' + name + '.png?v=__PXV__';   // the build stamps the sprite-set hash
     });
     return s.p;
   }

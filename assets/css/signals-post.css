@@ -54,7 +54,7 @@
    Pixel stage: art that flows from one scene into the next (radar.js)
    ========================================================================== */
 .px { image-rendering: pixelated; }
-.pxstage { margin: 0; display: grid; justify-items: center; gap: 12px; min-width: 0; }
+.pxstage { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 12px; min-width: 0; }
 .pxstage__screen { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 3 / 2; }
 .pxstage__screen > * { grid-area: 1 / 1; }
 /* the screen snaps to the stage grid (whole multiples of its 144 art pixels,
@@ -209,5 +209,8 @@
   .pclose__cab, .pclose::after { display: none; }
   .pclose { padding-bottom: var(--sec-y); }
   .pclose__in { margin-bottom: 0; }
+  .pclose .btn--xl { width: 100%; justify-content: center; font-size: 16.5px; padding-inline: 14px; min-height: 56px; }
   .pfaq > div { padding: 18px 0; }
+  .psum__next { gap: 0; }
+  .psum__next a { display: inline-block; padding: 10px 0; }
 }

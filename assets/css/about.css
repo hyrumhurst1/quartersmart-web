@@ -34,7 +34,7 @@
 
 /* Pixel stage (radar.js): art that flows from one scene into the next.
    Same rules as the Signals pages, so the stage looks identical everywhere. */
-.pxstage { margin: 0; display: grid; justify-items: center; gap: 12px; min-width: 0; }
+.pxstage { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 12px; min-width: 0; }
 .pxstage__screen { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 3 / 2; }
 .pxstage__screen > * { grid-area: 1 / 1; }
 /* the screen snaps to the stage grid (whole multiples of its 144 art pixels,

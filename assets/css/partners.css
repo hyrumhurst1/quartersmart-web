@@ -269,3 +269,4 @@
   .pt-cta .btn--arcade, .nf__book .btn--arcade { font-size: 16.5px; padding: 0 18px; }
   .pt-cta .btn--xl { min-height: 56px; padding: 0 22px; }
 }
+@media (max-width: 420px) { .pt-h1:not(.pt-h1--xl) { font-size: 33px; } }

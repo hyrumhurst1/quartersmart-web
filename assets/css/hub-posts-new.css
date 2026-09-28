@@ -115,6 +115,7 @@
 .sig-hub .verdict[data-v="act"] { --v: var(--accent); }
 .sig-hub .verdict[data-v="act"]::before { width: 6px; height: 8px; clip-path: polygon(0 0, 100% 50%, 0 100%); }
 .sig-hub .verdict[data-v="prep"] { --v: var(--warn); }
+[data-theme="paper"] .sig-hub .verdict[data-v="prep"] { --v: #7a4e0c; }
 .sig-hub .verdict[data-v="prep"]::before { background: none; box-shadow: inset 0 0 0 2px currentColor; }
 .sig-hub .verdict[data-v="wait"] { --v: var(--info); }
 .sig-hub .verdict[data-v="wait"]::before { width: 7px; height: 8px; background: linear-gradient(90deg, currentColor 0 2px, transparent 2px 5px, currentColor 5px); }
@@ -208,7 +209,7 @@
   .sig-hub .slist__h { font-size: 22px; }
   .sig-hub .slist__tools { padding: 0 12px 18px; }
   .sig-hub .sig-filter { gap: 6px 6px; }
-  .sig-hub .sig-filter button { padding: 0 10px; gap: 7px; }
+  .sig-hub .sig-filter button { min-height: 44px; padding: 0 10px; gap: 7px; }
   .sig-hub .sig-find { flex: 1 1 100%; }
   .sig-hub .sighead { display: none; }
   .sig-hub .sigtable { border-top: 2px solid var(--line-2); }

@@ -60,3 +60,4 @@
   .po .prose th:first-child, .po .prose td:first-child { padding-left: 0; }
   .po .prose th { font-size: 11px; letter-spacing: 0; }
 }
+@media (max-width: 640px) { .po-stat__src a { display: inline-block; padding-block: 12px; margin-block: -12px; } }

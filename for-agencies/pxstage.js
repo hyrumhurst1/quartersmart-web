@@ -133,7 +133,7 @@
   }
   // the flat set replaced the older painted sprites; an old name still gets the flat one
   const FLAT = { 'sprite-radar': 'radar-tower', 'sprite-assistant': 'assistant', 'sprite-keyboard-manual': 'keyboard-manual', 'sprite-arcade': 'cabinet-sage', 'desk-hacker': 'desk-crt', 'coin-slot-mini': 'coin-slot' };
-  const flatSrc = (src) => src.replace(/^\/assets\/px\/([\w-]+)\.png$/, (m, n) => '/assets/px/flat/' + (FLAT[n] || n) + '.png');
+  const flatSrc = (src) => src.replace(/^\/assets\/px\/(?:flat\/)?([\w-]+)\.png$/, (m, n) => '/assets/px/flat/' + (FLAT[n] || n) + '.png?v=__PXV__');   // the build stamps the sprite-set hash
   function calScene(spec, W, H, P) {
     const [label = '', mark = '0', first = '0', days = '30'] = spec.split(':');
     const pts = [], PW = 62, cw = 6, ch = 4, gap = 2;
