@@ -9,8 +9,8 @@
 // where there is room for one) and the 25% pops once. The 25% in the DOM always
 // reads 25%. Click the quarter to lose a life; three and it asks you to
 // continue. It plays once when the window scrolls into view (every frame is a
-// pure function of its clock); afterwards a tiny UFO keeps drifting through the
-// far sky. "replay" runs it again; "pause" on the bottom border holds it.
+// pure function of its clock). "replay" runs it again; "pause" on the bottom
+// border holds it.
 (() => {
   const sec = document.querySelector('[data-quarter]');
   if (!sec) return;

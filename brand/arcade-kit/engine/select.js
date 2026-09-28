@@ -81,16 +81,19 @@
     new IntersectionObserver(([e]) => dock.classList.toggle('is-call', !e.isIntersecting && e.boundingClientRect.bottom < 0), { rootMargin: '0px 0px 100000px 0px' }).observe(firstBook);
   }
   // The dock tucks up while the page scrolls down, so it never sits on the
-  // line being read; any scroll back up (or reaching the end, or the mouse
-  // at the top edge) brings it straight back.
+  // line being read; any scroll back up (or, on wide screens, reaching the
+  // end, or the mouse at the top edge) brings it straight back.
   if (dock) {
     let y0 = scrollY, tucked = false;
     const set = (t) => { if (t !== tucked) { tucked = t; root.classList.toggle('hud-tuck', t); } };
+    const phone = matchMedia('(max-width: 699px)');
     addEventListener('scroll', () => {
       const y = scrollY, d = y - y0;
       if (d > -6 && d < 6) return; // ignore jitter, but let small moves add up
       y0 = y;
       const end = y + innerHeight >= root.scrollHeight - 4;
+      // phones: at the end the footer fills the screen, so the dock stays tucked there (iOS bounce included)
+      if (end && phone.matches) { if (d > 0 && y > 120) set(true); return; }
       set(d > 0 && y > 120 && !end);
     }, { passive: true });
     addEventListener('pointermove', (e) => { if (tucked && e.pointerType === 'mouse' && e.clientY < 96) set(false); }, { passive: true });

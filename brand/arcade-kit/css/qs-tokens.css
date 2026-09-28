@@ -5,14 +5,16 @@
    IBM Plex Sans carries the reading. One pastel accent per theme, rationed.
    ========================================================================== */
 
-@font-face { font-family: 'JB Mono'; font-weight: 400; font-display: swap; src: url('/assets/fonts/jetbrains-mono-400.woff2') format('woff2'); }
-@font-face { font-family: 'JB Mono'; font-weight: 500; font-display: swap; src: url('/assets/fonts/jetbrains-mono-500.woff2') format('woff2'); }
-@font-face { font-family: 'JB Mono'; font-weight: 600; font-display: swap; src: url('/assets/fonts/jetbrains-mono-600.woff2') format('woff2'); }
+@font-face { font-family: 'JB Mono'; font-weight: 400 600; font-display: swap; src: url('/assets/fonts/jetbrains-mono-400.woff2') format('woff2'); }
 @font-face { font-family: 'Departure'; font-weight: 400; font-display: swap; src: url('/assets/fonts/departure-mono.woff2') format('woff2'); }
 @font-face { font-family: 'Plex Sans'; font-weight: 400; font-display: swap; src: url('/assets/fonts/ibm-plex-sans-400.woff2') format('woff2'); }
 @font-face { font-family: 'Plex Sans'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/ibm-plex-sans-italic-400.woff2') format('woff2'); }
 @font-face { font-family: 'Plex Sans'; font-weight: 500; font-display: swap; src: url('/assets/fonts/ibm-plex-sans-500.woff2') format('woff2'); }
 @font-face { font-family: 'Plex Sans'; font-weight: 600; font-display: swap; src: url('/assets/fonts/ibm-plex-sans-600.woff2') format('woff2'); }
+/* metric-matched local fallbacks: text set before the web fonts arrive takes the same room, so the swap moves nothing */
+@font-face { font-family: 'Departure Fallback'; src: local('Courier New'), local('CourierNewPSMT'), local('Menlo'), local('DejaVu Sans Mono'), local('Droid Sans Mono'), local('Roboto Mono'); size-adjust: 106.05%; ascent-override: 94.3%; descent-override: 25.7%; line-gap-override: 0%; }
+@font-face { font-family: 'JB Fallback'; src: local('Courier New'), local('CourierNewPSMT'), local('Menlo'), local('DejaVu Sans Mono'), local('Droid Sans Mono'), local('Roboto Mono'); size-adjust: 100%; ascent-override: 102%; descent-override: 30%; line-gap-override: 0%; }
+@font-face { font-family: 'Plex Fallback'; src: local('Arial'), local('ArialMT'), local('Helvetica'), local('Roboto'); size-adjust: 102.8%; ascent-override: 99.7%; descent-override: 26.8%; line-gap-override: 0%; }
 
 /* ---------- Themes ---------------------------------------------------------
    Each theme is complete: surfaces, ink, lines and a small pastel set.
@@ -106,9 +108,9 @@
 }
 
 :root {
-  --mono: 'JB Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-  --pixel: 'Departure', 'JB Mono', ui-monospace, monospace;
-  --sans: 'Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JB Mono', 'JB Fallback', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --pixel: 'Departure', 'Departure Fallback', monospace;
+  --sans: 'Plex Sans', 'Plex Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --gap: 12px;          /* tile gap, like a tiling WM */
   --pad: clamp(20px, 2.6vw, 32px);
   --wrap: 1240px;
@@ -195,7 +197,7 @@ p { margin: 0; }
 .hud { position: relative; z-index: 2; display: flex; align-items: center; height: 72px; max-width: calc(var(--wrap) + 64px); margin: 0 auto; padding: 0 clamp(16px, 2.4vw, 32px); }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg-0); white-space: nowrap; font: 400 22px/1 var(--pixel); letter-spacing: 0; }
 .brand svg { width: 28px; height: 28px; flex: none; }
-.hud .brand { padding: 6px 0; }
+.hud .brand { padding: 8px 0; }
 /* the home hero is already the wordmark: the HUD row stays (it holds the
    joystick's place) but nothing in it shows */
 body.home .hud > * { display: none; }
@@ -266,9 +268,9 @@ body.home .hud > * { display: none; }
 .hud-bare .hud__slot, .hud-bare .hud__joy, .sel-open .hud__joy { filter: none; }
 
 /* Scrolling down tucks the dock up out of the reading line; any scroll up
-   (or reaching the end, or the mouse at the top edge) brings it back
-   (select.js sets .hud-tuck). It stays put while the menu is open or it
-   holds keyboard focus. */
+   (or, on wide screens, reaching the end, or the mouse at the top edge)
+   brings it back (select.js sets .hud-tuck). It stays put while the menu
+   is open or it holds keyboard focus. */
 .hud__dock { transition: transform .18s steps(4); }
 html.hud-tuck:not(.sel-open) .hud__dock:not(:focus-within) { transform: translateY(calc(-100% - 12px)); }
 @media (prefers-reduced-motion: reduce) { .hud__dock { transition: none; } }
@@ -299,6 +301,8 @@ html.hud-tuck:not(.sel-open) .hud__dock:not(:focus-within) { transform: translat
 .link { justify-self: start; align-self: start; width: max-content; max-width: 100%; font: 500 14px var(--mono); color: var(--fg-0); text-decoration: none; border-bottom: 1px solid var(--line-2); padding-bottom: 2px; }
 .link:hover { border-color: var(--accent); color: var(--accent); }
 .link::after { content: " \2192"; content: " \2192" / ""; }
+.link { position: relative; }
+.link::before { content: ""; position: absolute; inset: -12px -6px; }
 
 /* ---------- Panes (tiles with titles set into the border) ---------- */
 .pane {
@@ -496,6 +500,7 @@ form.is-done .field { display: none; }
 .foot a { text-decoration: none; }
 .foot a:hover { color: var(--fg-0); text-decoration: underline; }
 .foot__base { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; margin-top: 48px; padding-top: 22px; background: repeating-linear-gradient(90deg, var(--line-2) 0 2px, transparent 2px 8px) 0 0 / 100% 2px no-repeat; font: 400 12.5px/1.6 var(--mono); color: var(--fg-2); }
+.foot__meta { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 24px 8px; }
 /* one-key shortcuts switch (term.js), styled like the qsh cue beside it */
 .keys-cue { font: 400 12px/1 var(--mono); color: var(--fg-2); background: none; border: 0; padding: 16px 6px; margin: -16px -6px; cursor: pointer; }
 .keys-cue:hover { color: var(--accent); }
@@ -734,6 +739,14 @@ form.is-done .field { display: none; }
   .person { grid-template-columns: 64px 1fr; }
   .person img, .person__init { width: 64px; height: 64px; font-size: 20px; }
   .foot__grid { grid-template-columns: 1fr; }
+  /* footer tap targets: 44px rows (the base line's links keep its layout; the dots drop so no line starts or ends on one) */
+  .foot ul { gap: 0; }
+  .foot ul a, .foot p > a { display: inline-flex; align-items: center; min-height: 44px; }
+  .foot .brand { padding: 8px 0; }
+  .themes > button { min-height: 44px; }
+  .foot__base a { display: inline-block; padding: 12px 0; margin: -12px 0; }
+  .foot__sep { display: none; }
+  .foot__meta { column-gap: 16px; }
   .pane { --pad: 20px; }
 }
 /* ---------- Page transitions ----------
