@@ -39,7 +39,7 @@
       if (opts.noBig && (kind === 'royal' || kind === 'diamond')) kind = 'spark';
       if (opts.kinds && !opts.kinds.includes(kind)) kind = opts.kinds[Math.floor(r() * opts.kinds.length)];
       const calm = r() < (opts.calm ?? 0.7);                       // most stars hold still; a few breathe
-      out.push({ x: Math.floor(r() * w), y: Math.floor(r() * h), kind, col: pick(COLS, r()), ph: r() * 6.283, sp: 0.1 + r() * 0.28, calm, base: r() });
+      out.push({ x: Math.floor(r() * w), y: Math.floor(r() * h), kind, col: pick(COLS, r()), ph: r() * 6.283, sp: 0.25 + r() * 0.45, calm, base: r() });   // a breath every 9 to 25 s
     }
     return out;
   }
@@ -84,13 +84,13 @@
   cv.className = 'nightsky'; cv.setAttribute('aria-hidden', 'true');
   const g = cv.getContext('2d');
   const U = 3;                                                                  // css px per sky pixel: chunky on purpose
-  let W = 0, H = 0, stars = [], P = pal(), comet = null, nextComet = 5000, last = 0, dark = true, scrolled = -1e9, clock = 0;
+  let W = 0, H = 0, stars = [], P = pal(), comet = null, nextComet = 3500, last = 0, dark = true, scrolled = -1e9, clock = 0;
   const isDark = () => (document.documentElement.dataset.theme || 'evergreen') !== 'paper';
   function size() {
     const w = Math.ceil(innerWidth / U), h = Math.ceil(innerHeight / U);
     if (w === W && h === H) return;
     W = w; H = h; cv.width = W; cv.height = H;
-    stars = field(W, H, Math.round((W * H) / 1500), 4242, { kinds: ['dust', 'dust', 'small', 'spark', 'ex', 'dotted'], calm: 0.52 });   // about half the stars breathe
+    stars = field(W, H, Math.round((W * H) / 1500), 4242, { kinds: ['dust', 'dust', 'small', 'spark', 'ex', 'dotted'], calm: 0.45 });   // a bit more than half the stars breathe
     // patches of sky: some areas faint, some full, some nearly empty
     for (const st of stars) { const z = 0.5 + 0.5 * Math.sin(st.x * 0.021 + 1.3) * Math.cos(st.y * 0.017 + 0.4) + 0.25 * Math.sin((st.x + st.y) * 0.009); st.a = Math.max(0.12, Math.min(1, z)); }
   }
@@ -101,7 +101,7 @@
     for (const st of stars) drawStar(put, st, now, P, st.a);
     if (!reduce) {
       if (!comet && now > nextComet && now - scrolled > 1500) comet = meteor(now, W, H, Math.random(), 0.3);
-      if (comet) { const q = (now - comet.t0) / comet.dur; if (q >= 1) { comet = null; nextComet = now + 9000 + Math.random() * 8000; } else drawComet(put, comet, q, P); }
+      if (comet) { const q = (now - comet.t0) / comet.dur; if (q >= 1) { comet = null; nextComet = now + 5000 + Math.random() * 6000; } else drawComet(put, comet, q, P); }
     }
     g.globalAlpha = 1;
   }
