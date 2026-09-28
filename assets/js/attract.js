@@ -571,7 +571,7 @@
   }
   // re-lay the current scene from its start (the world changed size or colour)
   function restart() {
-    cache.clear(); makeStars(); mode = 'play'; t0 = paused ? pausedAt : performance.now(); start(scene);
+    cache.clear(); makeStars(); mode = 'play'; t0 = paused ? pausedAt : performance.now(); offAt = t0; start(scene);
     if (reduce) scene.update(scene.dur, 0);          // the title's finished frame: extruded, glint gone
   }
   // A game paints at about 30fps: its motion snaps to art pixels several device pixels wide, so faster
@@ -579,16 +579,18 @@
   // every Nth display frame (N from the measured refresh interval) so the pacing stays even on 60, 120 and
   // 144Hz screens; the clocks are absolute, so nothing plays faster or slower.
   let vsync = 1000 / 60, prevNow = 0, skip = 0;
+  let offAt = 0;                                     // when the hero left the screen (off screen it asks for no frames)
   function tick(now) {
     raf = 0;
     if (paused) return;
+    if (!visible) return;
     const gap = now - prevNow; prevNow = now;
     // a long gap (tab switch, slow phone) counts as 40ms, so a device that can't reach 30fps paints every frame it gets
     if (gap > 2) vsync += (Math.min(gap, 40) - vsync) * 0.1;
     if (++skip < Math.max(1, Math.round((mode === 'morph' ? 16 : 32) / vsync))) { raf = requestAnimationFrame(tick); return; }
     skip = 0;
     const dt = Math.min(50, now - last) * SPEED; last = now;
-    if (visible && !document.hidden) {
+    if (!document.hidden) {
       const t = (now - t0) * SPEED;
       if (mode === 'play') {
         if (t >= scene.dur) {
@@ -602,7 +604,7 @@
       else { mt = t / SPEED; drawMorph(mt); }
       drawSky(now);
       blit();
-    } else { t0 += dt / SPEED; }
+    }
     raf = requestAnimationFrame(tick);
   }
   let rs = 0;
@@ -618,14 +620,21 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
   if (textBox && 'ResizeObserver' in window) new ResizeObserver(() => { clearTimeout(rs); rs = setTimeout(relayout, 120); }).observe(textBox);
   if (reduce) { scene = S.title; start(scene); scene.update(scene.dur, 0); setLabel(); paint(); return; }
-  new IntersectionObserver((es) => { visible = es.some((e) => e.isIntersecting); }).observe(cv);
+  new IntersectionObserver((es) => {
+    const v = es.some((e) => e.isIntersecting);
+    if (v === visible) return;
+    visible = v;
+    const n = performance.now();
+    if (!v) { cancelAnimationFrame(raf); raf = 0; offAt = n; }
+    else if (!paused && !raf) { t0 += n - offAt; last = prevNow = n; raf = requestAnimationFrame(tick); }
+  }).observe(cv);
   // pause / play on the window's bottom border (hidden until here, so it never shows without the loop)
   const pb = document.querySelector('[data-attract-pause]');
   const setPaused = (v) => {
     if (v === paused) return;
     const now = performance.now();
-    if (v) { paused = true; pausedAt = now; cancelAnimationFrame(raf); raf = 0; }
-    else { paused = false; t0 += now - pausedAt; last = now; if (!raf) raf = requestAnimationFrame(tick); }
+    if (v) { if (!visible) t0 += now - offAt; paused = true; pausedAt = now; cancelAnimationFrame(raf); raf = 0; }
+    else { paused = false; t0 += now - pausedAt; last = now; if (!visible) offAt = now; else if (!raf) raf = requestAnimationFrame(tick); }
     if (pb) (pb.firstElementChild || pb).textContent = paused ? 'play' : 'pause';
     const w = cv.closest('.h4'); if (w) w.classList.toggle('is-paused', paused);   // the title light holds too
   };

@@ -51,6 +51,7 @@
   position: relative; display: inline-grid; place-items: center; width: 24px; height: 24px; margin: -6px 0; padding: 0; vertical-align: middle;
   font: inherit; color: var(--warn); background: none; border: 0; border-radius: 0; opacity: .72; cursor: pointer; -webkit-tap-highlight-color: transparent;
 }
+.qq.qq::before { content: ""; position: absolute; inset: -10px; }
 .qq svg { width: 12px; height: 12px; fill: currentColor; animation: qq-bob 3s steps(1) infinite; }
 .qq[data-qq="menu"] svg { animation-delay: -.8s; }
 .qq[data-qq="theme"] svg { animation-delay: -1.9s; }
@@ -59,8 +60,8 @@
 .qq.qq:focus-visible { outline: 2px solid var(--accent); outline-offset: 0; }
 @keyframes qq-bob { 0% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
 .nav__in > .qq { margin-left: -16px; }
-.hud > .qq { margin-left: 8px; }
-.qq-slot > .qq { margin-left: 2px; }
+.hud > .qq { margin-left: 10px; }
+.qq-slot > .qq { margin-left: 4px; }
 .themes .qq-slot { display: inline-flex; align-items: center; }
 .qq.qq.is-got { color: var(--accent); opacity: 1; cursor: default; }
 .qq.is-got svg { animation: qq-got .45s steps(5) forwards; }

@@ -133,7 +133,7 @@
         <div class="sv-hero__copy">
           <p class="label label--accent">Services · AI setup and training</p>
           <h1 class="pg-hero__h" id="hero-h">Start where you are.</h1>
-          <p class="lede">Five levels, from a free Monday email to a monthly membership. Start at any one.</p>
+          <p class="lede">Five levels, from a free Monday email to a monthly membership.</p>
           <div class="pg-hero__cta">
             <a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free 20-minute call</a>
             <a class="link" href="#head-start">What a Head Start includes</a>
@@ -721,45 +721,50 @@
     steps.forEach((el) => el.classList.toggle('is-live', +el.dataset.pxsLv === lv));
   };
 
-  let i = 0, sc = S[0], t0 = 0, last = 0, mode = 'play', paused = false, seen = true, hold = false;
+  let i = 0, sc = S[0], t0 = 0, last = 0, mode = 'play', paused = false, seen = true, hold = false, raf = 0, stoppedAt = 0;
+  // the loop only runs while the screen is on view and playing: stopping keeps the frame, resuming picks it up
+  const halt = () => { if (raf) { cancelAnimationFrame(raf); raf = 0; stoppedAt = performance.now(); } };
+  const run = () => { if (raf || reduce || paused || !seen || document.hidden) return; const n = performance.now(); t0 += n - stoppedAt; last = n; raf = requestAnimationFrame(tick); };
+  const clock = () => (raf ? performance.now() : stoppedAt);   // the screen's now, frozen while stopped
   function go(j, now) {
     if (j === i) return;
     if (mode === 'play') render(sc, now - t0);
     const A = snap(); i = j; sc = S[j]; render(sc, 0); const B = snap();
     build(A, B); mode = 'morph'; t0 = now; sync(sc.lv); drawMorph(0); blit();
+    if (!raf) stoppedAt = now;
   }
   function tick(now) {
-    const dt = Math.min(64, now - last); last = now;
-    if (seen && !paused && !document.hidden) {
-      const t = now - t0;
-      if (mode === 'play') { if (!hold && t >= sc.dur) go((i + 1) % S.length, now); else { render(sc, t); blit(); } }
-      else if (t >= MORPH) { mode = 'play'; t0 = now; render(sc, 0); blit(); }
-      else { drawMorph(t); blit(); }
-    } else t0 += dt;
-    requestAnimationFrame(tick);
+    raf = 0; last = now;
+    if (!seen || paused) { stoppedAt = now; return; }
+    const t = now - t0;
+    if (mode === 'play') { if (!hold && t >= sc.dur) go((i + 1) % S.length, now); else { render(sc, t); blit(); } }
+    else if (t >= MORPH) { mode = 'play'; t0 = now; render(sc, 0); blit(); }
+    else { drawMorph(t); blit(); }
+    raf = requestAnimationFrame(tick);
   }
   const showStill = (j) => { i = j; sc = S[j]; render(sc, sc.still); blit(); sync(sc.lv); };
 
   const keys = [...new Set(names.flatMap((k) => need[k] || []))];
-  Promise.all(keys.map((k) => new Promise((res) => { const im = new Image(); im.onload = () => { IMG[k] = im; res(); }; im.onerror = res; im.src = '/assets/px/' + SRC[k]; }))).then(() => {
+  Promise.all(keys.map((k) => new Promise((res) => { const im = new Image(); im.onload = () => { IMG[k] = im; res(); }; im.onerror = res; im.src = '/assets/px/' + SRC[k] + '?v=__PXV__'; }))).then(() => {
     fit();
     const q = new URLSearchParams(location.search), dbg = names.indexOf(q.get('pxs'));
     if (dbg >= 0 && q.has('pxst')) { i = dbg; sc = S[dbg]; render(sc, +q.get('pxst')); blit(); sync(sc.lv); return; }
     if (reduce) { if (btn) btn.hidden = true; showStill(0); }
-    else { if (btn) btn.hidden = false; if (dbg >= 0) { i = dbg; sc = S[dbg]; } sync(sc.lv); t0 = last = performance.now(); render(sc, 0); blit(); requestAnimationFrame(tick); }
+    else { if (btn) btn.hidden = false; if (dbg >= 0) { i = dbg; sc = S[dbg]; } sync(sc.lv); t0 = last = performance.now(); render(sc, 0); blit(); raf = requestAnimationFrame(tick); }
     // hover or focus a step: show that level, and stay there while you look
     steps.forEach((el) => {
       const lv = +el.dataset.pxsLv, first = S.findIndex((s) => s.lv === lv);
       if (first < 0) return;
-      const on = () => { hold = true; if (reduce) return showStill(first); if (sc.lv !== lv) go(first, performance.now()); };
-      const off = () => { hold = false; if (!reduce && mode === 'play') t0 = Math.max(t0, performance.now() - sc.dur * 0.4); };
+      const on = () => { hold = true; if (reduce) return showStill(first); if (sc.lv !== lv) go(first, clock()); };
+      const off = () => { hold = false; if (!reduce && mode === 'play') t0 = Math.max(t0, clock() - sc.dur * 0.4); };
       el.addEventListener('mouseenter', on); el.addEventListener('mouseleave', off);
       el.addEventListener('focusin', on); el.addEventListener('focusout', off);
     });
-    if (btn) btn.addEventListener('click', () => { paused = !paused; btn.setAttribute('aria-pressed', String(paused)); btn.querySelector('span').textContent = paused ? 'play' : 'pause'; });
-    if ('IntersectionObserver' in window) new IntersectionObserver((es) => { seen = es.some((e) => e.isIntersecting); }).observe(cv);
+    if (btn) btn.addEventListener('click', () => { paused = !paused; if (paused) halt(); else run(); btn.setAttribute('aria-pressed', String(paused)); btn.querySelector('span').textContent = paused ? 'play' : 'pause'; });
+    if ('IntersectionObserver' in window) new IntersectionObserver((es) => { seen = es.some((e) => e.isIntersecting); if (seen) run(); else halt(); }).observe(cv);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) halt(); else run(); });
     if ('ResizeObserver' in window) new ResizeObserver(() => { fit(); blit(); }).observe(box);
-    addEventListener('qs:theme', () => { palette(); if (reduce || paused) { render(sc, reduce ? sc.still : performance.now() - t0); blit(); } });
+    addEventListener('qs:theme', () => { palette(); if (reduce || paused) { render(sc, reduce ? sc.still : clock() - t0); blit(); } });
   });
 })();
 </script>

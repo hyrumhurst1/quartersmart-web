@@ -117,7 +117,17 @@ try {
   const { createHash } = await import("node:crypto");
   const { existsSync } = await import("node:fs");
   const hashes = new Map();
+  // one hash for the whole flat sprite set, so a sprite has one URL whether HTML, CSS or a
+  // script loads it (scripts build sprite URLs at run time with the __PXV__ token)
+  const flatDir = join("dist", "assets", "px", "flat");
+  let PXV = null;
+  if (existsSync(flatDir)) {
+    const ph = createHash("sha1");
+    for (const f of readdirSync(flatDir).filter((f) => f.endsWith(".png")).sort()) ph.update(f).update(readFileSync(join(flatDir, f)));
+    PXV = ph.digest("hex").slice(0, 10);
+  }
   const hashOf = (rel) => {
+    if (PXV && /^assets\/px\/flat\/[\w-]+\.png$/.test(rel)) return PXV;
     if (!hashes.has(rel)) {
       const f = join("dist", rel);
       hashes.set(rel, existsSync(f) ? createHash("sha1").update(readFileSync(f)).digest("hex").slice(0, 10) : null);
@@ -125,13 +135,40 @@ try {
     return hashes.get(rel);
   };
   let n = 0;
+  // CSS and JS first, so the hashes the HTML walk stamps on them cover these rewrites:
+  // pass 1 stamps url(/assets/...) in CSS and the sprite token everywhere; pass 2 stamps
+  // script imports of /assets/js/*.js (their targets are final after pass 1)
+  const walkFiles = (dir, exts, fn) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const file = join(dir, e.name);
+      if (e.isDirectory()) { walkFiles(file, exts, fn); continue; }
+      if (!exts.some((x) => e.name.endsWith(x))) continue;
+      const s = readFileSync(file, "utf8"), out = fn(s, e.name);
+      if (out !== s) writeFileSync(file, out);
+    }
+  };
+  const pxv = (s) => (PXV ? s.replace(/__PXV__/g, PXV) : s);
+  // url(/assets/...) in stylesheets and in inline style attributes (the menu's --sp sprites)
+  const stampUrls = (s) => s.replace(/url\((['"]?)(\/assets\/[^'")?#]+\.(?:png|webp|jpe?g|gif|svg|woff2))(?:\?[^'")]*)?\1\)/g, (m, q, p) => {
+    const v = hashOf(p.slice(1));
+    if (!v) return m;
+    n++;
+    return `url(${q}${p}?v=${v}${q})`;
+  });
+  walkFiles("dist", [".css", ".js"], (s, name) => (name.endsWith(".css") ? stampUrls(pxv(s)) : pxv(s)));
+  walkFiles("dist", [".js"], (s) => s.replace(/(['"])(\/assets\/js\/[\w-]+\.js)(?:\?[^'"]*)?\1/g, (m, q, p) => {
+    const v = hashOf(p.slice(1));
+    if (!v) return m;
+    n++;
+    return `${q}${p}?v=${v}${q}`;
+  }));
   const walkBust = (dir) => {
     for (const e of readdirSync(dir, { withFileTypes: true })) {
       if (e.isDirectory()) { if (e.name !== "assets") walkBust(join(dir, e.name)); continue; }
       if (!e.name.endsWith(".html")) continue;
       const file = join(dir, e.name);
       const h = readFileSync(file, "utf8");
-      const out = h.replace(/((?:href|src)=")(\/assets\/[^"?#]+\.(?:css|js|png|webp|jpe?g|svg|gif))(?:\?[^"#]*)?"/g, (m, pre, path) => {
+      const out = stampUrls(pxv(h)).replace(/((?:href|src)=")(\/assets\/[^"?#]+\.(?:css|js|png|webp|jpe?g|svg|gif|woff2))(?:\?[^"#]*)?"/g, (m, pre, path) => {
         const v = hashOf(path.slice(1));
         if (!v) return m;
         n++;

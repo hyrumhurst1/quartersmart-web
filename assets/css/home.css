@@ -56,7 +56,9 @@
 .sigrows__v b { font: 400 11px var(--pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-right: 8px; }
 
 /* boot sequence */
-.boot__head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 48px; }
+.boot__head { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 0; align-items: end; margin-bottom: 48px; }
+/* the head sits on the four step columns below it, so the paragraph starts where step 03 does */
+.boot__head > .hs__head { grid-column: 1 / 3; padding-right: 28px; } .boot__head > p { grid-column: 3 / 5; padding-right: 28px; }
 .boot__rail { height: 4px; background: repeating-linear-gradient(90deg, var(--line-2) 0 8px, transparent 8px 12px); position: relative; }
 .boot__fill { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--boot, 0) * 100%); background: var(--accent); }
 .boot__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -109,14 +111,17 @@
 /* approach statement: the same h-1 scale as every other section head */
 .approachx__h { max-width: 20ch; }
 .approachx__h span { display: block; }
-.approachx__grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: 48px; }
+.approachx__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; align-items: center; margin-top: 48px; }
+/* three equal columns on the rules row's grid (its 24px gutter), so 02 starts where the third rule does */
+.approachx__grid > div { padding-right: 24px; } .approachx__art { justify-self: center; }
 .approachx__grid h3 { font: 400 22px/1 var(--pixel); color: var(--accent); margin-bottom: 12px; }
 .approachx__grid p { color: var(--fg-1); font-size: 17px; }
 /* the two text columns top-align so 01 and 02 share a baseline; the art centres between them */
 .approachx__grid { align-items: start; }
 .approachx__art { --kp: 8px; margin: 0; align-self: center; }
-/* keyboard-manual.png is 39x10: 8x on wide screens, 6x once the columns stack */
+/* keyboard-manual.png is 39x10: 8x on wide screens, 7x on narrow desktops (so it keeps air inside its third), 6x once the columns stack */
 .approachx__art .px { display: block; width: calc(var(--kp) * 39); height: calc(var(--kp) * 10); }
+@media (max-width: 1180px) { .approachx__art { --kp: 7px; } }
 .rules { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
 .rules li { padding: 24px 24px 0 0; color: var(--fg-1); font-size: 16px; }
 .rules b { display: block; font: 400 22px/1.2 var(--pixel); color: var(--fg-0); font-weight: 400; margin-bottom: 8px; }
@@ -126,7 +131,7 @@
 .p1__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px clamp(32px, 6vw, 96px); align-items: start; }
 .p1__id { display: grid; gap: 12px; justify-items: start; padding-top: 6px; }
 /* the same sign as "insert coin" below it: 22px pixel caps with a small stepped echo */
-.p1__tag { font: 400 22px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); --es: .06em; }
+.p1__tag { font: 400 22px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); --es: 1px; }
 /* "player one" blinks three times as the section comes into view (home.js adds .is-in), then holds steady */
 .p1.is-in .p1__tag { animation: pulse 1.6s steps(2) 3; }
 .p1__name { margin-top: 6px; font: 400 33px/1.1 var(--pixel); color: var(--fg-0); }
@@ -151,6 +156,7 @@
   .boot__steps { grid-template-columns: 1fr 1fr; row-gap: 32px; }
   .approachx__grid { grid-template-columns: 1fr; }
   .approachx__art { --kp: 6px; }
+  .boot__head > .hs__head, .boot__head > p { grid-column: auto; padding-right: 0; } .approachx__grid { gap: 24px; } .approachx__grid > div { padding-right: 0; }
   .rules { grid-template-columns: 1fr; }
   .levels__head { grid-template-columns: 1fr; }
   .closer__form { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 24px; }
@@ -176,6 +182,8 @@
   .p1__name { font-size: 27.5px; }
   .hx__art .ansi { --ansi: 4.4px; }
 }
+/* phones: the approach head sets as two lines, "Train your team." / "Automate the rest." (.h-1 beats the shared phone size) */
+@media (max-width: 420px) { .h-1.approachx__h { font-size: 27.5px; } }
 @media (prefers-reduced-motion: reduce) { .p1 .p1__tag, .closer__coin { animation: none; } }
 
 /* ---------- Hero: a title screen inside a terminal window ---------- */
@@ -221,6 +229,7 @@ button.win__b:hover { color: var(--fg-0); }
 .pu-shelf .pu.is-on { filter: none; animation: pu-bob 1s steps(2) infinite; }
 @keyframes pu-bob { 50% { transform: translateY(calc(var(--pp) * -1)); } }
 @media (max-width: 640px) { .pu-shelf { --pp: 3px; } }
+@media (max-width: 359px) { .pu-shelf { gap: calc(var(--pp) * 4); } }
 @media (prefers-reduced-motion: reduce) { .pu-shelf .pu.is-on { animation: none; } }
 
 /* closer: the arcade at night; three cabinets stand on the site's dotted horizon (2px dots every 8px),
@@ -234,7 +243,7 @@ button.win__b:hover { color: var(--fg-0); }
 /* the right marquee lines up with the column's right edge (the art has 2 clear pixels on its right) */
 .closer__cab { position: absolute; right: calc(max(var(--wrap-pad), (100% - var(--wrap)) / 2 + var(--wrap-pad)) - var(--cp) * 2); bottom: calc(var(--floor) + 2px); width: calc(var(--cp) * 56); height: calc(var(--cp) * 28); object-fit: cover; object-position: 50% 0; image-rendering: pixelated; pointer-events: none; }
 .closer .wrap { position: relative; }
-.closer__sign { font-size: 22px; color: var(--fg-0); --es: .06em; }
+.closer__sign { font-size: 22px; color: var(--fg-0); --es: 1px; }
 @media (max-width: 1000px) { .closer { --cp: 4px; --floor: 32px; padding-bottom: 200px; } }
 @media (max-width: 640px) { .closer { --cp: 3px; --floor: 24px; padding-bottom: 150px; } .closer__cab { right: 50%; transform: translateX(50%); } }
 /* phones: the hero text column never grows past the screen; long CTAs wrap */
@@ -272,10 +281,10 @@ body.home .hud { height: 0; }
   background: linear-gradient(180deg, color-mix(in srgb, var(--bg-0) 42%, #020507) 0%, color-mix(in srgb, var(--bg-0) 58%, #020507) 64%, var(--bg-0) 100%); }
 .h4__world { position: absolute; inset: 0; width: 100%; height: 100%; display: block; image-rendering: pixelated; cursor: pointer; }
 .h4__in { bottom: clamp(30px, 6.5vh, 80px); }
-.h4__hud { position: absolute; z-index: 2; top: 0; left: clamp(16px, 2.4vw, 32px); display: flex; align-items: center; gap: 18px; font: 400 11px/14px var(--pixel); letter-spacing: .08em; text-transform: uppercase; }
+.h4__hud { position: absolute; z-index: 2; top: 6px; left: clamp(16px, 2.4vw, 32px); display: flex; align-items: center; gap: 18px; font: 400 11px/14px var(--pixel); letter-spacing: .08em; text-transform: uppercase; }
 /* no corner label: the pause control only shows when it gets keyboard focus (reduced motion gets a still) */
 .h4__pause { margin: 0; padding: 8px 0; font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--fg-0); background: none; border: 0; cursor: pointer; }
 .h4__pause:not(:focus-visible) { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .h4__pause[hidden] { display: none; }
 [data-theme="paper"] .h4 { background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg-0) 100%); }
-@media (max-width: 760px) { .h4 { min-height: 520px; padding: 0; } .h4__in { bottom: 24px; } .h4__hud { top: 0; } }@media (prefers-reduced-motion: reduce) { .h4__world { cursor: default; } }
+@media (max-width: 760px) { .h4 { min-height: 520px; padding: 0; } .h4__in { bottom: 24px; } .h4__hud { top: 6px; } }@media (prefers-reduced-motion: reduce) { .h4__world { cursor: default; } }

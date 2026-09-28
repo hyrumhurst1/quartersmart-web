@@ -13,7 +13,7 @@
 /* ---------- Top ---------- */
 .lhead { position: relative; padding: clamp(44px, 5.5vw, 80px) 0 clamp(56px, 6vw, 88px); }
 .lhead__crumbs { margin: 0 0 26px; font: 400 14px/1.4 var(--sans); color: var(--fg-2); }
-.lhead__crumbs a { color: var(--fg-2); text-decoration: none; }
+.lhead__crumbs a { color: var(--fg-2); text-decoration: none; display: inline-block; padding: 13px 0; margin: -13px 0; }
 .lhead__crumbs a:hover { color: var(--fg-0); text-decoration: underline; }
 .lhead__crumbs i { font-style: normal; margin: 0 8px; opacity: .6; }
 .lhead__grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px clamp(32px, 6vw, 96px); align-items: end; }
@@ -21,9 +21,9 @@
 .lhead__h { margin: 0; font: 400 66px/1.04 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); max-width: 15ch; }
 .lhead .lede { max-width: 58ch; }
 .lhead__cta { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; }
-/* the header's one action is a quiet link: give it a 44px hit area without moving its underline */
-.lhead__cta .link { position: relative; }
-.lhead__cta .link::before { content: ""; position: absolute; left: -4px; right: -4px; top: 50%; height: 44px; transform: translateY(-50%); }
+/* quiet links (the header's one action, the closing links): a 44px hit area without moving the underline */
+.lhead__cta .link, .fixes__cta .link, .lclose__cta .link { position: relative; }
+.lhead__cta .link::before, .fixes__cta .link::before, .lclose__cta .link::before { content: ""; position: absolute; left: -4px; right: -4px; top: 50%; height: 44px; transform: translateY(-50%); }
 .lhead__meta { display: flex; flex-wrap: wrap; gap: 6px 26px; font-size: 15px; color: var(--fg-2); }
 .lhead__meta b { font-weight: 500; color: var(--fg-1); }
 .lhead__meta a { color: var(--fg-1); }
@@ -36,7 +36,7 @@
 .pxwin .win__t, .pxwin .pxstage__pips, .pxwin .pxstage__pause { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--win-bg); white-space: nowrap; }
 .pxwin .win__t { top: -8px; left: 16px; color: var(--fg-1); }
 .pxwin .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); animation: pulse 2.4s steps(2) infinite; }
-.pxstage { margin: 0; display: grid; justify-items: center; min-width: 0; }
+.pxstage { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; min-width: 0; }
 .pxstage__screen { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 3 / 2; }
 .pxstage__screen > * { grid-area: 1 / 1; }
 /* the screen snaps to the stage grid (whole multiples of its 144 art pixels,

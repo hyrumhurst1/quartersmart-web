@@ -435,6 +435,10 @@ main .btn--arcade { max-width: 100%; }
   .pxs.pxs--sv, .pxs.pxs--ap { margin-inline: -12px; }
   main .btn--arcade { padding-inline: 10px; }
 }
+@media (max-width: 420px) {
+  .pg-hero__h--wide { font-size: 27.5px; }
+  .sv-build__h { font-size: 33px; }
+}
 /* reduced motion: still frames. The live power-up hovers without hopping; nothing loops */
 @media (prefers-reduced-motion: reduce) {
   .pg-win > .win__t::before { animation: none; }
