@@ -22,7 +22,8 @@
 // Environment (Netlify UI only)
 //   CAL_ORIGIN           optional, default https://book.quartersmart.com (https only;
 //                        http only for localhost tests; an invalid value is refused)
-//   CAL_EVENT_TYPE_ID    set it (3). Without it a cold instance looks the id up first,
+//   CAL_EVENT_TYPE_ID    optional; hyrum/ai-game-plan on the default origin is 3. For any
+//                        other event, without it a cold instance looks the id up first,
 //                        which eats into the booking time budget
 //   CAL_USERNAME         default "hyrum"
 //   CAL_EVENT_SLUG       default "ai-game-plan"
@@ -110,11 +111,15 @@ function settings() {
   }
   const seg = (v, d) => (v && SAFE_SEG.test(v) ? v : d);
   const int = (v) => (v && /^\d{1,9}$/.test(v) ? Number(v) : null);
+  const user = seg(env('CAL_USERNAME'), 'hyrum'), slug = seg(env('CAL_EVENT_SLUG'), 'ai-game-plan');
+  // hyrum/ai-game-plan on the public calendar is event type 3 (verified 2026-09-27), so a cold
+  // instance never spends its time budget looking it up; any other event is still looked up
+  const knownId = origin === PUBLIC_CALENDAR && user === 'hyrum' && slug === 'ai-game-plan' ? 3 : null;
   return {
     origin,
-    user: seg(env('CAL_USERNAME'), 'hyrum'),
-    slug: seg(env('CAL_EVENT_SLUG'), 'ai-game-plan'),
-    eventTypeId: int(env('CAL_EVENT_TYPE_ID')),
+    user,
+    slug,
+    eventTypeId: int(env('CAL_EVENT_TYPE_ID')) || knownId,
     length: int(env('CAL_EVENT_LENGTH')) || 20,
     proxyKey: env('CAL_PROXY_KEY'),
     hourlyCap: int(env('BOOKING_HOURLY_CAP')) || 20,
