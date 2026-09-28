@@ -13,7 +13,6 @@ Hyrum Hurst is also CTO of Learning Journey AI (https://learningjourneyai.com/),
 
 - Job titles: Founder, QuarterSmart. CTO, Learning Journey AI.
 - Works in: Claude, ChatGPT and n8n, every day, on live client work.
-- Other roles: AI automation consultant (contract) for Dual Logic, a Washington, DC AI integration consultancy; pro bono AI work for Ability Builders, a Mesa nonprofit. These are his own roles, not QuarterSmart clients.
 - Verified n8n creator. Quoted in CyberNews on local AI models. Registered expert source on Qwoted.
 - Profile page: https://quartersmart.com/about/hyrum-hurst/
 
