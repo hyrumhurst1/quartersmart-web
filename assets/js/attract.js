@@ -517,10 +517,10 @@
     b.globalAlpha = 1;
   }
 
-  // ---------- the sky: pixel stars, a crescent moon and the odd comet (never morphed) ----------
+  // ---------- the sky: pixel stars, a crescent moon and falling stars (never morphed) ----------
   const SKY = window.QSSky;
   let stars = [], P = SKY ? SKY.pal() : null, comet = null, nextComet = 3500;
-  function makeStars() { if (SKY) stars = SKY.field(GW, Math.max(10, PH - 4), Math.round(GW * PH / (small ? 120 : 170)), 99, { noBig: true, calm: 0.75 }); }
+  function makeStars() { if (SKY) stars = SKY.field(GW, Math.max(10, PH - 4), Math.round(GW * PH / (small ? 120 : 170)), 99, { noBig: true, calm: 0.7 }); }
   function drawSky(now) {
     k2.clearRect(0, 0, GW, GH);
     const put = (x, y, c, a = 1) => { if (y >= PH - 1) return; k2.globalAlpha = a; k2.fillStyle = c; k2.fillRect(Math.round(x), Math.round(y), 1, 1); };
@@ -530,8 +530,8 @@
       const mr = small ? 4 : 5;
       SKY.crescent(put, Math.round(Math.min(GW * (small ? 0.8 : 0.84), GW - CLEAR_R - mr - 2)), small ? 12 : 10, mr, P);
       if (!reduce) {
-        if (!comet && now > nextComet) { const r = ((now * 9301) % 1000) / 1000; comet = { t0: now, dur: 1000 + r * 400, x0: GW * (0.45 + r * 0.5), y0: 2 + r * 6, len: 10 + Math.round(r * 5) }; comet.x1 = comet.x0 - GW * 0.3; comet.y1 = comet.y0 + PH * 0.35; }
-        if (comet) { const q = (now - comet.t0) / comet.dur; if (q >= 1) { comet = null; nextComet = now + 7000 + (now % 5000); } else SKY.drawComet(put, comet, q, P); }
+        if (!comet && now > nextComet) comet = SKY.meteor ? SKY.meteor(now, GW, PH, ((now * 9301) % 1000) / 1000, 0.2) : null;
+        if (comet) { const q = (now - comet.t0) / comet.dur; if (q >= 1) { comet = null; nextComet = now + 5000 + (now % 4000); } else SKY.drawComet(put, comet, q, P); }
       }
     }
     // the horizon: one quiet dotted line where the game ends and the headline begins, one art pixel
