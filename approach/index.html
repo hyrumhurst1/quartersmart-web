@@ -65,24 +65,25 @@
 
 <main id="main">
 
-  <!-- Top: the headline and a pixel screen inside one terminal window. The screen plays the
-       approach scene by scene; the window's top border names the scene on screen. -->
+  <!-- Top: the headline across the text column on the open night, then the line on the left and
+       the pixel screen in a terminal window on the right (its right edge on the column). The screen
+       plays the approach scene by scene; the window's top border names the scene on screen. -->
   <section class="ap-hero" aria-labelledby="hero-h">
-    <div class="wrap">
-      <div class="pg-win ap-hero__grid" data-pxs-win>
+    <div class="wrap ap-hero__grid">
+      <div class="ap-hero__h">
+        <p class="label label--accent">Our approach</p>
+        <h1 class="pg-hero__h pg-hero__h--wide" id="hero-h"><span>Train your team.</span> <span class="accent">Automate the rest.</span></h1>
+      </div>
+      <div class="ap-hero__copy">
+        <p class="lede">How we pick the new AI worth your time, set it up safely in accounts you own, and train your team until it's part of the day.</p>
+        <div class="pg-hero__cta">
+          <a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free 20-minute call</a>
+          <a class="link" href="#method">See the method</a>
+        </div>
+      </div>
+      <div class="pg-win pg-win--art ap-hero__art" data-pxs-win>
         <span class="win__t" aria-hidden="true">approach.exe</span>
         <span class="win__r" aria-hidden="true" data-pxs-label>01/12<span class="win__nm"> train</span></span>
-        <div class="ap-hero__h">
-          <p class="label label--accent">Our approach</p>
-          <h1 class="pg-hero__h pg-hero__h--wide" id="hero-h"><span>Train your team.</span> <span class="accent">Automate the rest.</span></h1>
-        </div>
-        <div class="ap-hero__copy">
-          <p class="lede">How we pick the new AI worth your time, set it up safely in accounts you own, and train your team until it's part of the day.</p>
-          <div class="pg-hero__cta">
-            <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
-            <a class="link" href="#method">See the method</a>
-          </div>
-        </div>
         <div class="pxs pxs--ap">
           <canvas class="pxs__cv" data-pxs="approach" width="160" height="100" aria-hidden="true"></canvas>
         </div>
@@ -129,7 +130,16 @@
   const tri = (v, a, z) => { const L = z - a, m = ((v - a) % (2 * L) + 2 * L) % (2 * L); return a + (m < L ? m : 2 * L - m); };
   const floor = () => { for (let x = 0; x < W; x += 2) P(x, FL, C.line); };
   const IMG = {};
-  const spr = (k, x, y) => { if (IMG[k]) b.drawImage(IMG[k], Math.round(x), Math.round(y)); };
+  // the flat sprites, at a whole-number scale s: each art pixel is an s x s block of the buffer
+  const spr = (k, x, y, s = 1) => { const im = IMG[k]; if (im) { b.imageSmoothingEnabled = false; b.drawImage(im, Math.round(x), Math.round(y), im.width * s, im.height * s); } };
+  // the same sprite as a one-colour silhouette (the site's inactive look), cached per colour
+  const SIL = {};
+  const sil = (k, x, y, s, col) => {
+    const im = IMG[k]; if (!im) return;
+    let c = SIL[k + col];
+    if (!c) { c = SIL[k + col] = document.createElement('canvas'); c.width = im.width; c.height = im.height; const g = c.getContext('2d'); g.drawImage(im, 0, 0); g.globalCompositeOperation = 'source-in'; g.fillStyle = col; g.fillRect(0, 0, c.width, c.height); }
+    b.imageSmoothingEnabled = false; b.drawImage(c, Math.round(x), Math.round(y), c.width * s, c.height * s);
+  };
   const path = (pts, n, c) => {                       // a pixel polyline, only its first n pixels
     let k = 0;
     for (let s = 0; s < pts.length - 1; s++) {
@@ -173,23 +183,26 @@
     // Detect / Signals: the dish listens, launches light up across the sky
     radar: { lv: 0, dur: 5200, still: 4600, draw(t) {
       floor();
-      const x0 = Math.round(W * 0.09), y0 = FL - 81;
-      spr('radar', x0, y0);
-      const cx = x0 + 32, cy = y0 + 9;
+      const x0 = Math.round(W * 0.06), y0 = FL - 48;
+      spr('radar', x0, y0, 2);
+      const cx = x0 + 25, cy = y0 + 11;
+      // the arcs and blips sit on the tower's own 2x2 cells, so the scene has one pixel size
+      const sn = (v, o) => o + Math.floor((v - o) / 2) * 2, Q = (x, y, c) => R(sn(x, x0), sn(y, y0), 2, 2, c);
+      const boxQ = (x, y, w, h, c) => { R(x, y, w, 2, c); R(x, y + h - 2, w, 2, c); R(x, y, 2, h, c); R(x + w - 2, y, 2, h, c); };
       for (let k = 0; k < 3; k++) {
-        const r = Math.floor(((t + k * 800) % 2400) / 2400 * W * 0.9 / 3) * 3;
-        if (r < 8) continue;
+        const r = Math.floor(((t + k * 800) % 2400) / 2400 * W * 0.9 / 4) * 4;
+        if (r < 18) continue;
         const c = r < W * 0.45 ? C.acc : C.dim;
-        ring(cx, cy, r, c, -1.15, 0.3); ring(cx, cy, r + 1, c, -1.15, 0.3);
+        for (let a = -1.15; a <= 0.3; a += 1 / (r * 0.8)) Q(cx + Math.cos(a) * r, cy + Math.sin(a) * r, c);
       }
       // each launch: a square blip that pings once, then holds with a steady glow
       const B = [[0.6, 0.22, C.butter, 500], [0.84, 0.38, C.rose, 1200], [0.56, 0.52, C.teal, 1900], [0.88, 0.14, C.acc, 2600], [0.74, 0.64, C.cream, 3300]];
       for (const [fx, fy, c, at] of B) {
         if (t < at) continue;
-        const x = Math.round(W * fx), y = Math.round(FL * fy), a = t - at;
-        if (a < 600) box1(x - 2 - Math.floor(a / 150) * 2, y - 2 - Math.floor(a / 150) * 2, 5 + Math.floor(a / 150) * 4, 5 + Math.floor(a / 150) * 4, c);
-        R(x - 1, y - 1, 3, 3, c);
-        if (Math.floor((t + at) / 450) % 3 === 0) box1(x - 2, y - 2, 5, 5, c);
+        const x = sn(Math.round(W * fx), x0), y = sn(Math.round(FL * fy), y0), a = t - at, g = Math.floor(a / 150) * 2;
+        if (a < 600) boxQ(x - 4 - g, y - 4 - g, 12 + g * 2, 12 + g * 2, c);
+        R(x, y, 4, 4, c);
+        if (Math.floor((t + at) / 450) % 3 === 0) boxQ(x - 4, y - 4, 12, 12, c);
       }
     } },
 
@@ -252,19 +265,28 @@
     // Day One Setup: the assistant gets connected to the tools it should touch
     connect: { lv: 2, dur: 5400, still: 5000, draw(t) {
       floor();
-      const ax = Math.round((W - 78) / 2), ay = FL - 45;
-      spr('assistant', ax, ay);
+      const ax = Math.round((W - 32) / 2), ay = FL - 28;
+      spr('assistant', ax, ay, 2);
+      // the icons and wires are drawn on the assistant's own 2x2 cells (one pixel size
+      // for the whole scene): a cell grid from (ax, ay), each cell a 2x2 block
+      const Q = (u, v, c) => R(ax + u * 2, ay + v * 2, 2, 2, c);
+      const patQ = (u, v, rows, map) => rows.forEach((row, j) => { for (let i = 0; i < row.length; i++) { const c = map[row[i]]; if (c) Q(u + i, v + j, c); } });
       // four wires that never cross: the inner two turn high, the outer two turn low
-      const icons = [[MAIL, 11], [CAL, 9], [DOC, 8], [CARD, 11]], top = 6, busHi = top + 16, busLo = top + 24;
+      const U0 = -Math.floor(ax / 2), top = -Math.floor(ay / 2) + 2, busHi = top + 12, busLo = top + 15;
+      const icons = [[MAIL, 11], [CAL, 9], [DOC, 8], [CARD, 11]];
       icons.forEach(([rows, w], k) => {
-        const ix = Math.round(W * (0.14 + k * 0.24)) - (w >> 1), start = 300 + k * 650, dx = ax + 24 + k * 8, bus = k === 1 || k === 2 ? busHi : busLo;
-        const pts = [[ix + (w >> 1), top + rows.length + 2], [ix + (w >> 1), bus], [dx, bus], [dx, ay + 2 + Math.max(0, k - 1)]];
+        const iu = U0 + Math.round(W * (0.14 + k * 0.24) / 2) - (w >> 1), start = 300 + k * 650, du = [3, 5, 10, 12][k], bus = k === 1 || k === 2 ? busHi : busLo;
+        const pts = [[iu + (w >> 1), top + rows.length + 1], [iu + (w >> 1), bus], [du, bus], [du, 1]];
         const L = plen(pts), n = Math.floor(cl((t - start) / 520) * L), done = n >= L;
-        pat(ix, top, rows, { x: done ? C.acc : C.dim, o: done ? C.hi : C.dim });
-        path(pts, n, done ? C.cream : C.mid);
-        if (done) { const [px, py] = pat1(pts, Math.floor(((t - start - 520) % 900) / 900 * L)); R(px - 1, py - 1, 3, 3, C.acc); }
+        patQ(iu, top, rows, { x: done ? C.acc : C.dim, o: done ? C.hi : C.dim });
+        let m = 0;
+        for (let s = 0; s < pts.length - 1 && m < n; s++) {
+          const [u0, v0] = pts[s], [u1, v1] = pts[s + 1], Ls = Math.max(Math.abs(u1 - u0), Math.abs(v1 - v0));
+          for (let i = s ? 1 : 0; i <= Ls && m < n; i++, m++) Q(u0 + (u1 - u0) * i / Ls, v0 + (v1 - v0) * i / Ls, done ? C.cream : C.mid);
+        }
+        if (done) { const [pu, pv] = pat1(pts, Math.floor(((t - start - 520) % 900) / 900 * L)); Q(pu, pv, C.acc); Q(pu - 1, pv, C.acc); Q(pu + 1, pv, C.acc); Q(pu, pv - 1, C.acc); Q(pu, pv + 1, C.acc); }
       });
-      if (t > 3100 && Math.floor(t / 300) % 2) R(ax + 44, ay + 12, 3, 4, C.acc);
+      if (t > 3100 && Math.floor(t / 300) % 2) R(ax + 22, ay + 10, 2, 2, C.acc);
     } },
 
     // Day One Setup: the list that makes it work, ticked in order
@@ -283,16 +305,16 @@
     // Rollout Session: the team learns on its own work
     rollout: { lv: 2, dur: 5200, still: 4800, draw(t) {
       floor();
-      const kx = W - 116 - Math.round(W * 0.03), ky = FL - 41;
+      const gx = Math.round((W - 115) / 2), kx = gx + 37, ky = FL - 20;
       const shirts = [C.teal, C.rose, C.butter];
-      spr('keys', kx, ky);
-      for (let k = 0; k < 3; k++) {                    // the team, side by side at the desk
-        const x = Math.round(kx / 2 - 16) + k * 11, at = 700 + k * 1000, got = t > at;
+      spr('keys', kx, ky, 2);
+      for (let k = 0; k < 3; k++) {                    // the team, side by side at the keyboard
+        const x = gx + k * 11, at = 700 + k * 1000, got = t > at;
         guy(x, FL - 1, shirts[k], got && t - at < 300 ? 2 : 0);
         if (got) pat(x, FL - 1 - 11 - 9, BULB, { x: C.butter, o: C.mid });
       }
       const K = KEYS();
-      if (K.length) for (let j = 0; j < 4; j++) { const p = K[(Math.floor(t / 110) * 7 + j * 13) % K.length]; R(kx + p[0], ky + p[1], 2, 1, C.acc); }
+      if (K.length) for (let j = 0; j < 3; j++) { const p = K[(Math.floor(t / 110) * 7 + j * 5) % K.length]; R(kx + p[0] * 2, ky + p[1] * 2, p[2] * 2, 2, C.acc); }
     } },
 
     // First Quarter: thirteen weeks fill the quarter, and the quarter pops out (the mark)
@@ -334,7 +356,7 @@
       R(0, by, W, 1, C.dim); R(0, by + 5, W, 1, C.dim);
       for (let x = -(Math.floor(t / 90) % 6); x < W; x += 6) R(x, by + 2, 2, 2, C.line);
       R(rx - 8, ry - 4, 48, 2, C.dim); R(rx - 8, ry - 4, 2, by - ry + 4, C.dim); R(rx + 38, ry - 4, 2, by - ry + 4, C.dim);
-      spr('robot', rx, ry);
+      spr('robot', rx, ry, 2);
       const sx = rx + 16, cols = [C.rose, C.butter, C.teal, C.cream], sp = 0.032, cyc = W + 24;
       let press = 0;
       for (let k = 0; k < 6; k++) {
@@ -364,8 +386,8 @@
     // Train your team: type into the tool, get something useful back
     train: { lv: -1, dur: 5200, still: 4600, draw(t) {
       floor();
-      const kx = Math.round((W - 116) / 2), ky = FL - 41, bw = Math.round(W * 0.72), bx = Math.round((W - bw) / 2), by = 8;
-      spr('keys', kx, ky);
+      const kx = Math.round((W - 78) / 2), ky = FL - 20, bw = Math.round(W * 0.72), bx = Math.round((W - bw) / 2), by = Math.round((FL - 54) / 2);
+      spr('keys', kx, ky, 2);
       box1(bx, by, bw, 13, C.dim);
       const typed = Math.floor(cl((t - 300) / 1500) * (bw - 16));
       R(bx + 4, by + 5, typed, 3, C.hi);
@@ -373,7 +395,7 @@
       const ans = [0.9, 0.7, 0.8];
       ans.forEach((a, k) => { const s = cl((t - 2000 - k * 350) / 400); if (s > 0) R(bx, by + 19 + k * 6, Math.round((bw - 10) * a * s), 3, k ? C.teal : C.acc); });
       const K = KEYS();
-      if (K.length && t < 1900) for (let j = 0; j < 3; j++) { const p = K[(Math.floor(t / 90) * 5 + j * 17) % K.length]; R(kx + p[0], ky + p[1], 2, 1, C.acc); }
+      if (K.length && t < 1900) for (let j = 0; j < 2; j++) { const p = K[(Math.floor(t / 90) * 5 + j * 7) % K.length]; R(kx + p[0] * 2, ky + p[1] * 2, p[2] * 2, 2, C.acc); }
     } },
 
     // Train your team: until it is part of the day
@@ -390,22 +412,26 @@
       }
     } },
 
-    // The method: detect, decode, deploy, stay current. A signal runs the rail
+    // The method: detect, decode, deploy, stay current. Four flat power-ups at 2x
+    // (a dish, a lens, the setup kit, the quarter token), each a dim silhouette
+    // until the signal running the rail under them reaches it; then the loop back.
+    // Everything sits on one 2x2 cell grid.
     rail: { lv: -1, dur: 5400, still: 4400, draw(t) {
       floor();
-      const y = Math.round(FL * 0.5), xs = [0.14, 0.38, 0.62, 0.86].map((f) => Math.round(W * f)), icons = [
-        ['..xx...', '.x..x..', 'x....x.', 'x.....x', '.x...x.', '..xxx..', '...x...', '..xxx..'],
-        ['xxxxxxx', 'x.....x', 'x.xxx.x', 'x.....x', 'x.xx..x', 'x.....x', 'xxxxxxx'],
-        PLUG, LOOP];
+      const y0 = 16, ry = y0 + 32 + 8, xs = [0.14, 0.38, 0.62, 0.86].map((f) => Math.round(W * f / 2) * 2), names = ['pradar', 'decode', 'setup', 'token'];
       const per = 900, reach = cl((t - 300) / per, 0, 3.999), seg = Math.floor(reach), f = reach - seg;
-      for (let k = 0; k < 3; k++) for (let x = xs[k] + 8; x < xs[k + 1] - 8; x += 2) P(x, y, k < seg || (k === seg && (x - xs[k]) / (xs[k + 1] - xs[k]) < f) ? C.acc : C.dim);
+      for (let k = 0; k < 3; k++) for (let x = xs[k]; x < xs[k + 1]; x += 4) R(x, ry, 2, 2, k < seg || (k === seg && (x - xs[k]) / (xs[k + 1] - xs[k]) < f) ? C.acc : C.dim);
       xs.forEach((x, k) => {
-        const on = k <= seg, ic = icons[k], w = ic[0].length, h = ic.length;
-        box1(x - 8, y - 8, 17, 17, on ? C.acc : C.dim);
-        pat(x - (w >> 1), y - (h >> 1), ic, { x: on ? C.hi : C.mid });
+        const on = k <= seg;
+        if (on) spr(names[k], x - 16, y0, 2); else sil(names[k], x - 16, y0, 2, C.dim);
+        R(x, y0 + 34, 2, ry - y0 - 34, on ? C.acc : C.dim);
       });
-      if (t > 300 + per * 3) { const q = ((t - 300 - per * 3) % 1400) / 1400, ang = q * Math.PI; const cx = (xs[0] + xs[3]) / 2, rr = (xs[3] - xs[0]) / 2; R(cx + Math.cos(ang) * rr - 1, y + 14 + Math.sin(ang) * 12 - 1, 3, 3, C.acc); for (let a = 0; a < Math.PI; a += 0.05) P(cx + Math.cos(a) * rr, y + 14 + Math.sin(a) * 12, C.line); }
-      else R(xs[seg] + (xs[Math.min(3, seg + 1)] - xs[seg]) * f - 1, y - 1, 3, 3, C.hi);
+      const snap = (v) => Math.floor(v / 2) * 2;
+      if (t > 300 + per * 3) {
+        const q = ((t - 300 - per * 3) % 1400) / 1400, cx = (xs[0] + xs[3]) / 2, rr = (xs[3] - xs[0]) / 2;
+        for (let a = 0; a < Math.PI; a += 0.04) R(snap(cx + Math.cos(a) * rr), snap(ry + 4 + Math.sin(a) * 14), 2, 2, C.line);
+        R(snap(cx + Math.cos(q * Math.PI) * rr) - 2, snap(ry + 4 + Math.sin(q * Math.PI) * 14) - 2, 4, 4, C.acc);
+      } else R(snap(xs[seg] + (xs[Math.min(3, seg + 1)] - xs[seg]) * f) - 2, ry - 2, 4, 4, C.hi);
     } },
 
     // Decode: most launches land in wait or ignore
@@ -452,14 +478,14 @@
     secure: { lv: -1, dur: 5200, still: 4800, draw(t) {
       floor();
       const rx = Math.round(W / 2) - 16, ry = FL - 32, top = 12;
-      spr('robot', rx, ry);
+      spr('robot', rx, ry, 2);
       const icons = [[MAIL, 11], [CAL, 9], [DOC, 8], [CARD, 11]];
       const LOCK = ['.xxxxx.', 'xx...xx', 'x.....x', 'xxxxxxx', 'xxx.xxx', 'xxx.xxx', 'xxxxxxx'];
       let lock = 0;
       icons.forEach(([rows, w], k) => {
         const ix = Math.round(W * (0.14 + k * 0.24)) - (w >> 1), give = k === 1;
         if (give) {
-          const pts = [[ix + (w >> 1), top + rows.length + 2], [ix + (w >> 1), ry - 8], [rx + 16, ry - 8], [rx + 16, ry - 1]];
+          const pts = [[ix + (w >> 1), top + rows.length + 2], [ix + (w >> 1), ry - 8], [rx + 14, ry - 8], [rx + 14, ry - 1]];
           const L = plen(pts), n = Math.floor(cl((t - 400) / 900) * L), done = n >= L;
           path(pts, n, done ? C.cream : C.mid);
           pat(ix, top, rows, { x: done ? C.acc : C.dim, o: done ? C.hi : C.dim });
@@ -487,13 +513,15 @@
     } },
   };
 
-  // keyboard key tops, found once from the sprite (light pixels on the left half)
+  // the key caps, found once from the sprite: each run of cream on the keyboard, [x, y, length].
+  // The keyboard is x 0 to 21 of keyboard-manual.png; the manual's pages beside it are cream too
   let _keys = null;
   function KEYS() {
     if (_keys || !IMG.keys) return _keys || [];
-    const c = document.createElement('canvas'); c.width = 116; c.height = 41; const g = c.getContext('2d'); g.drawImage(IMG.keys, 0, 0);
-    const d = g.getImageData(0, 0, 58, 41).data; _keys = [];
-    for (let y = 0; y < 41; y++) for (let x = 0; x < 57; x += 2) { const i = (y * 58 + x) * 4; if (d[i + 3] > 200 && d[i] + d[i + 1] + d[i + 2] > 560) _keys.push([x, y]); }
+    const KW = 22, KH = 10, c = document.createElement('canvas'); c.width = KW; c.height = KH; const g = c.getContext('2d'); g.drawImage(IMG.keys, 0, 0);
+    const d = g.getImageData(0, 0, KW, KH).data, lit = (x, y) => { const i = (y * KW + x) * 4; return d[i + 3] > 200 && d[i] + d[i + 1] + d[i + 2] > 560; };
+    _keys = [];
+    for (let y = 0; y < KH; y++) for (let x = 0; x < KW; x++) if (lit(x, y) && (x === 0 || !lit(x - 1, y))) { let n = 1; while (x + n < KW && lit(x + n, y)) n++; _keys.push([x, y, n]); }
     return _keys;
   }
 
@@ -503,8 +531,9 @@
   };
   const names = (SETS[cv.dataset.pxs] || SETS.services).filter((k) => SC[k]);
   const S = names.map((k) => ({ name: k, ...SC[k] }));
-  const SRC = { radar: 'sprite-radar.png', assistant: 'sprite-assistant.png', keys: 'sprite-keyboard-manual.png', robot: 'pu-robot.png' };
-  const need = { radar: ['radar'], connect: ['assistant'], rollout: ['keys'], train: ['keys'], belt: ['robot'], secure: ['robot'] };
+  const SRC = { radar: 'flat/radar-tower.png', assistant: 'flat/assistant.png', keys: 'flat/keyboard-manual.png', robot: 'flat/pu-robot.png',
+    pradar: 'flat/pu-radar.png', decode: 'flat/pu-decode.png', setup: 'flat/pu-setup.png', token: 'flat/pu-token.png' };
+  const need = { radar: ['radar'], connect: ['assistant'], rollout: ['keys'], train: ['keys'], belt: ['robot'], secure: ['robot'], rail: ['pradar', 'decode', 'setup', 'token'] };
 
   // the window's status: the level on screen (services), or the scene and its place in the run (approach)
   const LVN = ['signals', 'head start', 'day one setup', 'first quarter', 'build'];
@@ -628,8 +657,8 @@
 </script>
 <!-- pxs:end -->
 
-  <!-- 1. The two halves, on a two-sided court -->
-  <section class="ap-halves" id="two-halves" aria-labelledby="halves-h">
+  <!-- 1. The two halves, side by side -->
+  <section class="ap-halves seam" id="two-halves" aria-labelledby="halves-h">
     <div class="wrap ap-intro">
       <h2 class="ap-intro__h" id="halves-h">Being early only pays if people use it.</h2>
       <p class="body-l">So every engagement has two halves, in this order. Training comes first because an automation is only as good as the people who check it.</p>
@@ -662,14 +691,14 @@
       <div class="wrap">
         <div class="pg-go">
           <p class="pg-go__t">Start with the first half.</p>
-          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
+          <a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free 20-minute call</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 2. The method, down a rail -->
-  <section class="ap-method" id="method" aria-labelledby="method-h">
+  <section class="ap-method seam" id="method" aria-labelledby="method-h">
     <div class="wrap">
       <div class="sv-head">
         <h2 class="h-1" id="method-h">From announcement to in use.</h2>
@@ -712,13 +741,13 @@
       </ol>
       <div class="pg-go">
         <p class="pg-go__t">Ask what's worth switching on this week.</p>
-        <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
+        <a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free 20-minute call</a>
       </div>
     </div>
   </section>
 
   <!-- 3. Principles, under the one sign on this page -->
-  <section class="band band--deep ap-princ" id="principles" aria-labelledby="principles-h">
+  <section class="ap-princ seam" id="principles" aria-labelledby="principles-h">
     <div class="wrap ap-princ__grid">
       <div class="ap-sign" aria-hidden="true" inert>
         <span class="ap-sign__go">go</span>
@@ -749,7 +778,7 @@
   </section>
 
   <!-- 4. How we pick tools: six open questions -->
-  <section class="ap-pick" id="picking-tools" aria-labelledby="picking-h">
+  <section class="ap-pick seam" id="picking-tools" aria-labelledby="picking-h">
     <div class="wrap">
       <div class="sv-head">
         <h2 class="h-1" id="picking-h">Six questions before anything gets a go.</h2>
@@ -768,13 +797,13 @@
       </ol>
       <div class="pg-go">
         <p class="pg-go__t">Bring the tool you're weighing.</p>
-        <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a free 20-minute call</a>
+        <a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a free 20-minute call</a>
       </div>
     </div>
   </section>
 
   <!-- 5. Security basics -->
-  <section class="band band--slate ap-secure" id="security" aria-labelledby="security-h">
+  <section class="ap-secure seam" id="security" aria-labelledby="security-h">
     <div class="wrap ap-secure__grid">
       <div class="ap-secure__head">
         <p class="label">Security basics</p>
@@ -794,12 +823,12 @@
   </section>
 
   <!-- Close: the booking call, by an idle pong cabinet waiting for a player -->
-  <section class="pg-close" aria-labelledby="cta-h">
+  <section class="pg-close seam" aria-labelledby="cta-h">
     <div class="wrap pg-close__in">
       <p class="pg-close__sign echo" aria-hidden="true">press start</p>
       <h2 class="pg-close__h" id="cta-h">Start with what you already pay for.</h2>
       <p class="body-l">The fastest wins are often in software you already have. Tell us what you use and what's eating your team's week. We'll tell you what's worth doing now and what can wait.</p>
-      <div class="pg-close__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book">Book a free 20-minute call</a><a class="link" href="/services/">See the services</a></div>
+      <div class="pg-close__cta"><a class="btn btn--arcade btn--xl" href="/insert-coin/" data-cta="book">Book a free 20-minute call</a><a class="link" href="/services/">See the services</a></div>
       <p class="pg-close__fine">Not ready to talk? <a href="/signals/">Read this week's Signals</a> first.</p>
     </div>
     <span class="pg-close__art pg-close__art--cab" aria-hidden="true"></span>

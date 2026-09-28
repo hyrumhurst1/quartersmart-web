@@ -109,7 +109,7 @@
     el.innerHTML = `<svg class="qq-toast__coin" viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true" focusable="false">${
       part('translate(6 0) scale(-1 1)', '#2a9a70', -3, -3, 0)}${part('translate(6 12) scale(-1 -1)', '#1d7a58', -3, 3, 1)}${
       part('translate(6 12) scale(1 -1)', '#2a9a70', 3, 3, 2)}${part('translate(6 0)', '#a9d99f', 3, -3, 3)}</svg>
-      <p><b class="echo echo--sm">4/4. That's a whole.</b> <span><a href="/contact/">Book a call</a> and say you found them.</span></p>
+      <p><b class="echo echo--sm">4/4. That's a whole.</b> <span><a href="/insert-coin/">Book a call</a> and say you found them.</span></p>
       <button type="button" class="qq-toast__x" aria-label="Dismiss"><svg viewBox="0 0 7 7" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path d="M0 0h1v1H0zM1 1h1v1H1zM2 2h1v1H2zM3 3h1v1H3zM4 4h1v1H4zM5 5h1v1H5zM6 6h1v1H6zM6 0h1v1H6zM5 1h1v1H5zM4 2h1v1H4zM2 4h1v1H2zM1 5h1v1H1zM0 6h1v1H0z"/></svg></button>`;
     const close = () => { set(SEEN, '1'); el.classList.add('is-out'); setTimeout(() => el.remove(), reduce ? 0 : 200); document.removeEventListener('keydown', esc); };
     const esc = (e) => { if (e.key === 'Escape') close(); };

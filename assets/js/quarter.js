@@ -9,8 +9,8 @@
 // where there is room for one) and the 25% pops once. The 25% in the DOM always
 // reads 25%. Click the quarter to lose a life; three and it asks you to
 // continue. It plays once when the window scrolls into view (every frame is a
-// pure function of its clock); afterwards a tiny UFO keeps drifting through the
-// far sky. "replay" runs it again; "pause" on the bottom border holds it.
+// pure function of its clock). "replay" runs it again; "pause" on the bottom
+// border holds it.
 (() => {
   const sec = document.querySelector('[data-quarter]');
   if (!sec) return;
@@ -29,7 +29,7 @@
   const css = (v, d) => getComputedStyle(sec).getPropertyValue(v).trim() || d;
   let K = {};
   const pal = () => { K = { hi: css('--fg-0', '#ece4cc'), cream: css('--fg-1', '#cbc3ab'), dim: css('--line-2', '#4a5a4f'), line: css('--line', '#2c3730'), bg: css('--bg-0', '#121814'),
-    butter: css('--warn', '#dfc07f'), rose: css('--event', '#d99bb8'), teal: css('--info', '#86c3ba'), sage: css('--qs-sage', '#a9d99f'), light: css('--qs-light', '#d9f2cf'), b0: '#2a9a70', b1: '#1d7a58', b2: '#16664a' }; };
+    butter: css('--warn', '#dfc07f'), rose: css('--event', '#d99bb8'), teal: css('--info', '#86c3ba'), sage: css('--qs-sage', '#a9d99f'), light: css('--qs-light', '#ece4cc'), b0: '#2a9a70', b1: '#1d7a58' }; };
   pal();
 
   // ---- the art grid
@@ -45,7 +45,7 @@
     if ((x - c) ** 2 + (y - c) ** 2 > r2) continue;
     const qd = (x > c ? 1 : 0) + (y > c ? 2 : 0);
     const h = ((x * 73 + y * 131) % 97) / 97;
-    cells.push({ x, y, qd, h, ax: OX + x * CS, ay: OY + y * CS, shade: (x + y) % 3 === 0 ? 0 : x < c ? 1 : 2 });
+    cells.push({ x, y, qd, h, ax: OX + x * CS, ay: OY + y * CS });
   }
   QUART = cells.filter((k) => k.qd === 1);
   // UFO takes the top-left quarter, top rows first
@@ -143,7 +143,7 @@
     const beamOn = (a, b) => p > a && p < b;
     for (const k of cells) {
       if (k.qd === 1) continue;
-      const col = [K.b0, K.b1, K.b2][k.shade];
+      const col = K.b0;                                             // one flat green, like the brand mark
       if (k.qd === 0) {                                             // abducted, one by one, up the beam
         const q = ease(clamp((p - k.ta) / 0.05));
         if (q >= 1) continue;
@@ -227,7 +227,7 @@
       const ccx = qx0 + 3 * G, ccy = qy0 + 3 * G;
       for (const k of QUART) {
         const x = qx0 + (k.x - 6) * G, y = qy0 + k.y * G;
-        const hi = (lift > 0.5 && (k.x + k.y) % 4 === 0) || (!reduce && Math.abs(((k.x - k.y) + 12) - ((now / 90) % 60)) < 1.5);
+        const hi = !reduce && Math.abs(((k.x - k.y) + 12) - ((now / 90) % 60)) < 1.5;   // flat sage; a glint passes now and then
         put(lerp(ccx, x, pop), lerp(ccy, y, pop), Math.max(1, G * pop), Math.max(1, G * pop), hi ? K.light : K.sage);
       }
     }

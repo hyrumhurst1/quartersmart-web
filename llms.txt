@@ -13,7 +13,6 @@ Hyrum Hurst is also CTO of Learning Journey AI (https://learningjourneyai.com/),
 
 - Job titles: Founder, QuarterSmart. CTO, Learning Journey AI.
 - Works in: Claude, ChatGPT and n8n, every day, on live client work.
-- Other roles: AI automation consultant (contract) for Dual Logic, a Washington, DC AI integration consultancy; pro bono AI work for Ability Builders, a Mesa nonprofit. These are his own roles, not QuarterSmart clients.
 - Verified n8n creator. Quoted in CyberNews on local AI models. Registered expert source on Qwoted.
 - Profile page: https://quartersmart.com/about/hyrum-hurst/
 
@@ -52,7 +51,8 @@ Agencies and IT providers can resell Signals and Day One Setups through the Part
 - [Hyrum Hurst](https://quartersmart.com/about/hyrum-hurst/): The founder's page: background, what he builds, credentials you can check, experience and recent Signals.
 - [For Agencies](https://quartersmart.com/for-agencies/): Partner Bench. Resell Signals and Day One Setups under your brand.
 - [FAQ](https://quartersmart.com/faq/): Cost, membership terms, security, what "day one" means and how Signals is sourced.
-- [Contact](https://quartersmart.com/contact/): Book a free 20-minute call, or email.
+- [Book a call](https://quartersmart.com/insert-coin/): Book a free 20-minute call: pick a day and a time.
+- [Contact](https://quartersmart.com/contact/): What the call covers, or email.
 - [Workflow usage](https://quartersmart.com/workflow-usage/): Per-template data and method for Hyrum's public n8n workflow templates.
 - [Privacy](https://quartersmart.com/privacy/) and [Terms](https://quartersmart.com/terms/), including the Signals disclaimer.
 
@@ -82,7 +82,7 @@ Written by Hyrum Hurst. Full hub at https://quartersmart.com/signals/. RSS: http
 - GitHub: https://github.com/hyrumhurst1
 
 ## Contact
-Book a free 20-minute call at https://quartersmart.com/contact/ or https://quartersmart.com/book. Email hyrum@quartersmart.com.
+Book a free 20-minute call at https://quartersmart.com/insert-coin/. Email hyrum@quartersmart.com.
 
 ---
 Last updated: 2026-09-27

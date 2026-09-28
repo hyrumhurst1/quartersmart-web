@@ -1,18 +1,23 @@
 /* About, founder, contact and FAQ. Same hand as the homepage: big pixel
-   headlines, generous space, full-bleed bands for rhythm, hairline rows
-   instead of boxes, flat pixel art on the page (never in a frame).
-   Tokens only. Departure Mono stays on its 11px grid. */
+   headlines, generous space, one continuous night (no colour bands; a quiet
+   dotted seam between sections), hairline rows instead of boxes, flat pixel
+   art on the page. No pixel portraits of anyone.
+   Tokens only. Departure Mono stays on its 11px grid.
+   Rhythm, shared with the other inner pages: every section and close pads
+   var(--sec-y) and opens on the dotted horizon (.seam, drawn in qs.css);
+   page h1 66px, one statement h2 55px (.ab-big) where a page opens its
+   argument, every other section h2 44px (.h-1), close h2 55px. */
+
 
 /* ---------- Hero: headline left, the pixel stage right ---------- */
-.ah { position: relative; padding: clamp(56px, 7vw, 104px) 0 clamp(64px, 7vw, 104px); }
+.ah { position: relative; padding: clamp(56px, 7vw, 104px) 0 var(--sec-y); }
 .ah__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 612px); gap: clamp(32px, 3vw, 64px); align-items: center; }
 .ah__copy { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; align-content: center; min-width: 0; }
 .ah__h { font: 400 66px/1.1 var(--pixel); letter-spacing: -.01em; color: var(--fg-0); max-width: 17ch; }
 .ah__h .ln { display: block; }
-.ah__h--name { font-size: 88px; line-height: 1; }
 .ah .lede { max-width: 56ch; }
 .ah__cta { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; margin-top: 4px; }
-.ah__cta .link, .ab-p1__cta .link { align-self: center; }
+.ah__cta .link, .ab-team__cta .link { align-self: center; }
 .ah__note { font-size: 15px; color: var(--fg-2); max-width: 52ch; }
 .ah__back { font: 500 14px/1.4 var(--sans); color: var(--fg-2); }
 .ah__back a { color: var(--fg-1); text-decoration: none; border-bottom: 1px solid var(--line-2); }
@@ -20,21 +25,12 @@
 .ah__back a::before { content: "\2190\00a0"; }
 .ab-sign { margin: 0; font: 400 22px/1 var(--pixel); letter-spacing: .06em; text-transform: uppercase; }
 .ah__stage { width: 100%; }
-/* On wide screens the stage leans past the text column toward the right edge,
-   like the Signals hub, so it can draw at 4x without squeezing the copy. */
-@media (min-width: 1001px) {
-  .ah:not(.ah--center) .ah__grid.wrap { max-width: none; padding-left: max(clamp(16px, 3vw, 32px), calc((100% - var(--wrap)) / 2 + clamp(16px, 3vw, 32px))); padding-right: max(clamp(16px, 2vw, 24px), calc((100% - var(--wrap)) / 2 - 40px)); }
-}
+/* The stage window stays inside the text column: its right edge is the column's
+   edge, the same line every seam, list and close below it ends on. */
 
-/* Founder: a centred character-select screen. Sign, stage, name, lede, buttons. */
-.ah--center { padding-top: clamp(24px, 3vw, 40px); }
-.ah--center .ah__grid { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; gap: 18px; }
-.ah--center .ah__back { justify-self: start; text-align: left; }
-.ah--center .ah__stage { max-width: 468px; }
-.ah--center .ah__copy { justify-items: center; gap: 22px; margin-top: 0; }
-.ah--center .ah__h { max-width: none; }
-.ah--center .lede { max-width: 64ch; margin-inline: auto; }
-.ah--center .ah__cta { justify-content: center; }
+/* Founder: the name and the line on the left, the workbench stage on the
+   right (a desk, never a portrait); the back link sits above the name */
+.ah--founder .ah__copy { gap: 22px; }
 
 /* Pixel stage (radar.js): art that flows from one scene into the next.
    Same rules as the Signals pages, so the stage looks identical everywhere. */
@@ -67,9 +63,8 @@
 
 /* Terminal window around the stage, the homepage's hand: a 2px border with
    the title, the scene pips and the pause control set into it (btop style),
-   a deep-night fill and faint scanlines. */
-.pxwin { --win-bg: var(--bg-0); position: relative; min-width: 0; padding: 26px 16px 24px; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000), 0 30px 80px rgba(0, 0, 0, .35); }
-.pxwin::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .16) 0 1px, transparent 1px 3px); opacity: .5; }
+   a flat deep-night fill. */
+.pxwin { --win-bg: var(--bg-0); position: relative; min-width: 0; padding: 26px 16px 24px; border: 2px solid var(--line-2); background: color-mix(in srgb, var(--bg-0) 52%, #020507); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg-0) 80%, #000); }
 .pxwin .win__t, .pxwin .pxstage__pips, .pxwin .pxstage__pause { position: absolute; z-index: 2; padding: 0 8px; font: 400 11px/14px var(--pixel); letter-spacing: .06em; background: var(--win-bg); white-space: nowrap; }
 .pxwin .win__t { top: -8px; left: 16px; color: var(--fg-1); }
 .pxwin .win__t::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: var(--rose, var(--accent)); animation: pulse 2.4s steps(2) infinite; }
@@ -84,7 +79,6 @@
 .pxwin .pxstage__pause::after { content: ""; position: absolute; inset: -15px 0; }
 .pxwin .pxstage__pause:hover, .pxwin .pxstage__pause:focus-visible { color: var(--fg-0); }
 [data-theme="paper"] .pxwin { background: var(--bg-1); box-shadow: 0 0 0 1px var(--line); }
-[data-theme="paper"] .pxwin::after { opacity: .18; }
 @media (prefers-reduced-motion: reduce) { .pxwin .win__t::before { animation: none; } }
 
 /* Echo signs, the homepage's closer sign: small pixel type with the full
@@ -94,11 +88,11 @@
 .nowrap { white-space: nowrap; }
 
 /* ---------- Sections ---------- */
-.ab-sec { padding: clamp(88px, 10vw, 148px) 0; }
-.ab-sec--tight { padding-top: clamp(56px, 6vw, 88px); }
+.ab-sec { padding: var(--sec-y) 0; }
+.ab-sec--tight { padding-top: clamp(40px, 4vw, 56px); }
 .ab-lead { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: end; margin-bottom: clamp(48px, 5vw, 72px); }
 .ab-lead__body { display: grid; gap: 18px; }
-.ab-big { font: 400 66px/1.06 var(--pixel); letter-spacing: -.01em; }
+.ab-big { font: 400 55px/1.08 var(--pixel); letter-spacing: -.01em; }
 .ab-more { margin-top: 40px; }
 .ab-stack { display: grid; gap: 20px; align-content: start; }
 
@@ -107,41 +101,40 @@
 .rows > li { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 10px clamp(24px, 4vw, 64px); align-items: baseline; padding: 30px 0; border-top: 1px solid var(--line); }
 .rows__k { font: 400 33px/1.1 var(--pixel); color: var(--fg-0); }
 .rows__k small { display: block; margin-top: 10px; font: 400 13px/1.4 var(--mono); color: var(--fg-2); letter-spacing: 0; }
-.rows--big .rows__k { font-size: 55px; line-height: 1; }
+.rows--big .rows__k { font-size: 44px; line-height: 1.04; }
 .rows--big > li { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); align-items: center; }
 .rows li > div, .rows li > p { color: var(--fg-1); font-size: 17px; max-width: 62ch; }
 .rows li > div { display: grid; gap: 12px; }
 .rows li > div p { max-width: 62ch; }
 .rows .row-links { display: flex; flex-wrap: wrap; gap: 24px 26px; margin-top: 4px; }
-.band .rows, .band .rows > li { border-color: color-mix(in srgb, var(--fg-0) 14%, transparent); }
 
 /* ---------- About: why the name ---------- */
 .ab-why__grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(40px, 7vw, 112px); align-items: center; }
-.ab-why__art { width: 308px; }
+.ab-why__art { width: 224px; }   /* the 14x14 mark at 16x: present, not loud */
 .ab-why__art svg { display: block; width: 100%; height: auto; }
 .ab-why__copy { display: grid; gap: 22px; }
 .ab-why__copy .body-l { color: var(--fg-1); }
 
-/* ---------- About: player one ---------- */
-.ab-p1 { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(40px, 7vw, 112px); align-items: center; scroll-margin-top: 90px; }
-.ab-p1__id { display: grid; justify-items: center; gap: 22px; }
-.ab-p1__id img { width: 316px; }
-.ab-p1__tag { font: 400 22px/1 var(--pixel); color: var(--accent); }
-.ab-p1__copy { display: grid; gap: 22px; }
-.ab-p1__cta { display: flex; flex-wrap: wrap; gap: 14px 26px; align-items: center; }
+/* ---------- About: who you'll work with, in plain type ---------- */
+.ab-team { align-items: start; margin-bottom: 0; scroll-margin-top: 90px; }
+.ab-team__head { display: grid; gap: 18px; align-content: start; }
+.ab-team__head .h-1 { max-width: 18ch; }
+.ab-team__cta { display: flex; flex-wrap: wrap; gap: 14px 26px; align-items: center; margin-top: 4px; }
 
 /* ---------- Closing call ---------- */
-.ab-close { padding: clamp(96px, 11vw, 168px) 0; border-top: 1px solid var(--line); }
+.ab-close { padding: var(--sec-y) 0; }
 .ab-close__grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(32px, 6vw, 96px); align-items: end; }
 .ab-close__main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
-.ab-close__h { font: 400 clamp(44px, 5.6vw, 77px)/1.04 var(--pixel); letter-spacing: -.01em; max-width: 15ch; }
+.ab-close__h { font: 400 55px/1.06 var(--pixel); letter-spacing: -.01em; max-width: 15ch; }
 .ab-close .body-l { max-width: 56ch; }
 .ab-close__alt { font-size: 15px; color: var(--fg-2); }
 .ab-close__alt a { color: var(--fg-1); }
 .ab-close__side { display: grid; gap: 12px; align-content: end; padding-left: clamp(0px, 3vw, 40px); border-left: 1px solid var(--line); max-width: 360px; }
 .ab-close__side p:not(.label) { color: var(--fg-1); font-size: 16px; }
 .ab-close__side .ct-mail { font-size: 22px; }
-.ab-close__face { display: block; width: 120px; height: 120px; margin-bottom: 10px; object-fit: cover; filter: grayscale(.15) contrast(1.03); }
+/* the one photo on the site (founder page only): a modest square profile
+   photo, uncropped and unfiltered, in the windows' 2px frame */
+.ab-close__face { display: block; width: 132px; height: 132px; margin-bottom: 10px; padding: 4px; object-fit: cover; background: var(--bg-0); border: 2px solid var(--line-2); }
 
 /* ---------- Founder ---------- */
 .fh-bg { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(40px, 7vw, 112px); align-items: start; }
@@ -156,7 +149,8 @@
 
 .fh-builds__head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; margin-bottom: clamp(44px, 5vw, 64px); }
 .fh-builds__head .h-1 { max-width: 20ch; }
-.fh-builds__art { width: 234px; }
+.fh-builds__head .label + .h-1 { margin-top: 16px; }
+.fh-builds__art { width: 128px; }   /* flat/assistant.png, 16x14 at 8x */
 .cols3 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 4vw, 56px); }
 .cols3 li { display: grid; gap: 12px; align-content: start; padding-top: 26px; border-top: 1px solid color-mix(in srgb, var(--fg-0) 16%, transparent); }
 .cols3 h3 { font: 400 27.5px/1.15 var(--pixel); }
@@ -194,21 +188,19 @@
 .ct-mail a:hover { border-bottom-color: var(--accent); }
 .ct-mailbox p:not(.ct-mail):not(.label) { color: var(--fg-1); }
 
-/* ---------- FAQ: a jump row, then one band per group ---------- */
+/* ---------- FAQ: a jump row, then one section per group ---------- */
 .fq-jump { padding-bottom: clamp(56px, 6vw, 88px); }
 .fq-jump ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 24px; }
 .fq-jump li { border-top: 1px solid var(--line); }
 .fq-jump a { display: grid; gap: 12px; padding: 22px 12px 0 0; text-decoration: none; font: 400 22px/1.2 var(--pixel); color: var(--fg-1); transition: color .15s; }
 .fq-jump a span { font-size: 44px; line-height: 1; color: var(--fg-2); transition: color .15s; }
 .fq-jump a:hover, .fq-jump a:hover span { color: var(--accent); }
-.fq-sec { padding: clamp(72px, 8vw, 104px) 0; }
-.fq-sec:not(.band) { border-top: 1px solid var(--line); }
+.fq-sec { padding: var(--sec-y) 0; }
 .fq-g { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
 .fq-g__h { position: sticky; top: 104px; display: grid; gap: 18px; }
 .fq__n { font: 400 22px/1 var(--pixel); color: var(--accent); }
 .qa { margin: 0; border-bottom: 1px solid var(--line); }
 .qa > div { display: grid; gap: 12px; padding: 28px 0; border-top: 1px solid var(--line); }
-.band .qa, .band .qa > div { border-color: color-mix(in srgb, var(--fg-0) 14%, transparent); }
 .qa dt { font: 400 22px/1.3 var(--pixel); color: var(--fg-0); }
 .qa dd { margin: 0; color: var(--fg-1); font-size: 17px; max-width: 64ch; }
 .qa dd a { color: var(--fg-0); text-decoration-color: var(--accent); }
@@ -224,11 +216,10 @@
 .tl__role { font: 400 13px/1.5 var(--mono); color: var(--fg-2); }
 .tl__body > p:last-child { color: var(--fg-1); font-size: 17px; max-width: 62ch; }
 
-/* ---------- Access: bigger hit areas, AA on the paper slate band ---------- */
+/* ---------- Access: bigger hit areas ---------- */
 main .link, .facts a, .ct-mail a, .ah__back a { position: relative; }
 main .link::before, .facts a::before, .ct-mail a::before, .ah__back a::after { content: ""; position: absolute; left: -4px; right: -4px; top: 50%; height: 44px; transform: translateY(-50%); }
 main .btn--arcade { max-width: 100%; }
-[data-theme="paper"] .band--slate .label--accent, [data-theme="paper"] .band--slate .fq__n { color: var(--accent-2); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1280px) {
@@ -236,19 +227,23 @@ main .btn--arcade { max-width: 100%; }
 }
 @media (max-width: 1200px) {
   .ah__h { font-size: 55px; }
-  .ab-big { font-size: 55px; }
-  .ah__h--name { font-size: 77px; }
+  .ab-big { font-size: 44px; }
+  .rows--big .rows__k { font-size: 38.5px; }
+}
+@media (max-width: 1100px) {
+  .ab-close__h { font-size: 49.5px; }
 }
 @media (max-width: 1000px) {
-  .ah__grid, .ab-lead, .ab-why__grid, .ab-p1, .fh-bg, .ct-split, .fq-g, .ab-close__grid { grid-template-columns: minmax(0, 1fr); }
+  .ah__grid, .ab-lead, .ab-why__grid, .fh-bg, .ct-split, .fq-g, .ab-close__grid { grid-template-columns: minmax(0, 1fr); }
   .ah__stage { order: -1; justify-self: center; max-width: 468px; }
-  .ah--center .ah__stage { order: 0; }
-  /* contact: the booking button comes first on phones, the stage follows it */
-  #book-a-call .ah__stage { order: 1; }
+  /* contact and founder: the booking button (or the name) comes first on
+     phones, the stage follows it */
+  #book-a-call .ah__stage, .ah--founder .ah__stage { order: 1; }
   .fq-g__h { position: static; }
   .fq-jump ol { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; }
   .fq-jump li:nth-child(n+3) a { padding-bottom: 22px; }
-  .ab-p1__id, .ab-why__art { justify-self: start; }
+  .ab-why__art { justify-self: start; }
+  .ab-team { gap: 26px; }
   .seq { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cols3 { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .ab-close__side { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 24px; max-width: none; }
@@ -258,20 +253,16 @@ main .btn--arcade { max-width: 100%; }
   .ah { padding-top: 32px; padding-bottom: 56px; }
   .ah__grid { gap: 22px; }
   .ah__copy { gap: 22px; }
-  .ah--center .ah__grid { gap: 12px; }
-  .ah--center .ah__copy { gap: 18px; margin-top: 4px; }
   .ah__h { font-size: 38.5px; }
-  .ah__h--name { font-size: 55px; }
-  .ab-big { font-size: 38.5px; }
+  .ab-big { font-size: 33px; }
   .rows > li { grid-template-columns: minmax(0, 1fr); padding: 24px 0; }
-  .rows--big .rows__k { font-size: 38.5px; }
+  .rows--big .rows__k { font-size: 33px; }
   .rows__k { font-size: 27.5px; }
-  .ab-why__art { width: 196px; }
-  .ab-p1__id img { width: 237px; }
+  .ab-why__art { width: 168px; }
   .qa > div { padding: 24px 0; }
   .facts div { grid-template-columns: 80px minmax(0, 1fr); gap: 12px; }
   .fh-builds__head { grid-template-columns: minmax(0, 1fr); }
-  .fh-builds__art { width: 156px; }
+  .fh-builds__art { width: 96px; }
   .seq { grid-template-columns: minmax(0, 1fr); }
   .seq__n { font-size: 44px; }
   .siglist__t { font-size: 22px; }
@@ -286,8 +277,8 @@ main .btn--arcade { max-width: 100%; }
 /* Phones: every page title stays larger than the section titles under it */
 @media (max-width: 420px) {
   .ah__h { font-size: 38.5px; }
-  .ah__h.ah__h--name { font-size: 44px; }
-  .ab-big, .ab-close__h, .rows--big .rows__k { font-size: 33px; }
+  .ab-big, .ab-close__h { font-size: 33px; }
+  .rows--big .rows__k { font-size: 27.5px; }
 }
 /* Small phones: the arcade button may wrap instead of pushing the page wide */
 @media (max-width: 400px) {

@@ -6,7 +6,7 @@
 //   <div class="pxs" data-pxs>
 //     <p class="pxs__alt">shown without JS</p>
 //     <canvas aria-hidden="true" data-h="104" data-first-hold="4000" data-intro="fly"
-//             data-scenes="text:Partner/Bench | mark | img:/assets/px/sprite-radar.png"></canvas>
+//             data-scenes="text:Partner/Bench | mark | img:/assets/px/flat/radar-tower.png"></canvas>
 //     <button class="pxs__pause" type="button" aria-pressed="false" aria-label="Pause animation" hidden></button>
 //   </div>
 //
@@ -15,7 +15,8 @@
 //                  five bands. "/" breaks a line, "<" is a left arrow, "@3"
 //                  caps the cell size.
 //   mark           the QuarterSmart mark
-//   img:/path.png  a sprite from /assets/px at its native size
+//   img:/path.png  a flat sprite from /assets/px/flat, at the largest whole-number
+//                  scale that fits (3 at most, or data-imgmax)
 //   check          a check mark
 //   cal:JUN 2026:11:1:30   a calendar page (label : day to mark : weekday of the 1st : days)
 //   grid, tree, bars, sky  data pictures; numbers come from the table in data-table
@@ -45,7 +46,8 @@
     const v = (n, d) => rgb(cs.getPropertyValue(n), d);
     const fg = v('--fg-0', [236, 228, 204]), f1 = v('--fg-1', [203, 195, 171]), ac = v('--accent', [169, 217, 159]);
     const inf = v('--info', [134, 195, 186]), bg = v('--bg-0', [18, 24, 20]), ln = v('--line-2', [74, 90, 79]);
-    return { fg, f1, ac, inf, bg, ln, band: [fg, ac, inf, mix(ac, bg, 0.64), mix(ac, bg, 0.46)], dim: mix(ln, bg, 0.8) };
+    // the wordmark's five bands in whole colours: cream, sage, teal, then the hero's two fixed greens
+    return { fg, f1, ac, inf, bg, ln, band: [fg, ac, inf, [42, 154, 112], [29, 122, 88]], dim: v('--line', [44, 55, 48]) };
   }
 
   // ---------- Departure Mono, read from the font's own pixel grid ----------
@@ -118,15 +120,20 @@
     add(MARK_D, [29, 122, 88]); add(MARK_L, [169, 217, 159]);
     return out;
   }
-  function imgScene(img, W, H) {
+  // a sprite, each of its pixels a k x k block, k the largest whole number that fits
+  function imgScene(img, W, H, cap) {
     const w = img.naturalWidth, h = img.naturalHeight;
     const c = document.createElement('canvas'); c.width = w; c.height = h;
     const g = c.getContext('2d'); g.drawImage(img, 0, 0);
     const d = g.getImageData(0, 0, w, h).data, out = [];
-    const ox = Math.round((W - w) / 2), oy = Math.round((H - h) / 2);
-    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const k = (y * w + x) * 4; if (d[k + 3] > 127) out.push({ x: ox + x, y: oy + y, c: [d[k], d[k + 1], d[k + 2]] }); }
+    const s = Math.max(1, Math.min(cap, Math.floor((W * 0.84) / w), Math.floor((H * 0.84) / h)));
+    const ox = Math.round((W - w * s) / 2), oy = Math.round((H - h * s) / 2);
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const k = (y * w + x) * 4; if (d[k + 3] > 127) fill(out, ox + x * s, oy + y * s, s, s, [d[k], d[k + 1], d[k + 2]]); }
     return out;
   }
+  // the flat set replaced the older painted sprites; an old name still gets the flat one
+  const FLAT = { 'sprite-radar': 'radar-tower', 'sprite-assistant': 'assistant', 'sprite-keyboard-manual': 'keyboard-manual', 'sprite-arcade': 'cabinet-sage', 'desk-hacker': 'desk-crt', 'coin-slot-mini': 'coin-slot' };
+  const flatSrc = (src) => src.replace(/^\/assets\/px\/([\w-]+)\.png$/, (m, n) => '/assets/px/flat/' + (FLAT[n] || n) + '.png');
   function calScene(spec, W, H, P) {
     const [label = '', mark = '0', first = '0', days = '30'] = spec.split(':');
     const pts = [], PW = 62, cw = 6, ch = 4, gap = 2;
@@ -243,7 +250,8 @@
   async function run(box) {
     const cv = box.querySelector('canvas[data-scenes]');
     if (!cv || !cv.getContext) return;
-    const btn = box.querySelector('.pxs__pause');
+    // the pause sits in the stage, or right after it (the workflow usage counter keeps it under its caption)
+    const btn = box.querySelector('.pxs__pause') || box.parentElement.querySelector(':scope > .pxs__pause');
     const tokens = cv.dataset.scenes.split('|').map((s) => s.trim()).filter(Boolean);
     const needsFont = tokens.some((t) => t.startsWith('text:') || t.startsWith('cal:'));
     if (needsFont && document.fonts) {
@@ -255,7 +263,7 @@
     }
     const load = (src) => new Promise((res) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src; });
     const imgs = {};
-    await Promise.all(tokens.filter((t) => t.startsWith('img:')).map(async (t) => { imgs[t] = await load(t.slice(4)); }));
+    await Promise.all(tokens.filter((t) => t.startsWith('img:')).map(async (t) => { imgs[t] = await load(flatSrc(t.slice(4))); }));
     const tbl = cv.dataset.table && document.querySelector(cv.dataset.table);
     const vals = tbl ? [...tbl.querySelectorAll('tbody .num')].map((n) => +n.textContent.replace(/[^\d]/g, '')).filter((n) => n > 0).sort((a, b) => b - a) : [];
 
@@ -266,7 +274,7 @@
 
     function build(tok) {
       if (tok.startsWith('text:')) return textScene(tok.slice(5), W, H, P);
-      if (tok.startsWith('img:')) return imgs[tok] ? imgScene(imgs[tok], W, H) : null;
+      if (tok.startsWith('img:')) return imgs[tok] ? imgScene(imgs[tok], W, H, +cv.dataset.imgmax || 3) : null;
       if (tok.startsWith('cal:')) return calScene(tok.slice(4), W, H, P);
       if (tok === 'mark') return markScene(W, H);
       if (tok === 'check') return artScene(ART.check, W, H, P.ac);
@@ -312,7 +320,7 @@
       px.fill(0);
       for (const p of pts) {
         let c = p.c;
-        if (g != null) { const d = p.x + p.y * 0.5 - g; if (d >= 0 && d < 5) c = mix(P.fg, c, 0.5); }
+        if (g != null) { const d = p.x + p.y * 0.5 - g; if (d >= 0 && d < 5) c = P.fg; }
         put(p.x, p.y, c, 255);
       }
       blit();
@@ -372,7 +380,7 @@
       if (t - lastNoise > 70) {
         lastNoise = t; noise = [];
         const dens = 0.22 * (1 - q) * (1 - q);
-        for (let y = 0; y < H; y += 2) for (let x = 0; x < W; x += 2) if (rnd() < dens) noise.push([x, y, rnd() < 0.25 ? mix(P.fg, P.ac, 0.7) : P.dim]);
+        for (let y = 0; y < H; y += 2) for (let x = 0; x < W; x += 2) if (rnd() < dens) noise.push([x, y, rnd() < 0.25 ? P.ac : P.dim]);
       }
       px.fill(0);
       noise.forEach(([x, y, c]) => { put(x, y, c, 255); put(x + 1, y, c, 255); put(x, y + 1, c, 255); put(x + 1, y + 1, c, 255); });

@@ -42,7 +42,7 @@
       "@id": "https://quartersmart.com/about/hyrum-hurst#profilepage",
       "url": "https://quartersmart.com/about/hyrum-hurst/",
       "name": "Hyrum Hurst, founder of QuarterSmart",
-      "description": "Profile of Hyrum Hurst, founder of QuarterSmart and CTO of Learning Journey AI: background, what he builds, credentials, experience and recent Signals.",
+      "description": "Profile of Hyrum Hurst, founder of QuarterSmart and CTO of Learning Journey AI: track record, background, what he builds and recent Signals.",
       "dateModified": "2026-09-27",
       "isPartOf": { "@id": "https://quartersmart.com/#website" },
       "about": { "@id": "https://quartersmart.com/about.html#hyrum-hurst" },
@@ -114,39 +114,54 @@
 
 <main id="main">
 
-  <!-- Hero: a centred character-select screen for player one -->
-  <section class="ah ah--center" aria-labelledby="fh-h">
+  <!-- Hero: the name and the line, with the workbench stage beside them -->
+  <section class="ah ah--founder" aria-labelledby="fh-h">
     <div class="wrap ah__grid">
-      <p class="ah__back"><a href="/about/">Who we are</a></p>
-      <p class="ab-sign echo echo--chase" aria-hidden="true">player one</p>
-      <div class="pxwin ah__stage">
-        <span class="win__t" aria-hidden="true">player1.exe</span>
-        <div class="pxstage" data-pxstage data-first="avatar" data-scenes="avatar assistant keyboard radar scope verdicts mail wave rocket tower satellite arcade mark" data-max="3" data-hold="2400">
-          <div class="pxstage__screen">
-            <img class="pxstage__still" src="/assets/px/avatar-hyrum.png" width="79" height="84" style="--x:33;--y:7;--w:79" alt="Hyrum Hurst drawn as a pixel-art character: blond hair, a smile, a dark suit." fetchpriority="high">
-            <canvas aria-hidden="true"></canvas>
-          </div>
-        </div>
-      </div>
       <div class="ah__copy">
-        <h1 class="ah__h ah__h--name" id="fh-h">Hyrum Hurst.</h1>
+        <p class="ah__back"><a href="/about/">Who we are</a></p>
+        <h1 class="ah__h" id="fh-h">Hyrum Hurst.</h1>
         <p class="lede">Hyrum Hurst is the founder of QuarterSmart, an early-adoption AI partner for owner-led businesses. He sets up AI assistants, agents and automations for small and mid-sized teams and writes QuarterSmart Signals. He is also CTO of Learning Journey AI, an AI education company.</p>
         <div class="ah__cta">
-          <a class="btn btn--arcade" href="/contact/" data-cta="book">Book a call with Hyrum</a>
+          <a class="btn btn--arcade" href="/insert-coin/" data-cta="book">Book a call with Hyrum</a>
           <a class="btn btn--ghost" href="https://www.linkedin.com/in/hyrum-hurst-83a5a537a/" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="pxwin ah__stage">
+        <span class="win__t" aria-hidden="true">workbench.exe</span>
+        <div class="pxstage" data-pxstage data-first="desk" data-scenes="desk assistant keyboard arcade radar scope verdicts mail wave rocket tower satellite mark" data-max="4" data-hold="2400">
+          <div class="pxstage__screen">
+            <img class="pxstage__still" src="/assets/px/flat/desk-crt.png" width="28" height="18" style="--x:30;--y:22;--w:84" alt="Pixel art that changes scenes: a desk with a monitor and a blinking prompt, an assistant, a keyboard and manual, an arcade cabinet, a radar dish, a radar scope, the four verdicts, the Monday email, a voice wave, a launch pad, a broadcast tower, a satellite and the QuarterSmart mark." fetchpriority="high">
+            <canvas aria-hidden="true"></canvas>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Credentials as hairline rows -->
+  <section class="ab-sec ab-sec--tight" id="credentials" aria-labelledby="cred-h">
+    <div class="wrap">
+      <div class="ab-lead">
+        <h2 class="h-1" id="cred-h">Proof you can check.</h2>
+      </div>
+      <ul class="rows">
+        <li id="n8n"><span class="rows__k">n8n</span><div><p>Verified n8n creator: 25 public workflow templates with 10,876 documented uses as of June 2026. Each template has its own public page.</p><p class="row-links"><a class="link" href="https://n8n.io/creators/hyrum-hurst" rel="noopener">n8n creator profile</a><a class="link" href="/workflow-usage/">How the uses are counted</a></p></div></li>
+        <li><span class="rows__k">Press</span><div><p>Quoted in CyberNews in October 2025 on which local AI models tech professionals run and why, including how he prototypes automation logic offline before it goes to production.</p><p class="row-links"><a class="link" href="https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/" rel="noopener">Read it on CyberNews</a></p></div></li>
+        <li><span class="rows__k">Expert source</span><div><p>Registered expert source on Qwoted for AI strategy, enterprise adoption, AI procurement and AI governance.</p><p class="row-links"><a class="link" href="https://app.qwoted.com/sources/hyrum-hurst" rel="noopener">Qwoted profile</a></p></div></li>
+        <li><span class="rows__k">Open source</span><div><p>Open-source AI developer tools on GitHub, including an empirical Big-O complexity analyzer, an AI code reviewer and an API load-testing tool that writes its own health reports.</p><p class="row-links"><a class="link" href="https://github.com/hyrumhurst1" rel="noopener">GitHub</a></p></div></li>
+        <li><span class="rows__k">Certifications</span><div><p>Google Certified AI Automations Engineer, Google Generative AI Leader, Google Prompt Engineering, Google Data Analytics, and the Vanderbilt AI Automation Certification.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
   <!-- Background and the facts block -->
-  <section class="ab-sec ab-sec--tight" aria-labelledby="bg-h">
+  <section class="ab-sec seam" aria-labelledby="bg-h">
     <div class="wrap fh-bg">
       <div class="fh-bg__copy">
         <p class="label label--accent">Background</p>
         <h2 class="h-1" id="bg-h">A builder who teaches the tool inside the work.</h2>
         <p class="body-l">Hyrum designs AI workflows with large language models, builds automations and internal tools, and helps small organizations put AI into their day-to-day work. He works in Claude, ChatGPT and n8n every day on live client systems. His focus is turning manual, repetitive work into systems a person can check.</p>
-        <p class="body-l">He founded QuarterSmart in 2025. Before AI became the whole job, he worked in direct sales and training at Skytech, where he trained and onboarded more than ten new team members. The habit stuck: a tool only counts once people use it in their own work, with their own examples.</p>
+        <p class="body-l">He founded QuarterSmart in 2025. Before AI became the whole job, he trained and onboarded sales teams. The habit stuck: a tool only counts once people use it in their own work, with their own examples.</p>
       </div>
       <aside class="fh-card" aria-label="Facts about Hyrum Hurst">
         <dl class="facts">
@@ -161,15 +176,15 @@
     </div>
   </section>
 
-  <!-- What he builds: three columns on a slate band -->
-  <section class="band band--slate" aria-labelledby="builds-h">
+  <!-- What he builds: three columns -->
+  <section class="ab-sec seam" aria-labelledby="builds-h">
     <div class="wrap">
       <div class="fh-builds__head">
         <div>
           <p class="label label--accent">What he builds</p>
-          <h2 class="h-1" id="builds-h" style="margin-top:16px">Assistants, agents and the automations around them.</h2>
+          <h2 class="h-1" id="builds-h">Assistants, agents and the automations around them.</h2>
         </div>
-        <img class="px fh-builds__art" src="/assets/px/sprite-assistant.png" width="78" height="45" alt="A small desktop assistant device with a green screen, in pixel art." loading="lazy">
+        <img class="px fh-builds__art" src="/assets/px/flat/assistant.png" width="16" height="14" alt="A small assistant with a green screen and a smiling face, in pixel art." loading="lazy">
       </div>
       <ul class="cols3">
         <li><h3>AI assistants, set up properly.</h3><p>ChatGPT, Claude and Gemini workspaces configured for how a business runs, connected to email, calendar, docs and CRM, with the least access they need.</p></li>
@@ -179,44 +194,11 @@
     </div>
   </section>
 
-  <!-- Credentials as hairline rows -->
-  <section class="ab-sec" id="credentials" aria-labelledby="cred-h">
-    <div class="wrap">
-      <div class="ab-lead">
-        <h2 class="ab-big" id="cred-h">What you can check.</h2>
-      </div>
-      <ul class="rows">
-        <li><span class="rows__k">Press</span><div><p>Quoted in CyberNews in October 2025 on which local AI models tech professionals run and why, including how he prototypes automation logic offline before it goes to production.</p><p class="row-links"><a class="link" href="https://cybernews.com/ai-news/tech-professionals-adapting-local-ai-models-for-diverse-applications/" rel="noopener">Read it on CyberNews</a></p></div></li>
-        <li><span class="rows__k">Expert source</span><div><p>Registered expert source on Qwoted for AI strategy, enterprise adoption, AI procurement and AI governance.</p><p class="row-links"><a class="link" href="https://app.qwoted.com/sources/hyrum-hurst" rel="noopener">Qwoted profile</a></p></div></li>
-        <li id="n8n"><span class="rows__k">n8n</span><div><p>Verified n8n creator, with public workflow templates on the n8n marketplace. Each template has its own public page.</p><p class="row-links"><a class="link" href="https://n8n.io/creators/hyrum-hurst" rel="noopener">n8n creator profile</a></p></div></li>
-        <li><span class="rows__k">Open source</span><div><p>Open-source AI developer tools on GitHub, including an empirical Big-O complexity analyzer, an AI code reviewer and an API load-testing tool that writes its own health reports.</p><p class="row-links"><a class="link" href="https://github.com/hyrumhurst1" rel="noopener">GitHub</a></p></div></li>
-        <li><span class="rows__k">Certifications</span><div><p>Google Certified AI Automations Engineer, Google Generative AI Leader, Google Prompt Engineering, Google Data Analytics, and the Vanderbilt AI Automation Certification.</p></div></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Experience on a deep band -->
-  <section class="band band--deep" id="experience" aria-labelledby="xp-h">
-    <div class="wrap">
-      <div class="ab-lead">
-        <h2 class="ab-big" id="xp-h">Where the work comes from.</h2>
-        <p class="body-l">Hyrum's own roles and collaborations.</p>
-      </div>
-      <ol class="tl">
-        <li><p class="tl__when">2025 to present</p><div class="tl__body"><h3>QuarterSmart</h3><p class="tl__role">Founder</p><p>AI agents and multi-step automations with the Claude API, Claude Code, n8n and Zapier. AI-drafted email and SMS outreach, lead routing, CRM and data workflows, and custom web apps on Next.js and Supabase.</p></div></li>
-        <li><p class="tl__when">2026 to present</p><div class="tl__body"><h3>Learning Journey AI</h3><p class="tl__role">CTO</p><p>An AI education company in Washington, DC, founded by Nicholas Wagner, Ph.D. Hyrum runs its technology: the platform, the website and the course-creation workflows.</p></div></li>
-        <li><p class="tl__when">2026 to present</p><div class="tl__body"><h3>Dual Logic</h3><p class="tl__role">AI automation consultant, contract</p><p>A Washington, DC AI integration consultancy. Workflow discovery and mapping, and AI automations and language-model integrations used inside a software company of 500 to 1,000 people.</p></div></li>
-        <li><p class="tl__when">2026 to present</p><div class="tl__body"><h3>Ability Builders</h3><p class="tl__role">Pro bono</p><p>A Mesa nonprofit that helps people with disabilities find and keep work. Hyrum brings Claude Code and AI workflows into its operations.</p></div></li>
-        <li><p class="tl__when">2024 to 2026</p><div class="tl__body"><h3>Skytech</h3><p class="tl__role">Sales representative and trainer</p><p>Direct outreach and lead generation. Trained and onboarded more than ten new team members.</p></div></li>
-      </ol>
-    </div>
-  </section>
-
   <!-- Recent Signals -->
-  <section class="ab-sec" aria-labelledby="sig-h">
+  <section class="ab-sec seam" aria-labelledby="sig-h">
     <div class="wrap">
       <div class="ab-lead">
-        <h2 class="ab-big" id="sig-h">Recent Signals.</h2>
+        <h2 class="h-1" id="sig-h">Recent Signals.</h2>
         <div class="ab-lead__body">
           <p class="body-l">Hyrum writes every Signal: what shipped, whether it matters to a working business, and what to do about it this week.</p>
           <p><a class="link" href="/signals/">All Signals</a></p>
@@ -243,12 +225,12 @@
   </section>
 
   <!-- Close -->
-  <section class="ab-close" aria-labelledby="cta-h">
+  <section class="ab-close seam" aria-labelledby="cta-h">
     <div class="wrap ab-close__grid">
       <div class="ab-close__main">
         <h2 class="ab-close__h" id="cta-h">Talk to the person who builds it.</h2>
         <p class="body-l">Tell us what tools you use and what's eating your team's week. Hyrum will tell you, on the call, what's worth doing now and what can wait.</p>
-        <div class="ah__cta"><a class="btn btn--arcade btn--xl" href="/contact/" data-cta="book" style="font-size:clamp(16.5px,(100vw - 480px) * 1000,22px)">Book a free 20-minute call</a></div>
+        <div class="ah__cta"><a class="btn btn--arcade btn--xl" href="/insert-coin/" data-cta="book" style="font-size:clamp(16.5px,(100vw - 480px) * 1000,22px)">Book a free 20-minute call</a></div>
       </div>
       <div class="ab-close__side">
         <img class="ab-close__face" src="/assets/images/team/hyrum-hurst.webp" width="320" height="320" alt="Photo of Hyrum Hurst, founder of QuarterSmart." loading="lazy">

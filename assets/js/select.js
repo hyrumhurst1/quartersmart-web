@@ -24,16 +24,17 @@
   // Ctrl/meta/shift/middle click and reduced motion get the plain link.
   const WAIT = 110;
   // The coin falls through a window that ends at the drop line (the top of
-  // the button, or the slit of the little coin door), so it vanishes into it.
+  // the button, or the top of the dock slot's slit, 12px down the 4x
+  // sprite), so it vanishes into it. The coin is 24px (6px art at 4x).
   function coinInto(a) {
     const slot = a.querySelector('.hud__slot');
     const r = (slot || a).getBoundingClientRect();
-    const line = Math.round(slot ? r.top + 8 : r.top);
-    const top = Math.max(0, line - 46);
+    const line = Math.round(slot ? r.top + 12 : r.top);
+    const top = Math.max(0, line - 40);
     const fx = document.createElement('span');
     fx.className = 'coinfx';
     fx.setAttribute('aria-hidden', 'true');
-    fx.style.left = Math.round(r.left + r.width / 2 - 16) + 'px';
+    fx.style.left = Math.round(r.left + r.width / 2 - 12) + 'px';
     fx.style.top = top + 'px';
     fx.style.height = (line - top) + 'px';
     fx.appendChild(document.createElement('i'));
@@ -79,19 +80,27 @@
     // the top: a jump or a fast fling past the button still flips it.
     new IntersectionObserver(([e]) => dock.classList.toggle('is-call', !e.isIntersecting && e.boundingClientRect.bottom < 0), { rootMargin: '0px 0px 100000px 0px' }).observe(firstBook);
   }
-  // Phones: the dock tucks up while the page scrolls down, so it never sits
-  // on the line being read, and any scroll back up (or reaching the end)
-  // brings it straight back. qs.css only applies .hud-tuck under 700px.
+  // The dock tucks up while the page scrolls down, so it never sits on the
+  // line being read; any scroll back up (or reaching the end, or the mouse
+  // at the top edge) brings it straight back.
   if (dock) {
     let y0 = scrollY, tucked = false;
+    const set = (t) => { if (t !== tucked) { tucked = t; root.classList.toggle('hud-tuck', t); } };
     addEventListener('scroll', () => {
       const y = scrollY, d = y - y0;
       if (d > -6 && d < 6) return; // ignore jitter, but let small moves add up
       y0 = y;
       const end = y + innerHeight >= root.scrollHeight - 4;
-      const t = d > 0 && y > 120 && !end && phone.matches;
-      if (t !== tucked) { tucked = t; root.classList.toggle('hud-tuck', t); }
+      set(d > 0 && y > 120 && !end);
     }, { passive: true });
+    addEventListener('pointermove', (e) => { if (tucked && e.pointerType === 'mouse' && e.clientY < 96) set(false); }, { passive: true });
+  }
+  // Over the page the dock's sprites carry a night outline. While the home
+  // hero (a full-screen world, darker than the page) is under it, it goes
+  // bare and reads as part of the scene.
+  const hero = $('.h4');
+  if (dock && hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => root.classList.toggle('hud-bare', e.isIntersecting), { rootMargin: '0px 0px -92% 0px' }).observe(hero);
   }
   if (document.getElementById('book-a-call')) {
     document.querySelectorAll('a.hud__coin, a.sel__coin').forEach((a) => { if (a.pathname === location.pathname) a.setAttribute('href', '#book-a-call'); });
@@ -150,14 +159,13 @@
     if (instant) { void cur.offsetWidth; cur.style.transition = ''; }
   }
 
+  // The deck stick has three frames (left, centre, right): it leans the way
+  // the cursor went and springs back.
   function tilt(dir) {
     if (!joy || !dir) return;
     tJoy.forEach(clearTimeout);
-    joy.dataset.f = dir < 0 ? '0' : '4';
-    tJoy = [
-      setTimeout(() => { joy.dataset.f = dir < 0 ? '1' : '3'; }, 110),
-      setTimeout(() => { delete joy.dataset.f; }, 210),
-    ];
+    joy.dataset.f = dir < 0 ? 'l' : 'r';
+    tJoy = [setTimeout(() => { delete joy.dataset.f; }, 180)];
   }
   let tBtn = 0;
   function press() {
@@ -175,10 +183,7 @@
     const t = tiles[i];
     tiles.forEach((x, k) => x.classList.toggle('is-sel', k === i));
     sel.dataset.cur = t.dataset.key || '';
-    if (pvSp) {
-      pvSp.style.setProperty('--sp', t.style.getPropertyValue('--sp'));
-      pvSp.classList.toggle('is-av', t.classList.contains('sel__tile--av'));
-    }
+    if (pvSp) pvSp.style.setProperty('--sp', t.style.getPropertyValue('--sp'));
     if (pvName) pvName.textContent = ($('.sel__name', t) || t).textContent;
     if (pvDesc) pvDesc.textContent = t.dataset.desc || '';
     if (pvArt && prev !== i && !o.instant) { pvArt.classList.remove('is-swap'); void pvArt.offsetWidth; pvArt.classList.add('is-swap'); }

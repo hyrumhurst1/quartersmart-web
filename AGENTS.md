@@ -143,6 +143,36 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-09-27 evening (art director pass on the seamless night, local only, not committed)** - One system
+  everywhere: home sections now use `--sec-y` and the shared 2px-dot horizon (`.hs` joined the qs.css
+  horizon rule); the night sky clears the text column on home too (term.css); why.exe spans the column.
+  Hero windows sit inside `.wrap` (about/faq/contact/founder/posts overrides removed). Services and approach
+  heroes are copy on the night plus a `.pg-win--art` window around the screen only (`data-pxs-win` moved to
+  it). Signals hub: copy on the night plus a `.pxwin` radar window; the All Signals frame and filter keys
+  have no fill. `.pg-go` strips have no rule of their own; `.sv-lvl` opens on the dotted horizon; the
+  staircase blocks are ledges. One closer everywhere: a cabinet standing on a 2px dotted floor inside the
+  column (home, services, approach, for-agencies, posts). Heading scale: page h1 66 (for-agencies and 404
+  too), statement h2 55 once, section h2 44, close 55; posts and the hub close at their h1 size (44). First
+  Quarter heading is a plain 44px level heading. Post ending no longer ships the headshot markup;
+  `.po-quiz` is a `checklist.exe` frame, callouts are unfilled left rules. Hero ground line: sparse dots
+  that fade at both ends (attract.js). Workflow usage pause is the 11px text control under the caption
+  (pxstage.js also looks for it right after the stage). Share cards unchanged (no art changed). Smoke:
+  58 captures, 0 failing. Shots: `../shots/seamless/ad-pass/`.
+
+- **2026-09-27 afternoon (flat art pass: one hand everywhere, local only, not committed)** - Owner asked for
+  "cleaner and smoother" with no Codex-looking art. Every sprite is now the flat set in
+  `assets/px/flat/`, drawn in code by `../tools/pxgen.py` (ASCII grids, palette keys, max 4 colours).
+  The 18 old generated PNGs moved to `graveyard/px-codex/` (nothing references them). New sprites:
+  `pu-decode` (a lens, for the method rail) and `avatar-tile` (16x16 bust for the menu). Coin slot
+  redrawn as a coin door (slit + return flap) so it no longer reads as "0". Dock: no backings, sprite
+  night outline, tucks on scroll down at every width (select.js), label row shares a line with the
+  home hero HUD (top 6px). Inactive sprites use one flat dim silhouette, `filter: url(#qs-off)`
+  (SVG filter in `_partials/nav.html`). Windows lost blurred shadows and scanlines; menu lost its
+  vignette; site-wide film grain removed. why.exe globe, footer arena coin, stars, radar scope and
+  the services/approach screens are flat and on one pixel grid. The approach "the method" rail now
+  shows four flat power-ups. Kit refreshed (`python ../tools/kit.py` now ships the flat set plus
+  pxgen.py in `source/`). QA: `node ../tools/smoke.mjs` (58 captures, 0 failing).
+
 - **2026-09-27 11:45 AM MST (Phase 2 report hold LIFTED: owner said "Publish it")** - The hold in
   the entry below is over. Do NOT put it back: the netlify.toml force-404 rules and the
   netlify-build.mjs exclusion and reference check were removed, and both files match `227a37e`.
