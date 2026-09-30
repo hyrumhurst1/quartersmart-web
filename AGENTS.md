@@ -143,6 +143,11 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-09-30 (gift images, /g/)** - New top-level folder `g/` holds gift images for the speed-to-lead cold
+  outreach (one PNG per prospect, linked only from that prospect's email). `netlify.toml` marks `/g/*` noindex
+  and immutable; `robots.txt` disallows `/g/`. Published from a separate worktree (`~/.grindstone/site-gifts`,
+  branch `gifts-publish` -> main) by the Gift Desk; never link or list these files anywhere on the site.
+
 - **2026-09-27 night (LIVE: PRs #15, #16, #17)** - Everything below is in production (main c42a5f1).
   - **Booking:** quartersmart.com/insert-coin is our own page (book.exe, INSERT COIN, day/time
     picker, GAME ON) on `netlify/functions/insert-coin.mjs`, which talks to self-hosted Cal.com via

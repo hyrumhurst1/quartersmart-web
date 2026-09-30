@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /g/
 
 # AI answer engines and crawlers (allowed so QuarterSmart can be cited)
 User-agent: GPTBot

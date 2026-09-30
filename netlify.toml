@@ -17,6 +17,14 @@
 [functions]
   directory = "netlify/functions"
 
+# Gift images for the speed-to-lead outreach (one per prospect, linked only from that prospect's email).
+# Unlisted: never indexed, never in the sitemap (PNGs aren't pages), and robots.txt disallows /g/.
+[[headers]]
+  for = "/g/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noimageindex"
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # Long-cache the immutable media (frame sequences, video, images, logos).
 # This also covers /assets/img/* (page art) and /assets/og/* (social cards);
 # Netlify sets their Content-Type from the file extension.
