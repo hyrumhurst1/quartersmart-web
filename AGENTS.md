@@ -143,6 +143,26 @@ public workflow templates.*
 
 ## 7. Status log (append newest at top — keep the next agent informed)
 
+- **2026-10-01 8:30 PM MST (post-DevDay update, branch devday-update, local only, not committed)** - OpenAI
+  announced "dots" (always-on agents in ChatGPT) at DevDay on Sep 29 and never used the name "o".
+  `signals/openai-o-assistant-leak.html` now opens with a status callout plus an "Updated Oct 1: what
+  DevDay announced" block (announced / who can use it now / coming later / not announced / what changes),
+  a new "Is dots the "o" from the leak?" section (likely, not confirmed by OpenAI), resolved table rows,
+  past-tense DevDay section, "What to do now" (anchor `#what-to-do`, was `#before-tuesday`), new OpenAI,
+  Help Center, pricing, TechCrunch, CNBC and TestingCatalog sources, and an Oct 1 update-log entry. Label
+  is now `confirmed` / "Announced · rolling out"; verdict stays Prepare; dateModified 2026-10-01. Retitled
+  "OpenAI's leaked "o" assistant after DevDay: what "dots" means for business owners" (title, og, twitter,
+  h1; hub card follows og:title); share card re-rendered with `tools/og.mjs` after deleting the old jpg.
+  Home Signals band: DevDay event row removed; rows are the report (Updated Oct 1), mobile voice and
+  Sonnet 5. Signals Log row resolved as "Partly right" (Oct 1, 0 open). Hub stamp Oct 1, 8:30 PM. Also
+  updated: author page Recent Signals, the mobile-voice post's Read next, llms.txt and the committed
+  sitemap lastmod. The 404 has no latest-signal slot, so it did not change. Smoke 58/58, failing 0.
+  Shots: `../shots/devday/`. Final check (same night): every DevDay claim matched to an OpenAI or press
+  source; softened "never used the name" to "did not announce anything called o", Pro/Business Premium
+  now "rolling out", the first-month usage wording notes that the release notes and launch post differ,
+  Pro guidance excludes the EEA/Switzerland/UK, committed sitemap lastmod bumped for /, /signals, /signals/log
+  and the author page. Smoke 58/58, failing 0. Shots: `../shots/devday/final/`.
+
 - **2026-09-30 (gift images, /g/)** - New top-level folder `g/` holds gift images for the speed-to-lead cold
   outreach (one PNG per prospect, linked only from that prospect's email). `netlify.toml` marks `/g/*` noindex
   and immutable; `robots.txt` disallows `/g/`. Published from a separate worktree (`~/.grindstone/site-gifts`,
