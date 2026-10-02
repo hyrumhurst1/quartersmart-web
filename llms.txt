@@ -58,7 +58,7 @@ Agencies and IT providers can resell Signals and Day One Setups through the Part
 
 ## Signals posts
 Written by Hyrum Hurst. Full hub at https://quartersmart.com/signals/. RSS: https://quartersmart.com/feed.xml
-- [OpenAI's leaked "o" assistant: what business owners should know before Tuesday](https://quartersmart.com/signals/openai-o-assistant-leak) (Sep 27, 2026): Reported · unconfirmed. What was reported, what is confirmed, and what to do before OpenAI's DevDay keynote. Verdict: Prepare.
+- [OpenAI's leaked "o" assistant after DevDay: what "dots" means for business owners](https://quartersmart.com/signals/openai-o-assistant-leak) (Sep 27, 2026; updated Oct 1, 2026): Announced · rolling out. At DevDay on Sep 29, OpenAI announced "dots," always-on agents in ChatGPT, not "o." What was announced, who can use it now (Pro, Business Premium, an Enterprise beta), and what to do. Verdict: Prepare.
 - [ChatGPT's mobile app can now draft, summarize and build by voice](https://quartersmart.com/signals/chatgpt-mobile-voice-work) (Sep 27, 2026): Available on Plus and Pro. Advice: if your team is on Plus or Pro, test one voice-drafted email this week.
 - [Sonnet 5 ships and Fable 5 comes back online on the same day](https://quartersmart.com/signals/sonnet-5-fable-5-same-day) (Jun 30, 2026): Two Anthropic model moves on June 30, 2026 and what they mean for business users.
 - [SOPs were written for humans. Your AI needs AOPs.](https://quartersmart.com/signals/sops-to-aops) (Jun 27, 2026): What an AOP (Agent Operating Procedure) is and how to write one.
